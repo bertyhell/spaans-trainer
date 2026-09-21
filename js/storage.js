@@ -87,10 +87,21 @@ export function addXp(n) {
   load().xp += n;
 }
 
+export const isReported = atomId => load().reports.includes(atomId);
+
 export function report(atomId) {
   const s = load();
   if (!s.reports.includes(atomId)) s.reports.push(atomId);
   save();
+}
+
+/** Zet de melding aan of uit. Geeft terug of ze nu aan staat. */
+export function toggleReport(atomId) {
+  const s = load();
+  const i = s.reports.indexOf(atomId);
+  if (i === -1) s.reports.push(atomId); else s.reports.splice(i, 1);
+  save();
+  return i === -1;
 }
 
 export function resetAll() {

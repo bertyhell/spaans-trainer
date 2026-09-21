@@ -4,8 +4,9 @@
     {
       "name": "spaans-trainer",
       "runtimeExecutable": "node",
-      "runtimeArgs": ["tools/serve.mjs", "8080"],
-      "port": 8080
+      "runtimeArgs": ["tools/serve.mjs"],
+      "port": 8080,
+      "autoPort": true
     }
   ]
 }

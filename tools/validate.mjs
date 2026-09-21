@@ -24,15 +24,15 @@ if (!course) {
 
 /* --- structuur op hoog niveau --- */
 if (course.schemaVersion !== 1) err('course', `onbekende schemaVersion ${course.schemaVersion}`);
-if (!Array.isArray(course.units) || !course.units.length) err('course', 'geen units');
+if (!Array.isArray(course.groups) || !course.groups.length) err('course', 'geen groups');
 if (!Array.isArray(course.themes) || !course.themes.length) err('course', 'geen themes');
 if (!Array.isArray(course.atoms) || !course.atoms.length) err('course', 'geen atoms');
 
-const unitIds = new Set(course.units.map(u => u.id));
+const groupIds = new Set(course.groups.map(g => g.id));
 const themeIds = new Set(course.themes.map(t => t.id));
 
 for (const t of course.themes) {
-  if (!unitIds.has(t.unit)) err(`theme ${t.id}`, `verwijst naar onbekende unit "${t.unit}"`);
+  if (!groupIds.has(t.group)) err(`theme ${t.id}`, `verwijst naar onbekende groep "${t.group}"`);
   if (!t.label) err(`theme ${t.id}`, 'zonder label');
 }
 
@@ -172,7 +172,7 @@ const kinds = {};
 for (const a of course.atoms) kinds[a.kind] = (kinds[a.kind] ?? 0) + 1;
 
 console.log(`\n  ${course.course}`);
-console.log(`  ${course.atoms.length} atomen · ${course.themes.length} thema's · ${course.units.length} unidades`);
+console.log(`  ${course.atoms.length} atomen · ${course.themes.length} thema's · ${course.groups.length} groepen`);
 console.log(`  ${Object.entries(kinds).map(([k, v]) => `${k}: ${v}`).join(' · ')}\n`);
 
 for (const w of warnings) console.log(`  waarschuwing  ${w}`);

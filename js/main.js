@@ -51,19 +51,19 @@ function refreshStats() {
 /* Startscherm: de boom met unidades en thema's                        */
 /* ------------------------------------------------------------------ */
 
-/* Welke unidades openstaan. 90 thema's op één scherm is onbruikbaar op een
- * telefoon, dus alles is dicht tot je een unidad opent. */
+/* Welke groepen openstaan. 74 thema's op één scherm is onbruikbaar op een
+ * telefoon, dus alles is dicht tot je een groep opent. */
 const expanded = new Set();
 
 function renderTree() {
   const root = $('#theme-tree');
   clear(root);
 
-  for (const unit of data.tree()) {
-    const isOpen = expanded.has(unit.id);
+  for (const group of data.tree()) {
+    const isOpen = expanded.has(group.id);
     const themeRows = el('div', { class: 'unit-themes', hidden: !isOpen });
 
-    for (const theme of unit.themes) {
+    for (const theme of group.themes) {
       const keys = data.keysForTheme(theme.id);
       const pct = Math.round(scheduler.mastery(keys) * 100);
 
@@ -71,19 +71,19 @@ function renderTree() {
         type: 'checkbox', class: 'row-check', id: `th-${theme.id}`,
         onchange: e => {
           e.target.checked ? selected.add(theme.id) : selected.delete(theme.id);
-          syncUnitCheckbox(unit.id);
+          syncGroupCheckbox(group.id);
           refreshSelection();
         },
       });
       checkbox.checked = selected.has(theme.id);
 
-      themeRows.append(el('div', { class: 'row row--theme', dataset: { unit: unit.id } },
+      themeRows.append(el('div', { class: 'row row--theme', dataset: { group: group.id } },
         checkbox,
         el('label', { class: 'row-label', for: `th-${theme.id}` },
           el('span', { class: 'row-emoji' }, theme.emoji ?? '•'),
           el('span', { class: 'row-text' },
             el('span', { class: 'row-title' }, theme.label),
-            el('span', { class: 'row-meta' }, `${theme.count} woorden`)),
+            el('span', { class: 'row-meta' }, `${theme.count} ${theme.noun}`)),
         ),
         el('span', { class: 'mastery', title: `${pct}% beheerst` },
           el('span', { class: 'mastery-fill', style: `width:${pct}%` })),
@@ -94,10 +94,10 @@ function renderTree() {
       ));
     }
 
-    const unitCheck = el('input', {
-      type: 'checkbox', class: 'row-check', id: `un-${unit.id}`,
+    const groupCheck = el('input', {
+      type: 'checkbox', class: 'row-check', id: `un-${group.id}`,
       onchange: e => {
-        for (const t of unit.themes) {
+        for (const t of group.themes) {
           e.target.checked ? selected.add(t.id) : selected.delete(t.id);
           const box = $(`#th-${t.id}`);
           if (box) box.checked = e.target.checked;
@@ -106,49 +106,49 @@ function renderTree() {
       },
     });
 
-    const words = unit.themes.reduce((n, t) => n + t.count, 0);
-    const unitPct = Math.round(
-      scheduler.mastery(unit.themes.flatMap(t => data.keysForTheme(t.id))) * 100);
+    const total = data.countForThemes(group.themes.map(t => t.id));
+    const groupPct = Math.round(
+      scheduler.mastery(group.themes.flatMap(t => data.keysForTheme(t.id))) * 100);
 
     const toggle = el('button', {
       class: 'unit-toggle', type: 'button',
       'aria-expanded': String(isOpen),
-      'aria-label': `${unit.title}, ${unit.themes.length} onderdelen`,
+      'aria-label': `${group.title}, ${group.themes.length} onderdelen`,
       onclick: () => {
-        isOpen ? expanded.delete(unit.id) : expanded.add(unit.id);
+        isOpen ? expanded.delete(group.id) : expanded.add(group.id);
         renderTree();
       },
     },
-      el('span', { class: 'unit-n' }, unit.n),
+      el('span', { class: 'unit-n' }, group.emoji ?? '•'),
       el('span', { class: 'row-text' },
-        el('span', { class: 'row-title' }, unit.title),
+        el('span', { class: 'row-title' }, group.title),
         el('span', { class: 'row-meta' },
-          `${unit.themes.length} onderdelen · ${words} woorden`)),
-      el('span', { class: 'mastery', title: `${unitPct}% beheerst` },
-        el('span', { class: 'mastery-fill', style: `width:${unitPct}%` })),
+          `${group.themes.length} onderdelen · ${total.count} ${total.noun}`)),
+      el('span', { class: 'mastery', title: `${groupPct}% beheerst` },
+        el('span', { class: 'mastery-fill', style: `width:${groupPct}%` })),
       el('span', { class: `chevron${isOpen ? ' is-open' : ''}`, 'aria-hidden': 'true' }, '›'),
     );
 
     root.append(el('section', { class: 'unit' },
-      el('div', { class: 'row row--unit' }, unitCheck, toggle),
+      el('div', { class: 'row row--unit' }, groupCheck, toggle),
       themeRows,
     ));
 
     // De aanvinkstatus moet een hertekening overleven: het vakje is een nieuw
-    // DOM-element en staat standaard uit, ook al is de unidad wel geselecteerd.
-    syncUnitCheckbox(unit.id);
+    // DOM-element en staat standaard uit, ook al is de groep wel geselecteerd.
+    syncGroupCheckbox(group.id);
   }
   refreshSelection();
 }
 
-function syncUnitCheckbox(unitId) {
-  const unit = data.tree().find(u => u.id === unitId);
-  if (!unit) return;
-  const box = $(`#un-${unitId}`);
+function syncGroupCheckbox(groupId) {
+  const group = data.tree().find(g => g.id === groupId);
+  if (!group) return;
+  const box = $(`#un-${groupId}`);
   if (!box) return;
-  const on = unit.themes.filter(t => selected.has(t.id)).length;
-  box.checked = on === unit.themes.length;
-  box.indeterminate = on > 0 && on < unit.themes.length;
+  const on = group.themes.filter(t => selected.has(t.id)).length;
+  box.checked = on === group.themes.length;
+  box.indeterminate = on > 0 && on < group.themes.length;
 }
 
 function refreshSelection() {
@@ -223,6 +223,10 @@ function doCheck() {
   if (answered) return;
   answered = true;
 
+  // Het toetsenbord van de telefoon staat precies over de actiebalk, dus over
+  // de uitslag. Eerst wegklappen, anders lijkt het alsof er niets gebeurt.
+  document.activeElement?.blur?.();
+
   const result = instance.check();
   session.submit(activeType, result);
   instance.reveal?.(result);
@@ -252,9 +256,10 @@ function showFeedback(result) {
   explain.textContent = atom.note ?? '';
   explain.hidden = !atom.note;
 
+  const label = data.sourceLabel(atom);
   const src = $('#feedback-src');
-  src.textContent = atom.src ? `bron: ${atom.src.split('/').pop()}` : '';
-  src.hidden = !atom.src;
+  src.textContent = label ? `bron: ${label}` : '';
+  src.hidden = !label;
 
   fb.hidden = false;
 
@@ -262,6 +267,10 @@ function showFeedback(result) {
   btn.disabled = false;
   btn.textContent = session.position === session.total ? 'Afronden' : 'Volgende';
   btn.focus();
+
+  // Bij een lange zinsoefening staat de uitslag onder de vouw; zonder deze
+  // sprong lijkt het alsof er niets gebeurd is.
+  fb.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
 }
 
 function finishLesson() {
@@ -277,24 +286,53 @@ function finishLesson() {
   $('#result-xp').textContent = `+${xp}`;
   $('#result-streak').textContent = streak.current;
 
-  const list = $('#mistakes-list');
-  clear(list);
-  const mistakes = session.mistakes;
-  $('#mistakes-block').hidden = mistakes.length === 0;
-  for (const m of mistakes) {
-    const [q, a] = mistakeLines(m);
-    list.append(el('li', { class: 'mistake' },
-      el('span', { class: 'mistake-q' }, q),
-      el('span', { class: 'mistake-a' }, a),
-    ));
-  }
-
+  renderReview(session.results);
   refreshStats();
   renderTree();
   show('screen-result');
 }
 
 const pick = arr => arr[Math.floor(Math.random() * arr.length)];
+
+/**
+ * Het overzicht na afloop. Alles komt erin, niet alleen de fouten: een woord
+ * dat je nét goed had wil je ook nog eens zien, en een fout in de oefendata
+ * valt even vaak op bij een juist antwoord. Vandaar per regel een vlagje.
+ */
+function renderReview(results) {
+  const list = $('#mistakes-list');
+  clear(list);
+  $('#mistakes-block').hidden = results.length === 0;
+
+  // Fouten eerst: dat is waar je naar kijkt.
+  const ordered = [...results].sort((a, b) => Number(a.correct) - Number(b.correct));
+
+  for (const r of ordered) {
+    const [q, a] = mistakeLines(r);
+    const flagged = storage.isReported(r.atomId);
+
+    const flag = el('button', {
+      class: `flag${flagged ? ' is-on' : ''}`, type: 'button',
+      title: 'Fout in deze oefening melden',
+      'aria-label': `Fout melden bij ${q}`,
+      'aria-pressed': String(flagged),
+      onclick: () => {
+        const on = storage.toggleReport(r.atomId);
+        flag.classList.toggle('is-on', on);
+        flag.setAttribute('aria-pressed', String(on));
+        toast(on ? 'Genoteerd — na te kijken via Instellingen.' : 'Melding ingetrokken.');
+      },
+    }, '⚠️');
+
+    list.append(el('li', { class: `mistake${r.correct ? ' is-ok' : ''}` },
+      el('span', { class: 'mistake-mark', 'aria-hidden': 'true' }, r.correct ? '✓' : '✗'),
+      el('span', { class: 'mistake-text' },
+        el('span', { class: 'mistake-q' }, q),
+        el('span', { class: 'mistake-a' }, a)),
+      flag,
+    ));
+  }
+}
 
 /* Een foutregel moet op zichzelf iets bijbrengen. "la bufanda → la bufanda"
  * zegt niets, dus tonen we altijd beide talen. */
@@ -325,23 +363,33 @@ function startMatch() {
   renderMatch();
 }
 
+const matchCol = side => $(side === 'left' ? '#match-left' : '#match-right');
+
+const matchButton = (side, cell) => el('button', {
+  class: 'match-cell', type: 'button', dataset: { id: cell.id, side },
+  onclick: e => onMatchTap(side, cell.id, e.currentTarget),
+}, cell.text);
+
 function renderMatch() {
-  const { left, right } = match.columns();
-  const cols = { left: $('#match-left'), right: $('#match-right') };
-
+  const cols = match.columns();
   for (const side of ['left', 'right']) {
-    clear(cols[side]);
-    for (const cell of (side === 'left' ? left : right)) {
-      cols[side].append(el('button', {
-        class: 'match-cell', type: 'button', dataset: { id: cell.id, side },
-        onclick: e => onMatchTap(side, cell.id, e.currentTarget),
-      }, cell.text));
-    }
+    matchCol(side).replaceChildren(...cols[side].map(c => matchButton(side, c)));
   }
+  updateMatchProgress();
+}
 
+/* Vervangt één plaats. De rest van de kolom blijft staan waar ze stond. */
+function replaceMatchCell(side, index, cell) {
+  const col = matchCol(side);
+  const old = col.children[index];
+  if (!old) return;
+  if (cell) old.replaceWith(matchButton(side, cell));
+  else old.remove();
+}
+
+function updateMatchProgress() {
   $('#match-counter').textContent = `${match.matched}/${match.target}`;
-  const pct = (match.matched / match.target) * 100;
-  $('#match-progress').style.width = `${pct}%`;
+  $('#match-progress').style.width = `${(match.matched / match.target) * 100}%`;
 }
 
 function onMatchTap(side, id, node) {
@@ -360,9 +408,11 @@ function onMatchTap(side, id, node) {
     audio.correct();
     [l.node, r.node].forEach(n => n.classList.add('is-correct'));
     matchPick = { left: null, right: null };
+    updateMatchProgress();
     setTimeout(() => {
       if (res.done) return finishMatch();
-      renderMatch();
+      replaceMatchCell('left', res.left.index, res.left.cell);
+      replaceMatchCell('right', res.right.index, res.right.cell);
     }, 320);
   } else {
     audio.incorrect();
@@ -479,6 +529,10 @@ function wire() {
   // Toetsenbord op de desktop: Enter bevestigt, cijfers kiezen een optie.
   document.addEventListener('keydown', e => {
     if (!$('#screen-lesson').classList.contains('is-active')) return;
+    // De invoervelden bevestigen zelf op Enter (en roepen preventDefault aan).
+    // Diezelfde toetsaanslag bubbelt hier naartoe, en `answered` staat dan al
+    // op true: zonder deze test sloeg één Enter de uitslag meteen over.
+    if (e.defaultPrevented) return;
     if (e.key === 'Enter' && answered) { e.preventDefault(); session.next(); nextQuestion(); return; }
     if (/^[1-9]$/.test(e.key) && !answered) {
       const opts = document.querySelectorAll('#question-root .option');

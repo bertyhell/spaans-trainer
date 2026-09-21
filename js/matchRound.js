@@ -12,6 +12,9 @@
 import * as scheduler from './scheduler.js';
 import * as storage from './storage.js';
 
+const cell = (atom, dutch = false) =>
+  ({ id: atom.id, text: dutch ? atom.nl[0] : atom.es, atom });
+
 export const VISIBLE_ROWS = 5;
 export const DEFAULT_TARGET = 40;
 
@@ -22,6 +25,13 @@ export class MatchRound {
     this.visible = Math.min(visible, this.pool.length);
 
     this.active = this.pool.splice(0, this.visible);
+    // Twee losse, elk apart geschudde kolommen met vaste plaatsen. Een gekoppeld
+    // paar wordt op zíjn plaats vervangen in plaats van alles opnieuw te
+    // schudden: anders springt bij elk juist antwoord het hele scherm door
+    // elkaar en ben je je oriëntatie kwijt. Omdat links en rechts onafhankelijk
+    // geschud zijn, staat een nieuw paar toch niet op dezelfde hoogte.
+    this.leftSlots = scheduler.shuffle(this.active);
+    this.rightSlots = scheduler.shuffle(this.active);
     this.matched = 0;
     this.attempts = 0;
     this.wrongAttempts = 0;
@@ -31,17 +41,21 @@ export class MatchRound {
   get finished() { return this.matched >= this.target || this.active.length === 0; }
   get accuracy() { return this.attempts ? this.matched / this.attempts : 0; }
 
-  /** De twee kolommen, elk apart geschud zodat ze niet op één lijn staan. */
+  /** De twee kolommen. Vaste volgorde: alleen vervangen plaatsen veranderen. */
   columns() {
     return {
-      left: scheduler.shuffle(this.active).map(a => ({ id: a.id, text: a.es, atom: a })),
-      right: scheduler.shuffle(this.active).map(a => ({ id: a.id, text: a.nl[0], atom: a })),
+      left: this.leftSlots.map(cell),
+      right: this.rightSlots.map(a => cell(a, true)),
     };
   }
 
   /**
    * Probeert twee kanten te koppelen.
-   * @returns {{ok: boolean, atom: object|null, replacement: object|null, done: boolean}}
+   * @returns {{ok: boolean, atom: object|null, done: boolean,
+   *            left: {index: number, cell: object|null}|null,
+   *            right: {index: number, cell: object|null}|null}}
+   *   left/right wijzen de plaatsen aan die vrijkwamen, met wat er nu staat —
+   *   null wanneer de voorraad op is en de plaats leeg blijft.
    */
   tryMatch(leftId, rightId) {
     this.attempts++;
@@ -58,7 +72,7 @@ export class MatchRound {
         }
       }
       storage.save();
-      return { ok: false, atom: null, replacement: null, done: false };
+      return { ok: false, atom: null, done: false, left: null, right: null };
     }
 
     // Juist gekoppeld. Alleen wie foutloos bleef, klimt een doos.
@@ -67,11 +81,25 @@ export class MatchRound {
 
     this.matched++;
     const at = this.active.findIndex(a => a.id === leftId);
-    const replacement = this.pool.shift() ?? null;
-    if (replacement && this.matched < this.target) this.active[at] = replacement;
-    else this.active.splice(at, 1);
+    const li = this.leftSlots.findIndex(a => a.id === leftId);
+    const ri = this.rightSlots.findIndex(a => a.id === leftId);
 
-    return { ok: true, atom, replacement, done: this.finished };
+    const replacement = this.matched < this.target ? (this.pool.shift() ?? null) : null;
+    if (replacement) {
+      this.active[at] = replacement;
+      this.leftSlots[li] = replacement;
+      this.rightSlots[ri] = replacement;
+    } else {
+      this.active.splice(at, 1);
+      this.leftSlots.splice(li, 1);
+      this.rightSlots.splice(ri, 1);
+    }
+
+    return {
+      ok: true, atom, done: this.finished,
+      left: { index: li, cell: replacement ? cell(replacement) : null },
+      right: { index: ri, cell: replacement ? cell(replacement, true) : null },
+    };
   }
 
   finish() {

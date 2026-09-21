@@ -10,498 +10,450 @@ window.COURSE = {
  "schemaVersion": 1,
  "course": "Sí, claro nuevo 1.2",
  "generatedAt": "2026-09-19",
- "units": [
-  {
-   "id": "u1",
-   "n": 1,
-   "title": "Caminando"
-  },
-  {
-   "id": "u2",
-   "n": 2,
-   "title": "Tengo planes"
-  },
-  {
-   "id": "u3",
-   "n": 3,
-   "title": "Casa nueva, vida nueva"
-  },
-  {
-   "id": "u5",
-   "n": 5,
-   "title": "El gusto de aprender"
-  },
-  {
-   "id": "u6",
-   "n": 6,
-   "title": "Te lo compro"
-  },
-  {
-   "id": "u7",
-   "n": 7,
-   "title": "¡Qué descanso!"
-  },
-  {
-   "id": "uw",
-   "n": 9,
-   "title": "Werkwoorden"
-  },
-  {
-   "id": "ug",
-   "n": 10,
-   "title": "Grammatica en basis"
-  }
- ],
  "themes": [
-  {
-   "id": "kleding",
-   "label": "Kleding",
-   "unit": "u1",
-   "emoji": "🧥"
-  },
-  {
-   "id": "reizen",
-   "label": "Reizen en bagage",
-   "unit": "u1",
-   "emoji": "🧴"
-  },
-  {
-   "id": "accessoires",
-   "label": "De accessoires",
-   "unit": "u1",
-   "emoji": "🧤"
-  },
-  {
-   "id": "weer",
-   "label": "Het weer",
-   "unit": "u1",
-   "emoji": "🔥"
-  },
-  {
-   "id": "camino",
-   "label": "De pelgrimsroutes",
-   "unit": "u1",
-   "emoji": "🐚"
-  },
-  {
-   "id": "vergelijken",
-   "label": "Vergelijken",
-   "unit": "u1",
-   "emoji": "•"
-  },
-  {
-   "id": "schoeisel",
-   "label": "Het schoeisel",
-   "unit": "u1",
-   "emoji": "👞"
-  },
-  {
-   "id": "juwelen",
-   "label": "De juwelen",
-   "unit": "u1",
-   "emoji": "💎"
-  },
-  {
-   "id": "vrije-tijd",
-   "label": "Vrije tijd",
-   "unit": "u2",
-   "emoji": "🎲"
-  },
   {
    "id": "groenten",
    "label": "De groenten",
-   "unit": "u2",
-   "emoji": "🥬"
-  },
-  {
-   "id": "hobbys",
-   "label": "De hobby's en vrije tijd",
-   "unit": "u2",
-   "emoji": "🚴"
-  },
-  {
-   "id": "nationaliteiten-europa",
-   "label": "Nationaliteiten (Europa)",
-   "unit": "u2",
-   "emoji": "•"
-  },
-  {
-   "id": "nationaliteiten-wereld",
-   "label": "Nationaliteiten (Amerika, Azië en overige)",
-   "unit": "u2",
-   "emoji": "•"
-  },
-  {
-   "id": "kruiden",
-   "label": "Kruiden en specerijen",
-   "unit": "u2",
-   "emoji": "🌿"
+   "emoji": "🥬",
+   "group": "g-eten"
   },
   {
    "id": "fruit",
    "label": "Het fruit",
-   "unit": "u2",
-   "emoji": "🫐"
+   "emoji": "🫐",
+   "group": "g-eten"
   },
   {
    "id": "vlees",
    "label": "Het vlees",
-   "unit": "u2",
-   "emoji": "🍖"
-  },
-  {
-   "id": "vis",
-   "label": "De vis",
-   "unit": "u2",
-   "emoji": "🐟"
-  },
-  {
-   "id": "gevogelte",
-   "label": "Gevogelte en wild",
-   "unit": "u2",
-   "emoji": "🐦"
-  },
-  {
-   "id": "opdrachtentaal",
-   "label": "Instructietaal in oefeningen",
-   "unit": "u2",
-   "emoji": "•"
-  },
-  {
-   "id": "winkels-eten",
-   "label": "Voedingswinkels en markten",
-   "unit": "u2",
-   "emoji": "🥩"
-  },
-  {
-   "id": "restaurant",
-   "label": "In het restaurant",
-   "unit": "u2",
-   "emoji": "•"
-  },
-  {
-   "id": "peulvruchten",
-   "label": "De peulvruchten",
-   "unit": "u2",
-   "emoji": "🫘"
+   "emoji": "🍖",
+   "group": "g-eten"
   },
   {
    "id": "vleeswaren",
    "label": "De vleeswaren",
-   "unit": "u2",
-   "emoji": "🍖"
+   "emoji": "🍖",
+   "group": "g-eten"
   },
   {
-   "id": "bereiding",
-   "label": "De bereidingswijzen",
-   "unit": "u2",
-   "emoji": "•"
+   "id": "gevogelte",
+   "label": "Gevogelte en wild",
+   "emoji": "🐦",
+   "group": "g-eten"
   },
   {
-   "id": "afspreken-en-plannen",
-   "label": "Afspreken en plannen",
-   "unit": "u2",
-   "emoji": "•"
-  },
-  {
-   "id": "huis",
-   "label": "Het huis",
-   "unit": "u3",
-   "emoji": "🏢"
-  },
-  {
-   "id": "meubels",
-   "label": "Meubels",
-   "unit": "u3",
-   "emoji": "🗄️"
-  },
-  {
-   "id": "badkamer",
-   "label": "Keuken en badkamer",
-   "unit": "u3",
-   "emoji": "🚽"
-  },
-  {
-   "id": "decoracion",
-   "label": "De decoratievoorwerpen",
-   "unit": "u3",
-   "emoji": "💡"
-  },
-  {
-   "id": "wonen",
-   "label": "Wonen",
-   "unit": "u3",
-   "emoji": "•"
-  },
-  {
-   "id": "kantoor-papier",
-   "label": "Papier, mappen en kantoorspullen",
-   "unit": "u5",
-   "emoji": "📄"
-  },
-  {
-   "id": "kantoor-schrijfgerei",
-   "label": "Schrijfgerei en klein kantoormateriaal",
-   "unit": "u5",
-   "emoji": "🖍️"
-  },
-  {
-   "id": "winkels-diensten",
-   "label": "Winkels en diensten",
-   "unit": "u6",
-   "emoji": "🏬"
-  },
-  {
-   "id": "winkelen",
-   "label": "Winkelen",
-   "unit": "u6",
-   "emoji": "•"
-  },
-  {
-   "id": "kleuren",
-   "label": "Kleuren",
-   "unit": "u6",
-   "emoji": "•"
-  },
-  {
-   "id": "lichaam",
-   "label": "Het lichaam",
-   "unit": "u7",
-   "emoji": "💪"
-  },
-  {
-   "id": "gezondheid",
-   "label": "De gezondheid",
-   "unit": "u7",
-   "emoji": "💊"
-  },
-  {
-   "id": "klachten",
-   "label": "Klachten en kwetsuren",
-   "unit": "u7",
-   "emoji": "🤧"
-  },
-  {
-   "id": "liedjes",
-   "label": "Liedjes",
-   "unit": "u7",
-   "emoji": "•"
-  },
-  {
-   "id": "spel",
-   "label": "Spel en spelen",
-   "unit": "u7",
-   "emoji": "🎲"
-  },
-  {
-   "id": "bijwoord",
-   "label": "Bijwoord",
-   "unit": "ug",
-   "emoji": "•"
-  },
-  {
-   "id": "dranken",
-   "label": "De dranken",
-   "unit": "ug",
-   "emoji": "☕"
-  },
-  {
-   "id": "verbos-cambio",
-   "label": "Werkwoorden met klinkerverandering",
-   "unit": "ug",
-   "emoji": "•"
-  },
-  {
-   "id": "grammaticatermen",
-   "label": "Grammaticale termen",
-   "unit": "ug",
-   "emoji": "•"
-  },
-  {
-   "id": "onbepaalde-voornaamwoorden",
-   "label": "De onbepaalde voornaamwoorden",
-   "unit": "ug",
-   "emoji": "•"
-  },
-  {
-   "id": "dagelijkse-routine",
-   "label": "Dagelijkse routine",
-   "unit": "ug",
-   "emoji": "📺"
-  },
-  {
-   "id": "sport",
-   "label": "De sport",
-   "unit": "ug",
-   "emoji": "⚽"
-  },
-  {
-   "id": "zoetigheden",
-   "label": "Zoetigheden en gebak",
-   "unit": "ug",
-   "emoji": "🍰"
-  },
-  {
-   "id": "telefoneren",
-   "label": "Telefoneren",
-   "unit": "ug",
-   "emoji": "•"
-  },
-  {
-   "id": "apparaten",
-   "label": "De elektrische toestellen",
-   "unit": "ug",
-   "emoji": "🔌"
+   "id": "vis",
+   "label": "De vis",
+   "emoji": "🐟",
+   "group": "g-eten"
   },
   {
    "id": "zeevruchten",
    "label": "De zeevruchten",
-   "unit": "ug",
-   "emoji": "🦐"
+   "emoji": "🦐",
+   "group": "g-eten"
   },
   {
-   "id": "plaatsen-en-natuur",
-   "label": "Plaatsen en natuur",
-   "unit": "ug",
-   "emoji": "🏞️"
-  },
-  {
-   "id": "interrogativos",
-   "label": "Het vragend voornaamwoord",
-   "unit": "ug",
-   "emoji": "•"
-  },
-  {
-   "id": "wederkerende-werkwoorden",
-   "label": "De wederkerende werkwoorden",
-   "unit": "ug",
-   "emoji": "•"
-  },
-  {
-   "id": "dagen-en-maanden",
-   "label": "Dagen, maanden en seizoenen",
-   "unit": "ug",
-   "emoji": "🌸"
-  },
-  {
-   "id": "overige-woorden",
-   "label": "Overige woorden",
-   "unit": "ug",
-   "emoji": "💻"
-  },
-  {
-   "id": "eigenschappen",
-   "label": "Bijvoeglijke naamwoorden",
-   "unit": "ug",
-   "emoji": "•"
-  },
-  {
-   "id": "muziekinstrumenten",
-   "label": "De muziekinstrumenten",
-   "unit": "ug",
-   "emoji": "🎹"
-  },
-  {
-   "id": "ondergoed",
-   "label": "Het ondergoed",
-   "unit": "ug",
-   "emoji": "👙"
-  },
-  {
-   "id": "afspreken",
-   "label": "Afspreken",
-   "unit": "ug",
-   "emoji": "•"
-  },
-  {
-   "id": "tijd-en-uur",
-   "label": "Tijd en het uur",
-   "unit": "ug",
-   "emoji": "•"
-  },
-  {
-   "id": "voornaamwoorden",
-   "label": "Voornaamwoorden",
-   "unit": "ug",
-   "emoji": "•"
+   "id": "peulvruchten",
+   "label": "De peulvruchten",
+   "emoji": "🫘",
+   "group": "g-eten"
   },
   {
    "id": "noten",
    "label": "De noten",
-   "unit": "ug",
-   "emoji": "🥜"
+   "emoji": "🥜",
+   "group": "g-eten"
   },
   {
    "id": "kaas",
    "label": "De kaas",
-   "unit": "ug",
-   "emoji": "🧀"
+   "emoji": "🧀",
+   "group": "g-eten"
   },
   {
-   "id": "verleden-tijden",
-   "label": "Verleden tijden",
-   "unit": "ug",
-   "emoji": "•"
+   "id": "kruiden",
+   "label": "Kruiden en specerijen",
+   "emoji": "🌿",
+   "group": "g-eten"
   },
   {
-   "id": "bijvoeglijk-naamwoord",
-   "label": "Bijvoeglijk naamwoord",
-   "unit": "ug",
-   "emoji": "•"
+   "id": "zoetigheden",
+   "label": "Zoetigheden en gebak",
+   "emoji": "🍰",
+   "group": "g-eten"
   },
   {
-   "id": "aan-het-doen",
-   "label": "Bezig zijn (gerundio)",
-   "unit": "ug",
-   "emoji": "•"
+   "id": "dranken",
+   "label": "De dranken",
+   "emoji": "☕",
+   "group": "g-eten"
   },
   {
-   "id": "ser-estar",
-   "label": "Ser en estar",
-   "unit": "ug",
-   "emoji": "•"
+   "id": "bereiding",
+   "label": "De bereidingswijzen",
+   "emoji": "•",
+   "group": "g-eten"
   },
   {
-   "id": "ww-presente",
-   "label": "Presente de indicativo",
-   "unit": "uw",
-   "emoji": "•"
+   "id": "winkels-eten",
+   "label": "Voedingswinkels en markten",
+   "emoji": "🥩",
+   "group": "g-eten"
   },
   {
-   "id": "ww-indefinido",
-   "label": "Pretérito indefinido",
-   "unit": "uw",
-   "emoji": "•"
+   "id": "restaurant",
+   "label": "In het restaurant",
+   "emoji": "•",
+   "group": "g-eten"
   },
   {
-   "id": "ww-perfecto",
-   "label": "Pretérito perfecto",
-   "unit": "uw",
-   "emoji": "•"
+   "id": "kleding",
+   "label": "Kleding",
+   "emoji": "🧥",
+   "group": "g-kleding"
   },
   {
-   "id": "ww-imperfecto",
-   "label": "Pretérito imperfecto",
-   "unit": "uw",
-   "emoji": "•"
+   "id": "ondergoed",
+   "label": "Het ondergoed",
+   "emoji": "👙",
+   "group": "g-kleding"
+  },
+  {
+   "id": "schoeisel",
+   "label": "Het schoeisel",
+   "emoji": "👞",
+   "group": "g-kleding"
+  },
+  {
+   "id": "accessoires",
+   "label": "De accessoires",
+   "emoji": "🧤",
+   "group": "g-kleding"
+  },
+  {
+   "id": "juwelen",
+   "label": "De juwelen",
+   "emoji": "💎",
+   "group": "g-kleding"
+  },
+  {
+   "id": "kleuren",
+   "label": "Kleuren",
+   "emoji": "•",
+   "group": "g-kleding"
+  },
+  {
+   "id": "lichaam",
+   "label": "Het lichaam",
+   "emoji": "💪",
+   "group": "g-lichaam"
+  },
+  {
+   "id": "klachten",
+   "label": "Klachten en kwetsuren",
+   "emoji": "🤧",
+   "group": "g-lichaam"
+  },
+  {
+   "id": "gezondheid",
+   "label": "De gezondheid",
+   "emoji": "💊",
+   "group": "g-lichaam"
+  },
+  {
+   "id": "huis",
+   "label": "Het huis",
+   "emoji": "🏢",
+   "group": "g-huis"
+  },
+  {
+   "id": "meubels",
+   "label": "Meubels",
+   "emoji": "🗄️",
+   "group": "g-huis"
+  },
+  {
+   "id": "badkamer",
+   "label": "Keuken en badkamer",
+   "emoji": "🚽",
+   "group": "g-huis"
+  },
+  {
+   "id": "decoracion",
+   "label": "De decoratievoorwerpen",
+   "emoji": "💡",
+   "group": "g-huis"
+  },
+  {
+   "id": "apparaten",
+   "label": "De elektrische toestellen",
+   "emoji": "🔌",
+   "group": "g-huis"
+  },
+  {
+   "id": "wonen",
+   "label": "Wonen",
+   "emoji": "•",
+   "group": "g-huis"
+  },
+  {
+   "id": "reizen",
+   "label": "Reizen en bagage",
+   "emoji": "🧴",
+   "group": "g-reizen"
+  },
+  {
+   "id": "camino",
+   "label": "De pelgrimsroutes",
+   "emoji": "🐚",
+   "group": "g-reizen"
+  },
+  {
+   "id": "plaatsen-en-natuur",
+   "label": "Plaatsen en natuur",
+   "emoji": "🏞️",
+   "group": "g-reizen"
+  },
+  {
+   "id": "weer",
+   "label": "Het weer",
+   "emoji": "🔥",
+   "group": "g-reizen"
+  },
+  {
+   "id": "nationaliteiten-europa",
+   "label": "Nationaliteiten (Europa)",
+   "emoji": "•",
+   "group": "g-reizen"
+  },
+  {
+   "id": "nationaliteiten-wereld",
+   "label": "Nationaliteiten (Amerika, Azië en overige)",
+   "emoji": "•",
+   "group": "g-reizen"
+  },
+  {
+   "id": "vrije-tijd",
+   "label": "Vrije tijd",
+   "emoji": "🎲",
+   "group": "g-vrijetijd"
+  },
+  {
+   "id": "hobbys",
+   "label": "De hobby's en vrije tijd",
+   "emoji": "🚴",
+   "group": "g-vrijetijd"
+  },
+  {
+   "id": "sport",
+   "label": "De sport",
+   "emoji": "⚽",
+   "group": "g-vrijetijd"
+  },
+  {
+   "id": "spel",
+   "label": "Spel en spelen",
+   "emoji": "🎲",
+   "group": "g-vrijetijd"
+  },
+  {
+   "id": "muziekinstrumenten",
+   "label": "De muziekinstrumenten",
+   "emoji": "🎹",
+   "group": "g-vrijetijd"
+  },
+  {
+   "id": "dagelijkse-routine",
+   "label": "Dagelijkse routine",
+   "emoji": "📺",
+   "group": "g-dagelijks"
+  },
+  {
+   "id": "dagen-en-maanden",
+   "label": "Dagen, maanden en seizoenen",
+   "emoji": "🌸",
+   "group": "g-dagelijks"
+  },
+  {
+   "id": "tijd-en-uur",
+   "label": "Tijd en het uur",
+   "emoji": "•",
+   "group": "g-dagelijks"
+  },
+  {
+   "id": "afspreken",
+   "label": "Afspreken",
+   "emoji": "•",
+   "group": "g-dagelijks"
+  },
+  {
+   "id": "afspreken-en-plannen",
+   "label": "Afspreken en plannen",
+   "emoji": "•",
+   "group": "g-dagelijks"
+  },
+  {
+   "id": "telefoneren",
+   "label": "Telefoneren",
+   "emoji": "•",
+   "group": "g-dagelijks"
+  },
+  {
+   "id": "winkelen",
+   "label": "Winkelen",
+   "emoji": "•",
+   "group": "g-dagelijks"
+  },
+  {
+   "id": "winkels-diensten",
+   "label": "Winkels en diensten",
+   "emoji": "🏬",
+   "group": "g-dagelijks"
+  },
+  {
+   "id": "kantoor-papier",
+   "label": "Papier, mappen en kantoorspullen",
+   "emoji": "📄",
+   "group": "g-dagelijks"
+  },
+  {
+   "id": "kantoor-schrijfgerei",
+   "label": "Schrijfgerei en klein kantoormateriaal",
+   "emoji": "🖍️",
+   "group": "g-dagelijks"
   },
   {
    "id": "werkwoorden-ar",
    "label": "Regelmatige werkwoorden op -ar",
-   "unit": "uw",
-   "emoji": "•"
+   "emoji": "•",
+   "group": "g-werkwoorden"
   },
   {
    "id": "werkwoorden-er",
    "label": "Regelmatige werkwoorden op -er",
-   "unit": "uw",
-   "emoji": "•"
+   "emoji": "•",
+   "group": "g-werkwoorden"
   },
   {
    "id": "werkwoorden-ir",
    "label": "Regelmatige werkwoorden op -ir",
-   "unit": "uw",
-   "emoji": "•"
+   "emoji": "•",
+   "group": "g-werkwoorden"
+  },
+  {
+   "id": "verbos-cambio",
+   "label": "Werkwoorden met klinkerverandering",
+   "emoji": "•",
+   "group": "g-werkwoorden"
+  },
+  {
+   "id": "wederkerende-werkwoorden",
+   "label": "De wederkerende werkwoorden",
+   "emoji": "•",
+   "group": "g-werkwoorden"
+  },
+  {
+   "id": "aan-het-doen",
+   "label": "Bezig zijn (gerundio)",
+   "emoji": "•",
+   "group": "g-werkwoorden"
+  },
+  {
+   "id": "ww-presente",
+   "label": "Presente de indicativo",
+   "emoji": "•",
+   "group": "g-werkwoorden"
+  },
+  {
+   "id": "ww-indefinido",
+   "label": "Pretérito indefinido",
+   "emoji": "•",
+   "group": "g-werkwoorden"
+  },
+  {
+   "id": "ww-imperfecto",
+   "label": "Pretérito imperfecto",
+   "emoji": "•",
+   "group": "g-werkwoorden"
+  },
+  {
+   "id": "ww-perfecto",
+   "label": "Pretérito perfecto",
+   "emoji": "•",
+   "group": "g-werkwoorden"
+  },
+  {
+   "id": "eigenschappen",
+   "label": "Bijvoeglijke naamwoorden",
+   "emoji": "•",
+   "group": "g-grammatica"
+  },
+  {
+   "id": "bijwoord",
+   "label": "Bijwoord",
+   "emoji": "•",
+   "group": "g-grammatica"
+  },
+  {
+   "id": "vergelijken",
+   "label": "Vergelijken",
+   "emoji": "•",
+   "group": "g-grammatica"
+  },
+  {
+   "id": "voornaamwoorden",
+   "label": "Voornaamwoorden",
+   "emoji": "•",
+   "group": "g-grammatica"
+  },
+  {
+   "id": "onbepaalde-voornaamwoorden",
+   "label": "De onbepaalde voornaamwoorden",
+   "emoji": "•",
+   "group": "g-grammatica"
+  },
+  {
+   "id": "interrogativos",
+   "label": "Het vragend voornaamwoord",
+   "emoji": "•",
+   "group": "g-grammatica"
+  },
+  {
+   "id": "bijvoeglijk-naamwoord",
+   "label": "Bijvoeglijk naamwoord",
+   "emoji": "•",
+   "group": "g-grammatica"
+  },
+  {
+   "id": "ser-estar",
+   "label": "Ser en estar",
+   "emoji": "•",
+   "group": "g-grammatica"
+  },
+  {
+   "id": "verleden-tijden",
+   "label": "Verleden tijden",
+   "emoji": "•",
+   "group": "g-grammatica"
+  },
+  {
+   "id": "grammaticatermen",
+   "label": "Grammaticale termen",
+   "emoji": "•",
+   "group": "g-grammatica"
+  },
+  {
+   "id": "opdrachtentaal",
+   "label": "Instructietaal in oefeningen",
+   "emoji": "•",
+   "group": "g-grammatica"
+  },
+  {
+   "id": "overige-woorden",
+   "label": "Overige woorden",
+   "emoji": "💻",
+   "group": "g-grammatica"
   }
  ],
  "atoms": [
@@ -515,7 +467,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203804276_AE.md"
+   "src": "spanish-md/IMG_20260918_203804276_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.estamos-esperando",
@@ -527,7 +480,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203804276_AE.md"
+   "src": "spanish-md/IMG_20260918_203804276_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.estoy-haciendo-una-pausa",
@@ -539,7 +493,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203804276_AE.md"
+   "src": "spanish-md/IMG_20260918_203804276_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.lo-que-esta-sucediendo",
@@ -551,7 +506,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203744401_AE.md"
+   "src": "spanish-md/IMG_20260918_203744401_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.suceder",
@@ -563,7 +519,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203744401_AE.md"
+   "src": "spanish-md/IMG_20260918_203744401_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.el-algodon",
@@ -575,7 +532,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "spanish-md/IMG_20260918_203744401_AE.md"
+   "src": "spanish-md/IMG_20260918_203744401_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-arete",
@@ -589,7 +547,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "note": "Latijns-Amerikaanse variant van el pendiente.",
-   "src": "spanish-md/IMG_20260918_203945624_AE.md"
+   "src": "spanish-md/IMG_20260918_203945624_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-aro",
@@ -603,7 +562,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "💍",
-   "src": "spanish-md/IMG_20260918_203945624_AE.md"
+   "src": "spanish-md/IMG_20260918_203945624_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-bolso",
@@ -618,7 +578,8 @@ window.COURSE = {
    "number": "sg",
    "emoji": "👜",
    "note": "let op: la bolsa = de zak, de (draag)tas",
-   "src": "course-md/IMG_20260918_190147401_AE.md; spanish-md/IMG_20260918_203945624_AE.md"
+   "src": "course-md/IMG_20260918_190147401_AE.md; spanish-md/IMG_20260918_203945624_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-boton",
@@ -630,7 +591,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "spanish-md/IMG_20260918_203945624_AE.md"
+   "src": "spanish-md/IMG_20260918_203945624_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-cinto",
@@ -643,7 +605,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "note": "Latijns-Amerikaanse variant van el cinturón.",
-   "src": "spanish-md/IMG_20260918_203945624_AE.md"
+   "src": "spanish-md/IMG_20260918_203945624_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-cinturon",
@@ -656,7 +619,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190147401_AE.md; spanish-md/IMG_20260918_203945624_AE.md"
+   "src": "course-md/IMG_20260918_190147401_AE.md; spanish-md/IMG_20260918_203945624_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-cuero",
@@ -668,7 +632,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "spanish-md/IMG_20260918_203744401_AE.md"
+   "src": "spanish-md/IMG_20260918_203744401_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-gorro",
@@ -681,7 +646,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "note": "let op het verschil met la gorra = de pet",
-   "src": "course-md/IMG_20260918_190147401_AE.md; spanish-md/IMG_20260918_203945624_AE.md"
+   "src": "course-md/IMG_20260918_190147401_AE.md; spanish-md/IMG_20260918_203945624_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-guante",
@@ -694,7 +660,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🧤",
-   "src": "spanish-md/IMG_20260918_203945624_AE.md"
+   "src": "spanish-md/IMG_20260918_203945624_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-maletin",
@@ -709,7 +676,8 @@ window.COURSE = {
    "number": "sg",
    "emoji": "💼",
    "note": "verkleinwoord van la maleta = de koffer",
-   "src": "course-md/IMG_20260918_190147401_AE.md"
+   "src": "course-md/IMG_20260918_190147401_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-panuelo",
@@ -723,7 +691,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "src": "course-md/IMG_20260918_190147401_AE.md; spanish-md/IMG_20260918_203945624_AE.md",
-   "note": "el pañuelo de cuello = het halsdoekje."
+   "note": "el pañuelo de cuello = het halsdoekje.",
+   "pos": "noun"
   },
   {
    "id": "v.el-paraguas",
@@ -737,7 +706,8 @@ window.COURSE = {
    "number": "sg",
    "emoji": "☂️",
    "note": "onveranderlijk in het meervoud: los paraguas",
-   "src": "course-md/IMG_20260918_190147401_AE.md; spanish-md/IMG_20260918_203945624_AE.md"
+   "src": "course-md/IMG_20260918_190147401_AE.md; spanish-md/IMG_20260918_203945624_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-pendiente",
@@ -750,7 +720,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "note": "Latijns-Amerikaanse variant: el arete.",
-   "src": "spanish-md/IMG_20260918_203945624_AE.md"
+   "src": "spanish-md/IMG_20260918_203945624_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-reloj-de-pulsera",
@@ -763,7 +734,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "⌚",
-   "src": "spanish-md/IMG_20260918_203950488_AE.md"
+   "src": "spanish-md/IMG_20260918_203950488_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-sombrero",
@@ -776,12 +748,13 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🎩",
-   "src": "course-md/IMG_20260918_190147401_AE.md; spanish-md/IMG_20260918_203744401_AE.md"
+   "src": "course-md/IMG_20260918_190147401_AE.md; spanish-md/IMG_20260918_203744401_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-bota",
    "kind": "vocab",
-   "theme": "accessoires",
+   "theme": "schoeisel",
    "es": "la bota",
    "nl": [
     "de laars",
@@ -791,7 +764,8 @@ window.COURSE = {
    "number": "sg",
    "emoji": "🥾",
    "note": "Hier: de bergschoen.",
-   "src": "spanish-md/IMG_20260918_203744401_AE.md"
+   "src": "spanish-md/IMG_20260918_203744401_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-bufanda",
@@ -805,7 +779,8 @@ window.COURSE = {
    "number": "sg",
    "emoji": "🧣",
    "note": "vooral de dikke wintersjaal",
-   "src": "course-md/IMG_20260918_190147401_AE.md; spanish-md/IMG_20260918_203945624_AE.md"
+   "src": "course-md/IMG_20260918_190147401_AE.md; spanish-md/IMG_20260918_203945624_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-cartera",
@@ -819,7 +794,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "👛",
-   "src": "course-md/IMG_20260918_190147401_AE.md; spanish-md/IMG_20260918_203945624_AE.md"
+   "src": "course-md/IMG_20260918_190147401_AE.md; spanish-md/IMG_20260918_203945624_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-corbata",
@@ -834,7 +810,8 @@ window.COURSE = {
    "number": "sg",
    "emoji": "👔",
    "note": "la pajarita = de vlinderdas",
-   "src": "course-md/IMG_20260918_190147401_AE.md; spanish-md/IMG_20260918_203945624_AE.md"
+   "src": "course-md/IMG_20260918_190147401_AE.md; spanish-md/IMG_20260918_203945624_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-cremallera",
@@ -846,7 +823,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "spanish-md/IMG_20260918_203945624_AE.md"
+   "src": "spanish-md/IMG_20260918_203945624_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-gorra",
@@ -859,7 +837,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🧢",
-   "src": "course-md/IMG_20260918_190147401_AE.md; spanish-md/IMG_20260918_203945624_AE.md"
+   "src": "course-md/IMG_20260918_190147401_AE.md; spanish-md/IMG_20260918_203945624_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-lana",
@@ -872,7 +851,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🧶",
-   "src": "spanish-md/IMG_20260918_203744401_AE.md"
+   "src": "spanish-md/IMG_20260918_203744401_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-mochila",
@@ -885,12 +865,13 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🎒",
-   "src": "course-md/IMG_20260918_190147401_AE.md; spanish-md/IMG_20260918_203744401_AE.md"
+   "src": "course-md/IMG_20260918_190147401_AE.md; spanish-md/IMG_20260918_203744401_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-zapatilla-de-estar-por-casa",
    "kind": "vocab",
-   "theme": "accessoires",
+   "theme": "schoeisel",
    "es": "la zapatilla (de estar por casa)",
    "nl": [
     "de slof",
@@ -899,7 +880,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🥿",
-   "src": "spanish-md/IMG_20260918_203950488_AE.md"
+   "src": "spanish-md/IMG_20260918_203950488_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.las-gafas",
@@ -913,7 +895,8 @@ window.COURSE = {
    "number": "pl",
    "emoji": "👓",
    "note": "Altijd meervoud. las gafas de sol = de zonnebril.",
-   "src": "spanish-md/IMG_20260918_203945624_AE.md; spanish-md/IMG_20260918_203744401_AE.md"
+   "src": "spanish-md/IMG_20260918_203945624_AE.md; spanish-md/IMG_20260918_203744401_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.las-gafas-de-sol",
@@ -927,7 +910,8 @@ window.COURSE = {
    "number": "pl",
    "emoji": "🕶️",
    "note": "las gafas = de bril",
-   "src": "course-md/IMG_20260918_190147401_AE.md; spanish-md/IMG_20260918_203744401_AE.md"
+   "src": "course-md/IMG_20260918_190147401_AE.md; spanish-md/IMG_20260918_203744401_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.llevar-gafas",
@@ -939,19 +923,21 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203744401_AE.md"
+   "src": "spanish-md/IMG_20260918_203744401_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.llevar-zapatos",
    "kind": "vocab",
-   "theme": "accessoires",
+   "theme": "schoeisel",
    "es": "llevar zapatos",
    "nl": [
     "schoenen dragen"
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203753249_AE.md"
+   "src": "spanish-md/IMG_20260918_203753249_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.los-guantes",
@@ -965,7 +951,8 @@ window.COURSE = {
    "number": "pl",
    "emoji": "🧤",
    "note": "enkelvoud: el guante",
-   "src": "course-md/IMG_20260918_190147401_AE.md"
+   "src": "course-md/IMG_20260918_190147401_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.los-lentes",
@@ -979,7 +966,8 @@ window.COURSE = {
    "number": "pl",
    "emoji": "👓",
    "note": "Latijns-Amerikaanse variant van las gafas.",
-   "src": "spanish-md/IMG_20260918_203945624_AE.md"
+   "src": "spanish-md/IMG_20260918_203945624_AE.md",
+   "pos": "noun"
   },
   {
    "id": "s.afspreken-1",
@@ -1115,14 +1103,15 @@ window.COURSE = {
   {
    "id": "v.la-actividad-de-tiempo-libre",
    "kind": "vocab",
-   "theme": "afspreken-en-plannen",
+   "theme": "vrije-tijd",
    "es": "la actividad de tiempo libre",
    "nl": [
     "de vrijetijdsbesteding"
    ],
    "gender": "f",
    "number": "sg",
-   "src": "spanish-md/IMG_20260918_203808317_AE.md"
+   "src": "spanish-md/IMG_20260918_203808317_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-propuesta",
@@ -1134,7 +1123,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "spanish-md/IMG_20260918_203808317_AE.md"
+   "src": "spanish-md/IMG_20260918_203808317_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.no-nunca",
@@ -1147,7 +1137,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "Dubbele ontkenning: no + werkwoord + nunca.",
-   "src": "spanish-md/IMG_20260918_203808317_AE.md"
+   "src": "spanish-md/IMG_20260918_203808317_AE.md",
+   "pos": "adv"
   },
   {
    "id": "v.quedar-con",
@@ -1159,7 +1150,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203808317_AE.md"
+   "src": "spanish-md/IMG_20260918_203808317_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.rechazar",
@@ -1172,7 +1164,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203808317_AE.md"
+   "src": "spanish-md/IMG_20260918_203808317_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.el-aire-acondicionado",
@@ -1185,7 +1178,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "❄️",
-   "src": "course-md/IMG_20260918_190352658_AE.md; spanish-md/IMG_20260918_203959801_AE.md"
+   "src": "course-md/IMG_20260918_190352658_AE.md; spanish-md/IMG_20260918_203959801_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-cable",
@@ -1199,7 +1193,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🔌",
-   "src": "course-md/IMG_20260918_190352658_AE.md"
+   "src": "course-md/IMG_20260918_190352658_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-congelador",
@@ -1213,7 +1208,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🧊",
-   "src": "course-md/IMG_20260918_190352658_AE.md"
+   "src": "course-md/IMG_20260918_190352658_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-enchufe",
@@ -1226,7 +1222,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🔌",
-   "src": "course-md/IMG_20260918_190352658_AE.md"
+   "src": "course-md/IMG_20260918_190352658_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-horno",
@@ -1238,7 +1235,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190352658_AE.md; spanish-md/IMG_20260918_203959801_AE.md"
+   "src": "course-md/IMG_20260918_190352658_AE.md; spanish-md/IMG_20260918_203959801_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-interruptor",
@@ -1251,7 +1249,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "note": "para encender/apagar = om aan of uit te zetten",
-   "src": "course-md/IMG_20260918_190352658_AE.md"
+   "src": "course-md/IMG_20260918_190352658_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-lavaplatos",
@@ -1266,7 +1265,8 @@ window.COURSE = {
    "number": "sg",
    "emoji": "🍽️",
    "note": "ook: el lavavajillas",
-   "src": "course-md/IMG_20260918_190352658_AE.md; spanish-md/IMG_20260918_203959801_AE.md"
+   "src": "course-md/IMG_20260918_190352658_AE.md; spanish-md/IMG_20260918_203959801_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-microondas",
@@ -1279,7 +1279,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190352658_AE.md; spanish-md/IMG_20260918_203959801_AE.md"
+   "src": "course-md/IMG_20260918_190352658_AE.md; spanish-md/IMG_20260918_203959801_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-televisor",
@@ -1293,7 +1294,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "📺",
-   "src": "course-md/IMG_20260918_190352658_AE.md; spanish-md/IMG_20260918_204005232_AE.md"
+   "src": "course-md/IMG_20260918_190352658_AE.md; spanish-md/IMG_20260918_204005232_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-ventilador",
@@ -1305,7 +1307,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190352658_AE.md"
+   "src": "course-md/IMG_20260918_190352658_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-aspiradora",
@@ -1317,7 +1320,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190352658_AE.md"
+   "src": "course-md/IMG_20260918_190352658_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-clavija",
@@ -1330,7 +1334,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🔌",
-   "src": "course-md/IMG_20260918_190352658_AE.md"
+   "src": "course-md/IMG_20260918_190352658_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-cocina-electrica",
@@ -1344,7 +1349,8 @@ window.COURSE = {
    "number": "sg",
    "emoji": "🍳",
    "note": "la cocina de gas = het gasfornuis",
-   "src": "course-md/IMG_20260918_190352658_AE.md"
+   "src": "course-md/IMG_20260918_190352658_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-lavadora",
@@ -1357,7 +1363,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🧺",
-   "src": "course-md/IMG_20260918_190352658_AE.md; spanish-md/IMG_20260918_203959801_AE.md"
+   "src": "course-md/IMG_20260918_190352658_AE.md; spanish-md/IMG_20260918_203959801_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-nevera",
@@ -1372,7 +1379,8 @@ window.COURSE = {
    "number": "sg",
    "note": "ook: el frigorífico",
    "src": "course-md/IMG_20260918_190352658_AE.md; spanish-md/IMG_20260918_203959801_AE.md",
-   "emoji": "🧊"
+   "emoji": "🧊",
+   "pos": "noun"
   },
   {
    "id": "v.la-plancha",
@@ -1384,7 +1392,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190352658_AE.md"
+   "src": "course-md/IMG_20260918_190352658_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-cubo-de-basura",
@@ -1397,7 +1406,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🗑️",
-   "src": "spanish-md/IMG_20260918_203959801_AE.md"
+   "src": "spanish-md/IMG_20260918_203959801_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-fregadero",
@@ -1411,12 +1421,13 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "note": "In de keuken. Ook: la pila.",
-   "src": "course-md/IMG_20260918_190344122_AE.md"
+   "src": "course-md/IMG_20260918_190344122_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-frigo-rifico",
    "kind": "vocab",
-   "theme": "badkamer",
+   "theme": "apparaten",
    "es": "el frigo(rífico)",
    "nl": [
     "de koelkast"
@@ -1424,7 +1435,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🧊",
-   "src": "spanish-md/IMG_20260918_203959801_AE.md"
+   "src": "spanish-md/IMG_20260918_203959801_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-inodoro",
@@ -1438,7 +1450,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🚽",
-   "src": "spanish-md/IMG_20260918_203959801_AE.md"
+   "src": "spanish-md/IMG_20260918_203959801_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-lavabo",
@@ -1454,12 +1467,13 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "src": "course-md/IMG_20260918_190344122_AE.md; spanish-md/IMG_20260918_203959801_AE.md",
-   "emoji": "🚰"
+   "emoji": "🚰",
+   "pos": "noun"
   },
   {
    "id": "v.el-lavavajillas",
    "kind": "vocab",
-   "theme": "badkamer",
+   "theme": "apparaten",
    "es": "el lavavajillas",
    "nl": [
     "de vaatwasser",
@@ -1468,7 +1482,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🍽️",
-   "src": "spanish-md/IMG_20260918_203959801_AE.md"
+   "src": "spanish-md/IMG_20260918_203959801_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-plato",
@@ -1482,7 +1497,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🍽️",
-   "src": "spanish-md/IMG_20260918_203804276_AE.md"
+   "src": "spanish-md/IMG_20260918_203804276_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-servicio",
@@ -1496,7 +1512,8 @@ window.COURSE = {
    "number": "sg",
    "emoji": "🚻",
    "note": "In openbare gebouwen vaak in het meervoud: los servicios.",
-   "src": "spanish-md/IMG_20260918_204005232_AE.md"
+   "src": "spanish-md/IMG_20260918_204005232_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-vater",
@@ -1509,7 +1526,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🚽",
-   "src": "spanish-md/IMG_20260918_204005232_AE.md"
+   "src": "spanish-md/IMG_20260918_204005232_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-banera",
@@ -1523,7 +1541,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🛁",
-   "src": "course-md/IMG_20260918_190344122_AE.md; spanish-md/IMG_20260918_203959801_AE.md"
+   "src": "course-md/IMG_20260918_190344122_AE.md; spanish-md/IMG_20260918_203959801_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-ducha",
@@ -1536,7 +1555,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🚿",
-   "src": "course-md/IMG_20260918_190344122_AE.md; spanish-md/IMG_20260918_203959801_AE.md"
+   "src": "course-md/IMG_20260918_190344122_AE.md; spanish-md/IMG_20260918_203959801_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-estufa",
@@ -1549,12 +1569,13 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🔥",
-   "src": "spanish-md/IMG_20260918_203959801_AE.md"
+   "src": "spanish-md/IMG_20260918_203959801_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-refrigeradora",
    "kind": "vocab",
-   "theme": "badkamer",
+   "theme": "apparaten",
    "es": "la refrigeradora",
    "nl": [
     "de koelkast"
@@ -1563,7 +1584,8 @@ window.COURSE = {
    "number": "sg",
    "emoji": "🧊",
    "note": "Latijns-Amerikaans.",
-   "src": "spanish-md/IMG_20260918_204005232_AE.md"
+   "src": "spanish-md/IMG_20260918_204005232_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.a-la-brasa",
@@ -1575,7 +1597,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190306799_AE.md"
+   "src": "course-md/IMG_20260918_190306799_AE.md",
+   "pos": "adv"
   },
   {
    "id": "v.a-la-plancha",
@@ -1588,7 +1611,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190306799_AE.md"
+   "src": "course-md/IMG_20260918_190306799_AE.md",
+   "pos": "adv"
   },
   {
    "id": "v.al-horno",
@@ -1600,7 +1624,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190306799_AE.md"
+   "src": "course-md/IMG_20260918_190306799_AE.md",
+   "pos": "adv"
   },
   {
    "id": "v.asado",
@@ -1614,7 +1639,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "vrouwelijke vorm: asada",
-   "src": "course-md/IMG_20260918_190306799_AE.md"
+   "src": "course-md/IMG_20260918_190306799_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.empanado",
@@ -1627,7 +1653,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "vrouwelijke vorm: empanada",
-   "src": "course-md/IMG_20260918_190306799_AE.md"
+   "src": "course-md/IMG_20260918_190306799_AE.md",
+   "pos": "adj"
   },
   {
    "id": "g.adjectief-overeenkomst",
@@ -2649,7 +2676,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_191309080_AE.md"
+   "src": "course-md/IMG_20260918_191309080_AE.md",
+   "pos": "adv"
   },
   {
    "id": "v.ahora",
@@ -2661,7 +2689,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_191309080_AE.md"
+   "src": "course-md/IMG_20260918_191309080_AE.md",
+   "pos": "adv"
   },
   {
    "id": "v.alli",
@@ -2674,7 +2703,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_191309080_AE.md"
+   "src": "course-md/IMG_20260918_191309080_AE.md",
+   "pos": "adv"
   },
   {
    "id": "v.aqui",
@@ -2686,7 +2716,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_191309080_AE.md"
+   "src": "course-md/IMG_20260918_191309080_AE.md",
+   "pos": "adv"
   },
   {
    "id": "v.aun",
@@ -2699,19 +2730,21 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "= todavía",
-   "src": "course-md/IMG_20260918_191309080_AE.md"
+   "src": "course-md/IMG_20260918_191309080_AE.md",
+   "pos": "adv"
   },
   {
    "id": "v.ayer",
    "kind": "vocab",
-   "theme": "bijwoord",
+   "theme": "dagen-en-maanden",
    "es": "ayer",
    "nl": [
     "gisteren"
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_191309080_AE.md"
+   "src": "course-md/IMG_20260918_191309080_AE.md",
+   "pos": "adv"
   },
   {
    "id": "v.bien",
@@ -2723,7 +2756,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_191309080_AE.md"
+   "src": "course-md/IMG_20260918_191309080_AE.md",
+   "pos": "adv"
   },
   {
    "id": "v.cerca",
@@ -2736,7 +2770,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_191309080_AE.md"
+   "src": "course-md/IMG_20260918_191309080_AE.md",
+   "pos": "adv"
   },
   {
    "id": "v.entonces",
@@ -2749,19 +2784,21 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "ook: toen, dus",
-   "src": "course-md/IMG_20260918_191309080_AE.md"
+   "src": "course-md/IMG_20260918_191309080_AE.md",
+   "pos": "adv"
   },
   {
    "id": "v.hoy",
    "kind": "vocab",
-   "theme": "bijwoord",
+   "theme": "dagen-en-maanden",
    "es": "hoy",
    "nl": [
     "vandaag"
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_191309080_AE.md"
+   "src": "course-md/IMG_20260918_191309080_AE.md",
+   "pos": "adv"
   },
   {
    "id": "v.lejos",
@@ -2774,7 +2811,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_191309080_AE.md"
+   "src": "course-md/IMG_20260918_191309080_AE.md",
+   "pos": "adv"
   },
   {
    "id": "v.mal",
@@ -2789,12 +2827,13 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "course-md/IMG_20260918_191309080_AE.md; spanish-md/IMG_20260918_204021316_AE.md",
-   "note": "encontrarse mal / sentirse mal = zich niet goed voelen."
+   "note": "encontrarse mal / sentirse mal = zich niet goed voelen.",
+   "pos": "adv"
   },
   {
    "id": "v.manana",
    "kind": "vocab",
-   "theme": "bijwoord",
+   "theme": "dagen-en-maanden",
    "es": "mañana",
    "nl": [
     "morgen"
@@ -2802,31 +2841,34 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "als zelfstandig naamwoord: la mañana = de ochtend",
-   "src": "course-md/IMG_20260918_191309080_AE.md"
+   "src": "course-md/IMG_20260918_191309080_AE.md",
+   "pos": "adv"
   },
   {
    "id": "v.mas",
    "kind": "vocab",
-   "theme": "bijwoord",
+   "theme": "vergelijken",
    "es": "más",
    "nl": [
     "meer"
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_191309080_AE.md"
+   "src": "course-md/IMG_20260918_191309080_AE.md",
+   "pos": "adv"
   },
   {
    "id": "v.menos",
    "kind": "vocab",
-   "theme": "bijwoord",
+   "theme": "vergelijken",
    "es": "menos",
    "nl": [
     "minder"
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_191309080_AE.md; spanish-md/IMG_20260918_203753249_AE.md"
+   "src": "course-md/IMG_20260918_191309080_AE.md; spanish-md/IMG_20260918_203753249_AE.md",
+   "pos": "adv"
   },
   {
    "id": "v.muy",
@@ -2839,7 +2881,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_191309080_AE.md"
+   "src": "course-md/IMG_20260918_191309080_AE.md",
+   "pos": "adv"
   },
   {
    "id": "v.nunca",
@@ -2851,7 +2894,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_191309080_AE.md"
+   "src": "course-md/IMG_20260918_191309080_AE.md",
+   "pos": "adv"
   },
   {
    "id": "v.quizas",
@@ -2864,7 +2908,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "ook: quizá, tal vez",
-   "src": "course-md/IMG_20260918_191309080_AE.md"
+   "src": "course-md/IMG_20260918_191309080_AE.md",
+   "pos": "adv"
   },
   {
    "id": "v.siempre",
@@ -2876,7 +2921,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_191309080_AE.md"
+   "src": "course-md/IMG_20260918_191309080_AE.md",
+   "pos": "adv"
   },
   {
    "id": "v.tambien",
@@ -2888,7 +2934,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_191309080_AE.md"
+   "src": "course-md/IMG_20260918_191309080_AE.md",
+   "pos": "adv"
   },
   {
    "id": "v.tampoco",
@@ -2901,7 +2948,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_191309080_AE.md"
+   "src": "course-md/IMG_20260918_191309080_AE.md",
+   "pos": "adv"
   },
   {
    "id": "v.todavia",
@@ -2913,7 +2961,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_191309080_AE.md"
+   "src": "course-md/IMG_20260918_191309080_AE.md",
+   "pos": "adv"
   },
   {
    "id": "v.ya",
@@ -2926,7 +2975,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_191309080_AE.md"
+   "src": "course-md/IMG_20260918_191309080_AE.md",
+   "pos": "adv"
   },
   {
    "id": "v.a-caminar",
@@ -2938,7 +2988,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203753249_AE.md"
+   "src": "spanish-md/IMG_20260918_203753249_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.caminando",
@@ -2951,7 +3002,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203744401_AE.md"
+   "src": "spanish-md/IMG_20260918_203744401_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.cuanto-tiempo",
@@ -2963,7 +3015,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203757754_AE.md"
+   "src": "spanish-md/IMG_20260918_203757754_AE.md",
+   "pos": "other"
   },
   {
    "id": "v.el-albergue",
@@ -2976,7 +3029,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🏠",
-   "src": "spanish-md/IMG_20260918_203753249_AE.md"
+   "src": "spanish-md/IMG_20260918_203753249_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-apostol-santiago",
@@ -2988,7 +3042,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "spanish-md/IMG_20260918_203753249_AE.md"
+   "src": "spanish-md/IMG_20260918_203753249_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-camino-de-santiago",
@@ -3002,7 +3057,8 @@ window.COURSE = {
    "number": "sg",
    "emoji": "🐚",
    "note": "De pelgrimsroute naar Santiago de Compostella.",
-   "src": "spanish-md/IMG_20260918_203744401_AE.md"
+   "src": "spanish-md/IMG_20260918_203744401_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-camino-del-norte",
@@ -3015,7 +3071,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "note": "De route langs de Noord-Spaanse kust.",
-   "src": "spanish-md/IMG_20260918_203753249_AE.md"
+   "src": "spanish-md/IMG_20260918_203753249_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-camino-frances",
@@ -3028,7 +3085,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "note": "De traditionele pelgrimsroute naar Santiago via o.a. Pamplona en Burgos.",
-   "src": "spanish-md/IMG_20260918_203753249_AE.md"
+   "src": "spanish-md/IMG_20260918_203753249_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-camino-inca",
@@ -3036,11 +3094,12 @@ window.COURSE = {
    "theme": "camino",
    "es": "el Camino Inca",
    "nl": [
-    "de Incaroute (in Peru)"
+    "de Incaroute"
    ],
    "gender": "m",
    "number": "sg",
-   "src": "spanish-md/IMG_20260918_203757754_AE.md"
+   "src": "spanish-md/IMG_20260918_203757754_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-destino",
@@ -3052,7 +3111,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "spanish-md/IMG_20260918_203753249_AE.md"
+   "src": "spanish-md/IMG_20260918_203753249_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-imperio-inca",
@@ -3064,7 +3124,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "spanish-md/IMG_20260918_203757754_AE.md"
+   "src": "spanish-md/IMG_20260918_203757754_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-inca",
@@ -3077,7 +3138,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "note": "Ook vrouwelijk: la inca.",
-   "src": "spanish-md/IMG_20260918_203757754_AE.md"
+   "src": "spanish-md/IMG_20260918_203757754_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-la-experto-a",
@@ -3089,7 +3151,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": "sg",
-   "src": "spanish-md/IMG_20260918_203744401_AE.md"
+   "src": "spanish-md/IMG_20260918_203744401_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-la-peregrino-a",
@@ -3102,7 +3165,8 @@ window.COURSE = {
    "gender": null,
    "number": "sg",
    "emoji": "🚶",
-   "src": "spanish-md/IMG_20260918_203753249_AE.md"
+   "src": "spanish-md/IMG_20260918_203753249_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-mal-de-las-alturas",
@@ -3114,7 +3178,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "spanish-md/IMG_20260918_203757754_AE.md"
+   "src": "spanish-md/IMG_20260918_203757754_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-soroche",
@@ -3127,7 +3192,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "note": "Latijns-Amerikaanse term voor el mal de las alturas.",
-   "src": "spanish-md/IMG_20260918_203757754_AE.md"
+   "src": "spanish-md/IMG_20260918_203757754_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.en-camino",
@@ -3139,7 +3205,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203753249_AE.md"
+   "src": "spanish-md/IMG_20260918_203753249_AE.md",
+   "pos": "adv"
   },
   {
    "id": "v.la-paz",
@@ -3153,7 +3220,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "note": "Hier: de rust.",
-   "src": "spanish-md/IMG_20260918_203753249_AE.md"
+   "src": "spanish-md/IMG_20260918_203753249_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-peregrinacion",
@@ -3165,7 +3233,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "spanish-md/IMG_20260918_203753249_AE.md"
+   "src": "spanish-md/IMG_20260918_203753249_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.las-comodidades",
@@ -3177,7 +3246,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "pl",
-   "src": "spanish-md/IMG_20260918_203753249_AE.md"
+   "src": "spanish-md/IMG_20260918_203753249_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.sencillo-a",
@@ -3189,7 +3259,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203753249_AE.md"
+   "src": "spanish-md/IMG_20260918_203753249_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.aburrir-se",
@@ -3201,12 +3272,13 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203753249_AE.md"
+   "src": "spanish-md/IMG_20260918_203753249_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.antes-de-las-siete",
    "kind": "vocab",
-   "theme": "dagelijkse-routine",
+   "theme": "tijd-en-uur",
    "es": "antes de las siete",
    "nl": [
     "voor zeven uur",
@@ -3214,7 +3286,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203757754_AE.md"
+   "src": "spanish-md/IMG_20260918_203757754_AE.md",
+   "pos": "adv"
   },
   {
    "id": "v.cansarse",
@@ -3226,7 +3299,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203753249_AE.md"
+   "src": "spanish-md/IMG_20260918_203753249_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.comenzar",
@@ -3239,7 +3313,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "Stamverandering e → ie: comienzo.",
-   "src": "spanish-md/IMG_20260918_203753249_AE.md"
+   "src": "spanish-md/IMG_20260918_203753249_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.despacio",
@@ -3251,7 +3326,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203804276_AE.md"
+   "src": "spanish-md/IMG_20260918_203804276_AE.md",
+   "pos": "adv"
   },
   {
    "id": "v.despues-de-desayunar",
@@ -3263,7 +3339,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203753249_AE.md"
+   "src": "spanish-md/IMG_20260918_203753249_AE.md",
+   "pos": "adv"
   },
   {
    "id": "v.el-silencio",
@@ -3275,7 +3352,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "spanish-md/IMG_20260918_203753249_AE.md"
+   "src": "spanish-md/IMG_20260918_203753249_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.en-silencio",
@@ -3287,7 +3365,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203753249_AE.md"
+   "src": "spanish-md/IMG_20260918_203753249_AE.md",
+   "pos": "adv"
   },
   {
    "id": "v.frecuentemente",
@@ -3300,7 +3379,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203757754_AE.md"
+   "src": "spanish-md/IMG_20260918_203757754_AE.md",
+   "pos": "adv"
   },
   {
    "id": "v.la-energia",
@@ -3312,7 +3392,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "spanish-md/IMG_20260918_203753249_AE.md"
+   "src": "spanish-md/IMG_20260918_203753249_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-fila",
@@ -3324,7 +3405,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "spanish-md/IMG_20260918_203757754_AE.md"
+   "src": "spanish-md/IMG_20260918_203757754_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-rutina-diaria",
@@ -3336,7 +3418,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "spanish-md/IMG_20260918_203744401_AE.md"
+   "src": "spanish-md/IMG_20260918_203744401_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-tele",
@@ -3351,7 +3434,8 @@ window.COURSE = {
    "number": "sg",
    "emoji": "📺",
    "note": "Verkorte vorm van la televisión.",
-   "src": "spanish-md/IMG_20260918_203757754_AE.md"
+   "src": "spanish-md/IMG_20260918_203757754_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-vida-cotidiana",
@@ -3363,7 +3447,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "spanish-md/IMG_20260918_203753249_AE.md"
+   "src": "spanish-md/IMG_20260918_203753249_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.lavar-se",
@@ -3375,7 +3460,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203753249_AE.md"
+   "src": "spanish-md/IMG_20260918_203753249_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.olvidar-se",
@@ -3388,7 +3474,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "Ook: olvidarse de algo.",
-   "src": "spanish-md/IMG_20260918_203757754_AE.md"
+   "src": "spanish-md/IMG_20260918_203757754_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.ponerse-ropa",
@@ -3401,7 +3488,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "Onregelmatig met g: me pongo.",
-   "src": "spanish-md/IMG_20260918_203753249_AE.md"
+   "src": "spanish-md/IMG_20260918_203753249_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.relajarse",
@@ -3413,12 +3501,13 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203753249_AE.md"
+   "src": "spanish-md/IMG_20260918_203753249_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.sale-el-sol",
    "kind": "vocab",
-   "theme": "dagelijkse-routine",
+   "theme": "weer",
    "es": "sale el sol",
    "nl": [
     "de zon komt op"
@@ -3426,7 +3515,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "Van salir.",
-   "src": "spanish-md/IMG_20260918_203753249_AE.md"
+   "src": "spanish-md/IMG_20260918_203753249_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.separar-se",
@@ -3439,7 +3529,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203753249_AE.md"
+   "src": "spanish-md/IMG_20260918_203753249_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.tener-prisa",
@@ -3451,7 +3542,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203753249_AE.md"
+   "src": "spanish-md/IMG_20260918_203753249_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.domingo",
@@ -3463,7 +3555,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "course-md/IMG_20260918_191525144_AE.md"
+   "src": "course-md/IMG_20260918_191525144_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-invierno",
@@ -3476,7 +3569,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "❄️",
-   "src": "spanish-md/IMG_20260918_203753249_AE.md"
+   "src": "spanish-md/IMG_20260918_203753249_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-otono",
@@ -3489,7 +3583,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🍂",
-   "src": "spanish-md/IMG_20260918_203753249_AE.md"
+   "src": "spanish-md/IMG_20260918_203753249_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-verano",
@@ -3502,7 +3597,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "☀️",
-   "src": "spanish-md/IMG_20260918_203753249_AE.md"
+   "src": "spanish-md/IMG_20260918_203753249_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.jueves",
@@ -3514,7 +3610,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "course-md/IMG_20260918_191525144_AE.md"
+   "src": "course-md/IMG_20260918_191525144_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-epoca",
@@ -3527,7 +3624,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "spanish-md/IMG_20260918_203753249_AE.md"
+   "src": "spanish-md/IMG_20260918_203753249_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-estacion-del-ano",
@@ -3539,7 +3637,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "spanish-md/IMG_20260918_203753249_AE.md"
+   "src": "spanish-md/IMG_20260918_203753249_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-primavera",
@@ -3553,7 +3652,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🌸",
-   "src": "spanish-md/IMG_20260918_203753249_AE.md"
+   "src": "spanish-md/IMG_20260918_203753249_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.lunes",
@@ -3566,7 +3666,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "note": "el lunes = op maandag",
-   "src": "course-md/IMG_20260918_191525144_AE.md"
+   "src": "course-md/IMG_20260918_191525144_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.martes",
@@ -3578,7 +3679,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "course-md/IMG_20260918_191525144_AE.md"
+   "src": "course-md/IMG_20260918_191525144_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.miercoles",
@@ -3590,7 +3692,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "course-md/IMG_20260918_191525144_AE.md"
+   "src": "course-md/IMG_20260918_191525144_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.sabado",
@@ -3602,7 +3705,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "course-md/IMG_20260918_191525144_AE.md"
+   "src": "course-md/IMG_20260918_191525144_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.viernes",
@@ -3614,7 +3718,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "course-md/IMG_20260918_191525144_AE.md"
+   "src": "course-md/IMG_20260918_191525144_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-cuadro",
@@ -3628,7 +3733,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🖼️",
-   "src": "course-md/IMG_20260918_190352658_AE.md"
+   "src": "course-md/IMG_20260918_190352658_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-espejo",
@@ -3641,7 +3747,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🪞",
-   "src": "course-md/IMG_20260918_190352658_AE.md"
+   "src": "course-md/IMG_20260918_190352658_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-reloj",
@@ -3655,7 +3762,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🕰️",
-   "src": "course-md/IMG_20260918_190352658_AE.md; course-md/IMG_20260918_190147401_AE.md"
+   "src": "course-md/IMG_20260918_190352658_AE.md; course-md/IMG_20260918_190147401_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-alfombra",
@@ -3668,7 +3776,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190352658_AE.md"
+   "src": "course-md/IMG_20260918_190352658_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-bombilla",
@@ -3681,7 +3790,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "💡",
-   "src": "course-md/IMG_20260918_190352658_AE.md"
+   "src": "course-md/IMG_20260918_190352658_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-lampara",
@@ -3694,7 +3804,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "💡",
-   "src": "course-md/IMG_20260918_190352658_AE.md; spanish-md/IMG_20260918_203959801_AE.md"
+   "src": "course-md/IMG_20260918_190352658_AE.md; spanish-md/IMG_20260918_203959801_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-linterna",
@@ -3708,7 +3819,8 @@ window.COURSE = {
    "number": "sg",
    "emoji": "🔦",
    "note": "la linterna con pilas = de zaklamp met batterijen",
-   "src": "course-md/IMG_20260918_190352658_AE.md"
+   "src": "course-md/IMG_20260918_190352658_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-luz",
@@ -3720,7 +3832,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190352658_AE.md"
+   "src": "course-md/IMG_20260918_190352658_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-planta",
@@ -3735,7 +3848,8 @@ window.COURSE = {
    "number": "sg",
    "emoji": "🪴",
    "src": "course-md/IMG_20260918_190352658_AE.md; course-md/IMG_20260918_190344122_AE.md; spanish-md/IMG_20260918_203959801_AE.md",
-   "note": "Synoniem: el piso. la planta baja = het gelijkvloers."
+   "note": "Synoniem: el piso. la planta baja = het gelijkvloers.",
+   "pos": "noun"
   },
   {
    "id": "v.las-cortinas",
@@ -3748,7 +3862,8 @@ window.COURSE = {
    "gender": "f",
    "number": "pl",
    "emoji": "🪟",
-   "src": "course-md/IMG_20260918_190352658_AE.md"
+   "src": "course-md/IMG_20260918_190352658_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-agua-con-gas",
@@ -3763,7 +3878,8 @@ window.COURSE = {
    "number": "sg",
    "emoji": "💧",
    "note": "agua is vrouwelijk maar krijgt 'el' omdat het met een beklemtoonde a- begint.",
-   "src": "course-md/IMG_20260918_190322153_AE.md"
+   "src": "course-md/IMG_20260918_190322153_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-agua-sin-gas",
@@ -3777,7 +3893,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "💧",
-   "src": "course-md/IMG_20260918_190322153_AE.md"
+   "src": "course-md/IMG_20260918_190322153_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-batido",
@@ -3790,7 +3907,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🥤",
-   "src": "course-md/IMG_20260918_190322153_AE.md"
+   "src": "course-md/IMG_20260918_190322153_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-cafe-con-leche",
@@ -3803,7 +3921,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "☕",
-   "src": "course-md/IMG_20260918_190322153_AE.md"
+   "src": "course-md/IMG_20260918_190322153_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-cafe-solo",
@@ -3817,7 +3936,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "☕",
-   "src": "course-md/IMG_20260918_190322153_AE.md"
+   "src": "course-md/IMG_20260918_190322153_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-carajillo",
@@ -3829,7 +3949,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190322153_AE.md"
+   "src": "course-md/IMG_20260918_190322153_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-cava",
@@ -3843,7 +3964,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🥂",
-   "src": "course-md/IMG_20260918_190322153_AE.md"
+   "src": "course-md/IMG_20260918_190322153_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-cortado",
@@ -3856,7 +3978,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "☕",
-   "src": "course-md/IMG_20260918_190322153_AE.md"
+   "src": "course-md/IMG_20260918_190322153_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-jerez",
@@ -3868,7 +3991,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190322153_AE.md"
+   "src": "course-md/IMG_20260918_190322153_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-te",
@@ -3881,7 +4005,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🍵",
-   "src": "course-md/IMG_20260918_190322153_AE.md"
+   "src": "course-md/IMG_20260918_190322153_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-vino-blanco",
@@ -3894,7 +4019,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🍷",
-   "src": "course-md/IMG_20260918_190322153_AE.md"
+   "src": "course-md/IMG_20260918_190322153_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-vino-rosado",
@@ -3907,7 +4033,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🍷",
-   "src": "course-md/IMG_20260918_190322153_AE.md"
+   "src": "course-md/IMG_20260918_190322153_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-vino-tinto",
@@ -3920,7 +4047,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🍷",
-   "src": "course-md/IMG_20260918_190322153_AE.md"
+   "src": "course-md/IMG_20260918_190322153_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-zumo",
@@ -3935,7 +4063,8 @@ window.COURSE = {
    "number": "sg",
    "emoji": "🧃",
    "note": "Latijns-Amerikaanse variant: el jugo.",
-   "src": "course-md/IMG_20260918_190322153_AE.md"
+   "src": "course-md/IMG_20260918_190322153_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-bebida",
@@ -3949,7 +4078,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🥤",
-   "src": "course-md/IMG_20260918_190322153_AE.md"
+   "src": "course-md/IMG_20260918_190322153_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-cana",
@@ -3963,7 +4093,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🍺",
-   "src": "course-md/IMG_20260918_190322153_AE.md"
+   "src": "course-md/IMG_20260918_190322153_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-cerveza-negra",
@@ -3976,7 +4107,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🍺",
-   "src": "course-md/IMG_20260918_190322153_AE.md"
+   "src": "course-md/IMG_20260918_190322153_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-cerveza-rubia",
@@ -3990,7 +4122,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🍺",
-   "src": "course-md/IMG_20260918_190322153_AE.md"
+   "src": "course-md/IMG_20260918_190322153_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-horchata",
@@ -4003,7 +4136,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190322153_AE.md"
+   "src": "course-md/IMG_20260918_190322153_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-infusion",
@@ -4016,7 +4150,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🍵",
-   "src": "course-md/IMG_20260918_190322153_AE.md"
+   "src": "course-md/IMG_20260918_190322153_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-leche-desnatada",
@@ -4030,7 +4165,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🥛",
-   "src": "course-md/IMG_20260918_190322153_AE.md"
+   "src": "course-md/IMG_20260918_190322153_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-leche-entera",
@@ -4043,7 +4179,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🥛",
-   "src": "course-md/IMG_20260918_190322153_AE.md"
+   "src": "course-md/IMG_20260918_190322153_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-leche-semidesnatada",
@@ -4056,7 +4193,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🥛",
-   "src": "course-md/IMG_20260918_190322153_AE.md"
+   "src": "course-md/IMG_20260918_190322153_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.comodo-a",
@@ -4068,7 +4206,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203753249_AE.md"
+   "src": "spanish-md/IMG_20260918_203753249_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.cotidiano-a",
@@ -4080,7 +4219,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203753249_AE.md"
+   "src": "spanish-md/IMG_20260918_203753249_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.economico-a",
@@ -4092,7 +4232,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203808317_AE.md"
+   "src": "spanish-md/IMG_20260918_203808317_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.eterno-a",
@@ -4104,7 +4245,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203808317_AE.md"
+   "src": "spanish-md/IMG_20260918_203808317_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.financiero-a",
@@ -4116,7 +4258,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203808317_AE.md"
+   "src": "spanish-md/IMG_20260918_203808317_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.llamado-a",
@@ -4128,7 +4271,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203808317_AE.md"
+   "src": "spanish-md/IMG_20260918_203808317_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.pobre",
@@ -4140,7 +4284,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203753249_AE.md"
+   "src": "spanish-md/IMG_20260918_203753249_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.politico-a",
@@ -4152,7 +4297,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203808317_AE.md"
+   "src": "spanish-md/IMG_20260918_203808317_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.practico-a",
@@ -4164,7 +4310,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203753249_AE.md"
+   "src": "spanish-md/IMG_20260918_203753249_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.regular",
@@ -4176,7 +4323,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203804276_AE.md"
+   "src": "spanish-md/IMG_20260918_203804276_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.riquisimo-a",
@@ -4190,7 +4338,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "Overtreffende trap van rico.",
-   "src": "spanish-md/IMG_20260918_203808317_AE.md"
+   "src": "spanish-md/IMG_20260918_203808317_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.el-albaricoque",
@@ -4202,7 +4351,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190251676_AE.md"
+   "src": "course-md/IMG_20260918_190251676_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-higo",
@@ -4214,7 +4364,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190251676_AE.md"
+   "src": "course-md/IMG_20260918_190251676_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-higo-chumbo",
@@ -4226,7 +4377,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190251676_AE.md"
+   "src": "course-md/IMG_20260918_190251676_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-kiwi",
@@ -4239,7 +4391,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🥝",
-   "src": "course-md/IMG_20260918_190251676_AE.md"
+   "src": "course-md/IMG_20260918_190251676_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-limon",
@@ -4252,7 +4405,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🍋",
-   "src": "course-md/IMG_20260918_190251676_AE.md"
+   "src": "course-md/IMG_20260918_190251676_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-limon-verde",
@@ -4264,7 +4418,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190251676_AE.md"
+   "src": "course-md/IMG_20260918_190251676_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-melocoton",
@@ -4277,7 +4432,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🍑",
-   "src": "course-md/IMG_20260918_190251676_AE.md"
+   "src": "course-md/IMG_20260918_190251676_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-melon",
@@ -4290,7 +4446,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🍈",
-   "src": "course-md/IMG_20260918_190251676_AE.md"
+   "src": "course-md/IMG_20260918_190251676_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-platano",
@@ -4303,7 +4460,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🍌",
-   "src": "course-md/IMG_20260918_190251676_AE.md"
+   "src": "course-md/IMG_20260918_190251676_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-pomelo",
@@ -4316,7 +4474,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190251676_AE.md"
+   "src": "course-md/IMG_20260918_190251676_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-baya",
@@ -4329,7 +4488,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🫐",
-   "src": "course-md/IMG_20260918_190251676_AE.md"
+   "src": "course-md/IMG_20260918_190251676_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-cereza",
@@ -4342,7 +4502,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🍒",
-   "src": "course-md/IMG_20260918_190251676_AE.md"
+   "src": "course-md/IMG_20260918_190251676_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-ciruela",
@@ -4354,7 +4515,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190251676_AE.md"
+   "src": "course-md/IMG_20260918_190251676_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-frambuesa",
@@ -4366,7 +4528,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190251676_AE.md"
+   "src": "course-md/IMG_20260918_190251676_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-fresa",
@@ -4379,7 +4542,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🍓",
-   "src": "course-md/IMG_20260918_190251676_AE.md"
+   "src": "course-md/IMG_20260918_190251676_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-granada",
@@ -4391,7 +4555,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190251676_AE.md"
+   "src": "course-md/IMG_20260918_190251676_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-manzana",
@@ -4404,7 +4569,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🍎",
-   "src": "course-md/IMG_20260918_190251676_AE.md"
+   "src": "course-md/IMG_20260918_190251676_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-naranja",
@@ -4418,7 +4584,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🍊",
-   "src": "course-md/IMG_20260918_190251676_AE.md"
+   "src": "course-md/IMG_20260918_190251676_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-nuez-de-coco",
@@ -4431,7 +4598,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🥥",
-   "src": "course-md/IMG_20260918_190251676_AE.md"
+   "src": "course-md/IMG_20260918_190251676_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-pera",
@@ -4444,7 +4612,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🍐",
-   "src": "course-md/IMG_20260918_190251676_AE.md"
+   "src": "course-md/IMG_20260918_190251676_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-pina",
@@ -4457,7 +4626,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🍍",
-   "src": "course-md/IMG_20260918_190251676_AE.md"
+   "src": "course-md/IMG_20260918_190251676_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-sandia",
@@ -4470,7 +4640,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🍉",
-   "src": "course-md/IMG_20260918_190251676_AE.md"
+   "src": "course-md/IMG_20260918_190251676_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-uva",
@@ -4483,7 +4654,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🍇",
-   "src": "course-md/IMG_20260918_190251676_AE.md"
+   "src": "course-md/IMG_20260918_190251676_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-ciervo",
@@ -4496,7 +4668,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🦌",
-   "src": "course-md/IMG_20260918_190306799_AE.md"
+   "src": "course-md/IMG_20260918_190306799_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-conejo",
@@ -4509,7 +4682,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🐰",
-   "src": "course-md/IMG_20260918_190306799_AE.md"
+   "src": "course-md/IMG_20260918_190306799_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-faisan",
@@ -4522,7 +4696,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🐦",
-   "src": "course-md/IMG_20260918_190306799_AE.md"
+   "src": "course-md/IMG_20260918_190306799_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-jabali",
@@ -4536,7 +4711,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🐗",
-   "src": "course-md/IMG_20260918_190306799_AE.md"
+   "src": "course-md/IMG_20260918_190306799_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-pato",
@@ -4549,7 +4725,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🦆",
-   "src": "course-md/IMG_20260918_190306799_AE.md"
+   "src": "course-md/IMG_20260918_190306799_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-pavo",
@@ -4562,7 +4739,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🦃",
-   "src": "course-md/IMG_20260918_190306799_AE.md"
+   "src": "course-md/IMG_20260918_190306799_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-pollo",
@@ -4575,7 +4753,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🐔",
-   "src": "course-md/IMG_20260918_190306799_AE.md"
+   "src": "course-md/IMG_20260918_190306799_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-codorniz",
@@ -4588,7 +4767,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🐦",
-   "src": "course-md/IMG_20260918_190306799_AE.md"
+   "src": "course-md/IMG_20260918_190306799_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-liebre",
@@ -4601,7 +4781,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🐇",
-   "src": "course-md/IMG_20260918_190306799_AE.md"
+   "src": "course-md/IMG_20260918_190306799_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-pechuga-de-pollo",
@@ -4615,7 +4796,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🍗",
-   "src": "course-md/IMG_20260918_190306799_AE.md"
+   "src": "course-md/IMG_20260918_190306799_AE.md",
+   "pos": "noun"
   },
   {
    "id": "s.gezondheid-1",
@@ -4729,7 +4911,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_204017948_AE.md"
+   "src": "spanish-md/IMG_20260918_204017948_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.alergico-a-a",
@@ -4741,7 +4924,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190442308_AE.md"
+   "src": "course-md/IMG_20260918_190442308_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.contagioso-a",
@@ -4753,7 +4937,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_204017948_AE.md"
+   "src": "spanish-md/IMG_20260918_204017948_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.curar",
@@ -4766,7 +4951,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190422167_AE.md"
+   "src": "course-md/IMG_20260918_190422167_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.doler",
@@ -4780,7 +4966,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "klankverandering o → ue. Me duele la garganta. = Ik heb keelpijn.",
-   "src": "course-md/IMG_20260918_190422167_AE.md; course-md/IMG_20260918_190934217_AE.md"
+   "src": "course-md/IMG_20260918_190422167_AE.md; course-md/IMG_20260918_190934217_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.el-calambre",
@@ -4792,7 +4979,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190442308_AE.md"
+   "src": "course-md/IMG_20260918_190442308_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-colirio",
@@ -4805,7 +4993,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "💧",
-   "src": "spanish-md/IMG_20260918_204017948_AE.md"
+   "src": "spanish-md/IMG_20260918_204017948_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-dolor",
@@ -4818,7 +5007,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "note": "Tengo dolor de cabeza. = Ik heb hoofdpijn.",
-   "src": "course-md/IMG_20260918_190422167_AE.md; spanish-md/IMG_20260918_204017948_AE.md"
+   "src": "course-md/IMG_20260918_190422167_AE.md; spanish-md/IMG_20260918_204017948_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-infarto",
@@ -4831,7 +5021,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "spanish-md/IMG_20260918_204021316_AE.md"
+   "src": "spanish-md/IMG_20260918_204021316_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-jarabe-para-la-tos",
@@ -4844,7 +5035,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "spanish-md/IMG_20260918_204021316_AE.md"
+   "src": "spanish-md/IMG_20260918_204021316_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-mareo",
@@ -4857,7 +5049,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "spanish-md/IMG_20260918_204021316_AE.md"
+   "src": "spanish-md/IMG_20260918_204021316_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-medicamento",
@@ -4871,7 +5064,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "💊",
-   "src": "course-md/IMG_20260918_190422167_AE.md"
+   "src": "course-md/IMG_20260918_190422167_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-polen",
@@ -4884,7 +5078,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190442308_AE.md"
+   "src": "course-md/IMG_20260918_190442308_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-shock-alergico",
@@ -4896,7 +5091,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190442308_AE.md"
+   "src": "course-md/IMG_20260918_190442308_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-yodo",
@@ -4908,7 +5104,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "spanish-md/IMG_20260918_204021316_AE.md"
+   "src": "spanish-md/IMG_20260918_204021316_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.enfermo-a",
@@ -4920,7 +5117,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190422167_AE.md"
+   "src": "course-md/IMG_20260918_190422167_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.enfermo-a-2",
@@ -4932,7 +5130,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_204017948_AE.md"
+   "src": "spanish-md/IMG_20260918_204017948_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.estar-bien",
@@ -4944,7 +5143,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_204017948_AE.md"
+   "src": "spanish-md/IMG_20260918_204017948_AE.md",
+   "pos": "other"
   },
   {
    "id": "v.inconsciente",
@@ -4956,7 +5156,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_204017948_AE.md"
+   "src": "spanish-md/IMG_20260918_204017948_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.inflamado-a",
@@ -4968,7 +5169,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_204021316_AE.md"
+   "src": "spanish-md/IMG_20260918_204021316_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.la-circulacion",
@@ -4981,7 +5183,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "spanish-md/IMG_20260918_204017948_AE.md"
+   "src": "spanish-md/IMG_20260918_204017948_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-diabetes",
@@ -4994,7 +5197,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190442308_AE.md; spanish-md/IMG_20260918_204017948_AE.md"
+   "src": "course-md/IMG_20260918_190442308_AE.md; spanish-md/IMG_20260918_204017948_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-discapacidad",
@@ -5007,7 +5211,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "spanish-md/IMG_20260918_204017948_AE.md"
+   "src": "spanish-md/IMG_20260918_204017948_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-emergencia",
@@ -5019,7 +5224,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "spanish-md/IMG_20260918_204017948_AE.md"
+   "src": "spanish-md/IMG_20260918_204017948_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-enfermedad",
@@ -5031,7 +5237,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190422167_AE.md"
+   "src": "course-md/IMG_20260918_190422167_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-fiebre-del-heno",
@@ -5043,7 +5250,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190442308_AE.md"
+   "src": "course-md/IMG_20260918_190442308_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-gasa",
@@ -5056,7 +5264,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "spanish-md/IMG_20260918_204017948_AE.md"
+   "src": "spanish-md/IMG_20260918_204017948_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-gastroenteritis",
@@ -5069,7 +5278,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190442308_AE.md"
+   "src": "course-md/IMG_20260918_190442308_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-infeccion",
@@ -5081,7 +5291,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "spanish-md/IMG_20260918_204021316_AE.md"
+   "src": "spanish-md/IMG_20260918_204021316_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-insolacion",
@@ -5093,7 +5304,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "spanish-md/IMG_20260918_204021316_AE.md"
+   "src": "spanish-md/IMG_20260918_204021316_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-pastilla",
@@ -5107,7 +5319,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "💊",
-   "src": "course-md/IMG_20260918_190422167_AE.md"
+   "src": "course-md/IMG_20260918_190422167_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-quemadura-de-sol",
@@ -5119,7 +5332,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "spanish-md/IMG_20260918_204021316_AE.md"
+   "src": "spanish-md/IMG_20260918_204021316_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-receta",
@@ -5133,7 +5347,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "note": "recetar = voorschrijven; la receta betekent ook een kookrecept",
-   "src": "course-md/IMG_20260918_190422167_AE.md; spanish-md/IMG_20260918_204021316_AE.md"
+   "src": "course-md/IMG_20260918_190422167_AE.md; spanish-md/IMG_20260918_204021316_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-tirita",
@@ -5146,7 +5361,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🩹",
-   "src": "spanish-md/IMG_20260918_204021316_AE.md"
+   "src": "spanish-md/IMG_20260918_204021316_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-vacuna",
@@ -5160,7 +5376,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "💉",
-   "src": "spanish-md/IMG_20260918_204021316_AE.md"
+   "src": "spanish-md/IMG_20260918_204021316_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.las-urgencias",
@@ -5173,7 +5390,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "pl",
-   "src": "course-md/IMG_20260918_190422167_AE.md"
+   "src": "course-md/IMG_20260918_190422167_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.los-piojos",
@@ -5186,7 +5404,8 @@ window.COURSE = {
    "gender": "m",
    "number": "pl",
    "note": "enkelvoud: el piojo",
-   "src": "course-md/IMG_20260918_190442308_AE.md"
+   "src": "course-md/IMG_20260918_190442308_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.los-primeros-auxilios",
@@ -5198,7 +5417,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "pl",
-   "src": "course-md/IMG_20260918_190422167_AE.md"
+   "src": "course-md/IMG_20260918_190422167_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.paralizado-a",
@@ -5210,7 +5430,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_204021316_AE.md"
+   "src": "spanish-md/IMG_20260918_204021316_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.que-se-mejore",
@@ -5223,7 +5444,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "beleefdheidsvorm (usted); informeel: ¡Que te mejores!",
-   "src": "course-md/IMG_20260918_190422167_AE.md"
+   "src": "course-md/IMG_20260918_190422167_AE.md",
+   "pos": "other"
   },
   {
    "id": "v.quebrarse",
@@ -5236,7 +5458,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "Latijns-Amerikaanse variant van romperse. Stamverandering e → ie: me quiebro.",
-   "src": "spanish-md/IMG_20260918_204021316_AE.md"
+   "src": "spanish-md/IMG_20260918_204021316_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.resfriado-a",
@@ -5249,7 +5472,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "Bijvoeglijk naamwoord: estar resfriado.",
-   "src": "spanish-md/IMG_20260918_204021316_AE.md"
+   "src": "spanish-md/IMG_20260918_204021316_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.romperse",
@@ -5262,7 +5486,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "Bv. romperse la pierna = zijn been breken.",
-   "src": "spanish-md/IMG_20260918_204021316_AE.md"
+   "src": "spanish-md/IMG_20260918_204021316_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.sangrar",
@@ -5274,7 +5499,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_204021316_AE.md"
+   "src": "spanish-md/IMG_20260918_204021316_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.sano-a",
@@ -5286,7 +5512,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190422167_AE.md"
+   "src": "course-md/IMG_20260918_190422167_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.sano-a-2",
@@ -5298,7 +5525,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_204021316_AE.md"
+   "src": "spanish-md/IMG_20260918_204021316_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.sufrir",
@@ -5310,7 +5538,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190422167_AE.md"
+   "src": "course-md/IMG_20260918_190422167_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.tratar",
@@ -5322,12 +5551,13 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190422167_AE.md"
+   "src": "course-md/IMG_20260918_190422167_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.alejado-a",
    "kind": "vocab",
-   "theme": "grammaticatermen",
+   "theme": "eigenschappen",
    "es": "alejado/-a",
    "nl": [
     "veraf",
@@ -5335,7 +5565,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203757754_AE.md"
+   "src": "spanish-md/IMG_20260918_203757754_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.el-alcance",
@@ -5347,7 +5578,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "spanish-md/IMG_20260918_203757754_AE.md"
+   "src": "spanish-md/IMG_20260918_203757754_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-comparativo",
@@ -5359,7 +5591,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "spanish-md/IMG_20260918_203753249_AE.md"
+   "src": "spanish-md/IMG_20260918_203753249_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-demostrativo",
@@ -5371,7 +5604,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "spanish-md/IMG_20260918_203808317_AE.md"
+   "src": "spanish-md/IMG_20260918_203808317_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-gerundio",
@@ -5384,19 +5618,21 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "note": "Nederlands: aan het + infinitief.",
-   "src": "spanish-md/IMG_20260918_203804276_AE.md"
+   "src": "spanish-md/IMG_20260918_203804276_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-parrafo",
    "kind": "vocab",
-   "theme": "grammaticatermen",
+   "theme": "kantoor-papier",
    "es": "el párrafo",
    "nl": [
     "de alinea"
    ],
    "gender": "m",
    "number": "sg",
-   "src": "spanish-md/IMG_20260918_203753249_AE.md"
+   "src": "spanish-md/IMG_20260918_203753249_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-pronombre-reflexivo",
@@ -5408,7 +5644,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "spanish-md/IMG_20260918_203757754_AE.md"
+   "src": "spanish-md/IMG_20260918_203757754_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-superlativo",
@@ -5420,7 +5657,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "spanish-md/IMG_20260918_203753249_AE.md"
+   "src": "spanish-md/IMG_20260918_203753249_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-verbo-conjugado",
@@ -5433,7 +5671,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "spanish-md/IMG_20260918_203757754_AE.md"
+   "src": "spanish-md/IMG_20260918_203757754_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-verbo-reflexivo",
@@ -5445,7 +5684,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "spanish-md/IMG_20260918_203757754_AE.md"
+   "src": "spanish-md/IMG_20260918_203757754_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.ese-a",
@@ -5459,7 +5699,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "Aanwijzend voornaamwoord voor iets verderaf: ese libro, esa casa.",
-   "src": "spanish-md/IMG_20260918_203757754_AE.md"
+   "src": "spanish-md/IMG_20260918_203757754_AE.md",
+   "pos": "other"
   },
   {
    "id": "v.eso",
@@ -5472,7 +5713,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "Onzijdige vorm.",
-   "src": "spanish-md/IMG_20260918_203757754_AE.md"
+   "src": "spanish-md/IMG_20260918_203757754_AE.md",
+   "pos": "other"
   },
   {
    "id": "v.estar-al-alcance-de",
@@ -5484,7 +5726,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203757754_AE.md"
+   "src": "spanish-md/IMG_20260918_203757754_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.este-a",
@@ -5498,7 +5741,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "Aanwijzend voornaamwoord voor iets dichtbij: este libro, esta casa.",
-   "src": "spanish-md/IMG_20260918_203757754_AE.md"
+   "src": "spanish-md/IMG_20260918_203757754_AE.md",
+   "pos": "other"
   },
   {
    "id": "v.esto",
@@ -5511,7 +5755,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "Onzijdige vorm, verwijst naar iets onbepaalds of naar een hele situatie.",
-   "src": "spanish-md/IMG_20260918_203757754_AE.md"
+   "src": "spanish-md/IMG_20260918_203757754_AE.md",
+   "pos": "other"
   },
   {
    "id": "v.hacer-referencia-a",
@@ -5523,7 +5768,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203757754_AE.md"
+   "src": "spanish-md/IMG_20260918_203757754_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.hasta-encontrarlo",
@@ -5536,7 +5782,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "Het lijdend voorwerp hangt vast aan de infinitief.",
-   "src": "spanish-md/IMG_20260918_203757754_AE.md"
+   "src": "spanish-md/IMG_20260918_203757754_AE.md",
+   "pos": "other"
   },
   {
    "id": "v.la-desigualdad",
@@ -5548,7 +5795,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "spanish-md/IMG_20260918_203753249_AE.md"
+   "src": "spanish-md/IMG_20260918_203753249_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-igualdad",
@@ -5560,7 +5808,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "spanish-md/IMG_20260918_203753249_AE.md"
+   "src": "spanish-md/IMG_20260918_203753249_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-referencia",
@@ -5572,7 +5821,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "spanish-md/IMG_20260918_203757754_AE.md"
+   "src": "spanish-md/IMG_20260918_203757754_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.senalar",
@@ -5585,7 +5835,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203757754_AE.md"
+   "src": "spanish-md/IMG_20260918_203757754_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.viceversa",
@@ -5598,7 +5849,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203757754_AE.md"
+   "src": "spanish-md/IMG_20260918_203757754_AE.md",
+   "pos": "adv"
   },
   {
    "id": "v.el-aguacate",
@@ -5611,7 +5863,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🥑",
-   "src": "course-md/IMG_20260918_190251676_AE.md"
+   "src": "course-md/IMG_20260918_190251676_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-apio",
@@ -5624,7 +5877,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190251676_AE.md"
+   "src": "course-md/IMG_20260918_190251676_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-brocoli",
@@ -5638,7 +5892,8 @@ window.COURSE = {
    "number": "sg",
    "emoji": "🥦",
    "note": "ook: el brécol",
-   "src": "course-md/IMG_20260918_190251676_AE.md"
+   "src": "course-md/IMG_20260918_190251676_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-calabacin",
@@ -5650,7 +5905,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190251676_AE.md"
+   "src": "course-md/IMG_20260918_190251676_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-champinon",
@@ -5664,7 +5920,8 @@ window.COURSE = {
    "number": "sg",
    "emoji": "🍄",
    "note": "de Parijse champignon",
-   "src": "course-md/IMG_20260918_190251676_AE.md"
+   "src": "course-md/IMG_20260918_190251676_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-esparrago",
@@ -5676,7 +5933,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190257797_AE.md"
+   "src": "course-md/IMG_20260918_190257797_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-hinojo",
@@ -5688,7 +5946,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190257797_AE.md"
+   "src": "course-md/IMG_20260918_190257797_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-maiz",
@@ -5701,7 +5960,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🌽",
-   "src": "course-md/IMG_20260918_190257797_AE.md"
+   "src": "course-md/IMG_20260918_190257797_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-nabo",
@@ -5713,7 +5973,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190257797_AE.md"
+   "src": "course-md/IMG_20260918_190257797_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-pepinillo",
@@ -5726,7 +5987,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🥒",
-   "src": "course-md/IMG_20260918_190257797_AE.md"
+   "src": "course-md/IMG_20260918_190257797_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-pepino",
@@ -5739,7 +6001,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🥒",
-   "src": "course-md/IMG_20260918_190257797_AE.md"
+   "src": "course-md/IMG_20260918_190257797_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-perifollo",
@@ -5752,7 +6015,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "note": "ook: el cerefolio",
-   "src": "course-md/IMG_20260918_190251676_AE.md"
+   "src": "course-md/IMG_20260918_190251676_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-pimiento",
@@ -5765,7 +6029,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🫑",
-   "src": "course-md/IMG_20260918_190257797_AE.md"
+   "src": "course-md/IMG_20260918_190257797_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-puerro",
@@ -5777,7 +6042,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190257797_AE.md"
+   "src": "course-md/IMG_20260918_190257797_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-rabano",
@@ -5789,7 +6055,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190257797_AE.md"
+   "src": "course-md/IMG_20260918_190257797_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-tomate",
@@ -5802,7 +6069,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🍅",
-   "src": "course-md/IMG_20260918_190257797_AE.md"
+   "src": "course-md/IMG_20260918_190257797_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-aceituna",
@@ -5815,7 +6083,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🫒",
-   "src": "course-md/IMG_20260918_190251676_AE.md"
+   "src": "course-md/IMG_20260918_190251676_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-alcachofa",
@@ -5827,7 +6096,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190251676_AE.md"
+   "src": "course-md/IMG_20260918_190251676_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-berenjena",
@@ -5840,7 +6110,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🍆",
-   "src": "course-md/IMG_20260918_190251676_AE.md"
+   "src": "course-md/IMG_20260918_190251676_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-calabaza",
@@ -5853,7 +6124,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🎃",
-   "src": "course-md/IMG_20260918_190251676_AE.md"
+   "src": "course-md/IMG_20260918_190251676_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-cebolla",
@@ -5867,7 +6139,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🧅",
-   "src": "course-md/IMG_20260918_190251676_AE.md"
+   "src": "course-md/IMG_20260918_190251676_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-col",
@@ -5881,7 +6154,8 @@ window.COURSE = {
    "number": "sg",
    "emoji": "🥬",
    "note": "la col blanca = de witte kool",
-   "src": "course-md/IMG_20260918_190251676_AE.md"
+   "src": "course-md/IMG_20260918_190251676_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-coliflor",
@@ -5893,7 +6167,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190251676_AE.md"
+   "src": "course-md/IMG_20260918_190251676_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-endivia-belga",
@@ -5906,7 +6181,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190251676_AE.md"
+   "src": "course-md/IMG_20260918_190251676_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-escarola",
@@ -5919,7 +6195,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "note": "ook: la endivia",
-   "src": "course-md/IMG_20260918_190251676_AE.md"
+   "src": "course-md/IMG_20260918_190251676_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-judia-verde",
@@ -5933,7 +6210,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "note": "ook: la habichuela",
-   "src": "course-md/IMG_20260918_190257797_AE.md"
+   "src": "course-md/IMG_20260918_190257797_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-lechuga",
@@ -5947,7 +6225,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🥬",
-   "src": "course-md/IMG_20260918_190257797_AE.md"
+   "src": "course-md/IMG_20260918_190257797_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-patata",
@@ -5960,7 +6239,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🥔",
-   "src": "course-md/IMG_20260918_190257797_AE.md"
+   "src": "course-md/IMG_20260918_190257797_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-seta",
@@ -5975,7 +6255,8 @@ window.COURSE = {
    "number": "sg",
    "emoji": "🍄",
    "note": "ook: el hongo",
-   "src": "course-md/IMG_20260918_190257797_AE.md"
+   "src": "course-md/IMG_20260918_190257797_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-zanahoria",
@@ -5988,7 +6269,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🥕",
-   "src": "course-md/IMG_20260918_190257797_AE.md"
+   "src": "course-md/IMG_20260918_190257797_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.las-coles-de-bruselas",
@@ -6001,7 +6283,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "pl",
-   "src": "course-md/IMG_20260918_190251676_AE.md"
+   "src": "course-md/IMG_20260918_190251676_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.las-espinacas",
@@ -6014,7 +6297,8 @@ window.COURSE = {
    "gender": "f",
    "number": "pl",
    "emoji": "🥬",
-   "src": "course-md/IMG_20260918_190257797_AE.md"
+   "src": "course-md/IMG_20260918_190257797_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.bailar",
@@ -6026,7 +6310,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190216125_AE.md; course-md/IMG_20260918_190907308_AE.md; spanish-md/IMG_20260918_203950488_AE.md"
+   "src": "course-md/IMG_20260918_190216125_AE.md; course-md/IMG_20260918_190907308_AE.md; spanish-md/IMG_20260918_203950488_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.boxear",
@@ -6038,7 +6323,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190216125_AE.md"
+   "src": "course-md/IMG_20260918_190216125_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.bucear",
@@ -6050,7 +6336,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190216125_AE.md; spanish-md/IMG_20260918_203950488_AE.md"
+   "src": "course-md/IMG_20260918_190216125_AE.md; spanish-md/IMG_20260918_203950488_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.cantar",
@@ -6062,7 +6349,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190216125_AE.md; course-md/IMG_20260918_190907308_AE.md"
+   "src": "course-md/IMG_20260918_190216125_AE.md; course-md/IMG_20260918_190907308_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.cocinar",
@@ -6074,7 +6362,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190216125_AE.md; spanish-md/IMG_20260918_203950488_AE.md"
+   "src": "course-md/IMG_20260918_190216125_AE.md; spanish-md/IMG_20260918_203950488_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.coser",
@@ -6086,7 +6375,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190216125_AE.md"
+   "src": "course-md/IMG_20260918_190216125_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.descansar",
@@ -6099,7 +6389,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190216125_AE.md"
+   "src": "course-md/IMG_20260918_190216125_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.el-ciclismo",
@@ -6113,7 +6404,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🚴",
-   "src": "course-md/IMG_20260918_190216125_AE.md"
+   "src": "course-md/IMG_20260918_190216125_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-judo",
@@ -6126,7 +6418,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🥋",
-   "src": "course-md/IMG_20260918_190216125_AE.md"
+   "src": "course-md/IMG_20260918_190216125_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.escalar",
@@ -6139,7 +6432,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190216125_AE.md; spanish-md/IMG_20260918_203950488_AE.md"
+   "src": "course-md/IMG_20260918_190216125_AE.md; spanish-md/IMG_20260918_203950488_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.escuchar-musica",
@@ -6152,7 +6446,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190216125_AE.md"
+   "src": "course-md/IMG_20260918_190216125_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.esquiar",
@@ -6165,7 +6460,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "course-md/IMG_20260918_190216125_AE.md; spanish-md/IMG_20260918_203950488_AE.md",
-   "note": "Klemtoon op de i: esquío."
+   "note": "Klemtoon op de i: esquío.",
+   "pos": "verb"
   },
   {
    "id": "v.hacer-alfareria",
@@ -6177,7 +6473,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190216125_AE.md"
+   "src": "course-md/IMG_20260918_190216125_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.hacer-ganchillo",
@@ -6189,7 +6486,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190216125_AE.md"
+   "src": "course-md/IMG_20260918_190216125_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.hacer-punto",
@@ -6201,7 +6499,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190216125_AE.md"
+   "src": "course-md/IMG_20260918_190216125_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.ir-a-comer",
@@ -6213,7 +6512,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190216125_AE.md; spanish-md/IMG_20260918_203950488_AE.md"
+   "src": "course-md/IMG_20260918_190216125_AE.md; spanish-md/IMG_20260918_203950488_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.ir-al-cine-al-teatro",
@@ -6226,7 +6526,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190216125_AE.md"
+   "src": "course-md/IMG_20260918_190216125_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.ir-en-bicicleta",
@@ -6239,7 +6540,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "= montar en bicicleta",
-   "src": "course-md/IMG_20260918_190216125_AE.md; spanish-md/IMG_20260918_203950488_AE.md"
+   "src": "course-md/IMG_20260918_190216125_AE.md; spanish-md/IMG_20260918_203950488_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.leer",
@@ -6252,7 +6554,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "course-md/IMG_20260918_190216125_AE.md; course-md/IMG_20260918_190912590_AE.md; spanish-md/IMG_20260918_203950488_AE.md",
-   "note": "onregelmatig voltooid deelwoord: leído"
+   "note": "onregelmatig voltooid deelwoord: leído",
+   "pos": "verb"
   },
   {
    "id": "v.montar-a-caballo",
@@ -6264,7 +6567,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190216125_AE.md; spanish-md/IMG_20260918_203950488_AE.md"
+   "src": "course-md/IMG_20260918_190216125_AE.md; spanish-md/IMG_20260918_203950488_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.nadar",
@@ -6276,7 +6580,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190216125_AE.md; spanish-md/IMG_20260918_203950488_AE.md"
+   "src": "course-md/IMG_20260918_190216125_AE.md; spanish-md/IMG_20260918_203950488_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.navegar-a-vela",
@@ -6289,7 +6594,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "navegar alleen = varen",
-   "src": "course-md/IMG_20260918_190216125_AE.md"
+   "src": "course-md/IMG_20260918_190216125_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.navegar-en-internet",
@@ -6301,7 +6607,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190216125_AE.md"
+   "src": "course-md/IMG_20260918_190216125_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.pasear",
@@ -6314,7 +6621,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190216125_AE.md; spanish-md/IMG_20260918_203955459_AE.md"
+   "src": "course-md/IMG_20260918_190216125_AE.md; spanish-md/IMG_20260918_203955459_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.pescar",
@@ -6326,7 +6634,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190216125_AE.md"
+   "src": "course-md/IMG_20260918_190216125_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.pintar",
@@ -6338,7 +6647,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190216125_AE.md; spanish-md/IMG_20260918_203955459_AE.md"
+   "src": "course-md/IMG_20260918_190216125_AE.md; spanish-md/IMG_20260918_203955459_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.salir",
@@ -6353,7 +6663,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "course-md/IMG_20260918_190216125_AE.md; spanish-md/IMG_20260918_203955459_AE.md",
-   "note": "Onregelmatig: yo salgo."
+   "note": "Onregelmatig: yo salgo.",
+   "pos": "verb"
   },
   {
    "id": "v.saltar-en-paracaidas",
@@ -6366,7 +6677,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190216125_AE.md"
+   "src": "course-md/IMG_20260918_190216125_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.ver-peliculas-ver-la-tele",
@@ -6379,7 +6691,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190216125_AE.md"
+   "src": "course-md/IMG_20260918_190216125_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.el-apartamento",
@@ -6393,7 +6706,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "src": "course-md/IMG_20260918_190344122_AE.md; spanish-md/IMG_20260918_203959801_AE.md",
-   "emoji": "🏢"
+   "emoji": "🏢",
+   "pos": "noun"
   },
   {
    "id": "v.el-ascensor",
@@ -6406,7 +6720,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "src": "course-md/IMG_20260918_190344122_AE.md; spanish-md/IMG_20260918_203959801_AE.md",
-   "emoji": "🛗"
+   "emoji": "🛗",
+   "pos": "noun"
   },
   {
    "id": "v.el-aseo",
@@ -6421,7 +6736,8 @@ window.COURSE = {
    "number": "sg",
    "emoji": "🚽",
    "note": "ook: el lavabo, el retrete",
-   "src": "course-md/IMG_20260918_190337691_AE.md"
+   "src": "course-md/IMG_20260918_190337691_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-atico",
@@ -6434,7 +6750,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190344122_AE.md"
+   "src": "course-md/IMG_20260918_190344122_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-balcon",
@@ -6446,7 +6763,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190337691_AE.md; spanish-md/IMG_20260918_203959801_AE.md"
+   "src": "course-md/IMG_20260918_190337691_AE.md; spanish-md/IMG_20260918_203959801_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-bano",
@@ -6460,7 +6778,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🛁",
-   "src": "spanish-md/IMG_20260918_203959801_AE.md"
+   "src": "spanish-md/IMG_20260918_203959801_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-comedor",
@@ -6474,7 +6793,8 @@ window.COURSE = {
    "number": "sg",
    "emoji": "🍽️",
    "note": "van comer = eten",
-   "src": "course-md/IMG_20260918_190337691_AE.md; spanish-md/IMG_20260918_203959801_AE.md"
+   "src": "course-md/IMG_20260918_190337691_AE.md; spanish-md/IMG_20260918_203959801_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-cuarto-de-bano",
@@ -6488,7 +6808,8 @@ window.COURSE = {
    "number": "sg",
    "emoji": "🛁",
    "note": "ook kort: el baño (= badkamer, bad)",
-   "src": "course-md/IMG_20260918_190337691_AE.md; course-md/IMG_20260918_190344122_AE.md"
+   "src": "course-md/IMG_20260918_190337691_AE.md; course-md/IMG_20260918_190344122_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-cuarto-de-huespedes",
@@ -6501,7 +6822,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🛏️",
-   "src": "course-md/IMG_20260918_190337691_AE.md"
+   "src": "course-md/IMG_20260918_190337691_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-cuarto-ropero",
@@ -6515,7 +6837,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "👚",
-   "src": "course-md/IMG_20260918_190337691_AE.md"
+   "src": "course-md/IMG_20260918_190337691_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-cuarto-trastero",
@@ -6529,7 +6852,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "📦",
-   "src": "course-md/IMG_20260918_190337691_AE.md"
+   "src": "course-md/IMG_20260918_190337691_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-departamento",
@@ -6543,7 +6867,8 @@ window.COURSE = {
    "number": "sg",
    "emoji": "🏢",
    "note": "Latijns-Amerikaans.",
-   "src": "spanish-md/IMG_20260918_203959801_AE.md"
+   "src": "spanish-md/IMG_20260918_203959801_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-despacho",
@@ -6559,7 +6884,8 @@ window.COURSE = {
    "number": "sg",
    "emoji": "💼",
    "note": "bureau in de zin van kamer",
-   "src": "course-md/IMG_20260918_190337691_AE.md; spanish-md/IMG_20260918_203959801_AE.md"
+   "src": "course-md/IMG_20260918_190337691_AE.md; spanish-md/IMG_20260918_203959801_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-desvan",
@@ -6571,7 +6897,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "spanish-md/IMG_20260918_203959801_AE.md"
+   "src": "spanish-md/IMG_20260918_203959801_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-dormitorio",
@@ -6584,7 +6911,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🛏️",
-   "src": "course-md/IMG_20260918_190337691_AE.md; spanish-md/IMG_20260918_203959801_AE.md"
+   "src": "course-md/IMG_20260918_190337691_AE.md; spanish-md/IMG_20260918_203959801_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-dormitorio-infantil",
@@ -6596,7 +6924,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "spanish-md/IMG_20260918_203959801_AE.md"
+   "src": "spanish-md/IMG_20260918_203959801_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-edificio",
@@ -6609,7 +6938,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🏢",
-   "src": "course-md/IMG_20260918_190344122_AE.md"
+   "src": "course-md/IMG_20260918_190344122_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-entresuelo",
@@ -6621,7 +6951,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190344122_AE.md"
+   "src": "course-md/IMG_20260918_190344122_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-garaje",
@@ -6634,7 +6965,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🚗",
-   "src": "course-md/IMG_20260918_190337691_AE.md; spanish-md/IMG_20260918_203959801_AE.md"
+   "src": "course-md/IMG_20260918_190337691_AE.md; spanish-md/IMG_20260918_203959801_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-jardin",
@@ -6647,7 +6979,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🌳",
-   "src": "course-md/IMG_20260918_190337691_AE.md; spanish-md/IMG_20260918_203959801_AE.md"
+   "src": "course-md/IMG_20260918_190337691_AE.md; spanish-md/IMG_20260918_203959801_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-lavadero",
@@ -6660,7 +6993,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🧺",
-   "src": "course-md/IMG_20260918_190337691_AE.md"
+   "src": "course-md/IMG_20260918_190337691_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-pasillo",
@@ -6672,7 +7006,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190337691_AE.md; spanish-md/IMG_20260918_203959801_AE.md"
+   "src": "course-md/IMG_20260918_190337691_AE.md; spanish-md/IMG_20260918_203959801_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-piso",
@@ -6686,7 +7021,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "note": "Synoniem voor appartement: el apartamento.",
-   "src": "course-md/IMG_20260918_190344122_AE.md; spanish-md/IMG_20260918_203959801_AE.md"
+   "src": "course-md/IMG_20260918_190344122_AE.md; spanish-md/IMG_20260918_203959801_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-salon",
@@ -6700,7 +7036,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🛋️",
-   "src": "course-md/IMG_20260918_190337691_AE.md"
+   "src": "course-md/IMG_20260918_190337691_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-salon-comedor",
@@ -6713,7 +7050,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🛋️",
-   "src": "course-md/IMG_20260918_190337691_AE.md"
+   "src": "course-md/IMG_20260918_190337691_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-sotano",
@@ -6725,7 +7063,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190344122_AE.md; spanish-md/IMG_20260918_204005232_AE.md"
+   "src": "course-md/IMG_20260918_190344122_AE.md; spanish-md/IMG_20260918_204005232_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-techo",
@@ -6739,7 +7078,8 @@ window.COURSE = {
    "number": "sg",
    "emoji": "🏠",
    "note": "Betekent ook: het plafond.",
-   "src": "spanish-md/IMG_20260918_204005232_AE.md"
+   "src": "spanish-md/IMG_20260918_204005232_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-vestibulo",
@@ -6752,7 +7092,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190337691_AE.md"
+   "src": "course-md/IMG_20260918_190337691_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-calefaccion",
@@ -6765,7 +7106,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🔥",
-   "src": "spanish-md/IMG_20260918_203959801_AE.md"
+   "src": "spanish-md/IMG_20260918_203959801_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-cocina",
@@ -6780,7 +7122,8 @@ window.COURSE = {
    "number": "sg",
    "emoji": "🍳",
    "note": "betekent ook: het fornuis",
-   "src": "course-md/IMG_20260918_190337691_AE.md; spanish-md/IMG_20260918_203959801_AE.md"
+   "src": "course-md/IMG_20260918_190337691_AE.md; spanish-md/IMG_20260918_203959801_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-entrada",
@@ -6792,7 +7135,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "spanish-md/IMG_20260918_203959801_AE.md"
+   "src": "spanish-md/IMG_20260918_203959801_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-escalera",
@@ -6806,7 +7150,8 @@ window.COURSE = {
    "number": "sg",
    "note": "Ook: de ladder.",
    "src": "course-md/IMG_20260918_190344122_AE.md; spanish-md/IMG_20260918_203959801_AE.md",
-   "emoji": "🪜"
+   "emoji": "🪜",
+   "pos": "noun"
   },
   {
    "id": "v.la-habitacion",
@@ -6820,7 +7165,8 @@ window.COURSE = {
    "number": "sg",
    "emoji": "🚪",
    "note": "= el cuarto",
-   "src": "course-md/IMG_20260918_190337691_AE.md"
+   "src": "course-md/IMG_20260918_190337691_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-habitacion-de-los-ninos",
@@ -6832,7 +7178,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "spanish-md/IMG_20260918_203959801_AE.md"
+   "src": "spanish-md/IMG_20260918_203959801_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-oficina",
@@ -6845,7 +7192,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🏢",
-   "src": "spanish-md/IMG_20260918_203959801_AE.md"
+   "src": "spanish-md/IMG_20260918_203959801_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-pared",
@@ -6859,7 +7207,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "src": "course-md/IMG_20260918_190344122_AE.md; spanish-md/IMG_20260918_203959801_AE.md",
-   "emoji": "🧱"
+   "emoji": "🧱",
+   "pos": "noun"
   },
   {
    "id": "v.la-planta-baja",
@@ -6872,7 +7221,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "spanish-md/IMG_20260918_203959801_AE.md"
+   "src": "spanish-md/IMG_20260918_203959801_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-puerta",
@@ -6885,7 +7235,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🚪",
-   "src": "course-md/IMG_20260918_190344122_AE.md; spanish-md/IMG_20260918_203959801_AE.md"
+   "src": "course-md/IMG_20260918_190344122_AE.md; spanish-md/IMG_20260918_203959801_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-sala-de-estar",
@@ -6900,7 +7251,8 @@ window.COURSE = {
    "number": "sg",
    "emoji": "🛋️",
    "note": "ook: el cuarto de estar",
-   "src": "course-md/IMG_20260918_190337691_AE.md"
+   "src": "course-md/IMG_20260918_190337691_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-salida",
@@ -6912,7 +7264,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "spanish-md/IMG_20260918_204005232_AE.md"
+   "src": "spanish-md/IMG_20260918_204005232_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-terraza",
@@ -6924,7 +7277,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190337691_AE.md; spanish-md/IMG_20260918_204005232_AE.md"
+   "src": "course-md/IMG_20260918_190337691_AE.md; spanish-md/IMG_20260918_204005232_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-ventana",
@@ -6938,7 +7292,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🪟",
-   "src": "course-md/IMG_20260918_190344122_AE.md; spanish-md/IMG_20260918_204005232_AE.md"
+   "src": "course-md/IMG_20260918_190344122_AE.md; spanish-md/IMG_20260918_204005232_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-veranda",
@@ -6950,7 +7305,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190344122_AE.md"
+   "src": "course-md/IMG_20260918_190344122_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-vivienda",
@@ -6963,7 +7319,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🏠",
-   "src": "spanish-md/IMG_20260918_204005232_AE.md"
+   "src": "spanish-md/IMG_20260918_204005232_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.los-servicios",
@@ -6977,7 +7334,8 @@ window.COURSE = {
    "number": "pl",
    "emoji": "🚽",
    "note": "in een hotel of restaurant",
-   "src": "course-md/IMG_20260918_190337691_AE.md"
+   "src": "course-md/IMG_20260918_190337691_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.adonde",
@@ -6989,7 +7347,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_191212914_AE.md"
+   "src": "course-md/IMG_20260918_191212914_AE.md",
+   "pos": "other"
   },
   {
    "id": "v.como",
@@ -7001,7 +7360,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_191212914_AE.md"
+   "src": "course-md/IMG_20260918_191212914_AE.md",
+   "pos": "other"
   },
   {
    "id": "v.cual",
@@ -7016,7 +7376,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "enkelvoud",
-   "src": "course-md/IMG_20260918_191212914_AE.md"
+   "src": "course-md/IMG_20260918_191212914_AE.md",
+   "pos": "other"
   },
   {
    "id": "v.cuales",
@@ -7030,7 +7391,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "meervoud",
-   "src": "course-md/IMG_20260918_191212914_AE.md"
+   "src": "course-md/IMG_20260918_191212914_AE.md",
+   "pos": "other"
   },
   {
    "id": "v.cuando",
@@ -7042,7 +7404,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_191212914_AE.md"
+   "src": "course-md/IMG_20260918_191212914_AE.md",
+   "pos": "other"
   },
   {
    "id": "v.cuanto-cuanta",
@@ -7055,7 +7418,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "enkelvoud: cuánto (m), cuánta (v)",
-   "src": "course-md/IMG_20260918_191212914_AE.md"
+   "src": "course-md/IMG_20260918_191212914_AE.md",
+   "pos": "other"
   },
   {
    "id": "v.cuantos-cuantas",
@@ -7068,7 +7432,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "meervoud: cuántos (m), cuántas (v)",
-   "src": "course-md/IMG_20260918_191212914_AE.md"
+   "src": "course-md/IMG_20260918_191212914_AE.md",
+   "pos": "other"
   },
   {
    "id": "v.de-donde",
@@ -7081,7 +7446,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_191212914_AE.md"
+   "src": "course-md/IMG_20260918_191212914_AE.md",
+   "pos": "other"
   },
   {
    "id": "v.donde",
@@ -7093,7 +7459,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_191212914_AE.md"
+   "src": "course-md/IMG_20260918_191212914_AE.md",
+   "pos": "other"
   },
   {
    "id": "v.para-que",
@@ -7106,7 +7473,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "met welk doel?",
-   "src": "course-md/IMG_20260918_191212914_AE.md"
+   "src": "course-md/IMG_20260918_191212914_AE.md",
+   "pos": "other"
   },
   {
    "id": "v.por-que",
@@ -7118,7 +7486,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_191212914_AE.md"
+   "src": "course-md/IMG_20260918_191212914_AE.md",
+   "pos": "other"
   },
   {
    "id": "v.que",
@@ -7130,7 +7499,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_191212914_AE.md"
+   "src": "course-md/IMG_20260918_191212914_AE.md",
+   "pos": "other"
   },
   {
    "id": "v.quien",
@@ -7143,7 +7513,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "enkelvoud",
-   "src": "course-md/IMG_20260918_191212914_AE.md"
+   "src": "course-md/IMG_20260918_191212914_AE.md",
+   "pos": "other"
   },
   {
    "id": "v.quienes",
@@ -7156,7 +7527,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "meervoud",
-   "src": "course-md/IMG_20260918_191212914_AE.md"
+   "src": "course-md/IMG_20260918_191212914_AE.md",
+   "pos": "other"
   },
   {
    "id": "v.el-anillo",
@@ -7169,7 +7541,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "💍",
-   "src": "course-md/IMG_20260918_190147401_AE.md"
+   "src": "course-md/IMG_20260918_190147401_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-collar",
@@ -7184,7 +7557,8 @@ window.COURSE = {
    "number": "sg",
    "emoji": "📿",
    "note": "afgeleid van el cuello = de hals",
-   "src": "course-md/IMG_20260918_190147401_AE.md; spanish-md/IMG_20260918_203945624_AE.md"
+   "src": "course-md/IMG_20260918_190147401_AE.md; spanish-md/IMG_20260918_203945624_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-diadema",
@@ -7197,7 +7571,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190147401_AE.md"
+   "src": "course-md/IMG_20260918_190147401_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-pulsera",
@@ -7210,7 +7585,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "note": "afgeleid van el pulso = de pols(slag)",
-   "src": "course-md/IMG_20260918_190147401_AE.md"
+   "src": "course-md/IMG_20260918_190147401_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.las-joyas",
@@ -7225,7 +7601,8 @@ window.COURSE = {
    "number": "pl",
    "emoji": "💎",
    "note": "la joyería = de juwelierszaak",
-   "src": "course-md/IMG_20260918_190147401_AE.md"
+   "src": "course-md/IMG_20260918_190147401_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.los-pendientes",
@@ -7238,7 +7615,8 @@ window.COURSE = {
    "gender": "m",
    "number": "pl",
    "note": "in Latijns-Amerika: los aretes",
-   "src": "course-md/IMG_20260918_190147401_AE.md"
+   "src": "course-md/IMG_20260918_190147401_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-manchego",
@@ -7250,7 +7628,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190313522_AE.md"
+   "src": "course-md/IMG_20260918_190313522_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-queso",
@@ -7263,7 +7642,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🧀",
-   "src": "course-md/IMG_20260918_190313522_AE.md"
+   "src": "course-md/IMG_20260918_190313522_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-queso-curado",
@@ -7275,7 +7655,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190313522_AE.md"
+   "src": "course-md/IMG_20260918_190313522_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-queso-semicurado",
@@ -7287,7 +7668,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190313522_AE.md"
+   "src": "course-md/IMG_20260918_190313522_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-queso-viejo",
@@ -7299,7 +7681,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190313522_AE.md"
+   "src": "course-md/IMG_20260918_190313522_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-loncha",
@@ -7312,7 +7695,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190313522_AE.md"
+   "src": "course-md/IMG_20260918_190313522_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-archivador",
@@ -7326,7 +7710,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🗄️",
-   "src": "spanish-md/IMG_20260918_204005232_AE.md"
+   "src": "spanish-md/IMG_20260918_204005232_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-bloc",
@@ -7340,7 +7725,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "📝",
-   "src": "spanish-md/IMG_20260918_204005232_AE.md"
+   "src": "spanish-md/IMG_20260918_204005232_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-calendario",
@@ -7353,7 +7739,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "📅",
-   "src": "spanish-md/IMG_20260918_204005232_AE.md"
+   "src": "spanish-md/IMG_20260918_204005232_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-cuaderno",
@@ -7366,7 +7753,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "📒",
-   "src": "spanish-md/IMG_20260918_204005232_AE.md"
+   "src": "spanish-md/IMG_20260918_204005232_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-papel",
@@ -7379,7 +7767,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "📄",
-   "src": "spanish-md/IMG_20260918_204005232_AE.md"
+   "src": "spanish-md/IMG_20260918_204005232_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-sobre",
@@ -7392,7 +7781,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "✉️",
-   "src": "spanish-md/IMG_20260918_204005232_AE.md"
+   "src": "spanish-md/IMG_20260918_204005232_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-agenda",
@@ -7405,7 +7795,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "📔",
-   "src": "spanish-md/IMG_20260918_204005232_AE.md"
+   "src": "spanish-md/IMG_20260918_204005232_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-calculadora",
@@ -7418,7 +7809,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🧮",
-   "src": "spanish-md/IMG_20260918_204005232_AE.md"
+   "src": "spanish-md/IMG_20260918_204005232_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-carpeta",
@@ -7432,7 +7824,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "📁",
-   "src": "spanish-md/IMG_20260918_204005232_AE.md"
+   "src": "spanish-md/IMG_20260918_204005232_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-fotocopiadora",
@@ -7444,7 +7837,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "spanish-md/IMG_20260918_204005232_AE.md"
+   "src": "spanish-md/IMG_20260918_204005232_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-hoja",
@@ -7458,7 +7852,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "📄",
-   "src": "spanish-md/IMG_20260918_204005232_AE.md"
+   "src": "spanish-md/IMG_20260918_204005232_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-nota-adhesiva",
@@ -7472,7 +7867,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🗒️",
-   "src": "spanish-md/IMG_20260918_204005232_AE.md"
+   "src": "spanish-md/IMG_20260918_204005232_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-papelera",
@@ -7485,7 +7881,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🗑️",
-   "src": "spanish-md/IMG_20260918_204005232_AE.md"
+   "src": "spanish-md/IMG_20260918_204005232_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-transparencia",
@@ -7498,7 +7895,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "spanish-md/IMG_20260918_204005232_AE.md"
+   "src": "spanish-md/IMG_20260918_204005232_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-boligrafo",
@@ -7511,7 +7909,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🖊️",
-   "src": "spanish-md/IMG_20260918_204005232_AE.md"
+   "src": "spanish-md/IMG_20260918_204005232_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-clip",
@@ -7524,7 +7923,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "📎",
-   "src": "spanish-md/IMG_20260918_204005232_AE.md"
+   "src": "spanish-md/IMG_20260918_204005232_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-lapiz",
@@ -7537,7 +7937,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "✏️",
-   "src": "spanish-md/IMG_20260918_204005232_AE.md"
+   "src": "spanish-md/IMG_20260918_204005232_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-marcador",
@@ -7550,7 +7951,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🖍️",
-   "src": "spanish-md/IMG_20260918_204005232_AE.md"
+   "src": "spanish-md/IMG_20260918_204005232_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-pegamento",
@@ -7562,7 +7964,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "spanish-md/IMG_20260918_204005232_AE.md"
+   "src": "spanish-md/IMG_20260918_204005232_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-perforador",
@@ -7574,7 +7977,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "spanish-md/IMG_20260918_204005232_AE.md"
+   "src": "spanish-md/IMG_20260918_204005232_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-rotulador",
@@ -7587,7 +7991,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🖍️",
-   "src": "spanish-md/IMG_20260918_204005232_AE.md"
+   "src": "spanish-md/IMG_20260918_204005232_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-sacapuntas",
@@ -7600,7 +8005,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "note": "Enkelvoud, ook al eindigt het op -s.",
-   "src": "spanish-md/IMG_20260918_204005232_AE.md"
+   "src": "spanish-md/IMG_20260918_204005232_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-cinta-adhesiva",
@@ -7612,7 +8018,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "spanish-md/IMG_20260918_204005232_AE.md"
+   "src": "spanish-md/IMG_20260918_204005232_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-goma-de-borrar",
@@ -7624,7 +8031,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "spanish-md/IMG_20260918_204005232_AE.md"
+   "src": "spanish-md/IMG_20260918_204005232_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-grapadora",
@@ -7636,7 +8044,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "spanish-md/IMG_20260918_204005232_AE.md"
+   "src": "spanish-md/IMG_20260918_204005232_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-regla",
@@ -7649,7 +8058,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "📏",
-   "src": "spanish-md/IMG_20260918_204005232_AE.md"
+   "src": "spanish-md/IMG_20260918_204005232_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.las-tijeras",
@@ -7663,7 +8073,8 @@ window.COURSE = {
    "number": "pl",
    "emoji": "✂️",
    "note": "In het Spaans meervoud.",
-   "src": "spanish-md/IMG_20260918_204005232_AE.md"
+   "src": "spanish-md/IMG_20260918_204005232_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.constipado-a",
@@ -7676,7 +8087,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "Valse vriend: constipado betekent verkouden, niet geconstipeerd (dat is estreñido).",
-   "src": "spanish-md/IMG_20260918_204017948_AE.md"
+   "src": "spanish-md/IMG_20260918_204017948_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.el-asma",
@@ -7689,7 +8101,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "note": "vrouwelijk woord, maar met el omdat het begint met een beklemtoonde a-",
-   "src": "course-md/IMG_20260918_190422167_AE.md; spanish-md/IMG_20260918_204017948_AE.md"
+   "src": "course-md/IMG_20260918_190422167_AE.md; spanish-md/IMG_20260918_204017948_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-ataque-al-corazon",
@@ -7703,7 +8116,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "note": "synoniem: el infarto",
-   "src": "course-md/IMG_20260918_190433438_AE.md"
+   "src": "course-md/IMG_20260918_190433438_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-cancer",
@@ -7715,7 +8129,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "spanish-md/IMG_20260918_204017948_AE.md"
+   "src": "spanish-md/IMG_20260918_204017948_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-cardenal",
@@ -7728,7 +8143,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "note": "synoniem: el moratón / el moretón",
-   "src": "course-md/IMG_20260918_190422167_AE.md"
+   "src": "course-md/IMG_20260918_190422167_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-catarro",
@@ -7741,7 +8157,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "note": "synoniem: el resfriado",
-   "src": "course-md/IMG_20260918_190433438_AE.md"
+   "src": "course-md/IMG_20260918_190433438_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-chichon",
@@ -7754,7 +8171,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190422167_AE.md; spanish-md/IMG_20260918_204017948_AE.md"
+   "src": "course-md/IMG_20260918_190422167_AE.md; spanish-md/IMG_20260918_204017948_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-colesterol",
@@ -7766,7 +8184,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "spanish-md/IMG_20260918_204017948_AE.md"
+   "src": "spanish-md/IMG_20260918_204017948_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-dolor-articular",
@@ -7778,7 +8197,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190433438_AE.md"
+   "src": "course-md/IMG_20260918_190433438_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-dolor-de-barriga",
@@ -7790,7 +8210,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190433438_AE.md"
+   "src": "course-md/IMG_20260918_190433438_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-eccema",
@@ -7803,7 +8224,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "note": "ook gespeld: el eczema",
-   "src": "course-md/IMG_20260918_190433438_AE.md"
+   "src": "course-md/IMG_20260918_190433438_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-estrenimiento",
@@ -7816,7 +8238,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190433438_AE.md"
+   "src": "course-md/IMG_20260918_190433438_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-golpe-de-calor",
@@ -7830,7 +8253,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "☀️",
-   "src": "course-md/IMG_20260918_190433438_AE.md"
+   "src": "course-md/IMG_20260918_190433438_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-resfriado",
@@ -7844,7 +8268,8 @@ window.COURSE = {
    "number": "sg",
    "emoji": "🤧",
    "note": "synoniem: el catarro",
-   "src": "course-md/IMG_20260918_190433438_AE.md; spanish-md/IMG_20260918_204021316_AE.md"
+   "src": "course-md/IMG_20260918_190433438_AE.md; spanish-md/IMG_20260918_204021316_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.estar-resfriado-a",
@@ -7856,7 +8281,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_204017948_AE.md"
+   "src": "spanish-md/IMG_20260918_204017948_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.estornudar",
@@ -7869,7 +8295,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "emoji": "🤧",
-   "src": "course-md/IMG_20260918_190433438_AE.md; spanish-md/IMG_20260918_204017948_AE.md"
+   "src": "course-md/IMG_20260918_190433438_AE.md; spanish-md/IMG_20260918_204017948_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.flojo-a",
@@ -7882,7 +8309,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190433438_AE.md"
+   "src": "course-md/IMG_20260918_190433438_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.fracturarse",
@@ -7895,7 +8323,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "Bijvoorbeeld: fracturarse el brazo = zijn arm breken.",
-   "src": "spanish-md/IMG_20260918_204017948_AE.md"
+   "src": "spanish-md/IMG_20260918_204017948_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.la-alergia",
@@ -7908,7 +8337,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "note": "la alergia a ... = de allergie voor ...",
-   "src": "course-md/IMG_20260918_190422167_AE.md; spanish-md/IMG_20260918_204017948_AE.md"
+   "src": "course-md/IMG_20260918_190422167_AE.md; spanish-md/IMG_20260918_204017948_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-apendicitis",
@@ -7920,7 +8350,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "spanish-md/IMG_20260918_204017948_AE.md"
+   "src": "spanish-md/IMG_20260918_204017948_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-bronquitis",
@@ -7932,7 +8363,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190422167_AE.md"
+   "src": "course-md/IMG_20260918_190422167_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-caida",
@@ -7945,7 +8377,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "note": "caerse = vallen",
-   "src": "course-md/IMG_20260918_190422167_AE.md"
+   "src": "course-md/IMG_20260918_190422167_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-cistitis",
@@ -7957,7 +8390,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190433438_AE.md"
+   "src": "course-md/IMG_20260918_190433438_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-conjuntivitis",
@@ -7969,7 +8403,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190422167_AE.md"
+   "src": "course-md/IMG_20260918_190422167_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-diarrea",
@@ -7982,7 +8417,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190422167_AE.md; spanish-md/IMG_20260918_204017948_AE.md"
+   "src": "course-md/IMG_20260918_190422167_AE.md; spanish-md/IMG_20260918_204017948_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-escayola",
@@ -7994,7 +8430,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190433438_AE.md"
+   "src": "course-md/IMG_20260918_190433438_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-ferula",
@@ -8006,7 +8443,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190433438_AE.md"
+   "src": "course-md/IMG_20260918_190433438_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-fiebre",
@@ -8019,7 +8457,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🌡️",
-   "src": "course-md/IMG_20260918_190433438_AE.md; spanish-md/IMG_20260918_204017948_AE.md"
+   "src": "course-md/IMG_20260918_190433438_AE.md; spanish-md/IMG_20260918_204017948_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-fractura",
@@ -8032,7 +8471,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "note": "fracturarse / romperse la pierna = zijn been breken",
-   "src": "course-md/IMG_20260918_190433438_AE.md"
+   "src": "course-md/IMG_20260918_190433438_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-gripe",
@@ -8045,7 +8485,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🤒",
-   "src": "course-md/IMG_20260918_190433438_AE.md; spanish-md/IMG_20260918_204017948_AE.md"
+   "src": "course-md/IMG_20260918_190433438_AE.md; spanish-md/IMG_20260918_204017948_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-herida",
@@ -8059,7 +8500,8 @@ window.COURSE = {
    "number": "sg",
    "emoji": "🩹",
    "note": "herido/a = gewond",
-   "src": "course-md/IMG_20260918_190433438_AE.md"
+   "src": "course-md/IMG_20260918_190433438_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-hipertension",
@@ -8071,7 +8513,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "spanish-md/IMG_20260918_204017948_AE.md"
+   "src": "spanish-md/IMG_20260918_204017948_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-inflamacion",
@@ -8083,7 +8526,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190433438_AE.md; spanish-md/IMG_20260918_204021316_AE.md"
+   "src": "course-md/IMG_20260918_190433438_AE.md; spanish-md/IMG_20260918_204021316_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-picadura",
@@ -8097,7 +8541,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🦟",
-   "src": "course-md/IMG_20260918_190433438_AE.md"
+   "src": "course-md/IMG_20260918_190433438_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-presion-alta",
@@ -8109,7 +8554,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190433438_AE.md"
+   "src": "course-md/IMG_20260918_190433438_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-presion-baja",
@@ -8121,7 +8567,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190433438_AE.md"
+   "src": "course-md/IMG_20260918_190433438_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-pulmonia",
@@ -8134,7 +8581,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "note": "synoniem: la neumonía",
-   "src": "course-md/IMG_20260918_190422167_AE.md"
+   "src": "course-md/IMG_20260918_190422167_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-quemadura",
@@ -8147,7 +8595,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🔥",
-   "src": "course-md/IMG_20260918_190433438_AE.md"
+   "src": "course-md/IMG_20260918_190433438_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-torcedura",
@@ -8160,7 +8609,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "note": "torcerse el tobillo = zijn enkel verstuiken (o → ue)",
-   "src": "course-md/IMG_20260918_190433438_AE.md"
+   "src": "course-md/IMG_20260918_190433438_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-tos",
@@ -8173,7 +8623,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "note": "toser = hoesten",
-   "src": "course-md/IMG_20260918_190433438_AE.md; spanish-md/IMG_20260918_204021316_AE.md"
+   "src": "course-md/IMG_20260918_190433438_AE.md; spanish-md/IMG_20260918_204021316_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.las-agujetas",
@@ -8185,7 +8636,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "pl",
-   "src": "spanish-md/IMG_20260918_204017948_AE.md"
+   "src": "spanish-md/IMG_20260918_204017948_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.las-anginas",
@@ -8198,7 +8650,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "pl",
-   "src": "spanish-md/IMG_20260918_204017948_AE.md"
+   "src": "spanish-md/IMG_20260918_204017948_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.marearse",
@@ -8213,7 +8666,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "emoji": "😵‍💫",
-   "src": "course-md/IMG_20260918_190433438_AE.md"
+   "src": "course-md/IMG_20260918_190433438_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.picar",
@@ -8228,7 +8682,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "el picor = de jeuk",
-   "src": "course-md/IMG_20260918_190433438_AE.md"
+   "src": "course-md/IMG_20260918_190433438_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.sonarse-la-nariz",
@@ -8241,7 +8696,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "klankverandering o → ue: me sueno la nariz",
-   "src": "course-md/IMG_20260918_190433438_AE.md"
+   "src": "course-md/IMG_20260918_190433438_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.vomitar",
@@ -8255,7 +8711,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "emoji": "🤮",
-   "src": "course-md/IMG_20260918_190433438_AE.md; spanish-md/IMG_20260918_204021316_AE.md"
+   "src": "course-md/IMG_20260918_190433438_AE.md; spanish-md/IMG_20260918_204021316_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.el-abrigo",
@@ -8269,7 +8726,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🧥",
-   "src": "course-md/IMG_20260918_190139660_AE.md; spanish-md/IMG_20260918_203744401_AE.md"
+   "src": "course-md/IMG_20260918_190139660_AE.md; spanish-md/IMG_20260918_203744401_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-anorak",
@@ -8283,7 +8741,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🧥",
-   "src": "spanish-md/IMG_20260918_203744401_AE.md"
+   "src": "spanish-md/IMG_20260918_203744401_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-banador",
@@ -8298,7 +8757,8 @@ window.COURSE = {
    "number": "sg",
    "emoji": "🩱",
    "note": "voor vrouwen = het badpak, voor mannen = de zwembroek",
-   "src": "course-md/IMG_20260918_190147401_AE.md; course-md/IMG_20260918_190139660_AE.md"
+   "src": "course-md/IMG_20260918_190147401_AE.md; course-md/IMG_20260918_190139660_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-bikini",
@@ -8311,7 +8771,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "👙",
-   "src": "course-md/IMG_20260918_190139660_AE.md; spanish-md/IMG_20260918_203744401_AE.md"
+   "src": "course-md/IMG_20260918_190139660_AE.md; spanish-md/IMG_20260918_203744401_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-biquini",
@@ -8325,7 +8786,8 @@ window.COURSE = {
    "number": "sg",
    "emoji": "👙",
    "note": "ook gespeld: el bikini",
-   "src": "course-md/IMG_20260918_190147401_AE.md"
+   "src": "course-md/IMG_20260918_190147401_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-calzado",
@@ -8339,7 +8801,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "👞",
-   "src": "course-md/IMG_20260918_190139660_AE.md"
+   "src": "course-md/IMG_20260918_190139660_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-cardigan",
@@ -8352,7 +8815,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "note": "Handgeschreven in de cursus: 'blouse met knoopjes'.",
-   "src": "course-md/IMG_20260918_190139660_AE.md"
+   "src": "course-md/IMG_20260918_190139660_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-chandal",
@@ -8364,7 +8828,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190139660_AE.md"
+   "src": "course-md/IMG_20260918_190139660_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-jersey",
@@ -8377,7 +8842,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "src": "course-md/IMG_20260918_190139660_AE.md; spanish-md/IMG_20260918_203744401_AE.md",
-   "emoji": "🧥"
+   "emoji": "🧥",
+   "pos": "noun"
   },
   {
    "id": "v.el-pijama",
@@ -8391,7 +8857,8 @@ window.COURSE = {
    "number": "sg",
    "emoji": "🛌",
    "note": "in Latijns-Amerika: la piyama / la pijama",
-   "src": "course-md/IMG_20260918_190147401_AE.md; course-md/IMG_20260918_190139660_AE.md"
+   "src": "course-md/IMG_20260918_190147401_AE.md; course-md/IMG_20260918_190139660_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-probador",
@@ -8403,7 +8870,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190139660_AE.md"
+   "src": "course-md/IMG_20260918_190139660_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-pulover",
@@ -8417,7 +8885,8 @@ window.COURSE = {
    "number": "sg",
    "emoji": "🧥",
    "note": "Vooral in Latijns-Amerika gebruikt.",
-   "src": "spanish-md/IMG_20260918_203950488_AE.md"
+   "src": "spanish-md/IMG_20260918_203950488_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-saco",
@@ -8432,7 +8901,8 @@ window.COURSE = {
    "number": "sg",
    "emoji": "🧥",
    "note": "Latijns-Amerikaans.",
-   "src": "spanish-md/IMG_20260918_203950488_AE.md"
+   "src": "spanish-md/IMG_20260918_203950488_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-sosten",
@@ -8445,7 +8915,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "👙",
-   "src": "spanish-md/IMG_20260918_203950488_AE.md"
+   "src": "spanish-md/IMG_20260918_203950488_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-sueter",
@@ -8458,7 +8929,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🧥",
-   "src": "spanish-md/IMG_20260918_203950488_AE.md"
+   "src": "spanish-md/IMG_20260918_203950488_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-traje",
@@ -8472,7 +8944,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🤵",
-   "src": "course-md/IMG_20260918_190139660_AE.md; spanish-md/IMG_20260918_203950488_AE.md"
+   "src": "course-md/IMG_20260918_190139660_AE.md; spanish-md/IMG_20260918_203950488_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-traje-de-bano",
@@ -8485,7 +8958,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🩱",
-   "src": "spanish-md/IMG_20260918_203950488_AE.md"
+   "src": "spanish-md/IMG_20260918_203950488_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-traje-de-chaqueta",
@@ -8499,7 +8973,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🤵",
-   "src": "spanish-md/IMG_20260918_203950488_AE.md"
+   "src": "spanish-md/IMG_20260918_203950488_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-vestido",
@@ -8512,7 +8987,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "👗",
-   "src": "course-md/IMG_20260918_190139660_AE.md; spanish-md/IMG_20260918_203744401_AE.md"
+   "src": "course-md/IMG_20260918_190139660_AE.md; spanish-md/IMG_20260918_203744401_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-blusa",
@@ -8526,7 +9002,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "👚",
-   "src": "course-md/IMG_20260918_190139660_AE.md; spanish-md/IMG_20260918_203744401_AE.md"
+   "src": "course-md/IMG_20260918_190139660_AE.md; spanish-md/IMG_20260918_203744401_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-camisa",
@@ -8540,7 +9017,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "👕",
-   "src": "course-md/IMG_20260918_190139660_AE.md; spanish-md/IMG_20260918_203744401_AE.md"
+   "src": "course-md/IMG_20260918_190139660_AE.md; spanish-md/IMG_20260918_203744401_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-camiseta",
@@ -8553,7 +9031,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "👕",
-   "src": "course-md/IMG_20260918_190139660_AE.md; spanish-md/IMG_20260918_203744401_AE.md"
+   "src": "course-md/IMG_20260918_190139660_AE.md; spanish-md/IMG_20260918_203744401_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-campera",
@@ -8567,7 +9046,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "note": "Latijns-Amerikaanse variant.",
-   "src": "course-md/IMG_20260918_190139660_AE.md"
+   "src": "course-md/IMG_20260918_190139660_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-cazadora",
@@ -8581,7 +9061,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🧥",
-   "src": "course-md/IMG_20260918_190139660_AE.md"
+   "src": "course-md/IMG_20260918_190139660_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-chaqueta",
@@ -8597,7 +9078,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🧥",
-   "src": "course-md/IMG_20260918_190139660_AE.md; spanish-md/IMG_20260918_203744401_AE.md"
+   "src": "course-md/IMG_20260918_190139660_AE.md; spanish-md/IMG_20260918_203744401_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-chaqueta-impermeable",
@@ -8610,7 +9092,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🧥",
-   "src": "course-md/IMG_20260918_190139660_AE.md"
+   "src": "course-md/IMG_20260918_190139660_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-chompa",
@@ -8623,7 +9106,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "note": "Latijns-Amerikaanse variant van el jersey.",
-   "src": "course-md/IMG_20260918_190139660_AE.md"
+   "src": "course-md/IMG_20260918_190139660_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-falda",
@@ -8636,7 +9120,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "src": "course-md/IMG_20260918_190139660_AE.md; spanish-md/IMG_20260918_203744401_AE.md",
-   "emoji": "👗"
+   "emoji": "👗",
+   "pos": "noun"
   },
   {
    "id": "v.la-marca",
@@ -8648,7 +9133,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "spanish-md/IMG_20260918_203744401_AE.md"
+   "src": "spanish-md/IMG_20260918_203744401_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-pollera",
@@ -8662,7 +9148,8 @@ window.COURSE = {
    "number": "sg",
    "emoji": "👗",
    "note": "Latijns-Amerikaans.",
-   "src": "spanish-md/IMG_20260918_203950488_AE.md"
+   "src": "spanish-md/IMG_20260918_203950488_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-prenda-de-vestir",
@@ -8675,7 +9162,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "👚",
-   "src": "spanish-md/IMG_20260918_203804276_AE.md"
+   "src": "spanish-md/IMG_20260918_203804276_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-ropa",
@@ -8690,7 +9178,8 @@ window.COURSE = {
    "number": "sg",
    "note": "Ook: la prenda (het kledingstuk), los vestidos (de kleren).",
    "src": "course-md/IMG_20260918_190139660_AE.md; spanish-md/IMG_20260918_203744401_AE.md",
-   "emoji": "👚"
+   "emoji": "👚",
+   "pos": "noun"
   },
   {
    "id": "v.la-ropa-deportiva",
@@ -8703,7 +9192,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🎽",
-   "src": "spanish-md/IMG_20260918_203744401_AE.md"
+   "src": "spanish-md/IMG_20260918_203744401_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-tienda-de-ropa",
@@ -8716,7 +9206,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🏬",
-   "src": "course-md/IMG_20260918_190139660_AE.md; spanish-md/IMG_20260918_204009683_AE.md"
+   "src": "course-md/IMG_20260918_190139660_AE.md; spanish-md/IMG_20260918_204009683_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.llevar",
@@ -8732,7 +9223,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "llevar betekent ook: dragen, meenemen, brengen.",
-   "src": "course-md/IMG_20260918_190139660_AE.md; spanish-md/IMG_20260918_203804276_AE.md"
+   "src": "course-md/IMG_20260918_190139660_AE.md; spanish-md/IMG_20260918_203804276_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.los-pantalones",
@@ -8746,7 +9238,8 @@ window.COURSE = {
    "number": "pl",
    "emoji": "👖",
    "note": "Meestal in het meervoud. los pantalones largos = de lange broek.",
-   "src": "course-md/IMG_20260918_190139660_AE.md; spanish-md/IMG_20260918_203744401_AE.md"
+   "src": "course-md/IMG_20260918_190139660_AE.md; spanish-md/IMG_20260918_203744401_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.los-pantalones-cortos",
@@ -8759,7 +9252,8 @@ window.COURSE = {
    "gender": "m",
    "number": "pl",
    "emoji": "🩳",
-   "src": "course-md/IMG_20260918_190139660_AE.md"
+   "src": "course-md/IMG_20260918_190139660_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.los-shorts",
@@ -8773,7 +9267,8 @@ window.COURSE = {
    "number": "pl",
    "emoji": "🩳",
    "note": "Latijns-Amerikaans.",
-   "src": "spanish-md/IMG_20260918_203950488_AE.md"
+   "src": "spanish-md/IMG_20260918_203950488_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.los-tejanos",
@@ -8787,7 +9282,8 @@ window.COURSE = {
    "number": "pl",
    "emoji": "👖",
    "note": "Synoniem van los vaqueros.",
-   "src": "spanish-md/IMG_20260918_203950488_AE.md"
+   "src": "spanish-md/IMG_20260918_203950488_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.los-vaqueros",
@@ -8801,7 +9297,8 @@ window.COURSE = {
    "gender": "m",
    "number": "pl",
    "emoji": "👖",
-   "src": "course-md/IMG_20260918_190139660_AE.md; spanish-md/IMG_20260918_203744401_AE.md"
+   "src": "course-md/IMG_20260918_190139660_AE.md; spanish-md/IMG_20260918_203744401_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.probar",
@@ -8816,7 +9313,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "Stamverandering o → ue: me pruebo la falda.",
-   "src": "course-md/IMG_20260918_190139660_AE.md; course-md/IMG_20260918_190934217_AE.md"
+   "src": "course-md/IMG_20260918_190139660_AE.md; course-md/IMG_20260918_190934217_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.amarillo-a",
@@ -8828,7 +9326,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203744401_AE.md"
+   "src": "spanish-md/IMG_20260918_203744401_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.azul",
@@ -8840,7 +9339,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203744401_AE.md"
+   "src": "spanish-md/IMG_20260918_203744401_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.gris",
@@ -8852,7 +9352,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203744401_AE.md"
+   "src": "spanish-md/IMG_20260918_203744401_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.marron",
@@ -8864,7 +9365,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203744401_AE.md"
+   "src": "spanish-md/IMG_20260918_203744401_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.naranja",
@@ -8877,7 +9379,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "Onveranderlijk: una camisa naranja.",
-   "src": "spanish-md/IMG_20260918_203744401_AE.md"
+   "src": "spanish-md/IMG_20260918_203744401_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.rosa",
@@ -8890,7 +9393,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "Onveranderlijk: unos zapatos rosa.",
-   "src": "spanish-md/IMG_20260918_203744401_AE.md"
+   "src": "spanish-md/IMG_20260918_203744401_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.el-anis",
@@ -8902,7 +9406,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190257797_AE.md"
+   "src": "course-md/IMG_20260918_190257797_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-azafran",
@@ -8914,7 +9419,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190257797_AE.md"
+   "src": "course-md/IMG_20260918_190257797_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-cebollino",
@@ -8927,7 +9433,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🌿",
-   "src": "course-md/IMG_20260918_190257797_AE.md"
+   "src": "course-md/IMG_20260918_190257797_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-cilantro",
@@ -8940,7 +9447,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🌿",
-   "src": "course-md/IMG_20260918_190257797_AE.md"
+   "src": "course-md/IMG_20260918_190257797_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-eneldo",
@@ -8953,7 +9461,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🌿",
-   "src": "course-md/IMG_20260918_190257797_AE.md"
+   "src": "course-md/IMG_20260918_190257797_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-estragon",
@@ -8966,7 +9475,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🌿",
-   "src": "course-md/IMG_20260918_190257797_AE.md"
+   "src": "course-md/IMG_20260918_190257797_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-jengibre",
@@ -8978,7 +9488,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190257797_AE.md"
+   "src": "course-md/IMG_20260918_190257797_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-laurel",
@@ -8991,7 +9502,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🌿",
-   "src": "course-md/IMG_20260918_190257797_AE.md"
+   "src": "course-md/IMG_20260918_190257797_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-oregano",
@@ -9004,7 +9516,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🌿",
-   "src": "course-md/IMG_20260918_190306799_AE.md"
+   "src": "course-md/IMG_20260918_190306799_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-pimenton",
@@ -9016,7 +9529,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190306799_AE.md"
+   "src": "course-md/IMG_20260918_190306799_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-romero",
@@ -9029,7 +9543,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🌿",
-   "src": "course-md/IMG_20260918_190306799_AE.md"
+   "src": "course-md/IMG_20260918_190306799_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-sesamo",
@@ -9041,7 +9556,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190306799_AE.md"
+   "src": "course-md/IMG_20260918_190306799_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-tomillo",
@@ -9054,7 +9570,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🌿",
-   "src": "course-md/IMG_20260918_190306799_AE.md"
+   "src": "course-md/IMG_20260918_190306799_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-albahaca",
@@ -9067,7 +9584,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🌿",
-   "src": "course-md/IMG_20260918_190257797_AE.md"
+   "src": "course-md/IMG_20260918_190257797_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-alcaparra",
@@ -9079,7 +9597,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190257797_AE.md"
+   "src": "course-md/IMG_20260918_190257797_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-canela",
@@ -9091,7 +9610,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190257797_AE.md"
+   "src": "course-md/IMG_20260918_190257797_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-guindilla",
@@ -9105,7 +9625,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🌶️",
-   "src": "course-md/IMG_20260918_190257797_AE.md"
+   "src": "course-md/IMG_20260918_190257797_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-mayonesa",
@@ -9117,7 +9638,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190306799_AE.md"
+   "src": "course-md/IMG_20260918_190306799_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-mejorana",
@@ -9130,7 +9652,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🌿",
-   "src": "course-md/IMG_20260918_190257797_AE.md"
+   "src": "course-md/IMG_20260918_190257797_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-menta",
@@ -9144,7 +9667,8 @@ window.COURSE = {
    "number": "sg",
    "emoji": "🌿",
    "note": "ook: la hierbabuena (de verse munt)",
-   "src": "course-md/IMG_20260918_190306799_AE.md"
+   "src": "course-md/IMG_20260918_190306799_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-mostaza",
@@ -9156,7 +9680,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190306799_AE.md"
+   "src": "course-md/IMG_20260918_190306799_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-nuez-moscada",
@@ -9169,7 +9694,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190306799_AE.md"
+   "src": "course-md/IMG_20260918_190306799_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-pimienta",
@@ -9181,7 +9707,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190306799_AE.md"
+   "src": "course-md/IMG_20260918_190306799_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-sal",
@@ -9194,7 +9721,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🧂",
-   "src": "course-md/IMG_20260918_190306799_AE.md"
+   "src": "course-md/IMG_20260918_190306799_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-bigote",
@@ -9206,7 +9734,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "spanish-md/IMG_20260918_204009683_AE.md"
+   "src": "spanish-md/IMG_20260918_204009683_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-brazo",
@@ -9219,7 +9748,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "💪",
-   "src": "course-md/IMG_20260918_190406811_AE.md; spanish-md/IMG_20260918_204009683_AE.md"
+   "src": "course-md/IMG_20260918_190406811_AE.md; spanish-md/IMG_20260918_204009683_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-cabello",
@@ -9232,7 +9762,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "💇",
-   "src": "spanish-md/IMG_20260918_204009683_AE.md"
+   "src": "spanish-md/IMG_20260918_204009683_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-cerebro",
@@ -9246,7 +9777,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🧠",
-   "src": "course-md/IMG_20260918_190413606_AE.md; spanish-md/IMG_20260918_204009683_AE.md"
+   "src": "course-md/IMG_20260918_190413606_AE.md; spanish-md/IMG_20260918_204009683_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-codo",
@@ -9258,7 +9790,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190702003_AE.md; course-md/IMG_20260918_190413606_AE.md"
+   "src": "course-md/IMG_20260918_190702003_AE.md; course-md/IMG_20260918_190413606_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-corazon",
@@ -9271,7 +9804,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "❤️",
-   "src": "course-md/IMG_20260918_190413606_AE.md; spanish-md/IMG_20260918_204009683_AE.md"
+   "src": "course-md/IMG_20260918_190413606_AE.md; spanish-md/IMG_20260918_204009683_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-cuello",
@@ -9284,7 +9818,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190406811_AE.md; spanish-md/IMG_20260918_204009683_AE.md"
+   "src": "course-md/IMG_20260918_190406811_AE.md; spanish-md/IMG_20260918_204009683_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-culo",
@@ -9298,7 +9833,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "note": "plat taalgebruik; neutraler is el trasero",
-   "src": "course-md/IMG_20260918_190413606_AE.md"
+   "src": "course-md/IMG_20260918_190413606_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-dedo",
@@ -9312,7 +9848,8 @@ window.COURSE = {
    "number": "sg",
    "emoji": "👆",
    "note": "el dedo del pie = de teen",
-   "src": "course-md/IMG_20260918_190406811_AE.md; spanish-md/IMG_20260918_204009683_AE.md"
+   "src": "course-md/IMG_20260918_190406811_AE.md; spanish-md/IMG_20260918_204009683_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-dedo-del-pie",
@@ -9325,7 +9862,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🦶",
-   "src": "spanish-md/IMG_20260918_204009683_AE.md"
+   "src": "spanish-md/IMG_20260918_204009683_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-dedo-pulgar",
@@ -9338,7 +9876,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "👍",
-   "src": "spanish-md/IMG_20260918_204009683_AE.md"
+   "src": "spanish-md/IMG_20260918_204009683_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-diente",
@@ -9351,7 +9890,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🦷",
-   "src": "course-md/IMG_20260918_190406811_AE.md; spanish-md/IMG_20260918_204009683_AE.md"
+   "src": "course-md/IMG_20260918_190406811_AE.md; spanish-md/IMG_20260918_204009683_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-esqueleto",
@@ -9365,7 +9905,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "💀",
-   "src": "course-md/IMG_20260918_190413606_AE.md"
+   "src": "course-md/IMG_20260918_190413606_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-estomago",
@@ -9377,7 +9918,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190413606_AE.md; spanish-md/IMG_20260918_204009683_AE.md"
+   "src": "course-md/IMG_20260918_190413606_AE.md; spanish-md/IMG_20260918_204009683_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-higado",
@@ -9389,7 +9931,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190413606_AE.md; spanish-md/IMG_20260918_204017948_AE.md"
+   "src": "course-md/IMG_20260918_190413606_AE.md; spanish-md/IMG_20260918_204017948_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-hombro",
@@ -9401,7 +9944,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190413606_AE.md; spanish-md/IMG_20260918_204017948_AE.md"
+   "src": "course-md/IMG_20260918_190413606_AE.md; spanish-md/IMG_20260918_204017948_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-hueso",
@@ -9415,7 +9959,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🦴",
-   "src": "course-md/IMG_20260918_190413606_AE.md; spanish-md/IMG_20260918_204017948_AE.md"
+   "src": "course-md/IMG_20260918_190413606_AE.md; spanish-md/IMG_20260918_204017948_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-labio",
@@ -9428,7 +9973,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "src": "course-md/IMG_20260918_190406811_AE.md; spanish-md/IMG_20260918_204017948_AE.md",
-   "emoji": "👄"
+   "emoji": "👄",
+   "pos": "noun"
   },
   {
    "id": "v.el-menton",
@@ -9440,7 +9986,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "spanish-md/IMG_20260918_204017948_AE.md"
+   "src": "spanish-md/IMG_20260918_204017948_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-musculo",
@@ -9453,7 +10000,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "💪",
-   "src": "spanish-md/IMG_20260918_204017948_AE.md"
+   "src": "spanish-md/IMG_20260918_204017948_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-nervio",
@@ -9465,7 +10013,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190413606_AE.md; spanish-md/IMG_20260918_204017948_AE.md"
+   "src": "course-md/IMG_20260918_190413606_AE.md; spanish-md/IMG_20260918_204017948_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-oido",
@@ -9482,7 +10031,8 @@ window.COURSE = {
    "number": "sg",
    "emoji": "👂",
    "note": "het inwendige oor; de oorschelp = la oreja",
-   "src": "course-md/IMG_20260918_190702003_AE.md; spanish-md/IMG_20260918_204017948_AE.md"
+   "src": "course-md/IMG_20260918_190702003_AE.md; spanish-md/IMG_20260918_204017948_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-ojo",
@@ -9495,7 +10045,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "👁️",
-   "src": "course-md/IMG_20260918_190406811_AE.md; spanish-md/IMG_20260918_204017948_AE.md"
+   "src": "course-md/IMG_20260918_190406811_AE.md; spanish-md/IMG_20260918_204017948_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-pecho",
@@ -9507,7 +10058,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190406811_AE.md; spanish-md/IMG_20260918_204017948_AE.md"
+   "src": "course-md/IMG_20260918_190406811_AE.md; spanish-md/IMG_20260918_204017948_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-pelo",
@@ -9521,7 +10073,8 @@ window.COURSE = {
    "number": "sg",
    "note": "synoniem: el cabello",
    "src": "course-md/IMG_20260918_190406811_AE.md; spanish-md/IMG_20260918_204017948_AE.md",
-   "emoji": "💇"
+   "emoji": "💇",
+   "pos": "noun"
   },
   {
    "id": "v.el-pie",
@@ -9534,7 +10087,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🦶",
-   "src": "course-md/IMG_20260918_190406811_AE.md; spanish-md/IMG_20260918_204017948_AE.md"
+   "src": "course-md/IMG_20260918_190406811_AE.md; spanish-md/IMG_20260918_204017948_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-pulmon",
@@ -9547,7 +10101,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🫁",
-   "src": "course-md/IMG_20260918_190413606_AE.md; spanish-md/IMG_20260918_204017948_AE.md"
+   "src": "course-md/IMG_20260918_190413606_AE.md; spanish-md/IMG_20260918_204017948_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-rinon",
@@ -9559,7 +10114,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190413606_AE.md; spanish-md/IMG_20260918_204017948_AE.md"
+   "src": "course-md/IMG_20260918_190413606_AE.md; spanish-md/IMG_20260918_204017948_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-tobillo",
@@ -9571,7 +10127,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190702003_AE.md; course-md/IMG_20260918_190413606_AE.md"
+   "src": "course-md/IMG_20260918_190702003_AE.md; course-md/IMG_20260918_190413606_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-trasero",
@@ -9584,7 +10141,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190413606_AE.md"
+   "src": "course-md/IMG_20260918_190413606_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-vientre",
@@ -9597,7 +10155,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "note": "synoniem: la barriga (informeler)",
-   "src": "course-md/IMG_20260918_190413606_AE.md"
+   "src": "course-md/IMG_20260918_190413606_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-articulacion",
@@ -9609,7 +10168,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "spanish-md/IMG_20260918_204009683_AE.md"
+   "src": "spanish-md/IMG_20260918_204009683_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-barba",
@@ -9622,7 +10182,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🧔",
-   "src": "spanish-md/IMG_20260918_204009683_AE.md"
+   "src": "spanish-md/IMG_20260918_204009683_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-barbilla",
@@ -9634,7 +10195,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190406811_AE.md; spanish-md/IMG_20260918_204009683_AE.md"
+   "src": "course-md/IMG_20260918_190406811_AE.md; spanish-md/IMG_20260918_204009683_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-barriga",
@@ -9647,7 +10209,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "note": "informeel; formeler: el vientre",
-   "src": "course-md/IMG_20260918_190413606_AE.md; spanish-md/IMG_20260918_204009683_AE.md"
+   "src": "course-md/IMG_20260918_190413606_AE.md; spanish-md/IMG_20260918_204009683_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-boca",
@@ -9660,7 +10223,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "👄",
-   "src": "course-md/IMG_20260918_190406811_AE.md; spanish-md/IMG_20260918_204009683_AE.md"
+   "src": "course-md/IMG_20260918_190406811_AE.md; spanish-md/IMG_20260918_204009683_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-cabeza",
@@ -9673,7 +10237,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "src": "course-md/IMG_20260918_190406811_AE.md; spanish-md/IMG_20260918_204009683_AE.md",
-   "emoji": "👤"
+   "emoji": "👤",
+   "pos": "noun"
   },
   {
    "id": "v.la-cadera",
@@ -9685,7 +10250,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190413606_AE.md; spanish-md/IMG_20260918_204009683_AE.md"
+   "src": "course-md/IMG_20260918_190413606_AE.md; spanish-md/IMG_20260918_204009683_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-cara",
@@ -9698,7 +10264,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "😀",
-   "src": "course-md/IMG_20260918_190406811_AE.md; spanish-md/IMG_20260918_204009683_AE.md"
+   "src": "course-md/IMG_20260918_190406811_AE.md; spanish-md/IMG_20260918_204009683_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-ceja",
@@ -9710,7 +10277,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190702003_AE.md"
+   "src": "course-md/IMG_20260918_190702003_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-columna-vertebral",
@@ -9723,7 +10291,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🦴",
-   "src": "spanish-md/IMG_20260918_204009683_AE.md"
+   "src": "spanish-md/IMG_20260918_204009683_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-espalda",
@@ -9735,7 +10304,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190406811_AE.md; spanish-md/IMG_20260918_204009683_AE.md"
+   "src": "course-md/IMG_20260918_190406811_AE.md; spanish-md/IMG_20260918_204009683_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-frente",
@@ -9748,7 +10318,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "note": "el frente (mannelijk) = het front",
-   "src": "course-md/IMG_20260918_190442308_AE.md; spanish-md/IMG_20260918_204009683_AE.md"
+   "src": "course-md/IMG_20260918_190442308_AE.md; spanish-md/IMG_20260918_204009683_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-garganta",
@@ -9760,7 +10331,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190406811_AE.md; spanish-md/IMG_20260918_204009683_AE.md"
+   "src": "course-md/IMG_20260918_190406811_AE.md; spanish-md/IMG_20260918_204009683_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-lengua",
@@ -9774,7 +10346,8 @@ window.COURSE = {
    "number": "sg",
    "emoji": "👅",
    "note": "betekent ook 'de taal'",
-   "src": "course-md/IMG_20260918_190406811_AE.md; spanish-md/IMG_20260918_204017948_AE.md"
+   "src": "course-md/IMG_20260918_190406811_AE.md; spanish-md/IMG_20260918_204017948_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-mano",
@@ -9788,7 +10361,8 @@ window.COURSE = {
    "number": "sg",
    "emoji": "✋",
    "note": "vrouwelijk, hoewel het op -o eindigt",
-   "src": "course-md/IMG_20260918_190406811_AE.md; spanish-md/IMG_20260918_204017948_AE.md"
+   "src": "course-md/IMG_20260918_190406811_AE.md; spanish-md/IMG_20260918_204017948_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-mejilla",
@@ -9800,7 +10374,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "spanish-md/IMG_20260918_204017948_AE.md"
+   "src": "spanish-md/IMG_20260918_204017948_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-muela",
@@ -9814,7 +10389,8 @@ window.COURSE = {
    "number": "sg",
    "note": "el dolor de muelas = de kiespijn",
    "src": "course-md/IMG_20260918_190406811_AE.md; spanish-md/IMG_20260918_204017948_AE.md",
-   "emoji": "🦷"
+   "emoji": "🦷",
+   "pos": "noun"
   },
   {
    "id": "v.la-muneca",
@@ -9827,7 +10403,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "note": "betekent ook: de pop (speelgoed)",
-   "src": "course-md/IMG_20260918_190702003_AE.md; course-md/IMG_20260918_190413606_AE.md"
+   "src": "course-md/IMG_20260918_190702003_AE.md; course-md/IMG_20260918_190413606_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-nariz",
@@ -9840,7 +10417,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "👃",
-   "src": "course-md/IMG_20260918_190406811_AE.md; spanish-md/IMG_20260918_204017948_AE.md"
+   "src": "course-md/IMG_20260918_190406811_AE.md; spanish-md/IMG_20260918_204017948_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-oreja",
@@ -9854,7 +10432,8 @@ window.COURSE = {
    "number": "sg",
    "emoji": "👂",
    "note": "el oído = het gehoor, het inwendige oor",
-   "src": "course-md/IMG_20260918_190406811_AE.md; spanish-md/IMG_20260918_204017948_AE.md"
+   "src": "course-md/IMG_20260918_190406811_AE.md; spanish-md/IMG_20260918_204017948_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-piel",
@@ -9866,7 +10445,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190413606_AE.md; spanish-md/IMG_20260918_204017948_AE.md"
+   "src": "course-md/IMG_20260918_190413606_AE.md; spanish-md/IMG_20260918_204017948_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-pierna",
@@ -9879,7 +10459,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🦵",
-   "src": "course-md/IMG_20260918_190406811_AE.md; spanish-md/IMG_20260918_204017948_AE.md"
+   "src": "course-md/IMG_20260918_190406811_AE.md; spanish-md/IMG_20260918_204017948_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-respiracion",
@@ -9891,7 +10472,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190413606_AE.md"
+   "src": "course-md/IMG_20260918_190413606_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-rodilla",
@@ -9904,7 +10486,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "src": "course-md/IMG_20260918_190406811_AE.md; spanish-md/IMG_20260918_204017948_AE.md",
-   "emoji": "🦵"
+   "emoji": "🦵",
+   "pos": "noun"
   },
   {
    "id": "v.la-sangre",
@@ -9917,7 +10500,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🩸",
-   "src": "course-md/IMG_20260918_190413606_AE.md; spanish-md/IMG_20260918_204017948_AE.md"
+   "src": "course-md/IMG_20260918_190413606_AE.md; spanish-md/IMG_20260918_204017948_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-una",
@@ -9930,7 +10514,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "💅",
-   "src": "spanish-md/IMG_20260918_204017948_AE.md"
+   "src": "spanish-md/IMG_20260918_204017948_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-vejiga",
@@ -9942,7 +10527,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190413606_AE.md"
+   "src": "course-md/IMG_20260918_190413606_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.los-musculos",
@@ -9956,7 +10542,8 @@ window.COURSE = {
    "number": "pl",
    "emoji": "💪",
    "note": "enkelvoud: el músculo",
-   "src": "course-md/IMG_20260918_190413606_AE.md"
+   "src": "course-md/IMG_20260918_190413606_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.respirar",
@@ -9970,511 +10557,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190413606_AE.md"
-  },
-  {
-   "id": "l.amarillo-1",
-   "kind": "lyric",
-   "theme": "liedjes",
-   "song": "Amarillo — Shakira",
-   "es": "Amarillo, me tienes en los bolsillos.",
-   "nl": "Geel, je hebt me in je zakken.",
-   "blanks": [
-    {
-     "answer": "bolsillos"
-    }
-   ],
-   "src": "course-md/IMG_20260918_190527315_AE.md"
-  },
-  {
-   "id": "l.amarillo-10",
-   "kind": "lyric",
-   "theme": "liedjes",
-   "song": "Amarillo — Shakira",
-   "es": "El mundo lo sabe, no es ningún tabú.",
-   "nl": "De wereld weet het, het is geen taboe.",
-   "blanks": [
-    {
-     "answer": "tabú"
-    }
-   ],
-   "src": "course-md/IMG_20260918_190527315_AE.md"
-  },
-  {
-   "id": "l.amarillo-11",
-   "kind": "lyric",
-   "theme": "liedjes",
-   "song": "Amarillo — Shakira",
-   "es": "Llenas la habitación de luz.",
-   "nl": "Je vult de kamer met licht.",
-   "blanks": [
-    {
-     "answer": "habitación"
-    }
-   ],
-   "src": "course-md/IMG_20260918_190527315_AE.md"
-  },
-  {
-   "id": "l.amarillo-12",
-   "kind": "lyric",
-   "theme": "liedjes",
-   "song": "Amarillo — Shakira",
-   "es": "Solo en ti encuentro satisfacción.",
-   "nl": "Alleen bij jou vind ik voldoening.",
-   "blanks": [
-    {
-     "answer": "encuentro"
-    }
-   ],
-   "src": "course-md/IMG_20260918_190527315_AE.md"
-  },
-  {
-   "id": "l.amarillo-2",
-   "kind": "lyric",
-   "theme": "liedjes",
-   "song": "Amarillo — Shakira",
-   "es": "Morado, ya me olvidé del pasado.",
-   "nl": "Paars, ik ben het verleden al vergeten.",
-   "blanks": [
-    {
-     "answer": "olvidé"
-    }
-   ],
-   "src": "course-md/IMG_20260918_190527315_AE.md"
-  },
-  {
-   "id": "l.amarillo-3",
-   "kind": "lyric",
-   "theme": "liedjes",
-   "song": "Amarillo — Shakira",
-   "es": "En rojo, porque me sangran los ojos de llorarte.",
-   "nl": "In het rood, want mijn ogen bloeden van het huilen om jou.",
-   "blanks": [
-    {
-     "answer": "sangran"
-    }
-   ],
-   "src": "course-md/IMG_20260918_190527315_AE.md"
-  },
-  {
-   "id": "l.amarillo-4",
-   "kind": "lyric",
-   "theme": "liedjes",
-   "song": "Amarillo — Shakira",
-   "es": "Cuando no estás a mi lado.",
-   "nl": "Wanneer je niet aan mijn zijde bent.",
-   "blanks": [
-    {
-     "answer": "estás"
-    }
-   ],
-   "src": "course-md/IMG_20260918_190527315_AE.md"
-  },
-  {
-   "id": "l.amarillo-5",
-   "kind": "lyric",
-   "theme": "liedjes",
-   "song": "Amarillo — Shakira",
-   "es": "Celeste, cuésteme lo que me cueste.",
-   "nl": "Hemelsblauw, wat het me ook kost.",
-   "blanks": [
-    {
-     "answer": "cueste"
-    }
-   ],
-   "src": "course-md/IMG_20260918_190527315_AE.md"
-  },
-  {
-   "id": "l.amarillo-6",
-   "kind": "lyric",
-   "theme": "liedjes",
-   "song": "Amarillo — Shakira",
-   "es": "Dorado, porque no pienso perderte.",
-   "nl": "Goudkleurig, want ik ben niet van plan je te verliezen.",
-   "blanks": [
-    {
-     "answer": "perderte"
-    }
-   ],
-   "src": "course-md/IMG_20260918_190527315_AE.md"
-  },
-  {
-   "id": "l.amarillo-7",
-   "kind": "lyric",
-   "theme": "liedjes",
-   "song": "Amarillo — Shakira",
-   "es": "Tu amor es un arcoíris de colores.",
-   "nl": "Jouw liefde is een regenboog van kleuren.",
-   "blanks": [
-    {
-     "answer": "arcoíris"
-    }
-   ],
-   "src": "course-md/IMG_20260918_190527315_AE.md"
-  },
-  {
-   "id": "l.amarillo-8",
-   "kind": "lyric",
-   "theme": "liedjes",
-   "song": "Amarillo — Shakira",
-   "es": "Y me muero por tenerte.",
-   "nl": "En ik verlang er hevig naar jou te hebben.",
-   "blanks": [
-    {
-     "answer": "muero"
-    }
-   ],
-   "src": "course-md/IMG_20260918_190527315_AE.md"
-  },
-  {
-   "id": "l.amarillo-9",
-   "kind": "lyric",
-   "theme": "liedjes",
-   "song": "Amarillo — Shakira",
-   "es": "Cuando hablo o pienso en ti.",
-   "nl": "Wanneer ik over je praat of aan je denk.",
-   "blanks": [
-    {
-     "answer": "pienso"
-    }
-   ],
-   "src": "course-md/IMG_20260918_190527315_AE.md"
-  },
-  {
-   "id": "l.camisa-negra-1",
-   "kind": "lyric",
-   "theme": "liedjes",
-   "song": "La camisa negra — Juanes",
-   "es": "Tengo la camisa negra porque negra tengo el alma.",
-   "nl": "Ik heb mijn hemd in het zwart, want zwart is mijn ziel.",
-   "blanks": [
-    {
-     "answer": "alma"
-    }
-   ],
-   "src": "course-md/IMG_20260918_190507388_AE.md"
-  },
-  {
-   "id": "l.camisa-negra-10",
-   "kind": "lyric",
-   "theme": "liedjes",
-   "song": "La camisa negra — Juanes",
-   "es": "Y tus maletas en la puerta.",
-   "nl": "En jouw koffers in de deuropening.",
-   "blanks": [
-    {
-     "answer": "maletas"
-    }
-   ],
-   "src": "course-md/IMG_20260918_190513903_AE.md"
-  },
-  {
-   "id": "l.camisa-negra-11",
-   "kind": "lyric",
-   "theme": "liedjes",
-   "song": "La camisa negra — Juanes",
-   "es": "Ya tu amor no me interesa.",
-   "nl": "Jouw liefde interesseert me niet meer.",
-   "blanks": [
-    {
-     "answer": "interesa"
-    }
-   ],
-   "src": "course-md/IMG_20260918_190507388_AE.md"
-  },
-  {
-   "id": "l.camisa-negra-2",
-   "kind": "lyric",
-   "theme": "liedjes",
-   "song": "La camisa negra — Juanes",
-   "es": "Hoy mi amor está de luto.",
-   "nl": "Vandaag is mijn liefde in de rouw.",
-   "blanks": [
-    {
-     "answer": "luto"
-    }
-   ],
-   "src": "course-md/IMG_20260918_190507388_AE.md"
-  },
-  {
-   "id": "l.camisa-negra-3",
-   "kind": "lyric",
-   "theme": "liedjes",
-   "song": "La camisa negra — Juanes",
-   "es": "Hoy tengo en el alma una pena.",
-   "nl": "Vandaag draag ik verdriet in mijn ziel.",
-   "blanks": [
-    {
-     "answer": "pena"
-    }
-   ],
-   "src": "course-md/IMG_20260918_190507388_AE.md"
-  },
-  {
-   "id": "l.camisa-negra-4",
-   "kind": "lyric",
-   "theme": "liedjes",
-   "song": "La camisa negra — Juanes",
-   "es": "Hoy sé que tú ya no me quieres.",
-   "nl": "Vandaag weet ik dat je niet meer van me houdt.",
-   "blanks": [
-    {
-     "answer": "quieres"
-    }
-   ],
-   "src": "course-md/IMG_20260918_190507388_AE.md"
-  },
-  {
-   "id": "l.camisa-negra-5",
-   "kind": "lyric",
-   "theme": "liedjes",
-   "song": "La camisa negra — Juanes",
-   "es": "Y eso es lo que más me hiere.",
-   "nl": "En dat is wat mij het meeste pijn doet.",
-   "blanks": [
-    {
-     "answer": "hiere"
-    }
-   ],
-   "src": "course-md/IMG_20260918_190507388_AE.md"
-  },
-  {
-   "id": "l.camisa-negra-6",
-   "kind": "lyric",
-   "theme": "liedjes",
-   "song": "La camisa negra — Juanes",
-   "es": "Y una pena que me duele.",
-   "nl": "En een verdriet dat mij pijn doet.",
-   "blanks": [
-    {
-     "answer": "duele"
-    }
-   ],
-   "src": "course-md/IMG_20260918_190507388_AE.md"
-  },
-  {
-   "id": "l.camisa-negra-7",
-   "kind": "lyric",
-   "theme": "liedjes",
-   "song": "La camisa negra — Juanes",
-   "es": "Yo por ti perdí la calma.",
-   "nl": "Door jou ben ik mijn kalmte kwijt.",
-   "blanks": [
-    {
-     "answer": "perdí"
-    }
-   ],
-   "src": "course-md/IMG_20260918_190507388_AE.md"
-  },
-  {
-   "id": "l.camisa-negra-8",
-   "kind": "lyric",
-   "theme": "liedjes",
-   "song": "La camisa negra — Juanes",
-   "es": "Miércoles por la tarde y tú que no llegas.",
-   "nl": "Woensdagmiddag, en jij komt maar niet.",
-   "blanks": [
-    {
-     "answer": "llegas"
-    }
-   ],
-   "src": "course-md/IMG_20260918_190513903_AE.md"
-  },
-  {
-   "id": "l.camisa-negra-9",
-   "kind": "lyric",
-   "theme": "liedjes",
-   "song": "La camisa negra — Juanes",
-   "es": "Y yo con la camisa negra.",
-   "nl": "En ik met mijn zwarte hemd.",
-   "blanks": [
-    {
-     "answer": "camisa"
-    }
-   ],
-   "src": "course-md/IMG_20260918_190513903_AE.md"
-  },
-  {
-   "id": "l.vivir-mi-vida-1",
-   "kind": "lyric",
-   "theme": "liedjes",
-   "song": "Vivir mi vida — Marc Anthony",
-   "es": "Voy a reír, voy a bailar.",
-   "nl": "Ik ga lachen, ik ga dansen.",
-   "blanks": [
-    {
-     "answer": "bailar"
-    }
-   ],
-   "src": "course-md/IMG_20260918_190746422_AE.md"
-  },
-  {
-   "id": "l.vivir-mi-vida-10",
-   "kind": "lyric",
-   "theme": "liedjes",
-   "song": "Vivir mi vida — Marc Anthony",
-   "es": "Voy a escuchar en silencio.",
-   "nl": "Ik ga in stilte luisteren.",
-   "blanks": [
-    {
-     "answer": "silencio"
-    }
-   ],
-   "src": "course-md/IMG_20260918_190746422_AE.md"
-  },
-  {
-   "id": "l.vivir-mi-vida-11",
-   "kind": "lyric",
-   "theme": "liedjes",
-   "song": "Vivir mi vida — Marc Anthony",
-   "es": "Para encontrar el camino.",
-   "nl": "Om de weg te vinden.",
-   "blanks": [
-    {
-     "answer": "encontrar"
-    }
-   ],
-   "src": "course-md/IMG_20260918_190746422_AE.md"
-  },
-  {
-   "id": "l.vivir-mi-vida-12",
-   "kind": "lyric",
-   "theme": "liedjes",
-   "song": "Vivir mi vida — Marc Anthony",
-   "es": "Siente y baila y goza.",
-   "nl": "Voel, dans en geniet.",
-   "blanks": [
-    {
-     "answer": "goza"
-    }
-   ],
-   "src": "course-md/IMG_20260918_190746422_AE.md"
-  },
-  {
-   "id": "l.vivir-mi-vida-13",
-   "kind": "lyric",
-   "theme": "liedjes",
-   "song": "Vivir mi vida — Marc Anthony",
-   "es": "Que la vida es una sola.",
-   "nl": "Want je hebt maar één leven.",
-   "blanks": [
-    {
-     "answer": "sola"
-    }
-   ],
-   "src": "course-md/IMG_20260918_190746422_AE.md"
-  },
-  {
-   "id": "l.vivir-mi-vida-2",
-   "kind": "lyric",
-   "theme": "liedjes",
-   "song": "Vivir mi vida — Marc Anthony",
-   "es": "Voy a reír, voy a gozar.",
-   "nl": "Ik ga lachen, ik ga genieten.",
-   "blanks": [
-    {
-     "answer": "gozar"
-    }
-   ],
-   "src": "course-md/IMG_20260918_190746422_AE.md"
-  },
-  {
-   "id": "l.vivir-mi-vida-3",
-   "kind": "lyric",
-   "theme": "liedjes",
-   "song": "Vivir mi vida — Marc Anthony",
-   "es": "A veces llega la lluvia.",
-   "nl": "Soms komt de regen.",
-   "blanks": [
-    {
-     "answer": "lluvia"
-    }
-   ],
-   "src": "course-md/IMG_20260918_190746422_AE.md"
-  },
-  {
-   "id": "l.vivir-mi-vida-4",
-   "kind": "lyric",
-   "theme": "liedjes",
-   "song": "Vivir mi vida — Marc Anthony",
-   "es": "Para limpiar las heridas.",
-   "nl": "Om de wonden te helen.",
-   "blanks": [
-    {
-     "answer": "heridas"
-    }
-   ],
-   "src": "course-md/IMG_20260918_190746422_AE.md"
-  },
-  {
-   "id": "l.vivir-mi-vida-5",
-   "kind": "lyric",
-   "theme": "liedjes",
-   "song": "Vivir mi vida — Marc Anthony",
-   "es": "A veces solo una gota puede vencer la sequía.",
-   "nl": "Soms kan één druppel de droogte overwinnen.",
-   "blanks": [
-    {
-     "answer": "sequía"
-    }
-   ],
-   "src": "course-md/IMG_20260918_190746422_AE.md"
-  },
-  {
-   "id": "l.vivir-mi-vida-6",
-   "kind": "lyric",
-   "theme": "liedjes",
-   "song": "Vivir mi vida — Marc Anthony",
-   "es": "Si duele una pena, se olvida.",
-   "nl": "Als verdriet pijn doet, gaat het over.",
-   "blanks": [
-    {
-     "answer": "olvida"
-    }
-   ],
-   "src": "course-md/IMG_20260918_190746422_AE.md"
-  },
-  {
-   "id": "l.vivir-mi-vida-7",
-   "kind": "lyric",
-   "theme": "liedjes",
-   "song": "Vivir mi vida — Marc Anthony",
-   "es": "Si así es la vida, hay que vivirla.",
-   "nl": "Als het leven zo is, moet je het leven.",
-   "blanks": [
-    {
-     "answer": "vivirla"
-    }
-   ],
-   "src": "course-md/IMG_20260918_190746422_AE.md"
-  },
-  {
-   "id": "l.vivir-mi-vida-8",
-   "kind": "lyric",
-   "theme": "liedjes",
-   "song": "Vivir mi vida — Marc Anthony",
-   "es": "Voy a vivir el momento.",
-   "nl": "Ik ga het moment beleven.",
-   "blanks": [
-    {
-     "answer": "momento"
-    }
-   ],
-   "src": "course-md/IMG_20260918_190746422_AE.md"
-  },
-  {
-   "id": "l.vivir-mi-vida-9",
-   "kind": "lyric",
-   "theme": "liedjes",
-   "song": "Vivir mi vida — Marc Anthony",
-   "es": "Para entender el destino.",
-   "nl": "Om het lot te begrijpen.",
-   "blanks": [
-    {
-     "answer": "destino"
-    }
-   ],
-   "src": "course-md/IMG_20260918_190746422_AE.md"
+   "src": "course-md/IMG_20260918_190413606_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.el-armario",
@@ -10488,7 +10572,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "src": "course-md/IMG_20260918_190344122_AE.md; spanish-md/IMG_20260918_203959801_AE.md",
-   "emoji": "🗄️"
+   "emoji": "🗄️",
+   "pos": "noun"
   },
   {
    "id": "v.el-escritorio",
@@ -10501,7 +10586,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190344122_AE.md; spanish-md/IMG_20260918_203959801_AE.md"
+   "src": "course-md/IMG_20260918_190344122_AE.md; spanish-md/IMG_20260918_203959801_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-sillon",
@@ -10515,7 +10601,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "src": "course-md/IMG_20260918_190344122_AE.md; spanish-md/IMG_20260918_204005232_AE.md",
-   "emoji": "🛋️"
+   "emoji": "🛋️",
+   "pos": "noun"
   },
   {
    "id": "v.el-sofa",
@@ -10529,7 +10616,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🛋",
-   "src": "course-md/IMG_20260918_190344122_AE.md; spanish-md/IMG_20260918_204005232_AE.md"
+   "src": "course-md/IMG_20260918_190344122_AE.md; spanish-md/IMG_20260918_204005232_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-sofa-cama",
@@ -10542,7 +10630,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🛋️",
-   "src": "spanish-md/IMG_20260918_204005232_AE.md"
+   "src": "spanish-md/IMG_20260918_204005232_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-taburete",
@@ -10555,7 +10644,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🪑",
-   "src": "spanish-md/IMG_20260918_204005232_AE.md"
+   "src": "spanish-md/IMG_20260918_204005232_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-cama",
@@ -10568,7 +10658,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🛏",
-   "src": "course-md/IMG_20260918_190344122_AE.md; spanish-md/IMG_20260918_203959801_AE.md"
+   "src": "course-md/IMG_20260918_190344122_AE.md; spanish-md/IMG_20260918_203959801_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-comoda",
@@ -10582,7 +10673,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🗄️",
-   "src": "spanish-md/IMG_20260918_203959801_AE.md"
+   "src": "spanish-md/IMG_20260918_203959801_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-estanteria",
@@ -10597,7 +10689,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "src": "course-md/IMG_20260918_190344122_AE.md; spanish-md/IMG_20260918_203959801_AE.md",
-   "emoji": "📚"
+   "emoji": "📚",
+   "pos": "noun"
   },
   {
    "id": "v.la-mesa",
@@ -10609,7 +10702,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190344122_AE.md; spanish-md/IMG_20260918_203959801_AE.md"
+   "src": "course-md/IMG_20260918_190344122_AE.md; spanish-md/IMG_20260918_203959801_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-mesa-de-noche",
@@ -10621,7 +10715,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "spanish-md/IMG_20260918_203959801_AE.md"
+   "src": "spanish-md/IMG_20260918_203959801_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-silla",
@@ -10634,7 +10729,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🪑",
-   "src": "course-md/IMG_20260918_190344122_AE.md; spanish-md/IMG_20260918_204005232_AE.md"
+   "src": "course-md/IMG_20260918_190344122_AE.md; spanish-md/IMG_20260918_204005232_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-vitrina",
@@ -10648,7 +10744,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🗄️",
-   "src": "spanish-md/IMG_20260918_204005232_AE.md"
+   "src": "spanish-md/IMG_20260918_204005232_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.los-muebles",
@@ -10662,7 +10759,8 @@ window.COURSE = {
    "gender": "m",
    "number": "pl",
    "note": "Enkelvoud: el mueble.",
-   "src": "course-md/IMG_20260918_190344122_AE.md"
+   "src": "course-md/IMG_20260918_190344122_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-clarinete",
@@ -10674,7 +10772,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190204924_AE.md"
+   "src": "course-md/IMG_20260918_190204924_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-piano",
@@ -10687,7 +10786,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🎹",
-   "src": "course-md/IMG_20260918_190204924_AE.md"
+   "src": "course-md/IMG_20260918_190204924_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-saxofon",
@@ -10700,7 +10800,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🎷",
-   "src": "course-md/IMG_20260918_190204924_AE.md"
+   "src": "course-md/IMG_20260918_190204924_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-violin",
@@ -10713,7 +10814,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🎻",
-   "src": "course-md/IMG_20260918_190204924_AE.md"
+   "src": "course-md/IMG_20260918_190204924_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-violonchelo",
@@ -10726,7 +10828,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "note": "Ook gespeld: el violoncelo.",
-   "src": "course-md/IMG_20260918_190204924_AE.md"
+   "src": "course-md/IMG_20260918_190204924_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-bateria",
@@ -10740,7 +10843,8 @@ window.COURSE = {
    "number": "sg",
    "emoji": "🥁",
    "note": "tocar la batería = drummen.",
-   "src": "course-md/IMG_20260918_190204924_AE.md"
+   "src": "course-md/IMG_20260918_190204924_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-flauta-travesera",
@@ -10754,7 +10858,8 @@ window.COURSE = {
    "number": "sg",
    "emoji": "🪈",
    "note": "la flauta (dulce) = de blokfluit.",
-   "src": "course-md/IMG_20260918_190204924_AE.md"
+   "src": "course-md/IMG_20260918_190204924_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-guitarra",
@@ -10767,7 +10872,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🎸",
-   "src": "course-md/IMG_20260918_190204924_AE.md"
+   "src": "course-md/IMG_20260918_190204924_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-trompeta",
@@ -10780,7 +10886,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🎺",
-   "src": "course-md/IMG_20260918_190204924_AE.md"
+   "src": "course-md/IMG_20260918_190204924_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.tocar",
@@ -10793,7 +10900,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190204924_AE.md"
+   "src": "course-md/IMG_20260918_190204924_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.aleman-ana",
@@ -10805,7 +10913,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203955459_AE.md"
+   "src": "spanish-md/IMG_20260918_203955459_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.austriaco-a",
@@ -10817,7 +10926,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203955459_AE.md"
+   "src": "spanish-md/IMG_20260918_203955459_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.belga",
@@ -10829,7 +10939,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203955459_AE.md"
+   "src": "spanish-md/IMG_20260918_203955459_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.britanico-a",
@@ -10841,7 +10952,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203955459_AE.md"
+   "src": "spanish-md/IMG_20260918_203955459_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.bulgaro-a",
@@ -10853,7 +10965,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203955459_AE.md"
+   "src": "spanish-md/IMG_20260918_203955459_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.checo-a",
@@ -10865,7 +10978,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203955459_AE.md"
+   "src": "spanish-md/IMG_20260918_203955459_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.danes-esa",
@@ -10877,7 +10991,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203955459_AE.md"
+   "src": "spanish-md/IMG_20260918_203955459_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.eslovaco-a",
@@ -10889,7 +11004,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203955459_AE.md"
+   "src": "spanish-md/IMG_20260918_203955459_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.esloveno-a",
@@ -10901,7 +11017,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203955459_AE.md"
+   "src": "spanish-md/IMG_20260918_203955459_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.espanol-a",
@@ -10913,7 +11030,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203955459_AE.md"
+   "src": "spanish-md/IMG_20260918_203955459_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.finlandes-esa",
@@ -10925,7 +11043,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203955459_AE.md"
+   "src": "spanish-md/IMG_20260918_203955459_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.frances-esa",
@@ -10937,7 +11056,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203955459_AE.md"
+   "src": "spanish-md/IMG_20260918_203955459_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.griego-a",
@@ -10949,7 +11069,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203955459_AE.md"
+   "src": "spanish-md/IMG_20260918_203955459_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.hungaro-a",
@@ -10961,7 +11082,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203955459_AE.md"
+   "src": "spanish-md/IMG_20260918_203955459_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.ingles-esa",
@@ -10973,7 +11095,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203955459_AE.md"
+   "src": "spanish-md/IMG_20260918_203955459_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.irlandes-esa",
@@ -10985,7 +11108,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203955459_AE.md"
+   "src": "spanish-md/IMG_20260918_203955459_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.italiano-a",
@@ -10997,7 +11121,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203955459_AE.md"
+   "src": "spanish-md/IMG_20260918_203955459_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.luxemburgues-esa",
@@ -11009,7 +11134,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203955459_AE.md"
+   "src": "spanish-md/IMG_20260918_203955459_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.neerlandes-esa",
@@ -11021,7 +11147,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203955459_AE.md"
+   "src": "spanish-md/IMG_20260918_203955459_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.noruego-a",
@@ -11033,7 +11160,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203955459_AE.md"
+   "src": "spanish-md/IMG_20260918_203955459_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.polaco-a",
@@ -11045,7 +11173,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203955459_AE.md"
+   "src": "spanish-md/IMG_20260918_203955459_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.portugues-esa",
@@ -11057,7 +11186,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203955459_AE.md"
+   "src": "spanish-md/IMG_20260918_203955459_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.rumano-a",
@@ -11069,7 +11199,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203955459_AE.md"
+   "src": "spanish-md/IMG_20260918_203955459_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.ruso-a",
@@ -11081,7 +11212,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203955459_AE.md"
+   "src": "spanish-md/IMG_20260918_203955459_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.serbio-a",
@@ -11093,7 +11225,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203959801_AE.md"
+   "src": "spanish-md/IMG_20260918_203959801_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.sueco-a",
@@ -11105,7 +11238,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203959801_AE.md"
+   "src": "spanish-md/IMG_20260918_203959801_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.suizo-a",
@@ -11117,7 +11251,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203959801_AE.md"
+   "src": "spanish-md/IMG_20260918_203959801_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.turco-a",
@@ -11129,7 +11264,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203959801_AE.md"
+   "src": "spanish-md/IMG_20260918_203959801_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.argentino-a",
@@ -11141,7 +11277,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203955459_AE.md"
+   "src": "spanish-md/IMG_20260918_203955459_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.boliviano-a",
@@ -11153,7 +11290,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203955459_AE.md"
+   "src": "spanish-md/IMG_20260918_203955459_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.brasileno-a",
@@ -11165,7 +11303,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203955459_AE.md"
+   "src": "spanish-md/IMG_20260918_203955459_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.canadiense",
@@ -11177,7 +11316,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203955459_AE.md"
+   "src": "spanish-md/IMG_20260918_203955459_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.chileno-a",
@@ -11189,7 +11329,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203955459_AE.md"
+   "src": "spanish-md/IMG_20260918_203955459_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.chino-a",
@@ -11201,7 +11342,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203955459_AE.md"
+   "src": "spanish-md/IMG_20260918_203955459_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.colombiano-a",
@@ -11213,7 +11355,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203955459_AE.md"
+   "src": "spanish-md/IMG_20260918_203955459_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.costarricense",
@@ -11226,7 +11369,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "Ook: costarriqueño/-a.",
-   "src": "spanish-md/IMG_20260918_203955459_AE.md"
+   "src": "spanish-md/IMG_20260918_203955459_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.cubano-a",
@@ -11238,7 +11382,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203955459_AE.md"
+   "src": "spanish-md/IMG_20260918_203955459_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.dominicano-a",
@@ -11250,7 +11395,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203955459_AE.md"
+   "src": "spanish-md/IMG_20260918_203955459_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.ecuatoriano-a",
@@ -11262,7 +11408,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203955459_AE.md"
+   "src": "spanish-md/IMG_20260918_203955459_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.estadounidense",
@@ -11275,7 +11422,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203955459_AE.md"
+   "src": "spanish-md/IMG_20260918_203955459_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.guatemalteco-a",
@@ -11287,7 +11435,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203955459_AE.md"
+   "src": "spanish-md/IMG_20260918_203955459_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.hondureno-a",
@@ -11299,7 +11448,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203955459_AE.md"
+   "src": "spanish-md/IMG_20260918_203955459_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.japones-esa",
@@ -11311,7 +11461,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203955459_AE.md"
+   "src": "spanish-md/IMG_20260918_203955459_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.mexicano-a",
@@ -11323,7 +11474,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203955459_AE.md"
+   "src": "spanish-md/IMG_20260918_203955459_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.nicaraguense",
@@ -11335,7 +11487,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203955459_AE.md"
+   "src": "spanish-md/IMG_20260918_203955459_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.panameno-a",
@@ -11347,7 +11500,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203955459_AE.md"
+   "src": "spanish-md/IMG_20260918_203955459_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.paraguayo-a",
@@ -11359,7 +11513,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203955459_AE.md"
+   "src": "spanish-md/IMG_20260918_203955459_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.peruano-a",
@@ -11371,7 +11526,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203955459_AE.md"
+   "src": "spanish-md/IMG_20260918_203955459_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.puertorriqueno-a",
@@ -11383,7 +11539,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203955459_AE.md"
+   "src": "spanish-md/IMG_20260918_203955459_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.salvadoreno-a",
@@ -11395,7 +11552,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203959801_AE.md"
+   "src": "spanish-md/IMG_20260918_203959801_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.tailandes-esa",
@@ -11407,7 +11565,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203959801_AE.md"
+   "src": "spanish-md/IMG_20260918_203959801_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.uruguayo-a",
@@ -11419,7 +11578,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203959801_AE.md"
+   "src": "spanish-md/IMG_20260918_203959801_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.venezolano-a",
@@ -11431,7 +11591,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203959801_AE.md"
+   "src": "spanish-md/IMG_20260918_203959801_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.el-cacahuete",
@@ -11445,7 +11606,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🥜",
-   "src": "course-md/IMG_20260918_190257797_AE.md"
+   "src": "course-md/IMG_20260918_190257797_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-pinon",
@@ -11458,7 +11620,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "note": "meervoud: los piñones",
-   "src": "course-md/IMG_20260918_190257797_AE.md"
+   "src": "course-md/IMG_20260918_190257797_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-almendra",
@@ -11470,7 +11633,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190257797_AE.md"
+   "src": "course-md/IMG_20260918_190257797_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-avellana",
@@ -11482,7 +11646,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190257797_AE.md"
+   "src": "course-md/IMG_20260918_190257797_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-castana",
@@ -11495,7 +11660,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🌰",
-   "src": "course-md/IMG_20260918_190257797_AE.md"
+   "src": "course-md/IMG_20260918_190257797_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-nuez",
@@ -11509,7 +11675,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "note": "meervoud: las nueces",
-   "src": "course-md/IMG_20260918_190257797_AE.md"
+   "src": "course-md/IMG_20260918_190257797_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.algo",
@@ -11521,7 +11688,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_191325272_AE.md"
+   "src": "course-md/IMG_20260918_191325272_AE.md",
+   "pos": "other"
   },
   {
    "id": "v.alguien",
@@ -11533,7 +11701,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_191325272_AE.md"
+   "src": "course-md/IMG_20260918_191325272_AE.md",
+   "pos": "other"
   },
   {
    "id": "v.alguno-a",
@@ -11547,7 +11716,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "vóór een mannelijk enkelvoudig zelfstandig naamwoord wordt het algún",
-   "src": "course-md/IMG_20260918_191325272_AE.md"
+   "src": "course-md/IMG_20260918_191325272_AE.md",
+   "pos": "other"
   },
   {
    "id": "v.bastante",
@@ -11560,7 +11730,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_191325272_AE.md"
+   "src": "course-md/IMG_20260918_191325272_AE.md",
+   "pos": "adv"
   },
   {
    "id": "v.cada",
@@ -11574,7 +11745,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "onveranderlijk en alleen met een enkelvoud",
-   "src": "course-md/IMG_20260918_191325272_AE.md"
+   "src": "course-md/IMG_20260918_191325272_AE.md",
+   "pos": "other"
   },
   {
    "id": "v.cualquiera",
@@ -11588,7 +11760,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "vóór een zelfstandig naamwoord (m/v, enkelvoud) wordt het cualquier",
-   "src": "course-md/IMG_20260918_191325272_AE.md"
+   "src": "course-md/IMG_20260918_191325272_AE.md",
+   "pos": "other"
   },
   {
    "id": "v.demasiado-a",
@@ -11600,7 +11773,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_191325272_AE.md"
+   "src": "course-md/IMG_20260918_191325272_AE.md",
+   "pos": "adv"
   },
   {
    "id": "v.diferentes",
@@ -11613,7 +11787,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_191325272_AE.md"
+   "src": "course-md/IMG_20260918_191325272_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.distintos-as",
@@ -11626,7 +11801,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_191325272_AE.md"
+   "src": "course-md/IMG_20260918_191325272_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.diversos-as",
@@ -11639,7 +11815,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_191325272_AE.md"
+   "src": "course-md/IMG_20260918_191325272_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.harto-a",
@@ -11651,7 +11828,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_191325272_AE.md"
+   "src": "course-md/IMG_20260918_191325272_AE.md",
+   "pos": "adv"
   },
   {
    "id": "v.los-demas",
@@ -11664,7 +11842,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_191325272_AE.md"
+   "src": "course-md/IMG_20260918_191325272_AE.md",
+   "pos": "other"
   },
   {
    "id": "v.mucho-mucha-muchos-muchas",
@@ -11676,7 +11855,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_191325272_AE.md"
+   "src": "course-md/IMG_20260918_191325272_AE.md",
+   "pos": "other"
   },
   {
    "id": "v.nada",
@@ -11688,7 +11868,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_191325272_AE.md"
+   "src": "course-md/IMG_20260918_191325272_AE.md",
+   "pos": "other"
   },
   {
    "id": "v.nadie",
@@ -11700,7 +11881,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_191325272_AE.md"
+   "src": "course-md/IMG_20260918_191325272_AE.md",
+   "pos": "other"
   },
   {
    "id": "v.ninguno-a",
@@ -11713,7 +11895,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "vóór een mannelijk enkelvoudig zelfstandig naamwoord wordt het ningún",
-   "src": "course-md/IMG_20260918_191325272_AE.md"
+   "src": "course-md/IMG_20260918_191325272_AE.md",
+   "pos": "other"
   },
   {
    "id": "v.otro-otra-otros-otras",
@@ -11726,7 +11909,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_191325272_AE.md"
+   "src": "course-md/IMG_20260918_191325272_AE.md",
+   "pos": "other"
   },
   {
    "id": "v.poco-poca-pocos-pocas",
@@ -11738,7 +11922,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_191325272_AE.md"
+   "src": "course-md/IMG_20260918_191325272_AE.md",
+   "pos": "other"
   },
   {
    "id": "v.todo-toda-todos-todas",
@@ -11751,7 +11936,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_191325272_AE.md"
+   "src": "course-md/IMG_20260918_191325272_AE.md",
+   "pos": "other"
   },
   {
    "id": "v.unos-cuantos",
@@ -11764,7 +11950,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_191325272_AE.md"
+   "src": "course-md/IMG_20260918_191325272_AE.md",
+   "pos": "other"
   },
   {
    "id": "v.varios-as",
@@ -11777,7 +11964,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_191325272_AE.md"
+   "src": "course-md/IMG_20260918_191325272_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.el-corpino",
@@ -11791,7 +11979,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "note": "Latijns-Amerikaanse variant van el sujetador.",
-   "src": "course-md/IMG_20260918_190139660_AE.md"
+   "src": "course-md/IMG_20260918_190139660_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-sujetador",
@@ -11806,7 +11995,8 @@ window.COURSE = {
    "number": "sg",
    "note": "Synoniem: el sostén.",
    "src": "course-md/IMG_20260918_190139660_AE.md; spanish-md/IMG_20260918_203950488_AE.md",
-   "emoji": "👙"
+   "emoji": "👙",
+   "pos": "noun"
   },
   {
    "id": "v.la-bombacha",
@@ -11820,7 +12010,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "note": "Latijns-Amerikaanse variant van las bragas.",
-   "src": "course-md/IMG_20260918_190139660_AE.md"
+   "src": "course-md/IMG_20260918_190139660_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-ropa-interior",
@@ -11832,7 +12023,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190139660_AE.md"
+   "src": "course-md/IMG_20260918_190139660_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.las-bragas",
@@ -11845,7 +12037,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "pl",
-   "src": "course-md/IMG_20260918_190139660_AE.md"
+   "src": "course-md/IMG_20260918_190139660_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.las-medias",
@@ -11859,7 +12052,8 @@ window.COURSE = {
    "gender": "f",
    "number": "pl",
    "note": "Handgeschreven notitie: lang.",
-   "src": "course-md/IMG_20260918_190139660_AE.md"
+   "src": "course-md/IMG_20260918_190139660_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.los-calcetines",
@@ -11873,7 +12067,8 @@ window.COURSE = {
    "number": "pl",
    "emoji": "🧦",
    "note": "Handgeschreven notitie: kort.",
-   "src": "course-md/IMG_20260918_190139660_AE.md; spanish-md/IMG_20260918_203744401_AE.md"
+   "src": "course-md/IMG_20260918_190139660_AE.md; spanish-md/IMG_20260918_203744401_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.los-calzoncillos",
@@ -11885,7 +12080,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "pl",
-   "src": "course-md/IMG_20260918_190139660_AE.md"
+   "src": "course-md/IMG_20260918_190139660_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.los-leotardos",
@@ -11899,7 +12095,8 @@ window.COURSE = {
    "gender": "m",
    "number": "pl",
    "note": "Handgeschreven toevoeging onderaan de bladzijde: 'warme panty's'.",
-   "src": "course-md/IMG_20260918_190139660_AE.md"
+   "src": "course-md/IMG_20260918_190139660_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.apunte",
@@ -11913,7 +12110,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "Gebiedende wijs (usted) van apuntar.",
-   "src": "spanish-md/IMG_20260918_203808317_AE.md"
+   "src": "spanish-md/IMG_20260918_203808317_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.definir",
@@ -11926,7 +12124,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203808317_AE.md"
+   "src": "spanish-md/IMG_20260918_203808317_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.el-maximo-de-adjetivos",
@@ -11938,7 +12137,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "spanish-md/IMG_20260918_203808317_AE.md"
+   "src": "spanish-md/IMG_20260918_203808317_AE.md",
+   "pos": "other"
   },
   {
    "id": "v.elija",
@@ -11951,7 +12151,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "Gebiedende wijs (usted) van elegir.",
-   "src": "spanish-md/IMG_20260918_203744401_AE.md"
+   "src": "spanish-md/IMG_20260918_203744401_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.entre-los-siguientes",
@@ -11963,7 +12164,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203753249_AE.md"
+   "src": "spanish-md/IMG_20260918_203753249_AE.md",
+   "pos": "other"
   },
   {
    "id": "v.entre-todos",
@@ -11975,33 +12177,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203808317_AE.md"
-  },
-  {
-   "id": "v.mencionen",
-   "kind": "vocab",
-   "theme": "opdrachtentaal",
-   "es": "mencionen",
-   "nl": [
-    "noem"
-   ],
-   "gender": null,
-   "number": null,
-   "note": "Gebiedende wijs (ustedes) van mencionar.",
-   "src": "spanish-md/IMG_20260918_203808317_AE.md"
-  },
-  {
-   "id": "v.piensen-en",
-   "kind": "vocab",
-   "theme": "opdrachtentaal",
-   "es": "piensen (en)",
-   "nl": [
-    "denk (aan)"
-   ],
-   "gender": null,
-   "number": null,
-   "note": "Gebiedende wijs (ustedes) van pensar.",
-   "src": "spanish-md/IMG_20260918_203808317_AE.md"
+   "src": "spanish-md/IMG_20260918_203808317_AE.md",
+   "pos": "other"
   },
   {
    "id": "v.represente",
@@ -12014,7 +12191,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "Gebiedende wijs (usted) van representar.",
-   "src": "spanish-md/IMG_20260918_203804276_AE.md"
+   "src": "spanish-md/IMG_20260918_203804276_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.valorar",
@@ -12027,7 +12205,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203808317_AE.md"
+   "src": "spanish-md/IMG_20260918_203808317_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.casarse",
@@ -12039,7 +12218,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203744401_AE.md"
+   "src": "spanish-md/IMG_20260918_203744401_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.declarar",
@@ -12052,7 +12232,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203808317_AE.md"
+   "src": "spanish-md/IMG_20260918_203808317_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.el-catalogo",
@@ -12064,19 +12245,21 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "spanish-md/IMG_20260918_203744401_AE.md"
+   "src": "spanish-md/IMG_20260918_203744401_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-hombre-del-jersey",
    "kind": "vocab",
-   "theme": "overige-woorden",
+   "theme": "kleding",
    "es": "el hombre del jersey",
    "nl": [
     "de man met de trui"
    ],
    "gender": "m",
    "number": "sg",
-   "src": "spanish-md/IMG_20260918_203804276_AE.md"
+   "src": "spanish-md/IMG_20260918_203804276_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-la-coordinador-a",
@@ -12088,7 +12271,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": "sg",
-   "src": "spanish-md/IMG_20260918_203808317_AE.md"
+   "src": "spanish-md/IMG_20260918_203808317_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-la-escritor-a",
@@ -12101,7 +12285,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": "sg",
-   "src": "spanish-md/IMG_20260918_203808317_AE.md"
+   "src": "spanish-md/IMG_20260918_203808317_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-la-hablante",
@@ -12114,7 +12299,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": "sg",
-   "src": "spanish-md/IMG_20260918_203808317_AE.md"
+   "src": "spanish-md/IMG_20260918_203808317_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-ordenador",
@@ -12128,7 +12314,8 @@ window.COURSE = {
    "number": "sg",
    "emoji": "💻",
    "note": "In Latijns-Amerika: la computadora.",
-   "src": "spanish-md/IMG_20260918_203804276_AE.md"
+   "src": "spanish-md/IMG_20260918_203804276_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.lo-mas-importante",
@@ -12140,7 +12327,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203744401_AE.md"
+   "src": "spanish-md/IMG_20260918_203744401_AE.md",
+   "pos": "other"
   },
   {
    "id": "v.muchas-cosas-mas",
@@ -12152,7 +12340,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203808317_AE.md"
+   "src": "spanish-md/IMG_20260918_203808317_AE.md",
+   "pos": "other"
   },
   {
    "id": "v.proceder-de",
@@ -12164,7 +12353,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203808317_AE.md"
+   "src": "spanish-md/IMG_20260918_203808317_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.queria-contar",
@@ -12177,7 +12367,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "Van querer.",
-   "src": "spanish-md/IMG_20260918_203808317_AE.md"
+   "src": "spanish-md/IMG_20260918_203808317_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.restaurar",
@@ -12189,7 +12380,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203808317_AE.md"
+   "src": "spanish-md/IMG_20260918_203808317_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.el-frijol",
@@ -12202,7 +12394,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🫘",
-   "src": "course-md/IMG_20260918_190257797_AE.md"
+   "src": "course-md/IMG_20260918_190257797_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-garbanzo",
@@ -12214,7 +12407,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190257797_AE.md"
+   "src": "course-md/IMG_20260918_190257797_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-guisante",
@@ -12227,7 +12421,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🫛",
-   "src": "course-md/IMG_20260918_190257797_AE.md"
+   "src": "course-md/IMG_20260918_190257797_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-haba",
@@ -12241,7 +12436,8 @@ window.COURSE = {
    "number": "sg",
    "emoji": "🫘",
    "note": "vrouwelijk, maar met lidwoord el: el haba, las habas",
-   "src": "course-md/IMG_20260918_190257797_AE.md"
+   "src": "course-md/IMG_20260918_190257797_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-alubia",
@@ -12254,7 +12450,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🫘",
-   "src": "course-md/IMG_20260918_190257797_AE.md"
+   "src": "course-md/IMG_20260918_190257797_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.las-lentejas",
@@ -12266,7 +12463,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "pl",
-   "src": "course-md/IMG_20260918_190257797_AE.md"
+   "src": "course-md/IMG_20260918_190257797_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-amazonas",
@@ -12279,7 +12477,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🏞️",
-   "src": "spanish-md/IMG_20260918_203808317_AE.md"
+   "src": "spanish-md/IMG_20260918_203808317_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-caiman",
@@ -12292,7 +12491,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🐊",
-   "src": "spanish-md/IMG_20260918_203808317_AE.md"
+   "src": "spanish-md/IMG_20260918_203808317_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-delfin",
@@ -12305,7 +12505,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🐬",
-   "src": "spanish-md/IMG_20260918_203808317_AE.md"
+   "src": "spanish-md/IMG_20260918_203808317_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-gato",
@@ -12318,7 +12519,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🐈",
-   "src": "spanish-md/IMG_20260918_203744401_AE.md"
+   "src": "spanish-md/IMG_20260918_203744401_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-kilometro",
@@ -12330,7 +12532,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "spanish-md/IMG_20260918_203744401_AE.md"
+   "src": "spanish-md/IMG_20260918_203744401_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-lago-titicaca",
@@ -12343,7 +12546,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🏞️",
-   "src": "spanish-md/IMG_20260918_203808317_AE.md"
+   "src": "spanish-md/IMG_20260918_203808317_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-mono",
@@ -12356,7 +12560,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🐒",
-   "src": "spanish-md/IMG_20260918_203808317_AE.md"
+   "src": "spanish-md/IMG_20260918_203808317_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-muro",
@@ -12370,7 +12575,8 @@ window.COURSE = {
    "number": "sg",
    "emoji": "🧱",
    "note": "Buitenmuur; een binnenmuur is la pared.",
-   "src": "spanish-md/IMG_20260918_203808317_AE.md"
+   "src": "spanish-md/IMG_20260918_203808317_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-pueblo",
@@ -12383,7 +12589,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🏘️",
-   "src": "spanish-md/IMG_20260918_203808317_AE.md"
+   "src": "spanish-md/IMG_20260918_203808317_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-templo",
@@ -12396,7 +12603,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🛕",
-   "src": "spanish-md/IMG_20260918_203808317_AE.md"
+   "src": "spanish-md/IMG_20260918_203808317_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.galicia",
@@ -12409,7 +12617,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "Autonome regio in Noordwest-Spanje.",
-   "src": "spanish-md/IMG_20260918_203804276_AE.md"
+   "src": "spanish-md/IMG_20260918_203804276_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-costa-mediterranea",
@@ -12422,7 +12631,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🏖️",
-   "src": "spanish-md/IMG_20260918_203804276_AE.md"
+   "src": "spanish-md/IMG_20260918_203804276_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-violeta",
@@ -12435,7 +12645,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🌸",
-   "src": "spanish-md/IMG_20260918_203808317_AE.md"
+   "src": "spanish-md/IMG_20260918_203808317_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.las-islas-canarias",
@@ -12448,7 +12659,8 @@ window.COURSE = {
    "gender": "f",
    "number": "pl",
    "emoji": "🏝️",
-   "src": "spanish-md/IMG_20260918_203804276_AE.md"
+   "src": "spanish-md/IMG_20260918_203804276_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.los-pirineos",
@@ -12461,7 +12673,8 @@ window.COURSE = {
    "gender": "m",
    "number": "pl",
    "emoji": "⛰️",
-   "src": "spanish-md/IMG_20260918_203804276_AE.md"
+   "src": "spanish-md/IMG_20260918_203804276_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.a-su-derecha",
@@ -12473,7 +12686,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203808317_AE.md"
+   "src": "spanish-md/IMG_20260918_203808317_AE.md",
+   "pos": "adv"
   },
   {
    "id": "v.acostumbrarse-a",
@@ -12485,7 +12699,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203757754_AE.md"
+   "src": "spanish-md/IMG_20260918_203757754_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.antes-de-caminar",
@@ -12499,7 +12714,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "Na een voorzetsel staat in het Spaans de infinitief.",
-   "src": "spanish-md/IMG_20260918_203757754_AE.md"
+   "src": "spanish-md/IMG_20260918_203757754_AE.md",
+   "pos": "adv"
   },
   {
    "id": "v.atras",
@@ -12512,7 +12728,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203808317_AE.md"
+   "src": "spanish-md/IMG_20260918_203808317_AE.md",
+   "pos": "adv"
   },
   {
    "id": "v.autorizado-a",
@@ -12525,7 +12742,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203757754_AE.md"
+   "src": "spanish-md/IMG_20260918_203757754_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.contra",
@@ -12538,7 +12756,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "Voorzetsel: protección contra el sol.",
-   "src": "spanish-md/IMG_20260918_203757754_AE.md"
+   "src": "spanish-md/IMG_20260918_203757754_AE.md",
+   "pos": "other"
   },
   {
    "id": "v.convenir",
@@ -12553,7 +12772,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "Onpersoonlijk: conviene = het is raadzaam.",
-   "src": "spanish-md/IMG_20260918_203757754_AE.md"
+   "src": "spanish-md/IMG_20260918_203757754_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.disfrutar-de",
@@ -12565,7 +12785,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203757754_AE.md"
+   "src": "spanish-md/IMG_20260918_203757754_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.durante-el-camino",
@@ -12578,7 +12799,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203757754_AE.md"
+   "src": "spanish-md/IMG_20260918_203757754_AE.md",
+   "pos": "adv"
   },
   {
    "id": "v.durar",
@@ -12590,12 +12812,13 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203757754_AE.md"
+   "src": "spanish-md/IMG_20260918_203757754_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.el-clima",
    "kind": "vocab",
-   "theme": "reizen",
+   "theme": "weer",
    "es": "el clima",
    "nl": [
     "het klimaat"
@@ -12603,7 +12826,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "note": "Mannelijk ondanks de uitgang -a.",
-   "src": "spanish-md/IMG_20260918_203808317_AE.md"
+   "src": "spanish-md/IMG_20260918_203808317_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-crucero",
@@ -12616,7 +12840,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🚢",
-   "src": "spanish-md/IMG_20260918_203804276_AE.md"
+   "src": "spanish-md/IMG_20260918_203804276_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-diario-del-viaje",
@@ -12629,7 +12854,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "📔",
-   "src": "spanish-md/IMG_20260918_203757754_AE.md"
+   "src": "spanish-md/IMG_20260918_203757754_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-equipaje",
@@ -12642,12 +12868,13 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🧳",
-   "src": "spanish-md/IMG_20260918_203808317_AE.md"
+   "src": "spanish-md/IMG_20260918_203808317_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-mosquito",
    "kind": "vocab",
-   "theme": "reizen",
+   "theme": "plaatsen-en-natuur",
    "es": "el mosquito",
    "nl": [
     "de mug"
@@ -12655,7 +12882,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🦟",
-   "src": "spanish-md/IMG_20260918_203804276_AE.md"
+   "src": "spanish-md/IMG_20260918_203804276_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-papel-higienico",
@@ -12668,7 +12896,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🧻",
-   "src": "spanish-md/IMG_20260918_203804276_AE.md"
+   "src": "spanish-md/IMG_20260918_203804276_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-preparativo",
@@ -12680,7 +12909,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "spanish-md/IMG_20260918_203808317_AE.md"
+   "src": "spanish-md/IMG_20260918_203808317_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-programa",
@@ -12693,7 +12923,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "note": "Mannelijk ondanks de uitgang -a.",
-   "src": "spanish-md/IMG_20260918_203804276_AE.md"
+   "src": "spanish-md/IMG_20260918_203804276_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-safari",
@@ -12706,7 +12937,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🦁",
-   "src": "spanish-md/IMG_20260918_203804276_AE.md"
+   "src": "spanish-md/IMG_20260918_203804276_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-tour",
@@ -12719,7 +12951,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "spanish-md/IMG_20260918_203757754_AE.md"
+   "src": "spanish-md/IMG_20260918_203757754_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.es-necesario",
@@ -12731,7 +12964,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203804276_AE.md"
+   "src": "spanish-md/IMG_20260918_203804276_AE.md",
+   "pos": "other"
   },
   {
    "id": "v.hacer-la-reserva",
@@ -12744,7 +12978,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203757754_AE.md"
+   "src": "spanish-md/IMG_20260918_203757754_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.ir-de-camping",
@@ -12756,7 +12991,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203808317_AE.md"
+   "src": "spanish-md/IMG_20260918_203808317_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.la-crema",
@@ -12769,7 +13005,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🧴",
-   "src": "spanish-md/IMG_20260918_203804276_AE.md"
+   "src": "spanish-md/IMG_20260918_203804276_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-crema-solar",
@@ -12782,7 +13019,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🧴",
-   "src": "spanish-md/IMG_20260918_203808317_AE.md"
+   "src": "spanish-md/IMG_20260918_203808317_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-duracion",
@@ -12794,7 +13032,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "spanish-md/IMG_20260918_203808317_AE.md"
+   "src": "spanish-md/IMG_20260918_203808317_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-gente-del-lugar",
@@ -12807,7 +13046,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "note": "la gente is enkelvoud in het Spaans: la gente es amable.",
-   "src": "spanish-md/IMG_20260918_203757754_AE.md"
+   "src": "spanish-md/IMG_20260918_203757754_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-recomendacion",
@@ -12819,7 +13059,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "spanish-md/IMG_20260918_203804276_AE.md"
+   "src": "spanish-md/IMG_20260918_203804276_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-revista",
@@ -12832,7 +13073,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "📖",
-   "src": "spanish-md/IMG_20260918_203804276_AE.md"
+   "src": "spanish-md/IMG_20260918_203804276_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-tranquilidad",
@@ -12845,7 +13087,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "spanish-md/IMG_20260918_203757754_AE.md"
+   "src": "spanish-md/IMG_20260918_203757754_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.llevarse",
@@ -12858,7 +13101,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203804276_AE.md"
+   "src": "spanish-md/IMG_20260918_203804276_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.perdido-a",
@@ -12872,7 +13116,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203757754_AE.md"
+   "src": "spanish-md/IMG_20260918_203757754_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.ponerse-crema",
@@ -12885,7 +13130,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "Onregelmatig met g: me pongo.",
-   "src": "spanish-md/IMG_20260918_203804276_AE.md"
+   "src": "spanish-md/IMG_20260918_203804276_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.por-lo-menos",
@@ -12898,7 +13144,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203808317_AE.md"
+   "src": "spanish-md/IMG_20260918_203808317_AE.md",
+   "pos": "adv"
   },
   {
    "id": "v.positivo-a",
@@ -12910,7 +13157,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203757754_AE.md"
+   "src": "spanish-md/IMG_20260918_203757754_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.recomendado-a",
@@ -12922,7 +13170,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203757754_AE.md"
+   "src": "spanish-md/IMG_20260918_203757754_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.recorrer",
@@ -12935,7 +13184,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203757754_AE.md"
+   "src": "spanish-md/IMG_20260918_203757754_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.se-recomienda",
@@ -12949,7 +13199,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "Van recomendar (stamverandering e → ie).",
-   "src": "spanish-md/IMG_20260918_203757754_AE.md"
+   "src": "spanish-md/IMG_20260918_203757754_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.solamente",
@@ -12963,7 +13214,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203757754_AE.md"
+   "src": "spanish-md/IMG_20260918_203757754_AE.md",
+   "pos": "adv"
   },
   {
    "id": "v.solo-a",
@@ -12976,7 +13228,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203757754_AE.md"
+   "src": "spanish-md/IMG_20260918_203757754_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.tomar-fotos",
@@ -12990,7 +13243,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "Synoniemen: hacer fotos, sacar fotos.",
-   "src": "spanish-md/IMG_20260918_203757754_AE.md"
+   "src": "spanish-md/IMG_20260918_203757754_AE.md",
+   "pos": "verb"
   },
   {
    "id": "s.restaurant-1",
@@ -13094,7 +13348,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "src": "course-md/IMG_20260918_190147401_AE.md; spanish-md/IMG_20260918_204009683_AE.md",
-   "emoji": "👞"
+   "emoji": "👞",
+   "pos": "noun"
   },
   {
    "id": "v.las-botas",
@@ -13108,7 +13363,8 @@ window.COURSE = {
    "number": "pl",
    "emoji": "👢",
    "note": "enkelvoud: la bota",
-   "src": "course-md/IMG_20260918_190147401_AE.md"
+   "src": "course-md/IMG_20260918_190147401_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.las-botas-de-montana",
@@ -13122,7 +13378,8 @@ window.COURSE = {
    "gender": "f",
    "number": "pl",
    "emoji": "🥾",
-   "src": "course-md/IMG_20260918_190147401_AE.md"
+   "src": "course-md/IMG_20260918_190147401_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.las-chanclas",
@@ -13135,7 +13392,8 @@ window.COURSE = {
    "gender": "f",
    "number": "pl",
    "emoji": "🩴",
-   "src": "course-md/IMG_20260918_190147401_AE.md"
+   "src": "course-md/IMG_20260918_190147401_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.las-sandalias",
@@ -13148,7 +13406,8 @@ window.COURSE = {
    "gender": "f",
    "number": "pl",
    "emoji": "👡",
-   "src": "course-md/IMG_20260918_190147401_AE.md; spanish-md/IMG_20260918_203744401_AE.md"
+   "src": "course-md/IMG_20260918_190147401_AE.md; spanish-md/IMG_20260918_203744401_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.las-zapatillas-de-deporte",
@@ -13163,7 +13422,8 @@ window.COURSE = {
    "number": "pl",
    "emoji": "👟",
    "note": "informele synoniemen: las bambas, los tenis, las deportivas",
-   "src": "course-md/IMG_20260918_190147401_AE.md"
+   "src": "course-md/IMG_20260918_190147401_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.los-zapatos",
@@ -13177,7 +13437,8 @@ window.COURSE = {
    "number": "pl",
    "emoji": "👞",
    "note": "los zapatos de tacón = de schoenen met hak",
-   "src": "course-md/IMG_20260918_190147401_AE.md; spanish-md/IMG_20260918_203744401_AE.md"
+   "src": "course-md/IMG_20260918_190147401_AE.md; spanish-md/IMG_20260918_203744401_AE.md",
+   "pos": "noun"
   },
   {
    "id": "g.estar-plaats",
@@ -13360,7 +13621,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203804276_AE.md"
+   "src": "spanish-md/IMG_20260918_203804276_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.avanzar",
@@ -13372,7 +13634,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203804276_AE.md"
+   "src": "spanish-md/IMG_20260918_203804276_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.controlar",
@@ -13385,7 +13648,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203744401_AE.md"
+   "src": "spanish-md/IMG_20260918_203744401_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.el-juego",
@@ -13398,7 +13662,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🎲",
-   "src": "spanish-md/IMG_20260918_203744401_AE.md"
+   "src": "spanish-md/IMG_20260918_203744401_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.haciendo-preguntas",
@@ -13410,7 +13675,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203744401_AE.md"
+   "src": "spanish-md/IMG_20260918_203744401_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.la-ficha",
@@ -13424,7 +13690,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🔴",
-   "src": "spanish-md/IMG_20260918_203804276_AE.md"
+   "src": "spanish-md/IMG_20260918_203804276_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-mimica",
@@ -13437,7 +13704,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "spanish-md/IMG_20260918_203804276_AE.md"
+   "src": "spanish-md/IMG_20260918_203804276_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-pantomima",
@@ -13449,7 +13717,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "spanish-md/IMG_20260918_203804276_AE.md"
+   "src": "spanish-md/IMG_20260918_203804276_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.las-casillas-sin-marcar",
@@ -13461,7 +13730,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "pl",
-   "src": "spanish-md/IMG_20260918_203744401_AE.md"
+   "src": "spanish-md/IMG_20260918_203744401_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-deporte",
@@ -13474,7 +13744,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "⚽",
-   "src": "course-md/IMG_20260918_190204924_AE.md"
+   "src": "course-md/IMG_20260918_190204924_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-yoga",
@@ -13487,7 +13758,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🧘",
-   "src": "spanish-md/IMG_20260918_203808317_AE.md"
+   "src": "spanish-md/IMG_20260918_203808317_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.hacer-camping",
@@ -13499,7 +13771,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190204924_AE.md; spanish-md/IMG_20260918_203950488_AE.md"
+   "src": "course-md/IMG_20260918_190204924_AE.md; spanish-md/IMG_20260918_203950488_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.hacer-deporte",
@@ -13513,7 +13786,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "Synoniem: practicar deporte.",
-   "src": "course-md/IMG_20260918_190204924_AE.md; spanish-md/IMG_20260918_203950488_AE.md"
+   "src": "course-md/IMG_20260918_190204924_AE.md; spanish-md/IMG_20260918_203950488_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.hacer-ejercicio",
@@ -13526,7 +13800,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190204924_AE.md"
+   "src": "course-md/IMG_20260918_190204924_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.hacer-footing",
@@ -13539,7 +13814,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "Ook gespeld 'futín'. Synoniem: correr.",
-   "src": "course-md/IMG_20260918_190204924_AE.md; spanish-md/IMG_20260918_203950488_AE.md"
+   "src": "course-md/IMG_20260918_190204924_AE.md; spanish-md/IMG_20260918_203950488_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.hacer-gimnasia",
@@ -13552,7 +13828,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190204924_AE.md; spanish-md/IMG_20260918_203950488_AE.md"
+   "src": "course-md/IMG_20260918_190204924_AE.md; spanish-md/IMG_20260918_203950488_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.hacer-senderismo",
@@ -13565,7 +13842,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190204924_AE.md; spanish-md/IMG_20260918_203950488_AE.md"
+   "src": "course-md/IMG_20260918_190204924_AE.md; spanish-md/IMG_20260918_203950488_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.hacer-surf",
@@ -13577,7 +13855,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190204924_AE.md; spanish-md/IMG_20260918_203950488_AE.md"
+   "src": "course-md/IMG_20260918_190204924_AE.md; spanish-md/IMG_20260918_203950488_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.hacer-yoga",
@@ -13590,7 +13869,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190204924_AE.md; spanish-md/IMG_20260918_203950488_AE.md"
+   "src": "course-md/IMG_20260918_190204924_AE.md; spanish-md/IMG_20260918_203950488_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.ir-en-canoa",
@@ -13602,7 +13882,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203950488_AE.md"
+   "src": "spanish-md/IMG_20260918_203950488_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.jugar-al-baloncesto",
@@ -13614,7 +13895,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190204924_AE.md; spanish-md/IMG_20260918_203950488_AE.md"
+   "src": "course-md/IMG_20260918_190204924_AE.md; spanish-md/IMG_20260918_203950488_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.jugar-al-balonmano",
@@ -13626,7 +13908,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190204924_AE.md; spanish-md/IMG_20260918_203950488_AE.md"
+   "src": "course-md/IMG_20260918_190204924_AE.md; spanish-md/IMG_20260918_203950488_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.jugar-al-futbol",
@@ -13639,7 +13922,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "course-md/IMG_20260918_190204924_AE.md; spanish-md/IMG_20260918_203950488_AE.md",
-   "note": "Stamverandering u → ue: juego al fútbol."
+   "note": "Stamverandering u → ue: juego al fútbol.",
+   "pos": "verb"
   },
   {
    "id": "v.jugar-al-golf",
@@ -13651,7 +13935,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190204924_AE.md"
+   "src": "course-md/IMG_20260918_190204924_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.jugar-al-tenis",
@@ -13663,7 +13948,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190204924_AE.md; spanish-md/IMG_20260918_203950488_AE.md"
+   "src": "course-md/IMG_20260918_190204924_AE.md; spanish-md/IMG_20260918_203950488_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.jugar-al-voleibol",
@@ -13675,7 +13961,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190204924_AE.md; spanish-md/IMG_20260918_203950488_AE.md"
+   "src": "course-md/IMG_20260918_190204924_AE.md; spanish-md/IMG_20260918_203950488_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.navegar",
@@ -13688,7 +13975,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203950488_AE.md"
+   "src": "spanish-md/IMG_20260918_203950488_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.patinar",
@@ -13701,7 +13989,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203955459_AE.md"
+   "src": "spanish-md/IMG_20260918_203955459_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.practicar-deporte",
@@ -13714,7 +14003,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190204924_AE.md"
+   "src": "course-md/IMG_20260918_190204924_AE.md",
+   "pos": "verb"
   },
   {
    "id": "s.telefoneren-1",
@@ -13792,7 +14082,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190222978_AE.md"
+   "src": "course-md/IMG_20260918_190222978_AE.md",
+   "pos": "other"
   },
   {
    "id": "v.digame",
@@ -13806,7 +14097,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "Zo neemt men in Spanje de telefoon op. Ook: ¿Diga?",
-   "src": "course-md/IMG_20260918_190222978_AE.md"
+   "src": "course-md/IMG_20260918_190222978_AE.md",
+   "pos": "other"
   },
   {
    "id": "v.el-mensaje",
@@ -13818,7 +14110,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190222978_AE.md"
+   "src": "course-md/IMG_20260918_190222978_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-recado",
@@ -13831,7 +14124,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190222978_AE.md"
+   "src": "course-md/IMG_20260918_190222978_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.en-este-momento-no-esta",
@@ -13843,7 +14137,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190222978_AE.md"
+   "src": "course-md/IMG_20260918_190222978_AE.md",
+   "pos": "other"
   },
   {
    "id": "v.esta-comunicando",
@@ -13856,7 +14151,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190222978_AE.md"
+   "src": "course-md/IMG_20260918_190222978_AE.md",
+   "pos": "other"
   },
   {
    "id": "v.esta-el-senor-x",
@@ -13868,7 +14164,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190222978_AE.md"
+   "src": "course-md/IMG_20260918_190222978_AE.md",
+   "pos": "other"
   },
   {
    "id": "v.puedo-hablar-con",
@@ -13881,7 +14178,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190222978_AE.md"
+   "src": "course-md/IMG_20260918_190222978_AE.md",
+   "pos": "other"
   },
   {
    "id": "v.quiere-dejar-un-mensaje",
@@ -13894,7 +14192,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "Ook: ¿Quiere dejar algún recado?",
-   "src": "course-md/IMG_20260918_190222978_AE.md"
+   "src": "course-md/IMG_20260918_190222978_AE.md",
+   "pos": "other"
   },
   {
    "id": "v.se-ha-equivocado-de-numero",
@@ -13907,7 +14206,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190222978_AE.md"
+   "src": "course-md/IMG_20260918_190222978_AE.md",
+   "pos": "other"
   },
   {
    "id": "v.soy-ana-gonzalez",
@@ -13920,7 +14220,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "Aan de telefoon gebruikt men 'soy' om zich voor te stellen.",
-   "src": "course-md/IMG_20260918_190222978_AE.md"
+   "src": "course-md/IMG_20260918_190222978_AE.md",
+   "pos": "other"
   },
   {
    "id": "v.es-la-una",
@@ -13932,7 +14233,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_191525144_AE.md"
+   "src": "course-md/IMG_20260918_191525144_AE.md",
+   "pos": "other"
   },
   {
    "id": "v.son-las-cinco-menos-cuarto",
@@ -13944,7 +14246,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_191525144_AE.md"
+   "src": "course-md/IMG_20260918_191525144_AE.md",
+   "pos": "other"
   },
   {
    "id": "v.son-las-cuatro-menos-veinte",
@@ -13956,7 +14259,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_191525144_AE.md"
+   "src": "course-md/IMG_20260918_191525144_AE.md",
+   "pos": "other"
   },
   {
    "id": "v.son-las-dos",
@@ -13968,7 +14272,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_191525144_AE.md"
+   "src": "course-md/IMG_20260918_191525144_AE.md",
+   "pos": "other"
   },
   {
    "id": "v.son-las-dos-y-diez",
@@ -13980,7 +14285,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_191525144_AE.md"
+   "src": "course-md/IMG_20260918_191525144_AE.md",
+   "pos": "other"
   },
   {
    "id": "v.son-las-seis-en-punto",
@@ -13992,7 +14298,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_191525144_AE.md"
+   "src": "course-md/IMG_20260918_191525144_AE.md",
+   "pos": "other"
   },
   {
    "id": "v.son-las-tres-y-cuarto",
@@ -14004,7 +14311,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_191525144_AE.md"
+   "src": "course-md/IMG_20260918_191525144_AE.md",
+   "pos": "other"
   },
   {
    "id": "v.son-las-tres-y-media",
@@ -14017,7 +14325,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "let op: 3.30 u is in het Nederlands 'half vier'",
-   "src": "course-md/IMG_20260918_191525144_AE.md"
+   "src": "course-md/IMG_20260918_191525144_AE.md",
+   "pos": "other"
   },
   {
    "id": "v.cerrar",
@@ -14031,7 +14340,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "Stamverandering e → ie: cierro.",
-   "src": "course-md/IMG_20260918_190934217_AE.md"
+   "src": "course-md/IMG_20260918_190934217_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.contar",
@@ -14045,7 +14355,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "Stamverandering o → ue: cuento.",
-   "src": "course-md/IMG_20260918_190934217_AE.md"
+   "src": "course-md/IMG_20260918_190934217_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.costar",
@@ -14058,7 +14369,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "Stamverandering o → ue: cuesta.",
-   "src": "course-md/IMG_20260918_190934217_AE.md"
+   "src": "course-md/IMG_20260918_190934217_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.dormir",
@@ -14071,7 +14383,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "Stamverandering o → ue: duermo.",
-   "src": "course-md/IMG_20260918_190934217_AE.md"
+   "src": "course-md/IMG_20260918_190934217_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.empezar",
@@ -14084,7 +14397,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "Stamverandering e → ie: empiezo.",
-   "src": "course-md/IMG_20260918_190934217_AE.md"
+   "src": "course-md/IMG_20260918_190934217_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.encender",
@@ -14098,7 +14412,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "Stamverandering e → ie: enciendo.",
-   "src": "course-md/IMG_20260918_190934217_AE.md"
+   "src": "course-md/IMG_20260918_190934217_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.encontrar",
@@ -14111,7 +14426,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "Stamverandering o → ue: encuentro.",
-   "src": "course-md/IMG_20260918_190934217_AE.md"
+   "src": "course-md/IMG_20260918_190934217_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.entender",
@@ -14125,7 +14441,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "Stamverandering e → ie: entiendo.",
-   "src": "course-md/IMG_20260918_190934217_AE.md"
+   "src": "course-md/IMG_20260918_190934217_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.morir",
@@ -14139,7 +14456,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "Stamverandering o → ue: muero.",
-   "src": "course-md/IMG_20260918_190934217_AE.md"
+   "src": "course-md/IMG_20260918_190934217_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.mostrar",
@@ -14153,7 +14471,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "Stamverandering o → ue: muestro.",
-   "src": "course-md/IMG_20260918_190934217_AE.md"
+   "src": "course-md/IMG_20260918_190934217_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.pedir",
@@ -14167,7 +14486,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "Stamverandering e → i: pido.",
-   "src": "course-md/IMG_20260918_190934217_AE.md"
+   "src": "course-md/IMG_20260918_190934217_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.pensar",
@@ -14180,7 +14500,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "Stamverandering e → ie: pienso.",
-   "src": "course-md/IMG_20260918_190934217_AE.md"
+   "src": "course-md/IMG_20260918_190934217_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.perder",
@@ -14194,7 +14515,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "Stamverandering e → ie: pierdo.",
-   "src": "course-md/IMG_20260918_190934217_AE.md"
+   "src": "course-md/IMG_20260918_190934217_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.poder",
@@ -14208,7 +14530,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "Stamverandering o → ue: puedo.",
-   "src": "course-md/IMG_20260918_190934217_AE.md"
+   "src": "course-md/IMG_20260918_190934217_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.preferir",
@@ -14222,7 +14545,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "Stamverandering e → ie: prefiero.",
-   "src": "course-md/IMG_20260918_190934217_AE.md"
+   "src": "course-md/IMG_20260918_190934217_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.querer",
@@ -14235,7 +14559,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "Stamverandering e → ie: quiero. querer a = houden van.",
-   "src": "course-md/IMG_20260918_190934217_AE.md"
+   "src": "course-md/IMG_20260918_190934217_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.recomendar",
@@ -14249,7 +14574,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "Stamverandering e → ie: recomiendo.",
-   "src": "course-md/IMG_20260918_190934217_AE.md"
+   "src": "course-md/IMG_20260918_190934217_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.repetir",
@@ -14262,7 +14588,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "Stamverandering e → i: repito.",
-   "src": "course-md/IMG_20260918_190934217_AE.md"
+   "src": "course-md/IMG_20260918_190934217_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.sentir",
@@ -14275,7 +14602,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "Stamverandering e → ie: siento.",
-   "src": "course-md/IMG_20260918_190934217_AE.md"
+   "src": "course-md/IMG_20260918_190934217_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.servir",
@@ -14290,7 +14618,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "Stamverandering e → i: sirvo.",
-   "src": "course-md/IMG_20260918_190934217_AE.md"
+   "src": "course-md/IMG_20260918_190934217_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.vestir",
@@ -14304,7 +14633,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "Stamverandering e → i: visto. vestirse = zich aankleden.",
-   "src": "course-md/IMG_20260918_190934217_AE.md"
+   "src": "course-md/IMG_20260918_190934217_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.volver",
@@ -14318,7 +14648,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "Stamverandering o → ue: vuelvo.",
-   "src": "course-md/IMG_20260918_190934217_AE.md"
+   "src": "course-md/IMG_20260918_190934217_AE.md",
+   "pos": "verb"
   },
   {
    "id": "g.mas-de-getal",
@@ -14573,7 +14904,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "spanish-md/IMG_20260918_203753249_AE.md"
+   "src": "spanish-md/IMG_20260918_203753249_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-comparacion",
@@ -14585,7 +14917,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "spanish-md/IMG_20260918_203744401_AE.md"
+   "src": "spanish-md/IMG_20260918_203744401_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.malo-a",
@@ -14597,7 +14930,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203753249_AE.md"
+   "src": "spanish-md/IMG_20260918_203753249_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.mas-largo-a-que",
@@ -14609,7 +14943,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203753249_AE.md"
+   "src": "spanish-md/IMG_20260918_203753249_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.mayor",
@@ -14623,7 +14958,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "Onregelmatige vergrotende trap van grande; ook: ouder.",
-   "src": "spanish-md/IMG_20260918_203753249_AE.md"
+   "src": "spanish-md/IMG_20260918_203753249_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.peor",
@@ -14637,7 +14973,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "Onregelmatige vergrotende trap van malo.",
-   "src": "spanish-md/IMG_20260918_203753249_AE.md"
+   "src": "spanish-md/IMG_20260918_203753249_AE.md",
+   "pos": "adj"
   },
   {
    "id": "v.tan-importante-como",
@@ -14649,7 +14986,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203753249_AE.md"
+   "src": "spanish-md/IMG_20260918_203753249_AE.md",
+   "pos": "adj"
   },
   {
    "id": "g.imperfecto-gewoonte",
@@ -14872,7 +15210,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190313522_AE.md"
+   "src": "course-md/IMG_20260918_190313522_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-bacalao",
@@ -14885,7 +15224,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "note": "Meestal gezouten en gedroogd verkocht.",
-   "src": "course-md/IMG_20260918_190313522_AE.md"
+   "src": "course-md/IMG_20260918_190313522_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-lenguado",
@@ -14897,7 +15237,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190313522_AE.md"
+   "src": "course-md/IMG_20260918_190313522_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-mero",
@@ -14909,7 +15250,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190313522_AE.md"
+   "src": "course-md/IMG_20260918_190313522_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-pescado",
@@ -14923,7 +15265,8 @@ window.COURSE = {
    "number": "sg",
    "emoji": "🐟",
    "note": "el pez = de levende vis.",
-   "src": "course-md/IMG_20260918_190313522_AE.md"
+   "src": "course-md/IMG_20260918_190313522_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-pez-espada",
@@ -14935,7 +15278,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190313522_AE.md"
+   "src": "course-md/IMG_20260918_190313522_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-rape",
@@ -14947,7 +15291,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190313522_AE.md"
+   "src": "course-md/IMG_20260918_190313522_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-salmon",
@@ -14959,12 +15304,13 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190313522_AE.md"
+   "src": "course-md/IMG_20260918_190313522_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.en-escabeche",
    "kind": "vocab",
-   "theme": "vis",
+   "theme": "bereiding",
    "es": "en escabeche",
    "nl": [
     "in zure marinade",
@@ -14972,7 +15318,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190313522_AE.md"
+   "src": "course-md/IMG_20260918_190313522_AE.md",
+   "pos": "adv"
   },
   {
    "id": "v.la-anchoa",
@@ -14985,7 +15332,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "note": "el boquerón = de verse (gemarineerde) ansjovis.",
-   "src": "course-md/IMG_20260918_190313522_AE.md"
+   "src": "course-md/IMG_20260918_190313522_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-anguila",
@@ -14997,7 +15345,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190313522_AE.md"
+   "src": "course-md/IMG_20260918_190313522_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-dorada",
@@ -15010,7 +15359,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190313522_AE.md"
+   "src": "course-md/IMG_20260918_190313522_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-lubina",
@@ -15022,7 +15372,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190313522_AE.md"
+   "src": "course-md/IMG_20260918_190313522_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-merluza",
@@ -15034,7 +15385,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190313522_AE.md"
+   "src": "course-md/IMG_20260918_190313522_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-sardina",
@@ -15047,7 +15399,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190313522_AE.md"
+   "src": "course-md/IMG_20260918_190313522_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-trucha",
@@ -15059,7 +15412,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190313522_AE.md"
+   "src": "course-md/IMG_20260918_190313522_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-zarzuela",
@@ -15072,7 +15426,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190313522_AE.md"
+   "src": "course-md/IMG_20260918_190313522_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-asado",
@@ -15085,7 +15440,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🍖",
-   "src": "course-md/IMG_20260918_190306799_AE.md"
+   "src": "course-md/IMG_20260918_190306799_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-bistec",
@@ -15098,7 +15454,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🥩",
-   "src": "course-md/IMG_20260918_190306799_AE.md"
+   "src": "course-md/IMG_20260918_190306799_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-cochinillo",
@@ -15111,7 +15468,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🐖",
-   "src": "course-md/IMG_20260918_190306799_AE.md"
+   "src": "course-md/IMG_20260918_190306799_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-entrecot",
@@ -15124,7 +15482,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🥩",
-   "src": "course-md/IMG_20260918_190306799_AE.md"
+   "src": "course-md/IMG_20260918_190306799_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-estofado",
@@ -15138,7 +15497,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🍲",
-   "src": "course-md/IMG_20260918_190306799_AE.md"
+   "src": "course-md/IMG_20260918_190306799_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-lomo",
@@ -15151,12 +15511,13 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🥩",
-   "src": "course-md/IMG_20260918_190306799_AE.md"
+   "src": "course-md/IMG_20260918_190306799_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-salchichon",
    "kind": "vocab",
-   "theme": "vlees",
+   "theme": "vleeswaren",
    "es": "el salchichón",
    "nl": [
     "de worst",
@@ -15164,7 +15525,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190306799_AE.md"
+   "src": "course-md/IMG_20260918_190306799_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-albondiga",
@@ -15176,7 +15538,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190306799_AE.md"
+   "src": "course-md/IMG_20260918_190306799_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-carne-de-cerdo",
@@ -15189,7 +15552,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🍖",
-   "src": "course-md/IMG_20260918_190306799_AE.md"
+   "src": "course-md/IMG_20260918_190306799_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-carne-de-cordero",
@@ -15202,7 +15566,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🍖",
-   "src": "course-md/IMG_20260918_190306799_AE.md"
+   "src": "course-md/IMG_20260918_190306799_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-carne-de-ternera",
@@ -15215,7 +15580,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🥩",
-   "src": "course-md/IMG_20260918_190306799_AE.md"
+   "src": "course-md/IMG_20260918_190306799_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-carne-de-vaca",
@@ -15230,7 +15596,8 @@ window.COURSE = {
    "number": "sg",
    "emoji": "🥩",
    "note": "ook: la carne vacuna",
-   "src": "course-md/IMG_20260918_190306799_AE.md"
+   "src": "course-md/IMG_20260918_190306799_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-carne-picada",
@@ -15242,7 +15609,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190306799_AE.md"
+   "src": "course-md/IMG_20260918_190306799_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-chuleta",
@@ -15255,7 +15623,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🍖",
-   "src": "course-md/IMG_20260918_190306799_AE.md"
+   "src": "course-md/IMG_20260918_190306799_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-costilla",
@@ -15269,7 +15638,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🍖",
-   "src": "course-md/IMG_20260918_190306799_AE.md"
+   "src": "course-md/IMG_20260918_190306799_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-empanada",
@@ -15282,7 +15652,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🥟",
-   "src": "course-md/IMG_20260918_190306799_AE.md"
+   "src": "course-md/IMG_20260918_190306799_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-hamburguesa",
@@ -15295,7 +15666,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🍔",
-   "src": "course-md/IMG_20260918_190306799_AE.md"
+   "src": "course-md/IMG_20260918_190306799_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-morcilla",
@@ -15308,7 +15680,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190306799_AE.md"
+   "src": "course-md/IMG_20260918_190306799_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-parrillada",
@@ -15322,7 +15695,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🍖",
-   "src": "course-md/IMG_20260918_190306799_AE.md"
+   "src": "course-md/IMG_20260918_190306799_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-salchicha",
@@ -15335,7 +15709,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🌭",
-   "src": "course-md/IMG_20260918_190306799_AE.md"
+   "src": "course-md/IMG_20260918_190306799_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-salchicha-de-francfort",
@@ -15348,7 +15723,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🌭",
-   "src": "course-md/IMG_20260918_190306799_AE.md"
+   "src": "course-md/IMG_20260918_190306799_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-chorizo",
@@ -15361,7 +15737,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190313522_AE.md"
+   "src": "course-md/IMG_20260918_190313522_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-jamon-cocido",
@@ -15376,7 +15753,8 @@ window.COURSE = {
    "number": "sg",
    "emoji": "🍖",
    "note": "Synoniem: el jamón de York.",
-   "src": "course-md/IMG_20260918_190313522_AE.md"
+   "src": "course-md/IMG_20260918_190313522_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-jamon-serrano",
@@ -15391,7 +15769,8 @@ window.COURSE = {
    "number": "sg",
    "emoji": "🍖",
    "note": "Van betere kwaliteit en van het Iberische varken: el jamón ibérico.",
-   "src": "course-md/IMG_20260918_190313522_AE.md"
+   "src": "course-md/IMG_20260918_190313522_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-tocino",
@@ -15404,7 +15783,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🥓",
-   "src": "course-md/IMG_20260918_190313522_AE.md"
+   "src": "course-md/IMG_20260918_190313522_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-charcuteria",
@@ -15417,7 +15797,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190313522_AE.md"
+   "src": "course-md/IMG_20260918_190313522_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.los-embutidos",
@@ -15430,7 +15811,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "pl",
-   "src": "course-md/IMG_20260918_190313522_AE.md"
+   "src": "course-md/IMG_20260918_190313522_AE.md",
+   "pos": "noun"
   },
   {
    "id": "g.cod-lo-la",
@@ -15820,12 +16202,13 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203950488_AE.md"
+   "src": "spanish-md/IMG_20260918_203950488_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.cenar",
    "kind": "vocab",
-   "theme": "vrije-tijd",
+   "theme": "dagelijkse-routine",
    "es": "cenar",
    "nl": [
     "'s avonds eten",
@@ -15833,7 +16216,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203950488_AE.md"
+   "src": "spanish-md/IMG_20260918_203950488_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.coleccionar",
@@ -15845,7 +16229,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190204924_AE.md"
+   "src": "course-md/IMG_20260918_190204924_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.dibujar",
@@ -15857,7 +16242,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190204924_AE.md"
+   "src": "course-md/IMG_20260918_190204924_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.el-coro",
@@ -15869,7 +16255,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "spanish-md/IMG_20260918_203808317_AE.md"
+   "src": "spanish-md/IMG_20260918_203808317_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-sello",
@@ -15883,7 +16270,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "📮",
-   "src": "course-md/IMG_20260918_190204924_AE.md; spanish-md/IMG_20260918_204005232_AE.md"
+   "src": "course-md/IMG_20260918_190204924_AE.md; spanish-md/IMG_20260918_204005232_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-sudoku",
@@ -15895,7 +16283,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190204924_AE.md"
+   "src": "course-md/IMG_20260918_190204924_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.hacer-bricolaje",
@@ -15908,7 +16297,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190204924_AE.md"
+   "src": "course-md/IMG_20260918_190204924_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.hacer-crucigramas",
@@ -15921,7 +16311,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "el crucigrama = het kruiswoordraadsel (mannelijk, ondanks de -a).",
-   "src": "course-md/IMG_20260918_190204924_AE.md"
+   "src": "course-md/IMG_20260918_190204924_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.hacer-fotos",
@@ -15935,7 +16326,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "Synoniemen: sacar fotos, tomar fotos.",
-   "src": "course-md/IMG_20260918_190204924_AE.md"
+   "src": "course-md/IMG_20260918_190204924_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.hacer-sacar-tomar-fotos",
@@ -15948,7 +16340,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203950488_AE.md"
+   "src": "spanish-md/IMG_20260918_203950488_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.hacer-trabajos-de-bricolaje",
@@ -15960,7 +16353,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203950488_AE.md"
+   "src": "spanish-md/IMG_20260918_203950488_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.hacer-trabajos-manuales",
@@ -15973,7 +16367,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190204924_AE.md; spanish-md/IMG_20260918_203950488_AE.md"
+   "src": "course-md/IMG_20260918_190204924_AE.md; spanish-md/IMG_20260918_203950488_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.ir-al-cine",
@@ -15985,7 +16380,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203950488_AE.md"
+   "src": "spanish-md/IMG_20260918_203950488_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.ir-al-teatro",
@@ -15997,7 +16393,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203950488_AE.md"
+   "src": "spanish-md/IMG_20260918_203950488_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.jugar",
@@ -16010,7 +16407,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "Stamverandering u → ue: juego. Met sporten en spelen: jugar a + lidwoord (jugar al tenis).",
-   "src": "course-md/IMG_20260918_190204924_AE.md; spanish-md/IMG_20260918_203804276_AE.md"
+   "src": "course-md/IMG_20260918_190204924_AE.md; spanish-md/IMG_20260918_203804276_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.jugar-a-juegos-de-ordenador",
@@ -16024,7 +16422,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "In Latijns-Amerika: juegos de computador(a).",
-   "src": "spanish-md/IMG_20260918_203950488_AE.md"
+   "src": "spanish-md/IMG_20260918_203950488_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.jugar-a-las-cartas",
@@ -16037,7 +16436,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190204924_AE.md; spanish-md/IMG_20260918_203950488_AE.md"
+   "src": "course-md/IMG_20260918_190204924_AE.md; spanish-md/IMG_20260918_203950488_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.jugar-al-ajedrez",
@@ -16050,7 +16450,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "el ajedrez = het schaakspel.",
-   "src": "course-md/IMG_20260918_190204924_AE.md; spanish-md/IMG_20260918_203950488_AE.md"
+   "src": "course-md/IMG_20260918_190204924_AE.md; spanish-md/IMG_20260918_203950488_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.la-aficion",
@@ -16064,12 +16465,13 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "note": "Synoniem: el pasatiempo.",
-   "src": "course-md/IMG_20260918_190204924_AE.md"
+   "src": "course-md/IMG_20260918_190204924_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-concha",
    "kind": "vocab",
-   "theme": "vrije-tijd",
+   "theme": "plaatsen-en-natuur",
    "es": "la concha",
    "nl": [
     "de schelp"
@@ -16077,12 +16479,13 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🐚",
-   "src": "course-md/IMG_20260918_190204924_AE.md"
+   "src": "course-md/IMG_20260918_190204924_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-mariposa",
    "kind": "vocab",
-   "theme": "vrije-tijd",
+   "theme": "plaatsen-en-natuur",
    "es": "la mariposa",
    "nl": [
     "de vlinder"
@@ -16090,7 +16493,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🦋",
-   "src": "course-md/IMG_20260918_190204924_AE.md"
+   "src": "course-md/IMG_20260918_190204924_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-moneda",
@@ -16104,7 +16508,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🪙",
-   "src": "course-md/IMG_20260918_190204924_AE.md"
+   "src": "course-md/IMG_20260918_190204924_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.los-juegos-de-mesa",
@@ -16117,7 +16522,8 @@ window.COURSE = {
    "gender": "m",
    "number": "pl",
    "emoji": "🎲",
-   "src": "course-md/IMG_20260918_190204924_AE.md"
+   "src": "course-md/IMG_20260918_190204924_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.ser-voluntario-a",
@@ -16129,19 +16535,21 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203955459_AE.md"
+   "src": "spanish-md/IMG_20260918_203955459_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.tocar-el-piano",
    "kind": "vocab",
-   "theme": "vrije-tijd",
+   "theme": "muziekinstrumenten",
    "es": "tocar el piano",
    "nl": [
     "pianospelen"
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203955459_AE.md"
+   "src": "spanish-md/IMG_20260918_203955459_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.trabajar-en-el-jardin",
@@ -16154,7 +16562,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190204924_AE.md; spanish-md/IMG_20260918_203955459_AE.md"
+   "src": "course-md/IMG_20260918_190204924_AE.md; spanish-md/IMG_20260918_203955459_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.ver-la-tele",
@@ -16166,7 +16575,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203955459_AE.md"
+   "src": "spanish-md/IMG_20260918_203955459_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.acostarse",
@@ -16180,7 +16590,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "klankverandering o → ue: me acuesto",
-   "src": "course-md/IMG_20260918_191241677_AE.md; spanish-md/IMG_20260918_203757754_AE.md"
+   "src": "course-md/IMG_20260918_191241677_AE.md; spanish-md/IMG_20260918_203757754_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.afeitarse",
@@ -16192,7 +16603,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_191241677_AE.md"
+   "src": "course-md/IMG_20260918_191241677_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.banarse",
@@ -16205,7 +16617,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_191241677_AE.md"
+   "src": "course-md/IMG_20260918_191241677_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.despertarse",
@@ -16218,7 +16631,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "klankverandering e → ie: me despierto",
-   "src": "course-md/IMG_20260918_191241677_AE.md"
+   "src": "course-md/IMG_20260918_191241677_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.divertirse",
@@ -16233,7 +16647,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "klankverandering e → ie: me divierto",
-   "src": "course-md/IMG_20260918_191241677_AE.md; course-md/IMG_20260918_190934217_AE.md"
+   "src": "course-md/IMG_20260918_191241677_AE.md; course-md/IMG_20260918_190934217_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.ducharse",
@@ -16246,7 +16661,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "course-md/IMG_20260918_191241677_AE.md; spanish-md/IMG_20260918_203757754_AE.md",
-   "note": "Wederkerend werkwoord: me ducho."
+   "note": "Wederkerend werkwoord: me ducho.",
+   "pos": "verb"
   },
   {
    "id": "v.irse",
@@ -16259,7 +16675,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_191241677_AE.md"
+   "src": "course-md/IMG_20260918_191241677_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.lavarse",
@@ -16271,7 +16688,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_191241677_AE.md"
+   "src": "course-md/IMG_20260918_191241677_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.levantarse",
@@ -16284,7 +16702,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "course-md/IMG_20260918_191241677_AE.md; spanish-md/IMG_20260918_203753249_AE.md",
-   "note": "Wederkerend: me levanto."
+   "note": "Wederkerend: me levanto.",
+   "pos": "verb"
   },
   {
    "id": "v.llamarse",
@@ -16296,7 +16715,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_191241677_AE.md"
+   "src": "course-md/IMG_20260918_191241677_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.marcharse",
@@ -16309,7 +16729,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_191241677_AE.md"
+   "src": "course-md/IMG_20260918_191241677_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.peinarse",
@@ -16321,7 +16742,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_191241677_AE.md"
+   "src": "course-md/IMG_20260918_191241677_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.pintarse",
@@ -16334,7 +16756,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_191241677_AE.md"
+   "src": "course-md/IMG_20260918_191241677_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.verse",
@@ -16347,7 +16770,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "wederkerig gebruik: nos vemos = we zien elkaar",
-   "src": "course-md/IMG_20260918_191241677_AE.md"
+   "src": "course-md/IMG_20260918_191241677_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.bajo-cero",
@@ -16359,7 +16783,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203804276_AE.md"
+   "src": "spanish-md/IMG_20260918_203804276_AE.md",
+   "pos": "adv"
   },
   {
    "id": "v.como-llueve",
@@ -16371,7 +16796,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203804276_AE.md"
+   "src": "spanish-md/IMG_20260918_203804276_AE.md",
+   "pos": "other"
   },
   {
    "id": "v.el-calor",
@@ -16384,7 +16810,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🔥",
-   "src": "spanish-md/IMG_20260918_203804276_AE.md"
+   "src": "spanish-md/IMG_20260918_203804276_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-frio",
@@ -16397,7 +16824,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🥶",
-   "src": "spanish-md/IMG_20260918_203804276_AE.md"
+   "src": "spanish-md/IMG_20260918_203804276_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-grado",
@@ -16410,7 +16838,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🌡️",
-   "src": "spanish-md/IMG_20260918_203804276_AE.md"
+   "src": "spanish-md/IMG_20260918_203804276_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-tiempo",
@@ -16423,7 +16852,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "spanish-md/IMG_20260918_203744401_AE.md"
+   "src": "spanish-md/IMG_20260918_203744401_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-viento",
@@ -16436,7 +16866,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "💨",
-   "src": "spanish-md/IMG_20260918_203804276_AE.md"
+   "src": "spanish-md/IMG_20260918_203804276_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.esta-nublado",
@@ -16448,7 +16879,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203757754_AE.md"
+   "src": "spanish-md/IMG_20260918_203757754_AE.md",
+   "pos": "other"
   },
   {
    "id": "v.hace-5-grados",
@@ -16460,7 +16892,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203804276_AE.md"
+   "src": "spanish-md/IMG_20260918_203804276_AE.md",
+   "pos": "other"
   },
   {
    "id": "v.hace-buen-tiempo",
@@ -16473,7 +16906,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203757754_AE.md"
+   "src": "spanish-md/IMG_20260918_203757754_AE.md",
+   "pos": "other"
   },
   {
    "id": "v.hace-calor",
@@ -16485,7 +16919,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203804276_AE.md"
+   "src": "spanish-md/IMG_20260918_203804276_AE.md",
+   "pos": "other"
   },
   {
    "id": "v.hace-frio",
@@ -16497,7 +16932,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203804276_AE.md"
+   "src": "spanish-md/IMG_20260918_203804276_AE.md",
+   "pos": "other"
   },
   {
    "id": "v.hace-mal-tiempo",
@@ -16509,7 +16945,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203804276_AE.md"
+   "src": "spanish-md/IMG_20260918_203804276_AE.md",
+   "pos": "other"
   },
   {
    "id": "v.hace-sol",
@@ -16522,7 +16959,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203757754_AE.md"
+   "src": "spanish-md/IMG_20260918_203757754_AE.md",
+   "pos": "other"
   },
   {
    "id": "v.hace-viento",
@@ -16534,7 +16972,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203804276_AE.md"
+   "src": "spanish-md/IMG_20260918_203804276_AE.md",
+   "pos": "other"
   },
   {
    "id": "v.hay-niebla",
@@ -16546,7 +16985,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203804276_AE.md"
+   "src": "spanish-md/IMG_20260918_203804276_AE.md",
+   "pos": "other"
   },
   {
    "id": "v.la-niebla",
@@ -16559,7 +16999,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🌫️",
-   "src": "spanish-md/IMG_20260918_203804276_AE.md"
+   "src": "spanish-md/IMG_20260918_203804276_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-temperatura",
@@ -16571,7 +17012,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "spanish-md/IMG_20260918_203757754_AE.md"
+   "src": "spanish-md/IMG_20260918_203757754_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.llover",
@@ -16584,7 +17026,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "Onpersoonlijk: llueve = het regent. Stamverandering o → ue.",
-   "src": "spanish-md/IMG_20260918_203757754_AE.md; spanish-md/IMG_20260918_203753249_AE.md"
+   "src": "spanish-md/IMG_20260918_203757754_AE.md; spanish-md/IMG_20260918_203753249_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.nevar",
@@ -16597,7 +17040,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "Stamverandering e → ie: nieva.",
-   "src": "spanish-md/IMG_20260918_203804276_AE.md"
+   "src": "spanish-md/IMG_20260918_203804276_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.nieva",
@@ -16610,7 +17054,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "Vorm van nevar.",
-   "src": "spanish-md/IMG_20260918_203804276_AE.md"
+   "src": "spanish-md/IMG_20260918_203804276_AE.md",
+   "pos": "other"
   },
   {
    "id": "v.que-frio-hace",
@@ -16622,7 +17067,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203804276_AE.md"
+   "src": "spanish-md/IMG_20260918_203804276_AE.md",
+   "pos": "other"
   },
   {
    "id": "v.que-nublado-esta",
@@ -16634,7 +17080,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203804276_AE.md"
+   "src": "spanish-md/IMG_20260918_203804276_AE.md",
+   "pos": "other"
   },
   {
    "id": "v.que-tiempo-hace",
@@ -16646,7 +17093,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "spanish-md/IMG_20260918_203804276_AE.md"
+   "src": "spanish-md/IMG_20260918_203804276_AE.md",
+   "pos": "other"
   },
   {
    "id": "v.alquilar",
@@ -16659,7 +17107,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190907308_AE.md"
+   "src": "course-md/IMG_20260918_190907308_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.andar",
@@ -16673,7 +17122,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190907308_AE.md"
+   "src": "course-md/IMG_20260918_190907308_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.apuntar",
@@ -16686,7 +17136,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190907308_AE.md"
+   "src": "course-md/IMG_20260918_190907308_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.buscar",
@@ -16698,7 +17149,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190907308_AE.md"
+   "src": "course-md/IMG_20260918_190907308_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.cambiar",
@@ -16711,7 +17163,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190907308_AE.md"
+   "src": "course-md/IMG_20260918_190907308_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.caminar",
@@ -16724,7 +17177,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190907308_AE.md"
+   "src": "course-md/IMG_20260918_190907308_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.charlar",
@@ -16737,7 +17191,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190907308_AE.md"
+   "src": "course-md/IMG_20260918_190907308_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.comprar",
@@ -16749,7 +17204,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190907308_AE.md"
+   "src": "course-md/IMG_20260918_190907308_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.desayunar",
@@ -16761,7 +17217,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190907308_AE.md"
+   "src": "course-md/IMG_20260918_190907308_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.entrar",
@@ -16774,7 +17231,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190907308_AE.md"
+   "src": "course-md/IMG_20260918_190907308_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.escuchar",
@@ -16787,7 +17245,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190907308_AE.md"
+   "src": "course-md/IMG_20260918_190907308_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.esperar",
@@ -16800,7 +17259,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190907308_AE.md"
+   "src": "course-md/IMG_20260918_190907308_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.estudiar",
@@ -16812,7 +17272,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190907308_AE.md"
+   "src": "course-md/IMG_20260918_190907308_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.explicar",
@@ -16824,7 +17285,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190907308_AE.md"
+   "src": "course-md/IMG_20260918_190907308_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.fumar",
@@ -16836,7 +17298,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190907308_AE.md"
+   "src": "course-md/IMG_20260918_190907308_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.hablar",
@@ -16849,7 +17312,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190907308_AE.md"
+   "src": "course-md/IMG_20260918_190907308_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.invitar",
@@ -16861,7 +17325,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190907308_AE.md"
+   "src": "course-md/IMG_20260918_190907308_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.mirar",
@@ -16875,7 +17340,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190907308_AE.md; spanish-md/IMG_20260918_203757754_AE.md"
+   "src": "course-md/IMG_20260918_190907308_AE.md; spanish-md/IMG_20260918_203757754_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.necesitar",
@@ -16887,7 +17353,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190907308_AE.md"
+   "src": "course-md/IMG_20260918_190907308_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.olvidar",
@@ -16899,7 +17366,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190907308_AE.md"
+   "src": "course-md/IMG_20260918_190907308_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.pagar",
@@ -16911,7 +17379,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190907308_AE.md"
+   "src": "course-md/IMG_20260918_190907308_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.pasar",
@@ -16925,7 +17394,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190907308_AE.md"
+   "src": "course-md/IMG_20260918_190907308_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.preguntar",
@@ -16937,7 +17407,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190907308_AE.md"
+   "src": "course-md/IMG_20260918_190907308_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.reservar",
@@ -16949,7 +17420,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190907308_AE.md"
+   "src": "course-md/IMG_20260918_190907308_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.telefonear",
@@ -16962,7 +17434,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190907308_AE.md"
+   "src": "course-md/IMG_20260918_190907308_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.tomar",
@@ -16975,7 +17448,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190907308_AE.md"
+   "src": "course-md/IMG_20260918_190907308_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.trabajar",
@@ -16987,7 +17461,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190907308_AE.md"
+   "src": "course-md/IMG_20260918_190907308_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.viajar",
@@ -16999,7 +17474,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190907308_AE.md"
+   "src": "course-md/IMG_20260918_190907308_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.aprender",
@@ -17011,7 +17487,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190912590_AE.md"
+   "src": "course-md/IMG_20260918_190912590_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.beber",
@@ -17023,7 +17500,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190912590_AE.md"
+   "src": "course-md/IMG_20260918_190912590_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.comer",
@@ -17035,7 +17513,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190912590_AE.md"
+   "src": "course-md/IMG_20260918_190912590_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.comprender",
@@ -17047,7 +17526,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190912590_AE.md"
+   "src": "course-md/IMG_20260918_190912590_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.correr",
@@ -17061,7 +17541,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190912590_AE.md; course-md/IMG_20260918_190204924_AE.md; spanish-md/IMG_20260918_203950488_AE.md"
+   "src": "course-md/IMG_20260918_190912590_AE.md; course-md/IMG_20260918_190204924_AE.md; spanish-md/IMG_20260918_203950488_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.creer",
@@ -17075,7 +17556,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "onregelmatig voltooid deelwoord: creído",
-   "src": "course-md/IMG_20260918_190912590_AE.md"
+   "src": "course-md/IMG_20260918_190912590_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.deber",
@@ -17087,7 +17569,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190912590_AE.md"
+   "src": "course-md/IMG_20260918_190912590_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.depender",
@@ -17100,7 +17583,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "depender de = afhangen van",
-   "src": "course-md/IMG_20260918_190912590_AE.md"
+   "src": "course-md/IMG_20260918_190912590_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.esconder",
@@ -17113,7 +17597,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190912590_AE.md"
+   "src": "course-md/IMG_20260918_190912590_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.poseer",
@@ -17126,7 +17611,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "onregelmatig voltooid deelwoord: poseído",
-   "src": "course-md/IMG_20260918_190912590_AE.md"
+   "src": "course-md/IMG_20260918_190912590_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.prometer",
@@ -17138,7 +17624,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190912590_AE.md"
+   "src": "course-md/IMG_20260918_190912590_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.responder",
@@ -17150,7 +17637,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190912590_AE.md"
+   "src": "course-md/IMG_20260918_190912590_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.temer",
@@ -17162,7 +17650,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190912590_AE.md"
+   "src": "course-md/IMG_20260918_190912590_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.vender",
@@ -17174,7 +17663,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190912590_AE.md"
+   "src": "course-md/IMG_20260918_190912590_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.abrir",
@@ -17188,7 +17678,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "onregelmatig voltooid deelwoord: abierto",
-   "src": "course-md/IMG_20260918_190912590_AE.md"
+   "src": "course-md/IMG_20260918_190912590_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.admitir",
@@ -17201,7 +17692,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190912590_AE.md"
+   "src": "course-md/IMG_20260918_190912590_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.anadir",
@@ -17213,7 +17705,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190912590_AE.md"
+   "src": "course-md/IMG_20260918_190912590_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.aplaudir",
@@ -17226,7 +17719,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190912590_AE.md"
+   "src": "course-md/IMG_20260918_190912590_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.escribir",
@@ -17239,7 +17733,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "onregelmatig voltooid deelwoord: escrito",
-   "src": "course-md/IMG_20260918_190912590_AE.md"
+   "src": "course-md/IMG_20260918_190912590_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.interrumpir",
@@ -17251,7 +17746,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190912590_AE.md"
+   "src": "course-md/IMG_20260918_190912590_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.partir",
@@ -17263,7 +17759,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190912590_AE.md"
+   "src": "course-md/IMG_20260918_190912590_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.permitir",
@@ -17276,7 +17773,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190912590_AE.md"
+   "src": "course-md/IMG_20260918_190912590_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.persuadir",
@@ -17289,7 +17787,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190912590_AE.md"
+   "src": "course-md/IMG_20260918_190912590_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.recibir",
@@ -17302,7 +17801,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190912590_AE.md"
+   "src": "course-md/IMG_20260918_190912590_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.resistir",
@@ -17315,7 +17815,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190912590_AE.md"
+   "src": "course-md/IMG_20260918_190912590_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.reunir",
@@ -17329,7 +17830,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "note": "reunirse = samenkomen, vergaderen",
-   "src": "course-md/IMG_20260918_190912590_AE.md"
+   "src": "course-md/IMG_20260918_190912590_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.subir",
@@ -17343,7 +17845,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190912590_AE.md"
+   "src": "course-md/IMG_20260918_190912590_AE.md",
+   "pos": "verb"
   },
   {
    "id": "v.vivir",
@@ -17356,7 +17859,8 @@ window.COURSE = {
    ],
    "gender": null,
    "number": null,
-   "src": "course-md/IMG_20260918_190912590_AE.md"
+   "src": "course-md/IMG_20260918_190912590_AE.md",
+   "pos": "verb"
   },
   {
    "id": "s.winkelen-1",
@@ -17453,7 +17957,8 @@ window.COURSE = {
    "number": null,
    "emoji": "📮",
    "note": "Naam van de Spaanse post; ook: la oficina de correos.",
-   "src": "spanish-md/IMG_20260918_204009683_AE.md"
+   "src": "spanish-md/IMG_20260918_204009683_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-centro-comercial",
@@ -17466,7 +17971,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🏬",
-   "src": "spanish-md/IMG_20260918_204009683_AE.md"
+   "src": "spanish-md/IMG_20260918_204009683_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-quiosco",
@@ -17479,7 +17985,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "📰",
-   "src": "spanish-md/IMG_20260918_204009683_AE.md"
+   "src": "spanish-md/IMG_20260918_204009683_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-agencia-de-viajes",
@@ -17492,7 +17999,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "✈️",
-   "src": "spanish-md/IMG_20260918_204009683_AE.md"
+   "src": "spanish-md/IMG_20260918_204009683_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-drogueria",
@@ -17504,7 +18012,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "spanish-md/IMG_20260918_204009683_AE.md"
+   "src": "spanish-md/IMG_20260918_204009683_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-farmacia",
@@ -17517,7 +18026,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "💊",
-   "src": "spanish-md/IMG_20260918_204009683_AE.md"
+   "src": "spanish-md/IMG_20260918_204009683_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-floristeria",
@@ -17530,7 +18040,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "💐",
-   "src": "spanish-md/IMG_20260918_204009683_AE.md"
+   "src": "spanish-md/IMG_20260918_204009683_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-joyeria",
@@ -17543,7 +18054,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "💍",
-   "src": "spanish-md/IMG_20260918_204009683_AE.md"
+   "src": "spanish-md/IMG_20260918_204009683_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-libreria",
@@ -17557,7 +18069,8 @@ window.COURSE = {
    "number": "sg",
    "emoji": "📚",
    "note": "Valse vriend: een bibliotheek is la biblioteca.",
-   "src": "spanish-md/IMG_20260918_204009683_AE.md"
+   "src": "spanish-md/IMG_20260918_204009683_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-optica",
@@ -17570,7 +18083,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "👓",
-   "src": "spanish-md/IMG_20260918_204009683_AE.md"
+   "src": "spanish-md/IMG_20260918_204009683_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-papeleria",
@@ -17582,7 +18096,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "spanish-md/IMG_20260918_204009683_AE.md"
+   "src": "spanish-md/IMG_20260918_204009683_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-peluqueria",
@@ -17595,7 +18110,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "💇",
-   "src": "spanish-md/IMG_20260918_204009683_AE.md"
+   "src": "spanish-md/IMG_20260918_204009683_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-perfumeria",
@@ -17608,7 +18124,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🧴",
-   "src": "spanish-md/IMG_20260918_204009683_AE.md"
+   "src": "spanish-md/IMG_20260918_204009683_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-tienda-de-electrodomesticos",
@@ -17621,7 +18138,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "spanish-md/IMG_20260918_204009683_AE.md"
+   "src": "spanish-md/IMG_20260918_204009683_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-tienda-de-segunda-mano",
@@ -17633,7 +18151,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "spanish-md/IMG_20260918_204009683_AE.md"
+   "src": "spanish-md/IMG_20260918_204009683_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-tintoreria",
@@ -17645,7 +18164,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "spanish-md/IMG_20260918_204009683_AE.md"
+   "src": "spanish-md/IMG_20260918_204009683_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.los-grandes-almacenes",
@@ -17658,7 +18178,8 @@ window.COURSE = {
    "gender": "m",
    "number": "pl",
    "emoji": "🏬",
-   "src": "spanish-md/IMG_20260918_204009683_AE.md"
+   "src": "spanish-md/IMG_20260918_204009683_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-mercadillo",
@@ -17670,7 +18191,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "spanish-md/IMG_20260918_204009683_AE.md"
+   "src": "spanish-md/IMG_20260918_204009683_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-mercado",
@@ -17683,7 +18205,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🧺",
-   "src": "spanish-md/IMG_20260918_204009683_AE.md"
+   "src": "spanish-md/IMG_20260918_204009683_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-rastro",
@@ -17696,7 +18219,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "note": "El Rastro is de bekende vlooienmarkt van Madrid.",
-   "src": "spanish-md/IMG_20260918_204009683_AE.md"
+   "src": "spanish-md/IMG_20260918_204009683_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-carniceria",
@@ -17709,7 +18233,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🥩",
-   "src": "spanish-md/IMG_20260918_204009683_AE.md"
+   "src": "spanish-md/IMG_20260918_204009683_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-confiteria",
@@ -17722,7 +18247,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🍰",
-   "src": "spanish-md/IMG_20260918_204009683_AE.md"
+   "src": "spanish-md/IMG_20260918_204009683_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-fruteria",
@@ -17735,7 +18261,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🍎",
-   "src": "spanish-md/IMG_20260918_204009683_AE.md"
+   "src": "spanish-md/IMG_20260918_204009683_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-heladeria",
@@ -17748,7 +18275,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🍦",
-   "src": "spanish-md/IMG_20260918_204009683_AE.md"
+   "src": "spanish-md/IMG_20260918_204009683_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-panaderia",
@@ -17761,7 +18289,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🥖",
-   "src": "spanish-md/IMG_20260918_204009683_AE.md"
+   "src": "spanish-md/IMG_20260918_204009683_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-pescaderia",
@@ -17774,7 +18303,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🐟",
-   "src": "spanish-md/IMG_20260918_204009683_AE.md"
+   "src": "spanish-md/IMG_20260918_204009683_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-verduleria",
@@ -17787,7 +18317,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🥬",
-   "src": "spanish-md/IMG_20260918_204009683_AE.md"
+   "src": "spanish-md/IMG_20260918_204009683_AE.md",
+   "pos": "noun"
   },
   {
    "id": "s.wonen-1",
@@ -22925,7 +23456,8 @@ window.COURSE = {
    "number": "sg",
    "emoji": "🦞",
    "note": "Met grote scharen, in tegenstelling tot la langosta.",
-   "src": "course-md/IMG_20260918_190313522_AE.md"
+   "src": "course-md/IMG_20260918_190313522_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-calamar",
@@ -22939,7 +23471,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🦑",
-   "src": "course-md/IMG_20260918_190313522_AE.md"
+   "src": "course-md/IMG_20260918_190313522_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-camaron",
@@ -22952,7 +23485,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🦐",
-   "src": "course-md/IMG_20260918_190313522_AE.md"
+   "src": "course-md/IMG_20260918_190313522_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-cangrejo",
@@ -22965,7 +23499,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🦀",
-   "src": "course-md/IMG_20260918_190313522_AE.md"
+   "src": "course-md/IMG_20260918_190313522_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-chipiron",
@@ -22977,7 +23512,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190313522_AE.md"
+   "src": "course-md/IMG_20260918_190313522_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-langostino",
@@ -22991,7 +23527,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🦐",
-   "src": "course-md/IMG_20260918_190313522_AE.md"
+   "src": "course-md/IMG_20260918_190313522_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-mejillon",
@@ -23004,7 +23541,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "note": "Meervoud: los mejillones.",
-   "src": "course-md/IMG_20260918_190313522_AE.md"
+   "src": "course-md/IMG_20260918_190313522_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-pulpo",
@@ -23017,7 +23555,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🐙",
-   "src": "course-md/IMG_20260918_190313522_AE.md"
+   "src": "course-md/IMG_20260918_190313522_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-almeja",
@@ -23029,7 +23568,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190313522_AE.md"
+   "src": "course-md/IMG_20260918_190313522_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-gamba",
@@ -23043,7 +23583,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🦐",
-   "src": "course-md/IMG_20260918_190313522_AE.md"
+   "src": "course-md/IMG_20260918_190313522_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-langosta",
@@ -23056,7 +23597,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "note": "Zonder grote scharen; el bogavante is de kreeft met scharen.",
-   "src": "course-md/IMG_20260918_190313522_AE.md"
+   "src": "course-md/IMG_20260918_190313522_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-ostra",
@@ -23069,7 +23611,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🦪",
-   "src": "course-md/IMG_20260918_190313522_AE.md"
+   "src": "course-md/IMG_20260918_190313522_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-sepia",
@@ -23082,7 +23625,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190313522_AE.md"
+   "src": "course-md/IMG_20260918_190313522_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-vieira",
@@ -23096,7 +23640,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "note": "Synoniem: la concha de peregrino.",
-   "src": "course-md/IMG_20260918_190313522_AE.md"
+   "src": "course-md/IMG_20260918_190313522_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.los-mariscos",
@@ -23109,7 +23654,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "pl",
-   "src": "course-md/IMG_20260918_190313522_AE.md"
+   "src": "course-md/IMG_20260918_190313522_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-bizcocho",
@@ -23123,7 +23669,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🍰",
-   "src": "course-md/IMG_20260918_190322153_AE.md"
+   "src": "course-md/IMG_20260918_190322153_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-bocadillo",
@@ -23137,7 +23684,8 @@ window.COURSE = {
    "number": "sg",
    "emoji": "🥪",
    "note": "el bocadillo de queso = het broodje kaas.",
-   "src": "course-md/IMG_20260918_190322153_AE.md"
+   "src": "course-md/IMG_20260918_190322153_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-cruasan",
@@ -23151,7 +23699,8 @@ window.COURSE = {
    "number": "sg",
    "emoji": "🥐",
    "note": "Ook gespeld: el croasán.",
-   "src": "course-md/IMG_20260918_190322153_AE.md"
+   "src": "course-md/IMG_20260918_190322153_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-flan",
@@ -23165,7 +23714,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🍮",
-   "src": "course-md/IMG_20260918_190322153_AE.md"
+   "src": "course-md/IMG_20260918_190322153_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-helado",
@@ -23180,7 +23730,8 @@ window.COURSE = {
    "number": "sg",
    "emoji": "🍨",
    "note": "el helado de vainilla = het vanille-ijs.",
-   "src": "course-md/IMG_20260918_190322153_AE.md"
+   "src": "course-md/IMG_20260918_190322153_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-pan-integral",
@@ -23193,7 +23744,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🍞",
-   "src": "course-md/IMG_20260918_190322153_AE.md"
+   "src": "course-md/IMG_20260918_190322153_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-pastel",
@@ -23207,7 +23759,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🍰",
-   "src": "course-md/IMG_20260918_190322153_AE.md"
+   "src": "course-md/IMG_20260918_190322153_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-polvoron",
@@ -23221,7 +23774,8 @@ window.COURSE = {
    "number": "sg",
    "emoji": "🍪",
    "note": "Traditioneel kerstgebak.",
-   "src": "course-md/IMG_20260918_190322153_AE.md"
+   "src": "course-md/IMG_20260918_190322153_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-turron",
@@ -23234,7 +23788,8 @@ window.COURSE = {
    ],
    "gender": "m",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190322153_AE.md"
+   "src": "course-md/IMG_20260918_190322153_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.el-yogur",
@@ -23247,7 +23802,8 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "emoji": "🥛",
-   "src": "course-md/IMG_20260918_190322153_AE.md"
+   "src": "course-md/IMG_20260918_190322153_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-barra-de-pan",
@@ -23260,7 +23816,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🥖",
-   "src": "course-md/IMG_20260918_190322153_AE.md"
+   "src": "course-md/IMG_20260918_190322153_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-crema-catalana",
@@ -23273,7 +23830,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🍮",
-   "src": "course-md/IMG_20260918_190322153_AE.md"
+   "src": "course-md/IMG_20260918_190322153_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-galleta",
@@ -23286,7 +23844,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🍪",
-   "src": "course-md/IMG_20260918_190322153_AE.md"
+   "src": "course-md/IMG_20260918_190322153_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-mantequilla",
@@ -23299,7 +23858,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🧈",
-   "src": "course-md/IMG_20260918_190322153_AE.md"
+   "src": "course-md/IMG_20260918_190322153_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-mermelada",
@@ -23312,7 +23872,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190322153_AE.md"
+   "src": "course-md/IMG_20260918_190322153_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-rebanada-de-pan",
@@ -23326,7 +23887,8 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "emoji": "🍞",
-   "src": "course-md/IMG_20260918_190322153_AE.md"
+   "src": "course-md/IMG_20260918_190322153_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-tarta",
@@ -23340,7 +23902,8 @@ window.COURSE = {
    "number": "sg",
    "emoji": "🎂",
    "note": "Ook: la torta.",
-   "src": "course-md/IMG_20260918_190322153_AE.md"
+   "src": "course-md/IMG_20260918_190322153_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.la-tostada",
@@ -23353,7 +23916,8 @@ window.COURSE = {
    ],
    "gender": "f",
    "number": "sg",
-   "src": "course-md/IMG_20260918_190322153_AE.md"
+   "src": "course-md/IMG_20260918_190322153_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.las-palomitas",
@@ -23366,7 +23930,8 @@ window.COURSE = {
    "gender": "f",
    "number": "pl",
    "emoji": "🍿",
-   "src": "course-md/IMG_20260918_190322153_AE.md"
+   "src": "course-md/IMG_20260918_190322153_AE.md",
+   "pos": "noun"
   },
   {
    "id": "v.los-bombones",
@@ -23380,7 +23945,55 @@ window.COURSE = {
    "gender": "m",
    "number": "pl",
    "emoji": "🍫",
-   "src": "course-md/IMG_20260918_190322153_AE.md"
+   "src": "course-md/IMG_20260918_190322153_AE.md",
+   "pos": "noun"
+  }
+ ],
+ "groups": [
+  {
+   "id": "g-eten",
+   "title": "Eten en drinken",
+   "emoji": "🍽️"
+  },
+  {
+   "id": "g-kleding",
+   "title": "Kleding en uiterlijk",
+   "emoji": "👕"
+  },
+  {
+   "id": "g-lichaam",
+   "title": "Lichaam en gezondheid",
+   "emoji": "💪"
+  },
+  {
+   "id": "g-huis",
+   "title": "Huis en wonen",
+   "emoji": "🏠"
+  },
+  {
+   "id": "g-reizen",
+   "title": "Reizen, weer en natuur",
+   "emoji": "🧳"
+  },
+  {
+   "id": "g-vrijetijd",
+   "title": "Vrije tijd",
+   "emoji": "🎲"
+  },
+  {
+   "id": "g-dagelijks",
+   "title": "Dagelijks leven",
+   "emoji": "🕘"
+  },
+  {
+   "id": "g-werkwoorden",
+   "title": "Werkwoorden",
+   "emoji": "🔤"
+  },
+  {
+   "id": "g-grammatica",
+   "title": "Grammatica en taalgebruik",
+   "emoji": "📐"
   }
  ]
 };

@@ -275,6 +275,13 @@ button { font: inherit; color: inherit; }
 .option.is-wrong::after { content: " ✗"; color: var(--no); }
 .option:disabled { cursor: default; }
 
+/* "Hoort er niet bij": de vertaling staat rechts, maar pas bij het nakijken.
+ * Tijdens de vraag zou ze het antwoord weggeven. */
+.option--odd { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.option-word { display: flex; align-items: center; gap: 8px; }
+.option-nl { color: var(--ink-soft); font-size: .9rem; text-align: right; }
+.options:not(.is-revealed) .option-nl { visibility: hidden; }
+
 /* Vervoegingstabel */
 .conj-grid { display: grid; gap: 8px; }
 .conj-row { display: grid; grid-template-columns: 1fr 1.2fr; align-items: center; gap: 8px; }
@@ -305,6 +312,7 @@ button { font: inherit; color: inherit; }
 
 /* Koppelronde */
 .match-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+#screen-match .q-instruction { margin-bottom: var(--pad); }
 .match-col { display: grid; gap: 10px; align-content: start; }
 .match-cell {
   min-height: var(--tap);
@@ -353,12 +361,27 @@ button { font: inherit; color: inherit; }
 .mistakes-title { font-size: .95rem; margin: 0 0 8px; }
 .mistakes-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
 .mistake {
-  display: flex; justify-content: space-between; gap: 10px;
+  display: flex; align-items: center; gap: 10px;
   padding: 10px 12px;
   background: var(--surface); border: 1px solid var(--line); border-radius: 10px;
   font-size: .9rem;
 }
+.mistake-mark { font-weight: 900; color: var(--no); }
+.mistake.is-ok .mistake-mark { color: var(--ok); }
+.mistake-text { display: flex; justify-content: space-between; gap: 10px; flex: 1; min-width: 0; }
 .mistake-a { font-weight: 700; color: var(--ok); text-align: right; }
+
+/* Het vlagje staat uit tot je het aanzet: een melding is een uitzondering,
+ * dus ze mag niet net zo hard roepen als de uitslag zelf. */
+.flag {
+  flex: none; min-width: 32px; min-height: 32px;
+  border: 0; background: transparent; border-radius: 50%;
+  font-size: .95rem; cursor: pointer;
+  opacity: .35; filter: grayscale(1);
+  transition: opacity .15s, filter .15s;
+}
+.flag:active { background: var(--surface-2); }
+.flag.is-on { opacity: 1; filter: none; }
 
 /* ---------------------------------------------------------------- */
 /* Instellingen                                                      */

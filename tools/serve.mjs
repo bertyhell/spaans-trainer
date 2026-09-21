@@ -8,7 +8,7 @@ import { join, extname, normalize } from 'node:path';
 import { networkInterfaces } from 'node:os';
 
 const ROOT = new URL('..', import.meta.url).pathname;
-const PORT = Number(process.argv[2]) || 8080;
+const PORT = Number(process.argv[2]) || Number(process.env.PORT) || 8080;
 
 const MIME = {
   '.html': 'text/html; charset=utf-8',

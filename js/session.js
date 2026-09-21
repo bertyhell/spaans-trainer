@@ -95,8 +95,19 @@ export class Session {
   }
 }
 
-/** Bouwt de itemlijst voor een selectie van thema's. */
+/**
+ * Bouwt de itemlijst voor een selectie van thema's.
+ *
+ * Een woord produceren (nl→es) is veel lastiger dan het herkennen (es→nl), en
+ * je kan het pas als je de vertaling ooit gezien hebt. De nl→es-richting doet
+ * dus pas mee zodra es→nl van datzelfde woord een keer juist beantwoord is —
+ * anders zit je te raden naar een woord dat de app je nooit getoond heeft.
+ */
 export function itemsForThemes(themeIds) {
   const atoms = themeIds.flatMap(id => data.atomsForTheme(id));
-  return data.itemsFor(atoms);
+  return data.itemsFor(atoms).filter(item => {
+    if (item.direction !== 'nl2es') return true;
+    const seen = storage.getProgress(scheduler.itemKey(item.atomId, 'es2nl'));
+    return seen.box > 1;
+  });
 }
