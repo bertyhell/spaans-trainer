@@ -1,0 +1,9 @@
+# Bronmateriaal blijft lokaal: het komt uit een handboek en hoort niet online.
+course-md/
+spanish-md/
+fotos/
+spanish-fotos/
+*.pdf
+
+node_modules/
+.DS_Store

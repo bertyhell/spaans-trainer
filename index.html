@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#f4b942">
+<meta name="robots" content="noindex, nofollow">
+<title>¡Vamos! — Spaans oefenen</title>
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="¡Vamos!">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ======================= STARTSCHERM ======================= -->
+<section id="screen-start" class="screen is-active">
+  <header class="topbar">
+    <h1 class="brand">¡Vamos!</h1>
+    <div class="stats">
+      <span class="stat" id="stat-streak" title="Dagen op rij">🔥 <b>0</b></span>
+      <span class="stat" id="stat-xp" title="Ervaringspunten">⭐ <b>0</b></span>
+      <button class="icon-btn" id="btn-settings" aria-label="Instellingen">⚙️</button>
+    </div>
+  </header>
+
+  <main class="content">
+    <p class="lede">Kies wat je wil oefenen.</p>
+    <div id="theme-tree" class="tree"></div>
+  </main>
+
+  <footer class="actionbar">
+    <p class="selection-summary" id="selection-summary">Niets geselecteerd</p>
+    <div class="action-row">
+      <button class="btn btn--ghost" id="btn-match" disabled>Woorden koppelen</button>
+      <button class="btn btn--primary" id="btn-start" disabled>¡Vamos!</button>
+    </div>
+  </footer>
+</section>
+
+<!-- ======================= LES ======================= -->
+<section id="screen-lesson" class="screen">
+  <header class="topbar topbar--lesson">
+    <button class="icon-btn" id="btn-quit" aria-label="Les verlaten">✕</button>
+    <div class="progress" role="progressbar" aria-label="Voortgang in de les" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+      <div class="progress-fill" id="lesson-progress"></div>
+    </div>
+    <span class="stat" id="lesson-counter">0/0</span>
+  </header>
+
+  <main class="content content--question">
+    <div id="question-root" class="question"></div>
+  </main>
+
+  <footer class="actionbar" id="lesson-actionbar">
+    <div class="feedback" id="feedback" hidden>
+      <div class="feedback-head">
+        <span class="feedback-icon" id="feedback-icon"></span>
+        <strong class="feedback-title" id="feedback-title"></strong>
+        <button class="icon-btn icon-btn--sm" id="btn-report" title="Fout in deze oefening melden" aria-label="Fout melden">⚠️</button>
+      </div>
+      <p class="feedback-answer" id="feedback-answer"></p>
+      <p class="feedback-note" id="feedback-note" hidden></p>
+      <p class="feedback-explain" id="feedback-explain" hidden></p>
+      <p class="feedback-src" id="feedback-src" hidden></p>
+    </div>
+    <button class="btn btn--primary" id="btn-check" disabled>Controleer</button>
+  </footer>
+</section>
+
+<!-- ======================= KOPPELRONDE ======================= -->
+<section id="screen-match" class="screen">
+  <header class="topbar topbar--lesson">
+    <button class="icon-btn" id="btn-quit-match" aria-label="Ronde verlaten">✕</button>
+    <div class="progress" role="progressbar" aria-label="Gekoppelde woorden" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+      <div class="progress-fill" id="match-progress"></div>
+    </div>
+    <span class="stat" id="match-counter">0/0</span>
+  </header>
+
+  <main class="content">
+    <p class="q-instruction">Koppel het Spaanse woord aan de Nederlandse vertaling.</p>
+    <div class="match-grid">
+      <div class="match-col" id="match-left"></div>
+      <div class="match-col" id="match-right"></div>
+    </div>
+  </main>
+</section>
+
+<!-- ======================= RESULTAAT ======================= -->
+<section id="screen-result" class="screen">
+  <main class="content content--center">
+    <div class="result-badge" id="result-badge">🎉</div>
+    <h2 class="result-title" id="result-title">¡Muy bien!</h2>
+    <p class="result-score" id="result-score"></p>
+
+    <dl class="result-stats">
+      <div><dt>Goed</dt><dd id="result-correct">0</dd></div>
+      <div><dt>Punten</dt><dd id="result-xp">0</dd></div>
+      <div><dt>Op rij</dt><dd id="result-streak">0</dd></div>
+    </dl>
+
+    <section class="mistakes" id="mistakes-block" hidden>
+      <h3 class="mistakes-title">Nog even bekijken</h3>
+      <ul class="mistakes-list" id="mistakes-list"></ul>
+    </section>
+  </main>
+
+  <footer class="actionbar">
+    <div class="action-row">
+      <button class="btn btn--ghost" id="btn-home">Terug</button>
+      <button class="btn btn--primary" id="btn-again">Nog een les</button>
+    </div>
+  </footer>
+</section>
+
+<!-- ======================= INSTELLINGEN ======================= -->
+<section id="screen-settings" class="screen">
+  <header class="topbar">
+    <button class="icon-btn" id="btn-settings-close" aria-label="Sluiten">✕</button>
+    <h2 class="brand brand--sm">Instellingen</h2>
+    <span></span>
+  </header>
+
+  <main class="content">
+    <label class="setting">
+      <span>Geluid</span>
+      <input type="checkbox" id="set-sound" checked>
+    </label>
+    <label class="setting">
+      <span>Spaanse uitspraak<small id="speech-status"></small></span>
+      <input type="checkbox" id="set-speech" checked>
+    </label>
+    <label class="setting">
+      <span>Minder beweging<small>Schakelt animaties uit</small></span>
+      <input type="checkbox" id="set-motion">
+    </label>
+
+    <h3 class="settings-head">Voortgang</h3>
+    <p class="settings-info" id="progress-info"></p>
+    <button class="btn btn--ghost" id="btn-export">Gemelde fouten kopiëren</button>
+    <button class="btn btn--danger" id="btn-reset">Alle voortgang wissen</button>
+  </main>
+</section>
+
+<div class="toast" id="toast" hidden></div>
+
+<script src="data/course.js"></script>
+<script type="module" src="js/main.js"></script>
+</body>
+</html>

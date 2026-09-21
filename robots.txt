@@ -1,0 +1,3 @@
+# Deze oefenapp is niet bedoeld om gevonden te worden via zoekmachines.
+User-agent: *
+Disallow: /
