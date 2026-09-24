@@ -139,7 +139,8 @@
 
     <h3 class="settings-head">Voortgang</h3>
     <p class="settings-info" id="progress-info"></p>
-    <button class="btn btn--ghost" id="btn-reports">Gemelde fouten bekijken <span id="reports-count"></span></button>
+    <button class="btn btn--ghost" id="btn-mistakes">Recente fouten bekijken <span id="mistakes-count"></span></button>
+    <button class="btn btn--ghost" id="btn-reports">Gemelde bugs bekijken <span id="reports-count"></span></button>
     <button class="btn btn--danger" id="btn-reset">Alle voortgang wissen</button>
   </main>
 </section>
@@ -161,6 +162,26 @@
     <div class="action-row">
       <button class="btn btn--ghost" id="btn-reports-clear">Alles wissen</button>
       <button class="btn btn--primary" id="btn-export">Kopiëren (JSON)</button>
+    </div>
+  </footer>
+</section>
+
+<!-- ======================= RECENTE FOUTEN ======================= -->
+<section id="screen-mistakes" class="screen">
+  <header class="topbar">
+    <button class="icon-btn" id="btn-mistakes-close" aria-label="Terug naar instellingen">✕</button>
+    <h2 class="brand brand--sm">Recente fouten</h2>
+    <span></span>
+  </header>
+
+  <main class="content">
+    <p class="settings-info" id="recent-info"></p>
+    <ul class="mistakes-list" id="recent-list"></ul>
+  </main>
+
+  <footer class="actionbar">
+    <div class="action-row">
+      <button class="btn btn--ghost" id="btn-mistakes-clear">Alles wissen</button>
     </div>
   </footer>
 </section>

@@ -241,6 +241,7 @@ function doCheck() {
 
   const result = instance.check();
   session.submit(activeType, result);
+  storage.recordAnswer(session.current.atomId, result);
   instance.reveal?.(result);
   renderLessonProgress();
 
@@ -512,6 +513,8 @@ function openSettings() {
   $('#set-motion').checked = s.reducedMotion === true;
   const n = storage.get().reports.length;
   $('#reports-count').textContent = n ? `(${n})` : '';
+  const nm = storage.getMistakes().length;
+  $('#mistakes-count').textContent = nm ? `(${nm})` : '';
 
   $('#speech-status').textContent = speech.available()
     ? ''
@@ -525,6 +528,46 @@ function openSettings() {
     : 'Nog niets geoefend.';
 
   show('screen-settings');
+}
+
+/* ------------------------------------------------------------------ */
+/* Recente fouten                                                      */
+/* ------------------------------------------------------------------ */
+
+function renderRecentMistakes() {
+  const items = storage.getMistakes()
+    .map(m => ({ ...m, atom: data.getAtom(m.atomId), correct: false }))
+    .filter(m => m.atom);
+  const list = $('#recent-list');
+  clear(list);
+  $('#recent-info').textContent = items.length
+    ? `${items.length} ${items.length === 1 ? 'oefening' : 'oefeningen'}. Een fout verdwijnt na ${storage.MISTAKE_CLEAR_AFTER} keer na elkaar juist.`
+    : 'Geen recente fouten. ¡Muy bien!';
+  $('#btn-mistakes-clear').disabled = !items.length;
+
+  for (const m of items) {
+    const [q, a] = mistakeLines(m);
+    const detail = el('div', { class: 'mistake-detail', hidden: true }, ...detailRows(m));
+    const toggle = el('button', {
+      class: 'mistake-toggle', type: 'button', 'aria-expanded': 'false',
+      onclick: () => {
+        const open = detail.hidden;
+        detail.hidden = !open;
+        toggle.setAttribute('aria-expanded', String(open));
+      },
+    },
+      el('span', { class: 'mistake-mark', 'aria-hidden': 'true' }, `${m.streak}/${storage.MISTAKE_CLEAR_AFTER}`),
+      el('span', { class: 'mistake-text' },
+        el('span', { class: 'mistake-q' }, q),
+        el('span', { class: 'mistake-a' }, a)),
+      el('span', { class: 'mistake-chevron', 'aria-hidden': 'true' }, '▾'));
+    list.append(el('li', { class: 'mistake' }, toggle, detail));
+  }
+}
+
+function openRecentMistakes() {
+  renderRecentMistakes();
+  show('screen-mistakes');
 }
 
 /* ------------------------------------------------------------------ */
@@ -642,6 +685,15 @@ function wire() {
   });
 
   $('#btn-reports').addEventListener('click', openReports);
+  $('#btn-mistakes').addEventListener('click', openRecentMistakes);
+  $('#btn-mistakes-close').addEventListener('click', openSettings);
+  $('#btn-mistakes-clear').addEventListener('click', () => {
+    if (!storage.getMistakes().length) return;
+    if (!confirm('Alle recente fouten wissen?')) return;
+    storage.clearMistakes();
+    renderRecentMistakes();
+    toast('Recente fouten gewist.');
+  });
   $('#btn-reports-close').addEventListener('click', openSettings);
 
   $('#btn-reports-clear').addEventListener('click', () => {

@@ -13,6 +13,7 @@ const EMPTY = () => ({
   settings: { sound: true, speech: true, reducedMotion: false },
   reports: [],
   reportReasons: {},            // atomId -> vrije tekst: wat is er mis
+  mistakes: {},                 // atomId -> { expected, given, note, at, streak }
 });
 
 let state = null;
@@ -125,6 +126,35 @@ export function setReportReason(atomId, reason) {
   const s = load();
   const text = reason.trim();
   if (text) s.reportReasons[atomId] = text; else delete s.reportReasons[atomId];
+  save();
+}
+
+/* --- recente fouten ---
+ * Een fout blijft in de lijst tot je dezelfde oefening 3 keer na elkaar juist
+ * beantwoordt. Een nieuwe fout zet de teller terug op 0. */
+
+export const MISTAKE_CLEAR_AFTER = 3;
+
+export function recordAnswer(atomId, { correct, expected, given, note }) {
+  const s = load();
+  const m = s.mistakes[atomId];
+  if (!correct) {
+    s.mistakes[atomId] = { expected, given: given ?? null, note: note ?? null, at: Date.now(), streak: 0 };
+  } else if (m) {
+    m.streak += 1;
+    if (m.streak >= MISTAKE_CLEAR_AFTER) delete s.mistakes[atomId];
+  }
+  save();
+}
+
+/** Nieuwste eerst. */
+export const getMistakes = () =>
+  Object.entries(load().mistakes)
+    .map(([atomId, m]) => ({ atomId, ...m }))
+    .sort((a, b) => b.at - a.at);
+
+export function clearMistakes() {
+  load().mistakes = {};
   save();
 }
 
