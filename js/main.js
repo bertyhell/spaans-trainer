@@ -684,6 +684,28 @@ function wire() {
     // op true: zonder deze test sloeg één Enter de uitslag meteen over.
     if (e.defaultPrevented) return;
     if (e.key === 'Enter' && answered) { e.preventDefault(); session.next(); nextQuestion(); return; }
+    // Enter op een optie kiest ze én bevestigt meteen, anders moest je na de
+    // pijltjes nog naar de knop "Controleer".
+    if (e.key === 'Enter' && !answered && document.activeElement?.matches('#question-root .option')) {
+      e.preventDefault();
+      document.activeElement.click();
+      if (!$('#btn-check').disabled) doCheck();
+      return;
+    }
+    // Pijltjes lopen rond door de opties en kiezen meteen. De lijst is soms één
+    // kolom, soms een raster, dus links/boven en rechts/onder betekenen hetzelfde.
+    const step = { ArrowDown: 1, ArrowRight: 1, ArrowUp: -1, ArrowLeft: -1 }[e.key];
+    if (step && !answered && !['INPUT', 'TEXTAREA'].includes(document.activeElement?.tagName)) {
+      const opts = [...document.querySelectorAll('#question-root .option:not(:disabled)')];
+      if (!opts.length) return;
+      e.preventDefault();
+      const n = opts.length;
+      const current = opts.indexOf(document.activeElement);
+      const target = opts[current < 0 ? (step > 0 ? 0 : n - 1) : (current + step + n) % n];
+      target.focus();
+      target.click();
+      return;
+    }
     if (/^[1-9]$/.test(e.key) && !answered) {
       const opts = document.querySelectorAll('#question-root .option');
       const target = opts[Number(e.key) - 1];

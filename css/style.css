@@ -286,7 +286,7 @@ button { font: inherit; color: inherit; }
  * Tijdens de vraag zou ze het antwoord weggeven. */
 .option--odd { display: grid; grid-template-columns: 1fr 1.5em 1fr; align-items: center; gap: 10px; }
 .option-word { display: flex; align-items: center; gap: 8px; grid-column: 1; grid-row: 1; }
-.option-nl { color: var(--ink-soft); font-size: .9rem; text-align: left; grid-column: 3; grid-row: 1; }
+.option-nl { color: var(--ink-soft); font-size: .9rem; text-align: right; grid-column: 3; grid-row: 1; }
 /* ✓/✗ in de middenkolom, zodat de vertalingen onder elkaar uitlijnen. */
 .option--odd::after { grid-column: 2; grid-row: 1; text-align: center; }
 .options:not(.is-revealed) .option-nl { visibility: hidden; }
