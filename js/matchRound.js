@@ -1,7 +1,9 @@
 /* Woorden koppelen.
  *
- * Geen gewone vraag maar een eigen ronde: vijf paren staan zichtbaar, en zodra
- * je er een goed koppelt schuift er een nieuw paar uit de voorraad in de plaats.
+ * Geen gewone vraag maar een eigen ronde: zes paren staan zichtbaar. Een goed
+ * gekoppeld paar blijft groen staan; pas wanneer er twee paren gekoppeld zijn,
+ * schuiven er twee nieuwe paren uit de voorraad in de vrije plaatsen — per kolom
+ * willekeurig verdeeld, zodat je niet kunt raden waar het nieuwe woord staat.
  * De ronde loopt tot het doel bereikt is (standaard 40 gekoppelde woorden) of
  * tot de voorraad op is.
  *
@@ -15,7 +17,7 @@ import * as storage from './storage.js';
 const cell = (atom, dutch = false) =>
   ({ id: atom.id, text: dutch ? atom.nl[0] : atom.es, atom });
 
-export const VISIBLE_ROWS = 5;
+export const VISIBLE_ROWS = 6;
 export const DEFAULT_TARGET = 40;
 
 export class MatchRound {
@@ -36,9 +38,10 @@ export class MatchRound {
     this.attempts = 0;
     this.wrongAttempts = 0;
     this.missedOnce = new Set();   // paren waar al eens fout op gegokt is
+    this.pending = [];             // gekoppeld, maar plaats nog niet vervangen
   }
 
-  get finished() { return this.matched >= this.target || this.active.length === 0; }
+  get finished() { return this.matched >= this.target || this.active.length === this.pending.length; }
   get accuracy() { return this.attempts ? this.matched / this.attempts : 0; }
 
   /** De twee kolommen. Vaste volgorde: alleen vervangen plaatsen veranderen. */
@@ -52,10 +55,11 @@ export class MatchRound {
   /**
    * Probeert twee kanten te koppelen.
    * @returns {{ok: boolean, atom: object|null, done: boolean,
-   *            left: {index: number, cell: object|null}|null,
-   *            right: {index: number, cell: object|null}|null}}
-   *   left/right wijzen de plaatsen aan die vrijkwamen, met wat er nu staat —
-   *   null wanneer de voorraad op is en de plaats leeg blijft.
+   *            left: {index: number, cell: object|null}[],
+   *            right: {index: number, cell: object|null}[]}}
+   *   left/right: plaatsen die nu een nieuw woord krijgen (leeg zolang er nog
+   *   geen twee paren gekoppeld zijn). cell is null wanneer de voorraad op is:
+   *   dan blijft het gekoppelde woord gewoon groen staan.
    */
   tryMatch(leftId, rightId) {
     this.attempts++;
@@ -72,7 +76,7 @@ export class MatchRound {
         }
       }
       storage.save();
-      return { ok: false, atom: null, done: false, left: null, right: null };
+      return { ok: false, atom: null, done: false, left: [], right: [] };
     }
 
     // Juist gekoppeld. Alleen wie foutloos bleef, klimt een doos.
@@ -80,26 +84,32 @@ export class MatchRound {
     storage.save();
 
     this.matched++;
-    const at = this.active.findIndex(a => a.id === leftId);
-    const li = this.leftSlots.findIndex(a => a.id === leftId);
-    const ri = this.rightSlots.findIndex(a => a.id === leftId);
+    this.pending.push(leftId);
 
-    const replacement = this.matched < this.target ? (this.pool.shift() ?? null) : null;
-    if (replacement) {
-      this.active[at] = replacement;
-      this.leftSlots[li] = replacement;
-      this.rightSlots[ri] = replacement;
-    } else {
-      this.active.splice(at, 1);
-      this.leftSlots.splice(li, 1);
-      this.rightSlots.splice(ri, 1);
-    }
+    const empty = { ok: true, atom, done: this.finished, left: [], right: [] };
+    if (this.finished || (this.pending.length < 2 && this.pool.length)) return empty;
 
-    return {
-      ok: true, atom, done: this.finished,
-      left: { index: li, cell: replacement ? cell(replacement) : null },
-      right: { index: ri, cell: replacement ? cell(replacement, true) : null },
+    // Twee paren gekoppeld (of de voorraad is op): vul de vrije plaatsen.
+    const open = this.active.length - this.pending.length;
+    const room = Math.max(0, this.target - this.matched - open);
+    const fresh = this.pool.splice(0, Math.min(room, this.pending.length));
+    const freed = this.pending;
+    this.pending = [];
+
+    const refill = (slots, dutch) => {
+      const idx = scheduler.shuffle(freed.map(id => slots.findIndex(a => a.id === id)));
+      const newbies = scheduler.shuffle(fresh);
+      return idx.map((index, i) => {
+        const a = newbies[i] ?? null;
+        if (a) slots[index] = a;
+        return { index, cell: a ? cell(a, dutch) : null };
+      });
     };
+    const left = refill(this.leftSlots, false);
+    const right = refill(this.rightSlots, true);
+    this.active = this.active.filter(a => !freed.includes(a.id)).concat(fresh);
+
+    return { ok: true, atom, done: this.finished, left, right };
   }
 
   finish() {

@@ -158,7 +158,7 @@ function refreshSelection() {
 
   $('#btn-start').disabled = atoms.length === 0;
   // Koppelen heeft minstens twee kolommen van vijf nodig om zinvol te zijn.
-  $('#btn-match').disabled = vocab < 5;
+  $('#btn-match').disabled = vocab < 6;
 
   $('#selection-summary').textContent = atoms.length === 0
     ? 'Niets geselecteerd'
@@ -435,9 +435,7 @@ function renderMatch() {
 function replaceMatchCell(side, index, cell) {
   const col = matchCol(side);
   const old = col.children[index];
-  if (!old) return;
-  if (cell) old.replaceWith(matchButton(side, cell));
-  else old.remove();
+  if (old && cell) old.replaceWith(matchButton(side, cell));
 }
 
 function updateMatchProgress() {
@@ -465,13 +463,13 @@ function onMatchTap(side, id, node) {
 
   if (res.ok) {
     audio.correct();
-    [l.node, r.node].forEach(n => n.classList.add('is-correct'));
+    [l.node, r.node].forEach(n => { n.classList.add('is-correct'); n.classList.remove('is-selected'); n.disabled = true; });
     matchPick = { left: null, right: null };
     updateMatchProgress();
     setTimeout(() => {
       if (res.done) return finishMatch();
-      replaceMatchCell('left', res.left.index, res.left.cell);
-      replaceMatchCell('right', res.right.index, res.right.cell);
+      for (const s of res.left) replaceMatchCell('left', s.index, s.cell);
+      for (const s of res.right) replaceMatchCell('right', s.index, s.cell);
     }, 320);
   } else {
     audio.incorrect();
