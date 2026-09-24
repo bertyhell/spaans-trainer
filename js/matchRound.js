@@ -4,7 +4,7 @@
  * gekoppeld paar blijft groen staan; pas wanneer er twee paren gekoppeld zijn,
  * schuiven er twee nieuwe paren uit de voorraad in de vrije plaatsen — per kolom
  * willekeurig verdeeld, zodat je niet kunt raden waar het nieuwe woord staat.
- * De ronde loopt tot het doel bereikt is (standaard 40 gekoppelde woorden) of
+ * De ronde loopt tot het doel bereikt is (standaard 30 gekoppelde woorden) of
  * tot de voorraad op is.
  *
  * Elk gekoppeld paar telt als een antwoord voor zijn Leitner-doos: de eerste
@@ -18,7 +18,7 @@ const cell = (atom, dutch = false) =>
   ({ id: atom.id, text: dutch ? atom.nl[0] : atom.es, atom });
 
 export const VISIBLE_ROWS = 6;
-export const DEFAULT_TARGET = 40;
+export const DEFAULT_TARGET = 30;
 
 export class MatchRound {
   constructor({ atoms, target = DEFAULT_TARGET, visible = VISIBLE_ROWS }) {
@@ -47,7 +47,7 @@ export class MatchRound {
   /** De twee kolommen. Vaste volgorde: alleen vervangen plaatsen veranderen. */
   columns() {
     return {
-      left: this.leftSlots.map(cell),
+      left: this.leftSlots.map(a => cell(a)),
       right: this.rightSlots.map(a => cell(a, true)),
     };
   }

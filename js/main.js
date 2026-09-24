@@ -433,7 +433,10 @@ function renderMatch() {
 function replaceMatchCell(side, index, cell) {
   const col = matchCol(side);
   const old = col.children[index];
-  if (old && cell) old.replaceWith(matchButton(side, cell));
+  if (!old || !cell) return;
+  const btn = matchButton(side, cell);
+  btn.classList.add('is-new');
+  old.replaceWith(btn);
 }
 
 function updateMatchProgress() {
