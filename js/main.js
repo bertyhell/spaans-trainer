@@ -467,8 +467,10 @@ function onMatchTap(side, id, node) {
     [l.node, r.node].forEach(n => { n.classList.add('is-correct'); n.classList.remove('is-selected'); n.disabled = true; });
     matchPick = { left: null, right: null };
     updateMatchProgress();
+    // Laatste paar: wacht tot het uitgegrijsd is (zie match-fade in de css),
+    // zodat je het volledig grijze bord nog even ziet.
+    if (res.done) return setTimeout(finishMatch, 1400);
     setTimeout(() => {
-      if (res.done) return finishMatch();
       for (const s of res.left) replaceMatchCell('left', s.index, s.cell);
       for (const s of res.right) replaceMatchCell('right', s.index, s.cell);
     }, 320);
