@@ -378,6 +378,9 @@ button { font: inherit; color: inherit; }
   font-size: .9rem;
 }
 .mistake-mark { font-weight: 900; color: var(--no); }
+.mistake.is-pending { visibility: hidden; }
+.mistake.is-arriving { animation: review-in .42s cubic-bezier(.34, 1.56, .64, 1) both; }
+.mistake.is-arriving .mistake-mark { display: inline-block; animation: pop .42s .08s both; }
 .mistake.is-ok .mistake-mark { color: var(--ok); }
 .mistake-text { display: flex; justify-content: space-between; gap: 10px; flex: 1; min-width: 0; }
 .mistake-a { font-weight: 700; color: var(--ok); text-align: right; }
@@ -460,6 +463,10 @@ button { font: inherit; color: inherit; }
 @keyframes match-fade { to { opacity: 0; visibility: hidden; } }
 @keyframes match-fade-in { from { opacity: 0; } to { opacity: 1; } }
 @keyframes shake { 0%,100% { transform: translateX(0); } 25% { transform: translateX(-5px); } 75% { transform: translateX(5px); } }
+@keyframes review-in {
+  0% { opacity: 0; transform: translateY(10px) scale(.94); }
+  100% { opacity: 1; transform: none; }
+}
 @keyframes slide-up { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
 
 .reduce-motion *, .reduce-motion *::before, .reduce-motion *::after {

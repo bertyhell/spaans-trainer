@@ -340,6 +340,7 @@ function renderReview(results) {
   $('#mistakes-block').hidden = results.length === 0;
 
   // Zelfde volgorde als in de les, zodat je elke oefening terugvindt.
+  const items = [];
   for (const r of results) {
     const [q, a] = mistakeLines(r);
     const flagged = storage.isReported(r.atomId);
@@ -372,8 +373,47 @@ function renderReview(results) {
         el('span', { class: 'mistake-a' }, a)),
       el('span', { class: 'mistake-chevron', 'aria-hidden': 'true' }, '▾'));
 
-    list.append(el('li', { class: `mistake${r.correct ? ' is-ok' : ''}` }, toggle, flag, detail));
+    const li = el('li', { class: `mistake${r.correct ? ' is-ok' : ''}` }, toggle, flag, detail);
+    list.append(li);
+    items.push({ li, correct: r.correct });
   }
+  revealReview(items);
+}
+
+const prefersReducedMotion = () =>
+  document.body.classList.contains('reduce-motion')
+  || window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/**
+ * Laat het overzicht regel per regel verschijnen: elke juiste regel springt
+ * erin met een belletje, een fout komt er gewoon stil bij. Zo voelt elk goed
+ * antwoord nog eens als een kleine overwinning. De regels staan al in de lijst
+ * (onzichtbaar), zodat de pagina niet verspringt tijdens het onthullen.
+ */
+let revealRun = 0;
+function revealReview(items) {
+  const run = ++revealRun;
+  if (prefersReducedMotion() || !items.some(i => i.correct)) return;
+
+  for (const { li } of items) li.classList.add('is-pending');
+  let i = 0;
+  let streak = 0;
+  const next = () => {
+    // Nieuwe les gestart of scherm verlaten: de rest stil tonen.
+    if (run !== revealRun || !$('#screen-result').classList.contains('is-active')) {
+      for (const { li } of items) li.classList.remove('is-pending');
+      return;
+    }
+    const { li, correct } = items[i++];
+    li.classList.remove('is-pending');
+    if (correct) {
+      li.classList.add('is-arriving');
+      audio.chime(streak++);
+    }
+    if (i < items.length) setTimeout(next, correct ? 260 : 90);
+  };
+  // Eerst het slotdeuntje laten uitklinken.
+  setTimeout(next, 700);
 }
 
 /* Een foutregel moet op zichzelf iets bijbrengen. "la bufanda → la bufanda"

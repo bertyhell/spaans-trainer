@@ -53,6 +53,16 @@ export function finish() {
   [523.25, 659.25, 783.99, 1046.5].forEach((f, i) => tone(f, i * 0.09, 0.3));
 }
 
+/** Belletje per juiste regel in het overzicht; elke volgende klinkt een
+ * trapje hoger (pentatonisch, dus het blijft altijd mooi klinken). */
+const CHIME = [523.25, 587.33, 659.25, 783.99, 880.00, 1046.5, 1174.66, 1318.51];
+export function chime(step = 0) {
+  if (!enabled()) return;
+  const f = CHIME[Math.min(step, CHIME.length - 1)];
+  tone(f, 0, 0.16, { gain: 0.09 });
+  tone(f * 2, 0.03, 0.12, { gain: 0.03 });
+}
+
 export function tap() {
   if (!enabled()) return;
   tone(440, 0, 0.05, { gain: 0.05 });
