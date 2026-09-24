@@ -3,6 +3,7 @@
 
 import { el, shuffle, sample, speakerButton } from '../dom.js';
 import { vocabAnswer, vocabPrompt, siblings } from '../data.js';
+import { showEmoji } from '../scheduler.js';
 
 const OPTION_COUNT = 4;
 
@@ -33,7 +34,7 @@ export default {
       el('p', { class: 'q-instruction' },
         direction === 'nl2es' ? 'Hoe zeg je dit in het Spaans?' : 'Wat betekent dit?'),
       el('div', { class: 'q-prompt' },
-        atom.emoji ? el('span', { class: 'q-emoji' }, atom.emoji) : null,
+        atom.emoji && showEmoji(item.key) ? el('span', { class: 'q-emoji' }, atom.emoji) : null,
         el('span', { class: 'q-word' }, prompt),
         direction === 'es2nl' ? speakerButton(atom.es, ctx.speech) : null,
       ),

@@ -3,6 +3,7 @@
 import { el, speakerButton } from '../dom.js';
 import { vocabAnswer, vocabPrompt } from '../data.js';
 import { checkAnswer } from '../check.js';
+import { showEmoji } from '../scheduler.js';
 
 /* Spaanse tekens die op een Nederlands toetsenbord lastig zijn. */
 const ACCENT_KEYS = ['á', 'é', 'í', 'ó', 'ú', 'ñ', '¿', '¡'];
@@ -22,7 +23,7 @@ export default {
       el('p', { class: 'q-instruction' },
         toSpanish ? 'Typ dit in het Spaans' : 'Typ dit in het Nederlands'),
       el('div', { class: 'q-prompt' },
-        atom.emoji ? el('span', { class: 'q-emoji' }, atom.emoji) : null,
+        atom.emoji && showEmoji(item.key) ? el('span', { class: 'q-emoji' }, atom.emoji) : null,
         el('span', { class: 'q-word' }, vocabPrompt(atom, direction)),
         !toSpanish ? speakerButton(atom.es, ctx.speech) : null,
       ),

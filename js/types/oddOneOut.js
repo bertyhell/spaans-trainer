@@ -9,6 +9,7 @@
 
 import { el, shuffle, sample } from '../dom.js';
 import { siblings, allAtoms, getTheme } from '../data.js';
+import { showEmoji } from '../scheduler.js';
 
 const OPTIONS = 4;
 
@@ -38,7 +39,7 @@ export default {
     const odd = sample(outsidersFor(atom), 1)[0];
     const options = shuffle([atom, ...sample(family(atom), OPTIONS - 2), odd]);
     // Alles of niets: één emoji tussen kale woorden is al een antwoord.
-    const withEmoji = options.every(o => o.emoji);
+    const withEmoji = showEmoji(item.key) && options.every(o => o.emoji);
 
     const theme = getTheme(atom.theme);
     let chosen = null;

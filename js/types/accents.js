@@ -3,6 +3,7 @@
 
 import { el, speakerButton } from '../dom.js';
 import { stripAccents, checkAnswer } from '../check.js';
+import { showEmoji } from '../scheduler.js';
 
 const ACCENT_KEYS = ['á', 'é', 'í', 'ó', 'ú', 'ñ'];
 
@@ -25,7 +26,7 @@ export default {
     root.append(
       el('p', { class: 'q-instruction' }, 'Zet de accenten op hun plaats'),
       el('div', { class: 'q-prompt' },
-        atom.emoji ? el('span', { class: 'q-emoji' }, atom.emoji) : null,
+        atom.emoji && showEmoji(item.key) ? el('span', { class: 'q-emoji' }, atom.emoji) : null,
         el('span', { class: 'q-word q-word--bare' }, bare),
         speakerButton(atom.es, ctx.speech),
       ),

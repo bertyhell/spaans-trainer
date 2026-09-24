@@ -2,6 +2,7 @@
  * het geslacht van een Spaans zelfstandig naamwoord moet je gewoon kennen. */
 
 import { el } from '../dom.js';
+import { showEmoji } from '../scheduler.js';
 
 const FORMS = ['el', 'la', 'los', 'las'];
 
@@ -32,7 +33,7 @@ export default {
     root.append(
       el('p', { class: 'q-instruction' }, 'Welk lidwoord hoort hierbij?'),
       el('div', { class: 'q-prompt' },
-        atom.emoji ? el('span', { class: 'q-emoji' }, atom.emoji) : null,
+        atom.emoji && showEmoji(item.key) ? el('span', { class: 'q-emoji' }, atom.emoji) : null,
         el('span', { class: 'q-word' },
           el('span', { class: 'q-blank' }, '___'), ' ', noun),
       ),

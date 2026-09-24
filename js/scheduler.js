@@ -28,6 +28,15 @@ export function mastery(keys) {
   return total / keys.length;
 }
 
+/** Na zoveel juiste antwoorden verdwijnt het hulp-emoji bij een vraag. */
+export const EMOJI_HIDE_AFTER = 10;
+
+/** Toont deze vraag nog een emoji als geheugensteun? */
+export function showEmoji(key) {
+  const { seen, wrong } = storage.getProgress(key);
+  return seen - wrong < EMOJI_HIDE_AFTER;
+}
+
 /** Werkt de doos bij na een antwoord. Geeft de nieuwe staat terug. */
 export function record(key, correct) {
   const p = storage.getProgress(key);
