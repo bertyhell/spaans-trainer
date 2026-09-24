@@ -63,6 +63,7 @@ export class Session {
     }
 
     this.results.push({
+      index: this.index,
       atomId: item.atomId,
       atom: item.atom,
       typeId: type.id,

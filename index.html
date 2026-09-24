@@ -44,7 +44,7 @@
   <header class="topbar topbar--lesson">
     <button class="icon-btn" id="btn-quit" aria-label="Les verlaten">✕</button>
     <div class="progress" role="progressbar" aria-label="Voortgang in de les" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
-      <div class="progress-fill" id="lesson-progress"></div>
+      <div class="progress-segs" id="lesson-progress"></div>
     </div>
     <span class="stat" id="lesson-counter">0/0</span>
   </header>
@@ -139,9 +139,30 @@
 
     <h3 class="settings-head">Voortgang</h3>
     <p class="settings-info" id="progress-info"></p>
-    <button class="btn btn--ghost" id="btn-export">Gemelde fouten kopiëren</button>
+    <button class="btn btn--ghost" id="btn-reports">Gemelde fouten bekijken <span id="reports-count"></span></button>
     <button class="btn btn--danger" id="btn-reset">Alle voortgang wissen</button>
   </main>
+</section>
+
+<!-- ======================= GEMELDE FOUTEN ======================= -->
+<section id="screen-reports" class="screen">
+  <header class="topbar">
+    <button class="icon-btn" id="btn-reports-close" aria-label="Terug naar instellingen">✕</button>
+    <h2 class="brand brand--sm">Gemelde fouten</h2>
+    <span></span>
+  </header>
+
+  <main class="content">
+    <p class="settings-info" id="reports-info"></p>
+    <ul class="mistakes-list" id="reports-list"></ul>
+  </main>
+
+  <footer class="actionbar">
+    <div class="action-row">
+      <button class="btn btn--ghost" id="btn-reports-clear">Alles wissen</button>
+      <button class="btn btn--primary" id="btn-export">Kopiëren (JSON)</button>
+    </div>
+  </footer>
 </section>
 
 <div class="toast" id="toast" hidden></div>

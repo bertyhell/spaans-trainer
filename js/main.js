@@ -211,12 +211,24 @@ function nextQuestion() {
   instance = activeType.render(session.current, root, ctx);
 
   $('#lesson-counter').textContent = `${session.position}/${session.total}`;
-  const pct = (session.index / session.total) * 100;
-  const bar = $('#lesson-progress');
-  bar.style.width = `${pct}%`;
-  bar.parentElement.setAttribute('aria-valuenow', Math.round(pct));
+  renderLessonProgress();
 
   setTimeout(() => instance.focus?.(), 60);
+}
+
+// Eén segment per vraag: groen = juist, rood = fout, geel = overgeslagen,
+// grijs = nog te doen.
+function renderLessonProgress() {
+  const bar = $('#lesson-progress');
+  clear(bar);
+  const byIndex = new Map(session.results.map(r => [r.index, r]));
+  for (let i = 0; i < session.total; i++) {
+    const r = byIndex.get(i);
+    const state = r ? (r.correct ? 'ok' : 'no') : i < session.index ? 'skip' : i === session.index ? 'current' : 'todo';
+    bar.append(el('span', { class: `progress-seg progress-seg--${state}` }));
+  }
+  const pct = (session.results.length / session.total) * 100;
+  bar.parentElement.setAttribute('aria-valuenow', Math.round(pct));
 }
 
 function doCheck() {
@@ -230,6 +242,7 @@ function doCheck() {
   const result = instance.check();
   session.submit(activeType, result);
   instance.reveal?.(result);
+  renderLessonProgress();
 
   result.correct ? audio.correct() : audio.incorrect();
   showFeedback(result);
@@ -490,6 +503,8 @@ function openSettings() {
   $('#set-sound').checked = s.sound !== false;
   $('#set-speech').checked = s.speech !== false;
   $('#set-motion').checked = s.reducedMotion === true;
+  const n = storage.get().reports.length;
+  $('#reports-count').textContent = n ? `(${n})` : '';
 
   $('#speech-status').textContent = speech.available()
     ? ''
@@ -503,6 +518,66 @@ function openSettings() {
     : 'Nog niets geoefend.';
 
   show('screen-settings');
+}
+
+/* ------------------------------------------------------------------ */
+/* Gemelde fouten                                                      */
+/* ------------------------------------------------------------------ */
+
+/** Alles wat je nodig hebt om de oefening in de data terug te vinden en te
+ *  verbeteren: het volledige atoom plus de naam van het thema. */
+function reportEntry(id) {
+  const atom = data.getAtom(id);
+  if (!atom) return { id, missing: true };
+  return { ...atom, themeLabel: data.getTheme(atom.theme)?.label };
+}
+
+function reportLabel(atom) {
+  switch (atom.kind) {
+    case 'vocab': return [atom.es, atom.nl.join(', ')];
+    case 'conjugation': return [`${atom.verb} · ${data.PERSON_LABELS[atom.person]}`, atom.form];
+    default: return [atom.es ?? atom.rule ?? atom.id, Array.isArray(atom.nl) ? atom.nl.join(', ') : (atom.nl ?? '')];
+  }
+}
+
+function renderReports() {
+  const ids = storage.get().reports;
+  const list = $('#reports-list');
+  clear(list);
+  $('#reports-info').textContent = ids.length
+    ? `${ids.length} ${ids.length === 1 ? 'oefening' : 'oefeningen'} gemeld. Tik op een regel voor alle gegevens.`
+    : 'Nog geen fouten gemeld. Meld een fout met ⚠️ tijdens of na een les.';
+  $('#btn-export').disabled = !ids.length;
+  $('#btn-reports-clear').disabled = !ids.length;
+
+  for (const id of ids) {
+    const entry = reportEntry(id);
+    const [q, a] = entry.missing ? [id, '(niet meer in de cursus)'] : reportLabel(entry);
+    const detail = el('pre', { class: 'report-json', hidden: true }, JSON.stringify(entry, null, 2));
+    const toggle = el('button', {
+      class: 'mistake-toggle', type: 'button', 'aria-expanded': 'false',
+      onclick: () => {
+        const open = detail.hidden;
+        detail.hidden = !open;
+        toggle.setAttribute('aria-expanded', String(open));
+      },
+    },
+      el('span', { class: 'mistake-text' },
+        el('span', { class: 'mistake-q' }, q),
+        el('span', { class: 'mistake-a' }, a)),
+      el('span', { class: 'mistake-chevron', 'aria-hidden': 'true' }, '▾'));
+    const remove = el('button', {
+      class: 'icon-btn icon-btn--sm', type: 'button',
+      title: 'Melding verwijderen', 'aria-label': `Melding verwijderen: ${q}`,
+      onclick: () => { storage.unreport(id); renderReports(); },
+    }, '🗑️');
+    list.append(el('li', { class: 'mistake' }, toggle, remove, detail));
+  }
+}
+
+function openReports() {
+  renderReports();
+  show('screen-reports');
 }
 
 function applyMotionPreference() {
@@ -544,14 +619,27 @@ function wire() {
     applyMotionPreference();
   });
 
+  $('#btn-reports').addEventListener('click', openReports);
+  $('#btn-reports-close').addEventListener('click', openSettings);
+
+  $('#btn-reports-clear').addEventListener('click', () => {
+    if (!storage.get().reports.length) return;
+    if (!confirm('Alle gemelde fouten wissen?')) return;
+    storage.clearReports();
+    renderReports();
+    toast('Meldingen gewist.');
+  });
+
   $('#btn-export').addEventListener('click', async () => {
     const reports = storage.get().reports;
     if (!reports.length) return toast('Nog geen fouten gemeld.');
+    const json = JSON.stringify(reports.map(reportEntry), null, 2);
     try {
-      await navigator.clipboard.writeText(reports.join('\n'));
-      toast(`${reports.length} id's gekopieerd.`);
+      await navigator.clipboard.writeText(json);
+      toast(`${reports.length} ${reports.length === 1 ? 'melding' : 'meldingen'} gekopieerd.`);
     } catch {
-      toast(reports.join(', '));
+      toast('Kopiëren lukte niet.');
+      console.log(json);
     }
   });
 

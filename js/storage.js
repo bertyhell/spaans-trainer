@@ -104,6 +104,17 @@ export function toggleReport(atomId) {
   return i === -1;
 }
 
+export function unreport(atomId) {
+  const s = load();
+  s.reports = s.reports.filter(id => id !== atomId);
+  save();
+}
+
+export function clearReports() {
+  load().reports = [];
+  save();
+}
+
 export function resetAll() {
   state = EMPTY();
   save();
