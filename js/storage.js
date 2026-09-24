@@ -12,6 +12,7 @@ const EMPTY = () => ({
   xp: 0,
   settings: { sound: true, speech: true, reducedMotion: false },
   reports: [],
+  reportReasons: {},            // atomId -> vrije tekst: wat is er mis
 });
 
 let state = null;
@@ -99,7 +100,7 @@ export function report(atomId) {
 export function toggleReport(atomId) {
   const s = load();
   const i = s.reports.indexOf(atomId);
-  if (i === -1) s.reports.push(atomId); else s.reports.splice(i, 1);
+  if (i === -1) s.reports.push(atomId); else { s.reports.splice(i, 1); delete s.reportReasons[atomId]; }
   save();
   return i === -1;
 }
@@ -107,11 +108,23 @@ export function toggleReport(atomId) {
 export function unreport(atomId) {
   const s = load();
   s.reports = s.reports.filter(id => id !== atomId);
+  delete s.reportReasons[atomId];
   save();
 }
 
 export function clearReports() {
-  load().reports = [];
+  const s = load();
+  s.reports = [];
+  s.reportReasons = {};
+  save();
+}
+
+export const getReportReason = atomId => load().reportReasons[atomId] ?? '';
+
+export function setReportReason(atomId, reason) {
+  const s = load();
+  const text = reason.trim();
+  if (text) s.reportReasons[atomId] = text; else delete s.reportReasons[atomId];
   save();
 }
 

@@ -317,10 +317,8 @@ function renderReview(results) {
   clear(list);
   $('#mistakes-block').hidden = results.length === 0;
 
-  // Fouten eerst: dat is waar je naar kijkt.
-  const ordered = [...results].sort((a, b) => Number(a.correct) - Number(b.correct));
-
-  for (const r of ordered) {
+  // Zelfde volgorde als in de les, zodat je elke oefening terugvindt.
+  for (const r of results) {
     const [q, a] = mistakeLines(r);
     const flagged = storage.isReported(r.atomId);
 
@@ -532,8 +530,9 @@ function openSettings() {
  *  verbeteren: het volledige atoom plus de naam van het thema. */
 function reportEntry(id) {
   const atom = data.getAtom(id);
-  if (!atom) return { id, missing: true };
-  return { ...atom, themeLabel: data.getTheme(atom.theme)?.label };
+  const reason = storage.getReportReason(id) || undefined;
+  if (!atom) return { id, missing: true, reason };
+  return { ...atom, themeLabel: data.getTheme(atom.theme)?.label, reason };
 }
 
 function reportLabel(atom) {
@@ -558,6 +557,16 @@ function renderReports() {
     const entry = reportEntry(id);
     const [q, a] = entry.missing ? [id, '(niet meer in de cursus)'] : reportLabel(entry);
     const detail = el('pre', { class: 'report-json', hidden: true }, JSON.stringify(entry, null, 2));
+    const reason = el('textarea', {
+      class: 'report-reason', rows: 2, maxlength: 500,
+      placeholder: 'Wat is er mis? (optioneel)',
+      'aria-label': `Reden voor melding: ${q}`,
+      onchange: e => {
+        storage.setReportReason(id, e.target.value);
+        detail.textContent = JSON.stringify(reportEntry(id), null, 2);
+      },
+    });
+    reason.value = storage.getReportReason(id);
     const toggle = el('button', {
       class: 'mistake-toggle', type: 'button', 'aria-expanded': 'false',
       onclick: () => {
@@ -575,7 +584,7 @@ function renderReports() {
       title: 'Melding verwijderen', 'aria-label': `Melding verwijderen: ${q}`,
       onclick: () => { storage.unreport(id); renderReports(); },
     }, '🗑️');
-    list.append(el('li', { class: 'mistake' }, toggle, remove, detail));
+    list.append(el('li', { class: 'mistake' }, toggle, remove, reason, detail));
   }
 }
 
@@ -608,7 +617,11 @@ function wire() {
 
   $('#btn-report').addEventListener('click', () => {
     if (!session?.current) return;
-    storage.report(session.current.atomId);
+    const id = session.current.atomId;
+    const reason = prompt('Wat is er mis met deze oefening? (optioneel)', storage.getReportReason(id));
+    if (reason === null) return;
+    storage.report(id);
+    storage.setReportReason(id, reason);
     toast('Genoteerd — je kan dit later nakijken via Instellingen.');
   });
 
