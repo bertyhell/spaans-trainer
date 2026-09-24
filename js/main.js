@@ -393,7 +393,7 @@ function detailRows(m) {
   }
   const rows = pairs.map(([es, nl]) => el('div', { class: 'mistake-pair' },
     el('span', { class: 'mistake-lang' }, '🇪🇸'), el('span', {}, es),
-    el('span', { class: 'mistake-lang' }, '🇳🇱'), el('span', {}, nl)));
+    el('span', { class: 'mistake-lang' }, '🇧🇪'), el('span', {}, nl)));
   if (!m.correct && m.given) {
     rows.push(el('p', { class: 'mistake-given' }, `Jouw antwoord: ${m.given}`));
   }
