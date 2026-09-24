@@ -295,7 +295,7 @@ function finishLesson() {
     ? '¡Perfecto!'
     : session.correctCount / session.total >= 0.7 ? '¡Muy bien!' : '¡Sigue así!';
   $('#result-score').textContent = `${session.correctCount} van ${session.total} juist`;
-  $('#result-correct').textContent = session.correctCount;
+  $('#result-correct').textContent = `${session.correctCount}/${session.total}`;
   $('#result-xp').textContent = `+${xp}`;
   $('#result-streak').textContent = streak.current;
 
@@ -448,6 +448,12 @@ function updateMatchProgress() {
 function onMatchTap(side, id, node) {
   audio.tap();
   const col = side === 'left' ? '#match-left' : '#match-right';
+  // Nog eens op het gekozen woord tikken maakt de keuze ongedaan.
+  if (matchPick[side]?.node === node) {
+    node.classList.remove('is-selected');
+    matchPick[side] = null;
+    return;
+  }
   document.querySelectorAll(`${col} .match-cell`).forEach(b => b.classList.remove('is-selected'));
   node.classList.add('is-selected');
   matchPick[side] = { id, node };
