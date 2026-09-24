@@ -60,6 +60,25 @@ export default {
     }
     redraw();
 
+    // Reserveer vooraf genoeg hoogte voor de volledige zin, zodat de woordbank
+    // niet verspringt wanneer het antwoord naar een nieuwe regel overloopt.
+    // Meet zowel de juiste als de geschudde volgorde en neem de hoogste.
+    function reserveHeight() {
+      if (!answerRow.isConnected) { window.removeEventListener('resize', reserveHeight); return; }
+      const saved = [...answerRow.children];
+      answerRow.style.minHeight = '';
+      let max = 0;
+      for (const order of [words.map((w, i) => ({ w, i })), tiles]) {
+        answerRow.replaceChildren(...order.map(t =>
+          el('button', { class: 'tile tile--placed', type: 'button', tabindex: -1, style: 'visibility:hidden' }, t.w)));
+        max = Math.max(max, answerRow.getBoundingClientRect().height);
+      }
+      answerRow.replaceChildren(...saved);
+      answerRow.style.minHeight = `${Math.ceil(max)}px`;
+    }
+    requestAnimationFrame(reserveHeight);
+    window.addEventListener('resize', reserveHeight);
+
     const built = () => chosen.map(t => t.w).join(' ');
 
     return {
