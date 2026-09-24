@@ -324,13 +324,22 @@ function renderReview(results) {
       },
     }, '⚠️');
 
-    list.append(el('li', { class: `mistake${r.correct ? ' is-ok' : ''}` },
+    const detail = el('div', { class: 'mistake-detail', hidden: true }, ...detailRows(r));
+    const toggle = el('button', {
+      class: 'mistake-toggle', type: 'button', 'aria-expanded': 'false',
+      onclick: () => {
+        const open = detail.hidden;
+        detail.hidden = !open;
+        toggle.setAttribute('aria-expanded', String(open));
+      },
+    },
       el('span', { class: 'mistake-mark', 'aria-hidden': 'true' }, r.correct ? '✓' : '✗'),
       el('span', { class: 'mistake-text' },
         el('span', { class: 'mistake-q' }, q),
         el('span', { class: 'mistake-a' }, a)),
-      flag,
-    ));
+      el('span', { class: 'mistake-chevron', 'aria-hidden': 'true' }, '▾'));
+
+    list.append(el('li', { class: `mistake${r.correct ? ' is-ok' : ''}` }, toggle, flag, detail));
   }
 }
 
@@ -348,6 +357,37 @@ function mistakeLines(m) {
     default:
       return [a.nl ?? a.rule ?? a.es ?? '', m.expected];
   }
+}
+
+/* Uitgeklapt: de volledige Spaanse en Nederlandse versie, plus wat je zelf
+ * antwoordde als het fout was. */
+function detailRows(m) {
+  const a = m.atom;
+  const pairs = [];
+  switch (a.kind) {
+    case 'vocab':
+      pairs.push([a.es, a.nl.join(', ')]);
+      break;
+    case 'sentence':
+      pairs.push([a.es, a.nl]);
+      break;
+    case 'conjugation':
+      pairs.push([`${data.PERSON_LABELS[a.person]} ${a.form}`, `${a.verb} · ${a.tense}`]);
+      break;
+    case 'grammar':
+      for (const ex of a.examples ?? []) pairs.push([ex.es.replace('___', ex.answer), ex.nl]);
+      break;
+    default:
+      if (a.es || a.nl) pairs.push([a.es ?? '', [].concat(a.nl ?? '').join(', ')]);
+  }
+  const rows = pairs.map(([es, nl]) => el('div', { class: 'mistake-pair' },
+    el('span', { class: 'mistake-lang' }, '🇪🇸'), el('span', {}, es),
+    el('span', { class: 'mistake-lang' }, '🇳🇱'), el('span', {}, nl)));
+  if (!m.correct && m.given) {
+    rows.push(el('p', { class: 'mistake-given' }, `Jouw antwoord: ${m.given}`));
+  }
+  if (m.note) rows.push(el('p', { class: 'mistake-note' }, m.note));
+  return rows;
 }
 
 /* ------------------------------------------------------------------ */
