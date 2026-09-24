@@ -325,31 +325,31 @@ window.COURSE = {
   },
   {
    "id": "werkwoorden-ar",
-   "label": "Regelmatige werkwoorden op -ar",
+   "label": "Reg. werkw. op -ar",
    "emoji": "•",
    "group": "g-werkwoorden"
   },
   {
    "id": "werkwoorden-er",
-   "label": "Regelmatige werkwoorden op -er",
+   "label": "Reg. werkw. op -er",
    "emoji": "•",
    "group": "g-werkwoorden"
   },
   {
    "id": "werkwoorden-ir",
-   "label": "Regelmatige werkwoorden op -ir",
+   "label": "Reg. werkw. op -ir",
    "emoji": "•",
    "group": "g-werkwoorden"
   },
   {
    "id": "verbos-cambio",
-   "label": "Werkwoorden met klinkerverandering",
+   "label": "Werkw. met klinkerverandering",
    "emoji": "•",
    "group": "g-werkwoorden"
   },
   {
    "id": "wederkerende-werkwoorden",
-   "label": "De wederkerende werkwoorden",
+   "label": "De wederkerende werkw.",
    "emoji": "•",
    "group": "g-werkwoorden"
   },
