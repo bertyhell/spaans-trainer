@@ -56,7 +56,7 @@ export default {
 
     return {
       focus() { list.querySelector('.option')?.focus(); },
-      check: () => ({ correct: chosen === correct, expected: `${correct} ${noun}`, note: null, given: chosen }),
+      check: () => ({ correct: chosen === correct, expected: `${correct} ${noun}`, note: `${correct} ${noun} = ${atom.nl[0]}`, given: chosen }),
       reveal({ correct: ok }) {
         list.querySelectorAll('.option').forEach(b => {
           b.disabled = true;

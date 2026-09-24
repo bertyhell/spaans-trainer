@@ -181,6 +181,7 @@ function startLesson(themeIds) {
     return;
   }
   session._themes = themeIds;
+  trackMastery(themeIds);
   show('screen-lesson');
   nextQuestion();
 }
@@ -288,7 +289,7 @@ function showFeedback(result) {
 }
 
 function finishLesson() {
-  const { streak, xp } = session.finish();
+  const { xp } = session.finish();
   audio.finish();
 
   $('#result-badge').textContent = session.perfect ? '🏆' : session.correctCount ? '🎉' : '💪';
@@ -298,12 +299,32 @@ function finishLesson() {
   $('#result-score').textContent = `${session.correctCount} van ${session.total} juist`;
   $('#result-correct').textContent = `${session.correctCount}/${session.total}`;
   $('#result-xp').textContent = `+${xp}`;
-  $('#result-streak').textContent = streak.current;
+  showMasteryGain();
 
   renderReview(session.results);
   refreshStats();
   renderTree();
   show('screen-result');
+}
+
+/** Beheersing van de huidige selectie, 0 tot 1. */
+let masteryThemes = [];
+let masteryBefore = 0;
+const themesMastery = () =>
+  scheduler.mastery(masteryThemes.flatMap(id => data.keysForTheme(id)));
+function trackMastery(themeIds) {
+  masteryThemes = themeIds;
+  masteryBefore = themesMastery();
+}
+
+/** Hoeveel de beheersing van de geoefende onderdelen deze les steeg. */
+function showMasteryGain() {
+  const after = themesMastery();
+  const delta = (after - masteryBefore) * 100;
+  const sign = delta < 0 ? '−' : '+';
+  const pct = (n, digits) => n.toLocaleString('nl-BE', { minimumFractionDigits: digits, maximumFractionDigits: digits });
+  $('#result-mastery').textContent = `${sign}${pct(Math.abs(delta), 2)}%`;
+  $('#result-mastery-total').textContent = `naar ${pct(after * 100, 1)}%`;
 }
 
 const pick = arr => arr[Math.floor(Math.random() * arr.length)];
@@ -410,6 +431,7 @@ function startMatch() {
   audio.arm();
   const atoms = [...selected].flatMap(id => data.atomsForTheme(id)).filter(a => a.kind === 'vocab');
   match = new MatchRound({ atoms });
+  trackMastery([...selected]);
   matchPick = { left: null, right: null };
   show('screen-match');
   renderMatch();
@@ -486,7 +508,7 @@ function onMatchTap(side, id, node) {
 }
 
 function finishMatch() {
-  const { streak, xp } = match.finish();
+  const { xp } = match.finish();
   audio.finish();
 
   $('#result-badge').textContent = match.wrongAttempts === 0 ? '🏆' : '🎉';
@@ -494,7 +516,7 @@ function finishMatch() {
   $('#result-score').textContent = `${match.matched} woorden gekoppeld`;
   $('#result-correct').textContent = match.matched;
   $('#result-xp').textContent = `+${xp}`;
-  $('#result-streak').textContent = streak.current;
+  showMasteryGain();
   $('#mistakes-block').hidden = true;
 
   refreshStats();
