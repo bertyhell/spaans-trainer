@@ -273,7 +273,7 @@ button { font: inherit; color: inherit; }
   box-shadow: var(--shadow);
   transition: transform .06s;
 }
-.options--compact .option { text-align: center; font-weight: 700; }
+.options--compact .option { text-align: center; font-weight: 700; padding-inline: 6px; min-width: 0; overflow-wrap: anywhere; }
 .option:active:not(:disabled) { transform: translateY(1px); }
 .option.is-selected { border-color: var(--brand); background: var(--surface-2); }
 .option.is-correct { border-color: var(--ok); background: var(--ok-bg); font-weight: 700; }
