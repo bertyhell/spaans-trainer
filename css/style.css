@@ -296,6 +296,7 @@ button { font: inherit; color: inherit; }
 .conj-row { display: grid; grid-template-columns: 1fr 1.2fr; align-items: center; gap: 8px; }
 .conj-person { font-size: .88rem; color: var(--ink-soft); }
 .conj-input { min-height: 46px; font-size: 1rem; }
+.conj-input.is-given { opacity: .6; border-style: dashed; pointer-events: none; }
 .conj-fix { grid-column: 2; font-size: .85rem; color: var(--ok); font-weight: 700; }
 
 /* Zin bouwen */
@@ -397,6 +398,10 @@ button { font: inherit; color: inherit; }
 }
 .mistake-detail[hidden] { display: none; }
 .mistake-pair { display: grid; grid-template-columns: auto 1fr; gap: 2px 8px; }
+.mistake-conj { display: grid; gap: 2px; font-size: .9rem; }
+.mistake-conj-row { display: grid; grid-template-columns: 11em 1fr; gap: 8px; padding: 2px 6px; border-radius: 6px; }
+.mistake-conj-person { opacity: .7; }
+.mistake-conj-row.is-current { background: var(--surface-2); font-weight: 700; }
 .mistake-given, .mistake-note { margin: 0; font-size: .85rem; opacity: .8; }
 
 /* Het vlagje staat uit tot je het aanzet: een melding is een uitzondering,

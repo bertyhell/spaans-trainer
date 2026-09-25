@@ -10,8 +10,15 @@
 import { el, shuffle, sample } from '../dom.js';
 import { conjugationFamily, PERSON_LABELS, PERSON_ORDER, TENSE_LABELS } from '../data.js';
 import { checkAnswer } from '../check.js';
+import { mastery, itemKey } from '../scheduler.js';
 
 const tenseLabel = t => TENSE_LABELS[t] ?? t;
+
+/** Hoeveel vakjes je zelf invult: 1 bij een nieuw werkwoord, 6 als je het
+ *  helemaal beheerst. De rest staat al ingevuld als steuntje. */
+const blanksFor = (family, dir) =>
+  Math.max(1, Math.min(family.length,
+    1 + Math.round(mastery(family.map(a => itemKey(a.id, dir))) * (family.length - 1))));
 
 export const conjugationGrid = {
   id: 'conjugationGrid',
@@ -26,6 +33,8 @@ export const conjugationGrid = {
     const family = conjugationFamily(item.atom);
     const byPerson = new Map(family.map(a => [a.person, a]));
     const inputs = new Map();
+    const blanks = new Set(shuffle(family.map(a => a.person))
+      .slice(0, blanksFor(family, item.direction)));
 
     root.append(
       el('p', { class: 'q-instruction' }, 'Vervoeg dit werkwoord volledig'),
@@ -39,6 +48,14 @@ export const conjugationGrid = {
     PERSON_ORDER.forEach((person, i) => {
       const atom = byPerson.get(person);
       if (!atom) return;
+      if (!blanks.has(person)) {
+        grid.append(el('label', { class: 'conj-row' },
+          el('span', { class: 'conj-person' }, PERSON_LABELS[person]),
+          el('input', { class: 'conj-input is-given', type: 'text', lang: 'es',
+            value: atom.form, readonly: true, tabindex: '-1',
+            'aria-label': PERSON_LABELS[person] })));
+        return;
+      }
       const input = el('input', {
         class: 'conj-input', type: 'text',
         autocomplete: 'off', autocorrect: 'off', autocapitalize: 'off', spellcheck: 'false',
@@ -47,8 +64,8 @@ export const conjugationGrid = {
         onkeydown: e => {
           if (e.key !== 'Enter') return;
           e.preventDefault();
-          const next = PERSON_ORDER[i + 1];
-          if (next && inputs.has(next)) inputs.get(next).focus();
+          const next = PERSON_ORDER.slice(i + 1).find(p => inputs.has(p));
+          if (next) inputs.get(next).focus();
           else ctx.submit();
         },
       });
@@ -60,11 +77,11 @@ export const conjugationGrid = {
     root.append(grid);
 
     return {
-      focus() { inputs.get('1s')?.focus(); },
+      focus() { inputs.values().next().value?.focus(); },
 
       check() {
-        // Elke persoon krijgt zijn eigen uitslag; de vraag als geheel is pas
-        // juist als alle zes kloppen.
+        // Elke open persoon krijgt zijn eigen uitslag; de vraag als geheel is
+        // pas juist als ze allemaal kloppen. Voorgegeven vakjes tellen niet mee.
         const others = p => family.filter(a => a.person !== p).map(a => a.form);
         const per = [];
         for (const [person, input] of inputs) {

@@ -458,11 +458,22 @@ function detailRows(m) {
   const rows = pairs.map(([es, nl]) => el('div', { class: 'mistake-pair' },
     el('span', { class: 'mistake-lang' }, '🇪🇸'), el('span', {}, es),
     el('span', { class: 'mistake-lang' }, '🇧🇪'), el('span', {}, nl)));
+  if (a.kind === 'conjugation') rows.push(conjugationTable(a));
   if (!m.correct && m.given) {
     rows.push(el('p', { class: 'mistake-given' }, `Jouw antwoord: ${m.given}`));
   }
   if (m.note) rows.push(el('p', { class: 'mistake-note' }, m.note));
   return rows;
+}
+
+/** Het hele rijtje van dit werkwoord in deze tijd, met de geoefende persoon gemarkeerd. */
+function conjugationTable(atom) {
+  const byPerson = new Map(data.conjugationFamily(atom).map(f => [f.person, f.form]));
+  return el('div', { class: 'mistake-conj' },
+    ...data.PERSON_ORDER.filter(p => byPerson.has(p)).map(p =>
+      el('div', { class: `mistake-conj-row${p === atom.person ? ' is-current' : ''}` },
+        el('span', { class: 'mistake-conj-person' }, data.PERSON_LABELS[p]),
+        el('span', {}, byPerson.get(p)))));
 }
 
 /* ------------------------------------------------------------------ */
