@@ -170,11 +170,10 @@ function refreshSelection() {
 /* Les                                                                 */
 /* ------------------------------------------------------------------ */
 
-function startLesson(themeIds) {
+function startLesson(themeIds, items = itemsForThemes(themeIds)) {
   audio.arm();
   speech.arm();
 
-  const items = itemsForThemes(themeIds);
   session = new Session({ items, size: 12, env });
 
   if (!session.total) {
@@ -182,6 +181,7 @@ function startLesson(themeIds) {
     return;
   }
   session._themes = themeIds;
+  session._mistakesOnly = themeIds.length === 0;
   trackMastery(themeIds);
   show('screen-lesson');
   nextQuestion();
@@ -609,6 +609,7 @@ function renderRecentMistakes() {
     ? `${items.length} ${items.length === 1 ? 'oefening' : 'oefeningen'}. Een fout verdwijnt na ${storage.MISTAKE_CLEAR_AFTER} keer na elkaar juist.`
     : 'Geen recente fouten. ¡Muy bien!';
   $('#btn-mistakes-clear').disabled = !items.length;
+  $('#btn-mistakes-practice').disabled = !items.length;
 
   for (const m of items) {
     const [q, a] = mistakeLines(m);
@@ -628,6 +629,12 @@ function renderRecentMistakes() {
       el('span', { class: 'mistake-chevron', 'aria-hidden': 'true' }, '▾'));
     list.append(el('li', { class: 'mistake' }, toggle, detail));
   }
+}
+
+/** Een les met enkel de oefeningen uit de recente fouten. */
+function startMistakesLesson() {
+  const atoms = storage.getMistakes().map(m => data.getAtom(m.atomId)).filter(Boolean);
+  startLesson([], data.itemsFor(atoms));
 }
 
 function openRecentMistakes() {
@@ -725,6 +732,7 @@ function wire() {
   $('#btn-home').addEventListener('click', () => show('screen-start'));
   $('#btn-again').addEventListener('click', () => {
     if (lastMode === 'match') return selected.size ? startMatch() : show('screen-start');
+    if (session?._mistakesOnly) return startMistakesLesson();
     const themes = session?._themes ?? [...selected];
     themes.length ? startLesson(themes) : show('screen-start');
   });
@@ -753,6 +761,7 @@ function wire() {
   $('#btn-reports').addEventListener('click', openReports);
   $('#btn-mistakes').addEventListener('click', openRecentMistakes);
   $('#btn-mistakes-close').addEventListener('click', openSettings);
+  $('#btn-mistakes-practice').addEventListener('click', startMistakesLesson);
   $('#btn-mistakes-clear').addEventListener('click', () => {
     if (!storage.getMistakes().length) return;
     if (!confirm('Alle recente fouten wissen?')) return;
