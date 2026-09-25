@@ -21,6 +21,7 @@ import fillGap from './fillGap.js';
 import wordBank from './wordBank.js';
 import accents from './accents.js';
 import oddOneOut from './oddOneOut.js';
+import stemChange from './stemChange.js';
 import { conjugationGrid, conjugationSingle } from './conjugation.js';
 import { listenType, listenChoose } from './listen.js';
 
@@ -30,6 +31,7 @@ export const TYPES = [
   articlePicker,
   accents,
   oddOneOut,
+  stemChange,
   fillGap,
   wordBank,
   conjugationGrid,
@@ -55,6 +57,7 @@ const WEIGHTS = {
   articlePicker: 1,
   accents: 1,
   oddOneOut: 1,
+  stemChange: 2,
 };
 
 /** Alle vormen waarin dit item getoond kan worden. */
