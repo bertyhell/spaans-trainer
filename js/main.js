@@ -20,6 +20,7 @@ let activeType = null;
 let answered = false;
 let match = null;
 let matchPick = { left: null, right: null };
+let lastMode = 'lesson';   // bepaalt wat 'Nog een les' opnieuw start
 
 /* ------------------------------------------------------------------ */
 /* Schermen                                                            */
@@ -289,6 +290,7 @@ function showFeedback(result) {
 }
 
 function finishLesson() {
+  lastMode = 'lesson';
   const { xp } = session.finish();
   audio.finish();
 
@@ -548,6 +550,7 @@ function onMatchTap(side, id, node) {
 }
 
 function finishMatch() {
+  lastMode = 'match';
   const { xp } = match.finish();
   audio.finish();
 
@@ -721,6 +724,7 @@ function wire() {
 
   $('#btn-home').addEventListener('click', () => show('screen-start'));
   $('#btn-again').addEventListener('click', () => {
+    if (lastMode === 'match') return selected.size ? startMatch() : show('screen-start');
     const themes = session?._themes ?? [...selected];
     themes.length ? startLesson(themes) : show('screen-start');
   });
