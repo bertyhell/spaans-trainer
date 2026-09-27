@@ -373,28 +373,21 @@ h1.brand { display: flex; align-items: center; gap: 8px; }
 /* Flashcards                                                        */
 /* ---------------------------------------------------------------- */
 
-/* Het blok onderaan het startscherm */
-.flash-panel {
-  display: grid; gap: var(--gap);
-  margin: 8px 0 var(--pad); padding: 14px;
+/* Richting kiezen: paneeltje onder het tandwiel rechtsboven */
+.flash-settings {
+  position: absolute; top: calc(100% + 6px); right: var(--pad); z-index: 6;
+  width: min(300px, calc(100vw - 2 * var(--pad)));
+  display: grid; gap: 10px; padding: 14px;
   background: var(--surface); border: 2px solid var(--line); border-radius: var(--radius-lg);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, .15);
+  animation: slide-up .18s ease;
 }
-.flash-panel-head { display: flex; align-items: center; gap: 12px; }
-.flash-panel-title { margin: 0; font-size: 1.05rem; }
-.flash-panel-sub { margin: 0; font-size: .82rem; color: var(--ink-soft); }
+.flash-settings-title { margin: 0; font-size: .8rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-soft); }
+.flash-settings .flash-dirs { flex-direction: column; }
+.chip { text-align: left; }
 
-/* Twee kaartjes op elkaar; ze waaieren open als je over het blok gaat. */
-.flash-panel-icon { position: relative; flex: none; width: 40px; height: 40px; }
-.flash-panel-icon span {
-  position: absolute; left: 9px; top: 5px; width: 22px; height: 30px;
-  border-radius: 5px; border: 2px solid var(--brand-ink);
-  transition: transform .3s cubic-bezier(.34, 1.56, .64, 1);
-}
-.flash-panel-icon span:first-child { background: var(--surface-2); transform: rotate(-12deg) translateX(-3px); }
-.flash-panel-icon span:last-child { background: var(--brand); transform: rotate(9deg) translateX(3px); }
-@media (prefers-color-scheme: dark) { .flash-panel-icon span { border-color: var(--brand); } }
-.flash-panel:hover .flash-panel-icon span:first-child { transform: rotate(-20deg) translateX(-6px); }
-.flash-panel:hover .flash-panel-icon span:last-child { transform: rotate(16deg) translateX(6px); }
+/* Drie knoppen naast elkaar op een telefoon: minder opvulling. */
+#screen-start .action-row .btn { padding: 0 8px; }
 
 .flash-dirs { display: flex; flex-wrap: wrap; gap: 8px; }
 .chip {

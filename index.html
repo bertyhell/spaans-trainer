@@ -35,27 +35,13 @@
   <main class="content">
     <p class="lede">Kies wat je wil oefenen.</p>
     <div id="theme-tree" class="tree"></div>
-
-    <section class="flash-panel" aria-labelledby="flash-panel-title">
-      <div class="flash-panel-head">
-        <span class="flash-panel-icon" aria-hidden="true"><span></span><span></span></span>
-        <div class="row-text">
-          <h2 class="flash-panel-title" id="flash-panel-title">Flashcards</h2>
-          <p class="flash-panel-sub" id="flash-summary">Vink hierboven onderdelen met woordenschat aan.</p>
-        </div>
-      </div>
-      <div class="flash-dirs" role="group" aria-label="Richting van de kaarten">
-        <button class="chip" type="button" data-dir="nl2es" aria-pressed="true">Nederlands → Spaans</button>
-        <button class="chip" type="button" data-dir="es2nl" aria-pressed="true">Spaans → Nederlands</button>
-      </div>
-      <button class="btn btn--ghost" id="btn-flash" disabled>Flashcards starten</button>
-    </section>
   </main>
 
   <footer class="actionbar">
     <p class="selection-summary" id="selection-summary">Niets geselecteerd</p>
     <div class="action-row">
       <button class="btn btn--ghost" id="btn-match" disabled>Woorden koppelen</button>
+      <button class="btn btn--ghost" id="btn-flash" disabled>Flashcards</button>
       <button class="btn btn--primary" id="btn-start" disabled>¡Vamos!</button>
     </div>
   </footer>
@@ -123,6 +109,14 @@
       <div class="progress-fill" id="flash-progress"></div>
     </div>
     <span class="stat" id="flash-counter">0/0</span>
+    <button class="icon-btn" id="btn-flash-settings" aria-label="Richting van de kaarten" aria-expanded="false" aria-controls="flash-settings">⚙️</button>
+    <div class="flash-settings" id="flash-settings" hidden>
+      <p class="flash-settings-title">Richting</p>
+      <div class="flash-dirs" role="group" aria-label="Richting van de kaarten">
+        <button class="chip" type="button" data-dir="nl2es" aria-pressed="true">Nederlands → Spaans</button>
+        <button class="chip" type="button" data-dir="es2nl" aria-pressed="true">Spaans → Nederlands</button>
+      </div>
+    </div>
   </header>
 
   <main class="content content--flash">

@@ -51,6 +51,17 @@ export class FlashDeck {
   get current() { return this.queue[0] ?? null; }
   get done() { return this.queue.length === 0; }
 
+  /** Andere richting gekozen tijdens de ronde: geldt voor de kaarten die nog
+   *  komen. De kaart op tafel blijft staan als je ze al omgedraaid hebt. */
+  setDirections(directions, { keepCurrent = false } = {}) {
+    const dirs = directions.filter(d => DIRECTIONS.includes(d));
+    if (!dirs.length) return;
+    this.queue.forEach((card, i) => {
+      if (keepCurrent && i === 0) return;
+      card.direction = pick(dirs);
+    });
+  }
+
   /** Zelfbeoordeling van de huidige kaart. */
   answer(known) {
     const card = this.queue.shift();

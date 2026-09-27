@@ -207,7 +207,7 @@ function refreshSelection() {
   $('#selection-summary').textContent = atoms.length === 0
     ? 'Niets geselecteerd'
     : `${themes.length} ${themes.length === 1 ? 'onderdeel' : 'onderdelen'} · ${atoms.length} oefeningen`;
-  renderFlashPanel();
+  $('#btn-flash').disabled = vocab === 0;
 }
 
 /* ------------------------------------------------------------------ */
@@ -720,15 +720,15 @@ const LANG_NAMES = { nl: 'Nederlands', es: 'Español' };
 const selectedVocab = () =>
   [...selected].flatMap(id => data.atomsForTheme(id)).filter(a => a.kind === 'vocab');
 
-function renderFlashPanel() {
+function renderFlashSettings() {
   const dirs = flashcards.savedDirections();
   document.querySelectorAll('.flash-dirs .chip').forEach(chip =>
     chip.setAttribute('aria-pressed', String(dirs.includes(chip.dataset.dir))));
-  const n = selectedVocab().length;
-  $('#btn-flash').disabled = n === 0;
-  $('#flash-summary').textContent = n === 0
-    ? 'Vink hierboven onderdelen met woordenschat aan.'
-    : `${Math.min(n, flashcards.DEFAULT_SIZE)} kaarten uit ${n} ${n === 1 ? 'woord' : 'woorden'}`;
+}
+
+function toggleFlashSettings(open = $('#flash-settings').hidden) {
+  $('#flash-settings').hidden = !open;
+  $('#btn-flash-settings').setAttribute('aria-expanded', String(open));
 }
 
 function toggleFlashDirection(dir) {
@@ -736,7 +736,11 @@ function toggleFlashDirection(dir) {
   const next = dirs.includes(dir) ? dirs.filter(d => d !== dir) : [...dirs, dir];
   if (!next.length) return toast('Minstens één richting moet aan staan.');
   flashcards.saveDirections(next);
-  renderFlashPanel();
+  renderFlashSettings();
+  if (!flash || flash.done || !flashCard) return;
+  // Nog niet omgedraaid: de kaart op tafel mag meteen mee veranderen.
+  flash.setDirections(next, { keepCurrent: flashCard.revealed });
+  if (!flashCard.revealed) nextFlashCard();
 }
 
 function startFlash() {
@@ -744,6 +748,8 @@ function startFlash() {
   const atoms = selectedVocab();
   if (!atoms.length) return;
   flash = new flashcards.FlashDeck({ atoms, directions: flashcards.savedDirections() });
+  renderFlashSettings();
+  toggleFlashSettings(false);
   show('screen-flash');
   nextFlashCard();
 }
@@ -914,7 +920,8 @@ function finishFlash() {
 }
 
 function onFlashKey(e) {
-  if (!flashCard || flashCard.leaving) return;
+  if (e.key === 'Escape' && !$('#flash-settings').hidden) { toggleFlashSettings(false); return; }
+  if (!flashCard || flashCard.leaving || !$('#flash-settings').hidden) return;
   // Een knop met focus reageert zelf al op Enter en spatie.
   if (['Enter', ' '].includes(e.key) && document.activeElement?.tagName === 'BUTTON') return;
   if ([' ', 'Enter', 'ArrowUp', 'ArrowDown'].includes(e.key)) { e.preventDefault(); flipFlashCard(); return; }
@@ -1075,6 +1082,12 @@ function wire() {
   $('#btn-flash').addEventListener('click', startFlash);
   document.querySelectorAll('.flash-dirs .chip').forEach(chip =>
     chip.addEventListener('click', () => toggleFlashDirection(chip.dataset.dir)));
+  $('#btn-flash-settings').addEventListener('click', () => toggleFlashSettings());
+  // Tik buiten het paneeltje: dicht.
+  document.addEventListener('pointerdown', e => {
+    if ($('#flash-settings').hidden || e.target.closest('#flash-settings, #btn-flash-settings')) return;
+    toggleFlashSettings(false);
+  });
   $('#btn-flash-flip').addEventListener('click', flipFlashCard);
   $('#btn-flash-known').addEventListener('click', () => gradeFlash(true));
   $('#btn-flash-again').addEventListener('click', () => gradeFlash(false));
