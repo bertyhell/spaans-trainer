@@ -7,6 +7,8 @@
 <meta name="robots" content="noindex, nofollow">
 <title>¡Vamos! — Spaans oefenen</title>
 <link rel="manifest" href="manifest.json">
+<link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+<link rel="icon" href="icons/icon-192.png" sizes="192x192">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="¡Vamos!">
@@ -17,7 +19,12 @@
 <!-- ======================= STARTSCHERM ======================= -->
 <section id="screen-start" class="screen is-active">
   <header class="topbar">
-    <h1 class="brand">¡Vamos!</h1>
+    <h1 class="brand"><svg class="brand-mark" viewBox="0 0 512 512" aria-hidden="true">
+      <defs><linearGradient id="brand-sun" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffd166"/><stop offset="1" stop-color="#f4a03a"/></linearGradient></defs>
+      <rect width="512" height="512" rx="112" fill="url(#brand-sun)"/>
+      <path d="M256 84C354 84 432 146 432 236S354 388 256 388C236 388 216 386 198 381L118 426L138 354C102 326 80 284 80 236C80 146 158 84 256 84Z" fill="#fffaf2"/>
+      <g fill="#2a2118" transform="rotate(-8 256 236)"><circle cx="214" cy="168" r="26" fill="#e2553a"/><path d="M206 220A8 8 0 0 1 222 220L240 306A26 26 0 0 1 188 306Z"/><path d="M272 168A26 26 0 0 1 324 168L306 254A8 8 0 0 1 290 254Z"/><circle cx="298" cy="306" r="26" fill="#e2553a"/></g>
+    </svg>¡Vamos!</h1>
     <div class="stats">
       <span class="stat" id="stat-streak" title="Dagen op rij">🔥 <b>0</b></span>
       <span class="stat" id="stat-done" title="Oefeningen gedaan">✅ <b>0</b></span>

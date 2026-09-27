@@ -82,6 +82,8 @@ button { font: inherit; color: inherit; }
 .brand { margin: 0; font-size: 1.35rem; letter-spacing: -.02em; color: var(--brand-ink); }
 @media (prefers-color-scheme: dark) { .brand { color: var(--brand); } }
 .brand--sm { font-size: 1.05rem; }
+.brand-mark { width: 1.45em; height: 1.45em; flex: none; }
+h1.brand { display: flex; align-items: center; gap: 8px; }
 
 .stats { display: flex; align-items: center; gap: 10px; }
 .stat { font-variant-numeric: tabular-nums; font-size: .95rem; white-space: nowrap; }
