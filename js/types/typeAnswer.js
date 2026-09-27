@@ -8,6 +8,13 @@ import { showEmoji } from '../scheduler.js';
 /* Spaanse tekens die op een Nederlands toetsenbord lastig zijn. */
 const ACCENT_KEYS = ['á', 'é', 'í', 'ó', 'ú', 'ñ', '¿', '¡'];
 
+/* Vlaggetje in het invoerveld: welke taal moet je typen? SVG i.p.v. emoji,
+   want vlag-emoji tonen niet op Windows. */
+const FLAGS = {
+  es: '<svg viewBox="0 0 3 2" aria-hidden="true"><rect width="3" height="2" fill="#AA151B"/><rect y=".5" width="3" height="1" fill="#F1BF00"/></svg>',
+  nl: '<svg viewBox="0 0 3 2" aria-hidden="true"><rect width="1" height="2" fill="#000"/><rect x="1" width="1" height="2" fill="#FDDA24"/><rect x="2" width="1" height="2" fill="#EF3340"/></svg>',
+};
+
 export default {
   id: 'typeAnswer',
   label: 'Zelf intypen',
@@ -39,7 +46,9 @@ export default {
       oninput: () => ctx.ready(input.value.trim().length > 0),
       onkeydown: e => { if (e.key === 'Enter') { e.preventDefault(); ctx.submit(); } },
     });
-    root.append(input);
+    const flag = el('span', { class: 'input-flag', title: toSpanish ? 'Spaans' : 'Nederlands' });
+    flag.innerHTML = FLAGS[toSpanish ? 'es' : 'nl'];
+    root.append(el('div', { class: 'input-wrap' }, input, flag));
 
     // Accentbalkje: alleen nuttig wanneer er Spaans getypt moet worden.
     if (toSpanish) {
