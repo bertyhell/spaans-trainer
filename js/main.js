@@ -864,7 +864,8 @@ function wire() {
     // Diezelfde toetsaanslag bubbelt hier naartoe, en `answered` staat dan al
     // op true: zonder deze test sloeg één Enter de uitslag meteen over.
     if (e.defaultPrevented) return;
-    if (e.key === 'Enter' && answered) { e.preventDefault(); session.next(); nextQuestion(); return; }
+    // Op het verbeterscherm gaan pijltje rechts en onder ook naar de volgende.
+    if (answered && ['Enter', 'ArrowRight', 'ArrowDown'].includes(e.key)) { e.preventDefault(); session.next(); nextQuestion(); return; }
     // Enter op een optie kiest ze én bevestigt meteen, anders moest je na de
     // pijltjes nog naar de knop "Controleer".
     if (e.key === 'Enter' && !answered && document.activeElement?.matches('#question-root .option')) {
