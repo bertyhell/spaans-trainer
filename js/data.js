@@ -10,6 +10,9 @@ let course = null;
 let sources = {};
 const byId = new Map();
 const byTheme = new Map();
+const themeById = new Map();
+const byText = new Map();          // tekst-id -> dialoogregels, op volgorde
+const byFamily = new Map();        // werkwoord|tijd -> vervoegingen
 
 export function init() {
   course = window.COURSE;
@@ -17,11 +20,22 @@ export function init() {
   // Bronvermelding is een extra: zonder dat bestand werkt de app gewoon door.
   sources = window.SOURCES ?? {};
 
+  for (const theme of course.themes) themeById.set(theme.id, theme);
   for (const atom of course.atoms) {
     byId.set(atom.id, atom);
     if (!byTheme.has(atom.theme)) byTheme.set(atom.theme, []);
     byTheme.get(atom.theme).push(atom);
+    if (atom.kind === 'dialogue') {
+      if (!byText.has(atom.text)) byText.set(atom.text, []);
+      byText.get(atom.text).push(atom);
+    }
+    if (atom.kind === 'conjugation') {
+      const key = `${atom.verb}|${atom.tense}`;
+      if (!byFamily.has(key)) byFamily.set(key, []);
+      byFamily.get(key).push(atom);
+    }
   }
+  for (const lines of byText.values()) lines.sort((a, b) => a.line - b.line);
   // Alle bestaande woorden en vormen: een antwoord dat één daarvan is, mag
   // nooit als typefout voor een ander woord doorgaan.
   setLexicon(course.atoms.flatMap(a =>
@@ -33,7 +47,26 @@ export const getCourse = () => course;
 export const getAtom = id => byId.get(id);
 export const atomsForTheme = themeId => byTheme.get(themeId) ?? [];
 export const allAtoms = () => course.atoms;
-export const getTheme = id => course.themes.find(t => t.id === id);
+export const getTheme = id => themeById.get(id);
+
+/** Leestekst of dialoog (titel, tekst) waar een atoom naar verwijst. */
+export const getText = id => course.texts?.[id] ?? null;
+
+/** Alle regels van een dialoog, in volgorde. */
+export const dialogueLines = textId => byText.get(textId) ?? [];
+
+/* Vervoegingen krijgen de uitleg van hun tijd. */
+const TENSE_GRAMMAR = {
+  presente: 'gr.presente', indefinido: 'gr.indefinido', imperfecto: 'gr.imperfecto',
+  perfecto: 'gr.perfecto', futuro: 'gr.futuro', condicional: 'gr.condicional',
+  continuo: 'gr.gerundio', subjuntivo: 'gr.subjuntivo',
+};
+
+/** De grammatica-uitleg bij dit atoom, of null. */
+export function grammarFor(atom) {
+  const key = atom.grammarRef ?? (atom.kind === 'conjugation' ? TENSE_GRAMMAR[atom.tense] : null);
+  return (key && course.grammar?.[key]) || null;
+}
 
 /** Is dit atoom een werkwoord? Vervoegingen altijd, woordenschat volgens de
  *  woordsoort die in de data staat. */
@@ -54,6 +87,10 @@ export function countForThemes(themeIds) {
   const atoms = themeIds.flatMap(id => byTheme.get(id) ?? []).filter(a => a.kind !== 'lyric');
   if (atoms.length && atoms.every(isVerb)) {
     return { count: new Set(atoms.map(verbOf)).size, noun: 'werkwoorden' };
+  }
+  // Een toets of een reeks zinnen telt in oefeningen, niet in woorden.
+  if (atoms.length && !atoms.some(a => a.kind === 'vocab')) {
+    return { count: atoms.length, noun: atoms.length === 1 ? 'oefening' : 'oefeningen' };
   }
   return { count: atoms.length, noun: 'woorden' };
 }
@@ -111,6 +148,7 @@ export function keysForTheme(themeId) {
  * eerste, want die is altijd de plek waar het woord echt behandeld wordt.
  */
 export function sourceLabel(atom) {
+  if (atom.srcLabel) return atom.srcLabel;
   const file = atom.src?.split(';')[0].trim();
   const s = file && sources[file];
   if (!s) return null;
@@ -137,9 +175,12 @@ export function siblings(atom, { sameKind = true } = {}) {
 
 /** Alle vervoegingen van hetzelfde werkwoord in dezelfde tijd. */
 export function conjugationFamily(atom) {
-  return allAtoms().filter(a =>
-    a.kind === 'conjugation' && a.verb === atom.verb && a.tense === atom.tense);
+  return byFamily.get(`${atom.verb}|${atom.tense}`) ?? [];
 }
+
+/** Eén vervoegde vorm, of undefined. */
+export const conjugatedForm = (verb, tense, person) =>
+  byFamily.get(`${verb}|${tense}`)?.find(a => a.person === person)?.form;
 
 /* usted en ustedes staan bewust niet in de labels. Ze delen hun vorm met de
  * derde persoon, dus ze leren je niets extra's, en ze maken het rijtje alleen
@@ -162,4 +203,7 @@ export const TENSE_LABELS = {
   imperfecto: 'pretérito imperfecto · verleden tijd, gewoonte of beschrijving',
   perfecto: 'pretérito perfecto · voltooid tegenwoordige tijd',
   futuro: 'futuro simple · toekomende tijd',
+  condicional: 'condicional · voorwaardelijke wijs (zou …)',
+  continuo: 'estar + gerundio · ergens mee bezig zijn',
+  subjuntivo: 'presente de subjuntivo · aanvoegende wijs',
 };

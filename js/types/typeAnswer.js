@@ -1,12 +1,9 @@
 /* Zelf intypen. De zwaarste oefenvorm en daarom de waardevolste. */
 
-import { el, speakerButton } from '../dom.js';
+import { el, speakerButton, accentBar } from '../dom.js';
 import { vocabAnswer, vocabPrompt } from '../data.js';
 import { checkAnswer } from '../check.js';
 import { showEmoji } from '../scheduler.js';
-
-/* Spaanse tekens die op een Nederlands toetsenbord lastig zijn. */
-const ACCENT_KEYS = ['á', 'é', 'í', 'ó', 'ú', 'ñ', '¿', '¡'];
 
 /* Vlaggetje in het invoerveld: welke taal moet je typen? SVG i.p.v. emoji,
    want vlag-emoji tonen niet op Windows. */
@@ -31,7 +28,7 @@ export default {
         toSpanish ? 'Typ dit in het Spaans' : 'Typ dit in het Nederlands'),
       el('div', { class: 'q-prompt' },
         atom.emoji && showEmoji(item.key) ? el('span', { class: 'q-emoji' }, atom.emoji) : null,
-        el('span', { class: 'q-word' }, vocabPrompt(atom, direction)),
+        el('span', { class: 'q-word', lang: toSpanish ? 'nl' : 'es' }, vocabPrompt(atom, direction)),
         !toSpanish ? speakerButton(atom.es, ctx.speech) : null,
       ),
     );
@@ -51,21 +48,7 @@ export default {
     root.append(el('div', { class: 'input-wrap' }, input, flag));
 
     // Accentbalkje: alleen nuttig wanneer er Spaans getypt moet worden.
-    if (toSpanish) {
-      root.append(el('div', { class: 'accent-bar' }, ACCENT_KEYS.map(ch =>
-        el('button', {
-          class: 'accent-key', type: 'button', tabindex: '-1',
-          onmousedown: e => e.preventDefault(),   // focus niet stelen
-          onclick: () => {
-            const s = input.selectionStart ?? input.value.length;
-            const e2 = input.selectionEnd ?? s;
-            input.value = input.value.slice(0, s) + ch + input.value.slice(e2);
-            input.setSelectionRange(s + 1, s + 1);
-            input.focus();
-            ctx.ready(input.value.trim().length > 0);
-          },
-        }, ch))));
-    }
+    if (toSpanish) root.append(accentBar(input, () => ctx.ready(input.value.trim().length > 0)));
 
     return {
       focus() { input.focus(); },

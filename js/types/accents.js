@@ -1,7 +1,7 @@
 /* Zet de accenten terug. Het woord verschijnt kaal — jij herstelt de spelling.
  * Hier is de controle bewust streng: accenten zijn juist het onderwerp. */
 
-import { el, speakerButton } from '../dom.js';
+import { el, speakerButton, accentBar } from '../dom.js';
 import { stripAccents, checkAnswer } from '../check.js';
 import { showEmoji } from '../scheduler.js';
 
@@ -27,7 +27,7 @@ export default {
       el('p', { class: 'q-instruction' }, 'Zet de accenten op hun plaats'),
       el('div', { class: 'q-prompt' },
         atom.emoji && showEmoji(item.key) ? el('span', { class: 'q-emoji' }, atom.emoji) : null,
-        el('span', { class: 'q-word q-word--bare' }, bare),
+        el('span', { class: 'q-word q-word--bare', lang: 'es' }, bare),
         speakerButton(atom.es, ctx.speech),
       ),
       el('p', { class: 'q-hint' }, atom.nl[0]),
@@ -42,19 +42,7 @@ export default {
     });
     root.append(input);
 
-    root.append(el('div', { class: 'accent-bar' }, ACCENT_KEYS.map(ch =>
-      el('button', {
-        class: 'accent-key', type: 'button', tabindex: '-1',
-        onmousedown: e => e.preventDefault(),
-        onclick: () => {
-          const s = input.selectionStart ?? input.value.length;
-          const e2 = input.selectionEnd ?? s;
-          input.value = input.value.slice(0, s) + ch + input.value.slice(e2);
-          input.setSelectionRange(s + 1, s + 1);
-          input.focus();
-          ctx.ready(true);
-        },
-      }, ch))));
+    root.append(accentBar(input, () => ctx.ready(true), ACCENT_KEYS));
 
     return {
       focus() {

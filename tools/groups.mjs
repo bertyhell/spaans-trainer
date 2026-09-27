@@ -10,6 +10,7 @@
  */
 
 import { CONJUGATION_ORDER, VERB_TYPE_THEMES } from './conjugate.mjs';
+import { CONTENT_GROUPS, contentThemesOf } from './content/themes.mjs';
 
 export const GROUPS = [
   {
@@ -73,8 +74,11 @@ export const GROUPS = [
       'eigenschappen', 'bijwoord', 'vergelijken', 'voornaamwoorden',
       'onbepaalde-voornaamwoorden', 'interrogativos', 'bijvoeglijk-naamwoord',
       'ser-estar', 'verleden-tijden', 'grammaticatermen', 'opdrachtentaal',
+      // Oefeningen uit het werkboek en de bundel (tools/content/).
+      ...contentThemesOf('g-grammatica'),
     ],
   },
+  ...CONTENT_GROUPS.map(g => ({ ...g, themes: contentThemesOf(g.id) })),
 ];
 
 /** themaId -> groepId, voor het omzetten van de data. */

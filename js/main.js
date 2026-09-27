@@ -111,7 +111,7 @@ function renderTree() {
             el('span', { class: 'row-title' }, theme.label),
             el('span', { class: 'row-meta' }, `${theme.count} ${theme.noun}`)),
         ),
-        el('span', { class: 'mastery', title: `${pct}% beheerst` },
+        el('span', { class: 'mastery', title: `${pct}% beheerst`, role: 'img', 'aria-label': `${pct}% beheerst` },
           el('span', { class: 'mastery-fill', style: `width:${pct}%` })),
         el('button', {
           class: 'row-go', type: 'button', 'aria-label': `Oefen ${theme.label} meteen`,
@@ -151,7 +151,7 @@ function renderTree() {
         el('span', { class: 'row-title' }, group.title),
         el('span', { class: 'row-meta' },
           `${group.themes.length} onderdelen · ${total.count} ${total.noun}`)),
-      el('span', { class: 'mastery', title: `${groupPct}% beheerst` },
+      el('span', { class: 'mastery', title: `${groupPct}% beheerst`, role: 'img', 'aria-label': `${groupPct}% beheerst` },
         el('span', { class: 'mastery-fill', style: `width:${groupPct}%` })),
       el('span', { class: `chevron${isOpen ? ' is-open' : ''}`, 'aria-hidden': 'true' }, '›'),
     );
@@ -315,8 +315,21 @@ function showFeedback(result) {
   note.hidden = !result.note;
 
   const explain = $('#feedback-explain');
-  explain.textContent = atom.note ?? '';
-  explain.hidden = !atom.note;
+  const explanation = explainFor(atom);
+  explain.textContent = explanation ?? '';
+  explain.hidden = !explanation;
+
+  // Grammatica-uitleg alleen bij een fout: wie het goed had, weet het al.
+  // Dichtgeklapt, want de actiebalk is klein; één tik en je leest de regel.
+  const grammar = !result.correct && data.grammarFor(atom);
+  const g = $('#feedback-grammar');
+  g.hidden = !grammar;
+  g.open = false;
+  if (grammar) {
+    $('#feedback-grammar-title').textContent =
+      `Uitleg: ${grammar.title}${grammar.ref ? ` (grammatica ${grammar.ref})` : ''}`;
+    $('#feedback-grammar-body').textContent = grammar.body;
+  }
 
   const label = data.sourceLabel(atom);
   const src = $('#feedback-src');
@@ -405,6 +418,14 @@ function confetti(origin) {
 
 const pick = arr => arr[Math.floor(Math.random() * arr.length)];
 
+/** Wat er onder de uitslag staat: een opmerking, of bij een toets- of
+ *  leesvraag de vertaling of de reden waarom het antwoord klopt. */
+function explainFor(atom) {
+  if (atom.note) return atom.note;
+  if (['choice', 'reading', 'stress'].includes(atom.kind) && atom.nl) return atom.nl;
+  return null;
+}
+
 /**
  * Het overzicht na afloop. Alles komt erin, niet alleen de fouten: een woord
  * dat je nét goed had wil je ook nog eens zien, en een fout in de oefendata
@@ -434,26 +455,35 @@ function renderReview(results) {
       },
     }, '⚠️');
 
-    const detail = el('div', { class: 'mistake-detail', hidden: true }, ...detailRows(r));
-    const toggle = el('button', {
-      class: 'mistake-toggle', type: 'button', 'aria-expanded': 'false',
-      onclick: () => {
-        const open = detail.hidden;
-        detail.hidden = !open;
-        toggle.setAttribute('aria-expanded', String(open));
-      },
-    },
-      el('span', { class: 'mistake-mark', 'aria-hidden': 'true' }, r.correct ? '✓' : '✗'),
-      el('span', { class: 'mistake-text' },
-        el('span', { class: 'mistake-q' }, q),
-        el('span', { class: 'mistake-a' }, a)),
-      el('span', { class: 'mistake-chevron', 'aria-hidden': 'true' }, '▾'));
-
-    const li = el('li', { class: `mistake${r.correct ? ' is-ok' : ''}` }, toggle, flag, detail);
+    const li = reviewRow({
+      mark: r.correct ? '✓' : '✗', markLabel: r.correct ? 'juist' : 'fout',
+      q, a, className: `mistake${r.correct ? ' is-ok' : ''}`,
+      detail: el('div', { class: 'mistake-detail', hidden: true }, ...detailRows(r)),
+      extras: [flag],
+    });
     list.append(li);
     items.push({ li, correct: r.correct });
   }
   revealReview(items);
+}
+
+/** Eén uitklapbare regel in een overzicht: vraag en antwoord, details eronder. */
+function reviewRow({ mark = null, markLabel = null, q, a, detail, extras = [], className = 'mistake' }) {
+  const toggle = el('button', {
+    class: 'mistake-toggle', type: 'button', 'aria-expanded': 'false',
+    onclick: () => {
+      const open = detail.hidden;
+      detail.hidden = !open;
+      toggle.setAttribute('aria-expanded', String(open));
+    },
+  },
+    mark != null ? el('span', { class: 'mistake-mark', 'aria-hidden': 'true' }, mark) : null,
+    markLabel ? el('span', { class: 'sr-only' }, `${markLabel}: `) : null,
+    el('span', { class: 'mistake-text' },
+      el('span', { class: 'mistake-q' }, q),
+      el('span', { class: 'mistake-a' }, a)),
+    el('span', { class: 'mistake-chevron', 'aria-hidden': 'true' }, '▾'));
+  return el('li', { class: className }, toggle, ...extras, detail);
 }
 
 const prefersReducedMotion = () =>
@@ -503,6 +533,14 @@ function mistakeLines(m) {
       return [`${a.verb} · ${data.PERSON_LABELS[a.person]}`, a.form];
     case 'grammar':
       return [a.rule, m.expected];
+    case 'choice':
+      return [a.prompt.replace('___', '…'), a.answer];
+    case 'reading':
+      return [a.q, a.answer];
+    case 'dialogue':
+      return [a.es, a.nl];
+    case 'stress':
+      return [a.es, m.expected];
     default:
       return [a.nl ?? a.rule ?? a.es ?? '', m.expected];
   }
@@ -525,6 +563,15 @@ function detailRows(m) {
       break;
     case 'grammar':
       for (const ex of a.examples ?? []) pairs.push([ex.es.replace('___', ex.answer), ex.nl]);
+      break;
+    case 'choice':
+      pairs.push([a.prompt.includes('___') ? a.prompt.replace('___', a.answer) : `${a.prompt} ${a.answer}`, a.nl ?? '']);
+      break;
+    case 'reading':
+      pairs.push([data.getText(a.text)?.title ?? '', `${a.q} → ${a.answer}`]);
+      break;
+    case 'stress':
+      pairs.push([a.syllables.join('·'), a.nl ?? '']);
       break;
     default:
       if (a.es || a.nl) pairs.push([a.es ?? '', [].concat(a.nl ?? '').join(', ')]);
@@ -703,21 +750,12 @@ function renderRecentMistakes() {
 
   for (const m of items) {
     const [q, a] = mistakeLines(m);
-    const detail = el('div', { class: 'mistake-detail', hidden: true }, ...detailRows(m));
-    const toggle = el('button', {
-      class: 'mistake-toggle', type: 'button', 'aria-expanded': 'false',
-      onclick: () => {
-        const open = detail.hidden;
-        detail.hidden = !open;
-        toggle.setAttribute('aria-expanded', String(open));
-      },
-    },
-      el('span', { class: 'mistake-mark', 'aria-hidden': 'true' }, `${m.streak}/${storage.MISTAKE_CLEAR_AFTER}`),
-      el('span', { class: 'mistake-text' },
-        el('span', { class: 'mistake-q' }, q),
-        el('span', { class: 'mistake-a' }, a)),
-      el('span', { class: 'mistake-chevron', 'aria-hidden': 'true' }, '▾'));
-    list.append(el('li', { class: 'mistake' }, toggle, detail));
+    list.append(reviewRow({
+      mark: `${m.streak}/${storage.MISTAKE_CLEAR_AFTER}`,
+      markLabel: `${m.streak} van ${storage.MISTAKE_CLEAR_AFTER} keer juist`,
+      q, a,
+      detail: el('div', { class: 'mistake-detail', hidden: true }, ...detailRows(m)),
+    }));
   }
 }
 
@@ -751,6 +789,8 @@ function reportLabel(atom) {
   switch (atom.kind) {
     case 'vocab': return [atom.es, atom.nl.join(', ')];
     case 'conjugation': return [`${atom.verb} · ${data.PERSON_LABELS[atom.person]}`, atom.form];
+    case 'choice': return [atom.prompt, atom.answer];
+    case 'reading': return [atom.q, atom.answer];
     default: return [atom.es ?? atom.rule ?? atom.id, Array.isArray(atom.nl) ? atom.nl.join(', ') : (atom.nl ?? '')];
   }
 }
@@ -779,24 +819,12 @@ function renderReports() {
       },
     });
     reason.value = storage.getReportReason(id);
-    const toggle = el('button', {
-      class: 'mistake-toggle', type: 'button', 'aria-expanded': 'false',
-      onclick: () => {
-        const open = detail.hidden;
-        detail.hidden = !open;
-        toggle.setAttribute('aria-expanded', String(open));
-      },
-    },
-      el('span', { class: 'mistake-text' },
-        el('span', { class: 'mistake-q' }, q),
-        el('span', { class: 'mistake-a' }, a)),
-      el('span', { class: 'mistake-chevron', 'aria-hidden': 'true' }, '▾'));
     const remove = el('button', {
       class: 'icon-btn icon-btn--sm', type: 'button',
       title: 'Melding verwijderen', 'aria-label': `Melding verwijderen: ${q}`,
       onclick: () => { storage.unreport(id); renderReports(); },
     }, '🗑️');
-    list.append(el('li', { class: 'mistake' }, toggle, remove, reason, detail));
+    list.append(reviewRow({ q, a, detail, extras: [remove, reason] }));
   }
 }
 
@@ -949,6 +977,8 @@ async function boot() {
   }
 
   storage.load();
+  // Voortgang uit een ander tabblad: boom en tellers bijwerken.
+  storage.watch(() => { renderTree(); refreshStats(); });
   applyMotionPreference();
   wire();
   renderTree();

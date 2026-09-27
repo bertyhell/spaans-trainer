@@ -8,21 +8,27 @@ npm-afhankelijkheden.
 
 ## Wat er in zit
 
-**1720 oefenfeiten**, gedolven uit de 355 cursusbladzijden en nagekeken op taal:
+**9459 oefenfeiten**, gedolven uit de cursusbladzijden en de bundel van de lesgever:
 
 | soort | aantal | wordt |
 |---|---|---|
-| woordenschat ES↔NL | 1146 | meerkeuze, intypen, lidwoord, accenten, koppelen, hoort-niet-bij, welk-is-onregelmatig, luisteren |
-| vervoegingen | 3792 (632 rijtjes: 75 uit de cursus, de rest berekend) | vervoegingstabel, losse vorm, invuloefening |
-| grammaticaregels | 45 (143 voorbeelden) | invuloefening, meerkeuze |
-| zinnen uit de dialogen | 43 | zin bouwen, invuloefening |
-| liedjesregels | 36 (3 liedjes) | invuloefening |
+| woordenschat ES↔NL | 1141 | meerkeuze, intypen, lidwoord, accenten, koppelen, hoort-niet-bij, welk-is-onregelmatig, luisteren |
+| vervoegingen | 6204 (8 tijden; de meeste berekend) | vervoegingstabel, losse vorm |
+| zinnen (werkboek, bundel, dialogen uit de cursus) | 758 | invuloefening, zin bouwen |
+| grammaticaregels | 74 | invuloefening, meerkeuze |
+| toets- en werkboekvragen | 604 | meerkeuze (toets unidad 1, instaptoets, Miradores, werkboek) |
+| leesvragen bij 58 teksten | 204 | lezen |
+| dialoogregels (20 eigen dialogen) | 207 | wat zeggen ze?, wat volgt er? |
+| klemtoon | 132 | tik de beklemtoonde lettergreep |
 
-Verdeeld over 75 thema's onder de acht unidades, plus twee eigen groepen voor de
-werkwoorden en de grammatica uit de losse bundel van de lesgever.
+Bij een fout antwoord verschijnt een korte grammatica-uitleg (33 onderwerpen, met
+verwijzing naar de grammatica achteraan het boek).
+
+Verdeeld over 144 thema's in 13 groepen, op onderwerp in plaats van per unidad.
 
 De werkwoorden staan in twee groepen: *betekenis* (per activiteit) en *vervoegen*, met per
-tijd — presente, gerundio, indefinido, futuro, imperfecto, perfecto — een thema voor
+tijd — presente, gerundio, indefinido, futuro, imperfecto, perfecto, estar + gerundio,
+condicional en subjuntivo — een thema voor
 regelmatig op -ar, -er en -ir, klankveranderend (enkel presente) en onregelmatig. Omdat de
 cursus vooral onregelmatige rijtjes geeft, vult `tools/conjugate.mjs` de regelmatige
 werkwoorden uit de woordenschat aan; die atomen hebben `generated: true`.
@@ -64,6 +70,15 @@ node tools/validate.mjs
 `merge.mjs` ontdubbelt woorden die in beide corpora voorkomen, bouwt de themaboom op en
 voegt te kleine thema's samen (meerkeuze heeft minstens vier woorden per thema nodig om
 afleiders te kunnen kiezen).
+
+De fragmenten van die eerste mijnronde bestaan niet meer. Nieuwe inhoud komt daarom als
+gewone modules in `tools/content/` (formaat in `tools/content/index.mjs`), en
+`regroup.mjs` voegt die bij elke run opnieuw in:
+
+```bash
+node tools/content/index.mjs      # controleert de modules
+node tools/regroup.mjs            # schrijft data/course.js opnieuw
+```
 
 ## Hoe het werkt
 
@@ -126,11 +141,13 @@ css/style.css         mobiel eerst, donkere modus, beperkte beweging
 js/main.js            schermbeheer en bedrading
 js/session.js         de lesmotor
 js/scheduler.js       Leitner-dozen en gewogen trekking
-js/check.js           antwoordcontrole
+js/check.js           antwoordcontrole, woordenlijstnotatie (frigo(rífico), sencillo/-a)
 js/matchRound.js      de koppelronde
 js/types/             de oefenvormen
 data/course.js        gegenereerde oefendata
 tools/                server, tests, validatie, samenvoegen
+tools/content/        handmatig samengestelde inhoud: toetsen, werkboek, dialogen,
+                      teksten, klemtoon, grammatica-uitleg
 DESIGN-BRIEF.md       opdracht voor de vormgeving
 ```
 

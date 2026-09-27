@@ -1,7 +1,7 @@
 /* Meerkeuze. Afleiders komen uit hetzelfde thema, zodat de keuze echt over
  * betekenis gaat en niet over "welke hoort hier duidelijk niet thuis". */
 
-import { el, shuffle, sample, speakerButton } from '../dom.js';
+import { el, shuffle, sample, speakerButton, optionList } from '../dom.js';
 import { vocabAnswer, vocabPrompt, siblings } from '../data.js';
 import { showEmoji } from '../scheduler.js';
 
@@ -26,8 +26,7 @@ export default {
       .map(a => (direction === 'nl2es' ? a.es : a.nl[0]))
       .filter(d => !answers.includes(d));
 
-    const options = shuffle([correct, ...distractors]);
-    let chosen = null;
+    const options = shuffle([...new Set([correct, ...distractors])]);
 
     const prompt = vocabPrompt(atom, direction);
     root.append(
@@ -35,38 +34,21 @@ export default {
         direction === 'nl2es' ? 'Hoe zeg je dit in het Spaans?' : 'Wat betekent dit?'),
       el('div', { class: 'q-prompt' },
         atom.emoji && showEmoji(item.key) ? el('span', { class: 'q-emoji' }, atom.emoji) : null,
-        el('span', { class: 'q-word' }, prompt),
+        el('span', { class: 'q-word', lang: direction === 'nl2es' ? 'nl' : 'es' }, prompt),
         direction === 'es2nl' ? speakerButton(atom.es, ctx.speech) : null,
       ),
     );
 
-    const list = el('div', { class: 'options' });
-    for (const opt of options) {
-      const btn = el('button', {
-        class: 'option', type: 'button', dataset: { value: opt },
-        onclick: () => {
-          chosen = opt;
-          list.querySelectorAll('.option').forEach(b =>
-            b.classList.toggle('is-selected', b.dataset.value === opt));
-          ctx.ready(true);
-        },
-      }, opt);
-      list.append(btn);
-    }
-    root.append(list);
+    const opts = optionList(options, {
+      lang: direction === 'nl2es' ? 'es' : 'nl',
+      onChoose: () => ctx.ready(true),
+    });
+    root.append(opts.list);
 
     return {
-      focus() { list.querySelector('.option')?.focus(); },
-      check() {
-        return { correct: answers.includes(chosen), expected: correct, note: null, given: chosen };
-      },
-      reveal({ correct: wasCorrect }) {
-        list.querySelectorAll('.option').forEach(b => {
-          b.disabled = true;
-          if (b.dataset.value === correct) b.classList.add('is-correct');
-          else if (b.dataset.value === chosen && !wasCorrect) b.classList.add('is-wrong');
-        });
-      },
+      focus: opts.focus,
+      check: () => ({ correct: answers.includes(opts.chosen()), expected: correct, note: null, given: opts.chosen() }),
+      reveal() { opts.reveal(correct); },
     };
   },
 };

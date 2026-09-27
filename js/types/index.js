@@ -26,6 +26,10 @@ import irregularVerb from './irregularVerb.js';
 import verbType from './verbType.js';
 import { conjugationGrid, conjugationSingle } from './conjugation.js';
 import { listenType, listenChoose } from './listen.js';
+import choice from './choice.js';
+import reading from './reading.js';
+import { dialogueMeaning, dialogueReply } from './dialogue.js';
+import stressTap from './stressTap.js';
 
 export const TYPES = [
   multipleChoice,
@@ -42,6 +46,11 @@ export const TYPES = [
   conjugationSingle,
   listenType,
   listenChoose,
+  choice,
+  reading,
+  dialogueMeaning,
+  dialogueReply,
+  stressTap,
 ];
 
 export const byId = Object.fromEntries(TYPES.map(t => [t.id, t]));
@@ -64,6 +73,13 @@ const WEIGHTS = {
   stemChange: 2,
   irregularVerb: 2,
   verbType: 1,
+  // Deze vormen zijn de enige voor hun soort atoom: het gewicht doet er dan
+  // niet toe, behalve bij een dialoogregel, waar antwoorden net iets meer oplevert.
+  choice: 1,
+  reading: 1,
+  dialogueMeaning: 2,
+  dialogueReply: 3,
+  stressTap: 1,
 };
 
 /** Alle vormen waarin dit item getoond kan worden. */

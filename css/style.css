@@ -51,6 +51,12 @@
 
 * { box-sizing: border-box; }
 
+/* Alleen voor schermlezers. */
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
 html, body {
   margin: 0;
   height: 100%;
@@ -227,6 +233,18 @@ h1.brand { display: flex; align-items: center; gap: 8px; }
 .q-word { font-size: 1.5rem; font-weight: 700; }
 .q-word--bare { letter-spacing: .04em; }
 .q-tense, .q-person, .q-infinitive { color: var(--ink-soft); font-size: .95rem; }
+/* Toetsvragen, leesteksten, dialogen en klemtoon */
+.q-context { margin: 0; padding: 10px 14px; border-left: 4px solid var(--brand); background: var(--surface-2); border-radius: 0 var(--radius) var(--radius) 0; }
+.reading { background: var(--surface); border: 2px solid var(--line); border-radius: var(--radius-lg); padding: 10px 14px; }
+.reading-title { display: flex; align-items: center; justify-content: space-between; gap: 10px; font-weight: 700; cursor: pointer; }
+.reading-text { max-height: 38vh; overflow-y: auto; margin-top: 8px; line-height: 1.55; }
+.reading-text p { margin: 0 0 .7em; }
+.dialogue-line { margin: 0; line-height: 1.6; }
+.dialogue-line + .dialogue-line { margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--line); }
+.dialogue-who { font-weight: 700; color: var(--ink-soft); }
+.syllables { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; }
+.syllable { min-width: 56px; text-align: center; font-size: 1.35rem; font-weight: 700; padding-inline: 12px; }
+
 .q-blank {
   display: inline-block; min-width: 68px;
   border-bottom: 3px solid var(--brand);
@@ -365,6 +383,13 @@ h1.brand { display: flex; align-items: center; gap: 8px; }
 .feedback-note { margin: 4px 0 0; font-size: .9rem; }
 .feedback-explain { margin: 4px 0 0; font-size: .88rem; color: var(--ink-soft); }
 .feedback-src { margin: 4px 0 0; font-size: .72rem; color: var(--ink-soft); opacity: .8; }
+.feedback-grammar { margin: 6px 0 0; font-size: .88rem; }
+.feedback-grammar summary { cursor: pointer; font-weight: 600; }
+.feedback-grammar p {
+  margin: 6px 0 0; white-space: pre-line;
+  max-height: 32vh; overflow-y: auto;
+  padding: 8px 10px; background: var(--surface); border-radius: var(--radius);
+}
 
 /* ---------------------------------------------------------------- */
 /* Resultaat                                                         */

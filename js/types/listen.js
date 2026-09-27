@@ -2,7 +2,7 @@
  * Zonder Spaanse stem meldt supports() false en verdwijnen deze vormen
  * stilletjes uit de lessen. */
 
-import { el, shuffle, sample } from '../dom.js';
+import { el, shuffle, sample, accentBar, optionList } from '../dom.js';
 import { siblings } from '../data.js';
 import { checkAnswer } from '../check.js';
 
@@ -44,16 +44,7 @@ export const listenType = {
     });
     root.append(input);
 
-    root.append(el('div', { class: 'accent-bar' }, ACCENT_KEYS.map(ch =>
-      el('button', {
-        class: 'accent-key', type: 'button', tabindex: '-1',
-        onmousedown: e => e.preventDefault(),
-        onclick: () => {
-          input.value += ch;
-          input.focus();
-          ctx.ready(true);
-        },
-      }, ch))));
+    root.append(accentBar(input, () => ctx.ready(true), ACCENT_KEYS));
 
     return {
       focus() { input.focus(); },
@@ -82,41 +73,23 @@ export const listenChoose = {
   render(item, root, ctx) {
     const { atom } = item;
     const correct = atom.nl[0];
-    const options = shuffle([correct, ...sample(siblings(atom), 3).map(a => a.nl[0])]);
-    let chosen = null;
+    const options = shuffle([...new Set([correct, ...sample(siblings(atom), 3).map(a => a.nl[0])])]);
 
     root.append(
       el('p', { class: 'q-instruction' }, 'Wat betekent wat je hoort?'),
       el('div', { class: 'q-prompt q-prompt--audio' }, player(atom.es, ctx.speech)),
     );
 
-    const list = el('div', { class: 'options' });
-    for (const opt of options) {
-      list.append(el('button', {
-        class: 'option', type: 'button', dataset: { value: opt },
-        onclick: () => {
-          chosen = opt;
-          list.querySelectorAll('.option').forEach(b =>
-            b.classList.toggle('is-selected', b.dataset.value === opt));
-          ctx.ready(true);
-        },
-      }, opt));
-    }
-    root.append(list);
+    const opts = optionList(options, { onChoose: () => ctx.ready(true) });
+    root.append(opts.list);
 
     return {
-      focus() { list.querySelector('.option')?.focus(); },
+      focus: opts.focus,
       check: () => ({
-        correct: atom.nl.includes(chosen),
-        expected: `${atom.es} — ${correct}`, note: null, given: chosen,
+        correct: atom.nl.includes(opts.chosen()),
+        expected: `${atom.es} — ${correct}`, note: null, given: opts.chosen(),
       }),
-      reveal({ correct: ok }) {
-        list.querySelectorAll('.option').forEach(b => {
-          b.disabled = true;
-          if (b.dataset.value === correct) b.classList.add('is-correct');
-          else if (b.dataset.value === chosen && !ok) b.classList.add('is-wrong');
-        });
-      },
+      reveal() { opts.reveal(correct); },
     };
   },
 };

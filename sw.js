@@ -4,7 +4,7 @@
  * vooral na het opnieuw genereren van data/course.js, anders blijven telefoons
  * op de oude woordenlijst hangen. tools/release.mjs doet dat automatisch. */
 
-const CACHE = 'vamos-c9f24bf3';
+const CACHE = 'vamos-65e77a5a';
 
 const ASSETS = [
   './',
@@ -22,6 +22,7 @@ const ASSETS = [
   './js/main.js',
   './js/data.js',
   './js/dom.js',
+  './js/random.js',
   './js/check.js',
   './js/storage.js',
   './js/scheduler.js',
@@ -42,6 +43,10 @@ const ASSETS = [
   './js/types/wordBank.js',
   './js/types/conjugation.js',
   './js/types/listen.js',
+  './js/types/choice.js',
+  './js/types/reading.js',
+  './js/types/dialogue.js',
+  './js/types/stressTap.js',
 ];
 
 self.addEventListener('install', e => {

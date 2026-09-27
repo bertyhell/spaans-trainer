@@ -26,8 +26,8 @@
       <g fill="#2a2118" transform="rotate(-8 256 236)"><circle cx="214" cy="168" r="26" fill="#e2553a"/><path d="M206 220A8 8 0 0 1 222 220L240 306A26 26 0 0 1 188 306Z"/><path d="M272 168A26 26 0 0 1 324 168L306 254A8 8 0 0 1 290 254Z"/><circle cx="298" cy="306" r="26" fill="#e2553a"/></g>
     </svg>¡Vamos!</h1>
     <div class="stats">
-      <span class="stat" id="stat-streak" title="Dagen op rij">🔥 <b>0</b></span>
-      <span class="stat" id="stat-done" title="Oefeningen gedaan">✅ <b>0</b></span>
+      <span class="stat" id="stat-streak" title="Dagen op rij"><span aria-hidden="true">🔥</span> <b>0</b><span class="sr-only"> dagen op rij</span></span>
+      <span class="stat" id="stat-done" title="Oefeningen gedaan"><span aria-hidden="true">✅</span> <b>0</b><span class="sr-only"> oefeningen gedaan</span></span>
       <button class="icon-btn" id="btn-settings" aria-label="Instellingen">⚙️</button>
     </div>
   </header>
@@ -62,7 +62,7 @@
   </main>
 
   <footer class="actionbar" id="lesson-actionbar">
-    <div class="feedback" id="feedback" hidden>
+    <div class="feedback" id="feedback" role="status" aria-live="polite" hidden>
       <div class="feedback-head">
         <span class="feedback-icon" id="feedback-icon"></span>
         <strong class="feedback-title" id="feedback-title"></strong>
@@ -71,6 +71,10 @@
       <p class="feedback-answer" id="feedback-answer"></p>
       <p class="feedback-note" id="feedback-note" hidden></p>
       <p class="feedback-explain" id="feedback-explain" hidden></p>
+      <details class="feedback-grammar" id="feedback-grammar" hidden>
+        <summary id="feedback-grammar-title"></summary>
+        <p id="feedback-grammar-body"></p>
+      </details>
       <p class="feedback-src" id="feedback-src" hidden></p>
     </div>
     <button class="btn btn--primary" id="btn-check" disabled>Controleer</button>
@@ -195,7 +199,7 @@
   </footer>
 </section>
 
-<div class="toast" id="toast" hidden></div>
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
 
 <script src="data/course.js"></script>
 <script src="data/sources.js"></script>

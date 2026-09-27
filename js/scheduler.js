@@ -7,6 +7,10 @@
  * achterstand van 400 kaarten voorgeschoteld, er is gewoon altijd werk. */
 
 import * as storage from './storage.js';
+import { shuffle } from './random.js';
+
+// De koppelronde en de tests schudden via de planner.
+export { shuffle };
 
 export const MAX_BOX = 5;
 
@@ -101,13 +105,4 @@ export function drawLesson(items, size = 12) {
   }
 
   return shuffle(lesson);
-}
-
-export function shuffle(arr) {
-  const a = arr.slice();
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
-  }
-  return a;
 }

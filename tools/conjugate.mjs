@@ -36,7 +36,16 @@ const ENDINGS = {
   },
 };
 const FUTURE = ['é', 'ás', 'á', 'emos', 'éis', 'án'];
+const CONDITIONAL = ['ía', 'ías', 'ía', 'íamos', 'íais', 'ían'];
 const HABER = ['he', 'has', 'ha', 'hemos', 'habéis', 'han'];
+const ESTAR = ['estoy', 'estás', 'está', 'estamos', 'estáis', 'están'];
+
+/* Aanvoegende wijs: de "andere" klinker. -ar krijgt e, -er en -ir krijgen a. */
+const SUBJUNCTIVE = {
+  ar: ['e', 'es', 'e', 'emos', 'éis', 'en'],
+  er: ['a', 'as', 'a', 'amos', 'áis', 'an'],
+  ir: ['a', 'as', 'a', 'amos', 'áis', 'an'],
+};
 
 const plain = s => s.normalize('NFD').replace(/[́]/g, '').normalize('NFC');
 
@@ -52,8 +61,18 @@ export function regularForms(verb, tense) {
   if (!end) return null;
   const stem = plain(verb).slice(0, -2);
   if (tense === 'futuro') return FUTURE.map(e => plain(verb) + e);
+  if (tense === 'condicional') return CONDITIONAL.map(e => plain(verb) + e);
   if (tense === 'perfecto') return HABER.map(h => `${h} ${stem}${end === 'ar' ? 'ado' : 'ido'}`);
+  if (tense === 'continuo') return ESTAR.map(e => `${e} ${stem}${end === 'ar' ? 'ando' : 'iendo'}`);
+  if (tense === 'subjuntivo') return SUBJUNCTIVE[end].map(e => spellStem(stem, end, e) + e);
   return ENDINGS[tense]?.[end].map(e => stem + e) ?? null;
+}
+
+/** buscar → busque, pagar → pague, empezar → empiece: de klank blijft, de
+ *  spelling past zich aan vóór een e. */
+function spellStem(stem, end, ending) {
+  if (end !== 'ar' || !ending.startsWith('e') && !ending.startsWith('é')) return stem;
+  return stem.replace(/c$/, 'qu').replace(/g$/, 'gu').replace(/z$/, 'c');
 }
 
 /** Het rijtje met klankverandering in de presente: de laatste klinker van de
@@ -74,6 +93,24 @@ const FUTURE_STEMS = {
   saber: 'sabr', querer: 'querr', haber: 'habr', hacer: 'har', decir: 'dir',
 };
 
+/* Onregelmatige gerundios. De -ir-klankveranderaars (durmiendo, pidiendo,
+ * sintiendo) worden berekend; dit zijn de overige. */
+const GERUNDS = {
+  ir: 'yendo', leer: 'leyendo', oír: 'oyendo', traer: 'trayendo', creer: 'creyendo',
+  poseer: 'poseyendo', caer: 'cayendo', decir: 'diciendo', venir: 'viniendo',
+  poder: 'pudiendo', reír: 'riendo',
+};
+
+/* Aanvoegende wijs die niet van de yo-vorm afgeleid kan worden. */
+const SUBJUNCTIVE_IRREGULAR = {
+  ser: ['sea', 'seas', 'sea', 'seamos', 'seáis', 'sean'],
+  estar: ['esté', 'estés', 'esté', 'estemos', 'estéis', 'estén'],
+  ir: ['vaya', 'vayas', 'vaya', 'vayamos', 'vayáis', 'vayan'],
+  saber: ['sepa', 'sepas', 'sepa', 'sepamos', 'sepáis', 'sepan'],
+  haber: ['haya', 'hayas', 'haya', 'hayamos', 'hayáis', 'hayan'],
+  dar: ['dé', 'des', 'dé', 'demos', 'deis', 'den'],
+};
+
 /* Onregelmatige voltooide deelwoorden. */
 const PARTICIPLES = {
   abrir: 'abierto', escribir: 'escrito', hacer: 'hecho', poner: 'puesto',
@@ -85,14 +122,57 @@ const PARTICIPLES = {
 const STEM_CHANGERS = Object.entries(IRREGULAR)
   .filter(([v, c]) => c.includes('→') && !['nevar', 'llover', 'doler'].includes(v));
 
-/** Het correcte rijtje voor de werkwoorden die we zelf aanvullen. */
-function forms(verb, tense) {
+/** De stamklinker zoals die in het gerundio en in nosotros/vosotros van de
+ *  aanvoegende wijs verschijnt: enkel -ir-werkwoorden wisselen daar
+ *  (durmiendo, durmamos; pidiendo, pidamos; sintiendo, sintamos). */
+function weakStem(verb) {
+  const change = IRREGULAR[verb];
+  const stem = plain(verb).slice(0, -2);
+  if (!change?.includes('→') || endingOf(verb) !== 'ir') return stem;
+  const from = change.split(' → ')[0];
+  const at = stem.lastIndexOf(from);
+  return at < 0 ? stem : stem.slice(0, at) + (from === 'o' ? 'u' : 'i') + stem.slice(at + 1);
+}
+
+function gerund(verb) {
+  if (GERUNDS[verb]) return GERUNDS[verb];
+  const end = endingOf(verb);
+  if (!end) return null;
+  const stem = weakStem(verb);
+  if (end === 'ar') return `${stem}ando`;
+  // leer → leyendo: tussen twee klinkers wordt de i een y.
+  return /[aeo]$/.test(stem) ? `${stem}yendo` : `${stem}iendo`;
+}
+
+/** Aanvoegende wijs, afgeleid van de yo-vorm van de presente: tengo → tenga,
+ *  conozco → conozca. Bij klankveranderaars blijft nosotros/vosotros zwak. */
+function subjunctive(verb, yo) {
+  if (SUBJUNCTIVE_IRREGULAR[verb]) return SUBJUNCTIVE_IRREGULAR[verb];
+  const end = endingOf(verb);
+  if (!end || !yo?.endsWith('o')) return null;
+  const endings = SUBJUNCTIVE[end];
+  const strong = spellStem(yo.slice(0, -1), end, 'e');
+  const change = IRREGULAR[verb];
+  if (!change?.includes('→')) return endings.map(e => strong + e);
+  const weak = spellStem(weakStem(verb), end, 'e');
+  return endings.map((e, i) => (i === 3 || i === 4 ? weak : strong) + e);
+}
+
+/** Het correcte rijtje voor de werkwoorden die we zelf aanvullen. `yo` is de
+ *  yo-vorm van de presente, voor de aanvoegende wijs. */
+function forms(verb, tense, yo) {
   if (tense === 'presente') {
     const change = IRREGULAR[verb];
     return change?.includes('→') ? stemChangedForms(verb, change) : regularForms(verb, tense);
   }
   if (tense === 'futuro' && FUTURE_STEMS[verb]) return FUTURE.map(e => FUTURE_STEMS[verb] + e);
+  if (tense === 'condicional' && FUTURE_STEMS[verb]) return CONDITIONAL.map(e => FUTURE_STEMS[verb] + e);
   if (tense === 'perfecto' && PARTICIPLES[verb]) return HABER.map(h => `${h} ${PARTICIPLES[verb]}`);
+  if (tense === 'continuo') {
+    const g = gerund(verb);
+    return g ? ESTAR.map(e => `${e} ${g}`) : null;
+  }
+  if (tense === 'subjuntivo') return subjunctive(verb, yo);
   return regularForms(verb, tense);
 }
 
@@ -110,6 +190,11 @@ function verbsToAdd(tense, bookVerbs) {
     case 'imperfecto': return [...regular, ...changers];
     case 'perfecto': return [...regular, ...changers].filter(v => !VOWEL_STEM.test(v));
     case 'futuro': return [...regular, ...changers, ...bookVerbs];
+    case 'condicional': return [...regular, ...changers, ...bookVerbs];
+    case 'continuo': return [...regular, ...changers, ...bookVerbs].filter(v => v !== 'haber');
+    // Enkel werkwoorden waarvan de yo-vorm bekend is (of die volledig
+    // onregelmatig zijn). jugar (juegue) laten we weg: u → ue en g → gu tegelijk.
+    case 'subjuntivo': return [...regular, ...changers, ...bookVerbs].filter(v => v !== 'jugar');
     case 'indefinido':
       // -ir-klankveranderaars wisselen ook hier (sintió, pidió); querer en
       // poder zijn volledig onregelmatig (quise, pude).
@@ -127,6 +212,9 @@ export const TENSES = [
   { tense: 'futuro', section: 'Futuro simple (toekomende tijd: ik zal spreken)', kinds: ['ar', 'er', 'ir', 'onr'] },
   { tense: 'imperfecto', section: 'Pretérito imperfecto (verleden tijd, gewoonte of beschrijving: ik sprak altijd)', kinds: ['ar', 'er', 'ir', 'onr'] },
   { tense: 'perfecto', section: 'Pretérito perfecto (voltooid tegenwoordige tijd: ik heb gesproken)', kinds: ['ar', 'er', 'ir', 'onr'] },
+  { tense: 'continuo', section: 'Estar + gerundio (bezig zijn: ik ben aan het spreken)', kinds: ['ar', 'er', 'ir', 'onr'] },
+  { tense: 'condicional', section: 'Condicional (voorwaardelijke wijs: ik zou spreken)', kinds: ['ar', 'er', 'ir', 'onr'] },
+  { tense: 'subjuntivo', section: 'Presente de subjuntivo (aanvoegende wijs: … dat ik spreek)', kinds: ['ar', 'er', 'ir', 'klank', 'onr'] },
 ];
 
 const KIND_LABELS = {
@@ -149,11 +237,16 @@ export const CONJUGATION_ORDER = TENSES.flatMap(({ tense, kinds }) => [
 ]);
 
 /** In welk thema hoort dit rijtje? */
-function classify(verb, tense, family) {
+function classify(verb, tense, family, yo) {
   const same = f => f && PERSONS.every((p, i) => family.get(p) === f[i]);
   if (same(regularForms(verb, tense))) return { theme: themeId(tense, endingOf(verb)), irregular: false };
   if (tense === 'presente' && IRREGULAR[verb]?.includes('→')
       && same(stemChangedForms(verb, IRREGULAR[verb]))) {
+    return { theme: themeId(tense, 'klank'), irregular: true };
+  }
+  // In de aanvoegende wijs is een klankveranderaar precies zo klankveranderend
+  // als in de presente: quiera, queramos.
+  if (tense === 'subjuntivo' && IRREGULAR[verb]?.includes('→') && same(subjunctive(verb, yo))) {
     return { theme: themeId(tense, 'klank'), irregular: true };
   }
   return { theme: themeId(tense, 'onr'), irregular: true };
@@ -169,9 +262,12 @@ export function buildConjugations(atoms) {
   const bookVerbs = [...new Set(book.map(a => a.verb))];
 
   const all = [...book];
+  // De yo-vorm van de presente, uit de cursus of berekend: basis voor de
+  // aanvoegende wijs. Daarom komt de presente als eerste aan de beurt.
+  const yoOf = verb => byId.get(`c.${verb}.presente.1s`)?.form;
   for (const { tense } of TENSES) {
     for (const verb of new Set(verbsToAdd(tense, bookVerbs))) {
-      const f = forms(verb, tense);
+      const f = forms(verb, tense, yoOf(verb));
       if (!f) continue;
       PERSONS.forEach((person, i) => {
         const id = `c.${verb}.${tense}.${person}`;
@@ -191,7 +287,7 @@ export function buildConjugations(atoms) {
   }
 
   return all.map(a => {
-    const { theme, irregular } = classify(a.verb, a.tense, families.get(`${a.verb}|${a.tense}`));
+    const { theme, irregular } = classify(a.verb, a.tense, families.get(`${a.verb}|${a.tense}`), yoOf(a.verb));
     // Het onregelmatig-vlag uit de cursus blijft staan: dat is wat het boek zegt.
     return a.generated ? { ...a, theme, irregular } : { ...a, theme };
   });

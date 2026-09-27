@@ -4,6 +4,7 @@
 
 import { readFile } from 'node:fs/promises';
 import { expandVariants } from '../js/check.js';
+import { checkAtom } from './content/index.mjs';
 
 const DATA = new URL('../data/course.js', import.meta.url);
 
@@ -69,12 +70,14 @@ for (const a of course.atoms) {
   else usedThemes.add(a.theme);
 
   // Berekende vervoegingen (tools/conjugate.mjs) komen uit geen enkele scan.
-  if (!a.src && !a.generated) warn(id, 'zonder bronverwijzing');
+  if (!a.src && !a.srcLabel && !a.generated) warn(id, 'zonder bronverwijzing');
 
   const text = [a.es, a.rule, ...(a.nl ?? []), ...(a.examples ?? []).map(e => e.es)].join(' ');
   if (OCR_JUNK.test(text)) err(id, 'bevat OCR-resten of annotatietekst');
 
-  if (a.es && !VALID_ES.test(a.es)) err(id, `ongeldige tekens in es: "${a.es}"`);
+  // Alleen een woord moet uit gewone letters bestaan; zinnen mogen ; % en « ».
+  if (a.es && a.kind === 'vocab' && !VALID_ES.test(a.es)) err(id, `ongeldige tekens in es: "${a.es}"`);
+  if (a.grammarRef && !course.grammar?.[a.grammarRef]) err(id, `grammarRef "${a.grammarRef}" heeft geen uitleg`);
 
   // Emoji moet één teken zijn, geen woord.
   if (a.emoji && [...a.emoji].length > 3) warn(id, `verdachte emoji "${a.emoji}"`);
@@ -144,6 +147,15 @@ for (const a of course.atoms) {
           err(id, `blank ${i}: answer ontbreekt in options`);
         }
       }
+      break;
+    }
+
+    case 'choice':
+    case 'reading':
+    case 'dialogue':
+    case 'stress': {
+      const problems = checkAtom(a, { themeIds, texts: course.texts ?? {}, grammar: course.grammar ?? {} });
+      for (const p of problems) err(id, p);
       break;
     }
 

@@ -7,7 +7,7 @@
  * conjugationSingle vraagt één vorm, met de andere personen als afleiders.
  */
 
-import { el, shuffle, sample } from '../dom.js';
+import { el, shuffle, sample, optionList } from '../dom.js';
 import { conjugationFamily, PERSON_LABELS, PERSON_ORDER, TENSE_LABELS } from '../data.js';
 import { checkAnswer } from '../check.js';
 import { mastery, itemKey } from '../scheduler.js';
@@ -42,7 +42,7 @@ export const conjugationGrid = {
     root.append(
       el('p', { class: 'q-instruction' }, 'Vervoeg dit werkwoord volledig'),
       el('div', { class: 'q-prompt' },
-        el('span', { class: 'q-word' }, item.atom.verb),
+        el('span', { class: 'q-word', lang: 'es' }, item.atom.verb),
         el('span', { class: 'q-tense' }, tenseLabel(item.atom.tense)),
       ),
     );
@@ -127,12 +127,11 @@ export const conjugationSingle = {
     const { atom } = item;
     const family = conjugationFamily(atom);
     const others = family.filter(a => a.id !== atom.id).map(a => a.form);
-    const options = shuffle([atom.form, ...sample(others, Math.min(3, others.length))]);
-    let chosen = null;
+    const options = shuffle([atom.form, ...sample(others.filter(f => f !== atom.form), Math.min(3, others.length))]);
 
     root.append(
       el('p', { class: 'q-instruction' }, 'Kies de juiste vorm'),
-      el('div', { class: 'q-prompt q-prompt--sentence' },
+      el('div', { class: 'q-prompt q-prompt--sentence', lang: 'es' },
         el('span', { class: 'q-person' }, PERSON_LABELS[atom.person]),
         el('span', { class: 'q-blank' }, '___'),
         el('span', { class: 'q-infinitive' }, `(${atom.verb})`),
@@ -140,30 +139,13 @@ export const conjugationSingle = {
       el('p', { class: 'q-hint' }, tenseLabel(atom.tense)),
     );
 
-    const list = el('div', { class: 'options' });
-    for (const form of options) {
-      list.append(el('button', {
-        class: 'option', type: 'button', dataset: { value: form },
-        onclick: () => {
-          chosen = form;
-          list.querySelectorAll('.option').forEach(b =>
-            b.classList.toggle('is-selected', b.dataset.value === form));
-          ctx.ready(true);
-        },
-      }, form));
-    }
-    root.append(list);
+    const opts = optionList([...new Set(options)], { lang: 'es', onChoose: () => ctx.ready(true) });
+    root.append(opts.list);
 
     return {
-      focus() { list.querySelector('.option')?.focus(); },
-      check: () => ({ correct: chosen === atom.form, expected: atom.form, note: null, given: chosen }),
-      reveal({ correct }) {
-        list.querySelectorAll('.option').forEach(b => {
-          b.disabled = true;
-          if (b.dataset.value === atom.form) b.classList.add('is-correct');
-          else if (b.dataset.value === chosen && !correct) b.classList.add('is-wrong');
-        });
-      },
+      focus: opts.focus,
+      check: () => ({ correct: opts.chosen() === atom.form, expected: atom.form, note: null, given: opts.chosen() }),
+      reveal() { opts.reveal(atom.form); },
     };
   },
 };

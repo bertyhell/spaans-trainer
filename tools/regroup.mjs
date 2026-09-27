@@ -16,7 +16,9 @@
  *   - de vervoegingen worden aangevuld en per tijd ingedeeld in regelmatig,
  *     klankveranderend en onregelmatig (zie conjugate.mjs);
  *   - handmatige verbeteringen uit gemelde fouten: extra vertalingen,
- *     verhuisde en geschrapte woorden (zie fixes.mjs).
+ *     verhuisde en geschrapte woorden (zie fixes.mjs);
+ *   - de handmatig samengestelde inhoud uit tools/content/ (toetsen,
+ *     werkboekoefeningen, dialogen, teksten, klemtoon, grammatica-uitleg).
  *
  * Het script is herhaalbaar: twee keer draaien geeft hetzelfde resultaat.
  */
@@ -28,6 +30,8 @@ import { GROUPS, GROUP_OF } from './groups.mjs';
 import { VERB_THEMES, VERB_THEME_OF, REPLACED_THEMES, IRREGULAR, REGULAR } from './verbs.mjs';
 import { CONJUGATION_THEMES, EXTRA_SECTIONS, VERB_TYPE_THEMES, buildConjugations, buildVerbTypes } from './conjugate.mjs';
 import { EXTRA_NL, MOVE, DROP as FIX_DROP, EXTRA_THEMES } from './fixes.mjs';
+import { CONTENT_THEMES } from './content/themes.mjs';
+import { loadContent } from './content/index.mjs';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const COURSE = join(HERE, '..', 'data', 'course.js');
@@ -41,6 +45,13 @@ const DROP = new Set(['v.mencionen', 'v.piensen-en', ...FIX_DROP]);
 const POS = new Set(['verb', 'noun', 'adj', 'adv', 'other']);
 
 /* --- inlezen --- */
+
+const content = await loadContent();
+if (content.problems.length) {
+  console.error(`tools/content heeft ${content.problems.length} fout(en):`);
+  for (const p of content.problems.slice(0, 30)) console.error(`  ${p}`);
+  process.exit(1);
+}
 
 const raw = readFileSync(COURSE, 'utf8');
 const header = raw.slice(0, raw.indexOf('window.COURSE'));
@@ -72,6 +83,7 @@ const OWN_THEMES = [
   ...CONJUGATION_THEMES,
   ...VERB_TYPE_THEMES.map(({ type: _, ...t }) => t),
   ...EXTRA_THEMES,
+  ...CONTENT_THEMES.map(({ group: _, ...t }) => t),
 ];
 const OWN_THEME_IDS = new Set(OWN_THEMES.map(t => t.id));
 course.themes = [
@@ -96,6 +108,8 @@ let moved = 0, tagged = 0;
 const atoms = [];
 for (const atom of course.atoms) {
   if (DROP.has(atom.id)) continue;
+  // Samengestelde inhoud komt hieronder vers uit tools/content/.
+  if (atom.curated) continue;
   // Liedjesregels staan in de cursus om mee te zingen. Als oefening vragen ze
   // je een songtekst woord voor woord te reproduceren, en dat leert je geen
   // Spaans — ze gaan er dus helemaal uit, thema en al.
@@ -136,6 +150,11 @@ for (const atom of course.atoms) {
 const conjugations = buildConjugations(course.atoms);
 atoms.push(...conjugations, ...buildVerbTypes(conjugations));
 
+// Een samengesteld atoom vervangt een gedolven atoom met dezelfde id.
+const curatedIds = new Set(content.atoms.map(a => a.id));
+for (let i = atoms.length - 1; i >= 0; i--) if (curatedIds.has(atoms[i].id)) atoms.splice(i, 1);
+atoms.push(...content.atoms);
+
 /* --- groepen in plaats van unidades --- */
 
 const used = new Set(atoms.map(a => a.theme));
@@ -162,6 +181,8 @@ const next = {
   groups: groups.map(({ themes: _, ...g }) => g),
   themes,
   atoms,
+  texts: content.texts,
+  grammar: content.grammar,
 };
 delete next.units;
 
@@ -171,6 +192,7 @@ console.log(`woordenschat geclassificeerd: ${tagged}/${atoms.filter(a => a.kind 
 console.log(`verhuisd naar een ander thema: ${moved}`);
 console.log(`vervoegingen: ${conjugations.length}, waarvan berekend: ${conjugations.filter(a => a.generated).length}`);
 console.log(`groepen: ${groups.length}, thema's: ${themes.length}`);
+console.log(`samengesteld: ${content.atoms.length} atomen, ${Object.keys(content.texts).length} teksten, ${Object.keys(content.grammar).length} uitleg`);
 if (dropped.length) console.log(`buiten de indeling gelaten: ${dropped.map(t => t.id).join(', ')}`);
 if (problems.length) {
   console.log(`\n${problems.length} aandachtspunten:`);

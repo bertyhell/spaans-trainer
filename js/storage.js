@@ -54,6 +54,21 @@ export function save() {
 
 export const get = () => load();
 
+/* Twee tabbladen open: zonder dit overschrijft het ene bij elke les de
+ * voortgang van het andere. Wat een ander tabblad bewaart, lezen we hier in;
+ * `onChange` laat de app daarna het scherm verversen. */
+let onChange = null;
+export function watch(callback) {
+  onChange = callback;
+  window.addEventListener('storage', e => {
+    if (e.key !== KEY || e.newValue == null) return;
+    try {
+      state = migrate(JSON.parse(e.newValue));
+      onChange?.();
+    } catch { /* kapotte data van elders: de eigen staat blijft staan */ }
+  });
+}
+
 /* --- progressie per oefenitem (atoom + richting) --- */
 
 export function getProgress(key) {

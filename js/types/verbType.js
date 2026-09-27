@@ -6,8 +6,8 @@
  * een onregelmatige als tener (tienes) verandert óók van klank, en dan zijn
  * er twee goede antwoorden. */
 
-import { el, shuffle, sample } from '../dom.js';
-import { allAtoms } from '../data.js';
+import { el, shuffle, sample, optionList } from '../dom.js';
+import { allAtoms, conjugatedForm } from '../data.js';
 
 const OPTIONS = 4;
 
@@ -17,10 +17,10 @@ const QUESTIONS = {
   onregelmatig: { q: 'Welk werkwoord is onregelmatig?', others: ['regelmatig', 'klankveranderend'] },
 };
 
-const verbTypes = () => allAtoms().filter(a => a.kind === 'verbType');
+let verbTypeCache = null;
+const verbTypes = () => (verbTypeCache ??= allAtoms().filter(a => a.kind === 'verbType'));
 
-const presentForm = (verb, person) => allAtoms().find(a =>
-  a.kind === 'conjugation' && a.tense === 'presente' && a.verb === verb && a.person === person)?.form;
+const presentForm = (verb, person) => conjugatedForm(verb, 'presente', person);
 
 /** "pensar → pienso, piensa": yo en él tonen samen elke soort afwijking. */
 const showForms = verb => {
@@ -39,30 +39,19 @@ export default {
     const { q, others } = QUESTIONS[atom.type];
     const pool = verbTypes().filter(a => others.includes(a.type));
     const options = shuffle([atom, ...sample(pool, OPTIONS - 1)]);
-    let chosen = null;
 
     root.append(
       el('p', { class: 'q-instruction' }, q),
       el('p', { class: 'q-hint' }, 'In de tegenwoordige tijd (presente).'),
     );
 
-    const list = el('div', { class: 'options' });
-    for (const o of options) {
-      list.append(el('button', {
-        class: 'option', type: 'button', dataset: { value: o.verb },
-        onclick: () => {
-          chosen = o;
-          list.querySelectorAll('.option').forEach(b =>
-            b.classList.toggle('is-selected', b.dataset.value === o.verb));
-          ctx.ready(true);
-        },
-      }, o.verb));
-    }
-    root.append(list);
+    const opts = optionList(options.map(o => o.verb), { lang: 'es', onChoose: () => ctx.ready(true) });
+    root.append(opts.list);
 
     return {
-      focus() { list.querySelector('.option')?.focus(); },
+      focus: opts.focus,
       check() {
+        const chosen = options.find(o => o.verb === opts.chosen());
         const correct = chosen?.verb === atom.verb;
         return {
           correct,
@@ -71,13 +60,7 @@ export default {
           given: chosen?.verb,
         };
       },
-      reveal({ correct }) {
-        list.querySelectorAll('.option').forEach(b => {
-          b.disabled = true;
-          if (b.dataset.value === atom.verb) b.classList.add('is-correct');
-          else if (b.dataset.value === chosen?.verb && !correct) b.classList.add('is-wrong');
-        });
-      },
+      reveal() { opts.reveal(atom.verb); },
     };
   },
 };
