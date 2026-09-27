@@ -4,7 +4,7 @@
  * vooral na het opnieuw genereren van data/course.js, anders blijven telefoons
  * op de oude woordenlijst hangen. tools/release.mjs doet dat automatisch. */
 
-const CACHE = 'vamos-65e77a5a';
+const CACHE = 'vamos-40444f68';
 
 const ASSETS = [
   './',
@@ -72,8 +72,15 @@ self.addEventListener('fetch', e => {
 
   // Netwerk eerst, cache als terugval: zo zie je een nieuwe versie meteen,
   // maar blijft de app werken in de trein.
+  // 'no-cache' laat de browser altijd bij de server nagaan of het bestand
+  // gewijzigd is. Zonder dat haalt fetch() een oude style.css uit de
+  // HTTP-cache (S3 stuurt geen Cache-Control), terwijl index.html al nieuw is.
+  // Een navigatie-request mag geen extra opties krijgen.
+  const req = e.request.mode === 'navigate'
+    ? fetch(e.request)
+    : fetch(e.request, { cache: 'no-cache' });
   e.respondWith(
-    fetch(e.request)
+    req
       .then(res => {
         // Enkel geslaagde antwoorden bewaren: een 404 in de cache zou een
         // werkend bestand offline vervangen.
