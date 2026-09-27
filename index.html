@@ -35,6 +35,21 @@
   <main class="content">
     <p class="lede">Kies wat je wil oefenen.</p>
     <div id="theme-tree" class="tree"></div>
+
+    <section class="flash-panel" aria-labelledby="flash-panel-title">
+      <div class="flash-panel-head">
+        <span class="flash-panel-icon" aria-hidden="true"><span></span><span></span></span>
+        <div class="row-text">
+          <h2 class="flash-panel-title" id="flash-panel-title">Flashcards</h2>
+          <p class="flash-panel-sub" id="flash-summary">Vink hierboven onderdelen met woordenschat aan.</p>
+        </div>
+      </div>
+      <div class="flash-dirs" role="group" aria-label="Richting van de kaarten">
+        <button class="chip" type="button" data-dir="nl2es" aria-pressed="true">Nederlands → Spaans</button>
+        <button class="chip" type="button" data-dir="es2nl" aria-pressed="true">Spaans → Nederlands</button>
+      </div>
+      <button class="btn btn--ghost" id="btn-flash" disabled>Flashcards starten</button>
+    </section>
   </main>
 
   <footer class="actionbar">
@@ -98,6 +113,35 @@
       <div class="match-col" id="match-right"></div>
     </div>
   </main>
+</section>
+
+<!-- ======================= FLASHCARDS ======================= -->
+<section id="screen-flash" class="screen">
+  <header class="topbar topbar--lesson">
+    <button class="icon-btn" id="btn-quit-flash" aria-label="Flashcards verlaten">✕</button>
+    <div class="progress" role="progressbar" aria-label="Gekende kaarten" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+      <div class="progress-fill" id="flash-progress"></div>
+    </div>
+    <span class="stat" id="flash-counter">0/0</span>
+  </header>
+
+  <main class="content content--flash">
+    <p class="q-hint" id="flash-hint">Tik op de kaart om ze om te draaien.</p>
+    <div class="flash-stage" id="flash-stage"></div>
+    <p class="sr-only" id="flash-live" aria-live="polite"></p>
+  </main>
+
+  <footer class="actionbar">
+    <button class="btn btn--primary" id="btn-flash-flip">Omdraaien</button>
+    <div class="action-row" id="flash-grade" hidden>
+      <button class="btn btn--ghost" id="btn-flash-again">✗ Nog niet</button>
+      <button class="btn btn--primary" id="btn-flash-known">✓ Gekend</button>
+    </div>
+    <div class="action-row" id="flash-end" hidden>
+      <button class="btn btn--ghost" id="btn-flash-home">Terug</button>
+      <button class="btn btn--primary" id="btn-flash-restart">Nog een ronde</button>
+    </div>
+  </footer>
 </section>
 
 <!-- ======================= RESULTAAT ======================= -->

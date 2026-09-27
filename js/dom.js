@@ -24,6 +24,13 @@ export const clear = node => { while (node.firstChild) node.removeChild(node.fir
 
 export { shuffle, sample };
 
+/* Vlaggetjes: welke taal staat er, of moet je typen? SVG i.p.v. emoji,
+   want vlag-emoji tonen niet op Windows. */
+export const FLAGS = {
+  es: '<svg viewBox="0 0 3 2" aria-hidden="true"><rect width="3" height="2" fill="#AA151B"/><rect y=".5" width="3" height="1" fill="#F1BF00"/></svg>',
+  nl: '<svg viewBox="0 0 3 2" aria-hidden="true"><rect width="1" height="2" fill="#000"/><rect x="1" width="1" height="2" fill="#FDDA24"/><rect x="2" width="1" height="2" fill="#EF3340"/></svg>',
+};
+
 /** Een luidsprekerknop die de Spaanse tekst uitspreekt. */
 export function speakerButton(text, speech) {
   if (!speech.available()) return null;

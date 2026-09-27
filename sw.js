@@ -28,6 +28,7 @@ const ASSETS = [
   './js/scheduler.js',
   './js/session.js',
   './js/matchRound.js',
+  './js/flashcards.js',
   './js/speech.js',
   './js/audio.js',
   './js/types/index.js',

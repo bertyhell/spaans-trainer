@@ -370,6 +370,128 @@ h1.brand { display: flex; align-items: center; gap: 8px; }
 .match-cell.is-wrong { border-color: var(--no); background: var(--no-bg); animation: shake .4s; }
 
 /* ---------------------------------------------------------------- */
+/* Flashcards                                                        */
+/* ---------------------------------------------------------------- */
+
+/* Het blok onderaan het startscherm */
+.flash-panel {
+  display: grid; gap: var(--gap);
+  margin: 8px 0 var(--pad); padding: 14px;
+  background: var(--surface); border: 2px solid var(--line); border-radius: var(--radius-lg);
+}
+.flash-panel-head { display: flex; align-items: center; gap: 12px; }
+.flash-panel-title { margin: 0; font-size: 1.05rem; }
+.flash-panel-sub { margin: 0; font-size: .82rem; color: var(--ink-soft); }
+
+/* Twee kaartjes op elkaar; ze waaieren open als je over het blok gaat. */
+.flash-panel-icon { position: relative; flex: none; width: 40px; height: 40px; }
+.flash-panel-icon span {
+  position: absolute; left: 9px; top: 5px; width: 22px; height: 30px;
+  border-radius: 5px; border: 2px solid var(--brand-ink);
+  transition: transform .3s cubic-bezier(.34, 1.56, .64, 1);
+}
+.flash-panel-icon span:first-child { background: var(--surface-2); transform: rotate(-12deg) translateX(-3px); }
+.flash-panel-icon span:last-child { background: var(--brand); transform: rotate(9deg) translateX(3px); }
+@media (prefers-color-scheme: dark) { .flash-panel-icon span { border-color: var(--brand); } }
+.flash-panel:hover .flash-panel-icon span:first-child { transform: rotate(-20deg) translateX(-6px); }
+.flash-panel:hover .flash-panel-icon span:last-child { transform: rotate(16deg) translateX(6px); }
+
+.flash-dirs { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip {
+  flex: 1 1 auto; min-height: 44px; padding: 6px 14px;
+  border: 2px solid var(--line); border-radius: 99px;
+  background: var(--surface); color: var(--ink-soft);
+  font-size: .9rem; font-weight: 600; cursor: pointer;
+  transition: background .15s, border-color .15s, color .15s;
+}
+.chip::before { content: "○ "; }
+.chip[aria-pressed="true"] { background: var(--surface-2); border-color: var(--brand); color: var(--ink); }
+.chip[aria-pressed="true"]::before { content: "✓ "; color: var(--ok); font-weight: 900; }
+.chip:active { transform: scale(.97); }
+
+/* Het kaartenscherm */
+.content--flash { display: flex; flex-direction: column; gap: var(--gap); }
+/* .btn en .action-row zetten zelf een display, en dat wint van [hidden]. */
+#screen-flash [hidden] { display: none; }
+.content--flash .q-hint { text-align: center; min-height: 1.5em; }
+.flash-stage { flex: 1; display: grid; align-content: center; padding-bottom: var(--pad); }
+
+.flashcard {
+  --drag: 0px; --tilt: 0deg;
+  position: relative;
+  perspective: 1200px;
+  cursor: pointer;
+  touch-action: pan-y;         /* verticaal scrollen mag, horizontaal is vegen */
+  user-select: none; -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  transform: translateX(var(--drag)) rotate(var(--tilt));
+  transition: transform .3s ease, opacity .3s ease;
+}
+.flashcard.is-entering { animation: flash-in .35s cubic-bezier(.34, 1.56, .64, 1) backwards; }
+.flashcard.is-dragging { transition: none; }
+.flashcard.is-leaving { opacity: 0; transition: transform .3s ease-in, opacity .3s ease-in; pointer-events: none; }
+
+.flashcard-inner {
+  display: grid;               /* beide kanten in dezelfde cel: de hoogste bepaalt de maat */
+  min-height: min(52vh, 340px);
+  transform-style: preserve-3d;
+  transition: transform .6s cubic-bezier(.3, 1.35, .5, 1);
+}
+.flashcard.is-flipped .flashcard-inner { transform: rotateY(180deg); }
+
+.flashcard-face {
+  grid-area: 1 / 1;
+  position: relative;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;
+  padding: 44px 20px 28px;
+  text-align: center;
+  background: var(--surface);
+  border: 2px solid var(--line); border-radius: var(--radius-lg);
+  box-shadow: 0 6px 0 var(--line), 0 14px 30px rgba(0, 0, 0, .08);
+  backface-visibility: hidden; -webkit-backface-visibility: hidden;
+}
+.flashcard-face--back {
+  transform: rotateY(180deg);
+  background: var(--surface-2); border-color: var(--brand);
+  box-shadow: 0 6px 0 var(--brand), 0 14px 30px rgba(0, 0, 0, .08);
+}
+.flashcard-lang {
+  position: absolute; top: 14px; left: 16px;
+  display: flex; align-items: center; gap: 6px;
+  font-size: .75rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.flashcard-flag { width: 21px; height: 14px; border-radius: 2px; overflow: hidden; box-shadow: 0 0 0 1px var(--line); }
+.flashcard-flag svg { display: block; width: 100%; height: 100%; }
+.flashcard-emoji { font-size: 3rem; line-height: 1; }
+.flashcard-word { font-size: 1.9rem; font-weight: 800; line-height: 1.2; overflow-wrap: anywhere; }
+.flashcard-alt { font-size: .95rem; color: var(--ink-soft); }
+.flashcard .speaker { margin-top: 4px; }
+
+/* Stempel die verschijnt terwijl je veegt */
+.flashcard-stamp {
+  position: absolute; top: 14px; z-index: 2;
+  padding: 4px 12px; border: 3px solid currentColor; border-radius: 10px;
+  font-weight: 900; font-size: .95rem; letter-spacing: .04em;
+  background: var(--surface);
+  opacity: 0; transform: scale(.7);
+  transition: opacity .15s, transform .15s;
+  pointer-events: none;
+}
+.flashcard-stamp--known { right: 16px; color: var(--ok); rotate: 10deg; }
+.flashcard-stamp--again { left: 16px; color: var(--no); rotate: -10deg; }
+.flashcard[data-lean="known"] .flashcard-stamp--known,
+.flashcard[data-lean="again"] .flashcard-stamp--again { opacity: 1; transform: scale(1); }
+
+.flash-done { display: flex; flex-direction: column; align-items: center; text-align: center; }
+.flash-done .mistakes { margin-top: 4px; }
+
+@keyframes flash-in {
+  from { opacity: 0; transform: translateY(24px) scale(.92); }
+  to { opacity: 1; transform: none; }
+}
+
+/* ---------------------------------------------------------------- */
 /* Terugkoppeling                                                    */
 /* ---------------------------------------------------------------- */
 

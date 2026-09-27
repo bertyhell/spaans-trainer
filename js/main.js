@@ -6,9 +6,10 @@ import * as storage from './storage.js';
 import * as scheduler from './scheduler.js';
 import * as speech from './speech.js';
 import * as audio from './audio.js';
-import { el, clear } from './dom.js';
+import { el, clear, speakerButton, FLAGS } from './dom.js';
 import { Session, itemsForThemes } from './session.js';
 import { MatchRound } from './matchRound.js';
+import * as flashcards from './flashcards.js';
 
 const $ = sel => document.querySelector(sel);
 const env = { speech };
@@ -206,6 +207,7 @@ function refreshSelection() {
   $('#selection-summary').textContent = atoms.length === 0
     ? 'Niets geselecteerd'
     : `${themes.length} ${themes.length === 1 ? 'onderdeel' : 'onderdelen'} · ${atoms.length} oefeningen`;
+  renderFlashPanel();
 }
 
 /* ------------------------------------------------------------------ */
@@ -705,6 +707,223 @@ function finishMatch() {
 }
 
 /* ------------------------------------------------------------------ */
+/* Flashcards                                                          */
+/* ------------------------------------------------------------------ */
+
+let flash = null;       // de lopende FlashDeck
+let flashCard = null;   // { node, flipped, revealed, leaving } van de kaart op tafel
+
+/* Hoe ver je een kaart moet wegvegen voor ze telt, in pixels. */
+const SWIPE = 90;
+const LANG_NAMES = { nl: 'Nederlands', es: 'Español' };
+
+const selectedVocab = () =>
+  [...selected].flatMap(id => data.atomsForTheme(id)).filter(a => a.kind === 'vocab');
+
+function renderFlashPanel() {
+  const dirs = flashcards.savedDirections();
+  document.querySelectorAll('.flash-dirs .chip').forEach(chip =>
+    chip.setAttribute('aria-pressed', String(dirs.includes(chip.dataset.dir))));
+  const n = selectedVocab().length;
+  $('#btn-flash').disabled = n === 0;
+  $('#flash-summary').textContent = n === 0
+    ? 'Vink hierboven onderdelen met woordenschat aan.'
+    : `${Math.min(n, flashcards.DEFAULT_SIZE)} kaarten uit ${n} ${n === 1 ? 'woord' : 'woorden'}`;
+}
+
+function toggleFlashDirection(dir) {
+  const dirs = flashcards.savedDirections();
+  const next = dirs.includes(dir) ? dirs.filter(d => d !== dir) : [...dirs, dir];
+  if (!next.length) return toast('Minstens één richting moet aan staan.');
+  flashcards.saveDirections(next);
+  renderFlashPanel();
+}
+
+function startFlash() {
+  speech.arm();
+  const atoms = selectedVocab();
+  if (!atoms.length) return;
+  flash = new flashcards.FlashDeck({ atoms, directions: flashcards.savedDirections() });
+  show('screen-flash');
+  nextFlashCard();
+}
+
+function nextFlashCard() {
+  updateFlashProgress();
+  if (flash.done) return finishFlash();
+
+  const hint = $('#flash-hint');
+  hint.hidden = false;
+  hint.textContent = 'Tik op de kaart om ze om te draaien.';
+  $('#btn-flash-flip').hidden = false;
+  $('#flash-grade').hidden = true;
+  $('#flash-end').hidden = true;
+
+  const node = flashCardNode(flash.current);
+  flashCard = { node, flipped: false, revealed: false, leaving: false };
+  $('#flash-stage').replaceChildren(node);
+  $('#flash-live').textContent = faceText(flash.current, 'front');
+  $('#btn-flash-flip').focus({ preventScroll: true });
+}
+
+function updateFlashProgress() {
+  $('#flash-counter').textContent = `${flash.known}/${flash.total}`;
+  const pct = flash.total ? (flash.known / flash.total) * 100 : 0;
+  $('#flash-progress').style.width = `${pct}%`;
+  $('#flash-progress').parentElement.setAttribute('aria-valuenow', Math.round(pct));
+}
+
+/** Welke taal op welke kant staat. */
+const faceLangs = card => (card.direction === 'nl2es' ? ['nl', 'es'] : ['es', 'nl']);
+
+function faceText(card, side) {
+  const lang = faceLangs(card)[side === 'front' ? 0 : 1];
+  return lang === 'es' ? card.atom.es : card.atom.nl.join(', ');
+}
+
+function flashFace(side, lang, atom) {
+  const words = lang === 'es' ? [atom.es] : atom.nl;
+  const flag = el('span', { class: 'flashcard-flag', html: FLAGS[lang] });
+  const face = el('div', { class: `flashcard-face flashcard-face--${side}` },
+    el('span', { class: 'flashcard-lang' }, flag, LANG_NAMES[lang]),
+    lang === 'nl' && atom.emoji ? el('span', { class: 'flashcard-emoji', 'aria-hidden': 'true' }, atom.emoji) : null,
+    el('span', { class: 'flashcard-word', lang }, words[0]),
+    words.length > 1 ? el('span', { class: 'flashcard-alt', lang }, `ook: ${words.slice(1).join(', ')}`) : null,
+    lang === 'es' ? speakerButton(atom.es, speech) : null,
+  );
+  // De achterkant is onzichtbaar maar staat wel in de DOM: zonder inert kan
+  // je er met Tab of een schermlezer het antwoord uit halen.
+  face.inert = side === 'back';
+  return face;
+}
+
+function flashCardNode(card) {
+  const [front, back] = faceLangs(card);
+  const node = el('div', { class: 'flashcard is-entering' },
+    el('div', { class: 'flashcard-inner' },
+      flashFace('front', front, card.atom),
+      flashFace('back', back, card.atom)),
+    el('span', { class: 'flashcard-stamp flashcard-stamp--known', 'aria-hidden': 'true' }, '✓ Gekend'),
+    el('span', { class: 'flashcard-stamp flashcard-stamp--again', 'aria-hidden': 'true' }, '✗ Nog niet'),
+  );
+  node.addEventListener('animationend', () => node.classList.remove('is-entering'), { once: true });
+  bindFlashGestures(node);
+  return node;
+}
+
+/* Tikken draait om; na het omdraaien kan je de kaart ook wegvegen: naar
+ * rechts is gekend, naar links nog niet. */
+function bindFlashGestures(node) {
+  let drag = null;
+  const setDrag = dx => {
+    node.style.setProperty('--drag', `${dx}px`);
+    node.style.setProperty('--tilt', `${dx / 18}deg`);
+    node.dataset.lean = dx > SWIPE / 2 ? 'known' : dx < -SWIPE / 2 ? 'again' : '';
+  };
+
+  node.addEventListener('pointerdown', e => {
+    if (e.button !== 0 || e.target.closest('.speaker') || flashCard?.leaving) return;
+    drag = { x: e.clientX, dx: 0, moved: false };
+    node.setPointerCapture(e.pointerId);
+  });
+  node.addEventListener('pointermove', e => {
+    if (!drag) return;
+    drag.dx = e.clientX - drag.x;
+    if (Math.abs(drag.dx) > 6) drag.moved = true;
+    if (!drag.moved || !flashCard.revealed) return;
+    node.classList.add('is-dragging');
+    setDrag(drag.dx);
+  });
+  const end = e => {
+    if (!drag) return;
+    const { dx, moved } = drag;
+    drag = null;
+    node.classList.remove('is-dragging');
+    if (flashCard.revealed && Math.abs(dx) > SWIPE) return gradeFlash(dx > 0);
+    setDrag(0);
+    if (!moved && e.type === 'pointerup') flipFlashCard();
+  };
+  node.addEventListener('pointerup', end);
+  node.addEventListener('pointercancel', end);
+}
+
+function flipFlashCard() {
+  if (!flashCard || flashCard.leaving) return;
+  const { node } = flashCard;
+  const card = flash.current;
+  flashCard.flipped = !flashCard.flipped;
+  node.classList.toggle('is-flipped', flashCard.flipped);
+  node.querySelector('.flashcard-face--front').inert = flashCard.flipped;
+  node.querySelector('.flashcard-face--back').inert = !flashCard.flipped;
+  $('#flash-live').textContent = faceText(card, flashCard.flipped ? 'back' : 'front');
+
+  if (flashCard.revealed) return;
+  flashCard.revealed = true;
+  $('#flash-hint').textContent = 'Wist je het? Veeg naar rechts of links, of kies hieronder.';
+  $('#btn-flash-flip').hidden = true;
+  $('#flash-grade').hidden = false;
+  // Het Spaanse antwoord hoor je meteen: zo oefen je ook de uitspraak.
+  if (card.direction === 'nl2es') speech.speak(card.atom.es);
+}
+
+function gradeFlash(known) {
+  if (!flashCard?.revealed || flashCard.leaving) return;
+  flashCard.leaving = true;
+  const { node } = flashCard;
+  flash.answer(known);
+  updateFlashProgress();
+
+  node.dataset.lean = known ? 'known' : 'again';
+  node.style.setProperty('--drag', known ? '130%' : '-130%');
+  node.style.setProperty('--tilt', known ? '16deg' : '-16deg');
+  node.classList.add('is-leaving');
+  setTimeout(nextFlashCard, prefersReducedMotion() ? 0 : 300);
+}
+
+function finishFlash() {
+  flashCard = null;
+  speech.stop();
+  audio.finish();
+  storage.touchStreak();
+  storage.save();
+  refreshStats();
+
+  const { total, knownFirstTry } = flash;
+  const perfect = knownFirstTry === total;
+  const missed = [...flash.missed].map(id => data.getAtom(id));
+
+  $('#flash-hint').hidden = true;
+  $('#btn-flash-flip').hidden = true;
+  $('#flash-grade').hidden = true;
+  $('#flash-end').hidden = false;
+  $('#flash-live').textContent = '';
+
+  $('#flash-stage').replaceChildren(el('div', { class: 'flash-done' },
+    el('div', { class: 'result-badge' }, perfect ? '🏆' : '🎉'),
+    el('h2', { class: 'result-title' }, perfect ? '¡Perfecto!' : '¡Muy bien!'),
+    el('p', { class: 'result-score' }, `${knownFirstTry} van ${total} meteen gekend`),
+    missed.length ? el('section', { class: 'mistakes' },
+      el('h3', { class: 'mistakes-title' }, 'Nog eens bekijken'),
+      el('ul', { class: 'mistakes-list' }, missed.map(atom =>
+        el('li', { class: 'mistake' },
+          el('span', { class: 'mistake-text' },
+            el('span', { lang: 'es' }, atom.es),
+            el('span', { class: 'mistake-a', lang: 'nl' }, atom.nl[0])))))) : null,
+  ));
+  $('#btn-flash-restart').focus({ preventScroll: true });
+}
+
+function onFlashKey(e) {
+  if (!flashCard || flashCard.leaving) return;
+  // Een knop met focus reageert zelf al op Enter en spatie.
+  if (['Enter', ' '].includes(e.key) && document.activeElement?.tagName === 'BUTTON') return;
+  if ([' ', 'Enter', 'ArrowUp', 'ArrowDown'].includes(e.key)) { e.preventDefault(); flipFlashCard(); return; }
+  if (!flashCard.revealed) return;
+  if (e.key === 'ArrowRight') { e.preventDefault(); gradeFlash(true); }
+  if (e.key === 'ArrowLeft') { e.preventDefault(); gradeFlash(false); }
+}
+
+/* ------------------------------------------------------------------ */
 /* Instellingen                                                        */
 /* ------------------------------------------------------------------ */
 
@@ -853,6 +1072,17 @@ function wire() {
     renderTree(); refreshStats(); show('screen-start');
   });
 
+  $('#btn-flash').addEventListener('click', startFlash);
+  document.querySelectorAll('.flash-dirs .chip').forEach(chip =>
+    chip.addEventListener('click', () => toggleFlashDirection(chip.dataset.dir)));
+  $('#btn-flash-flip').addEventListener('click', flipFlashCard);
+  $('#btn-flash-known').addEventListener('click', () => gradeFlash(true));
+  $('#btn-flash-again').addEventListener('click', () => gradeFlash(false));
+  $('#btn-flash-restart').addEventListener('click', startFlash);
+  const leaveFlash = () => { speech.stop(); flashCard = null; show('screen-start'); };
+  $('#btn-quit-flash').addEventListener('click', leaveFlash);
+  $('#btn-flash-home').addEventListener('click', leaveFlash);
+
   $('#btn-home').addEventListener('click', () => show('screen-start'));
   $('#btn-again').addEventListener('click', () => {
     if (lastMode === 'match') return selected.size ? startMatch() : show('screen-start');
@@ -929,6 +1159,7 @@ function wire() {
 
   // Toetsenbord op de desktop: Enter bevestigt, cijfers kiezen een optie.
   document.addEventListener('keydown', e => {
+    if ($('#screen-flash').classList.contains('is-active')) return onFlashKey(e);
     if (!$('#screen-lesson').classList.contains('is-active')) return;
     // De invoervelden bevestigen zelf op Enter (en roepen preventDefault aan).
     // Diezelfde toetsaanslag bubbelt hier naartoe, en `answered` staat dan al
