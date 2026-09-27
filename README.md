@@ -12,7 +12,7 @@ npm-afhankelijkheden.
 
 | soort | aantal | wordt |
 |---|---|---|
-| woordenschat ES↔NL | 1146 | meerkeuze, intypen, lidwoord, accenten, koppelen, hoort-niet-bij, luisteren |
+| woordenschat ES↔NL | 1146 | meerkeuze, intypen, lidwoord, accenten, koppelen, hoort-niet-bij, welk-is-onregelmatig, luisteren |
 | vervoegingen | 450 (75 volledige rijtjes) | vervoegingstabel, losse vorm, invuloefening |
 | grammaticaregels | 45 (143 voorbeelden) | invuloefening, meerkeuze |
 | zinnen uit de dialogen | 43 | zin bouwen, invuloefening |

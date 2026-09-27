@@ -22,6 +22,7 @@ import wordBank from './wordBank.js';
 import accents from './accents.js';
 import oddOneOut from './oddOneOut.js';
 import stemChange from './stemChange.js';
+import irregularVerb from './irregularVerb.js';
 import { conjugationGrid, conjugationSingle } from './conjugation.js';
 import { listenType, listenChoose } from './listen.js';
 
@@ -32,6 +33,7 @@ export const TYPES = [
   accents,
   oddOneOut,
   stemChange,
+  irregularVerb,
   fillGap,
   wordBank,
   conjugationGrid,
@@ -58,6 +60,7 @@ const WEIGHTS = {
   accents: 1,
   oddOneOut: 1,
   stemChange: 2,
+  irregularVerb: 2,
 };
 
 /** Alle vormen waarin dit item getoond kan worden. */

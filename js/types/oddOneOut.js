@@ -5,7 +5,12 @@
  * dezelfde soort zijn — staat er één werkwoord tussen drie zelfstandige
  * naamwoorden, dan wijs je dat aan zonder een woord te kennen. En ze hebben
  * allemaal een emoji of geen van allen, want die ene kale knop valt net zo
- * hard op. */
+ * hard op.
+ *
+ * Werkwoorden vragen we alleen tussen activiteitenthema's ("praten en
+ * luisteren", "gaan en komen"). Thema's als "regelmatig op -ar" zou je aan de
+ * uitgang herkennen, en hobby's, sport en vrije tijd lopen zo door elkaar dat
+ * "zwemmen" en "schaatsen" allebei overal bij passen. */
 
 import { el, shuffle, sample } from '../dom.js';
 import { siblings, allAtoms, getTheme } from '../data.js';
@@ -15,12 +20,15 @@ const OPTIONS = 4;
 
 const wordClass = a => a.pos ?? 'other';
 
+const isActivity = themeId => getTheme(themeId)?.activity === true;
+
 /** Themagenoten van dezelfde woordsoort — de "horen bij elkaar"-groep. */
 const family = atom => siblings(atom).filter(o => wordClass(o) === wordClass(atom));
 
 /** Woorden uit een ander thema, van dezelfde soort als het gevraagde woord. */
 const outsidersFor = atom => allAtoms().filter(o =>
-  o.kind === 'vocab' && o.theme !== atom.theme && wordClass(o) === wordClass(atom));
+  o.kind === 'vocab' && o.theme !== atom.theme && wordClass(o) === wordClass(atom)
+  && (wordClass(atom) !== 'verb' || isActivity(o.theme)));
 
 export default {
   id: 'oddOneOut',
@@ -29,6 +37,7 @@ export default {
   supports(item) {
     const a = item.atom;
     if (a.kind !== 'vocab') return false;
+    if (wordClass(a) === 'verb' && !isActivity(a.theme)) return false;
     if (family(a).length < OPTIONS - 2) return false;
     return outsidersFor(a).length > 0;
   },

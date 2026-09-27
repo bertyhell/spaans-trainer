@@ -6,11 +6,13 @@
  * de indeling van de cursus aan, dit script legt daar de indeling overheen
  * waarmee je wíl oefenen.
  *
- * Drie bewerkingen:
+ * Vier bewerkingen:
  *   - `units` wordt `groups`: thema's gebundeld op onderwerp (zie groups.mjs);
  *   - elk woordenschat-atoom krijgt een woordsoort (`pos`), zodat oefeningen
  *     geen appels met peren vergelijken;
- *   - woorden die in het verkeerde thema beland waren verhuizen.
+ *   - woorden die in het verkeerde thema beland waren verhuizen;
+ *   - de werkwoorden uit de vormthema's (-ar, -er, -ir, ...) gaan naar een
+ *     thema per activiteit, en krijgen `regular` mee (zie verbs.mjs).
  *
  * Het script is herhaalbaar: twee keer draaien geeft hetzelfde resultaat.
  */
@@ -19,6 +21,7 @@ import { readFileSync, writeFileSync, readdirSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { GROUPS, GROUP_OF } from './groups.mjs';
+import { VERB_THEMES, VERB_THEME_OF, REPLACED_THEMES, IRREGULAR, REGULAR } from './verbs.mjs';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const COURSE = join(HERE, '..', 'data', 'course.js');
@@ -56,7 +59,23 @@ function guessPos(es) {
   return 'other';
 }
 
+/* De activiteitenthema's bestaan niet in de gedolven data: die komen erbij.
+ * Opnieuw draaien overschrijft ze gewoon met wat in verbs.mjs staat. */
+const VERB_THEME_IDS = new Set(VERB_THEMES.map(t => t.id));
+course.themes = [
+  ...course.themes.filter(t => !VERB_THEME_IDS.has(t.id)),
+  ...VERB_THEMES.map(({ verbs: _, ...t }) => t),
+];
+
 const themeIds = new Set(course.themes.map(t => t.id));
+
+/** Regelmatig in de presente? Alleen voor losse infinitieven die we kennen. */
+function verbInfo(es) {
+  if (es in IRREGULAR) return { regular: false, change: IRREGULAR[es] };
+  if (REGULAR.has(es)) return { regular: true };
+  return {};
+}
+
 const problems = [];
 let moved = 0, tagged = 0;
 
@@ -70,7 +89,9 @@ for (const atom of course.atoms) {
   if (atom.kind !== 'vocab') { atoms.push(atom); continue; }
 
   const d = decided.get(atom.id);
-  const pos = POS.has(d?.pos) ? d.pos : guessPos(atom.es);
+  // Zonder classificatie blijft staan wat er al stond: zo is het script ook
+  // zonder die map veilig opnieuw te draaien.
+  const pos = POS.has(d?.pos) ? d.pos : atom.pos ?? guessPos(atom.es);
   let theme = atom.theme;
 
   if (d?.theme && d.theme !== atom.theme) {
@@ -78,10 +99,18 @@ for (const atom of course.atoms) {
     else if (!GROUP_OF[d.theme]) problems.push(`${atom.id}: thema ${d.theme} zit in geen groep`);
     else { theme = d.theme; moved++; }
   }
-  if (!d) problems.push(`${atom.id}: geen classificatie, woordsoort geraden`);
+  if (!d && !atom.pos) problems.push(`${atom.id}: geen classificatie, woordsoort geraden`);
   else tagged++;
 
-  atoms.push({ ...atom, pos, theme });
+  // Werkwoorden die in verbs.mjs staan gaan naar hun activiteit. Wie uit een
+  // vormthema komt en daar níét staat, zou in een verdwenen thema blijven.
+  if (pos === 'verb' && VERB_THEME_OF[atom.es]) theme = VERB_THEME_OF[atom.es];
+  else if (REPLACED_THEMES.includes(theme)) {
+    problems.push(`${atom.id}: werkwoord zonder activiteitenthema (verbs.mjs)`);
+  }
+
+  const { regular: _r, change: _c, ...rest } = atom;
+  atoms.push({ ...rest, pos, theme, ...(pos === 'verb' ? verbInfo(atom.es) : {}) });
 }
 
 /* --- groepen in plaats van unidades --- */

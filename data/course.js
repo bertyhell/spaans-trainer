@@ -324,33 +324,65 @@ window.COURSE = {
    "group": "g-dagelijks"
   },
   {
-   "id": "werkwoorden-ar",
-   "label": "Reg. werkw. op -ar",
-   "emoji": "•",
+   "id": "ww-praten",
+   "label": "Praten en luisteren",
+   "emoji": "💬",
+   "activity": true,
    "group": "g-werkwoorden"
   },
   {
-   "id": "werkwoorden-er",
-   "label": "Reg. werkw. op -er",
-   "emoji": "•",
+   "id": "ww-leren",
+   "label": "Leren en werken",
+   "emoji": "🎓",
+   "activity": true,
    "group": "g-werkwoorden"
   },
   {
-   "id": "werkwoorden-ir",
-   "label": "Reg. werkw. op -ir",
-   "emoji": "•",
+   "id": "ww-denken",
+   "label": "Denken, willen en voelen",
+   "emoji": "💭",
+   "activity": true,
    "group": "g-werkwoorden"
   },
   {
-   "id": "verbos-cambio",
-   "label": "Werkw. met klinkerverandering",
-   "emoji": "•",
+   "id": "ww-gaan",
+   "label": "Gaan en komen",
+   "emoji": "🚶",
+   "activity": true,
    "group": "g-werkwoorden"
   },
   {
-   "id": "wederkerende-werkwoorden",
-   "label": "De wederkerende werkw.",
-   "emoji": "•",
+   "id": "ww-eten",
+   "label": "Eten en drinken",
+   "emoji": "🍽️",
+   "activity": true,
+   "group": "g-werkwoorden"
+  },
+  {
+   "id": "ww-verzorgen",
+   "label": "Slapen, opstaan en verzorgen",
+   "emoji": "🪥",
+   "activity": true,
+   "group": "g-werkwoorden"
+  },
+  {
+   "id": "ww-kopen",
+   "label": "Kopen en betalen",
+   "emoji": "💶",
+   "activity": true,
+   "group": "g-werkwoorden"
+  },
+  {
+   "id": "ww-dingen",
+   "label": "Zoeken, openen en tonen",
+   "emoji": "🔍",
+   "activity": true,
+   "group": "g-werkwoorden"
+  },
+  {
+   "id": "ww-overig",
+   "label": "Overige werkwoorden",
+   "emoji": "🔤",
    "group": "g-werkwoorden"
   },
   {
@@ -520,7 +552,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "spanish-md/IMG_20260918_203744401_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": true
   },
   {
    "id": "v.el-algodon",
@@ -1165,7 +1198,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "spanish-md/IMG_20260918_203808317_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": true
   },
   {
    "id": "v.el-aire-acondicionado",
@@ -3314,7 +3348,9 @@ window.COURSE = {
    "number": null,
    "note": "Stamverandering e → ie: comienzo.",
    "src": "spanish-md/IMG_20260918_203753249_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": false,
+   "change": "e → ie"
   },
   {
    "id": "v.despacio",
@@ -4952,7 +4988,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "course-md/IMG_20260918_190422167_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": true
   },
   {
    "id": "v.doler",
@@ -4967,7 +5004,9 @@ window.COURSE = {
    "number": null,
    "note": "klankverandering o → ue. Me duele la garganta. = Ik heb keelpijn.",
    "src": "course-md/IMG_20260918_190422167_AE.md; course-md/IMG_20260918_190934217_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": false,
+   "change": "o → ue"
   },
   {
    "id": "v.el-calambre",
@@ -5500,7 +5539,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "spanish-md/IMG_20260918_204021316_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": true
   },
   {
    "id": "v.sano-a",
@@ -5539,7 +5579,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "course-md/IMG_20260918_190422167_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": true
   },
   {
    "id": "v.tratar",
@@ -5552,7 +5593,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "course-md/IMG_20260918_190422167_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": true
   },
   {
    "id": "v.alejado-a",
@@ -5836,7 +5878,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "spanish-md/IMG_20260918_203757754_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": true
   },
   {
    "id": "v.viceversa",
@@ -6311,7 +6354,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "course-md/IMG_20260918_190216125_AE.md; course-md/IMG_20260918_190907308_AE.md; spanish-md/IMG_20260918_203950488_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": true
   },
   {
    "id": "v.boxear",
@@ -6324,7 +6368,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "course-md/IMG_20260918_190216125_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": true
   },
   {
    "id": "v.bucear",
@@ -6337,7 +6382,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "course-md/IMG_20260918_190216125_AE.md; spanish-md/IMG_20260918_203950488_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": true
   },
   {
    "id": "v.cantar",
@@ -6350,7 +6396,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "course-md/IMG_20260918_190216125_AE.md; course-md/IMG_20260918_190907308_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": true
   },
   {
    "id": "v.cocinar",
@@ -6363,7 +6410,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "course-md/IMG_20260918_190216125_AE.md; spanish-md/IMG_20260918_203950488_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": true
   },
   {
    "id": "v.coser",
@@ -6376,7 +6424,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "course-md/IMG_20260918_190216125_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": true
   },
   {
    "id": "v.descansar",
@@ -6390,7 +6439,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "course-md/IMG_20260918_190216125_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": true
   },
   {
    "id": "v.el-ciclismo",
@@ -6433,7 +6483,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "course-md/IMG_20260918_190216125_AE.md; spanish-md/IMG_20260918_203950488_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": true
   },
   {
    "id": "v.escuchar-musica",
@@ -6555,7 +6606,8 @@ window.COURSE = {
    "number": null,
    "src": "course-md/IMG_20260918_190216125_AE.md; course-md/IMG_20260918_190912590_AE.md; spanish-md/IMG_20260918_203950488_AE.md",
    "note": "onregelmatig voltooid deelwoord: leído",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": true
   },
   {
    "id": "v.montar-a-caballo",
@@ -6581,7 +6633,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "course-md/IMG_20260918_190216125_AE.md; spanish-md/IMG_20260918_203950488_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": true
   },
   {
    "id": "v.navegar-a-vela",
@@ -6622,7 +6675,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "course-md/IMG_20260918_190216125_AE.md; spanish-md/IMG_20260918_203955459_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": true
   },
   {
    "id": "v.pescar",
@@ -6635,7 +6689,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "course-md/IMG_20260918_190216125_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": true
   },
   {
    "id": "v.pintar",
@@ -6648,7 +6703,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "course-md/IMG_20260918_190216125_AE.md; spanish-md/IMG_20260918_203955459_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": true
   },
   {
    "id": "v.salir",
@@ -6664,7 +6720,9 @@ window.COURSE = {
    "number": null,
    "src": "course-md/IMG_20260918_190216125_AE.md; spanish-md/IMG_20260918_203955459_AE.md",
    "note": "Onregelmatig: yo salgo.",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": false,
+   "change": "yo salgo"
   },
   {
    "id": "v.saltar-en-paracaidas",
@@ -8296,7 +8354,8 @@ window.COURSE = {
    "number": null,
    "emoji": "🤧",
    "src": "course-md/IMG_20260918_190433438_AE.md; spanish-md/IMG_20260918_204017948_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": true
   },
   {
    "id": "v.flojo-a",
@@ -8683,7 +8742,8 @@ window.COURSE = {
    "number": null,
    "note": "el picor = de jeuk",
    "src": "course-md/IMG_20260918_190433438_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": true
   },
   {
    "id": "v.sonarse-la-nariz",
@@ -8712,7 +8772,8 @@ window.COURSE = {
    "number": null,
    "emoji": "🤮",
    "src": "course-md/IMG_20260918_190433438_AE.md; spanish-md/IMG_20260918_204021316_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": true
   },
   {
    "id": "v.el-abrigo",
@@ -9224,7 +9285,8 @@ window.COURSE = {
    "number": null,
    "note": "llevar betekent ook: dragen, meenemen, brengen.",
    "src": "course-md/IMG_20260918_190139660_AE.md; spanish-md/IMG_20260918_203804276_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": true
   },
   {
    "id": "v.los-pantalones",
@@ -9314,7 +9376,9 @@ window.COURSE = {
    "number": null,
    "note": "Stamverandering o → ue: me pruebo la falda.",
    "src": "course-md/IMG_20260918_190139660_AE.md; course-md/IMG_20260918_190934217_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": false,
+   "change": "o → ue"
   },
   {
    "id": "v.amarillo-a",
@@ -10558,7 +10622,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "course-md/IMG_20260918_190413606_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": true
   },
   {
    "id": "v.el-armario",
@@ -10901,7 +10966,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "course-md/IMG_20260918_190204924_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": true
   },
   {
    "id": "v.aleman-ana",
@@ -12125,7 +12191,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "spanish-md/IMG_20260918_203808317_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": true
   },
   {
    "id": "v.el-maximo-de-adjetivos",
@@ -12206,7 +12273,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "spanish-md/IMG_20260918_203808317_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": true
   },
   {
    "id": "v.casarse",
@@ -12233,7 +12301,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "spanish-md/IMG_20260918_203808317_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": true
   },
   {
    "id": "v.el-catalogo",
@@ -12381,7 +12450,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "spanish-md/IMG_20260918_203808317_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": true
   },
   {
    "id": "v.el-frijol",
@@ -12813,7 +12883,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "spanish-md/IMG_20260918_203757754_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": true
   },
   {
    "id": "v.el-clima",
@@ -13185,7 +13256,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "spanish-md/IMG_20260918_203757754_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": true
   },
   {
    "id": "v.se-recomienda",
@@ -13635,7 +13707,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "spanish-md/IMG_20260918_203804276_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": true
   },
   {
    "id": "v.controlar",
@@ -13649,7 +13722,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "spanish-md/IMG_20260918_203744401_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": true
   },
   {
    "id": "v.el-juego",
@@ -13976,7 +14050,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "spanish-md/IMG_20260918_203950488_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": true
   },
   {
    "id": "v.patinar",
@@ -13990,7 +14065,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "spanish-md/IMG_20260918_203955459_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": true
   },
   {
    "id": "v.practicar-deporte",
@@ -14331,7 +14407,7 @@ window.COURSE = {
   {
    "id": "v.cerrar",
    "kind": "vocab",
-   "theme": "verbos-cambio",
+   "theme": "ww-dingen",
    "es": "cerrar",
    "nl": [
     "sluiten",
@@ -14341,12 +14417,14 @@ window.COURSE = {
    "number": null,
    "note": "Stamverandering e → ie: cierro.",
    "src": "course-md/IMG_20260918_190934217_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": false,
+   "change": "e → ie"
   },
   {
    "id": "v.contar",
    "kind": "vocab",
-   "theme": "verbos-cambio",
+   "theme": "ww-praten",
    "es": "contar",
    "nl": [
     "tellen",
@@ -14356,12 +14434,14 @@ window.COURSE = {
    "number": null,
    "note": "Stamverandering o → ue: cuento.",
    "src": "course-md/IMG_20260918_190934217_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": false,
+   "change": "o → ue"
   },
   {
    "id": "v.costar",
    "kind": "vocab",
-   "theme": "verbos-cambio",
+   "theme": "ww-kopen",
    "es": "costar",
    "nl": [
     "kosten"
@@ -14370,12 +14450,14 @@ window.COURSE = {
    "number": null,
    "note": "Stamverandering o → ue: cuesta.",
    "src": "course-md/IMG_20260918_190934217_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": false,
+   "change": "o → ue"
   },
   {
    "id": "v.dormir",
    "kind": "vocab",
-   "theme": "verbos-cambio",
+   "theme": "ww-verzorgen",
    "es": "dormir",
    "nl": [
     "slapen"
@@ -14384,12 +14466,14 @@ window.COURSE = {
    "number": null,
    "note": "Stamverandering o → ue: duermo.",
    "src": "course-md/IMG_20260918_190934217_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": false,
+   "change": "o → ue"
   },
   {
    "id": "v.empezar",
    "kind": "vocab",
-   "theme": "verbos-cambio",
+   "theme": "ww-overig",
    "es": "empezar",
    "nl": [
     "beginnen"
@@ -14398,12 +14482,14 @@ window.COURSE = {
    "number": null,
    "note": "Stamverandering e → ie: empiezo.",
    "src": "course-md/IMG_20260918_190934217_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": false,
+   "change": "e → ie"
   },
   {
    "id": "v.encender",
    "kind": "vocab",
-   "theme": "verbos-cambio",
+   "theme": "ww-dingen",
    "es": "encender",
    "nl": [
     "aansteken",
@@ -14413,12 +14499,14 @@ window.COURSE = {
    "number": null,
    "note": "Stamverandering e → ie: enciendo.",
    "src": "course-md/IMG_20260918_190934217_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": false,
+   "change": "e → ie"
   },
   {
    "id": "v.encontrar",
    "kind": "vocab",
-   "theme": "verbos-cambio",
+   "theme": "ww-dingen",
    "es": "encontrar",
    "nl": [
     "vinden"
@@ -14427,12 +14515,14 @@ window.COURSE = {
    "number": null,
    "note": "Stamverandering o → ue: encuentro.",
    "src": "course-md/IMG_20260918_190934217_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": false,
+   "change": "o → ue"
   },
   {
    "id": "v.entender",
    "kind": "vocab",
-   "theme": "verbos-cambio",
+   "theme": "ww-denken",
    "es": "entender",
    "nl": [
     "verstaan",
@@ -14442,12 +14532,14 @@ window.COURSE = {
    "number": null,
    "note": "Stamverandering e → ie: entiendo.",
    "src": "course-md/IMG_20260918_190934217_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": false,
+   "change": "e → ie"
   },
   {
    "id": "v.morir",
    "kind": "vocab",
-   "theme": "verbos-cambio",
+   "theme": "ww-overig",
    "es": "morir",
    "nl": [
     "sterven",
@@ -14457,12 +14549,14 @@ window.COURSE = {
    "number": null,
    "note": "Stamverandering o → ue: muero.",
    "src": "course-md/IMG_20260918_190934217_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": false,
+   "change": "o → ue"
   },
   {
    "id": "v.mostrar",
    "kind": "vocab",
-   "theme": "verbos-cambio",
+   "theme": "ww-dingen",
    "es": "mostrar",
    "nl": [
     "tonen",
@@ -14472,12 +14566,14 @@ window.COURSE = {
    "number": null,
    "note": "Stamverandering o → ue: muestro.",
    "src": "course-md/IMG_20260918_190934217_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": false,
+   "change": "o → ue"
   },
   {
    "id": "v.pedir",
    "kind": "vocab",
-   "theme": "verbos-cambio",
+   "theme": "ww-praten",
    "es": "pedir",
    "nl": [
     "vragen (om)",
@@ -14487,12 +14583,14 @@ window.COURSE = {
    "number": null,
    "note": "Stamverandering e → i: pido.",
    "src": "course-md/IMG_20260918_190934217_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": false,
+   "change": "e → i"
   },
   {
    "id": "v.pensar",
    "kind": "vocab",
-   "theme": "verbos-cambio",
+   "theme": "ww-denken",
    "es": "pensar",
    "nl": [
     "denken"
@@ -14501,12 +14599,14 @@ window.COURSE = {
    "number": null,
    "note": "Stamverandering e → ie: pienso.",
    "src": "course-md/IMG_20260918_190934217_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": false,
+   "change": "e → ie"
   },
   {
    "id": "v.perder",
    "kind": "vocab",
-   "theme": "verbos-cambio",
+   "theme": "ww-dingen",
    "es": "perder",
    "nl": [
     "verliezen",
@@ -14516,12 +14616,14 @@ window.COURSE = {
    "number": null,
    "note": "Stamverandering e → ie: pierdo.",
    "src": "course-md/IMG_20260918_190934217_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": false,
+   "change": "e → ie"
   },
   {
    "id": "v.poder",
    "kind": "vocab",
-   "theme": "verbos-cambio",
+   "theme": "ww-denken",
    "es": "poder",
    "nl": [
     "kunnen",
@@ -14531,12 +14633,14 @@ window.COURSE = {
    "number": null,
    "note": "Stamverandering o → ue: puedo.",
    "src": "course-md/IMG_20260918_190934217_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": false,
+   "change": "o → ue"
   },
   {
    "id": "v.preferir",
    "kind": "vocab",
-   "theme": "verbos-cambio",
+   "theme": "ww-denken",
    "es": "preferir",
    "nl": [
     "verkiezen",
@@ -14546,12 +14650,14 @@ window.COURSE = {
    "number": null,
    "note": "Stamverandering e → ie: prefiero.",
    "src": "course-md/IMG_20260918_190934217_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": false,
+   "change": "e → ie"
   },
   {
    "id": "v.querer",
    "kind": "vocab",
-   "theme": "verbos-cambio",
+   "theme": "ww-denken",
    "es": "querer",
    "nl": [
     "willen"
@@ -14560,12 +14666,14 @@ window.COURSE = {
    "number": null,
    "note": "Stamverandering e → ie: quiero. querer a = houden van.",
    "src": "course-md/IMG_20260918_190934217_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": false,
+   "change": "e → ie"
   },
   {
    "id": "v.recomendar",
    "kind": "vocab",
-   "theme": "verbos-cambio",
+   "theme": "ww-praten",
    "es": "recomendar",
    "nl": [
     "aanbevelen",
@@ -14575,12 +14683,14 @@ window.COURSE = {
    "number": null,
    "note": "Stamverandering e → ie: recomiendo.",
    "src": "course-md/IMG_20260918_190934217_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": false,
+   "change": "e → ie"
   },
   {
    "id": "v.repetir",
    "kind": "vocab",
-   "theme": "verbos-cambio",
+   "theme": "ww-praten",
    "es": "repetir",
    "nl": [
     "herhalen"
@@ -14589,12 +14699,14 @@ window.COURSE = {
    "number": null,
    "note": "Stamverandering e → i: repito.",
    "src": "course-md/IMG_20260918_190934217_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": false,
+   "change": "e → i"
   },
   {
    "id": "v.sentir",
    "kind": "vocab",
-   "theme": "verbos-cambio",
+   "theme": "ww-denken",
    "es": "sentir",
    "nl": [
     "voelen"
@@ -14603,12 +14715,14 @@ window.COURSE = {
    "number": null,
    "note": "Stamverandering e → ie: siento.",
    "src": "course-md/IMG_20260918_190934217_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": false,
+   "change": "e → ie"
   },
   {
    "id": "v.servir",
    "kind": "vocab",
-   "theme": "verbos-cambio",
+   "theme": "ww-eten",
    "es": "servir",
    "nl": [
     "bedienen",
@@ -14619,12 +14733,14 @@ window.COURSE = {
    "number": null,
    "note": "Stamverandering e → i: sirvo.",
    "src": "course-md/IMG_20260918_190934217_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": false,
+   "change": "e → i"
   },
   {
    "id": "v.vestir",
    "kind": "vocab",
-   "theme": "verbos-cambio",
+   "theme": "ww-verzorgen",
    "es": "vestir",
    "nl": [
     "kleden",
@@ -14634,12 +14750,14 @@ window.COURSE = {
    "number": null,
    "note": "Stamverandering e → i: visto. vestirse = zich aankleden.",
    "src": "course-md/IMG_20260918_190934217_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": false,
+   "change": "e → i"
   },
   {
    "id": "v.volver",
    "kind": "vocab",
-   "theme": "verbos-cambio",
+   "theme": "ww-gaan",
    "es": "volver",
    "nl": [
     "terugkomen",
@@ -14649,7 +14767,9 @@ window.COURSE = {
    "number": null,
    "note": "Stamverandering o → ue: vuelvo.",
    "src": "course-md/IMG_20260918_190934217_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": false,
+   "change": "o → ue"
   },
   {
    "id": "g.mas-de-getal",
@@ -16208,7 +16328,7 @@ window.COURSE = {
   {
    "id": "v.cenar",
    "kind": "vocab",
-   "theme": "dagelijkse-routine",
+   "theme": "ww-eten",
    "es": "cenar",
    "nl": [
     "'s avonds eten",
@@ -16217,7 +16337,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "spanish-md/IMG_20260918_203950488_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": true
   },
   {
    "id": "v.coleccionar",
@@ -16230,7 +16351,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "course-md/IMG_20260918_190204924_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": true
   },
   {
    "id": "v.dibujar",
@@ -16243,7 +16365,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "course-md/IMG_20260918_190204924_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": true
   },
   {
    "id": "v.el-coro",
@@ -16408,7 +16531,9 @@ window.COURSE = {
    "number": null,
    "note": "Stamverandering u → ue: juego. Met sporten en spelen: jugar a + lidwoord (jugar al tenis).",
    "src": "course-md/IMG_20260918_190204924_AE.md; spanish-md/IMG_20260918_203804276_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": false,
+   "change": "u → ue"
   },
   {
    "id": "v.jugar-a-juegos-de-ordenador",
@@ -16581,7 +16706,7 @@ window.COURSE = {
   {
    "id": "v.acostarse",
    "kind": "vocab",
-   "theme": "wederkerende-werkwoorden",
+   "theme": "ww-verzorgen",
    "es": "acostarse",
    "nl": [
     "gaan slapen",
@@ -16596,7 +16721,7 @@ window.COURSE = {
   {
    "id": "v.afeitarse",
    "kind": "vocab",
-   "theme": "wederkerende-werkwoorden",
+   "theme": "ww-verzorgen",
    "es": "afeitarse",
    "nl": [
     "zich scheren"
@@ -16609,7 +16734,7 @@ window.COURSE = {
   {
    "id": "v.banarse",
    "kind": "vocab",
-   "theme": "wederkerende-werkwoorden",
+   "theme": "ww-verzorgen",
    "es": "bañarse",
    "nl": [
     "zich baden",
@@ -16623,7 +16748,7 @@ window.COURSE = {
   {
    "id": "v.despertarse",
    "kind": "vocab",
-   "theme": "wederkerende-werkwoorden",
+   "theme": "ww-verzorgen",
    "es": "despertarse",
    "nl": [
     "wakker worden"
@@ -16637,7 +16762,7 @@ window.COURSE = {
   {
    "id": "v.divertirse",
    "kind": "vocab",
-   "theme": "wederkerende-werkwoorden",
+   "theme": "ww-denken",
    "es": "divertirse",
    "nl": [
     "zich vermaken",
@@ -16653,7 +16778,7 @@ window.COURSE = {
   {
    "id": "v.ducharse",
    "kind": "vocab",
-   "theme": "wederkerende-werkwoorden",
+   "theme": "ww-verzorgen",
    "es": "ducharse",
    "nl": [
     "(zich) douchen"
@@ -16667,7 +16792,7 @@ window.COURSE = {
   {
    "id": "v.irse",
    "kind": "vocab",
-   "theme": "wederkerende-werkwoorden",
+   "theme": "ww-gaan",
    "es": "irse",
    "nl": [
     "weggaan",
@@ -16681,7 +16806,7 @@ window.COURSE = {
   {
    "id": "v.lavarse",
    "kind": "vocab",
-   "theme": "wederkerende-werkwoorden",
+   "theme": "ww-verzorgen",
    "es": "lavarse",
    "nl": [
     "zich wassen"
@@ -16694,7 +16819,7 @@ window.COURSE = {
   {
    "id": "v.levantarse",
    "kind": "vocab",
-   "theme": "wederkerende-werkwoorden",
+   "theme": "ww-verzorgen",
    "es": "levantarse",
    "nl": [
     "opstaan"
@@ -16708,7 +16833,7 @@ window.COURSE = {
   {
    "id": "v.llamarse",
    "kind": "vocab",
-   "theme": "wederkerende-werkwoorden",
+   "theme": "ww-overig",
    "es": "llamarse",
    "nl": [
     "heten"
@@ -16721,7 +16846,7 @@ window.COURSE = {
   {
    "id": "v.marcharse",
    "kind": "vocab",
-   "theme": "wederkerende-werkwoorden",
+   "theme": "ww-gaan",
    "es": "marcharse",
    "nl": [
     "weggaan",
@@ -16735,7 +16860,7 @@ window.COURSE = {
   {
    "id": "v.peinarse",
    "kind": "vocab",
-   "theme": "wederkerende-werkwoorden",
+   "theme": "ww-verzorgen",
    "es": "peinarse",
    "nl": [
     "zich kammen"
@@ -16748,7 +16873,7 @@ window.COURSE = {
   {
    "id": "v.pintarse",
    "kind": "vocab",
-   "theme": "wederkerende-werkwoorden",
+   "theme": "ww-verzorgen",
    "es": "pintarse",
    "nl": [
     "zich schminken",
@@ -16762,7 +16887,7 @@ window.COURSE = {
   {
    "id": "v.verse",
    "kind": "vocab",
-   "theme": "wederkerende-werkwoorden",
+   "theme": "ww-overig",
    "es": "verse",
    "nl": [
     "elkaar zien"
@@ -17027,7 +17152,9 @@ window.COURSE = {
    "number": null,
    "note": "Onpersoonlijk: llueve = het regent. Stamverandering o → ue.",
    "src": "spanish-md/IMG_20260918_203757754_AE.md; spanish-md/IMG_20260918_203753249_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": false,
+   "change": "o → ue"
   },
   {
    "id": "v.nevar",
@@ -17041,7 +17168,9 @@ window.COURSE = {
    "number": null,
    "note": "Stamverandering e → ie: nieva.",
    "src": "spanish-md/IMG_20260918_203804276_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": false,
+   "change": "e → ie"
   },
   {
    "id": "v.nieva",
@@ -17099,7 +17228,7 @@ window.COURSE = {
   {
    "id": "v.alquilar",
    "kind": "vocab",
-   "theme": "werkwoorden-ar",
+   "theme": "ww-kopen",
    "es": "alquilar",
    "nl": [
     "huren",
@@ -17108,12 +17237,13 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "course-md/IMG_20260918_190907308_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": true
   },
   {
    "id": "v.andar",
    "kind": "vocab",
-   "theme": "werkwoorden-ar",
+   "theme": "ww-gaan",
    "es": "andar",
    "nl": [
     "gaan",
@@ -17123,12 +17253,13 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "course-md/IMG_20260918_190907308_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": true
   },
   {
    "id": "v.apuntar",
    "kind": "vocab",
-   "theme": "werkwoorden-ar",
+   "theme": "ww-leren",
    "es": "apuntar",
    "nl": [
     "opschrijven",
@@ -17137,12 +17268,13 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "course-md/IMG_20260918_190907308_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": true
   },
   {
    "id": "v.buscar",
    "kind": "vocab",
-   "theme": "werkwoorden-ar",
+   "theme": "ww-dingen",
    "es": "buscar",
    "nl": [
     "zoeken"
@@ -17150,12 +17282,13 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "course-md/IMG_20260918_190907308_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": true
   },
   {
    "id": "v.cambiar",
    "kind": "vocab",
-   "theme": "werkwoorden-ar",
+   "theme": "ww-overig",
    "es": "cambiar",
    "nl": [
     "wisselen",
@@ -17164,12 +17297,13 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "course-md/IMG_20260918_190907308_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": true
   },
   {
    "id": "v.caminar",
    "kind": "vocab",
-   "theme": "werkwoorden-ar",
+   "theme": "ww-gaan",
    "es": "caminar",
    "nl": [
     "wandelen",
@@ -17178,12 +17312,13 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "course-md/IMG_20260918_190907308_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": true
   },
   {
    "id": "v.charlar",
    "kind": "vocab",
-   "theme": "werkwoorden-ar",
+   "theme": "ww-praten",
    "es": "charlar",
    "nl": [
     "babbelen",
@@ -17192,12 +17327,13 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "course-md/IMG_20260918_190907308_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": true
   },
   {
    "id": "v.comprar",
    "kind": "vocab",
-   "theme": "werkwoorden-ar",
+   "theme": "ww-kopen",
    "es": "comprar",
    "nl": [
     "kopen"
@@ -17205,12 +17341,13 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "course-md/IMG_20260918_190907308_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": true
   },
   {
    "id": "v.desayunar",
    "kind": "vocab",
-   "theme": "werkwoorden-ar",
+   "theme": "ww-eten",
    "es": "desayunar",
    "nl": [
     "ontbijten"
@@ -17218,12 +17355,13 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "course-md/IMG_20260918_190907308_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": true
   },
   {
    "id": "v.entrar",
    "kind": "vocab",
-   "theme": "werkwoorden-ar",
+   "theme": "ww-gaan",
    "es": "entrar",
    "nl": [
     "binnengaan",
@@ -17232,12 +17370,13 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "course-md/IMG_20260918_190907308_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": true
   },
   {
    "id": "v.escuchar",
    "kind": "vocab",
-   "theme": "werkwoorden-ar",
+   "theme": "ww-praten",
    "es": "escuchar",
    "nl": [
     "luisteren",
@@ -17246,12 +17385,13 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "course-md/IMG_20260918_190907308_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": true
   },
   {
    "id": "v.esperar",
    "kind": "vocab",
-   "theme": "werkwoorden-ar",
+   "theme": "ww-denken",
    "es": "esperar",
    "nl": [
     "wachten",
@@ -17260,12 +17400,13 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "course-md/IMG_20260918_190907308_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": true
   },
   {
    "id": "v.estudiar",
    "kind": "vocab",
-   "theme": "werkwoorden-ar",
+   "theme": "ww-leren",
    "es": "estudiar",
    "nl": [
     "studeren"
@@ -17273,12 +17414,13 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "course-md/IMG_20260918_190907308_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": true
   },
   {
    "id": "v.explicar",
    "kind": "vocab",
-   "theme": "werkwoorden-ar",
+   "theme": "ww-praten",
    "es": "explicar",
    "nl": [
     "uitleggen"
@@ -17286,12 +17428,13 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "course-md/IMG_20260918_190907308_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": true
   },
   {
    "id": "v.fumar",
    "kind": "vocab",
-   "theme": "werkwoorden-ar",
+   "theme": "ww-eten",
    "es": "fumar",
    "nl": [
     "roken"
@@ -17299,12 +17442,13 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "course-md/IMG_20260918_190907308_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": true
   },
   {
    "id": "v.hablar",
    "kind": "vocab",
-   "theme": "werkwoorden-ar",
+   "theme": "ww-praten",
    "es": "hablar",
    "nl": [
     "spreken",
@@ -17313,12 +17457,13 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "course-md/IMG_20260918_190907308_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": true
   },
   {
    "id": "v.invitar",
    "kind": "vocab",
-   "theme": "werkwoorden-ar",
+   "theme": "ww-praten",
    "es": "invitar",
    "nl": [
     "uitnodigen"
@@ -17326,12 +17471,13 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "course-md/IMG_20260918_190907308_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": true
   },
   {
    "id": "v.mirar",
    "kind": "vocab",
-   "theme": "werkwoorden-ar",
+   "theme": "ww-overig",
    "es": "mirar",
    "nl": [
     "kijken",
@@ -17341,12 +17487,13 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "course-md/IMG_20260918_190907308_AE.md; spanish-md/IMG_20260918_203757754_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": true
   },
   {
    "id": "v.necesitar",
    "kind": "vocab",
-   "theme": "werkwoorden-ar",
+   "theme": "ww-denken",
    "es": "necesitar",
    "nl": [
     "nodig hebben"
@@ -17354,12 +17501,13 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "course-md/IMG_20260918_190907308_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": true
   },
   {
    "id": "v.olvidar",
    "kind": "vocab",
-   "theme": "werkwoorden-ar",
+   "theme": "ww-denken",
    "es": "olvidar",
    "nl": [
     "vergeten"
@@ -17367,12 +17515,13 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "course-md/IMG_20260918_190907308_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": true
   },
   {
    "id": "v.pagar",
    "kind": "vocab",
-   "theme": "werkwoorden-ar",
+   "theme": "ww-kopen",
    "es": "pagar",
    "nl": [
     "betalen"
@@ -17380,12 +17529,13 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "course-md/IMG_20260918_190907308_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": true
   },
   {
    "id": "v.pasar",
    "kind": "vocab",
-   "theme": "werkwoorden-ar",
+   "theme": "ww-overig",
    "es": "pasar",
    "nl": [
     "voorbijgaan",
@@ -17395,12 +17545,13 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "course-md/IMG_20260918_190907308_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": true
   },
   {
    "id": "v.preguntar",
    "kind": "vocab",
-   "theme": "werkwoorden-ar",
+   "theme": "ww-praten",
    "es": "preguntar",
    "nl": [
     "vragen"
@@ -17408,12 +17559,13 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "course-md/IMG_20260918_190907308_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": true
   },
   {
    "id": "v.reservar",
    "kind": "vocab",
-   "theme": "werkwoorden-ar",
+   "theme": "ww-kopen",
    "es": "reservar",
    "nl": [
     "reserveren"
@@ -17421,12 +17573,13 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "course-md/IMG_20260918_190907308_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": true
   },
   {
    "id": "v.telefonear",
    "kind": "vocab",
-   "theme": "werkwoorden-ar",
+   "theme": "ww-praten",
    "es": "telefonear",
    "nl": [
     "telefoneren",
@@ -17435,12 +17588,13 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "course-md/IMG_20260918_190907308_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": true
   },
   {
    "id": "v.tomar",
    "kind": "vocab",
-   "theme": "werkwoorden-ar",
+   "theme": "ww-eten",
    "es": "tomar",
    "nl": [
     "nemen",
@@ -17449,12 +17603,13 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "course-md/IMG_20260918_190907308_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": true
   },
   {
    "id": "v.trabajar",
    "kind": "vocab",
-   "theme": "werkwoorden-ar",
+   "theme": "ww-leren",
    "es": "trabajar",
    "nl": [
     "werken"
@@ -17462,12 +17617,13 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "course-md/IMG_20260918_190907308_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": true
   },
   {
    "id": "v.viajar",
    "kind": "vocab",
-   "theme": "werkwoorden-ar",
+   "theme": "ww-gaan",
    "es": "viajar",
    "nl": [
     "reizen"
@@ -17475,12 +17631,13 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "course-md/IMG_20260918_190907308_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": true
   },
   {
    "id": "v.aprender",
    "kind": "vocab",
-   "theme": "werkwoorden-er",
+   "theme": "ww-leren",
    "es": "aprender",
    "nl": [
     "leren"
@@ -17488,12 +17645,13 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "course-md/IMG_20260918_190912590_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": true
   },
   {
    "id": "v.beber",
    "kind": "vocab",
-   "theme": "werkwoorden-er",
+   "theme": "ww-eten",
    "es": "beber",
    "nl": [
     "drinken"
@@ -17501,12 +17659,13 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "course-md/IMG_20260918_190912590_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": true
   },
   {
    "id": "v.comer",
    "kind": "vocab",
-   "theme": "werkwoorden-er",
+   "theme": "ww-eten",
    "es": "comer",
    "nl": [
     "eten"
@@ -17514,12 +17673,13 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "course-md/IMG_20260918_190912590_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": true
   },
   {
    "id": "v.comprender",
    "kind": "vocab",
-   "theme": "werkwoorden-er",
+   "theme": "ww-denken",
    "es": "comprender",
    "nl": [
     "begrijpen"
@@ -17527,12 +17687,13 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "course-md/IMG_20260918_190912590_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": true
   },
   {
    "id": "v.correr",
    "kind": "vocab",
-   "theme": "werkwoorden-er",
+   "theme": "ww-gaan",
    "es": "correr",
    "nl": [
     "lopen",
@@ -17542,12 +17703,13 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "course-md/IMG_20260918_190912590_AE.md; course-md/IMG_20260918_190204924_AE.md; spanish-md/IMG_20260918_203950488_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": true
   },
   {
    "id": "v.creer",
    "kind": "vocab",
-   "theme": "werkwoorden-er",
+   "theme": "ww-denken",
    "es": "creer",
    "nl": [
     "geloven",
@@ -17557,12 +17719,13 @@ window.COURSE = {
    "number": null,
    "note": "onregelmatig voltooid deelwoord: creído",
    "src": "course-md/IMG_20260918_190912590_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": true
   },
   {
    "id": "v.deber",
    "kind": "vocab",
-   "theme": "werkwoorden-er",
+   "theme": "ww-denken",
    "es": "deber",
    "nl": [
     "moeten"
@@ -17570,12 +17733,13 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "course-md/IMG_20260918_190912590_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": true
   },
   {
    "id": "v.depender",
    "kind": "vocab",
-   "theme": "werkwoorden-er",
+   "theme": "ww-overig",
    "es": "depender",
    "nl": [
     "afhangen"
@@ -17584,12 +17748,13 @@ window.COURSE = {
    "number": null,
    "note": "depender de = afhangen van",
    "src": "course-md/IMG_20260918_190912590_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": true
   },
   {
    "id": "v.esconder",
    "kind": "vocab",
-   "theme": "werkwoorden-er",
+   "theme": "ww-dingen",
    "es": "esconder",
    "nl": [
     "verstoppen",
@@ -17598,12 +17763,13 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "course-md/IMG_20260918_190912590_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": true
   },
   {
    "id": "v.poseer",
    "kind": "vocab",
-   "theme": "werkwoorden-er",
+   "theme": "ww-kopen",
    "es": "poseer",
    "nl": [
     "bezitten"
@@ -17612,12 +17778,13 @@ window.COURSE = {
    "number": null,
    "note": "onregelmatig voltooid deelwoord: poseído",
    "src": "course-md/IMG_20260918_190912590_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": true
   },
   {
    "id": "v.prometer",
    "kind": "vocab",
-   "theme": "werkwoorden-er",
+   "theme": "ww-praten",
    "es": "prometer",
    "nl": [
     "beloven"
@@ -17625,12 +17792,13 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "course-md/IMG_20260918_190912590_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": true
   },
   {
    "id": "v.responder",
    "kind": "vocab",
-   "theme": "werkwoorden-er",
+   "theme": "ww-praten",
    "es": "responder",
    "nl": [
     "antwoorden"
@@ -17638,12 +17806,13 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "course-md/IMG_20260918_190912590_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": true
   },
   {
    "id": "v.temer",
    "kind": "vocab",
-   "theme": "werkwoorden-er",
+   "theme": "ww-denken",
    "es": "temer",
    "nl": [
     "vrezen"
@@ -17651,12 +17820,13 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "course-md/IMG_20260918_190912590_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": true
   },
   {
    "id": "v.vender",
    "kind": "vocab",
-   "theme": "werkwoorden-er",
+   "theme": "ww-kopen",
    "es": "vender",
    "nl": [
     "verkopen"
@@ -17664,12 +17834,13 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "course-md/IMG_20260918_190912590_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": true
   },
   {
    "id": "v.abrir",
    "kind": "vocab",
-   "theme": "werkwoorden-ir",
+   "theme": "ww-dingen",
    "es": "abrir",
    "nl": [
     "openen",
@@ -17679,12 +17850,13 @@ window.COURSE = {
    "number": null,
    "note": "onregelmatig voltooid deelwoord: abierto",
    "src": "course-md/IMG_20260918_190912590_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": true
   },
   {
    "id": "v.admitir",
    "kind": "vocab",
-   "theme": "werkwoorden-ir",
+   "theme": "ww-praten",
    "es": "admitir",
    "nl": [
     "toegeven",
@@ -17693,12 +17865,13 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "course-md/IMG_20260918_190912590_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": true
   },
   {
    "id": "v.anadir",
    "kind": "vocab",
-   "theme": "werkwoorden-ir",
+   "theme": "ww-dingen",
    "es": "añadir",
    "nl": [
     "toevoegen"
@@ -17706,12 +17879,13 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "course-md/IMG_20260918_190912590_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": true
   },
   {
    "id": "v.aplaudir",
    "kind": "vocab",
-   "theme": "werkwoorden-ir",
+   "theme": "ww-overig",
    "es": "aplaudir",
    "nl": [
     "toejuichen",
@@ -17720,12 +17894,13 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "course-md/IMG_20260918_190912590_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": true
   },
   {
    "id": "v.escribir",
    "kind": "vocab",
-   "theme": "werkwoorden-ir",
+   "theme": "ww-leren",
    "es": "escribir",
    "nl": [
     "schrijven"
@@ -17734,12 +17909,13 @@ window.COURSE = {
    "number": null,
    "note": "onregelmatig voltooid deelwoord: escrito",
    "src": "course-md/IMG_20260918_190912590_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": true
   },
   {
    "id": "v.interrumpir",
    "kind": "vocab",
-   "theme": "werkwoorden-ir",
+   "theme": "ww-praten",
    "es": "interrumpir",
    "nl": [
     "onderbreken"
@@ -17747,12 +17923,13 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "course-md/IMG_20260918_190912590_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": true
   },
   {
    "id": "v.partir",
    "kind": "vocab",
-   "theme": "werkwoorden-ir",
+   "theme": "ww-gaan",
    "es": "partir",
    "nl": [
     "vertrekken"
@@ -17760,12 +17937,13 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "course-md/IMG_20260918_190912590_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": true
   },
   {
    "id": "v.permitir",
    "kind": "vocab",
-   "theme": "werkwoorden-ir",
+   "theme": "ww-overig",
    "es": "permitir",
    "nl": [
     "toelaten",
@@ -17774,12 +17952,13 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "course-md/IMG_20260918_190912590_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": true
   },
   {
    "id": "v.persuadir",
    "kind": "vocab",
-   "theme": "werkwoorden-ir",
+   "theme": "ww-praten",
    "es": "persuadir",
    "nl": [
     "overtuigen",
@@ -17788,12 +17967,13 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "course-md/IMG_20260918_190912590_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": true
   },
   {
    "id": "v.recibir",
    "kind": "vocab",
-   "theme": "werkwoorden-ir",
+   "theme": "ww-kopen",
    "es": "recibir",
    "nl": [
     "ontvangen",
@@ -17802,12 +17982,13 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "course-md/IMG_20260918_190912590_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": true
   },
   {
    "id": "v.resistir",
    "kind": "vocab",
-   "theme": "werkwoorden-ir",
+   "theme": "ww-overig",
    "es": "resistir",
    "nl": [
     "weerstaan",
@@ -17816,12 +17997,13 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "course-md/IMG_20260918_190912590_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": true
   },
   {
    "id": "v.reunir",
    "kind": "vocab",
-   "theme": "werkwoorden-ir",
+   "theme": "ww-overig",
    "es": "reunir",
    "nl": [
     "verenigen",
@@ -17836,7 +18018,7 @@ window.COURSE = {
   {
    "id": "v.subir",
    "kind": "vocab",
-   "theme": "werkwoorden-ir",
+   "theme": "ww-gaan",
    "es": "subir",
    "nl": [
     "instappen",
@@ -17846,12 +18028,13 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "course-md/IMG_20260918_190912590_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": true
   },
   {
    "id": "v.vivir",
    "kind": "vocab",
-   "theme": "werkwoorden-ir",
+   "theme": "ww-overig",
    "es": "vivir",
    "nl": [
     "leven",
@@ -17860,7 +18043,8 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "course-md/IMG_20260918_190912590_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "regular": true
   },
   {
    "id": "s.winkelen-1",

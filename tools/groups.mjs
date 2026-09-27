@@ -52,8 +52,8 @@ export const GROUPS = [
   {
     id: 'g-werkwoorden', title: 'Werkwoorden', emoji: '🔤',
     themes: [
-      'werkwoorden-ar', 'werkwoorden-er', 'werkwoorden-ir',
-      'verbos-cambio', 'wederkerende-werkwoorden', 'aan-het-doen',
+      'ww-praten', 'ww-leren', 'ww-denken', 'ww-gaan', 'ww-eten',
+      'ww-verzorgen', 'ww-kopen', 'ww-dingen', 'ww-overig', 'aan-het-doen',
       'ww-presente', 'ww-indefinido', 'ww-imperfecto', 'ww-perfecto',
     ],
   },

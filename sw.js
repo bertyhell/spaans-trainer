@@ -29,6 +29,7 @@ const ASSETS = [
   './js/types/accents.js',
   './js/types/oddOneOut.js',
   './js/types/stemChange.js',
+  './js/types/irregularVerb.js',
   './js/types/fillGap.js',
   './js/types/wordBank.js',
   './js/types/conjugation.js',
