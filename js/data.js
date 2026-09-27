@@ -152,9 +152,9 @@ export const PERSON_LABELS = {
 export const PERSON_ORDER = ['1s', '2s', '3s', '1p', '2p', '3p'];
 
 export const TENSE_LABELS = {
-  presente: 'presente',
-  indefinido: 'pretérito indefinido',
-  imperfecto: 'pretérito imperfecto',
-  perfecto: 'pretérito perfecto',
-  futuro: 'futuro simple',
+  presente: 'presente · tegenwoordige tijd',
+  indefinido: 'pretérito indefinido · verleden tijd, afgerond',
+  imperfecto: 'pretérito imperfecto · verleden tijd, gewoonte of beschrijving',
+  perfecto: 'pretérito perfecto · voltooid tegenwoordige tijd',
+  futuro: 'futuro simple · toekomende tijd',
 };

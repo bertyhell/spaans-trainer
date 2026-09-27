@@ -9,6 +9,8 @@
  * de thema's zoals ze hier staan, niet op grootte: je zoekt op onderwerp.
  */
 
+import { CONJUGATION_ORDER } from './conjugate.mjs';
+
 export const GROUPS = [
   {
     id: 'g-eten', title: 'Eten en drinken', emoji: '🍽️',
@@ -50,12 +52,16 @@ export const GROUPS = [
     ],
   },
   {
-    id: 'g-werkwoorden', title: 'Werkwoorden', emoji: '🔤',
+    id: 'g-ww-betekenis', title: 'Werkwoorden: betekenis', emoji: '🔤',
     themes: [
       'ww-praten', 'ww-leren', 'ww-denken', 'ww-gaan', 'ww-eten',
-      'ww-verzorgen', 'ww-kopen', 'ww-dingen', 'ww-overig', 'aan-het-doen',
-      'ww-presente', 'ww-indefinido', 'ww-imperfecto', 'ww-perfecto',
+      'ww-verzorgen', 'ww-kopen', 'ww-dingen', 'ww-overig',
     ],
+  },
+  {
+    // Per tijd een tussenkopje (het `section` van het thema, zie conjugate.mjs).
+    id: 'g-ww-vervoegen', title: 'Werkwoorden: vervoegen', emoji: '🔠',
+    themes: CONJUGATION_ORDER,
   },
   {
     id: 'g-grammatica', title: 'Grammatica en taalgebruik', emoji: '📐',

@@ -64,7 +64,31 @@ function renderTree() {
     const isOpen = expanded.has(group.id);
     const themeRows = el('div', { class: 'unit-themes', hidden: !isOpen });
 
+    let section = null;
     for (const theme of group.themes) {
+      // Thema's met een `section` krijgen een tussenkopje, bv. per tijd bij
+      // de vervoegingen. Het vakje ervoor selecteert de hele sectie.
+      if (theme.section && theme.section !== section) {
+        section = theme.section;
+        const members = group.themes.filter(t => t.section === section);
+        const sectionId = `se-${group.id}-${members[0].id}`;
+        themeRows.append(el('div', { class: 'row row--section' },
+          el('input', {
+            type: 'checkbox', class: 'row-check', id: sectionId,
+            dataset: { themes: members.map(t => t.id).join(' ') },
+            onchange: e => {
+              for (const t of members) {
+                e.target.checked ? selected.add(t.id) : selected.delete(t.id);
+                const box = $(`#th-${t.id}`);
+                if (box) box.checked = e.target.checked;
+              }
+              syncGroupCheckbox(group.id);
+              refreshSelection();
+            },
+          }),
+          el('label', { class: 'row-label', for: sectionId }, sectionText(section))));
+      }
+
       const keys = data.keysForTheme(theme.id);
       const pct = Math.round(scheduler.mastery(keys) * 100);
 
@@ -103,6 +127,7 @@ function renderTree() {
           const box = $(`#th-${t.id}`);
           if (box) box.checked = e.target.checked;
         }
+        syncGroupCheckbox(group.id);
         refreshSelection();
       },
     });
@@ -142,14 +167,30 @@ function renderTree() {
   refreshSelection();
 }
 
+/** "Presente (tegenwoordige tijd: ik spreek)" → titel met de vertaling eronder. */
+function sectionText(section) {
+  const [, title, sub] = section.match(/^(.*?)\s*(?:\((.*)\))?$/);
+  return el('span', { class: 'row-text' },
+    el('span', { class: 'row-title' }, title),
+    sub ? el('span', { class: 'row-meta' }, sub) : null);
+}
+
 function syncGroupCheckbox(groupId) {
   const group = data.tree().find(g => g.id === groupId);
   if (!group) return;
   const box = $(`#un-${groupId}`);
   if (!box) return;
-  const on = group.themes.filter(t => selected.has(t.id)).length;
-  box.checked = on === group.themes.length;
-  box.indeterminate = on > 0 && on < group.themes.length;
+  setTristate(box, group.themes.map(t => t.id));
+
+  for (const sectionBox of document.querySelectorAll(`.row-check[id^="se-${groupId}-"]`)) {
+    setTristate(sectionBox, sectionBox.dataset.themes.split(' '));
+  }
+}
+
+function setTristate(box, themeIds) {
+  const on = themeIds.filter(id => selected.has(id)).length;
+  box.checked = on === themeIds.length;
+  box.indeterminate = on > 0 && on < themeIds.length;
 }
 
 function refreshSelection() {
@@ -663,7 +704,9 @@ function reportEntry(id) {
   const atom = data.getAtom(id);
   const reason = storage.getReportReason(id) || undefined;
   if (!atom) return { id, missing: true, reason };
-  return { ...atom, themeLabel: data.getTheme(atom.theme)?.label, reason };
+  const theme = data.getTheme(atom.theme);
+  const themeLabel = theme && [theme.section, theme.label].filter(Boolean).join(' · ');
+  return { ...atom, themeLabel, reason };
 }
 
 function reportLabel(atom) {

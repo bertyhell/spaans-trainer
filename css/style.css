@@ -150,6 +150,8 @@ button { font: inherit; color: inherit; }
   margin-bottom: 6px;
 }
 .row--theme { padding: 4px 12px 4px 26px; }
+.row--section { padding: 10px 12px 0 26px; min-height: 0; }
+.row--section ~ .row--theme { padding-left: 40px; }
 
 .unit-toggle {
   display: flex; align-items: center; gap: 10px;
@@ -186,6 +188,7 @@ button { font: inherit; color: inherit; }
   border: 0; border-radius: 50%;
   background: var(--brand); color: var(--brand-ink);
   font-size: .8rem; cursor: pointer;
+  padding: 0 0 0 .15em; /* ▶ oogt links-zwaar: optisch centreren */
 }
 .row-go:active { transform: scale(.94); }
 

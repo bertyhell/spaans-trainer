@@ -12,7 +12,9 @@
  *     geen appels met peren vergelijken;
  *   - woorden die in het verkeerde thema beland waren verhuizen;
  *   - de werkwoorden uit de vormthema's (-ar, -er, -ir, ...) gaan naar een
- *     thema per activiteit, en krijgen `regular` mee (zie verbs.mjs).
+ *     thema per activiteit, en krijgen `regular` mee (zie verbs.mjs);
+ *   - de vervoegingen worden aangevuld en per tijd ingedeeld in regelmatig,
+ *     klankveranderend en onregelmatig (zie conjugate.mjs).
  *
  * Het script is herhaalbaar: twee keer draaien geeft hetzelfde resultaat.
  */
@@ -22,6 +24,7 @@ import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { GROUPS, GROUP_OF } from './groups.mjs';
 import { VERB_THEMES, VERB_THEME_OF, REPLACED_THEMES, IRREGULAR, REGULAR } from './verbs.mjs';
+import { CONJUGATION_THEMES, EXTRA_SECTIONS, buildConjugations } from './conjugate.mjs';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const COURSE = join(HERE, '..', 'data', 'course.js');
@@ -61,10 +64,13 @@ function guessPos(es) {
 
 /* De activiteitenthema's bestaan niet in de gedolven data: die komen erbij.
  * Opnieuw draaien overschrijft ze gewoon met wat in verbs.mjs staat. */
-const VERB_THEME_IDS = new Set(VERB_THEMES.map(t => t.id));
+const OWN_THEMES = [...VERB_THEMES.map(({ verbs: _, ...t }) => t), ...CONJUGATION_THEMES];
+const OWN_THEME_IDS = new Set(OWN_THEMES.map(t => t.id));
 course.themes = [
-  ...course.themes.filter(t => !VERB_THEME_IDS.has(t.id)),
-  ...VERB_THEMES.map(({ verbs: _, ...t }) => t),
+  ...course.themes
+    .filter(t => !OWN_THEME_IDS.has(t.id))
+    .map(t => (EXTRA_SECTIONS[t.id] ? { ...t, section: EXTRA_SECTIONS[t.id] } : t)),
+  ...OWN_THEMES,
 ];
 
 const themeIds = new Set(course.themes.map(t => t.id));
@@ -86,6 +92,8 @@ for (const atom of course.atoms) {
   // je een songtekst woord voor woord te reproduceren, en dat leert je geen
   // Spaans — ze gaan er dus helemaal uit, thema en al.
   if (atom.kind === 'lyric') continue;
+  // Vervoegingen komen hieronder in één keer, aangevuld en ingedeeld.
+  if (atom.kind === 'conjugation') continue;
   if (atom.kind !== 'vocab') { atoms.push(atom); continue; }
 
   const d = decided.get(atom.id);
@@ -112,6 +120,9 @@ for (const atom of course.atoms) {
   const { regular: _r, change: _c, ...rest } = atom;
   atoms.push({ ...rest, pos, theme, ...(pos === 'verb' ? verbInfo(atom.es) : {}) });
 }
+
+const conjugations = buildConjugations(course.atoms);
+atoms.push(...conjugations);
 
 /* --- groepen in plaats van unidades --- */
 
@@ -146,6 +157,7 @@ writeFileSync(COURSE, `${header}window.COURSE = ${JSON.stringify(next, null, 1)}
 
 console.log(`woordenschat geclassificeerd: ${tagged}/${atoms.filter(a => a.kind === 'vocab').length}`);
 console.log(`verhuisd naar een ander thema: ${moved}`);
+console.log(`vervoegingen: ${conjugations.length}, waarvan berekend: ${conjugations.filter(a => a.generated).length}`);
 console.log(`groepen: ${groups.length}, thema's: ${themes.length}`);
 if (dropped.length) console.log(`buiten de indeling gelaten: ${dropped.map(t => t.id).join(', ')}`);
 if (problems.length) {

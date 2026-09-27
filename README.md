@@ -13,13 +13,19 @@ npm-afhankelijkheden.
 | soort | aantal | wordt |
 |---|---|---|
 | woordenschat ES↔NL | 1146 | meerkeuze, intypen, lidwoord, accenten, koppelen, hoort-niet-bij, welk-is-onregelmatig, luisteren |
-| vervoegingen | 450 (75 volledige rijtjes) | vervoegingstabel, losse vorm, invuloefening |
+| vervoegingen | 3792 (632 rijtjes: 75 uit de cursus, de rest berekend) | vervoegingstabel, losse vorm, invuloefening |
 | grammaticaregels | 45 (143 voorbeelden) | invuloefening, meerkeuze |
 | zinnen uit de dialogen | 43 | zin bouwen, invuloefening |
 | liedjesregels | 36 (3 liedjes) | invuloefening |
 
 Verdeeld over 75 thema's onder de acht unidades, plus twee eigen groepen voor de
 werkwoorden en de grammatica uit de losse bundel van de lesgever.
+
+De werkwoorden staan in twee groepen: *betekenis* (per activiteit) en *vervoegen*, met per
+tijd — presente, gerundio, indefinido, futuro, imperfecto, perfecto — een thema voor
+regelmatig op -ar, -er en -ir, klankveranderend (enkel presente) en onregelmatig. Omdat de
+cursus vooral onregelmatige rijtjes geeft, vult `tools/conjugate.mjs` de regelmatige
+werkwoorden uit de woordenschat aan; die atomen hebben `generated: true`.
 
 ## Starten
 
@@ -48,7 +54,9 @@ map hiernaast — die blijven lokaal, zie *Auteursrecht*).
 # 1. agenten schrijven fragmenten out_*.json naar een tijdelijke map
 # 2. samenvoegen tot data/course.js
 node tools/merge.mjs /pad/naar/fragmenten
-# 3. controleren
+# 3. indelen op betekenis en vervoegingen aanvullen
+node tools/regroup.mjs
+# 4. controleren
 node tools/validate.mjs
 ```
 

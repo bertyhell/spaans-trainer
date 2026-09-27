@@ -67,7 +67,8 @@ for (const a of course.atoms) {
   else if (!themeIds.has(a.theme)) err(id, `onbekend theme "${a.theme}"`);
   else usedThemes.add(a.theme);
 
-  if (!a.src) warn(id, 'zonder bronverwijzing');
+  // Berekende vervoegingen (tools/conjugate.mjs) komen uit geen enkele scan.
+  if (!a.src && !a.generated) warn(id, 'zonder bronverwijzing');
 
   const text = [a.es, a.rule, ...(a.nl ?? []), ...(a.examples ?? []).map(e => e.es)].join(' ');
   if (OCR_JUNK.test(text)) err(id, 'bevat OCR-resten of annotatietekst');
