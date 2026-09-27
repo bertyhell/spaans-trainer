@@ -24,7 +24,7 @@ import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { GROUPS, GROUP_OF } from './groups.mjs';
 import { VERB_THEMES, VERB_THEME_OF, REPLACED_THEMES, IRREGULAR, REGULAR } from './verbs.mjs';
-import { CONJUGATION_THEMES, EXTRA_SECTIONS, buildConjugations } from './conjugate.mjs';
+import { CONJUGATION_THEMES, EXTRA_SECTIONS, VERB_TYPE_THEMES, buildConjugations, buildVerbTypes } from './conjugate.mjs';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const COURSE = join(HERE, '..', 'data', 'course.js');
@@ -64,7 +64,11 @@ function guessPos(es) {
 
 /* De activiteitenthema's bestaan niet in de gedolven data: die komen erbij.
  * Opnieuw draaien overschrijft ze gewoon met wat in verbs.mjs staat. */
-const OWN_THEMES = [...VERB_THEMES.map(({ verbs: _, ...t }) => t), ...CONJUGATION_THEMES];
+const OWN_THEMES = [
+  ...VERB_THEMES.map(({ verbs: _, ...t }) => t),
+  ...CONJUGATION_THEMES,
+  ...VERB_TYPE_THEMES.map(({ type: _, ...t }) => t),
+];
 const OWN_THEME_IDS = new Set(OWN_THEMES.map(t => t.id));
 course.themes = [
   ...course.themes
@@ -93,7 +97,7 @@ for (const atom of course.atoms) {
   // Spaans — ze gaan er dus helemaal uit, thema en al.
   if (atom.kind === 'lyric') continue;
   // Vervoegingen komen hieronder in één keer, aangevuld en ingedeeld.
-  if (atom.kind === 'conjugation') continue;
+  if (atom.kind === 'conjugation' || atom.kind === 'verbType') continue;
   if (atom.kind !== 'vocab') { atoms.push(atom); continue; }
 
   const d = decided.get(atom.id);
@@ -122,7 +126,7 @@ for (const atom of course.atoms) {
 }
 
 const conjugations = buildConjugations(course.atoms);
-atoms.push(...conjugations);
+atoms.push(...conjugations, ...buildVerbTypes(conjugations));
 
 /* --- groepen in plaats van unidades --- */
 

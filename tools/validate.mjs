@@ -137,6 +137,11 @@ for (const a of course.atoms) {
       break;
     }
 
+    case 'verbType': {
+      if (!a.verb || !a.type) err(id, 'verbType zonder verb of type');
+      break;
+    }
+
     default:
       err(id, `onbekende kind "${a.kind}"`);
   }

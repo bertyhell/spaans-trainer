@@ -324,6 +324,24 @@ window.COURSE = {
    "group": "g-dagelijks"
   },
   {
+   "id": "vs-regelmatig",
+   "label": "Welk werkwoord is regelmatig?",
+   "emoji": "✅",
+   "group": "g-ww-soort"
+  },
+  {
+   "id": "vs-klank",
+   "label": "Welk werkwoord verandert van klank?",
+   "emoji": "🔁",
+   "group": "g-ww-soort"
+  },
+  {
+   "id": "vs-onregelmatig",
+   "label": "Welk werkwoord is onregelmatig?",
+   "emoji": "⚡",
+   "group": "g-ww-soort"
+  },
+  {
    "id": "ww-praten",
    "label": "Praten en luisteren",
    "emoji": "💬",
@@ -61017,6 +61035,1356 @@ window.COURSE = {
    "form": "han jugado",
    "generated": true,
    "irregular": false
+  },
+  {
+   "id": "vt.comer",
+   "kind": "verbType",
+   "theme": "vs-regelmatig",
+   "es": "comer",
+   "nl": "regelmatig",
+   "verb": "comer",
+   "type": "regelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.conocer",
+   "kind": "verbType",
+   "theme": "vs-onregelmatig",
+   "es": "conocer",
+   "nl": "onregelmatig",
+   "verb": "conocer",
+   "type": "onregelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.dar",
+   "kind": "verbType",
+   "theme": "vs-onregelmatig",
+   "es": "dar",
+   "nl": "onregelmatig",
+   "verb": "dar",
+   "type": "onregelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.decir",
+   "kind": "verbType",
+   "theme": "vs-onregelmatig",
+   "es": "decir",
+   "nl": "onregelmatig",
+   "verb": "decir",
+   "type": "onregelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.dormir",
+   "kind": "verbType",
+   "theme": "vs-klank",
+   "es": "dormir",
+   "nl": "klankveranderend",
+   "verb": "dormir",
+   "type": "klankveranderend",
+   "generated": true
+  },
+  {
+   "id": "vt.estar",
+   "kind": "verbType",
+   "theme": "vs-onregelmatig",
+   "es": "estar",
+   "nl": "onregelmatig",
+   "verb": "estar",
+   "type": "onregelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.haber",
+   "kind": "verbType",
+   "theme": "vs-onregelmatig",
+   "es": "haber",
+   "nl": "onregelmatig",
+   "verb": "haber",
+   "type": "onregelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.hablar",
+   "kind": "verbType",
+   "theme": "vs-regelmatig",
+   "es": "hablar",
+   "nl": "regelmatig",
+   "verb": "hablar",
+   "type": "regelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.hacer",
+   "kind": "verbType",
+   "theme": "vs-onregelmatig",
+   "es": "hacer",
+   "nl": "onregelmatig",
+   "verb": "hacer",
+   "type": "onregelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.ir",
+   "kind": "verbType",
+   "theme": "vs-onregelmatig",
+   "es": "ir",
+   "nl": "onregelmatig",
+   "verb": "ir",
+   "type": "onregelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.jugar",
+   "kind": "verbType",
+   "theme": "vs-klank",
+   "es": "jugar",
+   "nl": "klankveranderend",
+   "verb": "jugar",
+   "type": "klankveranderend",
+   "generated": true
+  },
+  {
+   "id": "vt.oír",
+   "kind": "verbType",
+   "theme": "vs-onregelmatig",
+   "es": "oír",
+   "nl": "onregelmatig",
+   "verb": "oír",
+   "type": "onregelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.pedir",
+   "kind": "verbType",
+   "theme": "vs-klank",
+   "es": "pedir",
+   "nl": "klankveranderend",
+   "verb": "pedir",
+   "type": "klankveranderend",
+   "generated": true
+  },
+  {
+   "id": "vt.pensar",
+   "kind": "verbType",
+   "theme": "vs-klank",
+   "es": "pensar",
+   "nl": "klankveranderend",
+   "verb": "pensar",
+   "type": "klankveranderend",
+   "generated": true
+  },
+  {
+   "id": "vt.poder",
+   "kind": "verbType",
+   "theme": "vs-klank",
+   "es": "poder",
+   "nl": "klankveranderend",
+   "verb": "poder",
+   "type": "klankveranderend",
+   "generated": true
+  },
+  {
+   "id": "vt.poner",
+   "kind": "verbType",
+   "theme": "vs-onregelmatig",
+   "es": "poner",
+   "nl": "onregelmatig",
+   "verb": "poner",
+   "type": "onregelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.querer",
+   "kind": "verbType",
+   "theme": "vs-klank",
+   "es": "querer",
+   "nl": "klankveranderend",
+   "verb": "querer",
+   "type": "klankveranderend",
+   "generated": true
+  },
+  {
+   "id": "vt.saber",
+   "kind": "verbType",
+   "theme": "vs-onregelmatig",
+   "es": "saber",
+   "nl": "onregelmatig",
+   "verb": "saber",
+   "type": "onregelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.salir",
+   "kind": "verbType",
+   "theme": "vs-onregelmatig",
+   "es": "salir",
+   "nl": "onregelmatig",
+   "verb": "salir",
+   "type": "onregelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.ser",
+   "kind": "verbType",
+   "theme": "vs-onregelmatig",
+   "es": "ser",
+   "nl": "onregelmatig",
+   "verb": "ser",
+   "type": "onregelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.tener",
+   "kind": "verbType",
+   "theme": "vs-onregelmatig",
+   "es": "tener",
+   "nl": "onregelmatig",
+   "verb": "tener",
+   "type": "onregelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.tomar",
+   "kind": "verbType",
+   "theme": "vs-regelmatig",
+   "es": "tomar",
+   "nl": "regelmatig",
+   "verb": "tomar",
+   "type": "regelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.traer",
+   "kind": "verbType",
+   "theme": "vs-onregelmatig",
+   "es": "traer",
+   "nl": "onregelmatig",
+   "verb": "traer",
+   "type": "onregelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.venir",
+   "kind": "verbType",
+   "theme": "vs-onregelmatig",
+   "es": "venir",
+   "nl": "onregelmatig",
+   "verb": "venir",
+   "type": "onregelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.ver",
+   "kind": "verbType",
+   "theme": "vs-onregelmatig",
+   "es": "ver",
+   "nl": "onregelmatig",
+   "verb": "ver",
+   "type": "onregelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.vivir",
+   "kind": "verbType",
+   "theme": "vs-regelmatig",
+   "es": "vivir",
+   "nl": "regelmatig",
+   "verb": "vivir",
+   "type": "regelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.volver",
+   "kind": "verbType",
+   "theme": "vs-klank",
+   "es": "volver",
+   "nl": "klankveranderend",
+   "verb": "volver",
+   "type": "klankveranderend",
+   "generated": true
+  },
+  {
+   "id": "vt.alquilar",
+   "kind": "verbType",
+   "theme": "vs-regelmatig",
+   "es": "alquilar",
+   "nl": "regelmatig",
+   "verb": "alquilar",
+   "type": "regelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.andar",
+   "kind": "verbType",
+   "theme": "vs-regelmatig",
+   "es": "andar",
+   "nl": "regelmatig",
+   "verb": "andar",
+   "type": "regelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.apuntar",
+   "kind": "verbType",
+   "theme": "vs-regelmatig",
+   "es": "apuntar",
+   "nl": "regelmatig",
+   "verb": "apuntar",
+   "type": "regelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.avanzar",
+   "kind": "verbType",
+   "theme": "vs-regelmatig",
+   "es": "avanzar",
+   "nl": "regelmatig",
+   "verb": "avanzar",
+   "type": "regelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.bailar",
+   "kind": "verbType",
+   "theme": "vs-regelmatig",
+   "es": "bailar",
+   "nl": "regelmatig",
+   "verb": "bailar",
+   "type": "regelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.boxear",
+   "kind": "verbType",
+   "theme": "vs-regelmatig",
+   "es": "boxear",
+   "nl": "regelmatig",
+   "verb": "boxear",
+   "type": "regelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.bucear",
+   "kind": "verbType",
+   "theme": "vs-regelmatig",
+   "es": "bucear",
+   "nl": "regelmatig",
+   "verb": "bucear",
+   "type": "regelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.buscar",
+   "kind": "verbType",
+   "theme": "vs-regelmatig",
+   "es": "buscar",
+   "nl": "regelmatig",
+   "verb": "buscar",
+   "type": "regelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.caminar",
+   "kind": "verbType",
+   "theme": "vs-regelmatig",
+   "es": "caminar",
+   "nl": "regelmatig",
+   "verb": "caminar",
+   "type": "regelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.cambiar",
+   "kind": "verbType",
+   "theme": "vs-regelmatig",
+   "es": "cambiar",
+   "nl": "regelmatig",
+   "verb": "cambiar",
+   "type": "regelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.cantar",
+   "kind": "verbType",
+   "theme": "vs-regelmatig",
+   "es": "cantar",
+   "nl": "regelmatig",
+   "verb": "cantar",
+   "type": "regelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.cenar",
+   "kind": "verbType",
+   "theme": "vs-regelmatig",
+   "es": "cenar",
+   "nl": "regelmatig",
+   "verb": "cenar",
+   "type": "regelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.charlar",
+   "kind": "verbType",
+   "theme": "vs-regelmatig",
+   "es": "charlar",
+   "nl": "regelmatig",
+   "verb": "charlar",
+   "type": "regelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.cocinar",
+   "kind": "verbType",
+   "theme": "vs-regelmatig",
+   "es": "cocinar",
+   "nl": "regelmatig",
+   "verb": "cocinar",
+   "type": "regelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.coleccionar",
+   "kind": "verbType",
+   "theme": "vs-regelmatig",
+   "es": "coleccionar",
+   "nl": "regelmatig",
+   "verb": "coleccionar",
+   "type": "regelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.comprar",
+   "kind": "verbType",
+   "theme": "vs-regelmatig",
+   "es": "comprar",
+   "nl": "regelmatig",
+   "verb": "comprar",
+   "type": "regelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.controlar",
+   "kind": "verbType",
+   "theme": "vs-regelmatig",
+   "es": "controlar",
+   "nl": "regelmatig",
+   "verb": "controlar",
+   "type": "regelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.curar",
+   "kind": "verbType",
+   "theme": "vs-regelmatig",
+   "es": "curar",
+   "nl": "regelmatig",
+   "verb": "curar",
+   "type": "regelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.declarar",
+   "kind": "verbType",
+   "theme": "vs-regelmatig",
+   "es": "declarar",
+   "nl": "regelmatig",
+   "verb": "declarar",
+   "type": "regelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.desayunar",
+   "kind": "verbType",
+   "theme": "vs-regelmatig",
+   "es": "desayunar",
+   "nl": "regelmatig",
+   "verb": "desayunar",
+   "type": "regelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.descansar",
+   "kind": "verbType",
+   "theme": "vs-regelmatig",
+   "es": "descansar",
+   "nl": "regelmatig",
+   "verb": "descansar",
+   "type": "regelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.dibujar",
+   "kind": "verbType",
+   "theme": "vs-regelmatig",
+   "es": "dibujar",
+   "nl": "regelmatig",
+   "verb": "dibujar",
+   "type": "regelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.durar",
+   "kind": "verbType",
+   "theme": "vs-regelmatig",
+   "es": "durar",
+   "nl": "regelmatig",
+   "verb": "durar",
+   "type": "regelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.entrar",
+   "kind": "verbType",
+   "theme": "vs-regelmatig",
+   "es": "entrar",
+   "nl": "regelmatig",
+   "verb": "entrar",
+   "type": "regelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.escalar",
+   "kind": "verbType",
+   "theme": "vs-regelmatig",
+   "es": "escalar",
+   "nl": "regelmatig",
+   "verb": "escalar",
+   "type": "regelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.escuchar",
+   "kind": "verbType",
+   "theme": "vs-regelmatig",
+   "es": "escuchar",
+   "nl": "regelmatig",
+   "verb": "escuchar",
+   "type": "regelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.esperar",
+   "kind": "verbType",
+   "theme": "vs-regelmatig",
+   "es": "esperar",
+   "nl": "regelmatig",
+   "verb": "esperar",
+   "type": "regelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.estornudar",
+   "kind": "verbType",
+   "theme": "vs-regelmatig",
+   "es": "estornudar",
+   "nl": "regelmatig",
+   "verb": "estornudar",
+   "type": "regelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.estudiar",
+   "kind": "verbType",
+   "theme": "vs-regelmatig",
+   "es": "estudiar",
+   "nl": "regelmatig",
+   "verb": "estudiar",
+   "type": "regelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.explicar",
+   "kind": "verbType",
+   "theme": "vs-regelmatig",
+   "es": "explicar",
+   "nl": "regelmatig",
+   "verb": "explicar",
+   "type": "regelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.fumar",
+   "kind": "verbType",
+   "theme": "vs-regelmatig",
+   "es": "fumar",
+   "nl": "regelmatig",
+   "verb": "fumar",
+   "type": "regelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.invitar",
+   "kind": "verbType",
+   "theme": "vs-regelmatig",
+   "es": "invitar",
+   "nl": "regelmatig",
+   "verb": "invitar",
+   "type": "regelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.llevar",
+   "kind": "verbType",
+   "theme": "vs-regelmatig",
+   "es": "llevar",
+   "nl": "regelmatig",
+   "verb": "llevar",
+   "type": "regelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.mirar",
+   "kind": "verbType",
+   "theme": "vs-regelmatig",
+   "es": "mirar",
+   "nl": "regelmatig",
+   "verb": "mirar",
+   "type": "regelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.nadar",
+   "kind": "verbType",
+   "theme": "vs-regelmatig",
+   "es": "nadar",
+   "nl": "regelmatig",
+   "verb": "nadar",
+   "type": "regelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.navegar",
+   "kind": "verbType",
+   "theme": "vs-regelmatig",
+   "es": "navegar",
+   "nl": "regelmatig",
+   "verb": "navegar",
+   "type": "regelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.necesitar",
+   "kind": "verbType",
+   "theme": "vs-regelmatig",
+   "es": "necesitar",
+   "nl": "regelmatig",
+   "verb": "necesitar",
+   "type": "regelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.olvidar",
+   "kind": "verbType",
+   "theme": "vs-regelmatig",
+   "es": "olvidar",
+   "nl": "regelmatig",
+   "verb": "olvidar",
+   "type": "regelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.pagar",
+   "kind": "verbType",
+   "theme": "vs-regelmatig",
+   "es": "pagar",
+   "nl": "regelmatig",
+   "verb": "pagar",
+   "type": "regelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.pasar",
+   "kind": "verbType",
+   "theme": "vs-regelmatig",
+   "es": "pasar",
+   "nl": "regelmatig",
+   "verb": "pasar",
+   "type": "regelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.pasear",
+   "kind": "verbType",
+   "theme": "vs-regelmatig",
+   "es": "pasear",
+   "nl": "regelmatig",
+   "verb": "pasear",
+   "type": "regelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.patinar",
+   "kind": "verbType",
+   "theme": "vs-regelmatig",
+   "es": "patinar",
+   "nl": "regelmatig",
+   "verb": "patinar",
+   "type": "regelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.pescar",
+   "kind": "verbType",
+   "theme": "vs-regelmatig",
+   "es": "pescar",
+   "nl": "regelmatig",
+   "verb": "pescar",
+   "type": "regelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.picar",
+   "kind": "verbType",
+   "theme": "vs-regelmatig",
+   "es": "picar",
+   "nl": "regelmatig",
+   "verb": "picar",
+   "type": "regelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.pintar",
+   "kind": "verbType",
+   "theme": "vs-regelmatig",
+   "es": "pintar",
+   "nl": "regelmatig",
+   "verb": "pintar",
+   "type": "regelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.preguntar",
+   "kind": "verbType",
+   "theme": "vs-regelmatig",
+   "es": "preguntar",
+   "nl": "regelmatig",
+   "verb": "preguntar",
+   "type": "regelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.rechazar",
+   "kind": "verbType",
+   "theme": "vs-regelmatig",
+   "es": "rechazar",
+   "nl": "regelmatig",
+   "verb": "rechazar",
+   "type": "regelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.reservar",
+   "kind": "verbType",
+   "theme": "vs-regelmatig",
+   "es": "reservar",
+   "nl": "regelmatig",
+   "verb": "reservar",
+   "type": "regelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.respirar",
+   "kind": "verbType",
+   "theme": "vs-regelmatig",
+   "es": "respirar",
+   "nl": "regelmatig",
+   "verb": "respirar",
+   "type": "regelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.restaurar",
+   "kind": "verbType",
+   "theme": "vs-regelmatig",
+   "es": "restaurar",
+   "nl": "regelmatig",
+   "verb": "restaurar",
+   "type": "regelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.sangrar",
+   "kind": "verbType",
+   "theme": "vs-regelmatig",
+   "es": "sangrar",
+   "nl": "regelmatig",
+   "verb": "sangrar",
+   "type": "regelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.señalar",
+   "kind": "verbType",
+   "theme": "vs-regelmatig",
+   "es": "señalar",
+   "nl": "regelmatig",
+   "verb": "señalar",
+   "type": "regelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.telefonear",
+   "kind": "verbType",
+   "theme": "vs-regelmatig",
+   "es": "telefonear",
+   "nl": "regelmatig",
+   "verb": "telefonear",
+   "type": "regelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.tocar",
+   "kind": "verbType",
+   "theme": "vs-regelmatig",
+   "es": "tocar",
+   "nl": "regelmatig",
+   "verb": "tocar",
+   "type": "regelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.trabajar",
+   "kind": "verbType",
+   "theme": "vs-regelmatig",
+   "es": "trabajar",
+   "nl": "regelmatig",
+   "verb": "trabajar",
+   "type": "regelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.tratar",
+   "kind": "verbType",
+   "theme": "vs-regelmatig",
+   "es": "tratar",
+   "nl": "regelmatig",
+   "verb": "tratar",
+   "type": "regelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.valorar",
+   "kind": "verbType",
+   "theme": "vs-regelmatig",
+   "es": "valorar",
+   "nl": "regelmatig",
+   "verb": "valorar",
+   "type": "regelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.viajar",
+   "kind": "verbType",
+   "theme": "vs-regelmatig",
+   "es": "viajar",
+   "nl": "regelmatig",
+   "verb": "viajar",
+   "type": "regelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.vomitar",
+   "kind": "verbType",
+   "theme": "vs-regelmatig",
+   "es": "vomitar",
+   "nl": "regelmatig",
+   "verb": "vomitar",
+   "type": "regelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.aprender",
+   "kind": "verbType",
+   "theme": "vs-regelmatig",
+   "es": "aprender",
+   "nl": "regelmatig",
+   "verb": "aprender",
+   "type": "regelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.beber",
+   "kind": "verbType",
+   "theme": "vs-regelmatig",
+   "es": "beber",
+   "nl": "regelmatig",
+   "verb": "beber",
+   "type": "regelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.comprender",
+   "kind": "verbType",
+   "theme": "vs-regelmatig",
+   "es": "comprender",
+   "nl": "regelmatig",
+   "verb": "comprender",
+   "type": "regelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.correr",
+   "kind": "verbType",
+   "theme": "vs-regelmatig",
+   "es": "correr",
+   "nl": "regelmatig",
+   "verb": "correr",
+   "type": "regelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.coser",
+   "kind": "verbType",
+   "theme": "vs-regelmatig",
+   "es": "coser",
+   "nl": "regelmatig",
+   "verb": "coser",
+   "type": "regelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.creer",
+   "kind": "verbType",
+   "theme": "vs-regelmatig",
+   "es": "creer",
+   "nl": "regelmatig",
+   "verb": "creer",
+   "type": "regelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.deber",
+   "kind": "verbType",
+   "theme": "vs-regelmatig",
+   "es": "deber",
+   "nl": "regelmatig",
+   "verb": "deber",
+   "type": "regelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.depender",
+   "kind": "verbType",
+   "theme": "vs-regelmatig",
+   "es": "depender",
+   "nl": "regelmatig",
+   "verb": "depender",
+   "type": "regelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.esconder",
+   "kind": "verbType",
+   "theme": "vs-regelmatig",
+   "es": "esconder",
+   "nl": "regelmatig",
+   "verb": "esconder",
+   "type": "regelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.leer",
+   "kind": "verbType",
+   "theme": "vs-regelmatig",
+   "es": "leer",
+   "nl": "regelmatig",
+   "verb": "leer",
+   "type": "regelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.poseer",
+   "kind": "verbType",
+   "theme": "vs-regelmatig",
+   "es": "poseer",
+   "nl": "regelmatig",
+   "verb": "poseer",
+   "type": "regelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.prometer",
+   "kind": "verbType",
+   "theme": "vs-regelmatig",
+   "es": "prometer",
+   "nl": "regelmatig",
+   "verb": "prometer",
+   "type": "regelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.recorrer",
+   "kind": "verbType",
+   "theme": "vs-regelmatig",
+   "es": "recorrer",
+   "nl": "regelmatig",
+   "verb": "recorrer",
+   "type": "regelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.responder",
+   "kind": "verbType",
+   "theme": "vs-regelmatig",
+   "es": "responder",
+   "nl": "regelmatig",
+   "verb": "responder",
+   "type": "regelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.suceder",
+   "kind": "verbType",
+   "theme": "vs-regelmatig",
+   "es": "suceder",
+   "nl": "regelmatig",
+   "verb": "suceder",
+   "type": "regelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.temer",
+   "kind": "verbType",
+   "theme": "vs-regelmatig",
+   "es": "temer",
+   "nl": "regelmatig",
+   "verb": "temer",
+   "type": "regelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.vender",
+   "kind": "verbType",
+   "theme": "vs-regelmatig",
+   "es": "vender",
+   "nl": "regelmatig",
+   "verb": "vender",
+   "type": "regelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.abrir",
+   "kind": "verbType",
+   "theme": "vs-regelmatig",
+   "es": "abrir",
+   "nl": "regelmatig",
+   "verb": "abrir",
+   "type": "regelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.admitir",
+   "kind": "verbType",
+   "theme": "vs-regelmatig",
+   "es": "admitir",
+   "nl": "regelmatig",
+   "verb": "admitir",
+   "type": "regelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.añadir",
+   "kind": "verbType",
+   "theme": "vs-regelmatig",
+   "es": "añadir",
+   "nl": "regelmatig",
+   "verb": "añadir",
+   "type": "regelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.aplaudir",
+   "kind": "verbType",
+   "theme": "vs-regelmatig",
+   "es": "aplaudir",
+   "nl": "regelmatig",
+   "verb": "aplaudir",
+   "type": "regelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.definir",
+   "kind": "verbType",
+   "theme": "vs-regelmatig",
+   "es": "definir",
+   "nl": "regelmatig",
+   "verb": "definir",
+   "type": "regelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.escribir",
+   "kind": "verbType",
+   "theme": "vs-regelmatig",
+   "es": "escribir",
+   "nl": "regelmatig",
+   "verb": "escribir",
+   "type": "regelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.interrumpir",
+   "kind": "verbType",
+   "theme": "vs-regelmatig",
+   "es": "interrumpir",
+   "nl": "regelmatig",
+   "verb": "interrumpir",
+   "type": "regelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.partir",
+   "kind": "verbType",
+   "theme": "vs-regelmatig",
+   "es": "partir",
+   "nl": "regelmatig",
+   "verb": "partir",
+   "type": "regelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.permitir",
+   "kind": "verbType",
+   "theme": "vs-regelmatig",
+   "es": "permitir",
+   "nl": "regelmatig",
+   "verb": "permitir",
+   "type": "regelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.persuadir",
+   "kind": "verbType",
+   "theme": "vs-regelmatig",
+   "es": "persuadir",
+   "nl": "regelmatig",
+   "verb": "persuadir",
+   "type": "regelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.recibir",
+   "kind": "verbType",
+   "theme": "vs-regelmatig",
+   "es": "recibir",
+   "nl": "regelmatig",
+   "verb": "recibir",
+   "type": "regelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.resistir",
+   "kind": "verbType",
+   "theme": "vs-regelmatig",
+   "es": "resistir",
+   "nl": "regelmatig",
+   "verb": "resistir",
+   "type": "regelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.subir",
+   "kind": "verbType",
+   "theme": "vs-regelmatig",
+   "es": "subir",
+   "nl": "regelmatig",
+   "verb": "subir",
+   "type": "regelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.sufrir",
+   "kind": "verbType",
+   "theme": "vs-regelmatig",
+   "es": "sufrir",
+   "nl": "regelmatig",
+   "verb": "sufrir",
+   "type": "regelmatig",
+   "generated": true
+  },
+  {
+   "id": "vt.cerrar",
+   "kind": "verbType",
+   "theme": "vs-klank",
+   "es": "cerrar",
+   "nl": "klankveranderend",
+   "verb": "cerrar",
+   "type": "klankveranderend",
+   "generated": true
+  },
+  {
+   "id": "vt.comenzar",
+   "kind": "verbType",
+   "theme": "vs-klank",
+   "es": "comenzar",
+   "nl": "klankveranderend",
+   "verb": "comenzar",
+   "type": "klankveranderend",
+   "generated": true
+  },
+  {
+   "id": "vt.empezar",
+   "kind": "verbType",
+   "theme": "vs-klank",
+   "es": "empezar",
+   "nl": "klankveranderend",
+   "verb": "empezar",
+   "type": "klankveranderend",
+   "generated": true
+  },
+  {
+   "id": "vt.encender",
+   "kind": "verbType",
+   "theme": "vs-klank",
+   "es": "encender",
+   "nl": "klankveranderend",
+   "verb": "encender",
+   "type": "klankveranderend",
+   "generated": true
+  },
+  {
+   "id": "vt.entender",
+   "kind": "verbType",
+   "theme": "vs-klank",
+   "es": "entender",
+   "nl": "klankveranderend",
+   "verb": "entender",
+   "type": "klankveranderend",
+   "generated": true
+  },
+  {
+   "id": "vt.perder",
+   "kind": "verbType",
+   "theme": "vs-klank",
+   "es": "perder",
+   "nl": "klankveranderend",
+   "verb": "perder",
+   "type": "klankveranderend",
+   "generated": true
+  },
+  {
+   "id": "vt.preferir",
+   "kind": "verbType",
+   "theme": "vs-klank",
+   "es": "preferir",
+   "nl": "klankveranderend",
+   "verb": "preferir",
+   "type": "klankveranderend",
+   "generated": true
+  },
+  {
+   "id": "vt.recomendar",
+   "kind": "verbType",
+   "theme": "vs-klank",
+   "es": "recomendar",
+   "nl": "klankveranderend",
+   "verb": "recomendar",
+   "type": "klankveranderend",
+   "generated": true
+  },
+  {
+   "id": "vt.sentir",
+   "kind": "verbType",
+   "theme": "vs-klank",
+   "es": "sentir",
+   "nl": "klankveranderend",
+   "verb": "sentir",
+   "type": "klankveranderend",
+   "generated": true
+  },
+  {
+   "id": "vt.contar",
+   "kind": "verbType",
+   "theme": "vs-klank",
+   "es": "contar",
+   "nl": "klankveranderend",
+   "verb": "contar",
+   "type": "klankveranderend",
+   "generated": true
+  },
+  {
+   "id": "vt.costar",
+   "kind": "verbType",
+   "theme": "vs-klank",
+   "es": "costar",
+   "nl": "klankveranderend",
+   "verb": "costar",
+   "type": "klankveranderend",
+   "generated": true
+  },
+  {
+   "id": "vt.encontrar",
+   "kind": "verbType",
+   "theme": "vs-klank",
+   "es": "encontrar",
+   "nl": "klankveranderend",
+   "verb": "encontrar",
+   "type": "klankveranderend",
+   "generated": true
+  },
+  {
+   "id": "vt.morir",
+   "kind": "verbType",
+   "theme": "vs-klank",
+   "es": "morir",
+   "nl": "klankveranderend",
+   "verb": "morir",
+   "type": "klankveranderend",
+   "generated": true
+  },
+  {
+   "id": "vt.mostrar",
+   "kind": "verbType",
+   "theme": "vs-klank",
+   "es": "mostrar",
+   "nl": "klankveranderend",
+   "verb": "mostrar",
+   "type": "klankveranderend",
+   "generated": true
+  },
+  {
+   "id": "vt.probar",
+   "kind": "verbType",
+   "theme": "vs-klank",
+   "es": "probar",
+   "nl": "klankveranderend",
+   "verb": "probar",
+   "type": "klankveranderend",
+   "generated": true
+  },
+  {
+   "id": "vt.repetir",
+   "kind": "verbType",
+   "theme": "vs-klank",
+   "es": "repetir",
+   "nl": "klankveranderend",
+   "verb": "repetir",
+   "type": "klankveranderend",
+   "generated": true
+  },
+  {
+   "id": "vt.servir",
+   "kind": "verbType",
+   "theme": "vs-klank",
+   "es": "servir",
+   "nl": "klankveranderend",
+   "verb": "servir",
+   "type": "klankveranderend",
+   "generated": true
+  },
+  {
+   "id": "vt.vestir",
+   "kind": "verbType",
+   "theme": "vs-klank",
+   "es": "vestir",
+   "nl": "klankveranderend",
+   "verb": "vestir",
+   "type": "klankveranderend",
+   "generated": true
   }
  ],
  "groups": [
@@ -61054,6 +62422,11 @@ window.COURSE = {
    "id": "g-dagelijks",
    "title": "Dagelijks leven",
    "emoji": "🕘"
+  },
+  {
+   "id": "g-ww-soort",
+   "title": "Werkwoorden: soort herkennen",
+   "emoji": "🧩"
   },
   {
    "id": "g-ww-betekenis",

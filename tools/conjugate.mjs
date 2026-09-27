@@ -196,3 +196,33 @@ export function buildConjugations(atoms) {
     return a.generated ? { ...a, theme, irregular } : { ...a, theme };
   });
 }
+
+/* --- soort werkwoord herkennen --- */
+
+/* Eén thema per soort, gevoed door de indeling van de presente hierboven.
+ * De oefening vraagt "welk werkwoord is …?" met drie werkwoorden van een
+ * andere soort als afleiders (js/types/verbType.js). */
+export const VERB_TYPE_THEMES = [
+  { id: 'vs-regelmatig', label: 'Welk werkwoord is regelmatig?', emoji: '✅', type: 'regelmatig' },
+  { id: 'vs-klank', label: 'Welk werkwoord verandert van klank?', emoji: '🔁', type: 'klankveranderend' },
+  { id: 'vs-onregelmatig', label: 'Welk werkwoord is onregelmatig?', emoji: '⚡', type: 'onregelmatig' },
+];
+
+const TYPE_OF_THEME = {
+  'vv-presente-ar': 'vs-regelmatig', 'vv-presente-er': 'vs-regelmatig', 'vv-presente-ir': 'vs-regelmatig',
+  'vv-presente-klank': 'vs-klank', 'vv-presente-onr': 'vs-onregelmatig',
+};
+
+/** Eén atoom per werkwoord met een volledig presente-rijtje. */
+export function buildVerbTypes(conjugations) {
+  const seen = new Set();
+  const out = [];
+  for (const c of conjugations) {
+    const theme = TYPE_OF_THEME[c.theme];
+    if (!theme || seen.has(c.verb)) continue;
+    seen.add(c.verb);
+    const { type } = VERB_TYPE_THEMES.find(t => t.id === theme);
+    out.push({ id: `vt.${c.verb}`, kind: 'verbType', theme, es: c.verb, nl: type, verb: c.verb, type, generated: true });
+  }
+  return out;
+}

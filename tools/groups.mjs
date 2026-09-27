@@ -9,7 +9,7 @@
  * de thema's zoals ze hier staan, niet op grootte: je zoekt op onderwerp.
  */
 
-import { CONJUGATION_ORDER } from './conjugate.mjs';
+import { CONJUGATION_ORDER, VERB_TYPE_THEMES } from './conjugate.mjs';
 
 export const GROUPS = [
   {
@@ -50,6 +50,10 @@ export const GROUPS = [
       'afspreken', 'afspreken-en-plannen', 'telefoneren',
       'winkelen', 'winkels-diensten', 'kantoor-papier', 'kantoor-schrijfgerei',
     ],
+  },
+  {
+    id: 'g-ww-soort', title: 'Werkwoorden: soort herkennen', emoji: '🧩',
+    themes: VERB_TYPE_THEMES.map(t => t.id),
   },
   {
     id: 'g-ww-betekenis', title: 'Werkwoorden: betekenis', emoji: '🔤',

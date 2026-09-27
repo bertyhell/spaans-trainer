@@ -33,10 +33,10 @@ export const getTheme = id => course.themes.find(t => t.id === id);
 /** Is dit atoom een werkwoord? Vervoegingen altijd, woordenschat volgens de
  *  woordsoort die in de data staat. */
 export const isVerb = atom =>
-  atom.kind === 'conjugation' || (atom.kind === 'vocab' && atom.pos === 'verb');
+  atom.kind === 'conjugation' || atom.kind === 'verbType' || (atom.kind === 'vocab' && atom.pos === 'verb');
 
 /** Het werkwoord waar dit atoom over gaat, voor het tellen van unieke vormen. */
-const verbOf = atom => (atom.kind === 'conjugation' ? atom.verb : atom.es);
+const verbOf = atom => atom.verb ?? atom.es;
 
 /**
  * Hoeveel valt er in dit thema te leren, en waarin tel je dat.
