@@ -380,6 +380,28 @@ button { font: inherit; color: inherit; }
 .result-stats dt { font-size: .75rem; color: var(--ink-soft); }
 .result-stats small { font-size: .75rem; color: var(--ink-soft); }
 .result-stats dd { margin: 2px 0 0; font-size: 1.3rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+.result-stats > .mastered {
+  animation: shake .6s ease;
+  background: var(--ok-bg); border-color: var(--ok);
+  transition: background .3s .6s, border-color .3s .6s;
+}
+.result-stats > .mastered dd { color: var(--ok); }
+@keyframes shake {
+  0%, 100% { transform: translateX(0) rotate(0); }
+  15% { transform: translateX(-6px) rotate(-3deg); }
+  30% { transform: translateX(6px) rotate(3deg); }
+  45% { transform: translateX(-5px) rotate(-2deg); }
+  60% { transform: translateX(4px) rotate(2deg); }
+  75% { transform: translateX(-2px) rotate(-1deg); }
+}
+.confetti {
+  position: fixed; z-index: 100; width: 8px; height: 12px; border-radius: 2px;
+  pointer-events: none; animation: confetti 1.4s cubic-bezier(.2,.7,.4,1) forwards;
+}
+@keyframes confetti {
+  to { transform: translate(var(--dx), calc(var(--dy) + 160px)) rotate(var(--rot)); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) { .result-stats > .mastered { animation: none; } }
 
 .mistakes { width: 100%; text-align: left; }
 .mistakes-title { font-size: .95rem; margin: 0 0 8px; }

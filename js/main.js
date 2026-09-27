@@ -368,6 +368,34 @@ function showMasteryGain() {
   const pct = (n, digits) => n.toLocaleString('nl-BE', { minimumFractionDigits: digits, maximumFractionDigits: digits });
   $('#result-mastery').textContent = `${sign}${pct(Math.abs(delta), 2)}%`;
   $('#result-mastery-total').textContent = `naar ${pct(after * 100, 1)}%`;
+  const card = $('#result-mastery-card');
+  const complete = after >= 1 && masteryBefore < 1;
+  card.classList.remove('mastered');
+  if (complete) {
+    void card.offsetWidth; // herstart de animatie
+    card.classList.add('mastered');
+    setTimeout(() => { audio.mastered(); confetti(card); }, 700);
+  }
+}
+
+/** Confetti die uit het beheersingskaartje spat. */
+function confetti(origin) {
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const r = origin.getBoundingClientRect();
+  const colors = ['#2e9e5b', '#f2c94c', '#eb5757', '#2f80ed', '#bb6bd9', '#f2994a'];
+  for (let i = 0; i < 80; i++) {
+    const bit = el('span', { class: 'confetti' });
+    const angle = Math.random() * Math.PI * 2;
+    const dist = 80 + Math.random() * 180;
+    bit.style.left = `${r.left + r.width / 2}px`;
+    bit.style.top = `${r.top + r.height / 2}px`;
+    bit.style.background = pick(colors);
+    bit.style.setProperty('--dx', `${Math.cos(angle) * dist}px`);
+    bit.style.setProperty('--dy', `${Math.sin(angle) * dist - 60}px`);
+    bit.style.setProperty('--rot', `${Math.random() * 720 - 360}deg`);
+    document.body.append(bit);
+    bit.addEventListener('animationend', () => bit.remove());
+  }
 }
 
 const pick = arr => arr[Math.floor(Math.random() * arr.length)];

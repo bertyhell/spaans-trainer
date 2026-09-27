@@ -67,3 +67,11 @@ export function tap() {
   if (!enabled()) return;
   tone(440, 0, 0.05, { gain: 0.05 });
 }
+
+/** Vrolijk fanfaretje bij 100% beheersing. */
+export function mastered() {
+  if (!enabled()) return;
+  [523.25, 659.25, 783.99, 1046.5, 783.99, 1046.5, 1318.51].forEach((f, i) =>
+    tone(f, i * 0.11, i === 6 ? 0.6 : 0.2, { type: 'triangle', gain: 0.1 }));
+  tone(2093, 0.8, 0.4, { gain: 0.03 });
+}
