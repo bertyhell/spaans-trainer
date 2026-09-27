@@ -528,3 +528,9 @@ button { font: inherit; color: inherit; }
 }
 .unit-toggle .row-text { flex: 1; }
 #btn-mistakes { margin-bottom: var(--gap); }
+
+.prev-mistake {
+  align-self: flex-start; margin-bottom: 8px; padding: 2px 10px;
+  border-radius: 999px; font-size: 0.8rem; font-weight: 600;
+  background: var(--no-bg); color: var(--no);
+}

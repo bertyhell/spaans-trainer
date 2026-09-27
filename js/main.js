@@ -252,6 +252,8 @@ function nextQuestion() {
   };
 
   instance = activeType.render(session.current, root, ctx);
+  // Vóór het antwoord bepalen: recordAnswer kan de fout straks wissen.
+  $('#prev-mistake').hidden = !storage.get().mistakes[session.current.atomId];
 
   $('#lesson-counter').textContent = `${session.position}/${session.total}`;
   renderLessonProgress();
@@ -380,7 +382,7 @@ function showMasteryGain() {
 
 /** Confetti die uit het beheersingskaartje spat. */
 function confetti(origin) {
-  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (prefersReducedMotion()) return;
   const r = origin.getBoundingClientRect();
   const colors = ['#2e9e5b', '#f2c94c', '#eb5757', '#2f80ed', '#bb6bd9', '#f2994a'];
   for (let i = 0; i < 80; i++) {
