@@ -20,7 +20,7 @@ export const VERB_THEMES = [
     verbs: [
       'hablar', 'charlar', 'preguntar', 'responder', 'explicar', 'telefonear',
       'contar', 'repetir', 'prometer', 'invitar', 'interrumpir', 'persuadir',
-      'pedir', 'recomendar', 'admitir', 'escuchar',
+      'pedir', 'recomendar', 'admitir', 'escuchar', 'declarar',
     ],
   },
   {
@@ -38,7 +38,7 @@ export const VERB_THEMES = [
     id: 'ww-gaan', label: 'Gaan en komen', emoji: '🚶', activity: true,
     verbs: [
       'andar', 'caminar', 'correr', 'entrar', 'viajar', 'partir', 'subir',
-      'volver', 'irse', 'marcharse',
+      'volver', 'irse', 'marcharse', 'proceder (de)',
     ],
   },
   {
@@ -66,8 +66,8 @@ export const VERB_THEMES = [
   {
     id: 'ww-overig', label: 'Overige werkwoorden', emoji: '🔤',
     verbs: [
-      'aplaudir', 'cambiar', 'depender', 'empezar', 'llamarse', 'mirar', 'morir',
-      'pasar', 'permitir', 'resistir', 'reunir', 'verse', 'vivir',
+      'aplaudir', 'cambiar', 'casarse', 'depender', 'empezar', 'llamarse', 'mirar',
+      'morir', 'pasar', 'permitir', 'resistir', 'restaurar', 'reunir', 'verse', 'vivir',
     ],
   },
 ];

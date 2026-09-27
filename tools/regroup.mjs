@@ -14,7 +14,9 @@
  *   - de werkwoorden uit de vormthema's (-ar, -er, -ir, ...) gaan naar een
  *     thema per activiteit, en krijgen `regular` mee (zie verbs.mjs);
  *   - de vervoegingen worden aangevuld en per tijd ingedeeld in regelmatig,
- *     klankveranderend en onregelmatig (zie conjugate.mjs).
+ *     klankveranderend en onregelmatig (zie conjugate.mjs);
+ *   - handmatige verbeteringen uit gemelde fouten: extra vertalingen,
+ *     verhuisde en geschrapte woorden (zie fixes.mjs).
  *
  * Het script is herhaalbaar: twee keer draaien geeft hetzelfde resultaat.
  */
@@ -25,6 +27,7 @@ import { fileURLToPath } from 'node:url';
 import { GROUPS, GROUP_OF } from './groups.mjs';
 import { VERB_THEMES, VERB_THEME_OF, REPLACED_THEMES, IRREGULAR, REGULAR } from './verbs.mjs';
 import { CONJUGATION_THEMES, EXTRA_SECTIONS, VERB_TYPE_THEMES, buildConjugations, buildVerbTypes } from './conjugate.mjs';
+import { EXTRA_NL, MOVE, DROP as FIX_DROP, EXTRA_THEMES } from './fixes.mjs';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const COURSE = join(HERE, '..', 'data', 'course.js');
@@ -33,7 +36,7 @@ const CLASSIFIED = process.argv[2];
 /* Imperatieven op ustedes. Die vorm hoort bij het Latijns-Amerikaanse
  * "u"-meervoud en wordt in deze cursus nergens actief gevraagd; als los
  * woordje oefenen levert alleen een vorm op die je niet gebruikt. */
-const DROP = new Set(['v.mencionen', 'v.piensen-en']);
+const DROP = new Set(['v.mencionen', 'v.piensen-en', ...FIX_DROP]);
 
 const POS = new Set(['verb', 'noun', 'adj', 'adv', 'other']);
 
@@ -68,6 +71,7 @@ const OWN_THEMES = [
   ...VERB_THEMES.map(({ verbs: _, ...t }) => t),
   ...CONJUGATION_THEMES,
   ...VERB_TYPE_THEMES.map(({ type: _, ...t }) => t),
+  ...EXTRA_THEMES,
 ];
 const OWN_THEME_IDS = new Set(OWN_THEMES.map(t => t.id));
 course.themes = [
@@ -121,8 +125,12 @@ for (const atom of course.atoms) {
     problems.push(`${atom.id}: werkwoord zonder activiteitenthema (verbs.mjs)`);
   }
 
+  if (MOVE[atom.id]) theme = MOVE[atom.id];
+  // Zonder dubbels, anders groeit de lijst bij elke keer opnieuw draaien.
+  const nl = [...new Set([...atom.nl, ...(EXTRA_NL[atom.id] ?? [])])];
+
   const { regular: _r, change: _c, ...rest } = atom;
-  atoms.push({ ...rest, pos, theme, ...(pos === 'verb' ? verbInfo(atom.es) : {}) });
+  atoms.push({ ...rest, nl, pos, theme, ...(pos === 'verb' ? verbInfo(atom.es) : {}) });
 }
 
 const conjugations = buildConjugations(course.atoms);

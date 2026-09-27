@@ -48,7 +48,7 @@ export const GROUPS = [
     themes: [
       'dagelijkse-routine', 'dagen-en-maanden', 'tijd-en-uur',
       'afspreken', 'afspreken-en-plannen', 'telefoneren',
-      'winkelen', 'winkels-diensten', 'kantoor-papier', 'kantoor-schrijfgerei',
+      'mensen', 'winkelen', 'winkels-diensten', 'kantoor-papier', 'kantoor-schrijfgerei',
     ],
   },
   {
@@ -73,7 +73,6 @@ export const GROUPS = [
       'eigenschappen', 'bijwoord', 'vergelijken', 'voornaamwoorden',
       'onbepaalde-voornaamwoorden', 'interrogativos', 'bijvoeglijk-naamwoord',
       'ser-estar', 'verleden-tijden', 'grammaticatermen', 'opdrachtentaal',
-      'overige-woorden',
     ],
   },
 ];

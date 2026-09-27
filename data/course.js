@@ -300,6 +300,12 @@ window.COURSE = {
    "group": "g-dagelijks"
   },
   {
+   "id": "mensen",
+   "label": "Mensen en beroepen",
+   "emoji": "🧑‍💼",
+   "group": "g-dagelijks"
+  },
+  {
    "id": "winkelen",
    "label": "Winkelen",
    "emoji": "•",
@@ -621,12 +627,6 @@ window.COURSE = {
    "id": "opdrachtentaal",
    "label": "Instructietaal in oefeningen",
    "emoji": "•",
-   "group": "g-grammatica"
-  },
-  {
-   "id": "overige-woorden",
-   "label": "Overige woorden",
-   "emoji": "💻",
    "group": "g-grammatica"
   }
  ],
@@ -3320,7 +3320,7 @@ window.COURSE = {
   {
    "id": "v.el-la-experto-a",
    "kind": "vocab",
-   "theme": "camino",
+   "theme": "mensen",
    "es": "el / la experto/-a",
    "nl": [
     "de deskundige"
@@ -3333,7 +3333,7 @@ window.COURSE = {
   {
    "id": "v.el-la-peregrino-a",
    "kind": "vocab",
-   "theme": "camino",
+   "theme": "mensen",
    "es": "el / la peregrino/-a",
    "nl": [
     "de pelgrim"
@@ -6591,7 +6591,8 @@ window.COURSE = {
    "es": "el ciclismo",
    "nl": [
     "de wielersport",
-    "het fietsen"
+    "het fietsen",
+    "het wielrennen"
    ],
    "gender": "m",
    "number": "sg",
@@ -11934,7 +11935,8 @@ window.COURSE = {
    "es": "bastante",
    "nl": [
     "tamelijk veel",
-    "voldoende"
+    "voldoende",
+    "genoeg"
    ],
    "gender": null,
    "number": null,
@@ -12421,7 +12423,7 @@ window.COURSE = {
   {
    "id": "v.casarse",
    "kind": "vocab",
-   "theme": "overige-woorden",
+   "theme": "ww-overig",
    "es": "casarse",
    "nl": [
     "trouwen"
@@ -12434,7 +12436,7 @@ window.COURSE = {
   {
    "id": "v.declarar",
    "kind": "vocab",
-   "theme": "overige-woorden",
+   "theme": "ww-praten",
    "es": "declarar",
    "nl": [
     "uitroepen",
@@ -12449,7 +12451,7 @@ window.COURSE = {
   {
    "id": "v.el-catalogo",
    "kind": "vocab",
-   "theme": "overige-woorden",
+   "theme": "kantoor-papier",
    "es": "el catálogo",
    "nl": [
     "de catalogus"
@@ -12475,7 +12477,7 @@ window.COURSE = {
   {
    "id": "v.el-la-coordinador-a",
    "kind": "vocab",
-   "theme": "overige-woorden",
+   "theme": "mensen",
    "es": "el / la coordinador/a",
    "nl": [
     "de coördinator"
@@ -12488,7 +12490,7 @@ window.COURSE = {
   {
    "id": "v.el-la-escritor-a",
    "kind": "vocab",
-   "theme": "overige-woorden",
+   "theme": "mensen",
    "es": "el / la escritor/a",
    "nl": [
     "de schrijver",
@@ -12502,7 +12504,7 @@ window.COURSE = {
   {
    "id": "v.el-la-hablante",
    "kind": "vocab",
-   "theme": "overige-woorden",
+   "theme": "mensen",
    "es": "el / la hablante",
    "nl": [
     "de spreker",
@@ -12516,7 +12518,7 @@ window.COURSE = {
   {
    "id": "v.el-ordenador",
    "kind": "vocab",
-   "theme": "overige-woorden",
+   "theme": "kantoor-papier",
    "es": "el ordenador",
    "nl": [
     "de computer"
@@ -12529,35 +12531,9 @@ window.COURSE = {
    "pos": "noun"
   },
   {
-   "id": "v.lo-mas-importante",
-   "kind": "vocab",
-   "theme": "overige-woorden",
-   "es": "lo más importante",
-   "nl": [
-    "het belangrijkste"
-   ],
-   "gender": null,
-   "number": null,
-   "src": "spanish-md/IMG_20260918_203744401_AE.md",
-   "pos": "other"
-  },
-  {
-   "id": "v.muchas-cosas-mas",
-   "kind": "vocab",
-   "theme": "overige-woorden",
-   "es": "muchas cosas más",
-   "nl": [
-    "nog veel meer dingen"
-   ],
-   "gender": null,
-   "number": null,
-   "src": "spanish-md/IMG_20260918_203808317_AE.md",
-   "pos": "other"
-  },
-  {
    "id": "v.proceder-de",
    "kind": "vocab",
-   "theme": "overige-woorden",
+   "theme": "ww-gaan",
    "es": "proceder (de)",
    "nl": [
     "afkomstig zijn (van)"
@@ -12568,23 +12544,9 @@ window.COURSE = {
    "pos": "verb"
   },
   {
-   "id": "v.queria-contar",
-   "kind": "vocab",
-   "theme": "overige-woorden",
-   "es": "quería contar",
-   "nl": [
-    "ik wilde vertellen"
-   ],
-   "gender": null,
-   "number": null,
-   "note": "Van querer.",
-   "src": "spanish-md/IMG_20260918_203808317_AE.md",
-   "pos": "verb"
-  },
-  {
    "id": "v.restaurar",
    "kind": "vocab",
-   "theme": "overige-woorden",
+   "theme": "ww-overig",
    "es": "restaurar",
    "nl": [
     "restaureren"
