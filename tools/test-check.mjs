@@ -1,7 +1,7 @@
 /* Eenheidstests voor de antwoordcontrole. Geen afhankelijkheden.
  * Uitvoeren:  node tools/test-check.mjs  */
 
-import { checkAnswer, stripAccents, levenshtein, stripArticle } from '../js/check.js';
+import { checkAnswer, stripAccents, levenshtein, stripArticle, normalize, expandVariants, speakable, setLexicon } from '../js/check.js';
 
 let failed = 0;
 const results = [];
@@ -58,6 +58,44 @@ t('juiste persoon blijft juist',
   answer('tuvisteis', ['tuvisteis'], { rejectNear: PERSONS }), true);
 t('echte typefout blijft aanvaard',
   answer('tuvisteiss', ['tuvisteis'], { rejectNear: PERSONS }), true);
+
+/* --- het Spaanse lidwoord telt --- */
+t('fout lidwoord geweigerd', answer('el mano', ['la mano']), false);
+t('fout lidwoord geeft opmerking', /lidwoord/.test(note('el mano', ['la mano'])), true);
+t('zonder lidwoord mag', answer('mano', ['la mano']), true);
+t('onbepaald lidwoord, zelfde geslacht', answer('una mano', ['la mano']), true);
+t('verkeerd getal geweigerd', answer('los zapatos', ['el zapato']), false);
+t('Nederlands lidwoord blijft vrij', answer('het das', ['de das']), true);
+
+/* --- leestekens --- */
+t('¿ en ? mogen weg', answer('qué tal', ['¿Qué tal?']), true);
+t('half vraagteken', answer('¿qué tal', ['¿Qué tal?']), true);
+t('komma mag weg', answer('sí claro', ['Sí, claro.']), true);
+t('normalize ruimt ¡ op', normalize('¡Hola!'), 'hola');
+
+/* --- notatie uit de woordenlijst --- */
+t('haakjes: lange vorm', answer('el frigorífico', ['el frigo(rífico)']), true);
+t('haakjes: korte vorm', answer('frigo', ['el frigo(rífico)']), true);
+t('uitgang: mannelijk', answer('sencillo', ['sencillo/-a']), true);
+t('uitgang: vrouwelijk', answer('sencilla', ['sencillo/-a']), true);
+t('uitgang: -esa', answer('francesa', ['francés/-esa']), true);
+t('uitgang: medeklinker', answer('española', ['español/a']), true);
+t('lidwoord bij de juiste vorm', answer('la experta', ['el / la experto/-a']), true);
+t('wederkerend optioneel', answer('aburrirse', ['aburrir(se)']), true);
+t('zich optioneel', answer('wassen', ['(zich) wassen']), true);
+t('hij/zij', answer('zij is in gesprek', ['Hij/zij is in gesprek.']), true);
+t('woorden met schuine streep', expandVariants('hacer / sacar / tomar fotos'), ['hacer fotos', 'sacar fotos', 'tomar fotos']);
+t('volledig alternatief', expandVariants('ver películas / ver la tele'), ['ver películas', 'ver la tele']);
+t('uitspraak zonder tekens', speakable('el frigo(rífico)'), 'el frigorífico');
+t('gewoon woord blijft', expandVariants('la mesa'), ['la mesa']);
+
+/* --- een bestaand woord is geen typefout --- */
+setLexicon(['el gorro', 'la gorra', 'el plato', 'el pato', 'het konijn', 'de tonijn', 'la corbata']);
+t('gorra is geen typefout voor gorro', answer('gorra', ['el gorro']), false);
+t('pato is geen typefout voor plato', answer('el pato', ['el plato']), false);
+t('tonijn is geen typefout voor konijn', answer('tonijn', ['het konijn']), false);
+t('echte typefout blijft aanvaard (lexicon)', answer('corbatta', ['la corbata']), true);
+setLexicon([]);
 
 /* --- randgevallen --- */
 t('leeg antwoord', answer('', ['algo']), false);

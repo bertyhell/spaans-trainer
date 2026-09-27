@@ -3,6 +3,7 @@
  * Faalt met code 1 bij fouten; waarschuwingen laten de build doorgaan. */
 
 import { readFile } from 'node:fs/promises';
+import { expandVariants } from '../js/check.js';
 
 const DATA = new URL('../data/course.js', import.meta.url);
 
@@ -86,8 +87,17 @@ for (const a of course.atoms) {
 
       if (a.gender && !['m', 'f'].includes(a.gender)) err(id, `ongeldig gender "${a.gender}"`);
       if (a.number && !['sg', 'pl'].includes(a.number)) err(id, `ongeldig number "${a.number}"`);
-      if (/^(el|la|los|las)\s/i.test(a.es ?? '') && (!a.gender || !a.number)) {
+      // "el / la experto/-a" heeft bewust geen vast geslacht.
+      if (/^(el|la|los|las)\s/i.test(a.es ?? '') && !/^el \/ la /i.test(a.es) && (!a.gender || !a.number)) {
         warn(id, 'zelfstandig naamwoord zonder gender/number — lidwoordoefening valt weg');
+      }
+
+      // De controle begrijpt haakjes en schuine strepen; wat daarna nog zo'n
+      // teken bevat, kan niemand intypen.
+      for (const text of [a.es, ...(a.nl ?? [])]) {
+        if (text && expandVariants(text).some(v => /[/()]/.test(v))) {
+          warn(id, `notatie niet te ontleden: "${text}"`);
+        }
       }
 
       const key = norm(a.es);

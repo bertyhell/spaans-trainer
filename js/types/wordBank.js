@@ -2,7 +2,7 @@
  * Tikken voegt een woord toe, nogmaals tikken haalt het weer weg. */
 
 import { el, shuffle, speakerButton } from '../dom.js';
-import { normalize } from '../check.js';
+import { checkAnswer } from '../check.js';
 
 /** Losse woorden, leestekens blijven aan het woord plakken. */
 const tokenize = s => s.trim().split(/\s+/).filter(Boolean);
@@ -84,8 +84,10 @@ export default {
     return {
       focus() { bankRow.querySelector('.tile:not(.is-used)')?.focus(); },
       check() {
-        const correct = normalize(built()) === normalize(atom.es);
-        return { correct, expected: atom.es, note: null, given: built() };
+        // Dezelfde controle als bij intypen: ¿ ¡ en komma's tellen niet mee.
+        // Een typefout kan hier niet, de tegels liggen vast.
+        const r = checkAnswer(built(), [atom.es], { rejectNear: [built()] });
+        return { ...r, given: built() };
       },
       reveal({ correct }) {
         answerRow.classList.add(correct ? 'is-correct' : 'is-wrong');

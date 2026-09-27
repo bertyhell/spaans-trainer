@@ -68,8 +68,17 @@ export function setProgress(key, { box, seen, wrong, lastSeen }) {
 
 /* --- streak --- */
 
-function today() {
-  return new Date().toISOString().slice(0, 10);
+/* Lokale kalenderdagen, geen UTC: wie om half één 's nachts oefent, oefent
+ * vandaag en niet gisteren. */
+const dayKey = d =>
+  `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+
+const today = () => dayKey(new Date());
+
+function yesterday() {
+  const d = new Date();
+  d.setDate(d.getDate() - 1);
+  return dayKey(d);
 }
 
 /** Roept per afgeronde les. Verhoogt de streak hoogstens één keer per dag. */
@@ -78,8 +87,7 @@ export function touchStreak() {
   const d = today();
   if (s.streak.lastDay === d) return s.streak;
 
-  const yesterday = new Date(Date.now() - 864e5).toISOString().slice(0, 10);
-  s.streak.current = s.streak.lastDay === yesterday ? s.streak.current + 1 : 1;
+  s.streak.current = s.streak.lastDay === yesterday() ? s.streak.current + 1 : 1;
   s.streak.best = Math.max(s.streak.best, s.streak.current);
   s.streak.lastDay = d;
   return s.streak;
@@ -89,8 +97,7 @@ export function touchStreak() {
 export function currentStreak() {
   const s = load().streak;
   if (!s.lastDay) return 0;
-  const yesterday = new Date(Date.now() - 864e5).toISOString().slice(0, 10);
-  return (s.lastDay === today() || s.lastDay === yesterday) ? s.current : 0;
+  return (s.lastDay === today() || s.lastDay === yesterday()) ? s.current : 0;
 }
 
 export function addExercises(n) {

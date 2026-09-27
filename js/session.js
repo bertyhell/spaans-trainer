@@ -45,12 +45,18 @@ export class Session {
     const item = this.current;
     const dir = item.direction;
 
-    if (Array.isArray(result.perAtom) && result.perAtom.length) {
-      for (const p of result.perAtom) {
+    // Recente fouten horen bij het atoom dat echt fout was: in een tabel is dat
+    // niet noodzakelijk de persoon die getrokken werd.
+    const perAtom = Array.isArray(result.perAtom) && result.perAtom.length ? result.perAtom : null;
+    if (perAtom) {
+      for (const p of perAtom) {
         scheduler.record(scheduler.itemKey(p.atomId, dir), p.correct);
+        storage.recordAnswer(p.atomId, p);
       }
+      if (!perAtom.some(p => p.atomId === item.atomId)) scheduler.record(item.key, result.correct);
     } else {
       scheduler.record(item.key, result.correct);
+      storage.recordAnswer(item.atomId, result);
     }
 
     storage.addExercises(1);

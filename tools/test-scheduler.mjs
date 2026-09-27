@@ -14,6 +14,7 @@ globalThis.localStorage = {
 const scheduler = await import('../js/scheduler.js');
 const storage = await import('../js/storage.js');
 const { MatchRound } = await import('../js/matchRound.js');
+const { Session } = await import('../js/session.js');
 
 let failed = 0;
 const rows = [];
@@ -114,14 +115,17 @@ t('foute koppeling afgewezen', round.tryMatch(firstId, otherId).ok, false);
 t('misser telt mee', round.wrongAttempts, 1);
 const good = round.tryMatch(firstId, firstId);
 t('juiste koppeling aanvaard', good.ok, true);
-t('er schuift een nieuw paar in', Boolean(good.replacement), true);
-t('nog steeds vijf rijen', round.active.length, 5);
+t('na één paar schuift er nog niets in', good.left.length + good.right.length, 0);
 t('een misser houdt het woord in doos 1', storage.getProgress(scheduler.itemKey(firstId, 'es2nl')).box, 1);
 
-// Een foutloos gekoppeld woord klimt wel.
-const clean = round.active[0].id;
-round.tryMatch(clean, clean);
+// Een foutloos gekoppeld woord klimt wel, en na twee paren schuiven er twee in.
+const clean = round.active.find(a => a.id !== firstId && !round.missedOnce.has(a.id)).id;
+const second = round.tryMatch(clean, clean);
 t('foutloos gekoppeld woord klimt', storage.getProgress(scheduler.itemKey(clean, 'es2nl')).box, 2);
+t('na twee paren schuiven er twee nieuwe in',
+  [second.left.filter(s => s.cell).length, second.right.filter(s => s.cell).length], [2, 2]);
+t('nog steeds vijf rijen', round.active.length, 5);
+t('afronden telt één keer', [round.finish().done, round.finish().done, storage.get().exercisesDone], [2, 2, 2]);
 
 const r2 = new MatchRound({ atoms, target: 3, visible: 5 });
 while (!r2.finished) { const id = r2.active[0].id; r2.tryMatch(id, id); }
@@ -131,6 +135,25 @@ ok('ronde meldt zichzelf als klaar', r2.finished);
 const small = new MatchRound({ atoms: atoms.slice(0, 3), target: 40, visible: 5 });
 t('kleine voorraad verlaagt het doel', small.target, 3);
 t('kleine voorraad verlaagt de rijen', small.active.length, 3);
+
+/* ---------------- les: tabel met meerdere atomen ---------------- */
+reset();
+{
+  // Session zonder constructor: die heeft de cursusdata nodig om te trekken.
+  const s = Object.create(Session.prototype);
+  Object.assign(s, { index: 0, results: [], recentTypes: [],
+    queue: [{ atomId: 'c.1s', key: 'c.1s', direction: null, atom: { id: 'c.1s' } }] });
+  s.submit({ id: 'conjugationGrid' }, {
+    correct: false, expected: '…',
+    perAtom: [
+      { atomId: 'c.1s', correct: true, expected: 'tuve', given: 'tuve' },
+      { atomId: 'c.3s', correct: false, expected: 'tuvo', given: 'tuve' },
+    ],
+  });
+  t('getrokken persoon in de tabel krijgt zijn doos', storage.getProgress('c.1s').box, 2);
+  t('foute persoon valt terug', storage.getProgress('c.3s').seen, 1);
+  t('fout staat bij de foute persoon', Object.keys(storage.get().mistakes), ['c.3s']);
+}
 
 /* ---------------- streak ---------------- */
 reset();

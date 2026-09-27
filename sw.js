@@ -4,7 +4,7 @@
  * vooral na het opnieuw genereren van data/course.js, anders blijven telefoons
  * op de oude woordenlijst hangen. tools/release.mjs doet dat automatisch. */
 
-const CACHE = 'vamos-94d3d092';
+const CACHE = 'vamos-c9f24bf3';
 
 const ASSETS = [
   './',
@@ -12,8 +12,13 @@ const ASSETS = [
   './manifest.json',
   './icons/icon.svg',
   './icons/icon-192.png',
+  './icons/icon-512.png',
+  './icons/icon-maskable.png',
+  './icons/icon-maskable.svg',
+  './icons/apple-touch-icon.png',
   './css/style.css',
   './data/course.js',
+  './data/sources.js',
   './js/main.js',
   './js/data.js',
   './js/dom.js',
@@ -64,10 +69,19 @@ self.addEventListener('fetch', e => {
   e.respondWith(
     fetch(e.request)
       .then(res => {
-        const copy = res.clone();
-        caches.open(CACHE).then(c => c.put(e.request, copy)).catch(() => {});
+        // Enkel geslaagde antwoorden bewaren: een 404 in de cache zou een
+        // werkend bestand offline vervangen.
+        if (res.ok) {
+          const copy = res.clone();
+          caches.open(CACHE).then(c => c.put(e.request, copy)).catch(() => {});
+        }
         return res;
       })
-      .catch(() => caches.match(e.request).then(r => r ?? caches.match('./index.html'))),
+      .catch(() => caches.match(e.request).then(r => {
+        if (r) return r;
+        // index.html is alleen een zinvolle terugval voor een pagina, niet
+        // voor een script of stylesheet (dat geeft een MIME-fout).
+        return e.request.mode === 'navigate' ? caches.match('./index.html') : Response.error();
+      })),
   );
 });

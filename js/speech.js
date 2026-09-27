@@ -7,6 +7,7 @@
  * Zonder Spaanse stem melden we dat, en de luisteroefeningen blijven weg. */
 
 import * as storage from './storage.js';
+import { speakable } from './check.js';
 
 const synth = window.speechSynthesis ?? null;
 let voice = null;
@@ -54,7 +55,8 @@ export function arm() {
 export function speak(text, { rate = 0.9 } = {}) {
   if (!synth || !voice || storage.get().settings.speech === false) return;
   synth.cancel();
-  const u = new SpeechSynthesisUtterance(text);
+  // "el frigo(rífico)" of "sencillo/-a" hardop voorlezen klinkt nergens naar.
+  const u = new SpeechSynthesisUtterance(speakable(text));
   u.voice = voice;
   u.lang = voice.lang;
   u.rate = rate;

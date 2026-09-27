@@ -40,6 +40,7 @@ telefoon kan openen.
 ## Testen
 
 ```bash
+npm test                       # alle drie hieronder
 node tools/test-check.mjs      # antwoordcontrole
 node tools/test-scheduler.mjs  # Leitner-planning en koppelronde
 node tools/validate.mjs        # controleert data/course.js

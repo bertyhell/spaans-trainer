@@ -4,6 +4,7 @@
  * kunnen produceren. */
 
 import { itemKey } from './scheduler.js';
+import { setLexicon } from './check.js';
 
 let course = null;
 let sources = {};
@@ -21,6 +22,10 @@ export function init() {
     if (!byTheme.has(atom.theme)) byTheme.set(atom.theme, []);
     byTheme.get(atom.theme).push(atom);
   }
+  // Alle bestaande woorden en vormen: een antwoord dat één daarvan is, mag
+  // nooit als typefout voor een ander woord doorgaan.
+  setLexicon(course.atoms.flatMap(a =>
+    a.kind === 'vocab' ? [a.es, ...a.nl] : a.kind === 'conjugation' ? [a.form] : []));
   return course;
 }
 

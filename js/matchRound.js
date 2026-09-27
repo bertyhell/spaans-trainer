@@ -113,9 +113,12 @@ export class MatchRound {
   }
 
   finish() {
+    // Eén keer tellen, ook als stoppen en afronden elkaar kruisen.
+    if (this.closed) return this.closed;
     const streak = storage.touchStreak();
     storage.addExercises(this.matched);
     storage.save();
-    return { streak, done: this.matched, matched: this.matched, wrong: this.wrongAttempts };
+    this.closed = { streak, done: this.matched, matched: this.matched, wrong: this.wrongAttempts };
+    return this.closed;
   }
 }

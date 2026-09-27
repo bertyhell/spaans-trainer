@@ -1,0 +1,11 @@
+{
+  "name": "vamos-spaans",
+  "private": true,
+  "type": "module",
+  "description": "Oefenapp voor Sí, claro nuevo 1.2 — statische site, geen afhankelijkheden",
+  "scripts": {
+    "start": "node tools/serve.mjs",
+    "test": "node tools/test-check.mjs && node tools/test-scheduler.mjs && node tools/validate.mjs",
+    "release": "node tools/release.mjs"
+  }
+}

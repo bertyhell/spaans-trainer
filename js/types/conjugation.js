@@ -33,7 +33,10 @@ export const conjugationGrid = {
     const family = conjugationFamily(item.atom);
     const byPerson = new Map(family.map(a => [a.person, a]));
     const inputs = new Map();
-    const blanks = new Set(shuffle(family.map(a => a.person))
+    // De getrokken persoon is altijd een open vakje: anders wordt het item dat
+    // de planner koos nooit beoordeeld en blijft het eeuwig "nieuw".
+    const others = shuffle(family.map(a => a.person).filter(p => p !== item.atom.person));
+    const blanks = new Set([item.atom.person, ...others]
       .slice(0, blanksFor(family, item.direction)));
 
     root.append(

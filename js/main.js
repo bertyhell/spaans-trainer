@@ -21,6 +21,7 @@ let answered = false;
 let match = null;
 let matchPick = { left: null, right: null };
 let lastMode = 'lesson';   // bepaalt wat 'Nog een les' opnieuw start
+let lastLesson = null;     // { themes, mistakes } van de laatste les
 
 /* ------------------------------------------------------------------ */
 /* Schermen                                                            */
@@ -211,7 +212,7 @@ function refreshSelection() {
 /* Les                                                                 */
 /* ------------------------------------------------------------------ */
 
-function startLesson(themeIds, items = itemsForThemes(themeIds)) {
+function startLesson(themeIds, { items = itemsForThemes(themeIds), mistakes = false } = {}) {
   audio.arm();
   speech.arm();
 
@@ -221,9 +222,12 @@ function startLesson(themeIds, items = itemsForThemes(themeIds)) {
     toast('Geen oefeningen gevonden voor deze selectie.');
     return;
   }
-  session._themes = themeIds;
-  session._mistakesOnly = themeIds.length === 0;
-  trackMastery(themeIds);
+  lastLesson = { themes: themeIds, mistakes };
+  // Een foutenles hangt niet aan thema's. Het beheersingskaartje toont dan de
+  // aangevinkte onderdelen, of anders de onderdelen waar de fouten uit komen.
+  trackMastery(mistakes
+    ? (selected.size ? [...selected] : [...new Set(session.queue.map(i => i.atom.theme))])
+    : themeIds);
   show('screen-lesson');
   nextQuestion();
 }
@@ -286,7 +290,6 @@ function doCheck() {
 
   const result = instance.check();
   session.submit(activeType, result);
-  storage.recordAnswer(session.current.atomId, result);
   instance.reveal?.(result);
   renderLessonProgress();
 
@@ -624,9 +627,14 @@ function onMatchTap(side, id, node) {
   } else {
     audio.incorrect();
     [l.node, r.node].forEach(n => n.classList.add('is-wrong'));
+    // Meteen vrijgeven: wie snel een nieuw woord tikt, mag die keuze niet
+    // kwijtraken wanneer het rode flitsje straks verdwijnt.
+    matchPick = { left: null, right: null };
     setTimeout(() => {
-      [l.node, r.node].forEach(n => n.classList.remove('is-wrong', 'is-selected'));
-      matchPick = { left: null, right: null };
+      [l.node, r.node].forEach(n => {
+        n.classList.remove('is-wrong');
+        if (matchPick.left?.node !== n && matchPick.right?.node !== n) n.classList.remove('is-selected');
+      });
     }, 480);
   }
 }
@@ -716,7 +724,7 @@ function renderRecentMistakes() {
 /** Een les met enkel de oefeningen uit de recente fouten. */
 function startMistakesLesson() {
   const atoms = storage.getMistakes().map(m => data.getAtom(m.atomId)).filter(Boolean);
-  startLesson([], data.itemsFor(atoms));
+  startLesson([], { items: data.itemsFor(atoms), mistakes: true });
 }
 
 function openRecentMistakes() {
@@ -811,13 +819,17 @@ function wire() {
   $('#btn-check').addEventListener('click', () => (answered ? (session.next(), nextQuestion()) : doCheck()));
 
   $('#btn-quit').addEventListener('click', () => { speech.stop(); renderTree(); refreshStats(); show('screen-start'); });
-  $('#btn-quit-match').addEventListener('click', () => { renderTree(); refreshStats(); show('screen-start'); });
+  $('#btn-quit-match').addEventListener('click', () => {
+    // Wat je al gekoppeld hebt telt mee, ook als je vroeger stopt.
+    if (match?.matched) match.finish();
+    renderTree(); refreshStats(); show('screen-start');
+  });
 
   $('#btn-home').addEventListener('click', () => show('screen-start'));
   $('#btn-again').addEventListener('click', () => {
     if (lastMode === 'match') return selected.size ? startMatch() : show('screen-start');
-    if (session?._mistakesOnly) return startMistakesLesson();
-    const themes = session?._themes ?? [...selected];
+    if (lastLesson?.mistakes) return startMistakesLesson();
+    const themes = lastLesson?.themes ?? [...selected];
     themes.length ? startLesson(themes) : show('screen-start');
   });
 
