@@ -45,7 +45,7 @@ function toast(msg, ms = 2200) {
 
 function refreshStats() {
   $('#stat-streak').querySelector('b').textContent = storage.currentStreak();
-  $('#stat-xp').querySelector('b').textContent = storage.get().xp;
+  $('#stat-done').querySelector('b').textContent = storage.get().exercisesDone;
 }
 
 /* ------------------------------------------------------------------ */
@@ -332,7 +332,7 @@ function showFeedback(result) {
 
 function finishLesson() {
   lastMode = 'lesson';
-  const { xp } = session.finish();
+  const { done } = session.finish();
   audio.finish();
 
   $('#result-badge').textContent = session.perfect ? '🏆' : session.correctCount ? '🎉' : '💪';
@@ -341,7 +341,7 @@ function finishLesson() {
     : session.correctCount / session.total >= 0.7 ? '¡Muy bien!' : '¡Sigue así!';
   $('#result-score').textContent = `${session.correctCount} van ${session.total} juist`;
   $('#result-correct').textContent = `${session.correctCount}/${session.total}`;
-  $('#result-xp').textContent = `+${xp}`;
+  $('#result-done').textContent = `+${done}`;
   showMasteryGain();
 
   renderReview(session.results);
@@ -603,14 +603,14 @@ function onMatchTap(side, id, node) {
 
 function finishMatch() {
   lastMode = 'match';
-  const { xp } = match.finish();
+  const { done } = match.finish();
   audio.finish();
 
   $('#result-badge').textContent = match.wrongAttempts === 0 ? '🏆' : '🎉';
   $('#result-title').textContent = match.wrongAttempts === 0 ? '¡Perfecto!' : '¡Muy bien!';
   $('#result-score').textContent = `${match.matched} woorden gekoppeld`;
   $('#result-correct').textContent = match.matched;
-  $('#result-xp').textContent = `+${xp}`;
+  $('#result-done').textContent = `+${done}`;
   showMasteryGain();
   $('#mistakes-block').hidden = true;
 
@@ -847,7 +847,7 @@ function wire() {
   });
 
   $('#btn-reset').addEventListener('click', () => {
-    if (!confirm('Alle voortgang, punten en streaks wissen?')) return;
+    if (!confirm('Alle voortgang, oefeningen en streaks wissen?')) return;
     storage.resetAll();
     selected.clear();
     renderTree();

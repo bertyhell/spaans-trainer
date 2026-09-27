@@ -114,9 +114,8 @@ export class MatchRound {
 
   finish() {
     const streak = storage.touchStreak();
-    const xp = this.matched * 5;
-    storage.addXp(xp);
+    storage.addExercises(this.matched);
     storage.save();
-    return { streak, xp, matched: this.matched, wrong: this.wrongAttempts };
+    return { streak, done: this.matched, matched: this.matched, wrong: this.wrongAttempts };
   }
 }

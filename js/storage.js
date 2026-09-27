@@ -9,7 +9,7 @@ const EMPTY = () => ({
   schemaVersion: SCHEMA_VERSION,
   progress: {},                 // itemKey -> [box, seen, wrong, lastSeen]
   streak: { current: 0, best: 0, lastDay: null },
-  xp: 0,
+  exercisesDone: 0,
   settings: { sound: true, speech: true, reducedMotion: false },
   reports: [],
   reportReasons: {},            // atomId -> vrije tekst: wat is er mis
@@ -21,7 +21,15 @@ let state = null;
 function migrate(raw) {
   if (!raw || typeof raw !== 'object') return EMPTY();
   // Toekomstige migraties komen hier, gestuurd door raw.schemaVersion.
-  return { ...EMPTY(), ...raw, schemaVersion: SCHEMA_VERSION };
+  const s = { ...EMPTY(), ...raw, schemaVersion: SCHEMA_VERSION };
+  // Oude versies telden punten i.p.v. oefeningen. Schatting: 10 punten per
+  // juist antwoord, met perfecte-lesbonussen en foute antwoorden (0 punten)
+  // die elkaar ruwweg opheffen, dus ~10 punten per gemaakte oefening.
+  if (raw.exercisesDone == null && typeof raw.xp === 'number') {
+    s.exercisesDone = Math.round(raw.xp / 10);
+  }
+  delete s.xp;
+  return s;
 }
 
 export function load() {
@@ -85,8 +93,8 @@ export function currentStreak() {
   return (s.lastDay === today() || s.lastDay === yesterday) ? s.current : 0;
 }
 
-export function addXp(n) {
-  load().xp += n;
+export function addExercises(n) {
+  load().exercisesDone += n;
 }
 
 export const isReported = atomId => load().reports.includes(atomId);

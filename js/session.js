@@ -9,9 +9,6 @@ import * as storage from './storage.js';
 import * as data from './data.js';
 import { pickType, supportedFor } from './types/index.js';
 
-export const XP_PER_CORRECT = 10;
-export const XP_PERFECT_BONUS = 50;
-
 export class Session {
   constructor({ items, size = 12, env }) {
     this.env = env;
@@ -23,7 +20,6 @@ export class Session {
     this.index = 0;
     this.results = [];
     this.recentTypes = [];
-    this.xpEarned = 0;
   }
 
   get total() { return this.queue.length; }
@@ -57,10 +53,7 @@ export class Session {
       scheduler.record(item.key, result.correct);
     }
 
-    if (result.correct) {
-      this.xpEarned += XP_PER_CORRECT;
-      storage.addXp(XP_PER_CORRECT);
-    }
+    storage.addExercises(1);
 
     this.results.push({
       index: this.index,
@@ -82,17 +75,11 @@ export class Session {
   get mistakes() { return this.results.filter(r => !r.correct); }
   get perfect() { return this.total > 0 && this.correctCount === this.total; }
 
-  /** Rondt de les af: streak bijwerken en eventuele bonus toekennen. */
+  /** Rondt de les af: streak bijwerken. */
   finish() {
     const streak = storage.touchStreak();
-    let bonus = 0;
-    if (this.perfect) {
-      bonus = XP_PERFECT_BONUS;
-      this.xpEarned += bonus;
-      storage.addXp(bonus);
-    }
     storage.save();
-    return { streak, bonus, xp: this.xpEarned };
+    return { streak, done: this.results.length };
   }
 }
 
