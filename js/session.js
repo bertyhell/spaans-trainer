@@ -67,6 +67,7 @@ export class Session {
       atom: item.atom,
       typeId: type.id,
       correct: result.correct,
+      almost: !!result.almost,
       expected: result.expected,
       note: result.note ?? null,
       given: result.given ?? null,
@@ -78,7 +79,7 @@ export class Session {
   next() { this.index++; }
 
   get correctCount() { return this.results.filter(r => r.correct).length; }
-  get mistakes() { return this.results.filter(r => !r.correct); }
+  get mistakes() { return this.results.filter(r => !r.correct || r.almost); }
   get perfect() { return this.total > 0 && this.correctCount === this.total; }
 
   /** Rondt de les af: streak bijwerken. */

@@ -267,7 +267,7 @@ function nextQuestion() {
   setTimeout(() => instance.focus?.(), 60);
 }
 
-// Eén segment per vraag: groen = juist, rood = fout, geel = overgeslagen,
+// Eén segment per vraag: groen = juist, geel = bijna, rood = fout, oranje = overgeslagen,
 // grijs = nog te doen.
 function renderLessonProgress() {
   const bar = $('#lesson-progress');
@@ -275,7 +275,7 @@ function renderLessonProgress() {
   const byIndex = new Map(session.results.map(r => [r.index, r]));
   for (let i = 0; i < session.total; i++) {
     const r = byIndex.get(i);
-    const state = r ? (r.correct ? 'ok' : 'no') : i < session.index ? 'skip' : i === session.index ? 'current' : 'todo';
+    const state = r ? (r.almost ? 'almost' : r.correct ? 'ok' : 'no') : i < session.index ? 'skip' : i === session.index ? 'current' : 'todo';
     bar.append(el('span', { class: `progress-seg progress-seg--${state}` }));
   }
   const pct = (session.results.length / session.total) * 100;
@@ -303,9 +303,12 @@ function showFeedback(result) {
   const atom = session.current.atom;
   const fb = $('#feedback');
 
-  $('#lesson-actionbar').className = `actionbar actionbar--${result.correct ? 'ok' : 'no'}`;
-  $('#feedback-icon').textContent = result.correct ? '✓' : '✗';
-  $('#feedback-title').textContent = result.correct
+  const state = result.almost ? 'almost' : result.correct ? 'ok' : 'no';
+  $('#lesson-actionbar').className = `actionbar actionbar--${state}`;
+  $('#feedback-icon').textContent = result.almost ? '≈' : result.correct ? '✓' : '✗';
+  $('#feedback-title').textContent = result.almost
+    ? '¡Casi! Bijna juist'
+    : result.correct
     ? pick(['¡Muy bien!', '¡Perfecto!', '¡Olé!', '¡Genial!'])
     : 'Niet juist';
 
@@ -1196,8 +1199,9 @@ function wire() {
       if (!opts.length) return;
       e.preventDefault();
       const n = opts.length;
-      const current = opts.indexOf(document.activeElement);
-      const target = opts[current < 0 ? (step > 0 ? 0 : n - 1) : (current + step + n) % n];
+      let current = opts.indexOf(document.activeElement);
+      if (current < 0) current = opts.findIndex(o => o.classList.contains('is-selected'));
+      const target = opts[current < 0 ? 0 : (current + step + n) % n];
       target.focus();
       target.click();
       return;

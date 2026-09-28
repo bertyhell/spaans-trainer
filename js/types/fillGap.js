@@ -112,9 +112,9 @@ export default {
         const r = checkAnswer(gapNode.value, answers);
         return { ...r, given: gapNode.value };
       },
-      reveal({ correct }) {
+      reveal({ correct, almost }) {
         gapNode.disabled = true;
-        gapNode.classList.add(correct ? 'is-correct' : 'is-wrong');
+        gapNode.classList.add(almost ? 'is-almost' : correct ? 'is-correct' : 'is-wrong');
       },
     };
   },

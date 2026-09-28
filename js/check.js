@@ -186,8 +186,8 @@ export function levenshtein(a, b, max = Infinity) {
  * @param opts.rejectNear     vormen die nooit als typfout mogen doorgaan.
  *        Cruciaal bij vervoegingen: "tuvo" ligt één letter van "tuve", maar is
  *        een andere persoon — dat aanvaarden zou de verkeerde vorm aanleren.
- * @returns {{correct: boolean, expected: string, note: string|null}}
- *   note is gevuld wanneer het antwoord aanvaard is maar niet perfect gespeld.
+ * @returns {{correct: boolean, almost?: boolean, expected: string, note: string|null}}
+ *   almost (en note) is gezet wanneer het antwoord aanvaard is maar niet perfect gespeld.
  */
 export function checkAnswer(input, accepted, { strictAccents = false, rejectNear = [] } = {}) {
   const list = (Array.isArray(accepted) ? accepted : [accepted]).filter(Boolean);
@@ -231,7 +231,7 @@ export function checkAnswer(input, accepted, { strictAccents = false, rejectNear
 
   // 2 — alleen accenten verschillen
   if (!strictAccents && find((a, b) => stripAccents(a) === stripAccents(b))) {
-    return { correct: true, expected: canonical, note: `Bijna! Let op de accenten: ${canonical}` };
+    return { correct: true, almost: true, expected: canonical, note: `¡Casi! Let op de accenten: ${canonical}` };
   }
 
   // 3 — één typefout. Overgeslagen zodra het antwoord zelf een geldige andere
@@ -246,7 +246,7 @@ export function checkAnswer(input, accepted, { strictAccents = false, rejectNear
     // Onder de 5 letters is één afwijking te vaak een écht ander woord.
     const typo = (a, b) => stripAccents(a) !== stripAccents(b)
       && b.length >= 5 && levenshtein(stripAccents(a), stripAccents(b), 1) <= 1;
-    if (find(typo)) return { correct: true, expected: canonical, note: `Typfoutje! Juist is: ${canonical}` };
+    if (find(typo)) return { correct: true, almost: true, expected: canonical, note: `¡Casi! Typfoutje, juist is: ${canonical}` };
   }
 
   if (wrongArticle) {

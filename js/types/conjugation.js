@@ -96,6 +96,7 @@ export const conjugationGrid = {
         const note = per.map(p => p.note).filter(Boolean)[0] ?? null;
         return {
           correct: allOk,
+          almost: allOk && per.some(p => p.almost),
           expected: family.map(a => a.form).join(' · '),
           note,
           perAtom: per,
@@ -107,8 +108,8 @@ export const conjugationGrid = {
           const input = inputs.get(p.person);
           if (!input) continue;
           input.disabled = true;
-          input.classList.add(p.correct ? 'is-correct' : 'is-wrong');
-          if (!p.correct) {
+          input.classList.add(p.almost ? 'is-almost' : p.correct ? 'is-correct' : 'is-wrong');
+          if (!p.correct || p.almost) {
             input.after(el('span', { class: 'conj-fix' }, byPerson.get(p.person).form));
           }
         }

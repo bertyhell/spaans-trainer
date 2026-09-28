@@ -52,9 +52,9 @@ export const listenType = {
         const r = checkAnswer(input.value, [atom.es]);
         return { ...r, given: input.value };
       },
-      reveal({ correct }) {
+      reveal({ correct, almost }) {
         input.disabled = true;
-        input.classList.add(correct ? 'is-correct' : 'is-wrong');
+        input.classList.add(almost ? 'is-almost' : correct ? 'is-correct' : 'is-wrong');
       },
     };
   },

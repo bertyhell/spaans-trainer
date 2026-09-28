@@ -75,7 +75,8 @@ export function optionList(options, { onChoose, compact = false, lang = null, cl
   return {
     list,
     chosen: () => chosen,
-    focus() { list.querySelector('.option')?.focus(); },
+    // Geen optie vooraf focussen: pas een pijltje of tik markeert er een.
+    focus() { if (document.activeElement?.matches('.option')) document.activeElement.blur(); },
     reveal(answer) {
       list.classList.add('is-revealed');
       list.querySelectorAll('.option').forEach(b => {
