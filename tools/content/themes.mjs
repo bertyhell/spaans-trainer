@@ -37,6 +37,7 @@ export const CONTENT_THEMES = [
   grammar('gr-zin-futuro', 'Futuro en condicional', '•', IN_SENTENCES),
   grammar('gr-zin-gerundio', 'Estar + gerundio', '•', IN_SENTENCES),
 
+  { id: 'examen-u1', label: 'Unidad 1 sin estrés', emoji: '🎓', group: 'g-toetsen' },
   { id: 'toets-u1', label: 'Toets unidad 1', emoji: '📝', group: 'g-toetsen' },
   { id: 'instaptoets', label: 'Instaptoets 1.2', emoji: '🚪', group: 'g-toetsen' },
   { id: 'mirador-u4', label: 'Mirador unidad 4', emoji: '🔭', group: 'g-toetsen' },

@@ -823,6 +823,12 @@ window.COURSE = {
    "group": "g-grammatica"
   },
   {
+   "id": "examen-u1",
+   "label": "Unidad 1 sin estrés",
+   "emoji": "🎓",
+   "group": "g-toetsen"
+  },
+  {
    "id": "toets-u1",
    "label": "Toets unidad 1",
    "emoji": "📝",
@@ -950,7 +956,10 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "spanish-md/IMG_20260918_203804276_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.estamos-esperando",
@@ -963,7 +972,10 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "spanish-md/IMG_20260918_203804276_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.estoy-haciendo-una-pausa",
@@ -976,7 +988,10 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "spanish-md/IMG_20260918_203804276_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.lo-que-esta-sucediendo",
@@ -989,7 +1004,10 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "spanish-md/IMG_20260918_203744401_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.suceder",
@@ -1003,7 +1021,10 @@ window.COURSE = {
    "number": null,
    "src": "spanish-md/IMG_20260918_203744401_AE.md",
    "pos": "verb",
-   "regular": true
+   "regular": true,
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.el-algodon",
@@ -1016,7 +1037,10 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "src": "spanish-md/IMG_20260918_203744401_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.el-arete",
@@ -1116,7 +1140,10 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "src": "spanish-md/IMG_20260918_203744401_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.el-gorro",
@@ -1232,7 +1259,10 @@ window.COURSE = {
    "number": "sg",
    "emoji": "🎩",
    "src": "course-md/IMG_20260918_190147401_AE.md; spanish-md/IMG_20260918_203744401_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.la-bota",
@@ -1248,7 +1278,10 @@ window.COURSE = {
    "emoji": "🥾",
    "note": "Hier: de bergschoen.",
    "src": "spanish-md/IMG_20260918_203744401_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.la-bufanda",
@@ -1335,7 +1368,10 @@ window.COURSE = {
    "number": "sg",
    "emoji": "🧶",
    "src": "spanish-md/IMG_20260918_203744401_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.la-mochila",
@@ -1349,7 +1385,10 @@ window.COURSE = {
    "number": "sg",
    "emoji": "🎒",
    "src": "course-md/IMG_20260918_190147401_AE.md; spanish-md/IMG_20260918_203744401_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.la-zapatilla-de-estar-por-casa",
@@ -1379,7 +1418,10 @@ window.COURSE = {
    "emoji": "👓",
    "note": "Altijd meervoud. las gafas de sol = de zonnebril.",
    "src": "spanish-md/IMG_20260918_203945624_AE.md; spanish-md/IMG_20260918_203744401_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.las-gafas-de-sol",
@@ -1394,7 +1436,10 @@ window.COURSE = {
    "emoji": "🕶️",
    "note": "las gafas = de bril",
    "src": "course-md/IMG_20260918_190147401_AE.md; spanish-md/IMG_20260918_203744401_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.llevar-gafas",
@@ -1407,7 +1452,10 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "spanish-md/IMG_20260918_203744401_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.llevar-zapatos",
@@ -1420,7 +1468,10 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "spanish-md/IMG_20260918_203753249_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.los-guantes",
@@ -1779,7 +1830,10 @@ window.COURSE = {
    "number": "sg",
    "emoji": "📺",
    "src": "course-md/IMG_20260918_190352658_AE.md; spanish-md/IMG_20260918_204005232_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.el-ventilador",
@@ -1982,7 +2036,10 @@ window.COURSE = {
    "number": "sg",
    "emoji": "🍽️",
    "src": "spanish-md/IMG_20260918_203804276_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.el-servicio",
@@ -3352,7 +3409,10 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "course-md/IMG_20260918_191309080_AE.md; spanish-md/IMG_20260918_203753249_AE.md",
-   "pos": "adv"
+   "pos": "adv",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.muy",
@@ -3473,7 +3533,10 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "spanish-md/IMG_20260918_203753249_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.caminando",
@@ -3487,7 +3550,10 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "spanish-md/IMG_20260918_203744401_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.cuanto-tiempo",
@@ -3500,7 +3566,10 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "spanish-md/IMG_20260918_203757754_AE.md",
-   "pos": "other"
+   "pos": "other",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.el-albergue",
@@ -3514,7 +3583,10 @@ window.COURSE = {
    "number": "sg",
    "emoji": "🏠",
    "src": "spanish-md/IMG_20260918_203753249_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.el-apostol-santiago",
@@ -3527,7 +3599,10 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "src": "spanish-md/IMG_20260918_203753249_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.el-camino-de-santiago",
@@ -3542,7 +3617,10 @@ window.COURSE = {
    "emoji": "🐚",
    "note": "De pelgrimsroute naar Santiago de Compostella.",
    "src": "spanish-md/IMG_20260918_203744401_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.el-camino-del-norte",
@@ -3556,7 +3634,10 @@ window.COURSE = {
    "number": "sg",
    "note": "De route langs de Noord-Spaanse kust.",
    "src": "spanish-md/IMG_20260918_203753249_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.el-camino-frances",
@@ -3570,7 +3651,10 @@ window.COURSE = {
    "number": "sg",
    "note": "De traditionele pelgrimsroute naar Santiago via o.a. Pamplona en Burgos.",
    "src": "spanish-md/IMG_20260918_203753249_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.el-camino-inca",
@@ -3583,7 +3667,10 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "src": "spanish-md/IMG_20260918_203757754_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.el-destino",
@@ -3596,7 +3683,10 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "src": "spanish-md/IMG_20260918_203753249_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.el-imperio-inca",
@@ -3609,7 +3699,10 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "src": "spanish-md/IMG_20260918_203757754_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.el-inca",
@@ -3623,7 +3716,10 @@ window.COURSE = {
    "number": "sg",
    "note": "Ook vrouwelijk: la inca.",
    "src": "spanish-md/IMG_20260918_203757754_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.el-la-experto-a",
@@ -3636,7 +3732,10 @@ window.COURSE = {
    "gender": null,
    "number": "sg",
    "src": "spanish-md/IMG_20260918_203744401_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.el-la-peregrino-a",
@@ -3650,7 +3749,10 @@ window.COURSE = {
    "number": "sg",
    "emoji": "🚶",
    "src": "spanish-md/IMG_20260918_203753249_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.el-mal-de-las-alturas",
@@ -3663,7 +3765,10 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "src": "spanish-md/IMG_20260918_203757754_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.el-soroche",
@@ -3677,7 +3782,10 @@ window.COURSE = {
    "number": "sg",
    "note": "Latijns-Amerikaanse term voor el mal de las alturas.",
    "src": "spanish-md/IMG_20260918_203757754_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.en-camino",
@@ -3690,7 +3798,10 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "spanish-md/IMG_20260918_203753249_AE.md",
-   "pos": "adv"
+   "pos": "adv",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.la-paz",
@@ -3705,7 +3816,10 @@ window.COURSE = {
    "number": "sg",
    "note": "Hier: de rust.",
    "src": "spanish-md/IMG_20260918_203753249_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.la-peregrinacion",
@@ -3718,7 +3832,10 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "src": "spanish-md/IMG_20260918_203753249_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.las-comodidades",
@@ -3731,7 +3848,10 @@ window.COURSE = {
    "gender": "f",
    "number": "pl",
    "src": "spanish-md/IMG_20260918_203753249_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.sencillo-a",
@@ -3744,7 +3864,10 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "spanish-md/IMG_20260918_203753249_AE.md",
-   "pos": "adj"
+   "pos": "adj",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.aburrir-se",
@@ -3757,7 +3880,10 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "spanish-md/IMG_20260918_203753249_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.antes-de-las-siete",
@@ -3771,7 +3897,10 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "spanish-md/IMG_20260918_203757754_AE.md",
-   "pos": "adv"
+   "pos": "adv",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.cansarse",
@@ -3784,7 +3913,10 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "spanish-md/IMG_20260918_203753249_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.comenzar",
@@ -3800,7 +3932,10 @@ window.COURSE = {
    "src": "spanish-md/IMG_20260918_203753249_AE.md",
    "pos": "verb",
    "regular": false,
-   "change": "e → ie"
+   "change": "e → ie",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.despacio",
@@ -3813,7 +3948,10 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "spanish-md/IMG_20260918_203804276_AE.md",
-   "pos": "adv"
+   "pos": "adv",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.despues-de-desayunar",
@@ -3826,7 +3964,10 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "spanish-md/IMG_20260918_203753249_AE.md",
-   "pos": "adv"
+   "pos": "adv",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.el-silencio",
@@ -3839,7 +3980,10 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "src": "spanish-md/IMG_20260918_203753249_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.en-silencio",
@@ -3852,7 +3996,10 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "spanish-md/IMG_20260918_203753249_AE.md",
-   "pos": "adv"
+   "pos": "adv",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.frecuentemente",
@@ -3866,7 +4013,10 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "spanish-md/IMG_20260918_203757754_AE.md",
-   "pos": "adv"
+   "pos": "adv",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.la-energia",
@@ -3879,7 +4029,10 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "src": "spanish-md/IMG_20260918_203753249_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.la-fila",
@@ -3892,7 +4045,10 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "src": "spanish-md/IMG_20260918_203757754_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.la-rutina-diaria",
@@ -3905,7 +4061,10 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "src": "spanish-md/IMG_20260918_203744401_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.la-tele",
@@ -3921,7 +4080,10 @@ window.COURSE = {
    "emoji": "📺",
    "note": "Verkorte vorm van la televisión.",
    "src": "spanish-md/IMG_20260918_203757754_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.la-vida-cotidiana",
@@ -3934,7 +4096,10 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "src": "spanish-md/IMG_20260918_203753249_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.lavar-se",
@@ -3947,7 +4112,10 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "spanish-md/IMG_20260918_203753249_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.olvidar-se",
@@ -3961,7 +4129,10 @@ window.COURSE = {
    "number": null,
    "note": "Ook: olvidarse de algo.",
    "src": "spanish-md/IMG_20260918_203757754_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.ponerse-ropa",
@@ -3975,7 +4146,10 @@ window.COURSE = {
    "number": null,
    "note": "Onregelmatig met g: me pongo.",
    "src": "spanish-md/IMG_20260918_203753249_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.relajarse",
@@ -3988,7 +4162,10 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "spanish-md/IMG_20260918_203753249_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.sale-el-sol",
@@ -4002,7 +4179,10 @@ window.COURSE = {
    "number": null,
    "note": "Van salir.",
    "src": "spanish-md/IMG_20260918_203753249_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.separar-se",
@@ -4016,7 +4196,10 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "spanish-md/IMG_20260918_203753249_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.tener-prisa",
@@ -4029,7 +4212,10 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "spanish-md/IMG_20260918_203753249_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.domingo",
@@ -4056,7 +4242,10 @@ window.COURSE = {
    "number": "sg",
    "emoji": "❄️",
    "src": "spanish-md/IMG_20260918_203753249_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.el-otono",
@@ -4070,7 +4259,10 @@ window.COURSE = {
    "number": "sg",
    "emoji": "🍂",
    "src": "spanish-md/IMG_20260918_203753249_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.el-verano",
@@ -4084,7 +4276,10 @@ window.COURSE = {
    "number": "sg",
    "emoji": "☀️",
    "src": "spanish-md/IMG_20260918_203753249_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.jueves",
@@ -4111,7 +4306,10 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "src": "spanish-md/IMG_20260918_203753249_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.la-estacion-del-ano",
@@ -4124,7 +4322,10 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "src": "spanish-md/IMG_20260918_203753249_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.la-primavera",
@@ -4139,7 +4340,10 @@ window.COURSE = {
    "number": "sg",
    "emoji": "🌸",
    "src": "spanish-md/IMG_20260918_203753249_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.lunes",
@@ -4693,7 +4897,10 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "spanish-md/IMG_20260918_203753249_AE.md",
-   "pos": "adj"
+   "pos": "adj",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.cotidiano-a",
@@ -4706,7 +4913,10 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "spanish-md/IMG_20260918_203753249_AE.md",
-   "pos": "adj"
+   "pos": "adj",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.economico-a",
@@ -4719,7 +4929,10 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "spanish-md/IMG_20260918_203808317_AE.md",
-   "pos": "adj"
+   "pos": "adj",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.eterno-a",
@@ -4732,7 +4945,10 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "spanish-md/IMG_20260918_203808317_AE.md",
-   "pos": "adj"
+   "pos": "adj",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.financiero-a",
@@ -4745,7 +4961,10 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "spanish-md/IMG_20260918_203808317_AE.md",
-   "pos": "adj"
+   "pos": "adj",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.llamado-a",
@@ -4758,7 +4977,10 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "spanish-md/IMG_20260918_203808317_AE.md",
-   "pos": "adj"
+   "pos": "adj",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.pobre",
@@ -4771,7 +4993,10 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "spanish-md/IMG_20260918_203753249_AE.md",
-   "pos": "adj"
+   "pos": "adj",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.politico-a",
@@ -4784,7 +5009,10 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "spanish-md/IMG_20260918_203808317_AE.md",
-   "pos": "adj"
+   "pos": "adj",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.practico-a",
@@ -4797,7 +5025,10 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "spanish-md/IMG_20260918_203753249_AE.md",
-   "pos": "adj"
+   "pos": "adj",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.regular",
@@ -4810,7 +5041,10 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "spanish-md/IMG_20260918_203804276_AE.md",
-   "pos": "adj"
+   "pos": "adj",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.riquisimo-a",
@@ -4825,7 +5059,10 @@ window.COURSE = {
    "number": null,
    "note": "Overtreffende trap van rico.",
    "src": "spanish-md/IMG_20260918_203808317_AE.md",
-   "pos": "adj"
+   "pos": "adj",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.el-albaricoque",
@@ -6058,7 +6295,10 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "spanish-md/IMG_20260918_203757754_AE.md",
-   "pos": "adj"
+   "pos": "adj",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.el-alcance",
@@ -6071,7 +6311,10 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "src": "spanish-md/IMG_20260918_203757754_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.el-comparativo",
@@ -6084,7 +6327,10 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "src": "spanish-md/IMG_20260918_203753249_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.el-demostrativo",
@@ -6097,7 +6343,10 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "src": "spanish-md/IMG_20260918_203808317_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.el-gerundio",
@@ -6111,7 +6360,10 @@ window.COURSE = {
    "number": "sg",
    "note": "Nederlands: aan het + infinitief.",
    "src": "spanish-md/IMG_20260918_203804276_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.el-parrafo",
@@ -6124,7 +6376,10 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "src": "spanish-md/IMG_20260918_203753249_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.el-pronombre-reflexivo",
@@ -6137,7 +6392,10 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "src": "spanish-md/IMG_20260918_203757754_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.el-superlativo",
@@ -6150,7 +6408,10 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "src": "spanish-md/IMG_20260918_203753249_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.el-verbo-conjugado",
@@ -6164,7 +6425,10 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "src": "spanish-md/IMG_20260918_203757754_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.el-verbo-reflexivo",
@@ -6177,7 +6441,10 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "src": "spanish-md/IMG_20260918_203757754_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.ese-a",
@@ -6192,7 +6459,10 @@ window.COURSE = {
    "number": null,
    "note": "Aanwijzend voornaamwoord voor iets verderaf: ese libro, esa casa.",
    "src": "spanish-md/IMG_20260918_203757754_AE.md",
-   "pos": "other"
+   "pos": "other",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.eso",
@@ -6206,7 +6476,10 @@ window.COURSE = {
    "number": null,
    "note": "Onzijdige vorm.",
    "src": "spanish-md/IMG_20260918_203757754_AE.md",
-   "pos": "other"
+   "pos": "other",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.estar-al-alcance-de",
@@ -6219,7 +6492,10 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "spanish-md/IMG_20260918_203757754_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.este-a",
@@ -6234,7 +6510,10 @@ window.COURSE = {
    "number": null,
    "note": "Aanwijzend voornaamwoord voor iets dichtbij: este libro, esta casa.",
    "src": "spanish-md/IMG_20260918_203757754_AE.md",
-   "pos": "other"
+   "pos": "other",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.esto",
@@ -6248,7 +6527,10 @@ window.COURSE = {
    "number": null,
    "note": "Onzijdige vorm, verwijst naar iets onbepaalds of naar een hele situatie.",
    "src": "spanish-md/IMG_20260918_203757754_AE.md",
-   "pos": "other"
+   "pos": "other",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.hacer-referencia-a",
@@ -6261,7 +6543,10 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "spanish-md/IMG_20260918_203757754_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.hasta-encontrarlo",
@@ -6275,7 +6560,10 @@ window.COURSE = {
    "number": null,
    "note": "Het lijdend voorwerp hangt vast aan de infinitief.",
    "src": "spanish-md/IMG_20260918_203757754_AE.md",
-   "pos": "other"
+   "pos": "other",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.la-desigualdad",
@@ -6288,7 +6576,10 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "src": "spanish-md/IMG_20260918_203753249_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.la-igualdad",
@@ -6301,7 +6592,10 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "src": "spanish-md/IMG_20260918_203753249_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.la-referencia",
@@ -6314,7 +6608,10 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "src": "spanish-md/IMG_20260918_203757754_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.senalar",
@@ -6329,7 +6626,10 @@ window.COURSE = {
    "number": null,
    "src": "spanish-md/IMG_20260918_203757754_AE.md",
    "pos": "verb",
-   "regular": true
+   "regular": true,
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.viceversa",
@@ -6343,7 +6643,10 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "spanish-md/IMG_20260918_203757754_AE.md",
-   "pos": "adv"
+   "pos": "adv",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.el-aguacate",
@@ -9239,7 +9542,10 @@ window.COURSE = {
    "number": "sg",
    "emoji": "🧥",
    "src": "course-md/IMG_20260918_190139660_AE.md; spanish-md/IMG_20260918_203744401_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.el-anorak",
@@ -9254,7 +9560,10 @@ window.COURSE = {
    "number": "sg",
    "emoji": "🧥",
    "src": "spanish-md/IMG_20260918_203744401_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.el-banador",
@@ -9284,7 +9593,10 @@ window.COURSE = {
    "number": "sg",
    "emoji": "👙",
    "src": "course-md/IMG_20260918_190139660_AE.md; spanish-md/IMG_20260918_203744401_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.el-biquini",
@@ -9355,7 +9667,10 @@ window.COURSE = {
    "number": "sg",
    "src": "course-md/IMG_20260918_190139660_AE.md; spanish-md/IMG_20260918_203744401_AE.md",
    "emoji": "🧥",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.el-pijama",
@@ -9500,7 +9815,10 @@ window.COURSE = {
    "number": "sg",
    "emoji": "👗",
    "src": "course-md/IMG_20260918_190139660_AE.md; spanish-md/IMG_20260918_203744401_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.la-blusa",
@@ -9515,7 +9833,10 @@ window.COURSE = {
    "number": "sg",
    "emoji": "👚",
    "src": "course-md/IMG_20260918_190139660_AE.md; spanish-md/IMG_20260918_203744401_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.la-camisa",
@@ -9530,7 +9851,10 @@ window.COURSE = {
    "number": "sg",
    "emoji": "👕",
    "src": "course-md/IMG_20260918_190139660_AE.md; spanish-md/IMG_20260918_203744401_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.la-camiseta",
@@ -9544,7 +9868,10 @@ window.COURSE = {
    "number": "sg",
    "emoji": "👕",
    "src": "course-md/IMG_20260918_190139660_AE.md; spanish-md/IMG_20260918_203744401_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.la-campera",
@@ -9591,7 +9918,10 @@ window.COURSE = {
    "number": "sg",
    "emoji": "🧥",
    "src": "course-md/IMG_20260918_190139660_AE.md; spanish-md/IMG_20260918_203744401_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.la-chaqueta-impermeable",
@@ -9633,7 +9963,10 @@ window.COURSE = {
    "number": "sg",
    "src": "course-md/IMG_20260918_190139660_AE.md; spanish-md/IMG_20260918_203744401_AE.md",
    "emoji": "👗",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.la-marca",
@@ -9646,7 +9979,10 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "src": "spanish-md/IMG_20260918_203744401_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.la-pollera",
@@ -9675,7 +10011,10 @@ window.COURSE = {
    "number": "sg",
    "emoji": "👚",
    "src": "spanish-md/IMG_20260918_203804276_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.la-ropa",
@@ -9691,7 +10030,10 @@ window.COURSE = {
    "note": "Ook: la prenda (het kledingstuk), los vestidos (de kleren).",
    "src": "course-md/IMG_20260918_190139660_AE.md; spanish-md/IMG_20260918_203744401_AE.md",
    "emoji": "👚",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.la-ropa-deportiva",
@@ -9705,7 +10047,10 @@ window.COURSE = {
    "number": "sg",
    "emoji": "🎽",
    "src": "spanish-md/IMG_20260918_203744401_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.la-tienda-de-ropa",
@@ -9737,7 +10082,10 @@ window.COURSE = {
    "note": "llevar betekent ook: dragen, meenemen, brengen.",
    "src": "course-md/IMG_20260918_190139660_AE.md; spanish-md/IMG_20260918_203804276_AE.md",
    "pos": "verb",
-   "regular": true
+   "regular": true,
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.los-pantalones",
@@ -9752,7 +10100,10 @@ window.COURSE = {
    "emoji": "👖",
    "note": "Meestal in het meervoud. los pantalones largos = de lange broek.",
    "src": "course-md/IMG_20260918_190139660_AE.md; spanish-md/IMG_20260918_203744401_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.los-pantalones-cortos",
@@ -9811,7 +10162,10 @@ window.COURSE = {
    "number": "pl",
    "emoji": "👖",
    "src": "course-md/IMG_20260918_190139660_AE.md; spanish-md/IMG_20260918_203744401_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.probar",
@@ -9842,7 +10196,10 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "spanish-md/IMG_20260918_203744401_AE.md",
-   "pos": "adj"
+   "pos": "adj",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.azul",
@@ -9868,7 +10225,10 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "spanish-md/IMG_20260918_203744401_AE.md",
-   "pos": "adj"
+   "pos": "adj",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.marron",
@@ -9881,7 +10241,10 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "spanish-md/IMG_20260918_203744401_AE.md",
-   "pos": "adj"
+   "pos": "adj",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.naranja",
@@ -9895,7 +10258,10 @@ window.COURSE = {
    "number": null,
    "note": "Onveranderlijk: una camisa naranja.",
    "src": "spanish-md/IMG_20260918_203744401_AE.md",
-   "pos": "adj"
+   "pos": "adj",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.rosa",
@@ -9909,7 +10275,10 @@ window.COURSE = {
    "number": null,
    "note": "Onveranderlijk: unos zapatos rosa.",
    "src": "spanish-md/IMG_20260918_203744401_AE.md",
-   "pos": "adj"
+   "pos": "adj",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.el-anis",
@@ -10753,7 +11122,10 @@ window.COURSE = {
    "number": "sg",
    "src": "course-md/IMG_20260918_190406811_AE.md; spanish-md/IMG_20260918_204009683_AE.md",
    "emoji": "👤",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.la-cadera",
@@ -11574,7 +11946,10 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "spanish-md/IMG_20260918_203955459_AE.md",
-   "pos": "adj"
+   "pos": "adj",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.griego-a",
@@ -12586,7 +12961,10 @@ window.COURSE = {
    "emoji": "🧦",
    "note": "Handgeschreven notitie: kort.",
    "src": "course-md/IMG_20260918_190139660_AE.md; spanish-md/IMG_20260918_203744401_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.los-calzoncillos",
@@ -12657,7 +13035,10 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "src": "spanish-md/IMG_20260918_203808317_AE.md",
-   "pos": "other"
+   "pos": "other",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.elija",
@@ -12671,7 +13052,10 @@ window.COURSE = {
    "number": null,
    "note": "Gebiedende wijs (usted) van elegir.",
    "src": "spanish-md/IMG_20260918_203744401_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.entre-los-siguientes",
@@ -12684,7 +13068,10 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "spanish-md/IMG_20260918_203753249_AE.md",
-   "pos": "other"
+   "pos": "other",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.entre-todos",
@@ -12697,7 +13084,10 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "spanish-md/IMG_20260918_203808317_AE.md",
-   "pos": "other"
+   "pos": "other",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.represente",
@@ -12711,7 +13101,10 @@ window.COURSE = {
    "number": null,
    "note": "Gebiedende wijs (usted) van representar.",
    "src": "spanish-md/IMG_20260918_203804276_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.valorar",
@@ -12754,7 +13147,10 @@ window.COURSE = {
    "number": null,
    "src": "spanish-md/IMG_20260918_203808317_AE.md",
    "pos": "verb",
-   "regular": true
+   "regular": true,
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.el-catalogo",
@@ -12767,7 +13163,10 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "src": "spanish-md/IMG_20260918_203744401_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.el-hombre-del-jersey",
@@ -12780,7 +13179,10 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "src": "spanish-md/IMG_20260918_203804276_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.el-la-coordinador-a",
@@ -12793,7 +13195,10 @@ window.COURSE = {
    "gender": null,
    "number": "sg",
    "src": "spanish-md/IMG_20260918_203808317_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.el-la-escritor-a",
@@ -12807,7 +13212,10 @@ window.COURSE = {
    "gender": null,
    "number": "sg",
    "src": "spanish-md/IMG_20260918_203808317_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.el-la-hablante",
@@ -12821,7 +13229,10 @@ window.COURSE = {
    "gender": null,
    "number": "sg",
    "src": "spanish-md/IMG_20260918_203808317_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.el-ordenador",
@@ -12836,7 +13247,10 @@ window.COURSE = {
    "emoji": "💻",
    "note": "In Latijns-Amerika: la computadora.",
    "src": "spanish-md/IMG_20260918_203804276_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.proceder-de",
@@ -12849,7 +13263,10 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "spanish-md/IMG_20260918_203808317_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.restaurar",
@@ -12863,7 +13280,10 @@ window.COURSE = {
    "number": null,
    "src": "spanish-md/IMG_20260918_203808317_AE.md",
    "pos": "verb",
-   "regular": true
+   "regular": true,
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.el-frijol",
@@ -12960,7 +13380,10 @@ window.COURSE = {
    "number": "sg",
    "emoji": "🏞️",
    "src": "spanish-md/IMG_20260918_203808317_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.el-caiman",
@@ -12974,7 +13397,10 @@ window.COURSE = {
    "number": "sg",
    "emoji": "🐊",
    "src": "spanish-md/IMG_20260918_203808317_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.el-delfin",
@@ -12988,7 +13414,10 @@ window.COURSE = {
    "number": "sg",
    "emoji": "🐬",
    "src": "spanish-md/IMG_20260918_203808317_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.el-gato",
@@ -13029,7 +13458,10 @@ window.COURSE = {
    "number": "sg",
    "emoji": "🏞️",
    "src": "spanish-md/IMG_20260918_203808317_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.el-mono",
@@ -13043,7 +13475,10 @@ window.COURSE = {
    "number": "sg",
    "emoji": "🐒",
    "src": "spanish-md/IMG_20260918_203808317_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.el-muro",
@@ -13058,7 +13493,10 @@ window.COURSE = {
    "emoji": "🧱",
    "note": "Buitenmuur; een binnenmuur is la pared.",
    "src": "spanish-md/IMG_20260918_203808317_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.el-pueblo",
@@ -13072,7 +13510,10 @@ window.COURSE = {
    "number": "sg",
    "emoji": "🏘️",
    "src": "spanish-md/IMG_20260918_203808317_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.el-templo",
@@ -13086,7 +13527,10 @@ window.COURSE = {
    "number": "sg",
    "emoji": "🛕",
    "src": "spanish-md/IMG_20260918_203808317_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.galicia",
@@ -13100,7 +13544,10 @@ window.COURSE = {
    "number": null,
    "note": "Autonome regio in Noordwest-Spanje.",
    "src": "spanish-md/IMG_20260918_203804276_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.la-costa-mediterranea",
@@ -13114,7 +13561,10 @@ window.COURSE = {
    "number": "sg",
    "emoji": "🏖️",
    "src": "spanish-md/IMG_20260918_203804276_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.la-violeta",
@@ -13128,7 +13578,10 @@ window.COURSE = {
    "number": "sg",
    "emoji": "🌸",
    "src": "spanish-md/IMG_20260918_203808317_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.las-islas-canarias",
@@ -13142,7 +13595,10 @@ window.COURSE = {
    "number": "pl",
    "emoji": "🏝️",
    "src": "spanish-md/IMG_20260918_203804276_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.los-pirineos",
@@ -13156,7 +13612,10 @@ window.COURSE = {
    "number": "pl",
    "emoji": "⛰️",
    "src": "spanish-md/IMG_20260918_203804276_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.a-su-derecha",
@@ -13169,7 +13628,10 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "spanish-md/IMG_20260918_203808317_AE.md",
-   "pos": "adv"
+   "pos": "adv",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.acostumbrarse-a",
@@ -13182,7 +13644,10 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "spanish-md/IMG_20260918_203757754_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.antes-de-caminar",
@@ -13197,7 +13662,10 @@ window.COURSE = {
    "number": null,
    "note": "Na een voorzetsel staat in het Spaans de infinitief.",
    "src": "spanish-md/IMG_20260918_203757754_AE.md",
-   "pos": "adv"
+   "pos": "adv",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.atras",
@@ -13211,7 +13679,10 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "spanish-md/IMG_20260918_203808317_AE.md",
-   "pos": "adv"
+   "pos": "adv",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.autorizado-a",
@@ -13225,7 +13696,10 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "spanish-md/IMG_20260918_203757754_AE.md",
-   "pos": "adj"
+   "pos": "adj",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.contra",
@@ -13239,7 +13713,10 @@ window.COURSE = {
    "number": null,
    "note": "Voorzetsel: protección contra el sol.",
    "src": "spanish-md/IMG_20260918_203757754_AE.md",
-   "pos": "other"
+   "pos": "other",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.convenir",
@@ -13255,7 +13732,10 @@ window.COURSE = {
    "number": null,
    "note": "Onpersoonlijk: conviene = het is raadzaam.",
    "src": "spanish-md/IMG_20260918_203757754_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.disfrutar-de",
@@ -13268,7 +13748,10 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "spanish-md/IMG_20260918_203757754_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.durante-el-camino",
@@ -13282,7 +13765,10 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "spanish-md/IMG_20260918_203757754_AE.md",
-   "pos": "adv"
+   "pos": "adv",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.durar",
@@ -13296,7 +13782,10 @@ window.COURSE = {
    "number": null,
    "src": "spanish-md/IMG_20260918_203757754_AE.md",
    "pos": "verb",
-   "regular": true
+   "regular": true,
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.el-clima",
@@ -13310,7 +13799,10 @@ window.COURSE = {
    "number": "sg",
    "note": "Mannelijk ondanks de uitgang -a.",
    "src": "spanish-md/IMG_20260918_203808317_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.el-crucero",
@@ -13324,7 +13816,10 @@ window.COURSE = {
    "number": "sg",
    "emoji": "🚢",
    "src": "spanish-md/IMG_20260918_203804276_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.el-diario-del-viaje",
@@ -13338,7 +13833,10 @@ window.COURSE = {
    "number": "sg",
    "emoji": "📔",
    "src": "spanish-md/IMG_20260918_203757754_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.el-equipaje",
@@ -13352,7 +13850,10 @@ window.COURSE = {
    "number": "sg",
    "emoji": "🧳",
    "src": "spanish-md/IMG_20260918_203808317_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.el-mosquito",
@@ -13366,7 +13867,10 @@ window.COURSE = {
    "number": "sg",
    "emoji": "🦟",
    "src": "spanish-md/IMG_20260918_203804276_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.el-papel-higienico",
@@ -13380,7 +13884,10 @@ window.COURSE = {
    "number": "sg",
    "emoji": "🧻",
    "src": "spanish-md/IMG_20260918_203804276_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.el-preparativo",
@@ -13393,7 +13900,10 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "src": "spanish-md/IMG_20260918_203808317_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.el-programa",
@@ -13407,7 +13917,10 @@ window.COURSE = {
    "number": "sg",
    "note": "Mannelijk ondanks de uitgang -a.",
    "src": "spanish-md/IMG_20260918_203804276_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.el-safari",
@@ -13421,7 +13934,10 @@ window.COURSE = {
    "number": "sg",
    "emoji": "🦁",
    "src": "spanish-md/IMG_20260918_203804276_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.el-tour",
@@ -13435,7 +13951,10 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "src": "spanish-md/IMG_20260918_203757754_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.es-necesario",
@@ -13448,7 +13967,10 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "spanish-md/IMG_20260918_203804276_AE.md",
-   "pos": "other"
+   "pos": "other",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.hacer-la-reserva",
@@ -13462,7 +13984,10 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "spanish-md/IMG_20260918_203757754_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.ir-de-camping",
@@ -13475,7 +14000,10 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "spanish-md/IMG_20260918_203808317_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.la-crema",
@@ -13489,7 +14017,10 @@ window.COURSE = {
    "number": "sg",
    "emoji": "🧴",
    "src": "spanish-md/IMG_20260918_203804276_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.la-crema-solar",
@@ -13503,7 +14034,10 @@ window.COURSE = {
    "number": "sg",
    "emoji": "🧴",
    "src": "spanish-md/IMG_20260918_203808317_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.la-duracion",
@@ -13516,7 +14050,10 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "src": "spanish-md/IMG_20260918_203808317_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.la-gente-del-lugar",
@@ -13530,7 +14067,10 @@ window.COURSE = {
    "number": "sg",
    "note": "la gente is enkelvoud in het Spaans: la gente es amable.",
    "src": "spanish-md/IMG_20260918_203757754_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.la-recomendacion",
@@ -13543,7 +14083,10 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "src": "spanish-md/IMG_20260918_203804276_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.la-revista",
@@ -13557,7 +14100,10 @@ window.COURSE = {
    "number": "sg",
    "emoji": "📖",
    "src": "spanish-md/IMG_20260918_203804276_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.la-tranquilidad",
@@ -13571,7 +14117,10 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "src": "spanish-md/IMG_20260918_203757754_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.llevarse",
@@ -13585,7 +14134,10 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "spanish-md/IMG_20260918_203804276_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.perdido-a",
@@ -13600,7 +14152,10 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "spanish-md/IMG_20260918_203757754_AE.md",
-   "pos": "adj"
+   "pos": "adj",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.ponerse-crema",
@@ -13614,7 +14169,10 @@ window.COURSE = {
    "number": null,
    "note": "Onregelmatig met g: me pongo.",
    "src": "spanish-md/IMG_20260918_203804276_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.por-lo-menos",
@@ -13628,7 +14186,10 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "spanish-md/IMG_20260918_203808317_AE.md",
-   "pos": "adv"
+   "pos": "adv",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.positivo-a",
@@ -13641,7 +14202,10 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "spanish-md/IMG_20260918_203757754_AE.md",
-   "pos": "adj"
+   "pos": "adj",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.recomendado-a",
@@ -13654,7 +14218,10 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "spanish-md/IMG_20260918_203757754_AE.md",
-   "pos": "adj"
+   "pos": "adj",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.recorrer",
@@ -13669,7 +14236,10 @@ window.COURSE = {
    "number": null,
    "src": "spanish-md/IMG_20260918_203757754_AE.md",
    "pos": "verb",
-   "regular": true
+   "regular": true,
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.se-recomienda",
@@ -13684,7 +14254,10 @@ window.COURSE = {
    "number": null,
    "note": "Van recomendar (stamverandering e → ie).",
    "src": "spanish-md/IMG_20260918_203757754_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.solamente",
@@ -13699,7 +14272,10 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "spanish-md/IMG_20260918_203757754_AE.md",
-   "pos": "adv"
+   "pos": "adv",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.solo-a",
@@ -13713,7 +14289,10 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "spanish-md/IMG_20260918_203757754_AE.md",
-   "pos": "adj"
+   "pos": "adj",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.tomar-fotos",
@@ -13728,7 +14307,10 @@ window.COURSE = {
    "number": null,
    "note": "Synoniemen: hacer fotos, sacar fotos.",
    "src": "spanish-md/IMG_20260918_203757754_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "s.restaurant-1",
@@ -13891,7 +14473,10 @@ window.COURSE = {
    "number": "pl",
    "emoji": "👡",
    "src": "course-md/IMG_20260918_190147401_AE.md; spanish-md/IMG_20260918_203744401_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.las-zapatillas-de-deporte",
@@ -13922,7 +14507,10 @@ window.COURSE = {
    "emoji": "👞",
    "note": "los zapatos de tacón = de schoenen met hak",
    "src": "course-md/IMG_20260918_190147401_AE.md; spanish-md/IMG_20260918_203744401_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "g.estar-plaats",
@@ -14106,7 +14694,10 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "spanish-md/IMG_20260918_203804276_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.avanzar",
@@ -14120,7 +14711,10 @@ window.COURSE = {
    "number": null,
    "src": "spanish-md/IMG_20260918_203804276_AE.md",
    "pos": "verb",
-   "regular": true
+   "regular": true,
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.controlar",
@@ -14177,7 +14771,10 @@ window.COURSE = {
    "number": "sg",
    "emoji": "🔴",
    "src": "spanish-md/IMG_20260918_203804276_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.la-mimica",
@@ -14191,7 +14788,10 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "src": "spanish-md/IMG_20260918_203804276_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.la-pantomima",
@@ -14204,7 +14804,10 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "src": "spanish-md/IMG_20260918_203804276_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.las-casillas-sin-marcar",
@@ -15437,7 +16040,10 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "src": "spanish-md/IMG_20260918_203753249_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.la-comparacion",
@@ -15450,7 +16056,10 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "src": "spanish-md/IMG_20260918_203744401_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.malo-a",
@@ -15463,7 +16072,10 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "spanish-md/IMG_20260918_203753249_AE.md",
-   "pos": "adj"
+   "pos": "adj",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.mas-largo-a-que",
@@ -15476,7 +16088,10 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "spanish-md/IMG_20260918_203753249_AE.md",
-   "pos": "adj"
+   "pos": "adj",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.mayor",
@@ -15491,7 +16106,10 @@ window.COURSE = {
    "number": null,
    "note": "Onregelmatige vergrotende trap van grande; ook: ouder.",
    "src": "spanish-md/IMG_20260918_203753249_AE.md",
-   "pos": "adj"
+   "pos": "adj",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.peor",
@@ -15506,7 +16124,10 @@ window.COURSE = {
    "number": null,
    "note": "Onregelmatige vergrotende trap van malo.",
    "src": "spanish-md/IMG_20260918_203753249_AE.md",
-   "pos": "adj"
+   "pos": "adj",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.tan-importante-como",
@@ -15519,7 +16140,10 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "spanish-md/IMG_20260918_203753249_AE.md",
-   "pos": "adj"
+   "pos": "adj",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "g.imperfecto-gewoonte",
@@ -16945,7 +17569,10 @@ window.COURSE = {
    "src": "course-md/IMG_20260918_190204924_AE.md; spanish-md/IMG_20260918_203804276_AE.md",
    "pos": "verb",
    "regular": false,
-   "change": "u → ue"
+   "change": "u → ue",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.jugar-a-juegos-de-ordenador",
@@ -17128,7 +17755,10 @@ window.COURSE = {
    "number": null,
    "note": "klankverandering o → ue: me acuesto",
    "src": "course-md/IMG_20260918_191241677_AE.md; spanish-md/IMG_20260918_203757754_AE.md",
-   "pos": "verb"
+   "pos": "verb",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.afeitarse",
@@ -17199,7 +17829,10 @@ window.COURSE = {
    "number": null,
    "src": "course-md/IMG_20260918_191241677_AE.md; spanish-md/IMG_20260918_203757754_AE.md",
    "note": "Wederkerend werkwoord: me ducho.",
-   "pos": "verb"
+   "pos": "verb",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.irse",
@@ -17240,7 +17873,10 @@ window.COURSE = {
    "number": null,
    "src": "course-md/IMG_20260918_191241677_AE.md; spanish-md/IMG_20260918_203753249_AE.md",
    "note": "Wederkerend: me levanto.",
-   "pos": "verb"
+   "pos": "verb",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.llamarse",
@@ -17321,7 +17957,10 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "spanish-md/IMG_20260918_203804276_AE.md",
-   "pos": "adv"
+   "pos": "adv",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.como-llueve",
@@ -17334,7 +17973,10 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "spanish-md/IMG_20260918_203804276_AE.md",
-   "pos": "other"
+   "pos": "other",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.el-calor",
@@ -17348,7 +17990,10 @@ window.COURSE = {
    "number": "sg",
    "emoji": "🔥",
    "src": "spanish-md/IMG_20260918_203804276_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.el-frio",
@@ -17362,7 +18007,10 @@ window.COURSE = {
    "number": "sg",
    "emoji": "🥶",
    "src": "spanish-md/IMG_20260918_203804276_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.el-grado",
@@ -17376,7 +18024,10 @@ window.COURSE = {
    "number": "sg",
    "emoji": "🌡️",
    "src": "spanish-md/IMG_20260918_203804276_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.el-tiempo",
@@ -17390,7 +18041,10 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "src": "spanish-md/IMG_20260918_203744401_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.el-viento",
@@ -17404,7 +18058,10 @@ window.COURSE = {
    "number": "sg",
    "emoji": "💨",
    "src": "spanish-md/IMG_20260918_203804276_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.esta-nublado",
@@ -17417,7 +18074,10 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "spanish-md/IMG_20260918_203757754_AE.md",
-   "pos": "other"
+   "pos": "other",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.hace-5-grados",
@@ -17430,7 +18090,10 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "spanish-md/IMG_20260918_203804276_AE.md",
-   "pos": "other"
+   "pos": "other",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.hace-buen-tiempo",
@@ -17444,7 +18107,10 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "spanish-md/IMG_20260918_203757754_AE.md",
-   "pos": "other"
+   "pos": "other",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.hace-calor",
@@ -17457,7 +18123,10 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "spanish-md/IMG_20260918_203804276_AE.md",
-   "pos": "other"
+   "pos": "other",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.hace-frio",
@@ -17470,7 +18139,10 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "spanish-md/IMG_20260918_203804276_AE.md",
-   "pos": "other"
+   "pos": "other",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.hace-mal-tiempo",
@@ -17483,7 +18155,10 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "spanish-md/IMG_20260918_203804276_AE.md",
-   "pos": "other"
+   "pos": "other",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.hace-sol",
@@ -17497,7 +18172,10 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "spanish-md/IMG_20260918_203757754_AE.md",
-   "pos": "other"
+   "pos": "other",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.hace-viento",
@@ -17510,7 +18188,10 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "spanish-md/IMG_20260918_203804276_AE.md",
-   "pos": "other"
+   "pos": "other",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.hay-niebla",
@@ -17523,7 +18204,10 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "spanish-md/IMG_20260918_203804276_AE.md",
-   "pos": "other"
+   "pos": "other",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.la-niebla",
@@ -17537,7 +18221,10 @@ window.COURSE = {
    "number": "sg",
    "emoji": "🌫️",
    "src": "spanish-md/IMG_20260918_203804276_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.la-temperatura",
@@ -17550,7 +18237,10 @@ window.COURSE = {
    "gender": "f",
    "number": "sg",
    "src": "spanish-md/IMG_20260918_203757754_AE.md",
-   "pos": "noun"
+   "pos": "noun",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.llover",
@@ -17566,7 +18256,10 @@ window.COURSE = {
    "src": "spanish-md/IMG_20260918_203757754_AE.md; spanish-md/IMG_20260918_203753249_AE.md",
    "pos": "verb",
    "regular": false,
-   "change": "o → ue"
+   "change": "o → ue",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.nevar",
@@ -17582,7 +18275,10 @@ window.COURSE = {
    "src": "spanish-md/IMG_20260918_203804276_AE.md",
    "pos": "verb",
    "regular": false,
-   "change": "e → ie"
+   "change": "e → ie",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.nieva",
@@ -17596,7 +18292,10 @@ window.COURSE = {
    "number": null,
    "note": "Vorm van nevar.",
    "src": "spanish-md/IMG_20260918_203804276_AE.md",
-   "pos": "other"
+   "pos": "other",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.que-frio-hace",
@@ -17609,7 +18308,10 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "spanish-md/IMG_20260918_203804276_AE.md",
-   "pos": "other"
+   "pos": "other",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.que-nublado-esta",
@@ -17622,7 +18324,10 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "spanish-md/IMG_20260918_203804276_AE.md",
-   "pos": "other"
+   "pos": "other",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.que-tiempo-hace",
@@ -17635,7 +18340,10 @@ window.COURSE = {
    "gender": null,
    "number": null,
    "src": "spanish-md/IMG_20260918_203804276_AE.md",
-   "pos": "other"
+   "pos": "other",
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.alquilar",
@@ -17900,7 +18608,10 @@ window.COURSE = {
    "number": null,
    "src": "course-md/IMG_20260918_190907308_AE.md; spanish-md/IMG_20260918_203757754_AE.md",
    "pos": "verb",
-   "regular": true
+   "regular": true,
+   "also": [
+    "examen-u1"
+   ]
   },
   {
    "id": "v.necesitar",

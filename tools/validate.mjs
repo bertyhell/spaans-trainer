@@ -68,6 +68,10 @@ for (const a of course.atoms) {
   if (!a.theme) err(id, 'zonder theme');
   else if (!themeIds.has(a.theme)) err(id, `onbekend theme "${a.theme}"`);
   else usedThemes.add(a.theme);
+  for (const t of a.also ?? []) {
+    if (!themeIds.has(t)) err(id, `onbekend examenthema "${t}"`);
+    else usedThemes.add(t);
+  }
 
   // Berekende vervoegingen (tools/conjugate.mjs) komen uit geen enkele scan.
   if (!a.src && !a.srcLabel && !a.generated) warn(id, 'zonder bronverwijzing');

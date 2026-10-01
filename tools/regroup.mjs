@@ -155,9 +155,21 @@ const curatedIds = new Set(content.atoms.map(a => a.id));
 for (let i = atoms.length - 1; i >= 0; i--) if (curatedIds.has(atoms[i].id)) atoms.splice(i, 1);
 atoms.push(...content.atoms);
 
+// Examenthema's verwijzen naar bestaande atomen (content/exams.mjs).
+const alsoOf = new Map();
+for (const [theme, ids] of Object.entries(content.exams)) {
+  for (const id of ids) alsoOf.set(id, [...(alsoOf.get(id) ?? []), theme]);
+}
+const atomIds = new Set(atoms.map(a => a.id));
+for (const id of alsoOf.keys()) if (!atomIds.has(id)) problems.push(`examen: ${id} bestaat niet`);
+for (const [i, a] of atoms.entries()) {
+  const { also: _, ...rest } = a;
+  atoms[i] = alsoOf.has(a.id) ? { ...rest, also: alsoOf.get(a.id) } : rest;
+}
+
 /* --- groepen in plaats van unidades --- */
 
-const used = new Set(atoms.map(a => a.theme));
+const used = new Set(atoms.flatMap(a => [a.theme, ...(a.also ?? [])]));
 const byId = Object.fromEntries(course.themes.map(t => [t.id, t]));
 
 const groups = GROUPS

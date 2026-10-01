@@ -16,6 +16,7 @@
  *     atoms:   [...],                 // zie hieronder
  *     texts:   { 't.id': {...} },     // leesteksten en dialogen (context)
  *     grammar: { 'gr.id': {...} },    // uitleg bij een fout antwoord
+ *     exams:   { 'thema-id': ['v.id', ...] },  // bestaande atomen in een examenthema
  *   }
  *
  * Soorten atomen (naast de bestaande sentence en grammar):
@@ -43,6 +44,7 @@ export async function loadContent() {
   const atoms = [];
   const texts = {};
   const grammar = {};
+  const exams = {};
   const origin = new Map();
   const problems = [];
 
@@ -62,12 +64,18 @@ export async function loadContent() {
       if (!v?.title || !v?.body) problems.push(`${file}: uitleg ${k}: title en body zijn verplicht`);
       grammar[k] = v;
     }
+    for (const [k, ids] of Object.entries(mod.exams ?? {})) {
+      if (k in exams) problems.push(`${file}: examen ${k} dubbel`);
+      if (new Set(ids).size !== ids.length) problems.push(`${file}: examen ${k} bevat dubbele id's`);
+      exams[k] = ids;
+    }
   }
 
   const themeIds = new Set([...CONTENT_THEMES.map(t => t.id), ...EXISTING_THEMES]);
+  for (const k of Object.keys(exams)) if (!themeIds.has(k)) problems.push(`examen ${k}: onbekend thema`);
   for (const a of atoms) problems.push(...checkAtom(a, { themeIds, texts, grammar }).map(p => `${origin.get(a.id)}: ${a.id}: ${p}`));
 
-  return { files, atoms, texts, grammar, problems };
+  return { files, atoms, texts, grammar, exams, problems };
 }
 
 const nonEmpty = s => typeof s === 'string' && s.trim().length > 0;

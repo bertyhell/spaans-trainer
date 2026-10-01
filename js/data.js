@@ -23,8 +23,12 @@ export function init() {
   for (const theme of course.themes) themeById.set(theme.id, theme);
   for (const atom of course.atoms) {
     byId.set(atom.id, atom);
-    if (!byTheme.has(atom.theme)) byTheme.set(atom.theme, []);
-    byTheme.get(atom.theme).push(atom);
+    // `also`: examenthema's die naar dit atoom verwijzen. Het atoom blijft in
+    // zijn eigen thema; afleiders komen dus nog altijd van daar.
+    for (const theme of [atom.theme, ...(atom.also ?? [])]) {
+      if (!byTheme.has(theme)) byTheme.set(theme, []);
+      byTheme.get(theme).push(atom);
+    }
     if (atom.kind === 'dialogue') {
       if (!byText.has(atom.text)) byText.set(atom.text, []);
       byText.get(atom.text).push(atom);
