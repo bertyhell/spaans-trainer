@@ -20,6 +20,10 @@
   --almost: #d9a300;
   --almost-bg: #fdf5d8;
 
+  --lvl-bronze: #b8732e;
+  --lvl-silver: #9aa3ad;
+  --lvl-gold: #e0a800;
+
   --radius: 14px;
   --radius-lg: 20px;
   --tap: 52px;
@@ -48,6 +52,9 @@
     --no-bg: #331717;
     --almost: #f2c94c;
     --almost-bg: #332a0e;
+    --lvl-bronze: #d08a45;
+    --lvl-silver: #c3cad2;
+    --lvl-gold: #f5c518;
     --shadow: 0 2px 0 rgba(0, 0, 0, .4);
     --shadow-lift: 0 4px 0 rgba(0, 0, 0, .5);
   }
@@ -193,8 +200,14 @@ h1.brand { display: flex; align-items: center; gap: 8px; }
 .row-title { font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .row-meta { font-size: .78rem; color: var(--ink-soft); }
 
-.mastery { flex: none; width: 46px; height: 7px; border-radius: 99px; background: var(--line); overflow: hidden; }
-.mastery-fill { display: block; height: 100%; background: var(--ok); border-radius: 99px; }
+/* Vier niveaus, elk vijf blokjes. Het niveau staat ook in title/aria-label,
+ * dus kleur is niet de enige drager. */
+.mastery { flex: none; display: flex; gap: 2px; width: 72px; height: 8px; --lvl: var(--ok); }
+.mastery--bronze { --lvl: var(--lvl-bronze); }
+.mastery--silver { --lvl: var(--lvl-silver); }
+.mastery--gold { --lvl: var(--lvl-gold); }
+.mastery-seg { flex: 1; border-radius: 3px; background: var(--line); overflow: hidden; }
+.mastery-seg-fill { display: block; height: 100%; background: var(--lvl); }
 
 .row-go {
   flex: none; width: 38px; height: 38px;

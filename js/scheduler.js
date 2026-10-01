@@ -32,6 +32,27 @@ export function mastery(keys) {
   return total / keys.length;
 }
 
+/* Beheersing in vier niveaus van elk vijf blokjes, zodat ook een kleine stap
+ * vooruit zichtbaar is: één blokje is 5% van de totale beheersing. */
+export const LEVELS = [
+  { id: 'green', name: 'groen' },
+  { id: 'bronze', name: 'brons' },
+  { id: 'silver', name: 'zilver' },
+  { id: 'gold', name: 'goud' },
+];
+export const LEVEL_SEGMENTS = 5;
+
+/**
+ * Zet een beheersing (0–1) om in een niveau.
+ * @returns {{level, index, fill}} met `fill` de vulling binnen dat niveau, 0–1.
+ */
+export function masteryLevel(fraction) {
+  const scaled = Math.max(0, Math.min(1, fraction)) * LEVELS.length;
+  // Precies 100% telt als volle gouden balk, niet als een leeg vijfde niveau.
+  const index = Math.min(LEVELS.length - 1, Math.floor(scaled));
+  return { level: LEVELS[index], index, fill: scaled - index };
+}
+
 /** Na zoveel juiste antwoorden verdwijnt het hulp-emoji bij een vraag. */
 export const EMOJI_HIDE_AFTER = 10;
 

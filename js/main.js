@@ -92,7 +92,7 @@ function renderTree() {
       }
 
       const keys = data.keysForTheme(theme.id);
-      const pct = Math.round(scheduler.mastery(keys) * 100);
+      const themeMastery = scheduler.mastery(keys);
 
       const checkbox = el('input', {
         type: 'checkbox', class: 'row-check', id: `th-${theme.id}`,
@@ -112,8 +112,7 @@ function renderTree() {
             el('span', { class: 'row-title' }, theme.label),
             el('span', { class: 'row-meta' }, `${theme.count} ${theme.noun}`)),
         ),
-        el('span', { class: 'mastery', title: `${pct}% beheerst`, role: 'img', 'aria-label': `${pct}% beheerst` },
-          el('span', { class: 'mastery-fill', style: `width:${pct}%` })),
+        masteryBar(themeMastery),
         el('button', {
           class: 'row-go', type: 'button', 'aria-label': `Oefen ${theme.label} meteen`,
           onclick: () => startLesson([theme.id]),
@@ -135,8 +134,8 @@ function renderTree() {
     });
 
     const total = data.countForThemes(group.themes.map(t => t.id));
-    const groupPct = Math.round(
-      scheduler.mastery(group.themes.flatMap(t => data.keysForTheme(t.id))) * 100);
+    const groupMastery =
+      scheduler.mastery(group.themes.flatMap(t => data.keysForTheme(t.id)));
 
     const toggle = el('button', {
       class: 'unit-toggle', type: 'button',
@@ -152,8 +151,7 @@ function renderTree() {
         el('span', { class: 'row-title' }, group.title),
         el('span', { class: 'row-meta' },
           `${group.themes.length} onderdelen · ${total.count} ${total.noun}`)),
-      el('span', { class: 'mastery', title: `${groupPct}% beheerst`, role: 'img', 'aria-label': `${groupPct}% beheerst` },
-        el('span', { class: 'mastery-fill', style: `width:${groupPct}%` })),
+      masteryBar(groupMastery),
       el('span', { class: `chevron${isOpen ? ' is-open' : ''}`, 'aria-hidden': 'true' }, '›'),
     );
 
@@ -373,6 +371,17 @@ function finishLesson() {
   show('screen-result');
 }
 
+/** Beheersingsbalkje: vijf blokjes in de kleur van het huidige niveau. */
+function masteryBar(fraction) {
+  const { level, fill } = scheduler.masteryLevel(fraction);
+  const label = `${Math.round(fraction * 100)}% beheerst · niveau ${level.name}`;
+  const filled = fill * scheduler.LEVEL_SEGMENTS;
+  const segs = Array.from({ length: scheduler.LEVEL_SEGMENTS }, (_, i) =>
+    el('span', { class: 'mastery-seg' },
+      el('span', { class: 'mastery-seg-fill', style: `width:${Math.max(0, Math.min(1, filled - i)) * 100}%` })));
+  return el('span', { class: `mastery mastery--${level.id}`, title: label, role: 'img', 'aria-label': label }, ...segs);
+}
+
 /** Beheersing van de huidige selectie, 0 tot 1. */
 let masteryThemes = [];
 let masteryBefore = 0;
@@ -390,7 +399,10 @@ function showMasteryGain() {
   const sign = delta < 0 ? '−' : '+';
   const pct = (n, digits) => n.toLocaleString('nl-BE', { minimumFractionDigits: digits, maximumFractionDigits: digits });
   $('#result-mastery').textContent = `${sign}${pct(Math.abs(delta), 2)}%`;
-  $('#result-mastery-total').textContent = `naar ${pct(after * 100, 1)}%`;
+  const levelBefore = scheduler.masteryLevel(masteryBefore).index;
+  const { level, index } = scheduler.masteryLevel(after);
+  const levelUp = index > levelBefore ? ' — nieuw niveau!' : '';
+  $('#result-mastery-total').textContent = `naar ${pct(after * 100, 1)}% · ${level.name}${levelUp}`;
   const card = $('#result-mastery-card');
   const complete = after >= 1 && masteryBefore < 1;
   card.classList.remove('mastered');
