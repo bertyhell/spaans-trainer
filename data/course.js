@@ -98336,6 +98336,572 @@ window.COURSE = {
    "curated": true
   },
   {
+   "id": "s.drill.gerundio-19",
+   "kind": "sentence",
+   "theme": "gr-zin-gerundio",
+   "es": "Mis amigos están charlando en la terraza.",
+   "nl": "Mijn vrienden zitten op het terras te praten.",
+   "blanks": [
+    {
+     "answer": "están charlando",
+     "hint": "charlar, ellos"
+    }
+   ],
+   "instruction": "Vul estar + gerundio in (nu bezig)",
+   "grammarRef": "gr.gerundio",
+   "src": "course-md/IMG_20260918_191004215_AE.md",
+   "curated": true
+  },
+  {
+   "id": "s.drill.gerundio-20",
+   "kind": "sentence",
+   "theme": "gr-zin-gerundio",
+   "es": "El profesor está explicando la lección.",
+   "nl": "De leraar legt de les uit.",
+   "blanks": [
+    {
+     "answer": "está explicando",
+     "hint": "explicar"
+    }
+   ],
+   "instruction": "Vul estar + gerundio in (nu bezig)",
+   "grammarRef": "gr.gerundio",
+   "src": "course-md/IMG_20260918_191004215_AE.md",
+   "curated": true
+  },
+  {
+   "id": "s.drill.gerundio-21",
+   "kind": "sentence",
+   "theme": "gr-zin-gerundio",
+   "es": "¿Estás escuchando la radio?",
+   "nl": "Luister je naar de radio?",
+   "blanks": [
+    {
+     "answer": "Estás escuchando",
+     "hint": "escuchar, tú"
+    }
+   ],
+   "instruction": "Vul estar + gerundio in (nu bezig)",
+   "grammarRef": "gr.gerundio",
+   "src": "course-md/IMG_20260918_191004215_AE.md",
+   "curated": true
+  },
+  {
+   "id": "s.drill.gerundio-22",
+   "kind": "sentence",
+   "theme": "gr-zin-gerundio",
+   "es": "Estoy repitiendo las palabras nuevas.",
+   "nl": "Ik herhaal de nieuwe woorden.",
+   "blanks": [
+    {
+     "answer": "Estoy repitiendo",
+     "hint": "repetir, yo"
+    }
+   ],
+   "instruction": "Vul estar + gerundio in (nu bezig)",
+   "grammarRef": "gr.gerundio",
+   "src": "course-md/IMG_20260918_191004215_AE.md",
+   "note": "repetir → repitiendo",
+   "curated": true
+  },
+  {
+   "id": "s.drill.gerundio-23",
+   "kind": "sentence",
+   "theme": "gr-zin-gerundio",
+   "es": "Isabel está telefoneando a su madre.",
+   "nl": "Isabel is haar moeder aan het bellen.",
+   "blanks": [
+    {
+     "answer": "está telefoneando",
+     "hint": "telefonear"
+    }
+   ],
+   "instruction": "Vul estar + gerundio in (nu bezig)",
+   "grammarRef": "gr.gerundio",
+   "src": "course-md/IMG_20260918_191004215_AE.md",
+   "curated": true
+  },
+  {
+   "id": "s.drill.gerundio-24",
+   "kind": "sentence",
+   "theme": "gr-zin-gerundio",
+   "es": "Los niños están desayunando cereales.",
+   "nl": "De kinderen zijn cornflakes aan het eten als ontbijt.",
+   "blanks": [
+    {
+     "answer": "están desayunando",
+     "hint": "desayunar, ellos"
+    }
+   ],
+   "instruction": "Vul estar + gerundio in (nu bezig)",
+   "grammarRef": "gr.gerundio",
+   "src": "course-md/IMG_20260918_191004215_AE.md",
+   "curated": true
+  },
+  {
+   "id": "s.drill.gerundio-25",
+   "kind": "sentence",
+   "theme": "gr-zin-gerundio",
+   "es": "Estamos cenando pescado y ensalada.",
+   "nl": "We eten vis en salade als avondeten.",
+   "blanks": [
+    {
+     "answer": "Estamos cenando",
+     "hint": "cenar, nosotros"
+    }
+   ],
+   "instruction": "Vul estar + gerundio in (nu bezig)",
+   "grammarRef": "gr.gerundio",
+   "src": "course-md/IMG_20260918_191004215_AE.md",
+   "curated": true
+  },
+  {
+   "id": "s.drill.gerundio-26",
+   "kind": "sentence",
+   "theme": "gr-zin-gerundio",
+   "es": "El camarero está sirviendo el vino.",
+   "nl": "De ober schenkt de wijn in.",
+   "blanks": [
+    {
+     "answer": "está sirviendo",
+     "hint": "servir"
+    }
+   ],
+   "instruction": "Vul estar + gerundio in (nu bezig)",
+   "grammarRef": "gr.gerundio",
+   "src": "course-md/IMG_20260918_191004215_AE.md",
+   "note": "servir → sirviendo",
+   "curated": true
+  },
+  {
+   "id": "s.drill.gerundio-27",
+   "kind": "sentence",
+   "theme": "gr-zin-gerundio",
+   "es": "Mi hermano está bebiendo un zumo de naranja.",
+   "nl": "Mijn broer drinkt een sinaasappelsap.",
+   "blanks": [
+    {
+     "answer": "está bebiendo",
+     "hint": "beber"
+    }
+   ],
+   "instruction": "Vul estar + gerundio in (nu bezig)",
+   "grammarRef": "gr.gerundio",
+   "src": "course-md/IMG_20260918_191004215_AE.md",
+   "curated": true
+  },
+  {
+   "id": "s.drill.gerundio-28",
+   "kind": "sentence",
+   "theme": "gr-zin-gerundio",
+   "es": "¿Estáis comprando regalos para la fiesta?",
+   "nl": "Zijn jullie cadeautjes voor het feest aan het kopen?",
+   "blanks": [
+    {
+     "answer": "Estáis comprando",
+     "hint": "comprar, vosotros"
+    }
+   ],
+   "instruction": "Vul estar + gerundio in (nu bezig)",
+   "grammarRef": "gr.gerundio",
+   "src": "course-md/IMG_20260918_191004215_AE.md",
+   "curated": true
+  },
+  {
+   "id": "s.drill.gerundio-29",
+   "kind": "sentence",
+   "theme": "gr-zin-gerundio",
+   "es": "Estoy pagando la cuenta con la tarjeta.",
+   "nl": "Ik betaal de rekening met de kaart.",
+   "blanks": [
+    {
+     "answer": "Estoy pagando",
+     "hint": "pagar, yo"
+    }
+   ],
+   "instruction": "Vul estar + gerundio in (nu bezig)",
+   "grammarRef": "gr.gerundio",
+   "src": "course-md/IMG_20260918_191004215_AE.md",
+   "curated": true
+  },
+  {
+   "id": "s.drill.gerundio-30",
+   "kind": "sentence",
+   "theme": "gr-zin-gerundio",
+   "es": "Esa tienda está vendiendo ropa muy barata.",
+   "nl": "Die winkel verkoopt heel goedkope kleren.",
+   "blanks": [
+    {
+     "answer": "está vendiendo",
+     "hint": "vender"
+    }
+   ],
+   "instruction": "Vul estar + gerundio in (nu bezig)",
+   "grammarRef": "gr.gerundio",
+   "src": "course-md/IMG_20260918_191004215_AE.md",
+   "curated": true
+  },
+  {
+   "id": "s.drill.gerundio-31",
+   "kind": "sentence",
+   "theme": "gr-zin-gerundio",
+   "es": "Mis tíos están alquilando un piso en la playa.",
+   "nl": "Mijn oom en tante huren een appartement aan het strand.",
+   "blanks": [
+    {
+     "answer": "están alquilando",
+     "hint": "alquilar, ellos"
+    }
+   ],
+   "instruction": "Vul estar + gerundio in (nu bezig)",
+   "grammarRef": "gr.gerundio",
+   "src": "course-md/IMG_20260918_191004215_AE.md",
+   "curated": true
+  },
+  {
+   "id": "s.drill.gerundio-32",
+   "kind": "sentence",
+   "theme": "gr-zin-gerundio",
+   "es": "Estamos reservando una mesa para esta noche.",
+   "nl": "We reserveren een tafel voor vanavond.",
+   "blanks": [
+    {
+     "answer": "Estamos reservando",
+     "hint": "reservar, nosotros"
+    }
+   ],
+   "instruction": "Vul estar + gerundio in (nu bezig)",
+   "grammarRef": "gr.gerundio",
+   "src": "course-md/IMG_20260918_191004215_AE.md",
+   "curated": true
+  },
+  {
+   "id": "s.drill.gerundio-33",
+   "kind": "sentence",
+   "theme": "gr-zin-gerundio",
+   "es": "Los turistas están caminando por el centro.",
+   "nl": "De toeristen wandelen door het centrum.",
+   "blanks": [
+    {
+     "answer": "están caminando",
+     "hint": "caminar, ellos"
+    }
+   ],
+   "instruction": "Vul estar + gerundio in (nu bezig)",
+   "grammarRef": "gr.gerundio",
+   "src": "course-md/IMG_20260918_191004215_AE.md",
+   "curated": true
+  },
+  {
+   "id": "s.drill.gerundio-34",
+   "kind": "sentence",
+   "theme": "gr-zin-gerundio",
+   "es": "Hace calor y Pedro está corriendo por el parque.",
+   "nl": "Het is warm en Pedro loopt door het park te rennen.",
+   "blanks": [
+    {
+     "answer": "está corriendo",
+     "hint": "correr"
+    }
+   ],
+   "instruction": "Vul estar + gerundio in (nu bezig)",
+   "grammarRef": "gr.gerundio",
+   "src": "course-md/IMG_20260918_191004215_AE.md",
+   "curated": true
+  },
+  {
+   "id": "s.drill.gerundio-35",
+   "kind": "sentence",
+   "theme": "gr-zin-gerundio",
+   "es": "Nosotros estamos subiendo al tren.",
+   "nl": "Wij stappen op de trein.",
+   "blanks": [
+    {
+     "answer": "estamos subiendo",
+     "hint": "subir, nosotros"
+    }
+   ],
+   "instruction": "Vul estar + gerundio in (nu bezig)",
+   "grammarRef": "gr.gerundio",
+   "src": "course-md/IMG_20260918_191004215_AE.md",
+   "curated": true
+  },
+  {
+   "id": "s.drill.gerundio-36",
+   "kind": "sentence",
+   "theme": "gr-zin-gerundio",
+   "es": "Luis está viniendo a mi casa ahora mismo.",
+   "nl": "Luis komt nu naar mijn huis.",
+   "blanks": [
+    {
+     "answer": "está viniendo",
+     "hint": "venir"
+    }
+   ],
+   "instruction": "Vul estar + gerundio in (nu bezig)",
+   "grammarRef": "gr.gerundio",
+   "src": "course-md/IMG_20260918_191004215_AE.md",
+   "note": "venir → viniendo",
+   "curated": true
+  },
+  {
+   "id": "s.drill.gerundio-37",
+   "kind": "sentence",
+   "theme": "gr-zin-gerundio",
+   "es": "Estoy duchándome y no puedo ponerme al teléfono.",
+   "nl": "Ik sta onder de douche en kan niet aan de telefoon komen.",
+   "blanks": [
+    {
+     "answer": "Estoy duchándome",
+     "hint": "ducharse, yo",
+     "alt": [
+      "Me estoy duchando"
+     ]
+    }
+   ],
+   "instruction": "Vul estar + gerundio in (nu bezig)",
+   "grammarRef": "gr.gerundio",
+   "src": "course-md/IMG_20260918_191004215_AE.md",
+   "note": "Het voornaamwoord hangt achter de gerundio (met accent) of staat vóór estar.",
+   "curated": true
+  },
+  {
+   "id": "s.drill.gerundio-38",
+   "kind": "sentence",
+   "theme": "gr-zin-gerundio",
+   "es": "Mi hermana está peinándose delante del espejo.",
+   "nl": "Mijn zus kamt haar haar voor de spiegel.",
+   "blanks": [
+    {
+     "answer": "está peinándose",
+     "hint": "peinarse",
+     "alt": [
+      "se está peinando"
+     ]
+    }
+   ],
+   "instruction": "Vul estar + gerundio in (nu bezig)",
+   "grammarRef": "gr.gerundio",
+   "src": "course-md/IMG_20260918_191004215_AE.md",
+   "note": "Het voornaamwoord hangt achter de gerundio (met accent) of staat vóór estar.",
+   "curated": true
+  },
+  {
+   "id": "s.drill.gerundio-39",
+   "kind": "sentence",
+   "theme": "gr-zin-gerundio",
+   "es": "Estamos lavándonos las manos antes de comer.",
+   "nl": "We wassen onze handen voor het eten.",
+   "blanks": [
+    {
+     "answer": "Estamos lavándonos",
+     "hint": "lavarse, nosotros",
+     "alt": [
+      "Nos estamos lavando"
+     ]
+    }
+   ],
+   "instruction": "Vul estar + gerundio in (nu bezig)",
+   "grammarRef": "gr.gerundio",
+   "src": "course-md/IMG_20260918_191004215_AE.md",
+   "note": "Het voornaamwoord hangt achter de gerundio (met accent) of staat vóór estar.",
+   "curated": true
+  },
+  {
+   "id": "s.drill.gerundio-40",
+   "kind": "sentence",
+   "theme": "gr-zin-gerundio",
+   "es": "Estoy abriendo la ventana porque hace calor.",
+   "nl": "Ik open het raam omdat het warm is.",
+   "blanks": [
+    {
+     "answer": "Estoy abriendo",
+     "hint": "abrir, yo"
+    }
+   ],
+   "instruction": "Vul estar + gerundio in (nu bezig)",
+   "grammarRef": "gr.gerundio",
+   "src": "course-md/IMG_20260918_191004215_AE.md",
+   "curated": true
+  },
+  {
+   "id": "s.drill.gerundio-41",
+   "kind": "sentence",
+   "theme": "gr-zin-gerundio",
+   "es": "Ana está cerrando la puerta con llave.",
+   "nl": "Ana sluit de deur af met de sleutel.",
+   "blanks": [
+    {
+     "answer": "está cerrando",
+     "hint": "cerrar"
+    }
+   ],
+   "instruction": "Vul estar + gerundio in (nu bezig)",
+   "grammarRef": "gr.gerundio",
+   "src": "course-md/IMG_20260918_191004215_AE.md",
+   "curated": true
+  },
+  {
+   "id": "s.drill.gerundio-42",
+   "kind": "sentence",
+   "theme": "gr-zin-gerundio",
+   "es": "Estoy encontrando muchos errores en el texto.",
+   "nl": "Ik vind veel fouten in de tekst.",
+   "blanks": [
+    {
+     "answer": "Estoy encontrando",
+     "hint": "encontrar, yo"
+    }
+   ],
+   "instruction": "Vul estar + gerundio in (nu bezig)",
+   "grammarRef": "gr.gerundio",
+   "src": "course-md/IMG_20260918_191004215_AE.md",
+   "curated": true
+  },
+  {
+   "id": "s.drill.gerundio-43",
+   "kind": "sentence",
+   "theme": "gr-zin-gerundio",
+   "es": "¿Estás pensando en las vacaciones?",
+   "nl": "Denk je aan de vakantie?",
+   "blanks": [
+    {
+     "answer": "Estás pensando",
+     "hint": "pensar, tú"
+    }
+   ],
+   "instruction": "Vul estar + gerundio in (nu bezig)",
+   "grammarRef": "gr.gerundio",
+   "src": "course-md/IMG_20260918_191004215_AE.md",
+   "curated": true
+  },
+  {
+   "id": "s.drill.gerundio-44",
+   "kind": "sentence",
+   "theme": "gr-zin-gerundio",
+   "es": "Mis padres están viviendo en un pueblo pequeño.",
+   "nl": "Mijn ouders wonen in een klein dorp.",
+   "blanks": [
+    {
+     "answer": "están viviendo",
+     "hint": "vivir, ellos"
+    }
+   ],
+   "instruction": "Vul estar + gerundio in (nu bezig)",
+   "grammarRef": "gr.gerundio",
+   "src": "course-md/IMG_20260918_191004215_AE.md",
+   "curated": true
+  },
+  {
+   "id": "s.drill.gerundio-45",
+   "kind": "sentence",
+   "theme": "gr-zin-gerundio",
+   "es": "Estoy estudiando para el examen de español.",
+   "nl": "Ik studeer voor het examen Spaans.",
+   "blanks": [
+    {
+     "answer": "Estoy estudiando",
+     "hint": "estudiar, yo"
+    }
+   ],
+   "instruction": "Vul estar + gerundio in (nu bezig)",
+   "grammarRef": "gr.gerundio",
+   "src": "course-md/IMG_20260918_191004215_AE.md",
+   "curated": true
+  },
+  {
+   "id": "s.drill.gerundio-46",
+   "kind": "sentence",
+   "theme": "gr-zin-gerundio",
+   "es": "Ahora estamos aprendiendo los verbos irregulares.",
+   "nl": "Nu leren we de onregelmatige werkwoorden.",
+   "blanks": [
+    {
+     "answer": "Estamos aprendiendo",
+     "hint": "aprender, nosotros"
+    }
+   ],
+   "instruction": "Vul estar + gerundio in (nu bezig)",
+   "grammarRef": "gr.gerundio",
+   "src": "course-md/IMG_20260918_191004215_AE.md",
+   "curated": true
+  },
+  {
+   "id": "s.drill.gerundio-47",
+   "kind": "sentence",
+   "theme": "gr-zin-gerundio",
+   "es": "Mi abuelo está durmiendo la siesta.",
+   "nl": "Mijn opa doet een middagdutje.",
+   "blanks": [
+    {
+     "answer": "está durmiendo",
+     "hint": "dormir"
+    }
+   ],
+   "instruction": "Vul estar + gerundio in (nu bezig)",
+   "grammarRef": "gr.gerundio",
+   "src": "course-md/IMG_20260918_191004215_AE.md",
+   "note": "dormir → durmiendo",
+   "curated": true
+  },
+  {
+   "id": "s.drill.gerundio-48",
+   "kind": "sentence",
+   "theme": "gr-zin-gerundio",
+   "es": "Los niños están riendo en el jardín.",
+   "nl": "De kinderen lachen in de tuin.",
+   "blanks": [
+    {
+     "answer": "están riendo",
+     "hint": "reír, ellos"
+    }
+   ],
+   "instruction": "Vul estar + gerundio in (nu bezig)",
+   "grammarRef": "gr.gerundio",
+   "src": "course-md/IMG_20260918_191004215_AE.md",
+   "note": "reír → riendo (zonder y)",
+   "curated": true
+  },
+  {
+   "id": "s.drill.gerundio-49",
+   "kind": "sentence",
+   "theme": "gr-zin-gerundio",
+   "es": "Está cayendo mucha nieve esta noche.",
+   "nl": "Er valt veel sneeuw vanavond.",
+   "blanks": [
+    {
+     "answer": "Está cayendo",
+     "hint": "caer"
+    }
+   ],
+   "instruction": "Vul estar + gerundio in (nu bezig)",
+   "grammarRef": "gr.gerundio",
+   "src": "course-md/IMG_20260918_191004215_AE.md",
+   "note": "caer → cayendo",
+   "curated": true
+  },
+  {
+   "id": "s.drill.gerundio-50",
+   "kind": "sentence",
+   "theme": "gr-zin-gerundio",
+   "es": "Julia está vistiéndose para la fiesta.",
+   "nl": "Julia kleedt zich om voor het feest.",
+   "blanks": [
+    {
+     "answer": "está vistiéndose",
+     "hint": "vestirse",
+     "alt": [
+      "se está vistiendo"
+     ]
+    }
+   ],
+   "instruction": "Vul estar + gerundio in (nu bezig)",
+   "grammarRef": "gr.gerundio",
+   "src": "course-md/IMG_20260918_191004215_AE.md",
+   "note": "vestir → vistiendo; het voornaamwoord hangt achter de gerundio of staat vóór estar.",
+   "curated": true
+  },
+  {
    "id": "s.drill.ir-a-1",
    "kind": "sentence",
    "theme": "gr-zin-presente",
