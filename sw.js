@@ -40,6 +40,7 @@ const ASSETS = [
   './js/types/stemChange.js',
   './js/types/irregularVerb.js',
   './js/types/verbType.js',
+  './js/types/verbSort.js',
   './js/types/fillGap.js',
   './js/types/wordBank.js',
   './js/types/conjugation.js',

@@ -379,6 +379,40 @@ h1.brand { display: flex; align-items: center; gap: 8px; }
 .tile.is-used { opacity: .25; box-shadow: none; }
 .tile--placed { border-color: var(--brand); }
 
+/* Werkwoorden sorteren */
+.sort-board { display: grid; gap: 8px; }
+.sort-heads, .sort-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+.sort-head {
+  padding: 6px 4px; border-radius: 8px; text-align: center;
+  font-size: .78rem; font-weight: 700; hyphens: manual;
+  color: var(--ink-soft); background: var(--surface-2);
+  transition: background .12s, color .12s, transform .12s;
+}
+.sort-head.is-hot { transform: scale(1.06); color: var(--brand-ink); background: var(--brand); }
+.sort-head--regelmatig.is-hot { color: #fff; background: var(--ok); }
+.sort-head--onregelmatig.is-hot { color: #fff; background: var(--no); }
+.sort-row > * { grid-row: 1; }
+.sort-cell { min-height: 48px; border: 2px dashed var(--line); border-radius: 10px; cursor: pointer; }
+.sort-row.is-done .sort-cell { cursor: default; }
+.sort-tile {
+  grid-column: 1 / -1; justify-self: center; z-index: 1;
+  min-height: 48px; padding: 8px 14px;
+  background: var(--surface); color: var(--ink);
+  border: 2px solid var(--line); border-radius: 10px; box-shadow: var(--shadow);
+  font-size: 1rem; cursor: grab; touch-action: pan-y; user-select: none;
+}
+.sort-tile:not(.is-placed) { border-style: dashed; border-color: var(--brand); }
+.sort-row:not(.is-done) .sort-tile:not(.is-placed)::before { content: "‹ "; color: var(--brand); }
+.sort-row:not(.is-done) .sort-tile:not(.is-placed)::after { content: " ›"; color: var(--brand); }
+.sort-tile.is-placed { justify-self: stretch; border-color: var(--brand); }
+.sort-tile.is-dragging { cursor: grabbing; box-shadow: var(--shadow-lift); transition: none; z-index: 2; }
+.sort-tile.is-correct { border-color: var(--ok); background: var(--ok-bg); font-weight: 700; }
+.sort-tile.is-wrong { border-color: var(--no); background: var(--no-bg); text-decoration: line-through; }
+.sort-fix {
+  display: flex; align-items: center; justify-content: center;
+  font-size: .85rem; font-weight: 700; color: var(--ok);
+}
+
 /* Koppelronde */
 .match-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 #screen-match .q-instruction { margin-bottom: var(--pad); }

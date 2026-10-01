@@ -24,6 +24,7 @@ import oddOneOut from './oddOneOut.js';
 import stemChange from './stemChange.js';
 import irregularVerb from './irregularVerb.js';
 import verbType from './verbType.js';
+import verbSort from './verbSort.js';
 import { conjugationGrid, conjugationSingle } from './conjugation.js';
 import { listenType, listenChoose } from './listen.js';
 import choice from './choice.js';
@@ -40,6 +41,7 @@ export const TYPES = [
   stemChange,
   irregularVerb,
   verbType,
+  verbSort,
   fillGap,
   wordBank,
   conjugationGrid,
@@ -73,6 +75,7 @@ const WEIGHTS = {
   stemChange: 2,
   irregularVerb: 2,
   verbType: 1,
+  verbSort: 1,
   // Deze vormen zijn de enige voor hun soort atoom: het gewicht doet er dan
   // niet toe, behalve bij een dialoogregel, waar antwoorden net iets meer oplevert.
   choice: 1,
