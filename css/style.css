@@ -236,6 +236,12 @@ h1.brand { display: flex; align-items: center; gap: 8px; }
 .question { display: flex; flex-direction: column; gap: var(--gap); }
 
 .q-instruction { margin: 0; font-size: 1.05rem; font-weight: 600; }
+.kind-badge {
+  display: inline-block; padding: 0 .45em; border-radius: 6px;
+  font-weight: 700; line-height: 1.5;
+}
+.kind-badge.is-regular { color: var(--ok); background: var(--ok-bg); }
+.kind-badge.is-irregular { color: var(--no); background: var(--no-bg); }
 .q-hint { margin: 0; color: var(--ink-soft); font-size: .92rem; }
 
 .q-prompt {

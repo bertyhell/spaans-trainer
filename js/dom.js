@@ -13,11 +13,26 @@ export function el(tag, attrs = {}, ...children) {
     } else if (k === 'html') node.innerHTML = v;
     else node.setAttribute(k, v === true ? '' : v);
   }
+  const badges = node.classList.contains('q-instruction');
   for (const c of children.flat()) {
     if (c == null || c === false) continue;
-    node.append(c instanceof Node ? c : document.createTextNode(String(c)));
+    if (c instanceof Node) node.append(c);
+    else if (badges) node.append(...verbKindBadges(String(c)));
+    else node.append(document.createTextNode(String(c)));
   }
   return node;
+}
+
+/* In een opdracht springt "regelmatig" (groen) of "onregelmatig" (rood) eruit,
+   zodat je meteen ziet wat er gevraagd wordt. */
+const VERB_KIND = /(niet regelmatig\w*|onregelmatig\w*|regelmatig\w*)/i;
+
+function verbKindBadges(text) {
+  return text.split(VERB_KIND).filter(Boolean).map(part => {
+    if (!VERB_KIND.test(part)) return document.createTextNode(part);
+    const irregular = /^(on|niet)/i.test(part);
+    return el('span', { class: `kind-badge ${irregular ? 'is-irregular' : 'is-regular'}` }, part);
+  });
 }
 
 export const clear = node => { while (node.firstChild) node.removeChild(node.firstChild); };

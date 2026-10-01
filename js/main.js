@@ -31,7 +31,30 @@ let lastLesson = null;     // { themes, mistakes } van de laatste les
 function show(id) {
   document.querySelectorAll('.screen').forEach(s => s.classList.toggle('is-active', s.id === id));
   window.scrollTo(0, 0);
+  // Eén history-item buiten het startscherm, zodat 'terug' eerst naar het
+  // startscherm gaat in plaats van de app/browser te sluiten.
+  const inApp = history.state?.inApp;
+  if (id !== 'screen-start' && !inApp) history.pushState({ inApp: true }, '');
+  else if (id === 'screen-start' && inApp) history.back();
 }
+
+// Terugknop: gedraag je als de sluitknop van het actieve scherm.
+const BACK_BUTTONS = {
+  'screen-lesson': '#btn-quit',
+  'screen-match': '#btn-quit-match',
+  'screen-flash': '#btn-quit-flash',
+  'screen-result': '#btn-home',
+  'screen-settings': '#btn-settings-close',
+  'screen-reports': '#btn-reports-close',
+  'screen-mistakes': '#btn-mistakes-close',
+};
+window.addEventListener('popstate', () => {
+  const active = document.querySelector('.screen.is-active')?.id;
+  if (!active || active === 'screen-start') return;
+  $(BACK_BUTTONS[active])?.click();
+  // Nog niet op het startscherm (bv. terug naar instellingen): item herstellen.
+  if (!$('#screen-start').classList.contains('is-active')) history.pushState({ inApp: true }, '');
+});
 
 function toast(msg, ms = 2200) {
   const t = $('#toast');
