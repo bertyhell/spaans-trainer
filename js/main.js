@@ -461,8 +461,9 @@ function renderReview(results) {
     }, '⚠️');
 
     const li = reviewRow({
-      mark: r.correct ? '✓' : '✗', markLabel: r.correct ? 'juist' : 'fout',
-      q, a, className: `mistake${r.correct ? ' is-ok' : ''}`,
+      mark: r.almost ? '≈' : r.correct ? '✓' : '✗',
+      markLabel: r.almost ? 'bijna juist' : r.correct ? 'juist' : 'fout',
+      q, a, className: `mistake${r.almost ? ' is-almost' : r.correct ? ' is-ok' : ''}`,
       detail: el('div', { class: 'mistake-detail', hidden: true }, ...detailRows(r)),
       extras: [flag],
     });

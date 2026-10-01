@@ -568,6 +568,7 @@ h1.brand { display: flex; align-items: center; gap: 8px; }
 .mistake.is-arriving { animation: review-in .42s cubic-bezier(.34, 1.56, .64, 1) both; }
 .mistake.is-arriving .mistake-mark { display: inline-block; animation: pop .42s .08s both; }
 .mistake.is-ok .mistake-mark { color: var(--ok); }
+.mistake.is-almost .mistake-mark, .mistake.is-almost .mistake-a { color: var(--almost); }
 .mistake-text { display: flex; justify-content: space-between; gap: 10px; flex: 1; min-width: 0; }
 .mistake-a { font-weight: 700; color: var(--ok); text-align: right; }
 .mistake-toggle {
