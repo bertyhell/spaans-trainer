@@ -238,7 +238,7 @@ h1.brand { display: flex; align-items: center; gap: 8px; }
 .q-emoji { font-size: 2.4rem; line-height: 1; }
 .q-word { font-size: 1.5rem; font-weight: 700; }
 .q-word--bare { letter-spacing: .04em; }
-.q-tense, .q-person, .q-infinitive { color: var(--ink-soft); font-size: .95rem; }
+.q-tense, .q-person, .q-infinitive, .q-translation { color: var(--ink-soft); font-size: .95rem; }
 /* Toetsvragen, leesteksten, dialogen en klemtoon */
 .q-context { margin: 0; padding: 10px 14px; border-left: 4px solid var(--brand); background: var(--surface-2); border-radius: 0 var(--radius) var(--radius) 0; }
 .reading { background: var(--surface); border: 2px solid var(--line); border-radius: var(--radius-lg); padding: 10px 14px; }

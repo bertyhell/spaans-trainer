@@ -8,11 +8,17 @@
  */
 
 import { el, shuffle, sample, optionList } from '../dom.js';
-import { conjugationFamily, PERSON_LABELS, PERSON_ORDER, TENSE_LABELS } from '../data.js';
+import { conjugationFamily, verbTranslation, PERSON_LABELS, PERSON_ORDER, TENSE_LABELS } from '../data.js';
 import { checkAnswer } from '../check.js';
 import { mastery, itemKey } from '../scheduler.js';
 
 const tenseLabel = t => TENSE_LABELS[t] ?? t;
+
+/** "(spreken)" achter de infinitief, of niets als het woord niet bekend is. */
+const translation = verb => {
+  const nl = verbTranslation(verb);
+  return nl ? el('span', { class: 'q-translation' }, `(${nl})`) : null;
+};
 
 /** Hoeveel vakjes je zelf invult: 1 bij een nieuw werkwoord, 6 als je het
  *  helemaal beheerst. De rest staat al ingevuld als steuntje. */
@@ -43,6 +49,7 @@ export const conjugationGrid = {
       el('p', { class: 'q-instruction' }, 'Vervoeg dit werkwoord volledig'),
       el('div', { class: 'q-prompt' },
         el('span', { class: 'q-word', lang: 'es' }, item.atom.verb),
+        translation(item.atom.verb),
         el('span', { class: 'q-tense' }, tenseLabel(item.atom.tense)),
       ),
     );
@@ -137,7 +144,8 @@ export const conjugationSingle = {
         el('span', { class: 'q-blank' }, '___'),
         el('span', { class: 'q-infinitive' }, `(${atom.verb})`),
       ),
-      el('p', { class: 'q-hint' }, tenseLabel(atom.tense)),
+      el('p', { class: 'q-hint' },
+        [verbTranslation(atom.verb), tenseLabel(atom.tense)].filter(Boolean).join(' · ')),
     );
 
     const opts = optionList([...new Set(options)], { lang: 'es', onChoose: () => ctx.ready(true) });

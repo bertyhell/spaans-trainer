@@ -182,6 +182,18 @@ export function conjugationFamily(atom) {
   return byFamily.get(`${atom.verb}|${atom.tense}`) ?? [];
 }
 
+let verbNl = null;
+/** Vertaling van een infinitief ("hablar" → "spreken"), of undefined. */
+export function verbTranslation(verb) {
+  if (!verbNl) {
+    verbNl = new Map();
+    for (const a of course.atoms) {
+      if (a.kind === 'vocab' && a.nl?.length && !verbNl.has(a.es)) verbNl.set(a.es, a.nl[0]);
+    }
+  }
+  return verbNl.get(verb);
+}
+
 /** Eén vervoegde vorm, of undefined. */
 export const conjugatedForm = (verb, tense, person) =>
   byFamily.get(`${verb}|${tense}`)?.find(a => a.person === person)?.form;
