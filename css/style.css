@@ -341,7 +341,7 @@ h1.brand { display: flex; align-items: center; gap: 8px; }
 .option.is-wrong::after { content: " ✗"; color: var(--no); }
 .option:disabled { cursor: default; }
 
-/* "Hoort er niet bij": de vertaling staat rechts, maar pas bij het nakijken.
+/* Keuzeknop met vertaling rechts, maar pas bij het nakijken.
  * Tijdens de vraag zou ze het antwoord weggeven. */
 .option--odd { display: grid; grid-template-columns: 1fr 1.5em 1fr; align-items: center; gap: 10px; }
 .option-word { display: flex; align-items: center; gap: 8px; grid-column: 1; grid-row: 1; }
@@ -349,6 +349,7 @@ h1.brand { display: flex; align-items: center; gap: 8px; }
 /* ✓/✗ in de middenkolom, zodat de vertalingen onder elkaar uitlijnen. */
 .option--odd::after { grid-column: 2; grid-row: 1; text-align: center; }
 .options:not(.is-revealed) .option-nl { visibility: hidden; }
+
 
 /* Vervoegingstabel */
 .conj-grid { display: grid; gap: 8px; }
@@ -379,9 +380,9 @@ h1.brand { display: flex; align-items: center; gap: 8px; }
 .tile.is-used { opacity: .25; box-shadow: none; }
 .tile--placed { border-color: var(--brand); }
 
-/* Werkwoorden sorteren */
+/* Schuifbord: werkwoorden sorteren, welk woord hoort er niet bij */
 .sort-board { display: grid; gap: 8px; }
-.sort-heads, .sort-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+.sort-heads, .sort-row { display: grid; grid-template-columns: repeat(var(--sort-cols, 3), 1fr); gap: 6px; }
 .sort-head {
   padding: 6px 4px; border-radius: 8px; text-align: center;
   font-size: .78rem; font-weight: 700; hyphens: manual;
@@ -408,6 +409,11 @@ h1.brand { display: flex; align-items: center; gap: 8px; }
 .sort-tile.is-dragging { cursor: grabbing; box-shadow: var(--shadow-lift); transition: none; z-index: 2; }
 .sort-tile.is-correct { border-color: var(--ok); background: var(--ok-bg); font-weight: 700; }
 .sort-tile.is-wrong { border-color: var(--no); background: var(--no-bg); text-decoration: line-through; }
+.sort-tile .option-emoji { margin-right: 6px; }
+/* De vertaling pas bij het nakijken: tijdens de vraag zou ze het antwoord weggeven. */
+/* inline-block: zo loopt de doorhaling van een fout kaartje niet door de vertaling. */
+.sort-nl { display: inline-block; width: 100%; font-size: .8rem; font-weight: 400; color: var(--ink-soft); }
+.sort-row:not(.is-done) .sort-nl { display: none; }
 .sort-fix {
   display: flex; align-items: center; justify-content: center;
   font-size: .85rem; font-weight: 700; color: var(--ok);

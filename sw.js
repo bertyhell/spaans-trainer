@@ -31,6 +31,7 @@ const ASSETS = [
   './js/flashcards.js',
   './js/speech.js',
   './js/audio.js',
+  './js/sortBoard.js',
   './js/types/index.js',
   './js/types/multipleChoice.js',
   './js/types/typeAnswer.js',
