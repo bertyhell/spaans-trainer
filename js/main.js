@@ -1234,6 +1234,26 @@ function wire() {
       if (!$('#btn-check').disabled) doCheck();
       return;
     }
+    // Schuifbord: Enter op een kaartje controleert (in plaats van het een kolom
+    // op te schuiven). Pijltjes zonder focus pakken het eerste kaartje; daarna
+    // regelt het kaartje zelf boven/onder (rij) en links/rechts (kolom).
+    const sortTiles = [...document.querySelectorAll('#question-root .sort-tile:not(:disabled)')];
+    if (sortTiles.length && !answered) {
+      const onTile = document.activeElement?.matches('#question-root .sort-tile');
+      if (e.key === 'Enter' && onTile) {
+        e.preventDefault();
+        if (!$('#btn-check').disabled) doCheck();
+        return;
+      }
+      if (!onTile && ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(e.key)) {
+        e.preventDefault();
+        sortTiles[0].focus();
+        if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+          sortTiles[0].dispatchEvent(new KeyboardEvent('keydown', { key: e.key, bubbles: false }));
+        }
+        return;
+      }
+    }
     // Pijltjes lopen rond door de opties en kiezen meteen. De lijst is soms één
     // kolom, soms een raster, dus links/boven en rechts/onder betekenen hetzelfde.
     const step = { ArrowDown: 1, ArrowRight: 1, ArrowUp: -1, ArrowLeft: -1 }[e.key];
