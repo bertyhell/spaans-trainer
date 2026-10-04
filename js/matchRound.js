@@ -34,6 +34,9 @@ export class MatchRound {
     // geschud zijn, staat een nieuw paar toch niet op dezelfde hoogte.
     this.leftSlots = scheduler.shuffle(this.active);
     this.rightSlots = scheduler.shuffle(this.active);
+    // Per ronde willekeurig: Nederlands links of rechts. Binnen een ronde blijft
+    // dat vast, anders moet je bij elk woord opnieuw zoeken welke kant wat is.
+    this.dutchLeft = Math.random() < 0.5;
     this.matched = 0;
     this.attempts = 0;
     this.wrongAttempts = 0;
@@ -47,8 +50,8 @@ export class MatchRound {
   /** De twee kolommen. Vaste volgorde: alleen vervangen plaatsen veranderen. */
   columns() {
     return {
-      left: this.leftSlots.map(a => cell(a)),
-      right: this.rightSlots.map(a => cell(a, true)),
+      left: this.leftSlots.map(a => cell(a, this.dutchLeft)),
+      right: this.rightSlots.map(a => cell(a, !this.dutchLeft)),
     };
   }
 
@@ -105,8 +108,8 @@ export class MatchRound {
         return { index, cell: a ? cell(a, dutch) : null };
       });
     };
-    const left = refill(this.leftSlots, false);
-    const right = refill(this.rightSlots, true);
+    const left = refill(this.leftSlots, this.dutchLeft);
+    const right = refill(this.rightSlots, !this.dutchLeft);
     this.active = this.active.filter(a => !freed.includes(a.id)).concat(fresh);
 
     return { ok: true, atom, done: this.finished, left, right };
