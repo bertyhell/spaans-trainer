@@ -39,6 +39,11 @@ t('notatie met schuine streep aanvaard', answer('francés/-esa', ['francés/-esa
 t('notatie streng op accenten', answer('riquísimo/-a', ['riquísimo/-a'], { strictAccents: true }), true);
 t('vrouwelijke vorm uit notatie', answer('francesa', ['francés/-esa']), true);
 
+t('opmerking toont de benaderde vorm', note('zonnecreme', ['de zonnebrandcrème', 'de zonnecrème']), '¡Casi! Let op de accenten: de zonnecrème');
+
+t('Nederlands: accent telt niet mee', checkAnswer('zonnecreme', ['de zonnecrème'], { ignoreAccents: true }), { correct: true, expected: 'de zonnecrème', note: null });
+t('Nederlands: typfout blijft bijna', checkAnswer('zonnecrene', ['de zonnecrème'], { ignoreAccents: true }).almost, true);
+
 /* --- typfout is bijna, niet juist --- */
 t('typfout in vervoeging is bijna', checkAnswer('salíz', ['salís'], { rejectNear: ['salgo', 'sales', 'sale', 'salimos', 'salen'] }).almost, true);
 

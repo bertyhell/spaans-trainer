@@ -46,7 +46,8 @@ export default {
     return {
       focus() { input.focus(); },
       check() {
-        const r = checkAnswer(input.value, answers);
+        // Accenten zijn enkel in het Spaans leerstof.
+        const r = checkAnswer(input.value, answers, { ignoreAccents: !toSpanish });
         return { ...r, given: input.value };
       },
       reveal({ correct, almost }) {
