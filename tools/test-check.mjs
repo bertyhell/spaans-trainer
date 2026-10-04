@@ -34,6 +34,14 @@ t('ontbrekend accent geeft opmerking', /Let op de accenten/.test(note('cancion',
 t('juist accent geeft geen opmerking', note('canción', ['canción']), null);
 t('strictAccents weigert', answer('cancion', ['canción'], { strictAccents: true }), false);
 
+/* --- de notatie uit de woordenlijst, letterlijk overgenomen --- */
+t('notatie met schuine streep aanvaard', answer('francés/-esa', ['francés/-esa']), true);
+t('notatie streng op accenten', answer('riquísimo/-a', ['riquísimo/-a'], { strictAccents: true }), true);
+t('vrouwelijke vorm uit notatie', answer('francesa', ['francés/-esa']), true);
+
+/* --- typfout is bijna, niet juist --- */
+t('typfout in vervoeging is bijna', checkAnswer('salíz', ['salís'], { rejectNear: ['salgo', 'sales', 'sale', 'salimos', 'salen'] }).almost, true);
+
 /* --- de ñ is een eigen letter, geen accent --- */
 t('ano is niet año', answer('ano', ['año']), false);
 t('año exact', answer('año', ['año']), true);

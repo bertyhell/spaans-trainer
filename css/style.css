@@ -358,6 +358,7 @@ h1.brand { display: flex; align-items: center; gap: 8px; }
 .conj-input { min-height: 46px; font-size: 1rem; }
 .conj-input.is-given { opacity: .6; border-style: dashed; pointer-events: none; }
 .conj-fix { grid-column: 2; font-size: .85rem; color: var(--ok); font-weight: 700; }
+.conj-fix.is-almost { color: var(--almost); }
 
 /* Zin bouwen */
 .wordbank-answer {

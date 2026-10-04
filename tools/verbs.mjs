@@ -60,7 +60,7 @@ export const VERB_THEMES = [
     id: 'ww-dingen', label: 'Zoeken, openen en tonen', emoji: '🔍', activity: true,
     verbs: [
       'buscar', 'encontrar', 'perder', 'esconder', 'mostrar',
-      'abrir', 'cerrar', 'encender', 'añadir',
+      'abrir', 'cerrar', 'encender', 'añadir', 'señalar',
     ],
   },
   {

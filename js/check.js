@@ -200,7 +200,9 @@ export function checkAnswer(input, accepted, { strictAccents = false, rejectNear
   // welk lidwoord er af ging, zodat "el mano" niet stiekem als "mano" doorgaat.
   const variants = [];
   for (const a of list) {
-    for (const x of expandVariants(a)) {
+    // De notatie zelf telt ook: wie "francés/-esa" overneemt zoals het in de
+    // woordenlijst staat, heeft het niet fout.
+    for (const x of new Set([a, ...expandVariants(a)])) {
       const n = normalize(x);
       variants.push({ s: n, art: null });
       const art = leadingArticle(n);

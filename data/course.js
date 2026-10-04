@@ -211,8 +211,20 @@ window.COURSE = {
   },
   {
    "id": "plaatsen-en-natuur",
-   "label": "Plaatsen en natuur",
-   "emoji": "🏞️",
+   "label": "Plaatsen en gebouwen",
+   "emoji": "🏘️",
+   "group": "g-reizen"
+  },
+  {
+   "id": "aardrijkskunde",
+   "label": "Streken, bergen en water",
+   "emoji": "🗺️",
+   "group": "g-reizen"
+  },
+  {
+   "id": "dieren-en-planten",
+   "label": "Dieren en planten",
+   "emoji": "🐾",
    "group": "g-reizen"
   },
   {
@@ -679,6 +691,12 @@ window.COURSE = {
    "group": "g-grammatica"
   },
   {
+   "id": "aanwijzend",
+   "label": "Dit en dat (aanwijzend)",
+   "emoji": "👉",
+   "group": "g-grammatica"
+  },
+  {
    "id": "onbepaalde-voornaamwoorden",
    "label": "De onbepaalde voornaamwoorden",
    "emoji": "•",
@@ -705,12 +723,6 @@ window.COURSE = {
   {
    "id": "verleden-tijden",
    "label": "Verleden tijden",
-   "emoji": "•",
-   "group": "g-grammatica"
-  },
-  {
-   "id": "grammaticatermen",
-   "label": "Grammaticale termen",
    "emoji": "•",
    "group": "g-grammatica"
   },
@@ -983,7 +995,10 @@ window.COURSE = {
    "theme": "aan-het-doen",
    "es": "estoy haciendo una pausa",
    "nl": [
-    "ik ben pauze aan het houden"
+    "ik ben pauze aan het houden",
+    "ik ben pauze aan het nemen",
+    "ik ben een pauze aan het nemen",
+    "ik ben een pauze aan het houden"
    ],
    "gender": null,
    "number": null,
@@ -3605,24 +3620,6 @@ window.COURSE = {
    ]
   },
   {
-   "id": "v.el-camino-de-santiago",
-   "kind": "vocab",
-   "theme": "camino",
-   "es": "el Camino de Santiago",
-   "nl": [
-    "het Jacobspad"
-   ],
-   "gender": "m",
-   "number": "sg",
-   "emoji": "🐚",
-   "note": "De pelgrimsroute naar Santiago de Compostella.",
-   "src": "spanish-md/IMG_20260918_203744401_AE.md",
-   "pos": "noun",
-   "also": [
-    "examen-u1"
-   ]
-  },
-  {
    "id": "v.el-camino-del-norte",
    "kind": "vocab",
    "theme": "camino",
@@ -3859,7 +3856,8 @@ window.COURSE = {
    "theme": "camino",
    "es": "sencillo/-a",
    "nl": [
-    "eenvoudig"
+    "eenvoudig",
+    "simpel"
    ],
    "gender": null,
    "number": null,
@@ -3924,7 +3922,8 @@ window.COURSE = {
    "theme": "dagelijkse-routine",
    "es": "comenzar",
    "nl": [
-    "beginnen"
+    "beginnen",
+    "starten"
    ],
    "gender": null,
    "number": null,
@@ -4008,7 +4007,8 @@ window.COURSE = {
    "es": "frecuentemente",
    "nl": [
     "vaak",
-    "regelmatig"
+    "regelmatig",
+    "frequent"
    ],
    "gender": null,
    "number": null,
@@ -4994,6 +4994,7 @@ window.COURSE = {
    "number": null,
    "src": "spanish-md/IMG_20260918_203753249_AE.md",
    "pos": "adj",
+   "emoji": "💸",
    "also": [
     "examen-u1"
    ]
@@ -6303,7 +6304,7 @@ window.COURSE = {
   {
    "id": "v.el-alcance",
    "kind": "vocab",
-   "theme": "grammaticatermen",
+   "theme": "bijwoord",
    "es": "el alcance",
    "nl": [
     "het bereik"
@@ -6311,55 +6312,6 @@ window.COURSE = {
    "gender": "m",
    "number": "sg",
    "src": "spanish-md/IMG_20260918_203757754_AE.md",
-   "pos": "noun",
-   "also": [
-    "examen-u1"
-   ]
-  },
-  {
-   "id": "v.el-comparativo",
-   "kind": "vocab",
-   "theme": "grammaticatermen",
-   "es": "el comparativo",
-   "nl": [
-    "de vergrotende trap"
-   ],
-   "gender": "m",
-   "number": "sg",
-   "src": "spanish-md/IMG_20260918_203753249_AE.md",
-   "pos": "noun",
-   "also": [
-    "examen-u1"
-   ]
-  },
-  {
-   "id": "v.el-demostrativo",
-   "kind": "vocab",
-   "theme": "grammaticatermen",
-   "es": "el demostrativo",
-   "nl": [
-    "het aanwijzend voornaamwoord"
-   ],
-   "gender": "m",
-   "number": "sg",
-   "src": "spanish-md/IMG_20260918_203808317_AE.md",
-   "pos": "noun",
-   "also": [
-    "examen-u1"
-   ]
-  },
-  {
-   "id": "v.el-gerundio",
-   "kind": "vocab",
-   "theme": "grammaticatermen",
-   "es": "el gerundio",
-   "nl": [
-    "de gerundio"
-   ],
-   "gender": "m",
-   "number": "sg",
-   "note": "Nederlands: aan het + infinitief.",
-   "src": "spanish-md/IMG_20260918_203804276_AE.md",
    "pos": "noun",
    "also": [
     "examen-u1"
@@ -6382,74 +6334,9 @@ window.COURSE = {
    ]
   },
   {
-   "id": "v.el-pronombre-reflexivo",
-   "kind": "vocab",
-   "theme": "grammaticatermen",
-   "es": "el pronombre reflexivo",
-   "nl": [
-    "het wederkerend voornaamwoord"
-   ],
-   "gender": "m",
-   "number": "sg",
-   "src": "spanish-md/IMG_20260918_203757754_AE.md",
-   "pos": "noun",
-   "also": [
-    "examen-u1"
-   ]
-  },
-  {
-   "id": "v.el-superlativo",
-   "kind": "vocab",
-   "theme": "grammaticatermen",
-   "es": "el superlativo",
-   "nl": [
-    "de overtreffende trap"
-   ],
-   "gender": "m",
-   "number": "sg",
-   "src": "spanish-md/IMG_20260918_203753249_AE.md",
-   "pos": "noun",
-   "also": [
-    "examen-u1"
-   ]
-  },
-  {
-   "id": "v.el-verbo-conjugado",
-   "kind": "vocab",
-   "theme": "grammaticatermen",
-   "es": "el verbo conjugado",
-   "nl": [
-    "het vervoegde werkwoord",
-    "de persoonsvorm"
-   ],
-   "gender": "m",
-   "number": "sg",
-   "src": "spanish-md/IMG_20260918_203757754_AE.md",
-   "pos": "noun",
-   "also": [
-    "examen-u1"
-   ]
-  },
-  {
-   "id": "v.el-verbo-reflexivo",
-   "kind": "vocab",
-   "theme": "grammaticatermen",
-   "es": "el verbo reflexivo",
-   "nl": [
-    "het wederkerend werkwoord"
-   ],
-   "gender": "m",
-   "number": "sg",
-   "src": "spanish-md/IMG_20260918_203757754_AE.md",
-   "pos": "noun",
-   "also": [
-    "examen-u1"
-   ]
-  },
-  {
    "id": "v.ese-a",
    "kind": "vocab",
-   "theme": "grammaticatermen",
+   "theme": "aanwijzend",
    "es": "ese/-a",
    "nl": [
     "die",
@@ -6467,7 +6354,7 @@ window.COURSE = {
   {
    "id": "v.eso",
    "kind": "vocab",
-   "theme": "grammaticatermen",
+   "theme": "aanwijzend",
    "es": "eso",
    "nl": [
     "dat (daar)"
@@ -6484,7 +6371,7 @@ window.COURSE = {
   {
    "id": "v.estar-al-alcance-de",
    "kind": "vocab",
-   "theme": "grammaticatermen",
+   "theme": "bijwoord",
    "es": "estar al alcance (de)",
    "nl": [
     "binnen het bereik zijn (van)"
@@ -6500,7 +6387,7 @@ window.COURSE = {
   {
    "id": "v.este-a",
    "kind": "vocab",
-   "theme": "grammaticatermen",
+   "theme": "aanwijzend",
    "es": "este/-a",
    "nl": [
     "deze",
@@ -6518,7 +6405,7 @@ window.COURSE = {
   {
    "id": "v.esto",
    "kind": "vocab",
-   "theme": "grammaticatermen",
+   "theme": "aanwijzend",
    "es": "esto",
    "nl": [
     "dit (hier)"
@@ -6535,10 +6422,11 @@ window.COURSE = {
   {
    "id": "v.hacer-referencia-a",
    "kind": "vocab",
-   "theme": "grammaticatermen",
+   "theme": "ww-praten",
    "es": "hacer referencia a",
    "nl": [
-    "verwijzen naar"
+    "verwijzen naar",
+    "een verwijzing maken naar"
    ],
    "gender": null,
    "number": null,
@@ -6549,26 +6437,9 @@ window.COURSE = {
    ]
   },
   {
-   "id": "v.hasta-encontrarlo",
-   "kind": "vocab",
-   "theme": "grammaticatermen",
-   "es": "hasta encontrarlo",
-   "nl": [
-    "tot hij/zij het vindt"
-   ],
-   "gender": null,
-   "number": null,
-   "note": "Het lijdend voorwerp hangt vast aan de infinitief.",
-   "src": "spanish-md/IMG_20260918_203757754_AE.md",
-   "pos": "other",
-   "also": [
-    "examen-u1"
-   ]
-  },
-  {
    "id": "v.la-desigualdad",
    "kind": "vocab",
-   "theme": "grammaticatermen",
+   "theme": "vergelijken",
    "es": "la desigualdad",
    "nl": [
     "de ongelijkheid"
@@ -6584,7 +6455,7 @@ window.COURSE = {
   {
    "id": "v.la-igualdad",
    "kind": "vocab",
-   "theme": "grammaticatermen",
+   "theme": "vergelijken",
    "es": "la igualdad",
    "nl": [
     "de gelijkheid"
@@ -6600,7 +6471,7 @@ window.COURSE = {
   {
    "id": "v.la-referencia",
    "kind": "vocab",
-   "theme": "grammaticatermen",
+   "theme": "ww-praten",
    "es": "la referencia",
    "nl": [
     "de verwijzing"
@@ -6616,7 +6487,7 @@ window.COURSE = {
   {
    "id": "v.senalar",
    "kind": "vocab",
-   "theme": "grammaticatermen",
+   "theme": "ww-dingen",
    "es": "señalar",
    "nl": [
     "aanwijzen",
@@ -6634,7 +6505,7 @@ window.COURSE = {
   {
    "id": "v.viceversa",
    "kind": "vocab",
-   "theme": "grammaticatermen",
+   "theme": "bijwoord",
    "es": "viceversa",
    "nl": [
     "omgekeerd",
@@ -8428,19 +8299,6 @@ window.COURSE = {
    "number": "pl",
    "note": "in Latijns-Amerika: los aretes",
    "src": "course-md/IMG_20260918_190147401_AE.md",
-   "pos": "noun"
-  },
-  {
-   "id": "v.el-manchego",
-   "kind": "vocab",
-   "theme": "kaas",
-   "es": "el manchego",
-   "nl": [
-    "de schapenkaas uit La Mancha"
-   ],
-   "gender": "m",
-   "number": "sg",
-   "src": "course-md/IMG_20260918_190313522_AE.md",
    "pos": "noun"
   },
   {
@@ -13371,7 +13229,7 @@ window.COURSE = {
   {
    "id": "v.el-amazonas",
    "kind": "vocab",
-   "theme": "plaatsen-en-natuur",
+   "theme": "aardrijkskunde",
    "es": "el Amazonas",
    "nl": [
     "de Amazonerivier"
@@ -13388,7 +13246,7 @@ window.COURSE = {
   {
    "id": "v.el-caiman",
    "kind": "vocab",
-   "theme": "plaatsen-en-natuur",
+   "theme": "dieren-en-planten",
    "es": "el caimán",
    "nl": [
     "de kaaiman"
@@ -13405,7 +13263,7 @@ window.COURSE = {
   {
    "id": "v.el-delfin",
    "kind": "vocab",
-   "theme": "plaatsen-en-natuur",
+   "theme": "dieren-en-planten",
    "es": "el delfín",
    "nl": [
     "de dolfijn"
@@ -13422,7 +13280,7 @@ window.COURSE = {
   {
    "id": "v.el-gato",
    "kind": "vocab",
-   "theme": "plaatsen-en-natuur",
+   "theme": "dieren-en-planten",
    "es": "el gato",
    "nl": [
     "de kat"
@@ -13449,7 +13307,7 @@ window.COURSE = {
   {
    "id": "v.el-lago-titicaca",
    "kind": "vocab",
-   "theme": "plaatsen-en-natuur",
+   "theme": "aardrijkskunde",
    "es": "el lago Titicaca",
    "nl": [
     "het Titicacameer"
@@ -13466,7 +13324,7 @@ window.COURSE = {
   {
    "id": "v.el-mono",
    "kind": "vocab",
-   "theme": "plaatsen-en-natuur",
+   "theme": "dieren-en-planten",
    "es": "el mono",
    "nl": [
     "de aap"
@@ -13535,7 +13393,7 @@ window.COURSE = {
   {
    "id": "v.galicia",
    "kind": "vocab",
-   "theme": "plaatsen-en-natuur",
+   "theme": "aardrijkskunde",
    "es": "Galicia",
    "nl": [
     "Galicië"
@@ -13552,7 +13410,7 @@ window.COURSE = {
   {
    "id": "v.la-costa-mediterranea",
    "kind": "vocab",
-   "theme": "plaatsen-en-natuur",
+   "theme": "aardrijkskunde",
    "es": "la costa Mediterránea",
    "nl": [
     "de Middellandse Zeekust"
@@ -13569,7 +13427,7 @@ window.COURSE = {
   {
    "id": "v.la-violeta",
    "kind": "vocab",
-   "theme": "plaatsen-en-natuur",
+   "theme": "dieren-en-planten",
    "es": "la violeta",
    "nl": [
     "het viooltje"
@@ -13586,7 +13444,7 @@ window.COURSE = {
   {
    "id": "v.las-islas-canarias",
    "kind": "vocab",
-   "theme": "plaatsen-en-natuur",
+   "theme": "aardrijkskunde",
    "es": "las islas Canarias",
    "nl": [
     "de Canarische Eilanden"
@@ -13603,7 +13461,7 @@ window.COURSE = {
   {
    "id": "v.los-pirineos",
    "kind": "vocab",
-   "theme": "plaatsen-en-natuur",
+   "theme": "aardrijkskunde",
    "es": "los Pirineos",
    "nl": [
     "de Pyreneeën"
@@ -13680,23 +13538,6 @@ window.COURSE = {
    "number": null,
    "src": "spanish-md/IMG_20260918_203808317_AE.md",
    "pos": "adv",
-   "also": [
-    "examen-u1"
-   ]
-  },
-  {
-   "id": "v.autorizado-a",
-   "kind": "vocab",
-   "theme": "reizen",
-   "es": "autorizado/-a",
-   "nl": [
-    "bevoegd",
-    "gemachtigd"
-   ],
-   "gender": null,
-   "number": null,
-   "src": "spanish-md/IMG_20260918_203757754_AE.md",
-   "pos": "adj",
    "also": [
     "examen-u1"
    ]
@@ -13858,7 +13699,7 @@ window.COURSE = {
   {
    "id": "v.el-mosquito",
    "kind": "vocab",
-   "theme": "plaatsen-en-natuur",
+   "theme": "dieren-en-planten",
    "es": "el mosquito",
    "nl": [
     "de mug"
@@ -14028,7 +13869,8 @@ window.COURSE = {
    "theme": "reizen",
    "es": "la crema solar",
    "nl": [
-    "de zonnebrandcrème"
+    "de zonnebrandcrème",
+    "de zonnecrème"
    ],
    "gender": "f",
    "number": "sg",
@@ -14177,7 +14019,7 @@ window.COURSE = {
   {
    "id": "v.por-lo-menos",
    "kind": "vocab",
-   "theme": "reizen",
+   "theme": "vergelijken",
    "es": "por lo menos",
    "nl": [
     "minstens",
@@ -14784,22 +14626,6 @@ window.COURSE = {
    "nl": [
     "de mimiek",
     "het gebarenspel"
-   ],
-   "gender": "f",
-   "number": "sg",
-   "src": "spanish-md/IMG_20260918_203804276_AE.md",
-   "pos": "noun",
-   "also": [
-    "examen-u1"
-   ]
-  },
-  {
-   "id": "v.la-pantomima",
-   "kind": "vocab",
-   "theme": "spel",
-   "es": "la pantomima",
-   "nl": [
-    "de pantomime"
    ],
    "gender": "f",
    "number": "sg",
@@ -17635,7 +17461,7 @@ window.COURSE = {
   {
    "id": "v.la-concha",
    "kind": "vocab",
-   "theme": "plaatsen-en-natuur",
+   "theme": "dieren-en-planten",
    "es": "la concha",
    "nl": [
     "de schelp"
@@ -17649,7 +17475,7 @@ window.COURSE = {
   {
    "id": "v.la-mariposa",
    "kind": "vocab",
-   "theme": "plaatsen-en-natuur",
+   "theme": "dieren-en-planten",
    "es": "la mariposa",
    "nl": [
     "de vlinder"

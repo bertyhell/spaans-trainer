@@ -1,5 +1,8 @@
 /* Zet de accenten terug. Het woord verschijnt kaal — jij herstelt de spelling.
- * Hier is de controle bewust streng: accenten zijn juist het onderwerp. */
+ * Hier is de controle bewust streng: accenten zijn juist het onderwerp.
+ *
+ * Kaal betekent ook zonder ñ. Bij la caña of el otoño is de ñ het enige
+ * teken: liet je die staan, dan stond het juiste antwoord al in de opgave. */
 
 import { el, speakerButton, accentBar } from '../dom.js';
 import { stripAccents, checkAnswer } from '../check.js';
@@ -20,8 +23,7 @@ export default {
 
   render(item, root, ctx) {
     const { atom } = item;
-    // De ñ blijft staan: die hoor je, en anders wordt het giswerk.
-    const bare = stripAccents(atom.es);
+    const bare = stripAccents(atom.es).replace(/ñ/g, 'n').replace(/Ñ/g, 'N');
 
     root.append(
       el('p', { class: 'q-instruction' }, 'Zet de accenten op hun plaats'),
@@ -50,8 +52,11 @@ export default {
         input.setSelectionRange(input.value.length, input.value.length);
       },
       check() {
-        // strictAccents: een accentfout is hier géén "bijna".
+        // strictAccents: een accentfout is hier géén "bijna". Een "typfoutje"
+        // evenmin: het woord staat al voorgevuld, dus "cana" voor "caña" is
+        // de ñ vergeten, geen tikfout.
         const r = checkAnswer(input.value, [atom.es], { strictAccents: true });
+        if (r.almost) return { correct: false, expected: atom.es, note: null, given: input.value };
         return { ...r, given: input.value };
       },
       reveal({ correct, almost }) {

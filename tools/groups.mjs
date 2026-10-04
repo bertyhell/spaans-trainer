@@ -36,7 +36,7 @@ export const GROUPS = [
   {
     id: 'g-reizen', title: 'Reizen, weer en natuur', emoji: '🧳',
     themes: [
-      'reizen', 'camino', 'plaatsen-en-natuur', 'weer',
+      'reizen', 'camino', 'plaatsen-en-natuur', 'aardrijkskunde', 'dieren-en-planten', 'weer',
       'nationaliteiten-europa', 'nationaliteiten-wereld',
     ],
   },
@@ -71,9 +71,9 @@ export const GROUPS = [
   {
     id: 'g-grammatica', title: 'Grammatica en taalgebruik', emoji: '📐',
     themes: [
-      'eigenschappen', 'bijwoord', 'vergelijken', 'voornaamwoorden',
+      'eigenschappen', 'bijwoord', 'vergelijken', 'voornaamwoorden', 'aanwijzend',
       'onbepaalde-voornaamwoorden', 'interrogativos', 'bijvoeglijk-naamwoord',
-      'ser-estar', 'verleden-tijden', 'grammaticatermen', 'opdrachtentaal',
+      'ser-estar', 'verleden-tijden', 'opdrachtentaal',
       // Oefeningen uit het werkboek en de bundel (tools/content/).
       ...contentThemesOf('g-grammatica'),
     ],

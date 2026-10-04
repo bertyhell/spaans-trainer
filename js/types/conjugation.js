@@ -117,7 +117,8 @@ export const conjugationGrid = {
           input.disabled = true;
           input.classList.add(p.almost ? 'is-almost' : p.correct ? 'is-correct' : 'is-wrong');
           if (!p.correct || p.almost) {
-            input.after(el('span', { class: 'conj-fix' }, byPerson.get(p.person).form));
+            input.after(el('span', { class: `conj-fix${p.almost ? ' is-almost' : ''}` },
+              byPerson.get(p.person).form));
           }
         }
       },

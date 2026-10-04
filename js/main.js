@@ -462,6 +462,11 @@ const pick = arr => arr[Math.floor(Math.random() * arr.length)];
  *  leesvraag de vertaling of de reden waarom het antwoord klopt. */
 function explainFor(atom) {
   if (atom.note) return atom.note;
+  // Bij een vervoeging let je op de vorm; de betekenis glipt er dan makkelijk door.
+  if (atom.kind === 'conjugation') {
+    const nl = data.verbTranslation(atom.verb);
+    return nl ? `${atom.verb} = ${nl}` : null;
+  }
   if (['choice', 'reading', 'stress'].includes(atom.kind) && atom.nl) return atom.nl;
   return null;
 }
@@ -570,8 +575,10 @@ function mistakeLines(m) {
   switch (a.kind) {
     case 'vocab':
       return [a.es, a.nl[0]];
-    case 'conjugation':
-      return [`${a.verb} · ${data.PERSON_LABELS[a.person]}`, a.form];
+    case 'conjugation': {
+      const nl = data.verbTranslation(a.verb);
+      return [`${a.verb}${nl ? ` (${nl})` : ''} · ${data.PERSON_LABELS[a.person]}`, a.form];
+    }
     case 'grammar':
       return [a.rule, m.expected];
     case 'choice':

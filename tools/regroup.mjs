@@ -29,7 +29,7 @@ import { fileURLToPath } from 'node:url';
 import { GROUPS, GROUP_OF } from './groups.mjs';
 import { VERB_THEMES, VERB_THEME_OF, REPLACED_THEMES, IRREGULAR, REGULAR } from './verbs.mjs';
 import { CONJUGATION_THEMES, EXTRA_SECTIONS, VERB_TYPE_THEMES, buildConjugations, buildVerbTypes } from './conjugate.mjs';
-import { EXTRA_NL, MOVE, DROP as FIX_DROP, EXTRA_THEMES } from './fixes.mjs';
+import { EXTRA_NL, EMOJI, MOVE, DROP as FIX_DROP, EXTRA_THEMES } from './fixes.mjs';
 import { CONTENT_THEMES } from './content/themes.mjs';
 import { loadContent } from './content/index.mjs';
 
@@ -144,7 +144,8 @@ for (const atom of course.atoms) {
   const nl = [...new Set([...atom.nl, ...(EXTRA_NL[atom.id] ?? [])])];
 
   const { regular: _r, change: _c, ...rest } = atom;
-  atoms.push({ ...rest, nl, pos, theme, ...(pos === 'verb' ? verbInfo(atom.es) : {}) });
+  const emoji = EMOJI[atom.id] ?? rest.emoji;
+  atoms.push({ ...rest, ...(emoji ? { emoji } : {}), nl, pos, theme, ...(pos === 'verb' ? verbInfo(atom.es) : {}) });
 }
 
 const conjugations = buildConjugations(course.atoms);
