@@ -17,6 +17,11 @@ import * as storage from './storage.js';
 const cell = (atom, dutch = false) =>
   ({ id: atom.id, text: dutch ? atom.nl[0] : atom.es, atom });
 
+/* Twee woorden met dezelfde vertaling ("de bril" voor las gafas én los lentes)
+ * mogen niet tegelijk op het bord: dan is er geen juist paar meer. */
+const gloss = s => String(s).toLowerCase().replace(/^(de|het|een) /, '').trim();
+const clash = (a, b) => a.nl.some(x => b.nl.some(y => gloss(x) === gloss(y)));
+
 export const VISIBLE_ROWS = 6;
 export const DEFAULT_TARGET = 30;
 
@@ -26,7 +31,7 @@ export class MatchRound {
     this.target = Math.min(target, this.pool.length);
     this.visible = Math.min(visible, this.pool.length);
 
-    this.active = this.pool.splice(0, this.visible);
+    this.active = this.take(this.visible, []);
     // Twee losse, elk apart geschudde kolommen met vaste plaatsen. Een gekoppeld
     // paar wordt op zíjn plaats vervangen in plaats van alles opnieuw te
     // schudden: anders springt bij elk juist antwoord het hele scherm door
@@ -42,6 +47,18 @@ export class MatchRound {
     this.wrongAttempts = 0;
     this.missedOnce = new Set();   // paren waar al eens fout op gegokt is
     this.pending = [];             // gekoppeld, maar plaats nog niet vervangen
+  }
+
+  /** Haalt tot n woorden uit de voorraad die met niets op het bord botsen. */
+  take(n, onBoard) {
+    const out = [];
+    for (let i = 0; i < this.pool.length && out.length < n;) {
+      const a = this.pool[i];
+      if ([...onBoard, ...out].some(b => clash(a, b))) { i++; continue; }
+      out.push(a);
+      this.pool.splice(i, 1);
+    }
+    return out;
   }
 
   get finished() { return this.matched >= this.target || this.active.length === this.pending.length; }
@@ -95,8 +112,9 @@ export class MatchRound {
     // Twee paren gekoppeld (of de voorraad is op): vul de vrije plaatsen.
     const open = this.active.length - this.pending.length;
     const room = Math.max(0, this.target - this.matched - open);
-    const fresh = this.pool.splice(0, Math.min(room, this.pending.length));
     const freed = this.pending;
+    const staying = this.active.filter(a => !freed.includes(a.id));
+    const fresh = this.take(Math.min(room, freed.length), staying);
     this.pending = [];
 
     const refill = (slots, dutch) => {

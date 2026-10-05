@@ -152,6 +152,9 @@ let lexicon = new Set();
 
 export const lexiconKey = s => stripAccents(stripArticle(normalize(s)));
 
+/** Staat dit woord (zonder lidwoord of accenten) ergens in de cursus? */
+export const isKnownWord = s => lexicon.has(lexiconKey(s));
+
 export function setLexicon(words) {
   lexicon = new Set();
   for (const w of words) for (const v of expandVariants(w)) lexicon.add(lexiconKey(v));
@@ -175,6 +178,26 @@ export function levenshtein(a, b, max = Infinity) {
     prev = cur;
   }
   return prev[b.length];
+}
+
+/* Woordparen die enkel door hun accent verschillen en toch iets anders
+ * betekenen. "tu" voor "tú" is geen slordigheid maar een ander woord (jouw ≠
+ * jij). Vraagwoorden (qué, cómo, dónde…) staan er bewust niet bij: daar is het
+ * accent leerstof, maar verandert het niet wat je bedoelt. Vervoegingen
+ * (hablo/habló) vangt rejectNear op. */
+const DIACRITIC_PAIRS = [
+  ['tu', 'tú'], ['el', 'él'], ['mi', 'mí'], ['si', 'sí'], ['te', 'té'], ['se', 'sé'],
+  ['de', 'dé'], ['mas', 'más'], ['aun', 'aún'], ['esta', 'está'], ['estas', 'estás'],
+  ['este', 'esté'],
+];
+const DIACRITIC_WORDS = new Set(DIACRITIC_PAIRS.flat());
+
+/** Het woord uit `given` dat door zijn accent een ander woord is dan in `expected`, of null. */
+export function diacriticClash(given, expected) {
+  const want = new Set(normalize(expected).split(' '));
+  return normalize(given).split(' ')
+    .find(w => DIACRITIC_WORDS.has(w) && !want.has(w)
+      && [...want].some(x => x !== w && stripAccents(x) === stripAccents(w))) ?? null;
 }
 
 /**
@@ -238,18 +261,26 @@ export function checkAnswer(input, accepted, { strictAccents = false, ignoreAcce
   // 1 — exact
   if (find((a, b) => a === b)) return { correct: true, expected: canonical, note: null };
 
-  // 2 — alleen accenten verschillen
+  // Een antwoord dat zelf een geldige andere vorm is (rejectNear) of een ander
+  // woord uit de cursus, is een vergissing en geen slordigheid.
+  const blocked = rejectNear.map(normalize);
+  const isOtherRealForm = tries.some(t => blocked.includes(t.s) || lexicon.has(lexiconKey(t.s)));
+
+  // 2 — alleen accenten verschillen. Behalve als het accent het woord zelf
+  //     verandert: "tu" voor "tú", "esta" voor "está", "hablo" voor "habló".
+  //     Dat is geen spellingsfoutje maar een ander woord of een andere persoon.
   const sameLetters = (a, b) => stripAccents(a) === stripAccents(b);
   if (ignoreAccents && find(sameLetters)) return { correct: true, expected: canonical, note: null };
   if (!strictAccents && find(sameLetters)) {
+    const other = tries.some(t => blocked.includes(t.s)) ? given : diacriticClash(given, matched);
+    if (other) {
+      return { correct: false, expected: canonical,
+        note: `Let op het accent: „${other}” is een ander woord — juist is ${matched}` };
+    }
     return { correct: true, almost: true, expected: canonical, note: `¡Casi! Let op de accenten: ${matched}` };
   }
 
-  // 3 — één typefout. Overgeslagen zodra het antwoord zelf een geldige andere
-  //     vorm is (rejectNear) of een ander woord uit de cursus: dan is het een
-  //     vergissing, geen typefout.
-  const blocked = rejectNear.map(normalize);
-  const isOtherRealForm = tries.some(t => blocked.includes(t.s) || lexicon.has(lexiconKey(t.s)));
+  // 3 — één typefout. Overgeslagen zodra het antwoord een ander bestaand woord is.
 
   if (!isOtherRealForm) {
     // Een verschil dat enkel uit accenten bestaat is geen typefout. Stap 2

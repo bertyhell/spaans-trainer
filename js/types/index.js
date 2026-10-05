@@ -21,7 +21,6 @@ import fillGap from './fillGap.js';
 import wordBank from './wordBank.js';
 import accents from './accents.js';
 import oddOneOut from './oddOneOut.js';
-import stemChange from './stemChange.js';
 import irregularVerb from './irregularVerb.js';
 import verbType from './verbType.js';
 import verbSort from './verbSort.js';
@@ -38,7 +37,6 @@ export const TYPES = [
   articlePicker,
   accents,
   oddOneOut,
-  stemChange,
   irregularVerb,
   verbType,
   verbSort,
@@ -72,7 +70,6 @@ const WEIGHTS = {
   articlePicker: 1,
   accents: 1,
   oddOneOut: 1,
-  stemChange: 2,
   irregularVerb: 2,
   verbType: 1,
   verbSort: 1,

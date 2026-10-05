@@ -24,7 +24,7 @@ export default {
       el('div', { class: 'q-prompt q-prompt--sentence' }, el('strong', {}, atom.q)),
     );
 
-    const opts = optionList(shuffleOptions(atom.options), { onChoose: () => ctx.ready(true) });
+    const opts = optionList(shuffleOptions(atom.options), { lang: 'es', onChoose: () => ctx.ready(true) });
     root.append(opts.list);
 
     return {

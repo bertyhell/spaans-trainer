@@ -625,7 +625,7 @@ function detailRows(m) {
       if (a.es || a.nl) pairs.push([a.es ?? '', [].concat(a.nl ?? '').join(', ')]);
   }
   const rows = pairs.map(([es, nl]) => el('div', { class: 'mistake-pair' },
-    el('span', { class: 'mistake-lang' }, '🇪🇸'), el('span', {}, es),
+    el('span', { class: 'mistake-lang' }, '🇪🇸'), el('span', { lang: 'es' }, es),
     el('span', { class: 'mistake-lang' }, '🇧🇪'), el('span', {}, nl)));
   if (a.kind === 'conjugation') rows.push(conjugationTable(a));
   if (!m.correct && m.given) {

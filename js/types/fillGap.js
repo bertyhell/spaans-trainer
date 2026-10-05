@@ -4,7 +4,7 @@
 import { el, shuffle, speakerButton, optionList } from '../dom.js';
 import { checkAnswer } from '../check.js';
 
-/** Kiest deterministisch per beurt één voorbeeld uit een grammatica-atoom. */
+/** Kiest bij elke beurt willekeurig één voorbeeld uit een grammatica-atoom. */
 const pickExample = atom => atom.examples[Math.floor(Math.random() * atom.examples.length)];
 
 /** Splitst een zin rond het eerste ___ en geeft de twee helften terug. */
@@ -83,8 +83,13 @@ export default {
     root.append(el('div', { class: 'q-prompt q-prompt--sentence', lang: 'es' },
       el('span', {}, before), gapNode,
       cue ? el('span', { class: 'q-infinitive' }, ` (${cue})`) : null,
-      el('span', {}, after),
-      speakerButton(spoken, ctx.speech)));
+      el('span', {}, after)));
+    // De luidspreker komt pas na het nakijken: hij leest de hele zin voor, dus
+    // ook het woord dat in het gat hoort.
+    const addSpeaker = () => {
+      const sb = speakerButton(spoken, ctx.speech);
+      if (sb) root.querySelector('.q-prompt').append(sb);
+    };
 
     if (hint) root.append(el('p', { class: 'q-hint' }, hint));
 
@@ -102,7 +107,11 @@ export default {
       return {
         focus: opts.focus,
         check: () => ({ correct: answers.includes(opts.chosen()), expected: answers[0], note: null, given: opts.chosen() }),
-        reveal() { opts.reveal(answers[0]); },
+        reveal() {
+          opts.reveal(answers[0]);
+          gapNode.textContent = answers[0];
+          addSpeaker();
+        },
       };
     }
 
@@ -115,6 +124,7 @@ export default {
       reveal({ correct, almost }) {
         gapNode.disabled = true;
         gapNode.classList.add(almost ? 'is-almost' : correct ? 'is-correct' : 'is-wrong');
+        addSpeaker();
       },
     };
   },

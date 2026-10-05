@@ -1,7 +1,7 @@
 /* Zelf intypen. De zwaarste oefenvorm en daarom de waardevolste. */
 
 import { el, speakerButton, accentBar, FLAGS } from '../dom.js';
-import { vocabAnswer, vocabPrompt } from '../data.js';
+import { vocabAnswer, vocabPrompt, synonymsOf } from '../data.js';
 import { checkAnswer } from '../check.js';
 import { showEmoji } from '../scheduler.js';
 
@@ -48,6 +48,16 @@ export default {
       check() {
         // Accenten zijn enkel in het Spaans leerstof.
         const r = checkAnswer(input.value, answers, { ignoreAccents: !toSpanish });
+        if (!r.correct && toSpanish) {
+          // Een ander Spaans woord voor hetzelfde ("los lentes" voor "de bril")
+          // is niet fout. Wel tonen welk woord we zochten.
+          const syn = synonymsOf(atom, { gloss: atom.nl[0] })
+            .find(o => checkAnswer(input.value, [o.es]).correct);
+          if (syn) {
+            return { correct: true, expected: atom.es, given: input.value,
+              note: `Ook juist! ${syn.es} betekent ook „${atom.nl[0]}”. Hier zochten we: ${atom.es}` };
+          }
+        }
         return { ...r, given: input.value };
       },
       reveal({ correct, almost }) {

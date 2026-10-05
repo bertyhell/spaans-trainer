@@ -8,11 +8,26 @@
  */
 
 import { el, shuffle, sample, optionList } from '../dom.js';
-import { conjugationFamily, verbTranslation, PERSON_LABELS, PERSON_ORDER, TENSE_LABELS } from '../data.js';
+import { conjugationFamily, conjugatedForm, verbForms, verbTranslation, PERSON_LABELS, PERSON_ORDER, TENSE_LABELS } from '../data.js';
 import { checkAnswer } from '../check.js';
 import { mastery, itemKey } from '../scheduler.js';
 
 const tenseLabel = t => TENSE_LABELS[t] ?? t;
+const tenseShort = t => tenseLabel(t).split(' · ')[0];
+
+/** Alle andere vormen van dit werkwoord, in alle tijden. "hablo" voor "habló"
+ *  is dan geen accentfoutje maar een andere tijd. */
+export const otherForms = (verb, form) => verbForms(verb).filter(f => f !== form);
+
+/** "habló = él / ella, pretérito indefinido" — wie of wanneer een vorm is. */
+export function describeForm(verb, form) {
+  const hits = [];
+  for (const tense of Object.keys(TENSE_LABELS)) {
+    const persons = PERSON_ORDER.filter(p => conjugatedForm(verb, tense, p) === form);
+    if (persons.length) hits.push(`${persons.map(p => PERSON_LABELS[p]).join(' of ')}, ${tenseShort(tense)}`);
+  }
+  return hits.length ? `${form} = ${hits.slice(0, 2).join('; ')}` : null;
+}
 
 /** "(spreken)" achter de infinitief, of niets als het woord niet bekend is. */
 const translation = verb => {
@@ -92,11 +107,10 @@ export const conjugationGrid = {
       check() {
         // Elke open persoon krijgt zijn eigen uitslag; de vraag als geheel is
         // pas juist als ze allemaal kloppen. Voorgegeven vakjes tellen niet mee.
-        const others = p => family.filter(a => a.person !== p).map(a => a.form);
         const per = [];
         for (const [person, input] of inputs) {
           const atom = byPerson.get(person);
-          const r = checkAnswer(input.value, [atom.form], { rejectNear: others(person) });
+          const r = checkAnswer(input.value, [atom.form], { rejectNear: otherForms(atom.verb, atom.form) });
           per.push({ atomId: atom.id, person, ...r, given: input.value });
         }
         const allOk = per.every(p => p.correct);
@@ -135,8 +149,15 @@ export const conjugationSingle = {
   render(item, root, ctx) {
     const { atom } = item;
     const family = conjugationFamily(atom);
-    const others = family.filter(a => a.id !== atom.id).map(a => a.form);
-    const options = shuffle([atom.form, ...sample(others.filter(f => f !== atom.form), Math.min(3, others.length))]);
+    // Twee andere personen uit dezelfde tijd en dezelfde persoon uit een andere
+    // tijd: zo volstaat de uitgang alleen niet om het juiste antwoord te vinden.
+    const persons = [...new Set(family.map(a => a.form))].filter(f => f !== atom.form);
+    const tenses = [...new Set(Object.keys(TENSE_LABELS)
+      .filter(t => t !== atom.tense)
+      .map(t => conjugatedForm(atom.verb, t, atom.person))
+      .filter(f => f && f !== atom.form && !persons.includes(f) && !f.includes(' ')))];
+    const picked = [...sample(tenses, 1), ...sample(persons, 3)].slice(0, 3);
+    const options = shuffle([atom.form, ...picked]);
 
     root.append(
       el('p', { class: 'q-instruction' }, 'Kies de juiste vorm'),
@@ -154,7 +175,12 @@ export const conjugationSingle = {
 
     return {
       focus: opts.focus,
-      check: () => ({ correct: opts.chosen() === atom.form, expected: atom.form, note: null, given: opts.chosen() }),
+      check() {
+        const chosen = opts.chosen();
+        const ok = chosen === atom.form;
+        return { correct: ok, expected: atom.form, given: chosen,
+          note: ok || !chosen ? null : describeForm(atom.verb, chosen) };
+      },
       reveal() { opts.reveal(atom.form); },
     };
   },

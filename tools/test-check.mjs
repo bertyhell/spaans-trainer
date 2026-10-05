@@ -1,7 +1,7 @@
 /* Eenheidstests voor de antwoordcontrole. Geen afhankelijkheden.
  * Uitvoeren:  node tools/test-check.mjs  */
 
-import { checkAnswer, stripAccents, levenshtein, stripArticle, normalize, expandVariants, speakable, setLexicon } from '../js/check.js';
+import { checkAnswer, stripAccents, levenshtein, stripArticle, normalize, expandVariants, speakable, setLexicon, diacriticClash } from '../js/check.js';
 
 let failed = 0;
 const results = [];
@@ -43,6 +43,19 @@ t('opmerking toont de benaderde vorm', note('zonnecreme', ['de zonnebrandcrème'
 
 t('Nederlands: accent telt niet mee', checkAnswer('zonnecreme', ['de zonnecrème'], { ignoreAccents: true }), { correct: true, expected: 'de zonnecrème', note: null });
 t('Nederlands: typfout blijft bijna', checkAnswer('zonnecrene', ['de zonnecrème'], { ignoreAccents: true }).almost, true);
+
+/* --- een accent dat het woord verandert is geen "bijna" --- */
+t('tu voor tú geweigerd', answer('tu', ['tú']), false);
+t('tú voor tu geweigerd', answer('tú', ['tu']), false);
+t('esta voor está geweigerd', answer('esta', ['está']), false);
+t('el voor él in een zin geweigerd', answer('el es mi hermano', ['Él es mi hermano.']), false);
+t('accentpaar geeft uitleg', /ander woord/.test(note('si', ['sí'])), true);
+t('vraagwoord zonder accent blijft bijna', checkAnswer('que tal', ['¿Qué tal?']).almost, true);
+t('gewoon woord zonder accent blijft bijna', checkAnswer('cancion', ['canción']).almost, true);
+t('hablo voor habló geweigerd (rejectNear)', answer('hablo', ['habló'], { rejectNear: ['hablo', 'hablas', 'habla'] }), false);
+t('habló zonder accent zonder rejectNear blijft bijna', checkAnswer('hablo', ['habló']).almost, true);
+t('diacriticClash vindt het woord', diacriticClash('mi casa es tu casa', 'Mi casa es tú casa'), 'tu');
+t('diacriticClash zonder botsing', diacriticClash('mi casa', 'mi casa'), null);
 
 /* --- typfout is bijna, niet juist --- */
 t('typfout in vervoeging is bijna', checkAnswer('salíz', ['salís'], { rejectNear: ['salgo', 'sales', 'sale', 'salimos', 'salen'] }).almost, true);

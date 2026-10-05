@@ -10,13 +10,22 @@ import { showEmoji } from '../scheduler.js';
 
 const ACCENT_KEYS = ['á', 'é', 'í', 'ó', 'ú', 'ñ'];
 
+/** Welke letters een accent of tilde nodig hebben: "Op de o: canción". */
+function accentNote(given, expected) {
+  const marked = [...expected.normalize('NFC')].filter(ch => stripAccents(ch) !== ch || ch === 'ñ' || ch === 'Ñ');
+  if (!marked.length) return null;
+  const letters = [...new Set(marked)].join(', ');
+  return `Let op: ${expected} schrijf je met ${letters}.`;
+}
+
 export default {
   id: 'accents',
   label: 'Accenten',
 
   supports(item) {
     const a = item.atom;
-    if (a.kind !== 'vocab') return false;
+    // Herkennen en spellen, niet vertalen: telt voor de es→nl-kant.
+    if (a.kind !== 'vocab' || item.direction !== 'es2nl') return false;
     // Alleen zinvol als het woord écht accenten of een ñ bevat.
     return stripAccents(a.es) !== a.es || /ñ/.test(a.es);
   },
@@ -30,7 +39,6 @@ export default {
       el('div', { class: 'q-prompt' },
         atom.emoji && showEmoji(item.key) ? el('span', { class: 'q-emoji' }, atom.emoji) : null,
         el('span', { class: 'q-word q-word--bare', lang: 'es' }, bare),
-        speakerButton(atom.es, ctx.speech),
       ),
       el('p', { class: 'q-hint' }, atom.nl[0]),
     );
@@ -56,12 +64,15 @@ export default {
         // evenmin: het woord staat al voorgevuld, dus "cana" voor "caña" is
         // de ñ vergeten, geen tikfout.
         const r = checkAnswer(input.value, [atom.es], { strictAccents: true });
-        if (r.almost) return { correct: false, expected: atom.es, note: null, given: input.value };
-        return { ...r, given: input.value };
+        if (r.correct && !r.almost) return { ...r, given: input.value };
+        return { correct: false, expected: atom.es, note: accentNote(input.value, atom.es), given: input.value };
       },
       reveal({ correct, almost }) {
         input.disabled = true;
         input.classList.add(almost ? 'is-almost' : correct ? 'is-correct' : 'is-wrong');
+        // Pas nu: de uitspraak verraadt waar de klemtoon, en dus het accent, ligt.
+        const sb = speakerButton(atom.es, ctx.speech);
+        if (sb) root.querySelector('.q-prompt').append(sb);
       },
     };
   },

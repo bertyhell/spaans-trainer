@@ -13,10 +13,18 @@ import { dialogueLines, getText } from '../data.js';
 const line = (a, extra = null) => el('p', { class: 'dialogue-line', lang: 'es' },
   a.who ? el('span', { class: 'dialogue-who' }, `${a.who}: `) : null, a.es, extra);
 
-/** Andere regels van hetzelfde gesprek, aangevuld uit andere gesprekken van het thema. */
-function others(atom, n) {
-  const own = dialogueLines(atom.text).filter(a => a.id !== atom.id);
-  return own.length >= n ? sample(own, n) : own;
+/** n andere regels van hetzelfde gesprek, elk met een andere tekst dan `key(atom)`
+ *  en dan elkaar: twee keer "Sí." als knop is één knop te veel. */
+function others(atom, n, key, exclude = []) {
+  const seen = new Set([key(atom), ...exclude.map(key)]);
+  const out = [];
+  for (const a of sample(dialogueLines(atom.text), Infinity)) {
+    if (out.length >= n) break;
+    if (a.id === atom.id || seen.has(key(a))) continue;
+    seen.add(key(a));
+    out.push(a);
+  }
+  return out;
 }
 
 export const dialogueMeaning = {
@@ -29,7 +37,7 @@ export const dialogueMeaning = {
     const { atom } = item;
     const listen = ctx.speech.available();
     const text = getText(atom.text);
-    const options = shuffle([atom.nl, ...others(atom, 3).map(a => a.nl).filter(nl => nl !== atom.nl)]);
+    const options = shuffle([atom.nl, ...others(atom, 3, a => a.nl).map(a => a.nl)]);
 
     root.append(el('p', { class: 'q-instruction' },
       listen ? `Luister: wat betekent dit?` : 'Wat betekent deze zin?'));
@@ -80,8 +88,7 @@ export const dialogueReply = {
     const lines = dialogueLines(atom.text);
     const prev = lines.find(l => l.line === atom.line - 1);
     // Afleiders: andere regels, maar niet de vorige (die staat al op het scherm).
-    const pool = lines.filter(l => l.id !== atom.id && l.id !== prev.id && l.es !== atom.es);
-    const options = shuffle([atom.es, ...sample(pool, 3).map(l => l.es)]);
+    const options = shuffle([atom.es, ...others(atom, 3, a => a.es, [prev]).map(l => l.es)]);
     const text = getText(atom.text);
 
     root.append(el('p', { class: 'q-instruction' }, `Wat antwoordt ${atom.who || 'de ander'}?`));

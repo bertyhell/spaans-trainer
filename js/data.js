@@ -4,7 +4,7 @@
  * kunnen produceren. */
 
 import { itemKey } from './scheduler.js';
-import { setLexicon } from './check.js';
+import { setLexicon, expandVariants, normalize, stripArticle, stripAccents } from './check.js';
 
 let course = null;
 let sources = {};
@@ -13,6 +13,8 @@ const byTheme = new Map();
 const themeById = new Map();
 const byText = new Map();          // tekst-id -> dialoogregels, op volgorde
 const byFamily = new Map();        // werkwoord|tijd -> vervoegingen
+const byVerb = new Map();          // werkwoord -> alle vervoegde vormen
+const byGloss = new Map();         // Nederlandse vertaling -> woordenschatatomen
 
 export function init() {
   course = window.COURSE;
@@ -37,6 +39,14 @@ export function init() {
       const key = `${atom.verb}|${atom.tense}`;
       if (!byFamily.has(key)) byFamily.set(key, []);
       byFamily.get(key).push(atom);
+      if (!byVerb.has(atom.verb)) byVerb.set(atom.verb, new Set());
+      byVerb.get(atom.verb).add(atom.form);
+    }
+    if (atom.kind === 'vocab') {
+      for (const g of glossKeys(atom)) {
+        if (!byGloss.has(g)) byGloss.set(g, []);
+        byGloss.get(g).push(atom);
+      }
     }
   }
   for (const lines of byText.values()) lines.sort((a, b) => a.line - b.line);
@@ -161,6 +171,58 @@ export function sourceLabel(atom) {
 
 /* --- hulpstukken voor de oefentypes --- */
 
+/** Een vertaling zonder lidwoord, hoofdletters of accenten: "de koelkast" = "koelkast". */
+const glossKey = s => stripAccents(stripArticle(normalize(s)));
+const glossCache = new WeakMap();
+function glossKeys(atom) {
+  let keys = glossCache.get(atom);
+  if (!keys) {
+    keys = [...new Set((atom.nl ?? []).flatMap(expandVariants).map(glossKey).filter(Boolean))];
+    glossCache.set(atom, keys);
+  }
+  return keys;
+}
+
+/**
+ * Woorden met een vertaling gemeen: la nevera, el frigo(rífico) en la
+ * refrigeradora zijn allemaal "de koelkast". Wie er een van intypt heeft het
+ * niet fout, en als afleider zou zo'n woord een tweede juist antwoord zijn.
+ */
+export function synonymsOf(atom, { gloss = null } = {}) {
+  if (atom.kind !== 'vocab') return [];
+  // Met `gloss` enkel de woorden voor díé vertaling: wie "nog" ziet staan en
+  // "aún" typt voor "todavía" heeft gelijk, maar niet met een woord dat alleen
+  // een tweede betekenis deelt.
+  const keys = gloss ? expandVariants(gloss).map(glossKey) : glossKeys(atom);
+  const out = new Set();
+  for (const g of keys) for (const o of byGloss.get(g) ?? []) if (o.id !== atom.id) out.add(o);
+  return [...out];
+}
+
+/** Delen deze twee woorden een vertaling? */
+export const shareGloss = (a, b) => {
+  const keys = new Set(glossKeys(a));
+  return glossKeys(b).some(k => keys.has(k));
+};
+
+let byForm = null;
+/** De vervoegingen die precies deze vorm hebben ("habla" → hablar, presente, 3s). */
+export function conjugationsOfForm(form) {
+  if (!byForm) {
+    byForm = new Map();
+    for (const a of course.atoms) {
+      if (a.kind !== 'conjugation') continue;
+      const k = a.form.toLowerCase();
+      if (!byForm.has(k)) byForm.set(k, []);
+      byForm.get(k).push(a);
+    }
+  }
+  return byForm.get(String(form).toLowerCase()) ?? [];
+}
+
+/** Alle vervoegde vormen van een werkwoord, over alle tijden heen. */
+export const verbForms = verb => [...(byVerb.get(verb) ?? [])];
+
 /** Het gevraagde antwoord voor een woordenschatitem, als lijst. */
 export function vocabAnswer(atom, direction) {
   return direction === 'nl2es' ? [atom.es] : atom.nl;
@@ -171,10 +233,12 @@ export function vocabPrompt(atom, direction) {
   return direction === 'nl2es' ? atom.nl[0] : atom.es;
 }
 
-/** Broers en zussen uit hetzelfde thema, voor afleiders. */
+/** Broers en zussen uit hetzelfde thema, voor afleiders. Woorden met dezelfde
+ *  vertaling vallen weg: die zouden een tweede juist antwoord zijn. */
 export function siblings(atom, { sameKind = true } = {}) {
   return atomsForTheme(atom.theme)
-    .filter(a => a.id !== atom.id && (!sameKind || a.kind === atom.kind));
+    .filter(a => a.id !== atom.id && (!sameKind || a.kind === atom.kind)
+      && !(a.kind === 'vocab' && atom.kind === 'vocab' && shareGloss(a, atom)));
 }
 
 /** Alle vervoegingen van hetzelfde werkwoord in dezelfde tijd. */

@@ -5,7 +5,7 @@
   "description": "Oefenapp voor Sí, claro nuevo 1.2 — statische site, geen afhankelijkheden",
   "scripts": {
     "start": "node tools/serve.mjs",
-    "test": "node tools/test-check.mjs && node tools/test-scheduler.mjs && node tools/validate.mjs",
+    "test": "node tools/test-check.mjs && node tools/test-scheduler.mjs && node tools/test-data.mjs && node tools/validate.mjs",
     "release": "node tools/release.mjs"
   }
 }

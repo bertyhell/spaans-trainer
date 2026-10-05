@@ -7,6 +7,9 @@ import { showEmoji } from '../scheduler.js';
 
 const OPTION_COUNT = 4;
 
+const hasArticle = a => /^(el|la|los|las) /i.test(a.es);
+const shuffleInPlace = arr => arr.splice(0, arr.length, ...shuffle(arr));
+
 export default {
   id: 'multipleChoice',
   label: 'Meerkeuze',
@@ -22,11 +25,18 @@ export default {
     const answers = vocabAnswer(atom, direction);
     const correct = answers[0];
 
-    const distractors = sample(siblings(atom), OPTION_COUNT - 1)
-      .map(a => (direction === 'nl2es' ? a.es : a.nl[0]))
-      .filter(d => !answers.includes(d));
-
-    const options = shuffle([...new Set([correct, ...distractors])]);
+    // Eerst afleiders van dezelfde woordsoort (en bij zelfstandige naamwoorden
+    // ook met een lidwoord): één werkwoord tussen drie dingen wijst zichzelf aan.
+    const shown = a => (direction === 'nl2es' ? a.es : a.nl[0]);
+    const pool = siblings(atom);
+    const alike = pool.filter(o => o.pos === atom.pos && hasArticle(o) === hasArticle(atom));
+    const options = [correct];
+    for (const o of [...sample(alike, alike.length), ...sample(pool, pool.length)]) {
+      if (options.length >= OPTION_COUNT) break;
+      const d = shown(o);
+      if (!options.includes(d) && !answers.includes(d)) options.push(d);
+    }
+    shuffleInPlace(options);
 
     const prompt = vocabPrompt(atom, direction);
     root.append(

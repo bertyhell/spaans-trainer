@@ -21,6 +21,7 @@ export default {
       el('span', {}, before), blank, blank ? el('span', {}, after) : null));
 
     const opts = optionList(shuffleOptions(atom.options), {
+      lang: 'es',
       compact: atom.options.every(o => o.length <= 12),
       onChoose: opt => {
         if (blank) { blank.textContent = opt; blank.classList.add('is-filled'); }

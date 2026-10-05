@@ -79,7 +79,7 @@ export default {
 
   supports(item) {
     const a = item.atom;
-    if (!eligible(a)) return false;
+    if (!eligible(a) || item.direction !== 'es2nl') return false;
     if (family(a).length < OPTIONS - 2) return false;
     return outsidersFor(a).length > 0;
   },

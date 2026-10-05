@@ -24,7 +24,8 @@ export const listenType = {
   label: 'Luister en typ',
 
   supports(item, { speech }) {
-    return item.atom.kind === 'vocab' && speech.available();
+    // Een woord herkennen dat je hoort is de es→nl-kant, niet zelf produceren.
+    return item.atom.kind === 'vocab' && item.direction === 'es2nl' && speech.available();
   },
 
   render(item, root, ctx) {
@@ -65,7 +66,7 @@ export const listenChoose = {
   label: 'Luister en kies',
 
   supports(item, { speech }) {
-    return item.atom.kind === 'vocab'
+    return item.atom.kind === 'vocab' && item.direction === 'es2nl'
       && speech.available()
       && siblings(item.atom).length >= 3;
   },
