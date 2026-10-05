@@ -10,6 +10,7 @@
 import { el, speakerButton, accentBar } from '../dom.js';
 import { checkAnswer } from '../check.js';
 import { pluralOf } from './agreement.js';
+import { hintLadder } from '../hintLadder.js';
 
 const PLURAL_ARTICLE = { el: 'los', la: 'las' };
 const VOWELS = /[aeiouáéíóú]+/g;
@@ -63,6 +64,8 @@ export default {
     });
     root.append(el('div', { class: 'input-wrap' }, input),
       accentBar(input, () => ctx.ready(input.value.trim().length > 0), ['á', 'é', 'í', 'ó', 'ú', 'ñ']));
+    const hint = hintLadder(answer);
+    root.append(hint.node);
 
     return {
       focus() { input.focus(); },
@@ -81,9 +84,9 @@ export default {
         else if (!r.correct && /[zn]$/.test(atom.es)) {
           note = /z$/.test(atom.es) ? 'Op -z: de z wordt c, dan -es.' : 'Op een medeklinker: -es erachter; een accent op de laatste lettergreep valt weg.';
         } else if (!r.correct && /[^aeiouáéíóú]$/.test(atom.es)) note = 'Op een medeklinker: -es erachter.';
-        return { ...r, expected: answer, note, given: input.value };
+        return hint.apply({ ...r, expected: answer, note, given: input.value });
       },
-      reveal() { input.disabled = true; },
+      reveal() { input.disabled = true; hint.disable(); },
     };
   },
 };

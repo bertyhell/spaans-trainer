@@ -29,6 +29,12 @@ const { sourceTenses } = await import('../js/types/tenseShift.js');
 const { meaningDistractors } = await import('../js/types/sentenceMeaning.js');
 const { wrongSentences } = await import('../js/types/pickSentence.js');
 const { hintsFor, genderRule, conjugationHint } = await import('../js/hints.js');
+const numerals = await import('../js/numerals.js');
+const { hintPattern } = await import('../js/hintLadder.js');
+const { glossFor } = await import('../js/gloss.js');
+const { questionForm, tenseAlternatives } = await import('../js/types/conversation.js');
+const { sentenceScore } = await import('../js/types/speak.js');
+const { trickyDistractors } = await import('../js/types/multipleChoice.js');
 data.init();
 
 let failed = 0;
@@ -221,6 +227,117 @@ t('dictee: fout woord', wordDiff('tengo un perro', 'tengo dos perros').missed, [
   const memoed = vocab.filter(a => a.memo).length;
   t('ezelsbruggetjes in de data', memoed > 350, true);
 }
+
+/* --- hint bij het intypen --- */
+t('hint 1: eerste letter en lengte', hintPattern('la corbata', 1), 'la   c _ _ _ _ _ _');
+t('hint 2: om de andere letter', hintPattern('la corbata', 2), 'la   c _ r _ a _ a');
+t('hint: één woord', hintPattern('comí', 1), 'c _ _ _');
+t('hint: notatie wordt eerst uitgeschreven', hintPattern('el frigo(rífico)', 1), 'el   f _ _ _ _ _ _ _ _ _ _');
+
+/* --- getallen --- */
+const nw = numerals.numberWords;
+t('getal 16', nw(16), 'dieciséis');
+t('getal 21 / vóór een woord', [nw(21), nw(21, { noun: true })], ['veintiuno', 'veintiún']);
+t('getal 31', nw(31), 'treinta y uno');
+t('getal 100 / 101', [nw(100), nw(101)], ['cien', 'ciento uno']);
+t('getal 555', nw(555), 'quinientos cincuenta y cinco');
+t('getal 1000 / 2024', [nw(1000), nw(2024)], ['mil', 'dos mil veinticuatro']);
+t('getal 21 000', nw(21000), 'veintiún mil');
+t('uur 1:00', numerals.timeWords(1, 0).words, 'es la una');
+t('uur 7:15', numerals.timeWords(7, 15).words, 'son las siete y cuarto');
+t('uur 6:45 telt af van 7', numerals.timeWords(6, 45).words, 'son las siete menos cuarto');
+t('uur 12:40 telt af van 1', numerals.timeWords(12, 40).words, 'es la una menos veinte');
+t('uur: y quince mag ook', numerals.timeWords(7, 15).accepted.includes('las siete y quince'), true);
+t('datum 1/5', numerals.dateWords(1, 5).accepted.includes('el primero de mayo'), true);
+t('prijs 21,50', numerals.priceWords(21, 50).words, 'veintiún euros con cincuenta');
+t('prijs 1 euro', numerals.priceWords(1, 0).words, 'un euro');
+{
+  const time = { kind: 'time', value: [7, 15], display: '7:15' };
+  t('cijfers: 7:15, 7.15, 19u15', ['7:15', '7.15', '19u15', '07:15'].map(x => numerals.isDigits(time, x)), [true, true, true, true]);
+  t('cijfers: 7:45 is niet 7:15', numerals.isDigits(time, '7:45'), false);
+  const price = { kind: 'price', value: [12, 50], display: '12,50 €' };
+  t('cijfers: prijs', ['12,50', '12.5', '€12,50', '12'].map(x => numerals.isDigits(price, x)), [true, true, true, false]);
+  const num = { kind: 'number', value: 12000, display: '12000' };
+  t('cijfers: 12.000 en 12 000', ['12000', '12.000', '12 000', '1200'].map(x => numerals.isDigits(num, x)), [true, true, true, false]);
+  const date = { kind: 'date', value: [15, 3], display: '15/3' };
+  t('cijfers: datum', ['15/3', '15-03', '3/15'].map(x => numerals.isDigits(date, x)), [true, true, false]);
+  t('verwarrende buren: 60 ↔ 70', numerals.confusables({ kind: 'number', value: 64, display: '64' }).includes('74'), true);
+  t('verwarrende buren: nooit het antwoord zelf', numerals.confusables(time).includes('7:15'), false);
+}
+let badSample = 0;
+for (const a of data.allAtoms().filter(x => x.kind === 'numeral')) {
+  for (let i = 0; i < 50; i++) {
+    const smp = numerals.generate(a);
+    if (!smp.words || !numerals.isDigits(smp, smp.display.replace(' €', '')) || numerals.confusables(smp).length < 3
+      || !checkAnswer(smp.words, smp.accepted).correct) badSample++;
+  }
+}
+t('elk berekend voorbeeld is na te kijken en heeft drie buren', badSample, 0);
+
+/* --- verwarring en gelijkenis --- */
+{
+  // Twee woorden uit hetzelfde thema die geen vertaling delen.
+  const one = vocab.find(a => data.siblings(a).some(o => o.kind === 'vocab'));
+  const two = data.siblings(one).find(o => o.kind === 'vocab');
+  t('verward: Spaans van een ander woord', data.confusedWith(one, two.es, 'nl2es')?.id, two.id);
+  t('verward: Nederlands van een ander woord', data.confusedWith(one, two.nl[0], 'es2nl')?.id, two.id);
+  // pedir = "vragen (om)" en preguntar = "vragen": voor de app synoniemen.
+  if (byEs('pedir') && byEs('preguntar')) t('pedir en preguntar delen "vragen"', data.shareGloss(byEs('pedir'), byEs('preguntar')), true);
+  if (gafas) t('geen verwarring met een synoniem', data.confusedWith(gafas, 'los lentes', 'nl2es'), null);
+  t('geen verwarring bij onzin', data.confusedWith(vocab[0], 'xyzzy', 'nl2es'), null);
+  let synonymLookalikes = 0;
+  for (const a of vocab.slice(0, 300)) for (const l of data.lookalikes(a)) if (data.shareGloss(a, l.atom)) synonymLookalikes++;
+  t('een gelijkend woord is nooit een synoniem', synonymLookalikes, 0);
+  t('lastige afleiders zijn andere woorden', vocab.slice(0, 200).every(a => trickyDistractors(a).every(o => o.id !== a.id)), true);
+}
+{
+  const hablo = data.allAtoms().find(a => a.kind === 'conjugation' && a.verb === 'hablar' && a.tense === 'presente' && a.person === '1s');
+  t('minimaal paar: hablo / habló', data.minimalPartners(hablo).map(p => p.es), ['habló']);
+}
+
+/* --- woord in een zin --- */
+{
+  let wrongCase = 0, proper = 0, twice = 0;
+  for (const a of vocab) {
+    for (const c of data.contextsFor(a)) {
+      if (c.es.slice(c.at, c.at + c.surface.length) !== c.surface) wrongCase++;
+      if (/[→=()]/.test(c.es)) twice++;
+      const before = c.es.slice(0, c.at).replace(/[\s"«—–-]+$/u, '');
+      if (c.surface[0] !== c.surface[0].toLowerCase() && before && !/[.!?¿¡:]$/.test(before)) proper++;
+    }
+  }
+  t('context: het woord staat waar gezegd', wrongCase, 0);
+  t('context: geen opdrachtregels', twice, 0);
+  t('context: geen namen midden in de zin', proper, 0);
+  const granada = byEs('la granada');
+  if (granada) t('context: Granada is geen granaatappel', data.contextsFor(granada).some(c => c.surface === 'Granada'), false);
+  t('context: genoeg woorden hebben een zin', vocab.filter(a => data.contextsFor(a).length).length > 250, true);
+}
+
+/* --- gesprek --- */
+{
+  const comi = data.allAtoms().find(a => a.kind === 'conjugation' && a.verb === 'comer' && a.tense === 'indefinido' && a.person === '1s');
+  t('antwoord op de vraag: comiste → comí', questionForm(comi), 'comiste');
+  const comio = data.allAtoms().find(a => a.kind === 'conjugation' && a.verb === 'comer' && a.tense === 'indefinido' && a.person === '3s');
+  t('antwoord op de vraag: niet voor él', questionForm(comio), null);
+  const alts = tenseAlternatives(comi).map(x => x.tense).sort();
+  t('welke tijd: de andere drie tijden', alts, ['imperfecto', 'perfecto', 'presente']);
+}
+
+/* --- spreken --- */
+t('spreken: zelfde zin', sentenceScore('¿Dónde está la playa?', 'donde esta la playa'), 1);
+t('spreken: cijfers tellen als woorden', sentenceScore('Tengo dos hermanos.', 'tengo 2 hermanos'), 1);
+t('spreken: één woord fout op vier', sentenceScore('Tengo dos hermanos mayores.', 'tengo tres hermanos mayores'), 0.75);
+
+/* --- woordbetekenis in leesteksten --- */
+t('betekenis: woord uit de lijst', glossFor('corbata')?.lines[0]?.startsWith('la corbata'), true);
+t('betekenis: leestekens eraf', glossFor('¿corbata?')?.word, 'corbata');
+t('betekenis: meervoud', glossFor('corbatas')?.lines[0]?.startsWith('la corbata'), true);
+t('betekenis: vervoeging', /ir|ser/.test(glossFor('fuimos')?.lines.join(' ') ?? ''), true);
+t('betekenis: klein woordje', glossFor('pero')?.lines.join(' ').includes('maar'), true);
+t('betekenis: onbekend is null', glossFor('xyzzy'), null);
+t('betekenis: wederkerend', /levantar/.test(glossFor('levanto')?.lines.join(' ') ?? ''), true);
+t('betekenis: voltooid deelwoord', /deelwoord van hablar/.test(glossFor('hablado')?.lines.join(' ') ?? ''), true);
 
 /* --- offline: elk script staat in de lijst van de service worker --- */
 {

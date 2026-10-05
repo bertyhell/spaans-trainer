@@ -4,6 +4,7 @@ import { el, speakerButton, accentBar, FLAGS } from '../dom.js';
 import { vocabAnswer, vocabPrompt, synonymsOf } from '../data.js';
 import { checkAnswer } from '../check.js';
 import { showEmoji } from '../scheduler.js';
+import { hintLadder } from '../hintLadder.js';
 
 export default {
   id: 'typeAnswer',
@@ -42,6 +43,8 @@ export default {
 
     // Accentbalkje: alleen nuttig wanneer er Spaans getypt moet worden.
     if (toSpanish) root.append(accentBar(input, () => ctx.ready(input.value.trim().length > 0)));
+    const hint = hintLadder(answers[0]);
+    root.append(hint.node);
 
     return {
       focus() { input.focus(); },
@@ -54,14 +57,15 @@ export default {
           const syn = synonymsOf(atom, { gloss: atom.nl[0] })
             .find(o => checkAnswer(input.value, [o.es]).correct);
           if (syn) {
-            return { correct: true, expected: atom.es, given: input.value,
-              note: `Ook juist! ${syn.es} betekent ook „${atom.nl[0]}”. Hier zochten we: ${atom.es}` };
+            return hint.apply({ correct: true, expected: atom.es, given: input.value,
+              note: `Ook juist! ${syn.es} betekent ook „${atom.nl[0]}”. Hier zochten we: ${atom.es}` });
           }
         }
-        return { ...r, given: input.value };
+        return hint.apply({ ...r, given: input.value });
       },
       reveal({ correct, almost }) {
         input.disabled = true;
+        hint.disable();
         input.classList.add(almost ? 'is-almost' : correct ? 'is-correct' : 'is-wrong');
       },
     };

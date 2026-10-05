@@ -1,8 +1,10 @@
 /* Leesbegrip: een tekst uit het boek met een vraag erover. De tekst staat
- * bij elke vraag opnieuw, want je krijgt de vragen niet na elkaar. */
+ * bij elke vraag opnieuw, want je krijgt de vragen niet na elkaar.
+ * Elk gekend woord in de tekst is aantikbaar voor zijn betekenis (js/gloss.js). */
 
 import { el, speakerButton, optionList, shuffleOptions } from '../dom.js';
 import { getText } from '../data.js';
+import { glossedParagraph } from '../gloss.js';
 
 export default {
   id: 'reading',
@@ -20,7 +22,8 @@ export default {
         el('summary', { class: 'reading-title', lang: 'es' }, text.title,
           speakerButton(text.es, ctx.speech)),
         el('div', { class: 'reading-text', lang: 'es', tabindex: '0' },
-          text.es.split(/\n{2,}/).map(par => el('p', {}, par)))),
+          text.es.split(/\n{2,}/).map(glossedParagraph))),
+      el('p', { class: 'q-hint' }, 'Tik op een woord voor de betekenis.'),
       el('div', { class: 'q-prompt q-prompt--sentence' }, el('strong', {}, atom.q)),
     );
 

@@ -9,6 +9,7 @@ import { el, sample, accentBar } from '../dom.js';
 import { conjugatedForm, verbTranslation, PERSON_LABELS, TENSE_LABELS } from '../data.js';
 import { checkAnswer } from '../check.js';
 import { otherForms } from './conjugation.js';
+import { hintLadder } from '../hintLadder.js';
 
 const SIMPLE = ['presente', 'indefinido', 'imperfecto', 'futuro', 'condicional', 'subjuntivo'];
 const tenseShort = t => (TENSE_LABELS[t] ?? t).split(' · ')[0];
@@ -59,20 +60,22 @@ export default {
     });
     root.append(el('div', { class: 'input-wrap' }, input),
       accentBar(input, () => ctx.ready(input.value.trim().length > 0), ['á', 'é', 'í', 'ó', 'ú', 'ñ']));
+    const hint = hintLadder(atom.form);
+    root.append(hint.node);
 
     return {
       focus() { input.focus(); },
       check() {
         const r = checkAnswer(input.value, [atom.form], { rejectNear: otherForms(atom.verb, atom.form) });
         const stayed = !r.correct && checkAnswer(input.value, [fromForm]).correct;
-        return {
+        return hint.apply({
           ...r,
           expected: `${fromForm} → ${atom.form}`,
           note: stayed ? `Dat is nog de ${tenseShort(from)}.` : r.note,
           given: input.value,
-        };
+        });
       },
-      reveal() { input.disabled = true; },
+      reveal() { input.disabled = true; hint.disable(); },
     };
   },
 };

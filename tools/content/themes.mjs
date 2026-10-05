@@ -65,6 +65,8 @@ export const EXISTING_THEMES = [
   'interrogativos', 'bijvoeglijk-naamwoord', 'ser-estar', 'verleden-tijden',
   // Woordenschat uit tools/content/a1-basics.mjs.
   'kleuren', 'dagen-en-maanden', 'ww-denken',
+  // Berekende getallen, uren en prijzen uit tools/content/numerals.mjs.
+  'tijd-en-uur', 'winkelen',
 ];
 
 /** Thema-id's per groep, in schermvolgorde. */

@@ -10,10 +10,11 @@ const EMPTY = () => ({
   progress: {},                 // itemKey -> [box, seen, wrong, lastSeen]
   streak: { current: 0, best: 0, lastDay: null },
   exercisesDone: 0,
-  settings: { sound: true, speech: true, reducedMotion: false },
+  settings: { sound: true, speech: true, reducedMotion: false, speaking: false },
   reports: [],
   reportReasons: {},            // atomId -> vrije tekst: wat is er mis
   mistakes: {},                 // atomId -> { expected, given, note, at, streak }
+  confusions: {},               // "idA|idB" (gesorteerd) -> { count, at, streak }
 });
 
 let state = null;
@@ -208,7 +209,47 @@ export function clearMistakes() {
   save();
 }
 
-/** Wist voortgang, fouten en streak. Instellingen en meldingen blijven: die
+/* --- verwarde woorden ---
+ * Wie "preguntar" typt waar "pedir" gevraagd was, of in de koppelronde la
+ * carta aan "de affiche" hangt, haalt twee woorden door elkaar. Zo'n paar
+ * komt terug als "welk is welk?" tot je het twee keer na elkaar goed hebt. */
+
+export const CONFUSION_CLEAR_AFTER = 2;
+
+const pairKey = (a, b) => (a < b ? `${a}|${b}` : `${b}|${a}`);
+
+export function recordConfusion(a, b) {
+  if (!a || !b || a === b) return;
+  const s = load();
+  const k = pairKey(a, b);
+  const c = s.confusions[k];
+  s.confusions[k] = { count: (c?.count ?? 0) + 1, at: Date.now(), streak: 0 };
+  save();
+}
+
+/** Een "welk is welk?"-vraag over dit paar is beantwoord. */
+export function resolveConfusion(a, b, correct) {
+  const s = load();
+  const k = pairKey(a, b);
+  const c = s.confusions[k];
+  if (!c) return;
+  if (!correct) { c.streak = 0; c.count += 1; c.at = Date.now(); }
+  else if (++c.streak >= CONFUSION_CLEAR_AFTER) delete s.confusions[k];
+  save();
+}
+
+/** De woorden waarmee dit atoom verward werd, vaakst eerst. */
+export function confusionsOf(atomId) {
+  const out = [];
+  for (const [k, c] of Object.entries(load().confusions ?? {})) {
+    const [a, b] = k.split('|');
+    if (a === atomId) out.push({ other: b, ...c });
+    else if (b === atomId) out.push({ other: a, ...c });
+  }
+  return out.sort((x, y) => y.count - x.count || y.at - x.at);
+}
+
+/** Wist voortgang, fouten, verwarde woorden en streak. Instellingen en meldingen blijven: die
  *  zijn geen voortgang, en een melding is bedoeld voor wie de data nakijkt. */
 export function resetAll() {
   const keep = state ? { settings: state.settings, reports: state.reports, reportReasons: state.reportReasons } : {};
@@ -250,6 +291,9 @@ export function importState(text) {
   }
   for (const [id, m] of Object.entries(theirs.mistakes ?? {})) {
     if (!s.mistakes[id] || m.at > s.mistakes[id].at) s.mistakes[id] = m;
+  }
+  for (const [k, c] of Object.entries(theirs.confusions ?? {})) {
+    if (!s.confusions[k] || c.at > s.confusions[k].at) s.confusions[k] = c;
   }
   for (const id of theirs.reports ?? []) if (!s.reports.includes(id)) s.reports.push(id);
   s.reportReasons = { ...theirs.reportReasons, ...s.reportReasons };

@@ -176,7 +176,13 @@ function subjunctive(verb, yo) {
  *   leer → leyó, leyeron (tussen twee klinkers wordt de i een y);
  *   pedir → pidió, dormir → durmió (-ir-klankveranderaars, enkel él en ellos).
  */
+/* Regelmatig in de presente, maar met een eigen stam in de indefinido. */
+const INDEFINIDO_IRREGULAR = {
+  andar: ['anduve', 'anduviste', 'anduvo', 'anduvimos', 'anduvisteis', 'anduvieron'],
+};
+
 export function indefinidoForms(verb, change = IRREGULAR[verb]) {
+  if (INDEFINIDO_IRREGULAR[verb]) return [...INDEFINIDO_IRREGULAR[verb]];
   const base = regularForms(verb, 'indefinido');
   if (!base) return null;
   const end = endingOf(verb);

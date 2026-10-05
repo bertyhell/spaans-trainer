@@ -158,7 +158,8 @@ for (const a of course.atoms) {
     case 'choice':
     case 'reading':
     case 'dialogue':
-    case 'stress': {
+    case 'stress':
+    case 'numeral': {
       const problems = checkAtom(a, { themeIds, texts: course.texts ?? {}, grammar: course.grammar ?? {} });
       for (const p of problems) err(id, p);
       break;

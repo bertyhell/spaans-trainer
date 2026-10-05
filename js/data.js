@@ -4,7 +4,7 @@
  * kunnen produceren. */
 
 import { itemKey } from './scheduler.js';
-import { setLexicon, expandVariants, normalize, stripArticle, stripAccents } from './check.js';
+import { setLexicon, expandVariants, normalize, stripArticle, stripAccents, lexiconKey, levenshtein, speakable } from './check.js';
 
 let course = null;
 let sources = {};
@@ -15,6 +15,7 @@ const byText = new Map();          // tekst-id -> dialoogregels, op volgorde
 const byFamily = new Map();        // werkwoord|tijd -> vervoegingen
 const byVerb = new Map();          // werkwoord -> alle vervoegde vormen
 const byGloss = new Map();         // Nederlandse vertaling -> woordenschatatomen
+const byEs = new Map();            // Spaans woord (lexiconKey) -> woordenschatatomen
 
 export function init() {
   course = window.COURSE;
@@ -46,6 +47,10 @@ export function init() {
       for (const g of glossKeys(atom)) {
         if (!byGloss.has(g)) byGloss.set(g, []);
         byGloss.get(g).push(atom);
+      }
+      for (const v of new Set(expandVariants(atom.es).map(lexiconKey))) {
+        if (!byEs.has(v)) byEs.set(v, []);
+        byEs.get(v).push(atom);
       }
     }
   }
@@ -287,3 +292,149 @@ export const TENSE_LABELS = {
   continuo: 'estar + gerundio · ergens mee bezig zijn',
   subjuntivo: 'presente de subjuntivo · aanvoegende wijs',
 };
+
+/* ------------------------------------------------------------------ */
+/* Verwarring, gelijkenis en context                                   */
+/* ------------------------------------------------------------------ */
+
+/** Woordenschatatomen met precies dit Spaanse woord (lidwoord en accenten tellen niet). */
+export const vocabByEs = text => byEs.get(lexiconKey(text)) ?? [];
+
+/** Woordenschatatomen met deze Nederlandse vertaling. */
+export const vocabByGloss = text => byGloss.get(glossKey(text)) ?? [];
+
+/**
+ * Het andere woord uit de cursus dat iemand gaf in plaats van dit woord, of
+ * null. "preguntar" voor pedir, of "vragen" bij pedir terwijl dat de
+ * vertaling van preguntar is. Eerst in de taal van het antwoord (nl→es typt
+ * Spaans, es→nl meestal Nederlands; luisteren typt Spaans in beide).
+ * Een synoniem is geen verwarring.
+ */
+export function confusedWith(atom, given, direction) {
+  if (atom.kind !== 'vocab' || !given) return null;
+  const pools = direction === 'es2nl' ? [vocabByGloss(given), vocabByEs(given)] : [vocabByEs(given), vocabByGloss(given)];
+  for (const pool of pools) {
+    const hit = pool.find(o => o.id !== atom.id && !shareGloss(o, atom));
+    if (hit) return hit;
+  }
+  return null;
+}
+
+/** Het kale Spaanse woord: zonder lidwoord, kleine letters, accenten behouden. */
+export const bareEs = atom => stripArticle(normalize(speakable(atom.es)));
+
+const lookalikeCache = new Map();
+/**
+ * Woorden die op dit woord lijken: hoogstens twee letters verschil
+ * (caro / carro / cara). Zulke afleiders dwingen je het woord echt te lezen
+ * in plaats van het onderwerp te herkennen. Nooit een synoniem.
+ */
+export function lookalikes(atom) {
+  if (atom.kind !== 'vocab') return [];
+  if (lookalikeCache.has(atom.id)) return lookalikeCache.get(atom.id);
+  const me = bareEs(atom);
+  const flat = stripAccents(me);
+  const out = [];
+  if (flat.length >= 3) {
+    for (const o of course.atoms) {
+      if (o.kind !== 'vocab' || o.id === atom.id || shareGloss(o, atom)) continue;
+      const other = bareEs(o);
+      if (other === me || Math.abs(other.length - me.length) > 2 || other.length < 3) continue;
+      // Accenten tellen hier wél: papa en papá zijn twee woorden.
+      const d = levenshtein(me, other, 2);
+      if (d <= 2) out.push({ atom: o, distance: d });
+    }
+  }
+  out.sort((a, b) => a.distance - b.distance);
+  lookalikeCache.set(atom.id, out);
+  return out;
+}
+
+/**
+ * Minimale paren om te beluisteren: woorden die één klank verschillen
+ * (pero / perro, papa / papá). Voor een vervoeging: een vorm van hetzelfde
+ * werkwoord die enkel door het accent verschilt (hablo / habló).
+ * @returns {Array<{es, atom?}>}
+ */
+export function minimalPartners(atom) {
+  if (atom.kind === 'conjugation') {
+    if (/\s/.test(atom.form)) return [];
+    const flat = stripAccents(atom.form);
+    return verbForms(atom.verb)
+      .filter(f => f !== atom.form && !/\s/.test(f) && stripAccents(f) === flat)
+      .map(es => ({ es }));
+  }
+  if (atom.kind !== 'vocab' || /\s/.test(bareEs(atom))) return [];
+  return lookalikes(atom)
+    .filter(({ atom: o, distance }) => distance === 1 && !/\s/.test(bareEs(o)))
+    .map(({ atom: o }) => ({ es: bareEs(o), atom: o }));
+}
+
+/* Alle Spaanse zinnen uit de cursus, met vertaling als die er is. Leesteksten
+ * worden in zinnen geknipt; die hebben geen vertaling per zin. */
+let sentencePool = null;
+function sentences() {
+  if (sentencePool) return sentencePool;
+  sentencePool = [];
+  const add = (es, nl, from) => {
+    const words = es.trim().split(/\s+/).length;
+    // Geen opdrachtregels uit het werkboek ("comer (tú) → comías").
+    if (words < 3 || words > 22 || /___|[→=()]/.test(es)) return;
+    sentencePool.push({ es: es.trim(), nl: nl ?? null, from });
+  };
+  for (const a of course.atoms) {
+    if (a.kind === 'sentence' || a.kind === 'dialogue') add(a.es, a.nl, a.id);
+    if (a.kind === 'grammar') {
+      for (const ex of a.examples ?? []) if (ex.es?.includes('___')) add(ex.es.replace('___', ex.answer), ex.nl, a.id);
+    }
+  }
+  for (const [id, t] of Object.entries(course.texts ?? {})) {
+    for (const s of (t.es ?? '').split(/(?<=[.!?])\s+|\n+/)) add(s, null, id);
+  }
+  return sentencePool;
+}
+
+/* Een hoofdletter midden in de zin is een naam: Granada is geen granaatappel,
+ * Noruega geen "Noors". Aan het begin van een zin zegt de hoofdletter niets. */
+function isProperNoun(sentence, at, surface) {
+  if (surface[0] === surface[0].toLowerCase()) return false;
+  const before = sentence.slice(0, at).replace(/[\s"«—–-]+$/u, '');
+  return before.length > 0 && !/[.!?¿¡:]$/.test(before);
+}
+
+const escapeRe = s => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+const contextCache = new Map();
+const CONTEXT_POS = new Set(['noun', 'verb', 'adj', 'adv']);
+
+/**
+ * Zinnen uit de cursus waarin dit woord letterlijk staat, precies één keer.
+ * `surface` is het woord zoals het in de zin staat (met die hoofdletters).
+ *
+ * Woorden die ook een vervoegde vorm of een ander woord zijn, vallen weg:
+ * in "como pan" is como een werkwoord, geen "hoe", en "vino" kan wijn zijn of
+ * "hij kwam". Een gat dat twee betekenissen toelaat, is een strikvraag.
+ */
+export function contextsFor(atom) {
+  if (atom.kind !== 'vocab' || !CONTEXT_POS.has(atom.pos)) return [];
+  if (contextCache.has(atom.id)) return contextCache.get(atom.id);
+  const forms = [...new Set(expandVariants(atom.es).map(v => stripArticle(normalize(v))))]
+    .filter(f => f.length >= 3)
+    .filter(f => atom.pos === 'verb' || !conjugationsOfForm(f).length)
+    .filter(f => vocabByEs(f).every(o => o.id === atom.id || shareGloss(o, atom)));
+  const out = [];
+  for (const f of forms) {
+    const re = new RegExp(`(?<![\\p{L}])${escapeRe(f)}(?![\\p{L}])`, 'giu');
+    for (const s of sentences()) {
+      const hits = [...s.es.matchAll(re)];
+      if (hits.length !== 1) continue;
+      const [hit] = hits;
+      if (isProperNoun(s.es, hit.index, hit[0])) continue;
+      out.push({ ...s, surface: hit[0], at: hit.index });
+    }
+  }
+  // Zinnen met een vertaling eerst: daar kan de vertaling als steuntje bij.
+  out.sort((a, b) => Number(!a.nl) - Number(!b.nl) || a.es.length - b.es.length);
+  const result = out.slice(0, 16);
+  contextCache.set(atom.id, result);
+  return result;
+}

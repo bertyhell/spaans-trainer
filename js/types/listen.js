@@ -5,6 +5,7 @@
 import { el, shuffle, sample, accentBar, optionList } from '../dom.js';
 import { siblings } from '../data.js';
 import { checkAnswer } from '../check.js';
+import { hintLadder } from '../hintLadder.js';
 
 const ACCENT_KEYS = ['á', 'é', 'í', 'ó', 'ú', 'ñ'];
 
@@ -46,15 +47,18 @@ export const listenType = {
     root.append(input);
 
     root.append(accentBar(input, () => ctx.ready(true), ACCENT_KEYS));
+    const hint = hintLadder(atom.es);
+    root.append(hint.node);
 
     return {
       focus() { input.focus(); },
       check() {
         const r = checkAnswer(input.value, [atom.es]);
-        return { ...r, given: input.value };
+        return hint.apply({ ...r, given: input.value });
       },
       reveal({ correct, almost }) {
         input.disabled = true;
+        hint.disable();
         input.classList.add(almost ? 'is-almost' : correct ? 'is-correct' : 'is-wrong');
       },
     };

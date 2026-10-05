@@ -3,6 +3,7 @@
 
 import { el, shuffle, speakerButton, optionList } from '../dom.js';
 import { checkAnswer } from '../check.js';
+import { hintLadder } from '../hintLadder.js';
 
 /** Kiest bij elke beurt willekeurig één voorbeeld uit een grammatica-atoom. */
 const pickExample = atom => atom.examples[Math.floor(Math.random() * atom.examples.length)];
@@ -115,14 +116,18 @@ export default {
       };
     }
 
+    const ladder = hintLadder(answers[0]);
+    root.append(ladder.node);
+
     return {
       focus() { gapNode.focus(); },
       check() {
         const r = checkAnswer(gapNode.value, answers);
-        return { ...r, given: gapNode.value };
+        return ladder.apply({ ...r, given: gapNode.value });
       },
       reveal({ correct, almost }) {
         gapNode.disabled = true;
+        ladder.disable();
         gapNode.classList.add(almost ? 'is-almost' : correct ? 'is-correct' : 'is-wrong');
         addSpeaker();
       },

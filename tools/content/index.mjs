@@ -25,6 +25,7 @@
  *   reading   { text, q, options, answer, nl? }                 vraag bij een tekst
  *   dialogue  { text, line, who?, es, nl }                      zin uit een dialoog
  *   stress    { es, syllables, stressed, nl?, note? }           klemtoon aanduiden
+ *   numeral   { gen, label, min?, max?, minutes? }               berekend getal, uur, datum, prijs
  * Allemaal met id, kind, theme, en src (scanbestand) of srcLabel (vrije
  * bronvermelding), optioneel grammarRef (sleutel in `grammar`) en note.
  */
@@ -37,7 +38,8 @@ import { CONTENT_THEMES, EXISTING_THEMES } from './themes.mjs';
 const HERE = dirname(fileURLToPath(import.meta.url));
 const SKIP = new Set(['index.mjs', 'themes.mjs']);
 
-const KINDS = new Set(['vocab', 'sentence', 'grammar', 'choice', 'reading', 'dialogue', 'stress']);
+const KINDS = new Set(['vocab', 'sentence', 'grammar', 'choice', 'reading', 'dialogue', 'stress', 'numeral']);
+const GENS = new Set(['number', 'year', 'time', 'date', 'price']);
 const POS = new Set(['verb', 'noun', 'adj', 'adv', 'other']);
 
 /** Laadt en controleert alle modules. Gooit een fout bij iets onbruikbaars. */
@@ -141,6 +143,18 @@ export function checkAtom(a, { themeIds, texts, grammar }) {
       else {
         if (a.syllables.join('') !== a.es) p.push(`lettergrepen "${a.syllables.join('-')}" vormen niet "${a.es}"`);
         if (!Number.isInteger(a.stressed) || a.stressed < 0 || a.stressed >= a.syllables.length) p.push('stressed buiten bereik');
+      }
+      break;
+    case 'numeral':
+      if (!GENS.has(a.gen)) p.push(`onbekende gen "${a.gen}"`);
+      if (!nonEmpty(a.label)) p.push('zonder label');
+      if (['number', 'year'].includes(a.gen)
+        && !(Number.isInteger(a.min) && Number.isInteger(a.max) && a.min >= 0 && a.min <= a.max && a.max <= 999999)) {
+        p.push('min en max moeten gehele getallen zijn, 0 ≤ min ≤ max ≤ 999999');
+      }
+      if (a.gen === 'time' && !(Array.isArray(a.minutes) && a.minutes.length
+        && a.minutes.every(m => Number.isInteger(m) && m >= 0 && m < 60 && m % 5 === 0))) {
+        p.push('minutes moet een lijst veelvouden van 5 onder 60 zijn');
       }
       break;
   }

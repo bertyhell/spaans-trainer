@@ -9,10 +9,12 @@
  *            Kan dit atoom als deze vorm getoond worden? env bevat {speech},
  *            en bij het testen soms {forceType} (zie pickType).
  *   render(item, root, ctx) -> instance
- *            ctx = {ready(bool), submit(), speech}
+ *            ctx = {ready(bool), submit(), skip({noSpeaking?}), speech}
  *            instance = {focus(), check() -> result, reveal(result)}
  *
- * check() geeft {correct, expected, note, given, perAtom?} terug.
+ * check() geeft {correct, expected, note, given, perAtom?} terug, en
+ * eventueel hinted (juist met een hint: de doos blijft staan) of
+ * confusionWith (een "welk is welk?"-vraag over dat paar).
  */
 
 import multipleChoice from './multipleChoice.js';
@@ -43,6 +45,12 @@ import plural from './plural.js';
 import tenseShift from './tenseShift.js';
 import sentenceMeaning from './sentenceMeaning.js';
 import pickSentence from './pickSentence.js';
+import { contextGap, contextMeaning } from './context.js';
+import confusionPair from './confusion.js';
+import { answerQuestion, tenseContext } from './conversation.js';
+import minimalPair from './minimalPair.js';
+import { numeralWrite, numeralListen, numeralRead } from './numeral.js';
+import { speakWord, speakSentence } from './speak.js';
 import { getProgress } from '../storage.js';
 
 export const TYPES = [
@@ -79,6 +87,17 @@ export const TYPES = [
   tenseShift,
   sentenceMeaning,
   pickSentence,
+  contextGap,
+  contextMeaning,
+  confusionPair,
+  answerQuestion,
+  tenseContext,
+  minimalPair,
+  numeralWrite,
+  numeralListen,
+  numeralRead,
+  speakWord,
+  speakSentence,
 ];
 
 export const byId = Object.fromEntries(TYPES.map(t => [t.id, t]));
@@ -116,6 +135,19 @@ const WEIGHTS = {
   tenseShift: 2,
   sentenceMeaning: 2,
   pickSentence: 1,
+  // Een woord in een echte zin: veel nieuwe vragen uit bestaande zinnen.
+  contextGap: 3,
+  contextMeaning: 2,
+  // Past enkel bij een woord dat je eerder verwarde, en dan moet ze ook komen.
+  confusionPair: 6,
+  answerQuestion: 2,
+  tenseContext: 2,
+  minimalPair: 1,
+  numeralWrite: 3,
+  numeralListen: 3,
+  numeralRead: 2,
+  speakWord: 2,
+  speakSentence: 2,
   // Deze vormen zijn de enige voor hun soort atoom: het gewicht doet er dan
   // niet toe, behalve bij een dialoogregel, waar antwoorden net iets meer oplevert.
   choice: 1,
@@ -133,9 +165,11 @@ const RECOGNIZE = new Set([
   'multipleChoice', 'articlePicker', 'oddOneOut', 'irregularVerb', 'verbType', 'verbSort',
   'listenChoose', 'conjugationSingle', 'dialogueMeaning', 'dialogueReply', 'stressTap',
   'tenseSpot', 'personSpot', 'dialogueOrder', 'emojiPick', 'trueFalse', 'sentenceMeaning', 'pickSentence',
+  'contextMeaning', 'confusionPair', 'minimalPair', 'numeralRead', 'numeralListen',
 ]);
 const PRODUCE = new Set([
   'typeAnswer', 'listenType', 'conjugationGrid', 'conjugationType', 'accents', 'agreement', 'dictation', 'plural', 'tenseShift',
+  'numeralWrite', 'speakWord',
 ]);
 
 export const modeOf = typeId => (RECOGNIZE.has(typeId) ? 'recognize' : PRODUCE.has(typeId) ? 'produce' : null);

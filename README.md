@@ -8,19 +8,21 @@ npm-afhankelijkheden.
 
 ## Wat er in zit
 
-**10294 oefenfeiten**, gedolven uit de cursusbladzijden en de bundel van de lesgever, plus een
-kleine aanvulling met A1-basiswoorden (`tools/content/a1-basics.mjs`):
+**10305 oefenfeiten**, gedolven uit de cursusbladzijden en de bundel van de lesgever, plus een
+kleine aanvulling met A1-basiswoorden (`tools/content/a1-basics.mjs`) en berekende getallen
+(`tools/content/numerals.mjs`):
 
 | soort | aantal | wordt |
 |---|---|---|
-| woordenschat ES↔NL | 1201 | meerkeuze, intypen, lidwoord, accenten, koppelen, hoort-niet-bij, welk-is-onregelmatig, luisteren, bijvoeglijk naamwoord laten overeenkomen, letterpuzzel, welk plaatje?, klopt het?, meervoud |
-| vervoegingen | 6918 (8 tijden, wederkerende werkwoorden in 5; de meeste berekend) | vervoegingstabel, losse vorm kiezen of intypen, welke tijd?, wie doet het?, klopt het?, zet om naar een andere tijd |
-| zinnen (werkboek, bundel, dialogen uit de cursus) | 819 | invuloefening, zin bouwen, dictee, zoek de fout, wat betekent de zin?, welke zin klopt? |
+| woordenschat ES↔NL | 1201 | meerkeuze, intypen, lidwoord, accenten, koppelen, hoort-niet-bij, welk-is-onregelmatig, luisteren, bijvoeglijk naamwoord laten overeenkomen, letterpuzzel, welk plaatje?, klopt het?, meervoud, woord in een zin, wat betekent het woord hier?, welk is welk?, welk woord hoor je?, zeg het |
+| vervoegingen | 6918 (8 tijden, wederkerende werkwoorden in 5; de meeste berekend) | vervoegingstabel, losse vorm kiezen of intypen, welke tijd?, wie doet het?, klopt het?, zet om naar een andere tijd, antwoord op de vraag, welke tijd past bij de tijdsaanduiding?, welke vorm hoor je? |
+| zinnen (werkboek, bundel, dialogen uit de cursus) | 819 | invuloefening, zin bouwen, dictee, zoek de fout, wat betekent de zin?, welke zin klopt?, zeg het na |
 | grammaticaregels | 74 | invuloefening, meerkeuze |
 | toets- en werkboekvragen | 604 | meerkeuze (toets unidad 1, instaptoets, Miradores, werkboek) |
 | leesvragen bij 58 teksten | 204 | lezen |
 | dialoogregels (20 eigen dialogen) | 207 | wat zeggen ze?, wat volgt er?, zet in volgorde, dictee, zoek de fout |
 | klemtoon | 132 | tik de beklemtoonde lettergreep |
+| getallen, uur, datum, prijs | 11 soorten, elke vraag een ander voorbeeld | schrijf voluit, luister en schrijf in cijfers, lees en kies |
 
 Bij een fout antwoord verschijnt een korte grammatica-uitleg (35 onderwerpen, met
 verwijzing naar de grammatica achteraan het boek), en een 💡-tip: een ezelsbruggetje voor dat
@@ -110,6 +112,40 @@ toont "later juist".
 **Eerst herkennen, dan maken.** In doos 1–2 krijgen meerkeuzevormen voorrang, in doos 4–5
 de vormen waarin je zelf typt.
 
+**Eerst kennismaken.** Een woord dat je nog nooit zag, krijgt eerst een kaart: het woord,
+de uitspraak, de vertaling, een ezelsbrug en een zin uit de cursus waarin het staat. De
+eerste vraag erover komt twee vragen later (`withIntros` in `js/session.js`), zodat ze toetst
+of het bleef hangen en niet of je het net nog zag. Een kaart telt niet als vraag.
+
+**Een hint in plaats van opgeven.** Bij het intypen geeft 💡 eerst de eerste letter en de
+lengte (`c _ _ _ _ _ _`), dan om de andere letter. Juist met een hint telt niet als fout, maar
+het item schuift ook niet naar een hogere doos (`record(key, correct, { hold: true })`).
+
+**Verwarde woorden.** Een fout antwoord dat zelf een ander woord uit de cursus is
+(*la boca* voor *la bota*), of een fout paar in de koppelronde, wordt een verward paar.
+Komt een van beide terug, dan vraagt "welk is welk?" naar precies dat verschil en toont
+daarna beide woorden naast elkaar. Twee keer na elkaar juist en het paar verdwijnt.
+
+**Lastiger afleiders naarmate je het kent.** Vanaf doos 3 zet meerkeuze er woorden bij die
+op het juiste lijken (*caro* / *carro*) of waarmee je het eerder verwarde. Dan volstaat
+het niet meer om het onderwerp te herkennen.
+
+**Woorden in zinnen.** `data.contextsFor` zoekt elk woord in de zinnen, dialogen,
+grammaticavoorbeelden en leesteksten van de cursus. Woorden die ook een vervoeging of een
+ander woord zijn (*como*, *vino*) en namen midden in een zin (*Granada*) vallen weg.
+
+**Gemengde herhaling.** "Herhaal alles door elkaar" trekt uit alles wat je al eens zag, over
+de thema's heen. Door elkaar oefenen blijft beter hangen dan thema per thema.
+
+**Tikken in een leestekst.** Elk gekend woord in een leestekst is aantikbaar: de woordenlijst,
+een vervoegde vorm (*fuimos* → ir/ser, nosotros, indefinido), een meervoud, een voltooid
+deelwoord of een klein woordje (`js/gloss.js`).
+
+**Spreken (optioneel).** Met spraakherkenning van de browser zeg je woorden en zinnen
+hardop. Chrome stuurt het geluid naar een herkenningsdienst, dus dit staat standaard uit
+(*Instellingen → Spreekoefeningen*). Wie even niet kan praten, slaat de vraag over zonder
+fout; de les vraagt dan niets meer hardop.
+
 **Twee richtingen apart.** `nl→es` en `es→nl` zijn losse items met een eigen doos. Een
 woord herkennen is iets anders dan het kunnen produceren.
 
@@ -146,6 +182,11 @@ export default {
 };
 ```
 
+`ctx.skip({ noSpeaking })` slaat de vraag over zonder iets te bewaren. `check()` mag ook
+`hinted: true` teruggeven (juist met een hint: de doos blijft staan) en
+`confusionWith: '<atoom-id>'` (een "welk is welk?"-vraag over dat paar). Een typvorm krijgt
+een hint met `hintLadder(antwoord)` uit `js/hintLadder.js`.
+
 De lesmotor kent geen enkele oefenvorm van binnen, dus verder hoeft er niets te wijzigen.
 Een vorm die meerdere atomen tegelijk beoordeelt (zoals de vervoegingstabel) geeft daarnaast
 `covers(item)` en een `perAtom`-lijst terug.
@@ -159,6 +200,11 @@ js/main.js            schermbeheer en bedrading
 js/session.js         de lesmotor
 js/scheduler.js       Leitner-dozen en gewogen trekking
 js/hints.js           ezelsbruggetjes en vuistregels onder een fout antwoord
+js/hintLadder.js      hint bij het intypen (eerste letter, dan meer)
+js/intro.js           kennismakingskaart voor een nieuw woord
+js/gloss.js           betekenis van een aangetikt woord in een leestekst
+js/numerals.js        getallen, uren, data en prijzen voluit en in cijfers
+js/recognition.js     spraakherkenning voor de spreekoefeningen
 js/check.js           antwoordcontrole, woordenlijstnotatie (frigo(rífico), sencillo/-a)
 js/matchRound.js      de koppelronde
 js/types/             de oefenvormen

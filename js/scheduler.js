@@ -85,11 +85,16 @@ export function showEmoji(key) {
   return seen - wrong < EMOJI_HIDE_AFTER;
 }
 
-/** Werkt de doos bij na een antwoord. Geeft de nieuwe staat terug. */
-export function record(key, correct) {
+/**
+ * Werkt de doos bij na een antwoord. Geeft de nieuwe staat terug.
+ * @param hold  juist, maar met hulp (een hint): telt als gezien, de doos
+ *              blijft staan. Wie de eerste letter nodig had, kent het woord
+ *              nog niet goed genoeg om het drie dagen te laten rusten.
+ */
+export function record(key, correct, { hold = false } = {}) {
   const p = storage.getProgress(key);
   const next = {
-    box: correct ? Math.min(MAX_BOX, p.box + 1) : Math.max(1, p.box - DEMOTE),
+    box: correct ? (hold ? p.box : Math.min(MAX_BOX, p.box + 1)) : Math.max(1, p.box - DEMOTE),
     seen: p.seen + 1,
     wrong: p.wrong + (correct ? 0 : 1),
     lastSeen: Date.now(),

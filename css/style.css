@@ -881,3 +881,142 @@ textarea.answer-input { padding: 10px 14px; resize: vertical; font: inherit; fon
 
 /* Wat betekent de zin? */
 .q-sentence { font-size: 1.25rem; font-weight: 600; line-height: 1.4; }
+
+/* ---------------------------------------------------------------- */
+/* Hint bij het intypen                                              */
+/* ---------------------------------------------------------------- */
+
+.hint-ladder { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; }
+.hint-btn {
+  border: 1px dashed var(--line); background: transparent; border-radius: 99px;
+  padding: 6px 14px; min-height: 40px; color: var(--ink-soft); cursor: pointer; font-size: .92rem;
+}
+.hint-btn:disabled { opacity: .55; cursor: default; }
+.hint-pattern {
+  margin: 0; padding: 6px 12px; border-radius: var(--radius);
+  background: var(--hint-bg); font: 600 1.1rem/1.4 ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: .04em; white-space: pre-wrap; overflow-wrap: anywhere;
+}
+
+/* ---------------------------------------------------------------- */
+/* Kennismaking met een nieuw woord                                  */
+/* ---------------------------------------------------------------- */
+
+.intro-card {
+  display: flex; flex-direction: column; align-items: center; gap: 6px; text-align: center;
+  padding: 22px 16px; background: var(--surface);
+  border: 2px solid var(--brand); border-radius: var(--radius-lg); box-shadow: var(--shadow-lift);
+}
+.intro-emoji { font-size: 3rem; line-height: 1; }
+.intro-es { display: flex; align-items: center; gap: 10px; }
+.intro-nl { margin: 0; font-size: 1.15rem; }
+.intro-meta { margin: 0; font-size: .85rem; color: var(--ink-soft); }
+.intro-memo { margin: 4px 0 0; padding: 6px 12px; background: var(--hint-bg); border-radius: var(--radius); font-size: .92rem; text-align: left; }
+.intro-example { margin-top: 6px; padding-top: 10px; border-top: 1px dashed var(--line); width: 100%; text-align: left; }
+.intro-example p { margin: 0; }
+.intro-example-nl { color: var(--ink-soft); font-size: .9rem; }
+.intro-later { text-align: center; }
+
+/* ---------------------------------------------------------------- */
+/* Woord in een zin                                                  */
+/* ---------------------------------------------------------------- */
+
+.context-word {
+  background: var(--hint-bg); color: inherit; font-weight: 700;
+  padding: 0 .2em; border-radius: 4px; box-shadow: inset 0 -2px 0 var(--brand);
+}
+.context-cue { font-weight: 600; color: var(--ink); }
+
+/* ---------------------------------------------------------------- */
+/* Welk is welk?                                                     */
+/* ---------------------------------------------------------------- */
+
+.contrast { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+@media (max-width: 360px) { .contrast { grid-template-columns: 1fr; } }
+.contrast-side {
+  padding: 10px 12px; background: var(--surface); border: 2px solid var(--line); border-radius: var(--radius);
+  display: flex; flex-direction: column; gap: 4px; min-width: 0;
+}
+.contrast-word { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; font-size: 1.1rem; }
+.contrast-word .speaker { width: 36px; height: 36px; font-size: .95rem; }
+.contrast-nl { font-weight: 600; }
+.contrast-memo, .contrast-example { margin: 0; font-size: .85rem; color: var(--ink-soft); overflow-wrap: anywhere; }
+.contrast-example { font-style: italic; }
+
+/* ---------------------------------------------------------------- */
+/* Gesprek: antwoord op de vraag                                     */
+/* ---------------------------------------------------------------- */
+
+.chat { display: flex; flex-direction: column; gap: 8px; }
+.chat-bubble {
+  margin: 0; max-width: 85%; padding: 10px 14px; line-height: 2; border-radius: 18px;
+  font-size: 1.1rem;
+}
+.chat-bubble--them { align-self: flex-start; background: var(--surface); border: 2px solid var(--line); border-bottom-left-radius: 4px; }
+.chat-bubble--me { align-self: flex-end; background: var(--surface-2); border: 2px solid var(--brand); border-bottom-right-radius: 4px; }
+.tense-marker { color: var(--brand-ink); }
+@media (prefers-color-scheme: dark) { .tense-marker { color: var(--brand); } }
+
+/* ---------------------------------------------------------------- */
+/* Minimale paren                                                    */
+/* ---------------------------------------------------------------- */
+
+.pair-replay { display: flex; gap: 10px; flex-wrap: wrap; }
+.pair-play { flex: 1; min-width: 120px; }
+
+/* ---------------------------------------------------------------- */
+/* Getallen en de klok                                               */
+/* ---------------------------------------------------------------- */
+
+.q-number { font-size: 2.4rem; font-variant-numeric: tabular-nums; letter-spacing: .02em; }
+.q-prompt--clock { flex-direction: column; gap: 6px; }
+.clock { width: 150px; height: 150px; }
+.clock-rim { fill: var(--surface-2); stroke: var(--ink); stroke-width: 3; }
+.clock-tick { stroke: var(--ink-soft); stroke-width: 1.5; stroke-linecap: round; }
+.clock-tick--long { stroke: var(--ink); stroke-width: 3; }
+.clock-hand { stroke: var(--ink); stroke-linecap: round; }
+.clock-hand--hour { stroke-width: 5; }
+.clock-hand--minute { stroke-width: 3; stroke: var(--brand-ink); }
+@media (prefers-color-scheme: dark) { .clock-hand--minute { stroke: var(--brand); } }
+.clock-pin { fill: var(--ink); }
+.clock-digital { font-size: .95rem; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+
+/* ---------------------------------------------------------------- */
+/* Spreken                                                           */
+/* ---------------------------------------------------------------- */
+
+.mic-panel { display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 8px 0; }
+.mic-btn {
+  width: 96px; height: 96px; border-radius: 50%; border: 0; cursor: pointer;
+  background: var(--brand); font-size: 2.4rem; box-shadow: var(--shadow-lift);
+}
+.mic-btn:active { transform: scale(.96); }
+/* Luisteren: een ring die ademt. Zonder beweging: een dikke rand. */
+.mic-btn.is-listening { box-shadow: 0 0 0 6px var(--no-bg), 0 0 0 9px var(--no); animation: mic-pulse 1.2s ease-in-out infinite; }
+@keyframes mic-pulse { 50% { box-shadow: 0 0 0 12px var(--no-bg), 0 0 0 15px var(--no); } }
+.reduce-motion .mic-btn.is-listening { animation: none; }
+@media (prefers-reduced-motion: reduce) { .mic-btn.is-listening { animation: none; } }
+.mic-status { margin: 0; text-align: center; color: var(--ink-soft); min-height: 1.5em; }
+.link-btn {
+  border: 0; background: none; padding: 8px; min-height: 44px; cursor: pointer;
+  color: var(--ink-soft); text-decoration: underline; font-size: .9rem;
+}
+
+/* ---------------------------------------------------------------- */
+/* Woordbetekenis in leesteksten                                     */
+/* ---------------------------------------------------------------- */
+
+.gloss-word {
+  cursor: pointer; border-radius: 3px;
+  /* Zacht: bijna elk woord is aantikbaar, een felle lijn maakt de tekst onrustig. */
+  text-decoration: underline dotted var(--line); text-underline-offset: 3px;
+}
+.gloss-word:hover, .gloss-word.is-active { background: var(--hint-bg); }
+.gloss-word:focus-visible { outline: 2px solid var(--brand); outline-offset: 1px; }
+.gloss-pop {
+  position: absolute; z-index: 50; max-width: min(320px, calc(100vw - 16px));
+  padding: 8px 12px; border-radius: var(--radius);
+  background: var(--ink); color: var(--bg); font-size: .9rem; line-height: 1.4;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, .25);
+}
+.gloss-pop div + div { margin-top: 4px; padding-top: 4px; border-top: 1px solid color-mix(in srgb, var(--bg) 25%, transparent); }

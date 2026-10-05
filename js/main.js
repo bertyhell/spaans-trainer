@@ -7,11 +7,14 @@ import * as scheduler from './scheduler.js';
 import * as speech from './speech.js';
 import * as audio from './audio.js';
 import { el, clear, speakerButton, FLAGS } from './dom.js';
-import { Session, itemsForThemes, itemsForMistakes } from './session.js';
+import { Session, itemsForThemes, itemsForMistakes, itemsForReview, REVIEW_MIN } from './session.js';
 import { supportedFor } from './types/index.js';
 import { MatchRound } from './matchRound.js';
 import * as flashcards from './flashcards.js';
 import * as hints from './hints.js';
+import * as recognition from './recognition.js';
+import { renderIntro } from './intro.js';
+import { hideGloss } from './gloss.js';
 
 const $ = sel => document.querySelector(sel);
 const env = { speech };
@@ -27,7 +30,7 @@ let answered = false;
 let match = null;
 let matchPick = { left: null, right: null };
 let lastMode = 'lesson';   // bepaalt wat 'Nog een les' opnieuw start
-let lastLesson = null;     // { themes, mistakes } van de laatste les
+let lastLesson = null;     // { themes, mistakes, review } van de laatste les
 
 /* ------------------------------------------------------------------ */
 /* Schermen                                                            */
@@ -115,6 +118,8 @@ function refreshStats() {
     btn.hidden = n < MISTAKE_CHIP_MIN;
     btn.textContent = `🔁 ${n} ${n === 1 ? 'fout' : 'fouten'} oefenen`;
   }
+  // Een ruwe telling volstaat om te beslissen of de knop zinvol is.
+  $('#btn-start-review').hidden = Object.keys(storage.get().progress).length < REVIEW_MIN;
 }
 
 /* ------------------------------------------------------------------ */
@@ -279,7 +284,7 @@ function refreshSelection() {
 /* Les                                                                 */
 /* ------------------------------------------------------------------ */
 
-function startLesson(themeIds, { items = itemsForThemes(themeIds), mistakes = false } = {}) {
+function startLesson(themeIds, { items = itemsForThemes(themeIds), mistakes = false, review = false } = {}) {
   audio.arm();
   speech.arm();
   if (env.forceType) items = items.filter(i => supportedFor(i, env).some(t => t.id === env.forceType));
@@ -292,11 +297,12 @@ function startLesson(themeIds, { items = itemsForThemes(themeIds), mistakes = fa
     toast('Geen oefeningen gevonden voor deze selectie.');
     return;
   }
-  lastLesson = { themes: themeIds, mistakes };
-  // Een foutenles hangt niet aan thema's. Het beheersingskaartje toont dan de
-  // aangevinkte onderdelen, of anders de onderdelen waar de fouten uit komen.
-  trackMastery(mistakes
-    ? (selected.size ? [...selected] : [...new Set(session.queue.map(i => i.atom.theme))])
+  lastLesson = { themes: themeIds, mistakes, review };
+  // Een fouten- of herhalingsles hangt niet aan thema's. Het beheersingskaartje
+  // toont dan de onderdelen waar de vragen uit komen (of de aangevinkte, bij fouten).
+  const fromQueue = () => [...new Set(session.queue.map(i => i.atom.theme))];
+  trackMastery(review ? fromQueue()
+    : mistakes ? (selected.size ? [...selected] : fromQueue())
     : themeIds);
   show('screen-lesson');
   nextQuestion();
@@ -304,6 +310,8 @@ function startLesson(themeIds, { items = itemsForThemes(themeIds), mistakes = fa
 
 function nextQuestion() {
   if (session.done) return finishLesson();
+  hideGloss();
+  if (session.current.intro) return showIntro();
 
   answered = false;
   activeType = session.chooseType();
@@ -323,6 +331,17 @@ function nextQuestion() {
     speech,
     ready: on => { if (!answered) btn.disabled = !on; },
     submit: () => { if (!answered && !btn.disabled) doCheck(); },
+    // Overslaan zonder te bewaren, bv. wie nu niet hardop kan spreken. Die
+    // keuze geldt voor de rest van de les.
+    skip: ({ noSpeaking = false, quiet = false } = {}) => {
+      if (answered) return;
+      if (noSpeaking) session.env.noSpeaking = true;
+      speech.stop();
+      if (!quiet) toast(noSpeaking ? 'Overgeslagen — deze les vraagt niets meer hardop.' : 'Overgeslagen.');
+      // Een geweigerde microfoon: eerst de melding laten lezen.
+      setTimeout(() => { session.skip(); nextQuestion(); }, quiet ? 1600 : 0);
+      answered = true;
+    },
   };
 
   instance = activeType.render(session.current, root, ctx);
@@ -331,10 +350,33 @@ function nextQuestion() {
   $('#prev-mistake').textContent = retry ? '↻ Herkansing' : 'Eerdere fout';
   $('#prev-mistake').hidden = !retry && !storage.get().mistakes[session.current.atomId];
 
-  $('#lesson-counter').textContent = `${session.position}/${session.total}`;
+  updateCounter();
   renderLessonProgress();
 
   setTimeout(() => instance.focus?.(), 60);
+}
+
+const updateCounter = () => {
+  $('#lesson-counter').textContent = `${session.questionNumber}/${session.questionEntries.length}`;
+};
+
+/** Een kennismakingskaart: geen vraag, enkel kijken en luisteren. */
+function showIntro() {
+  const root = $('#question-root');
+  clear(root);
+  root.className = 'question question--intro';
+  $('#feedback').hidden = true;
+  $('#prev-mistake').hidden = true;
+  $('#lesson-actionbar').className = 'actionbar';
+  const btn = $('#btn-check');
+  btn.textContent = 'Verder';
+  btn.disabled = false;
+  // Zo gaat de knop (en Enter) gewoon naar het volgende.
+  answered = true;
+  renderIntro(session.current, root, { speech });
+  updateCounter();
+  renderLessonProgress();
+  setTimeout(() => btn.focus(), 60);
 }
 
 // Eén segment per vraag: groen = juist, geel = bijna, rood = fout, oranje = overgeslagen,
@@ -343,12 +385,14 @@ function renderLessonProgress() {
   const bar = $('#lesson-progress');
   clear(bar);
   const byIndex = new Map(session.results.map(r => [r.index, r]));
-  for (let i = 0; i < session.total; i++) {
+  // Kennismakingskaarten krijgen geen segment: ze zijn geen vraag.
+  const entries = session.questionEntries;
+  for (const { i } of entries) {
     const r = byIndex.get(i);
     const state = r ? (r.almost ? 'almost' : r.correct ? 'ok' : 'no') : i < session.index ? 'skip' : i === session.index ? 'current' : 'todo';
     bar.append(el('span', { class: `progress-seg progress-seg--${state}` }));
   }
-  const pct = (session.results.length / session.total) * 100;
+  const pct = (session.results.length / Math.max(1, entries.length)) * 100;
   bar.parentElement.setAttribute('aria-valuenow', Math.round(pct));
 }
 
@@ -375,8 +419,10 @@ function showFeedback(result) {
 
   const state = result.almost ? 'almost' : result.correct ? 'ok' : 'no';
   $('#lesson-actionbar').className = `actionbar actionbar--${state}`;
-  $('#feedback-icon').textContent = result.almost ? '≈' : result.correct ? '✓' : '✗';
-  $('#feedback-title').textContent = result.almost
+  $('#feedback-icon').textContent = result.hinted ? '💡' : result.almost ? '≈' : result.correct ? '✓' : '✗';
+  $('#feedback-title').textContent = result.hinted
+    ? 'Juist, met hint'
+    : result.almost
     ? '¡Casi! Bijna juist'
     : result.correct
     ? pick(['¡Muy bien!', '¡Perfecto!', '¡Olé!', '¡Genial!', '¡Eso es!', '¡Bravo!'])
@@ -421,7 +467,7 @@ function showFeedback(result) {
 
   const btn = $('#btn-check');
   btn.disabled = false;
-  btn.textContent = session.position === session.total ? 'Afronden' : 'Volgende';
+  btn.textContent = session.isLast ? 'Afronden' : 'Volgende';
   btn.focus();
 
   // Bij een lange zinsoefening staat de uitslag onder de vouw; zonder deze
@@ -658,6 +704,8 @@ function mistakeLines(m) {
       return [a.es, a.nl];
     case 'stress':
       return [a.es, m.expected];
+    case 'numeral':
+      return [a.label, m.expected];
     default:
       return [a.nl ?? a.rule ?? a.es ?? '', m.expected];
   }
@@ -689,6 +737,8 @@ function detailRows(m) {
       break;
     case 'stress':
       pairs.push([a.syllables.join('·'), a.nl ?? '']);
+      break;
+    case 'numeral':
       break;
     default:
       if (a.es || a.nl) pairs.push([a.es ?? '', [].concat(a.nl ?? '').join(', ')]);
@@ -793,6 +843,8 @@ function onMatchTap(side, id, node) {
     }, 320);
   } else {
     audio.incorrect();
+    // Een fout paar is een verward paar: komt later terug als "welk is welk?".
+    storage.recordConfusion(l.id, r.id);
     [l.node, r.node].forEach(n => n.classList.add('is-wrong'));
     // Meteen vrijgeven: wie snel een nieuw woord tikt, mag die keuze niet
     // kwijtraken wanneer het rode flitsje straks verdwijnt.
@@ -1058,6 +1110,11 @@ function openSettings() {
   $('#set-sound').checked = s.sound !== false;
   $('#set-speech').checked = s.speech !== false;
   $('#set-motion').checked = s.reducedMotion === true;
+  $('#set-speaking').checked = s.speaking === true;
+  $('#set-speaking').disabled = !recognition.supported();
+  $('#speaking-status').textContent = recognition.supported()
+    ? 'Zeg woorden en zinnen hardop. Je browser stuurt het geluid naar een herkenningsdienst.'
+    : 'Deze browser kan niet luisteren (probeer Chrome of Safari).';
   $('#set-size').value = String(lessonSize());
   const n = storage.get().reports.length;
   $('#reports-count').textContent = n ? `(${n})` : '';
@@ -1111,6 +1168,11 @@ function startMistakesLesson() {
   startLesson([], { items: itemsForMistakes(), mistakes: true });
 }
 
+/** Een herhaling door elkaar, over alles wat je al eens oefende. */
+function startReviewLesson() {
+  startLesson([], { items: itemsForReview(), review: true });
+}
+
 function openRecentMistakes() {
   renderRecentMistakes();
   show('screen-mistakes');
@@ -1137,6 +1199,7 @@ function reportLabel(atom) {
     case 'conjugation': return [`${atom.verb} · ${data.PERSON_LABELS[atom.person]}`, atom.form];
     case 'choice': return [atom.prompt, atom.answer];
     case 'reading': return [atom.q, atom.answer];
+    case 'numeral': return [atom.label, atom.gen];
     default: return [atom.es ?? atom.rule ?? atom.id, Array.isArray(atom.nl) ? atom.nl.join(', ') : (atom.nl ?? '')];
   }
 }
@@ -1235,10 +1298,12 @@ function wire() {
 
   $('#btn-home').addEventListener('click', () => show('screen-start'));
   $('#btn-start-mistakes').addEventListener('click', startMistakesLesson);
+  $('#btn-start-review').addEventListener('click', startReviewLesson);
   $('#btn-result-mistakes').addEventListener('click', startMistakesLesson);
   $('#btn-again').addEventListener('click', () => {
     if (lastMode === 'match') return selected.size ? startMatch() : show('screen-start');
     if (lastLesson?.mistakes) return startMistakesLesson();
+    if (lastLesson?.review) return startReviewLesson();
     const themes = lastLesson?.themes ?? [...selected];
     themes.length ? startLesson(themes) : show('screen-start');
   });
@@ -1262,6 +1327,7 @@ function wire() {
 
   $('#set-sound').addEventListener('change', e => { storage.get().settings.sound = e.target.checked; storage.save(); });
   $('#set-speech').addEventListener('change', e => { storage.get().settings.speech = e.target.checked; storage.save(); });
+  $('#set-speaking').addEventListener('change', e => { storage.get().settings.speaking = e.target.checked; storage.save(); });
   $('#set-size').addEventListener('change', e => {
     storage.get().settings.lessonSize = Number(e.target.value);
     storage.save();

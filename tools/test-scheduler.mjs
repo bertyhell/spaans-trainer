@@ -14,7 +14,7 @@ globalThis.localStorage = {
 const scheduler = await import('../js/scheduler.js');
 const storage = await import('../js/storage.js');
 const { MatchRound } = await import('../js/matchRound.js');
-const { Session } = await import('../js/session.js');
+const { Session, withIntros } = await import('../js/session.js');
 
 let failed = 0;
 const rows = [];
@@ -227,6 +227,50 @@ reset();
   let threw = false;
   try { storage.importState('{"foo":1}'); } catch { threw = true; }
   t('vreemd bestand geweigerd', threw, true);
+}
+
+/* ---------------- hint: juist, maar de doos blijft ---------------- */
+reset();
+scheduler.record('h', true);
+t('met hint juist: doos blijft staan', scheduler.record('h', true, { hold: true }).box, 2);
+t('met hint juist: telt als gezien', storage.getProgress('h').seen, 2);
+t('met hint fout: zakt gewoon', scheduler.record('h', false, { hold: true }).box, 1);
+
+/* ---------------- kennismaking ---------------- */
+{
+  reset();
+  const word = id => ({ atomId: id, key: `${id}:es2nl`, direction: 'es2nl', atom: { id, kind: 'vocab' } });
+  const conj = id => ({ atomId: id, key: id, direction: null, atom: { id, kind: 'conjugation' } });
+  const q = [word('a'), conj('c1'), word('b'), conj('c2'), conj('c3'), word('d')];
+  scheduler.record('d:nl2es', true);   // d is al eens gevraagd (andere richting)
+  const out = withIntros(q, 2);
+  const at = (id, intro) => out.findIndex(x => x.atomId === id && Boolean(x.intro) === intro);
+  t('elk nieuw woord krijgt één kaart', out.filter(x => x.intro).map(x => x.atomId), ['a', 'b']);
+  ok('kaart komt vóór de vraag', at('a', true) < at('a', false) && at('b', true) < at('b', false));
+  t('twee vragen tussen kaart en vraag', out.slice(at('b', true) + 1, at('b', false)).filter(x => !x.intro).length, 2);
+  t('geen kaart voor een gekend woord of een vervoeging', out.some(x => x.intro && ['d', 'c1'].includes(x.atomId)), false);
+  t('alle vragen blijven', out.filter(x => !x.intro).length, q.length);
+}
+
+/* ---------------- verwarde woorden ---------------- */
+reset();
+storage.recordConfusion('v.pedir', 'v.preguntar');
+storage.recordConfusion('v.preguntar', 'v.pedir');
+t('verward paar, in beide richtingen', storage.confusionsOf('v.pedir').map(c => [c.other, c.count]), [['v.preguntar', 2]]);
+t('verward paar, ook van de andere kant', storage.confusionsOf('v.preguntar')[0].other, 'v.pedir');
+storage.recordConfusion('v.x', 'v.x');
+t('een woord is niet met zichzelf verward', storage.confusionsOf('v.x'), []);
+storage.resolveConfusion('v.pedir', 'v.preguntar', true);
+t('één keer juist: paar blijft', storage.confusionsOf('v.pedir').length, 1);
+storage.resolveConfusion('v.preguntar', 'v.pedir', true);
+t(`${storage.CONFUSION_CLEAR_AFTER} keer juist: paar verdwijnt`, storage.confusionsOf('v.pedir'), []);
+storage.recordConfusion('v.a', 'v.b');
+{
+  const backup = storage.exportState();
+  storage.resetAll();
+  t('wissen wist verwarde woorden', storage.confusionsOf('v.a'), []);
+  storage.importState(backup);
+  t('kopie zet verwarde woorden terug', storage.confusionsOf('v.a').length, 1);
 }
 
 /* ---------------- streak ---------------- */

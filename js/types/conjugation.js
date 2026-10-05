@@ -11,6 +11,7 @@ import { el, shuffle, sample, optionList, accentBar } from '../dom.js';
 import { conjugationFamily, conjugatedForm, verbForms, verbTranslation, PERSON_LABELS, PERSON_ORDER, TENSE_LABELS } from '../data.js';
 import { checkAnswer } from '../check.js';
 import { mastery, itemKey } from '../scheduler.js';
+import { hintLadder } from '../hintLadder.js';
 
 const tenseLabel = t => TENSE_LABELS[t] ?? t;
 const tenseShort = t => tenseLabel(t).split(' · ')[0];
@@ -217,7 +218,8 @@ export const conjugationType = {
       oninput: () => ctx.ready(input.value.trim().length > 0),
       onkeydown: e => { if (e.key === 'Enter') { e.preventDefault(); ctx.submit(); } },
     });
-    root.append(input, accentBar(input, () => ctx.ready(input.value.trim().length > 0), WORD_KEYS));
+    const hint = hintLadder(atom.form);
+    root.append(input, accentBar(input, () => ctx.ready(input.value.trim().length > 0), WORD_KEYS), hint.node);
 
     return {
       focus() { input.focus(); },
@@ -226,10 +228,11 @@ export const conjugationType = {
         // Een andere bestaande vorm van hetzelfde werkwoord: zeg welke.
         const other = !r.correct && otherForms(atom.verb, atom.form)
           .find(f => f.toLowerCase() === input.value.trim().toLowerCase());
-        return { ...r, note: other ? describeForm(atom.verb, other) : r.note, given: input.value };
+        return hint.apply({ ...r, note: other ? describeForm(atom.verb, other) : r.note, given: input.value });
       },
       reveal({ correct, almost }) {
         input.disabled = true;
+        hint.disable();
         input.classList.add(almost ? 'is-almost' : correct ? 'is-correct' : 'is-wrong');
       },
     };
