@@ -6,7 +6,8 @@
  *   id       unieke naam
  *   label    Nederlandse naam voor in de interface
  *   supports(item, env) -> boolean
- *            Kan dit atoom als deze vorm getoond worden? env bevat {speech}.
+ *            Kan dit atoom als deze vorm getoond worden? env bevat {speech},
+ *            en bij het testen soms {forceType} (zie pickType).
  *   render(item, root, ctx) -> instance
  *            ctx = {ready(bool), submit(), speech}
  *            instance = {focus(), check() -> result, reveal(result)}
@@ -34,6 +35,10 @@ import choice from './choice.js';
 import reading from './reading.js';
 import { dialogueMeaning, dialogueReply } from './dialogue.js';
 import stressTap from './stressTap.js';
+import spotError from './spotError.js';
+import letterPuzzle from './letterPuzzle.js';
+import emojiPick from './emojiPick.js';
+import trueFalse from './trueFalse.js';
 import { getProgress } from '../storage.js';
 
 export const TYPES = [
@@ -62,6 +67,10 @@ export const TYPES = [
   dialogueReply,
   dialogueOrder,
   stressTap,
+  spotError,
+  letterPuzzle,
+  emojiPick,
+  trueFalse,
 ];
 
 export const byId = Object.fromEntries(TYPES.map(t => [t.id, t]));
@@ -90,6 +99,11 @@ const WEIGHTS = {
   irregularVerb: 2,
   verbType: 1,
   verbSort: 1,
+  spotError: 2,
+  letterPuzzle: 2,
+  emojiPick: 2,
+  // Raden lukt hier de helft van de keren: een tussendoortje, niet meer.
+  trueFalse: 1,
   // Deze vormen zijn de enige voor hun soort atoom: het gewicht doet er dan
   // niet toe, behalve bij een dialoogregel, waar antwoorden net iets meer oplevert.
   choice: 1,
@@ -106,7 +120,7 @@ const WEIGHTS = {
 const RECOGNIZE = new Set([
   'multipleChoice', 'articlePicker', 'oddOneOut', 'irregularVerb', 'verbType', 'verbSort',
   'listenChoose', 'conjugationSingle', 'dialogueMeaning', 'dialogueReply', 'stressTap',
-  'tenseSpot', 'personSpot', 'dialogueOrder',
+  'tenseSpot', 'personSpot', 'dialogueOrder', 'emojiPick', 'trueFalse',
 ]);
 const PRODUCE = new Set([
   'typeAnswer', 'listenType', 'conjugationGrid', 'conjugationType', 'accents', 'agreement', 'dictation',
@@ -139,6 +153,9 @@ export function supportedFor(item, env) {
 export function pickType(item, env, recent = []) {
   const candidates = supportedFor(item, env);
   if (!candidates.length) return null;
+  // ?type=<id> in de adresbalk: om één vorm na te kijken zonder te moeten wachten tot ze langskomt.
+  const forced = env.forceType && candidates.find(t => t.id === env.forceType);
+  if (forced) return forced;
 
   const avoid = new Set(recent.slice(-2));
   const fresh = candidates.filter(t => !avoid.has(t.id));

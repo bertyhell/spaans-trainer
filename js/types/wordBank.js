@@ -10,12 +10,13 @@ import { el, shuffle, sample, speakerButton } from '../dom.js';
 import { checkAnswer, isKnownWord } from '../check.js';
 import { allAtoms, conjugationFamily, conjugationsOfForm } from '../data.js';
 import * as storage from '../storage.js';
+import * as audio from '../audio.js';
 
 /** Losse woorden. */
-const tokenize = s => s.trim().split(/\s+/).filter(Boolean);
+export const tokenize = s => s.trim().split(/\s+/).filter(Boolean);
 
 /** Een tegel zonder leestekens aan de randen: "¿Dónde" → "Dónde", "tal?" → "tal". */
-const bare = w => w.replace(/^[¿¡"«(]+|[.,;:!?"»)…]+$/g, '');
+export const bare = w => w.replace(/^[¿¡"«(]+|[.,;:!?"»)…]+$/g, '');
 
 /* Woorden die ergens midden in een zin met een kleine letter staan. Wat daar
  * niet bij zit en met een hoofdletter begint, is een naam ("María", "Madrid"). */
@@ -102,6 +103,7 @@ export default {
           class: 'tile tile--placed', type: 'button', lang: 'es',
           onclick: () => {
             chosen.splice(chosen.indexOf(t), 1);
+            audio.tap();
             redraw(answerRow, i);
           },
         }, t.w)));
@@ -111,7 +113,7 @@ export default {
         return el('button', {
           class: `tile${used ? ' is-used' : ''}`, type: 'button', lang: 'es',
           disabled: used,
-          onclick: () => { chosen.push(t); redraw(bankRow, i); },
+          onclick: () => { chosen.push(t); audio.tap(); redraw(bankRow, i); },
         }, t.w);
       }));
 

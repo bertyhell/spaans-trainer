@@ -8,11 +8,15 @@ import * as speech from './speech.js';
 import * as audio from './audio.js';
 import { el, clear, speakerButton, FLAGS } from './dom.js';
 import { Session, itemsForThemes, itemsForMistakes } from './session.js';
+import { supportedFor } from './types/index.js';
 import { MatchRound } from './matchRound.js';
 import * as flashcards from './flashcards.js';
 
 const $ = sel => document.querySelector(sel);
 const env = { speech };
+// Om één oefenvorm na te kijken: ?type=spotError kiest die vorm waar ze past.
+const forcedType = new URLSearchParams(location.search).get('type');
+if (forcedType) env.forceType = forcedType;
 
 const selected = new Set();
 let session = null;
@@ -277,6 +281,7 @@ function refreshSelection() {
 function startLesson(themeIds, { items = itemsForThemes(themeIds), mistakes = false } = {}) {
   audio.arm();
   speech.arm();
+  if (env.forceType) items = items.filter(i => supportedFor(i, env).some(t => t.id === env.forceType));
 
   session = new Session({ items, size: lessonSize(), env });
   // Wie oefent, wil dat de voortgang blijft: vraag de browser ze niet op te ruimen.
@@ -373,7 +378,7 @@ function showFeedback(result) {
   $('#feedback-title').textContent = result.almost
     ? '¡Casi! Bijna juist'
     : result.correct
-    ? pick(['¡Muy bien!', '¡Perfecto!', '¡Olé!', '¡Genial!'])
+    ? pick(['¡Muy bien!', '¡Perfecto!', '¡Olé!', '¡Genial!', '¡Eso es!', '¡Bravo!'])
     : 'Niet juist';
 
   $('#feedback-answer').textContent = result.correct ? '' : `Juist antwoord: ${result.expected}`;

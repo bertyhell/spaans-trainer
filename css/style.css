@@ -402,6 +402,65 @@ textarea.answer-input { padding: 10px 14px; resize: vertical; font: inherit; fon
 .tile.is-used { opacity: .25; box-shadow: none; }
 .tile--placed { border-color: var(--brand); }
 
+/* Zoek de fout: de zin als rij aantikbare woorden */
+.options--words { display: flex; flex-wrap: wrap; gap: 8px; }
+.option.word-chip { min-height: 44px; padding: 6px 12px; font-size: 1.1rem; text-align: center; }
+.option.word-chip.is-error s { color: var(--no); text-decoration-thickness: 2px; }
+.option.word-chip .fix { color: var(--ok); font-weight: 700; }
+.option.word-chip.is-error:not(.is-correct):not(.is-wrong) { border-color: var(--no); border-style: dashed; }
+
+/* Letterpuzzel */
+.letter-line { display: flex; align-items: center; justify-content: center; gap: 8px; }
+.letter-article { font-size: 1.3rem; font-weight: 700; color: var(--ink-soft); }
+.letter-slots {
+  /* Eén regel, ook bij tien letters op een smal scherm: de vakjes krimpen mee. */
+  display: flex; justify-content: center; gap: 5px; min-width: 0;
+  padding: 8px; border-radius: var(--radius); border: 2px solid transparent;
+}
+.letter-slot {
+  flex: 0 1 40px; min-width: 22px; height: 48px; padding: 0;
+  font: inherit; font-size: 1.35rem; font-weight: 700;
+  background: var(--surface-2); color: var(--ink);
+  border: 0; border-bottom: 3px solid var(--line); border-radius: 8px 8px 4px 4px;
+  cursor: pointer;
+}
+.letter-slot.is-filled { background: var(--surface); border-bottom-color: var(--brand); animation: pop .18s ease-out; }
+.letter-slot:disabled { cursor: default; }
+.letter-slots.is-correct { border-color: var(--ok); background: var(--ok-bg); }
+.letter-slots.is-correct .letter-slot { border-bottom-color: var(--ok); }
+.letter-slots.is-wrong { border-color: var(--no); background: var(--no-bg); }
+.letter-slots.is-wrong .letter-slot { border-bottom-color: var(--no); }
+.letter-fix { margin: 0; text-align: center; font-size: 1.15rem; font-weight: 700; color: var(--ok); }
+.letter-tray { display: flex; gap: 8px; align-items: flex-start; justify-content: center; }
+.letter-bank { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+.letter-tile { min-width: 46px; min-height: 48px; padding: 6px; font-size: 1.3rem; font-weight: 700; }
+.letter-back { min-width: 46px; min-height: 48px; padding: 6px; color: var(--ink-soft); }
+.letter-back:disabled { opacity: .35; box-shadow: none; cursor: default; }
+
+/* Welk plaatje? Vier grote plaatjes in een raster van twee op twee */
+.options.options--emoji { grid-template-columns: 1fr 1fr; }
+.option.option--emoji {
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;
+  min-height: 104px; text-align: center;
+}
+.option--emoji::after { position: absolute; top: 6px; right: 10px; }
+.option.option--emoji { position: relative; }
+.emoji-big { font-size: 2.8rem; line-height: 1; }
+.emoji-gloss { font-size: .88rem; color: var(--ink-soft); }
+.options--emoji:not(.is-revealed) .emoji-gloss { visibility: hidden; }
+
+/* Klopt het? */
+.tf-statement { gap: 8px 12px; }
+.tf-joiner { font-size: 1.3rem; color: var(--ink-soft); font-weight: 700; }
+.tf-claim { font-weight: 600; }
+.options.options--tf { grid-template-columns: 1fr 1fr; }
+.option.option--tf { min-height: 64px; font-size: 1.1rem; }
+.option--tf .tf-icon { font-weight: 900; }
+/* De knoppen dragen al ✓ en ✗, dus na het nakijken een ander teken dan kleur alleen. */
+.option.option--tf.is-correct::after { content: " · juist"; color: var(--ok); }
+.option.option--tf.is-wrong::after { content: none; }
+.option.option--tf.is-wrong { text-decoration: line-through; }
+
 /* Schuifbord: werkwoorden sorteren, welk woord hoort er niet bij */
 .sort-board { display: grid; gap: 8px; }
 .sort-heads, .sort-row { display: grid; grid-template-columns: repeat(var(--sort-cols, 3), 1fr); gap: 6px; }
