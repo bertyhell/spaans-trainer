@@ -312,6 +312,7 @@ function startLesson(themeIds, { items = itemsForThemes(themeIds), mistakes = fa
 function nextQuestion() {
   if (session.done) return finishLesson();
   hideGloss();
+  window.scrollTo(0, 0);
   if (session.current.intro) return showIntro();
 
   answered = false;
@@ -928,6 +929,7 @@ function startFlash() {
 function nextFlashCard() {
   updateFlashProgress();
   if (flash.done) return finishFlash();
+  window.scrollTo(0, 0);
 
   const hint = $('#flash-hint');
   hint.hidden = false;
