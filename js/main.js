@@ -32,6 +32,7 @@ let match = null;
 let matchPick = { left: null, right: null };
 let lastMode = 'lesson';   // bepaalt wat 'Nog een les' opnieuw start
 let lastLesson = null;     // { themes, mistakes, review } van de laatste les
+let lastRowId = null;      // vakje van het laatst aangeraakte onderdeel op het startscherm
 
 /* ------------------------------------------------------------------ */
 /* Schermen                                                            */
@@ -39,7 +40,10 @@ let lastLesson = null;     // { themes, mistakes, review } van de laatste les
 
 function show(id) {
   document.querySelectorAll('.screen').forEach(s => s.classList.toggle('is-active', s.id === id));
-  window.scrollTo(0, 0);
+  // Terug op het startscherm: naar het onderdeel waar je gebleven was.
+  const row = id === 'screen-start' && lastRowId && document.getElementById(lastRowId);
+  if (row) row.closest('.row').scrollIntoView({ block: 'center' });
+  else window.scrollTo(0, 0);
   // Eén history-item buiten het startscherm, zodat 'terug' eerst naar het
   // startscherm gaat in plaats van de app/browser te sluiten.
   const inApp = history.state?.inApp;
@@ -57,6 +61,8 @@ const BACK_BUTTONS = {
   'screen-reports': '#btn-reports-close',
   'screen-mistakes': '#btn-mistakes-close',
 };
+// Zelf scrollen: de browser zou bij history.back() de oude positie terugzetten.
+history.scrollRestoration = 'manual';
 window.addEventListener('popstate', () => {
   const active = document.querySelector('.screen.is-active')?.id;
   if (!active || active === 'screen-start') return;
@@ -1255,6 +1261,13 @@ function applyMotionPreference() {
 
 function wire() {
   $('#btn-start').addEventListener('click', () => startLesson([...selected]));
+  // Onthoud welk onderdeel het laatst aangevinkt of meteen gestart werd.
+  const rememberRow = e => {
+    const box = e.target.closest('.row')?.querySelector('.row-check');
+    if (box) lastRowId = box.id;
+  };
+  $('#theme-tree').addEventListener('change', rememberRow);
+  $('#theme-tree').addEventListener('click', e => { if (e.target.closest('.row-go')) rememberRow(e); });
   $('#btn-match').addEventListener('click', startMatch);
   $('#btn-check').addEventListener('click', () => (answered ? (session.next(), nextQuestion()) : doCheck()));
 
