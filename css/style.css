@@ -118,6 +118,8 @@ h1.brand { display: flex; align-items: center; gap: 8px; }
 .content--question { display: flex; flex-direction: column; }
 
 .lede { margin: 0 0 var(--gap); color: var(--ink-soft); }
+.mistakes-chip { width: 100%; margin: 0 0 var(--gap); }
+.mistakes-chip[hidden] { display: none; }
 
 /* ---------------------------------------------------------------- */
 /* Actiebalk onderaan — altijd bereikbaar met één duim                */
@@ -651,6 +653,12 @@ h1.brand { display: flex; align-items: center; gap: 8px; }
 .mistake-conj-person { opacity: .7; }
 .mistake-conj-row.is-current { background: var(--surface-2); font-weight: 700; }
 .mistake-given, .mistake-note { margin: 0; font-size: .85rem; opacity: .8; }
+/* Een fout die bij de herkansing wel lukte: geen ✓, maar wel vooruitgang. */
+.retry-badge {
+  flex: none; font-size: .75rem; font-weight: 700; padding: 2px 8px; border-radius: 999px;
+  border: 1px solid var(--no); color: var(--no);
+}
+.retry-badge.is-ok { border-color: var(--ok); color: var(--ok); }
 
 /* Het vlagje staat uit tot je het aanzet: een melding is een uitzondering,
  * dus ze mag niet net zo hard roepen als de uitslag zelf. */

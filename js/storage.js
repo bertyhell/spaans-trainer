@@ -167,11 +167,15 @@ export const MISTAKE_CLEAR_AFTER = 3;
 
 /* Een "bijna" (accent- of typfout) telt als juist voor de dozen, maar komt
  * wel in de foutenlijst: de schrijfwijze moet je nog oefenen. */
-export function recordAnswer(atomId, { correct, almost, expected, given, note }) {
+export function recordAnswer(atomId, { correct, almost, expected, given, note }, direction = null) {
   const s = load();
   const m = s.mistakes[atomId];
   if (!correct || almost) {
-    s.mistakes[atomId] = { expected, given: given ?? null, note: note ?? null, at: Date.now(), streak: 0 };
+    // De richting onthouden: wie "de bril" niet kon vertalen, moet dát oefenen,
+    // niet het herkennen van las gafas.
+    const count = (m?.count ?? 0) + 1;
+    s.mistakes[atomId] = { expected, given: given ?? null, note: note ?? null, at: Date.now(), streak: 0,
+      direction: direction ?? m?.direction ?? null, count };
   } else if (m) {
     m.streak += 1;
     if (m.streak >= MISTAKE_CLEAR_AFTER) delete s.mistakes[atomId];

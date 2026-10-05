@@ -35,7 +35,11 @@ reset();
 t('nieuw item start in doos 1', storage.getProgress('x').box, 1);
 t('juist → doos omhoog', scheduler.record('x', true).box, 2);
 t('nog eens juist', scheduler.record('x', true).box, 3);
-t('fout → terug naar doos 1', scheduler.record('x', false).box, 1);
+t('fout vanuit doos 3 → doos 1', scheduler.record('x', false).box, 1);
+
+reset();
+for (let i = 0; i < 6; i++) scheduler.record('w', true);
+t('fout vanuit doos 5 → doos 3', scheduler.record('w', false).box, 3);
 
 reset();
 for (let i = 0; i < 10; i++) scheduler.record('y', true);
@@ -53,6 +57,34 @@ t('doos 5 weegt het lichtst', scheduler.weightForBox(5), 0.2);
 ok('zwakkere dozen wegen zwaarder',
   scheduler.weightForBox(1) > scheduler.weightForBox(3) &&
   scheduler.weightForBox(3) > scheduler.weightForBox(5));
+
+/* ---------------- tijd ---------------- */
+{
+  const now = Date.now();
+  const DAY = 24 * 3600 * 1000;
+  t('net gezien weegt weinig', scheduler.dueFactor({ box: 3, lastSeen: now }, now), 0.1);
+  t('rusttijd om → factor 1', scheduler.dueFactor({ box: 3, lastSeen: now - 3 * DAY }, now), 1);
+  t('lang niet gezien → factor 3', scheduler.dueFactor({ box: 2, lastSeen: now - 30 * DAY }, now), 3);
+  ok('hogere doos mag langer rusten',
+    scheduler.dueFactor({ box: 2, lastSeen: now - DAY }, now) > scheduler.dueFactor({ box: 5, lastSeen: now - DAY }, now));
+
+  // Twee items in dezelfde doos: het oude komt veel vaker in de les.
+  reset();
+  const pair = [{ atomId: 'old', direction: null, key: 'old' }, { atomId: 'new', direction: null, key: 'new' }];
+  storage.setProgress('old', { box: 3, seen: 2, wrong: 0, lastSeen: now - 10 * DAY });
+  storage.setProgress('new', { box: 3, seen: 2, wrong: 0, lastSeen: now });
+  let olds = 0;
+  for (let i = 0; i < 300; i++) if (scheduler.drawLesson(pair, 1, now)[0].key === 'old') olds++;
+  ok(`lang niet geziene item gaat voor (${olds}/300)`, olds > 250);
+}
+
+/* ---------------- vormkeuze per doos ---------------- */
+{
+  const { weightFor } = await import('../js/types/index.js');
+  ok('doos 1: meerkeuze zwaarder dan intypen relatief',
+    weightFor('multipleChoice', 1) / weightFor('typeAnswer', 1) > weightFor('multipleChoice', 5) / weightFor('typeAnswer', 5));
+  ok('doos 5: intypen weegt dubbel', weightFor('typeAnswer', 5) === 2 * weightFor('typeAnswer', 3));
+}
 
 /* ---------------- trekking ---------------- */
 reset();
@@ -153,6 +185,27 @@ reset();
   t('getrokken persoon in de tabel krijgt zijn doos', storage.getProgress('c.1s').box, 2);
   t('foute persoon valt terug', storage.getProgress('c.3s').seen, 1);
   t('fout staat bij de foute persoon', Object.keys(storage.get().mistakes), ['c.3s']);
+}
+
+/* ---------------- les: herkansing ---------------- */
+reset();
+{
+  const s = Object.create(Session.prototype);
+  const mk = id => ({ atomId: id, key: id, direction: null, atom: { id } });
+  Object.assign(s, { index: 0, results: [], recentTypes: [], questions: 5,
+    queue: ['q0', 'q1', 'q2', 'q3', 'q4'].map(mk) });
+  s.submit({ id: 'choice' }, { correct: false, expected: 'x' });
+  t('fout item komt drie vragen later terug', s.queue.map(q => q.key), ['q0', 'q1', 'q2', 'q3', 'q0', 'q4']);
+  t('fout zakt de doos niet onder 1', storage.getProgress('q0').box, 1);
+  s.next(); s.submit({ id: 'choice' }, { correct: true, expected: 'x' });
+  s.next(); s.next(); s.next();
+  t('herkansing staat op de plaats', s.current.retryOf != null, true);
+  const boxBefore = storage.getProgress('q0').box;
+  s.submit({ id: 'multipleChoice' }, { correct: true, expected: 'x' });
+  t('herkansing verschuift geen doos', storage.getProgress('q0').box, boxBefore);
+  t('herkansing telt niet in de score', s.scored.length, 2);
+  t('herkansing wordt bij de fout genoteerd', s.results[0].retryCorrect, true);
+  t('geen tweede herkansing', s.queue.filter(q => q.key === 'q0').length, 2);
 }
 
 /* ---------------- streak ---------------- */

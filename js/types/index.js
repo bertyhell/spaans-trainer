@@ -30,6 +30,7 @@ import choice from './choice.js';
 import reading from './reading.js';
 import { dialogueMeaning, dialogueReply } from './dialogue.js';
 import stressTap from './stressTap.js';
+import { getProgress } from '../storage.js';
 
 export const TYPES = [
   multipleChoice,
@@ -82,6 +83,28 @@ const WEIGHTS = {
   stressTap: 1,
 };
 
+/* Eerst herkennen, dan zelf maken. Een nieuw of pas fout beantwoord item
+ * (doos 1–2) krijgt vaker een vorm waarin je het juiste antwoord ziet staan;
+ * een item dat je al goed kent (doos 4–5) vaker een vorm waarin je het zelf
+ * moet opschrijven. Vormen zonder `mode` zitten ertussenin. */
+const RECOGNIZE = new Set([
+  'multipleChoice', 'articlePicker', 'oddOneOut', 'irregularVerb', 'verbType', 'verbSort',
+  'listenChoose', 'conjugationSingle', 'dialogueMeaning', 'dialogueReply', 'stressTap',
+]);
+const PRODUCE = new Set(['typeAnswer', 'listenType', 'conjugationGrid', 'accents']);
+
+export const modeOf = typeId => (RECOGNIZE.has(typeId) ? 'recognize' : PRODUCE.has(typeId) ? 'produce' : null);
+
+/** Het gewicht van een vorm voor een item in deze doos. */
+export function weightFor(typeId, box) {
+  const base = WEIGHTS[typeId] ?? 1;
+  const mode = modeOf(typeId);
+  if (box <= 2 && mode === 'recognize') return base * 2;
+  if (box >= 4 && mode === 'produce') return base * 2;
+  if (box >= 4 && mode === 'recognize') return base / 2;
+  return base;
+}
+
 /** Alle vormen waarin dit item getoond kan worden. */
 export function supportedFor(item, env) {
   return TYPES.filter(t => {
@@ -102,10 +125,11 @@ export function pickType(item, env, recent = []) {
   const fresh = candidates.filter(t => !avoid.has(t.id));
   const pool = fresh.length ? fresh : candidates;
 
-  const total = pool.reduce((s, t) => s + (WEIGHTS[t.id] ?? 1), 0);
+  const { box } = getProgress(item.key);
+  const total = pool.reduce((s, t) => s + weightFor(t.id, box), 0);
   let r = Math.random() * total;
   for (const t of pool) {
-    r -= WEIGHTS[t.id] ?? 1;
+    r -= weightFor(t.id, box);
     if (r <= 0) return t;
   }
   return pool[pool.length - 1];

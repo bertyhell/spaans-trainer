@@ -4,7 +4,7 @@
  * vooral na het opnieuw genereren van data/course.js, anders blijven telefoons
  * op de oude woordenlijst hangen. tools/release.mjs doet dat automatisch. */
 
-const CACHE = 'vamos-e0ddbaae';
+const CACHE = 'vamos-9be3acc8';
 
 const ASSETS = [
   './',

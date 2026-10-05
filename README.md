@@ -88,10 +88,19 @@ zegt zelf via `supports()` of ze een bepaald atoom aankan, en de vraag wordt pas
 tonen samengesteld. Eén woordpaar levert zo meerkeuze, intypen, luisteren, lidwoord,
 koppelen en "hoort niet bij" op, zonder de inhoud zes keer op te slaan.
 
-**Leitner-dozen.** Elk oefenitem zit in doos 1 tot 5. Juist → een doos hoger, fout → terug
-naar doos 1. De trekkans is `1/doosnummer`, dus doos 1 komt vijf keer zo vaak langs als
-doos 5. Geen vervaldatums: sla je drie dagen over, dan is er geen achterstand — er is
-gewoon altijd werk.
+**Leitner-dozen.** Elk oefenitem zit in doos 1 tot 5. Juist → een doos hoger, fout → twee
+dozen lager (minstens doos 1). De trekkans is `1/doosnummer`, dus doos 1 komt vijf keer zo
+vaak langs als doos 5. Daarbovenop telt de tijd sinds je het item zag: elke doos heeft een
+rusttijd (5 minuten, 1, 3, 7 en 21 dagen); wat net nog langskwam weegt tot tien keer minder,
+wat al lang wacht tot drie keer meer. Geen vervaldatums: sla je drie dagen over, dan is er
+geen achterstand — er is gewoon altijd werk.
+
+**Herkansing.** Een fout antwoord komt drie vragen later nog eens terug, liefst in een andere
+oefenvorm. Die herkansing verschuift geen doos en telt niet in de score, maar het overzicht
+toont "later juist".
+
+**Eerst herkennen, dan maken.** In doos 1–2 krijgen meerkeuzevormen voorrang, in doos 4–5
+de vormen waarin je zelf typt.
 
 **Twee richtingen apart.** `nl→es` en `es→nl` zijn losse items met een eigen doos. Een
 woord herkennen is iets anders dan het kunnen produceren.

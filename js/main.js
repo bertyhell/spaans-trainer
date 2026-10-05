@@ -7,7 +7,7 @@ import * as scheduler from './scheduler.js';
 import * as speech from './speech.js';
 import * as audio from './audio.js';
 import { el, clear, speakerButton, FLAGS } from './dom.js';
-import { Session, itemsForThemes } from './session.js';
+import { Session, itemsForThemes, itemsForMistakes } from './session.js';
 import { MatchRound } from './matchRound.js';
 import * as flashcards from './flashcards.js';
 
@@ -68,9 +68,17 @@ function toast(msg, ms = 2200) {
   }, ms);
 }
 
+/* Vanaf zoveel recente fouten krijg je een snelknop om ze te oefenen. */
+const MISTAKE_CHIP_MIN = 3;
+
 function refreshStats() {
   $('#stat-streak').querySelector('b').textContent = storage.currentStreak();
   $('#stat-done').querySelector('b').textContent = storage.get().exercisesDone;
+  const n = storage.getMistakes().filter(m => data.getAtom(m.atomId)).length;
+  for (const btn of [$('#btn-start-mistakes'), $('#btn-result-mistakes')]) {
+    btn.hidden = n < MISTAKE_CHIP_MIN;
+    btn.textContent = `🔁 ${n} ${n === 1 ? 'fout' : 'fouten'} oefenen`;
+  }
 }
 
 /* ------------------------------------------------------------------ */
@@ -280,7 +288,9 @@ function nextQuestion() {
 
   instance = activeType.render(session.current, root, ctx);
   // Vóór het antwoord bepalen: recordAnswer kan de fout straks wissen.
-  $('#prev-mistake').hidden = !storage.get().mistakes[session.current.atomId];
+  const retry = Boolean(session.current.retryOf);
+  $('#prev-mistake').textContent = retry ? '↻ Herkansing' : 'Eerdere fout';
+  $('#prev-mistake').hidden = !retry && !storage.get().mistakes[session.current.atomId];
 
   $('#lesson-counter').textContent = `${session.position}/${session.total}`;
   renderLessonProgress();
@@ -382,13 +392,15 @@ function finishLesson() {
   $('#result-badge').textContent = session.perfect ? '🏆' : session.correctCount ? '🎉' : '💪';
   $('#result-title').textContent = session.perfect
     ? '¡Perfecto!'
-    : session.correctCount / session.total >= 0.7 ? '¡Muy bien!' : '¡Sigue así!';
-  $('#result-score').textContent = `${session.correctCount} van ${session.total} juist`;
-  $('#result-correct').textContent = `${session.correctCount}/${session.total}`;
+    : session.correctCount / session.questions >= 0.7 ? '¡Muy bien!' : '¡Sigue así!';
+  const fixed = session.scored.filter(r => !r.correct && r.retryCorrect).length;
+  $('#result-score').textContent = `${session.correctCount} van ${session.questions} juist`
+    + (fixed ? ` · ${fixed} later alsnog goed` : '');
+  $('#result-correct').textContent = `${session.correctCount}/${session.questions}`;
   $('#result-done').textContent = `+${done}`;
   showMasteryGain();
 
-  renderReview(session.results);
+  renderReview(session.scored);
   refreshStats();
   renderTree();
   show('screen-result');
@@ -500,12 +512,18 @@ function renderReview(results) {
       },
     }, '⚠️');
 
+    const retried = !r.correct && r.retryCorrect != null
+      ? el('span', {
+          class: `retry-badge${r.retryCorrect ? ' is-ok' : ''}`,
+          title: r.retryCorrect ? 'Bij de herkansing wel juist' : 'Ook bij de herkansing fout',
+        }, r.retryCorrect ? '↻ ✓' : '↻ ✗')
+      : null;
     const li = reviewRow({
       mark: r.almost ? '≈' : r.correct ? '✓' : '✗',
-      markLabel: r.almost ? 'bijna juist' : r.correct ? 'juist' : 'fout',
+      markLabel: r.almost ? 'bijna juist' : r.correct ? 'juist' : r.retryCorrect ? 'eerst fout, later juist' : 'fout',
       q, a, className: `mistake${r.almost ? ' is-almost' : r.correct ? ' is-ok' : ''}`,
       detail: el('div', { class: 'mistake-detail', hidden: true }, ...detailRows(r)),
-      extras: [flag],
+      extras: [retried, flag].filter(Boolean),
     });
     list.append(li);
     items.push({ li, correct: r.correct });
@@ -1033,8 +1051,7 @@ function renderRecentMistakes() {
 
 /** Een les met enkel de oefeningen uit de recente fouten. */
 function startMistakesLesson() {
-  const atoms = storage.getMistakes().map(m => data.getAtom(m.atomId)).filter(Boolean);
-  startLesson([], { items: data.itemsFor(atoms), mistakes: true });
+  startLesson([], { items: itemsForMistakes(), mistakes: true });
 }
 
 function openRecentMistakes() {
@@ -1143,6 +1160,8 @@ function wire() {
   $('#btn-flash-home').addEventListener('click', leaveFlash);
 
   $('#btn-home').addEventListener('click', () => show('screen-start'));
+  $('#btn-start-mistakes').addEventListener('click', startMistakesLesson);
+  $('#btn-result-mistakes').addEventListener('click', startMistakesLesson);
   $('#btn-again').addEventListener('click', () => {
     if (lastMode === 'match') return selected.size ? startMatch() : show('screen-start');
     if (lastLesson?.mistakes) return startMistakesLesson();

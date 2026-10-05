@@ -91,16 +91,20 @@ export class MatchRound {
       this.missedOnce.add(rightId);
       // Een misgreep zet beide woorden meteen terug naar doos 1.
       for (const id of [leftId, rightId]) {
-        if (this.active.some(a => a.id === id)) {
-          scheduler.record(scheduler.itemKey(id, 'es2nl'), false);
-        }
+        const a = this.active.find(x => x.id === id);
+        if (!a) continue;
+        scheduler.record(scheduler.itemKey(id, 'es2nl'), false);
+        storage.recordAnswer(id, { correct: false, expected: `${a.es} = ${a.nl[0]}` }, 'es2nl');
       }
       storage.save();
       return { ok: false, atom: null, done: false, left: [], right: [] };
     }
 
-    // Juist gekoppeld. Alleen wie foutloos bleef, klimt een doos.
-    scheduler.record(scheduler.itemKey(leftId, 'es2nl'), !this.missedOnce.has(leftId));
+    // Juist gekoppeld. Alleen wie foutloos bleef, klimt een doos (en werkt een
+    // recente fout weg).
+    const clean = !this.missedOnce.has(leftId);
+    scheduler.record(scheduler.itemKey(leftId, 'es2nl'), clean);
+    if (clean) storage.recordAnswer(leftId, { correct: true }, 'es2nl');
     storage.save();
 
     this.matched++;
