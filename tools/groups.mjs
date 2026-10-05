@@ -31,7 +31,7 @@ export const GROUPS = [
   },
   {
     id: 'g-huis', title: 'Huis en wonen', emoji: '🏠',
-    themes: ['huis', 'meubels', 'badkamer', 'decoracion', 'apparaten', 'wonen'],
+    themes: ['huis', 'meubels', 'badkamer', 'decoracion', 'apparaten', 'wonen', ...contentThemesOf('g-huis')],
   },
   {
     id: 'g-reizen', title: 'Reizen, weer en natuur', emoji: '🧳',
@@ -50,6 +50,7 @@ export const GROUPS = [
       'dagelijkse-routine', 'dagen-en-maanden', 'tijd-en-uur',
       'afspreken', 'afspreken-en-plannen', 'telefoneren',
       'mensen', 'winkelen', 'winkels-diensten', 'kantoor-papier', 'kantoor-schrijfgerei',
+      ...contentThemesOf('g-dagelijks'),
     ],
   },
   {

@@ -111,11 +111,24 @@ const SUBJUNCTIVE_IRREGULAR = {
   dar: ['dé', 'des', 'dé', 'demos', 'deis', 'den'],
 };
 
-/* Onregelmatige voltooide deelwoorden. */
+/* Onregelmatige voltooide deelwoorden. De klinkerstammen (leído, traído)
+ * krijgen een accent: zonder zou de klemtoon verschuiven. */
 const PARTICIPLES = {
   abrir: 'abierto', escribir: 'escrito', hacer: 'hecho', poner: 'puesto',
   decir: 'dicho', ver: 'visto', volver: 'vuelto', morir: 'muerto', romper: 'roto',
+  leer: 'leído', creer: 'creído', poseer: 'poseído', traer: 'traído', oír: 'oído', caer: 'caído',
 };
+
+/* Wederkerende werkwoorden uit de dagelijkse routine, met hun klankwissel.
+ * Het voornaamwoord komt ervoor: me levanto, me he levantado. */
+export const REFLEXIVE = {
+  levantarse: null, ducharse: null, bañarse: null, afeitarse: null, peinarse: null,
+  lavarse: null, llamarse: null, casarse: null, cansarse: null, relajarse: null,
+  marearse: null, marcharse: null,
+  acostarse: 'o → ue', despertarse: 'e → ie', divertirse: 'e → ie',
+};
+const PRONOUNS = ['me', 'te', 'se', 'nos', 'os', 'se'];
+const REFLEXIVE_TENSES = new Set(['presente', 'indefinido', 'imperfecto', 'futuro', 'perfecto']);
 
 /* Klankveranderaars uit verbs.mjs. Weersverschijnselen en doler vallen weg:
  * die hebben geen volledig rijtje van zes. */
@@ -125,8 +138,7 @@ const STEM_CHANGERS = Object.entries(IRREGULAR)
 /** De stamklinker zoals die in het gerundio en in nosotros/vosotros van de
  *  aanvoegende wijs verschijnt: enkel -ir-werkwoorden wisselen daar
  *  (durmiendo, durmamos; pidiendo, pidamos; sintiendo, sintamos). */
-function weakStem(verb) {
-  const change = IRREGULAR[verb];
+function weakStem(verb, change = IRREGULAR[verb]) {
   const stem = plain(verb).slice(0, -2);
   if (!change?.includes('→') || endingOf(verb) !== 'ir') return stem;
   const from = change.split(' → ')[0];
@@ -158,9 +170,46 @@ function subjunctive(verb, yo) {
   return endings.map((e, i) => (i === 3 || i === 4 ? weak : strong) + e);
 }
 
+/**
+ * De indefinido met zijn spellings- en klankwissels:
+ *   buscar → busqué, pagar → pagué, empezar → empecé (alleen yo);
+ *   leer → leyó, leyeron (tussen twee klinkers wordt de i een y);
+ *   pedir → pidió, dormir → durmió (-ir-klankveranderaars, enkel él en ellos).
+ */
+export function indefinidoForms(verb, change = IRREGULAR[verb]) {
+  const base = regularForms(verb, 'indefinido');
+  if (!base) return null;
+  const end = endingOf(verb);
+  const stem = plain(verb).slice(0, -2);
+  if (VOWEL_STEM.test(plain(verb))) {
+    return [`${stem}í`, `${stem}íste`, `${stem}yó`, `${stem}ímos`, `${stem}ísteis`, `${stem}yeron`];
+  }
+  const out = [...base];
+  if (SPELLING.test(verb)) out[0] = `${spellStem(stem, 'ar', 'é')}é`;
+  if (end === 'ir' && change?.includes('→')) {
+    const weak = weakStem(verb, change);
+    out[2] = `${weak}ió`;
+    out[5] = `${weak}ieron`;
+  }
+  return out;
+}
+
+/** Een wederkerend werkwoord: het rijtje van de basis met me, te, se ervoor. */
+function reflexiveForms(verb, tense) {
+  const base = verb.slice(0, -2);
+  const change = REFLEXIVE[verb];
+  let f = null;
+  if (tense === 'presente') f = change ? stemChangedForms(base, change) : regularForms(base, tense);
+  else if (tense === 'indefinido') f = indefinidoForms(base, change);
+  else f = regularForms(base, tense);
+  return f && f.map((x, i) => `${PRONOUNS[i]} ${x}`);
+}
+
 /** Het correcte rijtje voor de werkwoorden die we zelf aanvullen. `yo` is de
  *  yo-vorm van de presente, voor de aanvoegende wijs. */
 function forms(verb, tense, yo) {
+  if (verb in REFLEXIVE) return REFLEXIVE_TENSES.has(tense) ? reflexiveForms(verb, tense) : null;
+  if (tense === 'indefinido') return indefinidoForms(verb);
   if (tense === 'presente') {
     const change = IRREGULAR[verb];
     return change?.includes('→') ? stemChangedForms(verb, change) : regularForms(verb, tense);
@@ -176,30 +225,40 @@ function forms(verb, tense, yo) {
   return regularForms(verb, tense);
 }
 
-/* Welke werkwoorden we per tijd aanvullen. Werkwoorden met een
- * spellingswissel die je niet als "regelmatig" wil leren blijven weg:
- * busqué, pagué, empecé in de indefinido, leyó en leído. */
+/* Spellings- en klinkerwissels. Zulke rijtjes komen in het thema
+ * "onregelmatig" terecht: busqué en leyó volg je niet blind uit het patroon. */
 const SPELLING = /(car|gar|zar)$/;
 const VOWEL_STEM = /[aeo](er|ir)$/;
+
+/* Werkwoorden uit de cursus waarvan de indefinido wél het patroon volgt (met
+ * de wissels hierboven). De andere (tuve, hice, dije) staan in de cursus zelf. */
+const BOOK_INDEFINIDO = ['comer', 'hablar', 'tomar', 'vivir', 'abrir', 'escribir', 'partir',
+  'volver', 'conocer', 'salir', 'jugar', 'pensar', 'oír', 'dormir', 'pedir'];
+/* De imperfecto is regelmatig, behalve bij deze drie. */
+const IMPERFECTO_IRREGULAR = new Set(['ser', 'ir', 'ver']);
 
 function verbsToAdd(tense, bookVerbs) {
   const changers = STEM_CHANGERS.map(([v]) => v);
   const regular = [...REGULAR];
+  const reflexive = REFLEXIVE_TENSES.has(tense) ? Object.keys(REFLEXIVE) : [];
+  return [...baseVerbsToAdd(tense, bookVerbs, changers, regular), ...reflexive];
+}
+
+function baseVerbsToAdd(tense, bookVerbs, changers, regular) {
   switch (tense) {
     case 'presente': return [...regular, ...changers];
-    case 'imperfecto': return [...regular, ...changers];
-    case 'perfecto': return [...regular, ...changers].filter(v => !VOWEL_STEM.test(v));
+    case 'imperfecto': return [...regular, ...changers, ...bookVerbs.filter(v => !IMPERFECTO_IRREGULAR.has(v))];
+    case 'perfecto': return [...regular, ...changers, ...bookVerbs]
+      .filter(v => !VOWEL_STEM.test(plain(v)) || PARTICIPLES[v]);
     case 'futuro': return [...regular, ...changers, ...bookVerbs];
     case 'condicional': return [...regular, ...changers, ...bookVerbs];
     case 'continuo': return [...regular, ...changers, ...bookVerbs].filter(v => v !== 'haber');
     // Enkel werkwoorden waarvan de yo-vorm bekend is (of die volledig
-    // onregelmatig zijn). jugar (juegue) laten we weg: u → ue en g → gu tegelijk.
-    case 'subjuntivo': return [...regular, ...changers, ...bookVerbs].filter(v => v !== 'jugar');
+    // onregelmatig zijn). jugar → juegue, juguemos: spellStem doet beide wissels.
+    case 'subjuntivo': return [...regular, ...changers, ...bookVerbs];
     case 'indefinido':
-      // -ir-klankveranderaars wisselen ook hier (sintió, pidió); querer en
-      // poder zijn volledig onregelmatig (quise, pude).
-      return [...regular, ...changers.filter(v => !v.endsWith('ir') && !['querer', 'poder'].includes(v))]
-        .filter(v => !SPELLING.test(v) && !VOWEL_STEM.test(v));
+      // querer en poder zijn volledig onregelmatig (quise, pude).
+      return [...regular, ...changers.filter(v => !['querer', 'poder'].includes(v)), ...BOOK_INDEFINIDO];
     default: return [];
   }
 }
@@ -207,11 +266,11 @@ function verbsToAdd(tense, bookVerbs) {
 /* --- de thema's --- */
 
 export const TENSES = [
-  { tense: 'presente', section: 'Presente (tegenwoordige tijd: ik spreek)', kinds: ['ar', 'er', 'ir', 'klank', 'onr'] },
-  { tense: 'indefinido', section: 'Pretérito indefinido (verleden tijd, afgerond: ik sprak)', kinds: ['ar', 'er', 'ir', 'onr'] },
-  { tense: 'futuro', section: 'Futuro simple (toekomende tijd: ik zal spreken)', kinds: ['ar', 'er', 'ir', 'onr'] },
-  { tense: 'imperfecto', section: 'Pretérito imperfecto (verleden tijd, gewoonte of beschrijving: ik sprak altijd)', kinds: ['ar', 'er', 'ir', 'onr'] },
-  { tense: 'perfecto', section: 'Pretérito perfecto (voltooid tegenwoordige tijd: ik heb gesproken)', kinds: ['ar', 'er', 'ir', 'onr'] },
+  { tense: 'presente', section: 'Presente (tegenwoordige tijd: ik spreek)', kinds: ['ar', 'er', 'ir', 'klank', 'onr', 'wed'] },
+  { tense: 'indefinido', section: 'Pretérito indefinido (verleden tijd, afgerond: ik sprak)', kinds: ['ar', 'er', 'ir', 'onr', 'wed'] },
+  { tense: 'futuro', section: 'Futuro simple (toekomende tijd: ik zal spreken)', kinds: ['ar', 'er', 'ir', 'onr', 'wed'] },
+  { tense: 'imperfecto', section: 'Pretérito imperfecto (verleden tijd, gewoonte of beschrijving: ik sprak altijd)', kinds: ['ar', 'er', 'ir', 'onr', 'wed'] },
+  { tense: 'perfecto', section: 'Pretérito perfecto (voltooid tegenwoordige tijd: ik heb gesproken)', kinds: ['ar', 'er', 'ir', 'onr', 'wed'] },
   { tense: 'continuo', section: 'Estar + gerundio (bezig zijn: ik ben aan het spreken)', kinds: ['ar', 'er', 'ir', 'onr'] },
   { tense: 'condicional', section: 'Condicional (voorwaardelijke wijs: ik zou spreken)', kinds: ['ar', 'er', 'ir', 'onr'] },
   { tense: 'subjuntivo', section: 'Presente de subjuntivo (aanvoegende wijs: … dat ik spreek)', kinds: ['ar', 'er', 'ir', 'klank', 'onr'] },
@@ -219,7 +278,7 @@ export const TENSES = [
 
 const KIND_LABELS = {
   ar: 'Regelmatig op -ar', er: 'Regelmatig op -er', ir: 'Regelmatig op -ir',
-  klank: 'Klankveranderend', onr: 'Onregelmatig',
+  klank: 'Klankveranderend', onr: 'Onregelmatig', wed: 'Wederkerend (me levanto)',
 };
 
 const themeId = (tense, kind) => `vv-${tense}-${kind}`;
@@ -238,6 +297,7 @@ export const CONJUGATION_ORDER = TENSES.flatMap(({ tense, kinds }) => [
 
 /** In welk thema hoort dit rijtje? */
 function classify(verb, tense, family, yo) {
+  if (verb in REFLEXIVE) return { theme: themeId(tense, 'wed'), irregular: Boolean(REFLEXIVE[verb]) };
   const same = f => f && PERSONS.every((p, i) => family.get(p) === f[i]);
   if (same(regularForms(verb, tense))) return { theme: themeId(tense, endingOf(verb)), irregular: false };
   if (tense === 'presente' && IRREGULAR[verb]?.includes('→')

@@ -37,6 +37,13 @@ export const CONTENT_THEMES = [
   grammar('gr-zin-futuro', 'Futuro en condicional', '•', IN_SENTENCES),
   grammar('gr-zin-gerundio', 'Estar + gerundio', '•', IN_SENTENCES),
 
+  grammar('gr-gustar', 'Gustar, encantar en doler', '❤️'),
+  grammar('gr-por-para', 'Por of para?', '↔️'),
+
+  // Basiswoorden die de cursus als gekend veronderstelt (tools/content/a1-basics.mjs).
+  { id: 'getallen', label: 'Getallen', emoji: '🔢', group: 'g-dagelijks' },
+  { id: 'waar-is-het', label: 'Waar is het? (voor, achter, op …)', emoji: '📍', group: 'g-huis' },
+
   { id: 'examen-u1', label: 'Unidad 1 sin estrés', emoji: '🎓', group: 'g-toetsen' },
   { id: 'toets-u1', label: 'Toets unidad 1', emoji: '📝', group: 'g-toetsen' },
   { id: 'instaptoets', label: 'Instaptoets 1.2', emoji: '🚪', group: 'g-toetsen' },
@@ -56,6 +63,8 @@ export const CONTENT_THEMES = [
 export const EXISTING_THEMES = [
   'eigenschappen', 'bijwoord', 'vergelijken', 'voornaamwoorden', 'onbepaalde-voornaamwoorden',
   'interrogativos', 'bijvoeglijk-naamwoord', 'ser-estar', 'verleden-tijden',
+  // Woordenschat uit tools/content/a1-basics.mjs.
+  'kleuren', 'dagen-en-maanden', 'ww-denken',
 ];
 
 /** Thema-id's per groep, in schermvolgorde. */

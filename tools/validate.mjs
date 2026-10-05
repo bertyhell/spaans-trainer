@@ -5,6 +5,7 @@
 import { readFile } from 'node:fs/promises';
 import { expandVariants } from '../js/check.js';
 import { checkAtom } from './content/index.mjs';
+import { REFLEXIVE } from './conjugate.mjs';
 
 const DATA = new URL('../data/course.js', import.meta.url);
 
@@ -199,6 +200,82 @@ for (const [theme, n] of perTheme) {
   if (n < 4) warn(`theme ${theme}`, `slechts ${n} woorden — te weinig voor meerkeuze-afleiders`);
 }
 
+/* --- kwaliteit: dingen die de app opvangt, maar die je beter in de data oplost ---
+ * Telkens één regel met het aantal en een paar voorbeelden: honderd losse
+ * waarschuwingen leest niemand. */
+const notices = [];
+const notice = (label, list) => {
+  if (list.length) notices.push(`${label}: ${list.length} — ${list.slice(0, 4).join('; ')}${list.length > 4 ? '; …' : ''}`);
+};
+
+const vocab = course.atoms.filter(a => a.kind === 'vocab');
+const gloss = s => norm(s).replace(/^(de|het|een) /, '');
+
+// Twee woorden in één thema met dezelfde eerste vertaling: in "typ dit in het
+// Spaans" weet je niet welk van de twee bedoeld is (de app aanvaardt beide).
+{
+  const seen = new Map();
+  const list = [];
+  for (const a of vocab) {
+    const k = `${a.theme}|${gloss(a.nl[0])}`;
+    if (seen.has(k)) list.push(`"${a.nl[0]}" = ${seen.get(k)} / ${a.es}`);
+    else seen.set(k, a.es);
+  }
+  notice('synoniemen binnen een thema', list);
+}
+
+// Bijna dezelfde schrijfwijze: enfermo/a en enfermo/-a, el reloj (de pulsera).
+{
+  const key = a => norm(a.es).replace(/\/-?/g, '/').replace(/\s*\([^)]*\)/g, '').replace(/^(el|la|los|las) /, '');
+  const seen = new Map();
+  const list = [];
+  for (const a of vocab) {
+    const k = key(a);
+    if (seen.has(k) && seen.get(k).es !== a.es && seen.get(k).pos === a.pos) list.push(`${seen.get(k).es} ~ ${a.es}`);
+    else seen.set(k, a);
+  }
+  notice('bijna-dubbele woorden', list);
+}
+
+// Het antwoord van een invuloefening staat twee keer in de zin: welk is het gat?
+{
+  const list = [];
+  for (const a of course.atoms) {
+    if (a.kind !== 'sentence' || a.es.includes('___')) continue;
+    const ans = a.blanks?.[0]?.answer;
+    if (!ans) continue;
+    const re = new RegExp(`(?<![\\p{L}])${ans.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}(?![\\p{L}])`, 'giu');
+    if ((a.es.match(re) ?? []).length > 1) list.push(`${a.id} (${ans})`);
+  }
+  notice('antwoord twee keer in de zin', list);
+}
+
+// Uitleg waar geen enkele oefening naar verwijst.
+{
+  const refs = new Set(course.atoms.map(a => a.grammarRef).filter(Boolean));
+  const tenseRefs = ['gr.presente', 'gr.indefinido', 'gr.imperfecto', 'gr.perfecto', 'gr.futuro',
+    'gr.condicional', 'gr.gerundio', 'gr.subjuntivo'];
+  notice('ongebruikte uitleg', Object.keys(course.grammar ?? {}).filter(k => !refs.has(k) && !tenseRefs.includes(k)));
+}
+
+// Werkwoorden met een gat in hun tijden.
+{
+  const tenses = new Map();
+  for (const key of conjugations.keys()) {
+    const [verb, tense] = key.split('|');
+    if (!tenses.has(verb)) tenses.set(verb, new Set());
+    tenses.get(verb).add(tense);
+  }
+  const all = new Set([...tenses.values()].flatMap(t => [...t]));
+  const list = [];
+  for (const [verb, t] of tenses) {
+    const missing = [...all].filter(x => !t.has(x));
+    // Wederkerende werkwoorden krijgen bewust enkel de vijf basistijden.
+    if (missing.length && missing.length < all.size - 1 && !(verb in REFLEXIVE)) list.push(`${verb} (${missing.join(', ')})`);
+  }
+  notice('werkwoorden zonder elke tijd', list);
+}
+
 /* --- rapport --- */
 const kinds = {};
 for (const a of course.atoms) kinds[a.kind] = (kinds[a.kind] ?? 0) + 1;
@@ -209,6 +286,8 @@ console.log(`  ${Object.entries(kinds).map(([k, v]) => `${k}: ${v}`).join(' · '
 
 for (const w of warnings) console.log(`  waarschuwing  ${w}`);
 if (warnings.length) console.log('');
+for (const n of notices) console.log(`  aandacht  ${n}`);
+if (notices.length) console.log('');
 for (const e of errors) console.log(`  FOUT  ${e}`);
 
 if (errors.length) {

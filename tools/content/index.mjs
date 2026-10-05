@@ -20,6 +20,7 @@
  *   }
  *
  * Soorten atomen (naast de bestaande sentence en grammar):
+ *   vocab     { es, nl: [...], pos, gender?, number?, emoji?, note? }  woordenschat
  *   choice    { prompt, context?, options, answer, nl? }        meerkeuzevraag
  *   reading   { text, q, options, answer, nl? }                 vraag bij een tekst
  *   dialogue  { text, line, who?, es, nl }                      zin uit een dialoog
@@ -36,7 +37,8 @@ import { CONTENT_THEMES, EXISTING_THEMES } from './themes.mjs';
 const HERE = dirname(fileURLToPath(import.meta.url));
 const SKIP = new Set(['index.mjs', 'themes.mjs']);
 
-const KINDS = new Set(['sentence', 'grammar', 'choice', 'reading', 'dialogue', 'stress']);
+const KINDS = new Set(['vocab', 'sentence', 'grammar', 'choice', 'reading', 'dialogue', 'stress']);
+const POS = new Set(['verb', 'noun', 'adj', 'adv', 'other']);
 
 /** Laadt en controleert alle modules. Gooit een fout bij iets onbruikbaars. */
 export async function loadContent() {
@@ -95,6 +97,12 @@ export function checkAtom(a, { themeIds, texts, grammar }) {
   };
 
   switch (a.kind) {
+    case 'vocab':
+      if (!nonEmpty(a.es)) p.push('zonder es');
+      if (!Array.isArray(a.nl) || !a.nl.length || !a.nl.every(nonEmpty)) p.push('nl moet een lijst vertalingen zijn');
+      if (!POS.has(a.pos)) p.push(`onbekende pos "${a.pos}"`);
+      if (/^(el|la|los|las) /.test(a.es) && (!a.gender || !a.number)) p.push('lidwoord zonder gender en number');
+      break;
     case 'sentence':
       if (!nonEmpty(a.es) || !nonEmpty(a.nl)) p.push('es en nl zijn verplicht');
       if (!Array.isArray(a.blanks) || !a.blanks.length) p.push('zonder blanks');

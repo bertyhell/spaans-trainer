@@ -8,23 +8,24 @@ npm-afhankelijkheden.
 
 ## Wat er in zit
 
-**9459 oefenfeiten**, gedolven uit de cursusbladzijden en de bundel van de lesgever:
+**10294 oefenfeiten**, gedolven uit de cursusbladzijden en de bundel van de lesgever, plus een
+kleine aanvulling met A1-basiswoorden (`tools/content/a1-basics.mjs`):
 
 | soort | aantal | wordt |
 |---|---|---|
-| woordenschat ES↔NL | 1141 | meerkeuze, intypen, lidwoord, accenten, koppelen, hoort-niet-bij, welk-is-onregelmatig, luisteren, bijvoeglijk naamwoord laten overeenkomen |
-| vervoegingen | 6204 (8 tijden; de meeste berekend) | vervoegingstabel, losse vorm kiezen of intypen, welke tijd?, wie doet het? |
-| zinnen (werkboek, bundel, dialogen uit de cursus) | 758 | invuloefening, zin bouwen, dictee |
+| woordenschat ES↔NL | 1201 | meerkeuze, intypen, lidwoord, accenten, koppelen, hoort-niet-bij, welk-is-onregelmatig, luisteren, bijvoeglijk naamwoord laten overeenkomen |
+| vervoegingen | 6918 (8 tijden, wederkerende werkwoorden in 5; de meeste berekend) | vervoegingstabel, losse vorm kiezen of intypen, welke tijd?, wie doet het? |
+| zinnen (werkboek, bundel, dialogen uit de cursus) | 819 | invuloefening, zin bouwen, dictee |
 | grammaticaregels | 74 | invuloefening, meerkeuze |
 | toets- en werkboekvragen | 604 | meerkeuze (toets unidad 1, instaptoets, Miradores, werkboek) |
 | leesvragen bij 58 teksten | 204 | lezen |
 | dialoogregels (20 eigen dialogen) | 207 | wat zeggen ze?, wat volgt er?, zet in volgorde, dictee |
 | klemtoon | 132 | tik de beklemtoonde lettergreep |
 
-Bij een fout antwoord verschijnt een korte grammatica-uitleg (33 onderwerpen, met
+Bij een fout antwoord verschijnt een korte grammatica-uitleg (35 onderwerpen, met
 verwijzing naar de grammatica achteraan het boek).
 
-Verdeeld over 144 thema's in 13 groepen, op onderwerp in plaats van per unidad.
+Verdeeld over 156 thema's in 13 groepen, op onderwerp in plaats van per unidad.
 
 De werkwoorden staan in twee groepen: *betekenis* (per activiteit) en *vervoegen*, met per
 tijd — presente, gerundio, indefinido, futuro, imperfecto, perfecto, estar + gerundio,

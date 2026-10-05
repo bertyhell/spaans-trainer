@@ -77,6 +77,9 @@ export const DROP = [
   // Spaans te spreken.
   'v.el-comparativo', 'v.el-demostrativo', 'v.el-gerundio', 'v.el-pronombre-reflexivo',
   'v.el-superlativo', 'v.el-verbo-conjugado', 'v.el-verbo-reflexivo',
+  // Dubbel gedolven: hetzelfde woord in een andere notatie (enfermo/a en
+  // enfermo/-a), of dezelfde zin die ook in het werkboek staat.
+  'v.enfermo-a-2', 'v.sano-a-2', 's.gezondheid-7',
 ];
 
 /** Thema's die de cursus niet heeft. */
