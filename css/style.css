@@ -206,7 +206,8 @@ h1.brand { display: flex; align-items: center; gap: 8px; }
 
 /* Vier niveaus, elk vijf blokjes. Het niveau staat ook in title/aria-label,
  * dus kleur is niet de enige drager. */
-.mastery { flex: none; display: flex; gap: 2px; width: 72px; height: 8px; --lvl: var(--ok); }
+.mastery { flex: none; display: flex; gap: 2px; width: 72px; height: 8px; }
+.mastery, .row-go { --lvl: var(--ok); }
 .mastery--bronze { --lvl: var(--lvl-bronze); }
 .mastery--silver { --lvl: var(--lvl-silver); }
 .mastery--gold { --lvl: var(--lvl-gold); }
@@ -216,7 +217,7 @@ h1.brand { display: flex; align-items: center; gap: 8px; }
 .row-go {
   flex: none; width: 38px; height: 38px;
   border: 0; border-radius: 50%;
-  background: var(--brand); color: var(--brand-ink);
+  background: var(--lvl); color: #241a00; /* zelfde niveaukleur als het balkje */
   font-size: .8rem; cursor: pointer;
   padding: 0 0 0 .15em; /* ▶ oogt links-zwaar: optisch centreren */
 }

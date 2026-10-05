@@ -193,7 +193,7 @@ function renderTree() {
         ),
         masteryBar(themeMastery),
         el('button', {
-          class: 'row-go', type: 'button', 'aria-label': `Oefen ${theme.label} meteen`,
+          class: `row-go mastery--${scheduler.masteryLevel(themeMastery).level.id}`, type: 'button', 'aria-label': `Oefen ${theme.label} meteen`,
           onclick: () => startLesson([theme.id]),
         }, '▶'),
       ));
