@@ -7,7 +7,7 @@
  * conjugationSingle vraagt één vorm, met de andere personen als afleiders.
  */
 
-import { el, shuffle, sample, optionList } from '../dom.js';
+import { el, shuffle, sample, optionList, accentBar } from '../dom.js';
 import { conjugationFamily, conjugatedForm, verbForms, verbTranslation, PERSON_LABELS, PERSON_ORDER, TENSE_LABELS } from '../data.js';
 import { checkAnswer } from '../check.js';
 import { mastery, itemKey } from '../scheduler.js';
@@ -17,6 +17,9 @@ const tenseShort = t => tenseLabel(t).split(' · ')[0];
 
 /** Alle andere vormen van dit werkwoord, in alle tijden. "hablo" voor "habló"
  *  is dan geen accentfoutje maar een andere tijd. */
+/* Eén woord: geen ¿ of ¡ nodig. */
+const WORD_KEYS = ['á', 'é', 'í', 'ó', 'ú', 'ñ'];
+
 export const otherForms = (verb, form) => verbForms(verb).filter(f => f !== form);
 
 /** "habló = él / ella, pretérito indefinido" — wie of wanneer een vorm is. */
@@ -182,6 +185,53 @@ export const conjugationSingle = {
           note: ok || !chosen ? null : describeForm(atom.verb, chosen) };
       },
       reveal() { opts.reveal(atom.form); },
+    };
+  },
+};
+
+/* Eén vorm zelf intypen: de stap tussen kiezen en de hele tabel. */
+export const conjugationType = {
+  id: 'conjugationType',
+  label: 'Vervoeg',
+
+  supports: item => item.atom.kind === 'conjugation',
+
+  render(item, root, ctx) {
+    const { atom } = item;
+
+    root.append(
+      el('p', { class: 'q-instruction' }, 'Typ de juiste vorm'),
+      el('div', { class: 'q-prompt q-prompt--sentence', lang: 'es' },
+        el('span', { class: 'q-person' }, PERSON_LABELS[atom.person]),
+        el('span', { class: 'q-blank' }, '___'),
+        el('span', { class: 'q-infinitive' }, `(${atom.verb})`),
+      ),
+      el('p', { class: 'q-hint' },
+        [verbTranslation(atom.verb), tenseLabel(atom.tense)].filter(Boolean).join(' · ')),
+    );
+
+    const input = el('input', {
+      class: 'answer-input', type: 'text', lang: 'es',
+      autocomplete: 'off', autocorrect: 'off', autocapitalize: 'off', spellcheck: 'false',
+      placeholder: 'en español…', 'aria-label': `${PERSON_LABELS[atom.person]}, ${atom.verb}`,
+      oninput: () => ctx.ready(input.value.trim().length > 0),
+      onkeydown: e => { if (e.key === 'Enter') { e.preventDefault(); ctx.submit(); } },
+    });
+    root.append(input, accentBar(input, () => ctx.ready(input.value.trim().length > 0), WORD_KEYS));
+
+    return {
+      focus() { input.focus(); },
+      check() {
+        const r = checkAnswer(input.value, [atom.form], { rejectNear: otherForms(atom.verb, atom.form) });
+        // Een andere bestaande vorm van hetzelfde werkwoord: zeg welke.
+        const other = !r.correct && otherForms(atom.verb, atom.form)
+          .find(f => f.toLowerCase() === input.value.trim().toLowerCase());
+        return { ...r, note: other ? describeForm(atom.verb, other) : r.note, given: input.value };
+      },
+      reveal({ correct, almost }) {
+        input.disabled = true;
+        input.classList.add(almost ? 'is-almost' : correct ? 'is-correct' : 'is-wrong');
+      },
     };
   },
 };

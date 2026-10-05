@@ -17,6 +17,8 @@ new Function(await readFile(new URL('../data/course.js', import.meta.url), 'utf8
 const data = await import('../js/data.js');
 const { describeForm, otherForms } = await import('../js/types/conjugation.js');
 const { checkAnswer } = await import('../js/check.js');
+const { pluralOf, formsOf } = await import('../js/types/agreement.js');
+const { wordDiff } = await import('../js/types/dictation.js');
 data.init();
 
 let failed = 0;
@@ -46,6 +48,20 @@ t('otherForms laat de vorm zelf weg', otherForms('hablar', 'habló').includes('h
 t('hablo voor habló geweigerd', checkAnswer('hablo', ['habló'], { rejectNear: otherForms('hablar', 'habló') }).correct, false);
 t('describeForm noemt persoon en tijd', /yo.*presente/.test(describeForm('hablar', 'hablo') ?? ''), true);
 t('conjugationsOfForm', data.conjugationsOfForm('tengo').some(a => a.verb === 'tener'), true);
+
+/* --- bijvoeglijke naamwoorden laten overeenkomen --- */
+t('meervoud op klinker', pluralOf('rojo'), 'rojos');
+t('meervoud op medeklinker', pluralOf('azul'), 'azules');
+t('meervoud: accent valt weg', pluralOf('alemán'), 'alemanes');
+t('meervoud: inglés', pluralOf('inglés'), 'ingleses');
+t('meervoud: z wordt ces', pluralOf('feliz'), 'felices');
+t('vier vormen uit de notatie', formsOf('alemán/-ana'), { m: { sg: 'alemán', pl: 'alemanes' }, f: { sg: 'alemana', pl: 'alemanas' } });
+t('onveranderlijk', formsOf('belga').f.pl, 'belgas');
+
+/* --- dictee --- */
+t('dictee: vergeten woord', wordDiff('me llamo', 'Me llamo Ana').missed, ['ana']);
+t('dictee: accent', wordDiff('esta en casa', 'Está en casa').accents, ['está']);
+t('dictee: fout woord', wordDiff('tengo un perro', 'tengo dos perros').missed, ['dos', 'perros']);
 
 /* --- rapport --- */
 const width = Math.max(...rows.map(r => r[1].length));

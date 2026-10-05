@@ -286,6 +286,7 @@ h1.brand { display: flex; align-items: center; gap: 8px; }
 }
 .play-big { width: 88px; height: 88px; font-size: 2.2rem; background: var(--brand); }
 .play-big:active { transform: scale(.95); }
+.play-slow { border: 0; background: var(--surface-2); border-radius: 50%; width: 52px; height: 52px; font-size: 1.4rem; cursor: pointer; }
 
 /* Invoervelden */
 .answer-input, .gap-input, .conj-input {
@@ -302,6 +303,8 @@ h1.brand { display: flex; align-items: center; gap: 8px; }
 .answer-input.is-correct, .gap-input.is-correct, .conj-input.is-correct { border-color: var(--ok); background: var(--ok-bg); }
 .answer-input.is-wrong, .gap-input.is-wrong, .conj-input.is-wrong { border-color: var(--no); background: var(--no-bg); }
 .answer-input.is-almost, .gap-input.is-almost, .conj-input.is-almost { border-color: var(--almost); background: var(--almost-bg); }
+
+textarea.answer-input { padding: 10px 14px; resize: vertical; font: inherit; font-size: 1.1rem; line-height: 1.4; }
 
 .input-wrap { position: relative; }
 .input-wrap .answer-input { padding-right: 52px; }
@@ -375,6 +378,20 @@ h1.brand { display: flex; align-items: center; gap: 8px; }
 .wordbank-answer.is-wrong { border-color: var(--no); border-style: solid; background: var(--no-bg); }
 .wordbank-bank { display: flex; flex-wrap: wrap; gap: 8px; }
 .wordbank-play { display: flex; justify-content: center; margin-top: 8px; }
+
+/* Gesprek in volgorde */
+.order-answer {
+  display: grid; gap: 8px; margin: 0; padding: 10px 10px 10px 34px;
+  min-height: 62px; border: 2px dashed var(--line); border-radius: var(--radius);
+}
+.order-answer.is-correct { border-color: var(--ok); border-style: solid; background: var(--ok-bg); }
+.order-answer.is-wrong { border-color: var(--no); border-style: solid; background: var(--no-bg); }
+.order-answer li::marker { font-weight: 700; color: var(--ink-soft); }
+.order-bank { display: grid; gap: 8px; }
+.order-line { width: 100%; }
+.order-line .dialogue-who { display: none; }
+.order-answer.is-revealed .dialogue-who { display: inline; }
+.order-fix { display: block; margin-top: 4px; font-size: .85rem; font-weight: 700; color: var(--ok); }
 
 .tile {
   padding: 10px 14px; min-height: 44px;

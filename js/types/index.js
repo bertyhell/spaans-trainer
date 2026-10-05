@@ -24,7 +24,11 @@ import oddOneOut from './oddOneOut.js';
 import irregularVerb from './irregularVerb.js';
 import verbType from './verbType.js';
 import verbSort from './verbSort.js';
-import { conjugationGrid, conjugationSingle } from './conjugation.js';
+import { conjugationGrid, conjugationSingle, conjugationType } from './conjugation.js';
+import { tenseSpot, personSpot } from './conjugationSpot.js';
+import dictation from './dictation.js';
+import dialogueOrder from './dialogueOrder.js';
+import agreement from './agreement.js';
 import { listenType, listenChoose } from './listen.js';
 import choice from './choice.js';
 import reading from './reading.js';
@@ -45,12 +49,18 @@ export const TYPES = [
   wordBank,
   conjugationGrid,
   conjugationSingle,
+  conjugationType,
+  tenseSpot,
+  personSpot,
+  agreement,
   listenType,
+  dictation,
   listenChoose,
   choice,
   reading,
   dialogueMeaning,
   dialogueReply,
+  dialogueOrder,
   stressTap,
 ];
 
@@ -68,6 +78,12 @@ const WEIGHTS = {
   listenChoose: 2,
   conjugationSingle: 2,
   conjugationGrid: 1,
+  conjugationType: 2,
+  tenseSpot: 1,
+  personSpot: 1,
+  agreement: 2,
+  dictation: 1,
+  dialogueOrder: 1,
   articlePicker: 1,
   accents: 1,
   oddOneOut: 1,
@@ -90,8 +106,11 @@ const WEIGHTS = {
 const RECOGNIZE = new Set([
   'multipleChoice', 'articlePicker', 'oddOneOut', 'irregularVerb', 'verbType', 'verbSort',
   'listenChoose', 'conjugationSingle', 'dialogueMeaning', 'dialogueReply', 'stressTap',
+  'tenseSpot', 'personSpot', 'dialogueOrder',
 ]);
-const PRODUCE = new Set(['typeAnswer', 'listenType', 'conjugationGrid', 'accents']);
+const PRODUCE = new Set([
+  'typeAnswer', 'listenType', 'conjugationGrid', 'conjugationType', 'accents', 'agreement', 'dictation',
+]);
 
 export const modeOf = typeId => (RECOGNIZE.has(typeId) ? 'recognize' : PRODUCE.has(typeId) ? 'produce' : null);
 
