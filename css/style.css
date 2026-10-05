@@ -860,3 +860,12 @@ textarea.answer-input { padding: 10px 14px; resize: vertical; font: inherit; fon
   border-radius: 999px; font-size: 0.8rem; font-weight: 600;
   background: var(--no-bg); color: var(--no);
 }
+
+/* Zet om */
+.shift-prompt { flex-wrap: wrap; gap: 6px 10px; align-items: baseline; }
+.shift-person, .shift-tense { color: var(--ink-soft); font-size: .95rem; }
+.shift-arrow { font-size: 1.3rem; color: var(--ink-soft); font-weight: 700; }
+.shift-prompt .q-tense { font-weight: 700; color: var(--ink); }
+
+/* Wat betekent de zin? */
+.q-sentence { font-size: 1.25rem; font-weight: 600; line-height: 1.4; }

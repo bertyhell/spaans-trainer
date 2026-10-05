@@ -24,6 +24,10 @@ const { scramble, puzzleWord, decoyLetter } = await import('../js/types/letterPu
 const { emojiDistractors } = await import('../js/types/emojiPick.js');
 const { statementFor } = await import('../js/types/trueFalse.js');
 const { tokenize, bare } = await import('../js/types/wordBank.js');
+const { pluralPhrase } = await import('../js/types/plural.js');
+const { sourceTenses } = await import('../js/types/tenseShift.js');
+const { meaningDistractors } = await import('../js/types/sentenceMeaning.js');
+const { wrongSentences } = await import('../js/types/pickSentence.js');
 data.init();
 
 let failed = 0;
@@ -53,6 +57,30 @@ t('otherForms laat de vorm zelf weg', otherForms('hablar', 'habló').includes('h
 t('hablo voor habló geweigerd', checkAnswer('hablo', ['habló'], { rejectNear: otherForms('hablar', 'habló') }).correct, false);
 t('describeForm noemt persoon en tijd', /yo.*presente/.test(describeForm('hablar', 'hablo') ?? ''), true);
 t('conjugationsOfForm', data.conjugationsOfForm('tengo').some(a => a.verb === 'tener'), true);
+
+/* --- meervoud --- */
+t('meervoud: la casa', pluralPhrase('la casa'), 'las casas');
+t('meervoud: el lápiz', pluralPhrase('el lápiz'), 'los lápices');
+t('meervoud: la canción', pluralPhrase('la canción'), 'las canciones');
+t('meervoud: el examen overgeslagen', pluralPhrase('el examen'), null);
+t('meervoud: el lunes overgeslagen', pluralPhrase('el lunes'), null);
+t('meervoud: el tour overgeslagen', pluralPhrase('el tour'), null);
+t('meervoud: el agua overgeslagen', pluralPhrase('el agua'), null);
+
+/* --- zet om --- */
+const hablo = data.allAtoms().find(a => a.id === 'c.hablar.indefinido.1s');
+if (hablo) t('zet om: presente naar indefinido', sourceTenses(hablo).includes('presente'), true);
+const perf = data.allAtoms().find(a => a.kind === 'conjugation' && a.tense === 'perfecto');
+if (perf) t('zet om: geen samengestelde tijd', sourceTenses(perf), []);
+
+/* --- zinnen --- */
+let meaningClash = 0, wrongIsRight = 0;
+for (const a of data.allAtoms()) {
+  if (a.kind === 'sentence' && typeof a.nl === 'string' && meaningDistractors(a).includes(a.nl)) meaningClash++;
+  if (a.kind === 'sentence' || a.kind === 'dialogue') if (wrongSentences(a).some(w => w.text === a.es)) wrongIsRight++;
+}
+t('geen afleider is de juiste vertaling', meaningClash, 0);
+t('geen foute zin is de juiste zin', wrongIsRight, 0);
 
 /* --- bijvoeglijke naamwoorden laten overeenkomen --- */
 t('meervoud op klinker', pluralOf('rojo'), 'rojos');

@@ -13,9 +13,9 @@ kleine aanvulling met A1-basiswoorden (`tools/content/a1-basics.mjs`):
 
 | soort | aantal | wordt |
 |---|---|---|
-| woordenschat ES↔NL | 1201 | meerkeuze, intypen, lidwoord, accenten, koppelen, hoort-niet-bij, welk-is-onregelmatig, luisteren, bijvoeglijk naamwoord laten overeenkomen, letterpuzzel, welk plaatje?, klopt het? |
-| vervoegingen | 6918 (8 tijden, wederkerende werkwoorden in 5; de meeste berekend) | vervoegingstabel, losse vorm kiezen of intypen, welke tijd?, wie doet het?, klopt het? |
-| zinnen (werkboek, bundel, dialogen uit de cursus) | 819 | invuloefening, zin bouwen, dictee, zoek de fout |
+| woordenschat ES↔NL | 1201 | meerkeuze, intypen, lidwoord, accenten, koppelen, hoort-niet-bij, welk-is-onregelmatig, luisteren, bijvoeglijk naamwoord laten overeenkomen, letterpuzzel, welk plaatje?, klopt het?, meervoud |
+| vervoegingen | 6918 (8 tijden, wederkerende werkwoorden in 5; de meeste berekend) | vervoegingstabel, losse vorm kiezen of intypen, welke tijd?, wie doet het?, klopt het?, zet om naar een andere tijd |
+| zinnen (werkboek, bundel, dialogen uit de cursus) | 819 | invuloefening, zin bouwen, dictee, zoek de fout, wat betekent de zin?, welke zin klopt? |
 | grammaticaregels | 74 | invuloefening, meerkeuze |
 | toets- en werkboekvragen | 604 | meerkeuze (toets unidad 1, instaptoets, Miradores, werkboek) |
 | leesvragen bij 58 teksten | 204 | lezen |

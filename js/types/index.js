@@ -39,6 +39,10 @@ import spotError from './spotError.js';
 import letterPuzzle from './letterPuzzle.js';
 import emojiPick from './emojiPick.js';
 import trueFalse from './trueFalse.js';
+import plural from './plural.js';
+import tenseShift from './tenseShift.js';
+import sentenceMeaning from './sentenceMeaning.js';
+import pickSentence from './pickSentence.js';
 import { getProgress } from '../storage.js';
 
 export const TYPES = [
@@ -71,6 +75,10 @@ export const TYPES = [
   letterPuzzle,
   emojiPick,
   trueFalse,
+  plural,
+  tenseShift,
+  sentenceMeaning,
+  pickSentence,
 ];
 
 export const byId = Object.fromEntries(TYPES.map(t => [t.id, t]));
@@ -104,6 +112,10 @@ const WEIGHTS = {
   emojiPick: 2,
   // Raden lukt hier de helft van de keren: een tussendoortje, niet meer.
   trueFalse: 1,
+  plural: 1,
+  tenseShift: 2,
+  sentenceMeaning: 2,
+  pickSentence: 1,
   // Deze vormen zijn de enige voor hun soort atoom: het gewicht doet er dan
   // niet toe, behalve bij een dialoogregel, waar antwoorden net iets meer oplevert.
   choice: 1,
@@ -120,10 +132,10 @@ const WEIGHTS = {
 const RECOGNIZE = new Set([
   'multipleChoice', 'articlePicker', 'oddOneOut', 'irregularVerb', 'verbType', 'verbSort',
   'listenChoose', 'conjugationSingle', 'dialogueMeaning', 'dialogueReply', 'stressTap',
-  'tenseSpot', 'personSpot', 'dialogueOrder', 'emojiPick', 'trueFalse',
+  'tenseSpot', 'personSpot', 'dialogueOrder', 'emojiPick', 'trueFalse', 'sentenceMeaning', 'pickSentence',
 ]);
 const PRODUCE = new Set([
-  'typeAnswer', 'listenType', 'conjugationGrid', 'conjugationType', 'accents', 'agreement', 'dictation',
+  'typeAnswer', 'listenType', 'conjugationGrid', 'conjugationType', 'accents', 'agreement', 'dictation', 'plural', 'tenseShift',
 ]);
 
 export const modeOf = typeId => (RECOGNIZE.has(typeId) ? 'recognize' : PRODUCE.has(typeId) ? 'produce' : null);
