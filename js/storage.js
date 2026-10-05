@@ -42,14 +42,28 @@ export function load() {
   return state;
 }
 
+/* Mislukt bewaren (quota vol, private mode), dan blijft de app werken, maar
+ * de gebruiker moet het weten: anders oefent die een week voor niets. */
+let onSaveError = null;
+let saveFailed = false;
+export const watchSaveErrors = callback => { onSaveError = callback; };
+
 export function save() {
   if (!state) return;
   try {
     localStorage.setItem(KEY, JSON.stringify(state));
+    saveFailed = false;
   } catch (e) {
-    // Quota vol of private mode: de app blijft werken, alleen zonder bewaren.
     console.warn('Kon voortgang niet bewaren:', e);
+    // Eén melding per reeks mislukkingen, niet bij elke vraag.
+    if (!saveFailed) onSaveError?.(e);
+    saveFailed = true;
   }
+}
+
+/** Vraagt de browser om de opslag niet op te ruimen (Safari wist anders na 7 dagen zonder bezoek). */
+export async function persist() {
+  try { return await navigator.storage?.persist?.() ?? false; } catch { return false; }
 }
 
 export const get = () => load();
@@ -194,7 +208,56 @@ export function clearMistakes() {
   save();
 }
 
+/** Wist voortgang, fouten en streak. Instellingen en meldingen blijven: die
+ *  zijn geen voortgang, en een melding is bedoeld voor wie de data nakijkt. */
 export function resetAll() {
-  state = EMPTY();
+  const keep = state ? { settings: state.settings, reports: state.reports, reportReasons: state.reportReasons } : {};
+  state = { ...EMPTY(), ...keep };
   save();
+}
+
+/* --- reservekopie ---
+ * localStorage leeft per toestel en per browser. Een bestand laat je de
+ * voortgang meenemen naar een nieuwe telefoon, of terugzetten na het wissen
+ * van de browsergegevens. */
+
+export const BACKUP_KIND = 'vamos-backup';
+
+export function exportState() {
+  return JSON.stringify({ kind: BACKUP_KIND, exportedAt: new Date().toISOString(), state: load() });
+}
+
+/**
+ * Voegt een reservekopie samen met wat er al is. Per oefenitem wint de kant
+ * die het vaakst geoefend is; zo verlies je niets als je op twee toestellen
+ * oefende. Geeft het aantal ingelezen items terug.
+ * @throws als het bestand geen reservekopie van deze app is.
+ */
+export function importState(text) {
+  const parsed = JSON.parse(text);
+  if (parsed?.kind !== BACKUP_KIND || typeof parsed.state !== 'object') {
+    throw new Error('Dit is geen reservekopie van ¡Vamos!');
+  }
+  const theirs = migrate(parsed.state);
+  const s = load();
+  let items = 0;
+  for (const [key, p] of Object.entries(theirs.progress ?? {})) {
+    const mine = s.progress[key];
+    if (!mine || p[1] > mine[1] || (p[1] === mine[1] && (p[3] ?? 0) > (mine[3] ?? 0))) {
+      s.progress[key] = p;
+      items++;
+    }
+  }
+  for (const [id, m] of Object.entries(theirs.mistakes ?? {})) {
+    if (!s.mistakes[id] || m.at > s.mistakes[id].at) s.mistakes[id] = m;
+  }
+  for (const id of theirs.reports ?? []) if (!s.reports.includes(id)) s.reports.push(id);
+  s.reportReasons = { ...theirs.reportReasons, ...s.reportReasons };
+  s.exercisesDone = Math.max(s.exercisesDone, theirs.exercisesDone ?? 0);
+  const a = s.streak;
+  const b = theirs.streak ?? {};
+  if ((b.lastDay ?? '') > (a.lastDay ?? '')) s.streak = { ...b };
+  s.streak.best = Math.max(a.best ?? 0, b.best ?? 0, s.streak.current ?? 0);
+  save();
+  return items;
 }

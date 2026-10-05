@@ -63,6 +63,15 @@ t('dictee: vergeten woord', wordDiff('me llamo', 'Me llamo Ana').missed, ['ana']
 t('dictee: accent', wordDiff('esta en casa', 'Está en casa').accents, ['está']);
 t('dictee: fout woord', wordDiff('tengo un perro', 'tengo dos perros').missed, ['dos', 'perros']);
 
+/* --- offline: elk script staat in de lijst van de service worker --- */
+{
+  const { readdir } = await import('node:fs/promises');
+  const sw = await readFile(new URL('../sw.js', import.meta.url), 'utf8');
+  const root = new URL('../js/', import.meta.url);
+  const files = (await readdir(root, { recursive: true })).filter(f => f.endsWith('.js')).map(f => `./js/${f}`);
+  t('alle scripts staan in sw.js', files.filter(f => !sw.includes(`'${f}'`)), []);
+}
+
 /* --- rapport --- */
 const width = Math.max(...rows.map(r => r[1].length));
 for (const [ok, label, actual, expected] of rows) {

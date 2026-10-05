@@ -208,6 +208,27 @@ reset();
   t('geen tweede herkansing', s.queue.filter(q => q.key === 'q0').length, 2);
 }
 
+/* ---------------- reservekopie ---------------- */
+reset();
+{
+  scheduler.record('b1', true); scheduler.record('b1', true);
+  storage.get().settings.sound = false;
+  storage.report('r1');
+  const backup = storage.exportState();
+  storage.resetAll();
+  t('wissen houdt instellingen', storage.get().settings.sound, false);
+  t('wissen houdt meldingen', storage.get().reports, ['r1']);
+  t('wissen wist dozen', storage.getProgress('b1').seen, 0);
+  scheduler.record('b2', true);
+  const n = storage.importState(backup);
+  t('kopie zet dozen terug', storage.getProgress('b1').box, 3);
+  t('kopie laat nieuwere voortgang staan', storage.getProgress('b2').seen, 1);
+  t('aantal ingelezen items', n, 1);
+  let threw = false;
+  try { storage.importState('{"foo":1}'); } catch { threw = true; }
+  t('vreemd bestand geweigerd', threw, true);
+}
+
 /* ---------------- streak ---------------- */
 reset();
 const s1 = storage.touchStreak();

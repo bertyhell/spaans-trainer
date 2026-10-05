@@ -8,6 +8,7 @@
  *  - te kleine thema's samenvoegen, want meerkeuze heeft afleiders nodig.
  */
 
+import { serializeCourse } from './course-format.mjs';
 import { readdir, readFile, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 
@@ -312,5 +313,5 @@ const banner = `/* Sí, claro nuevo 1.2 — oefendata
  * Geladen via <script src> zodat de app ook vanaf file:// werkt.
  */
 `;
-await writeFile(OUT, `${banner}window.COURSE = ${JSON.stringify(course, null, 1)};\n`);
+await writeFile(OUT, `${banner}${serializeCourse(course)}`);
 console.log(`\n  geschreven naar data/course.js\n`);

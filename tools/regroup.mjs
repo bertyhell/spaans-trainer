@@ -23,6 +23,7 @@
  * Het script is herhaalbaar: twee keer draaien geeft hetzelfde resultaat.
  */
 
+import { serializeCourse } from './course-format.mjs';
 import { readFileSync, writeFileSync, readdirSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -199,7 +200,7 @@ const next = {
 };
 delete next.units;
 
-writeFileSync(COURSE, `${header}window.COURSE = ${JSON.stringify(next, null, 1)};\n`);
+writeFileSync(COURSE, `${header}${serializeCourse(next)}`);
 
 console.log(`woordenschat geclassificeerd: ${tagged}/${atoms.filter(a => a.kind === 'vocab').length}`);
 console.log(`verhuisd naar een ander thema: ${moved}`);

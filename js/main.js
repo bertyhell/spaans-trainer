@@ -56,9 +56,12 @@ window.addEventListener('popstate', () => {
   if (!$('#screen-start').classList.contains('is-active')) history.pushState({ inApp: true }, '');
 });
 
-function toast(msg, ms = 2200) {
+function toast(msg, ms = 2200, action = null) {
   const t = $('#toast');
   t.textContent = msg;
+  if (action) {
+    t.append(el('button', { class: 'toast-action', type: 'button', onclick: action.run }, action.label));
+  }
   t.hidden = false;
   t.classList.add('is-visible');
   clearTimeout(toast._t);
@@ -67,6 +70,34 @@ function toast(msg, ms = 2200) {
     setTimeout(() => { t.hidden = true; }, 250);
   }, ms);
 }
+
+/**
+ * Een vraag in een eigen dialoogvenster, in plaats van confirm() of prompt().
+ * @returns {Promise<boolean|string|null>} true (of de ingetypte tekst) bij OK,
+ *          null bij annuleren.
+ */
+function ask({ title, text = '', input = null, ok = 'OK', cancel = 'Annuleer', danger = false }) {
+  const dlg = $('#dialog');
+  $('#dialog-title').textContent = title;
+  $('#dialog-text').textContent = text;
+  const field = $('#dialog-input');
+  field.hidden = input == null;
+  field.value = input ?? '';
+  $('#dialog-ok').textContent = ok;
+  $('#dialog-ok').classList.toggle('is-danger', danger);
+  $('#dialog-cancel').textContent = cancel;
+  dlg.returnValue = '';
+  return new Promise(resolve => {
+    dlg.addEventListener('close', () => {
+      if (dlg.returnValue !== 'ok') return resolve(null);
+      resolve(input == null ? true : field.value);
+    }, { once: true });
+    dlg.showModal();
+    (input == null ? $('#dialog-ok') : field).focus();
+  });
+}
+
+const lessonSize = () => Number(storage.get().settings.lessonSize) || 12;
 
 /* Vanaf zoveel recente fouten krijg je een snelknop om ze te oefenen. */
 const MISTAKE_CHIP_MIN = 3;
@@ -247,7 +278,9 @@ function startLesson(themeIds, { items = itemsForThemes(themeIds), mistakes = fa
   audio.arm();
   speech.arm();
 
-  session = new Session({ items, size: 12, env });
+  session = new Session({ items, size: lessonSize(), env });
+  // Wie oefent, wil dat de voortgang blijft: vraag de browser ze niet op te ruimen.
+  storage.persist();
 
   if (!session.total) {
     toast('Geen oefeningen gevonden voor deze selectie.');
@@ -1003,6 +1036,7 @@ function openSettings() {
   $('#set-sound').checked = s.sound !== false;
   $('#set-speech').checked = s.speech !== false;
   $('#set-motion').checked = s.reducedMotion === true;
+  $('#set-size').value = String(lessonSize());
   const n = storage.get().reports.length;
   $('#reports-count').textContent = n ? `(${n})` : '';
   const nm = storage.getMistakes().length;
@@ -1015,8 +1049,9 @@ function openSettings() {
   const prog = storage.get().progress;
   const boxes = Object.values(prog);
   const mastered = boxes.filter(b => b[0] >= 4).length;
+  const best = storage.get().streak.best;
   $('#progress-info').textContent = boxes.length
-    ? `${boxes.length} items geoefend, ${mastered} goed beheerst.`
+    ? `${boxes.length} items geoefend, ${mastered} goed beheerst.${best > 1 ? ` Langste reeks: ${best} dagen op rij.` : ''}`
     : 'Nog niets geoefend.';
 
   show('screen-settings');
@@ -1135,7 +1170,24 @@ function wire() {
   $('#btn-match').addEventListener('click', startMatch);
   $('#btn-check').addEventListener('click', () => (answered ? (session.next(), nextQuestion()) : doCheck()));
 
-  $('#btn-quit').addEventListener('click', () => { speech.stop(); renderTree(); refreshStats(); show('screen-start'); });
+  $('#btn-quit').addEventListener('click', async () => {
+    speech.stop();
+    const answered = session?.scored.length ?? 0;
+    if (answered && !session.done) {
+      const stop = await ask({
+        title: 'Les stoppen?',
+        text: 'Wat je al beantwoordde, is bewaard.',
+        ok: 'Stoppen', cancel: 'Verder oefenen',
+      });
+      if (!stop) return;
+      // Na een paar vragen toch een uitslag: dat werk mag gezien worden.
+      if (answered >= 3) {
+        session.questions = answered;
+        return finishLesson();
+      }
+    }
+    renderTree(); refreshStats(); show('screen-start');
+  });
   $('#btn-quit-match').addEventListener('click', () => {
     // Wat je al gekoppeld hebt telt mee, ook als je vroeger stopt.
     if (match?.matched) match.finish();
@@ -1169,10 +1221,14 @@ function wire() {
     themes.length ? startLesson(themes) : show('screen-start');
   });
 
-  $('#btn-report').addEventListener('click', () => {
+  $('#btn-report').addEventListener('click', async () => {
     if (!session?.current) return;
     const id = session.current.atomId;
-    const reason = prompt('Wat is er mis met deze oefening? (optioneel)', storage.getReportReason(id));
+    const reason = await ask({
+      title: 'Fout in deze oefening melden',
+      text: 'Wat is er mis? (mag leeg blijven)',
+      input: storage.getReportReason(id), ok: 'Melden',
+    });
     if (reason === null) return;
     storage.report(id);
     storage.setReportReason(id, reason);
@@ -1184,6 +1240,33 @@ function wire() {
 
   $('#set-sound').addEventListener('change', e => { storage.get().settings.sound = e.target.checked; storage.save(); });
   $('#set-speech').addEventListener('change', e => { storage.get().settings.speech = e.target.checked; storage.save(); });
+  $('#set-size').addEventListener('change', e => {
+    storage.get().settings.lessonSize = Number(e.target.value);
+    storage.save();
+  });
+
+  $('#btn-backup').addEventListener('click', () => {
+    const blob = new Blob([storage.exportState()], { type: 'application/json' });
+    const a = el('a', { href: URL.createObjectURL(blob), download: `vamos-voortgang-${new Date().toISOString().slice(0, 10)}.json` });
+    document.body.append(a);
+    a.click();
+    a.remove();
+    setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+  });
+  $('#btn-restore').addEventListener('click', () => $('#restore-file').click());
+  $('#restore-file').addEventListener('change', async e => {
+    const file = e.target.files?.[0];
+    e.target.value = '';
+    if (!file) return;
+    try {
+      const n = storage.importState(await file.text());
+      renderTree(); refreshStats(); openSettings();
+      toast(`Kopie teruggezet: ${n} ${n === 1 ? 'item' : 'items'} bijgewerkt.`);
+    } catch (err) {
+      toast(err instanceof SyntaxError ? 'Dat bestand kan ik niet lezen.' : err.message, 3500);
+    }
+  });
+
   $('#set-motion').addEventListener('change', e => {
     storage.get().settings.reducedMotion = e.target.checked;
     storage.save();
@@ -1194,18 +1277,18 @@ function wire() {
   $('#btn-mistakes').addEventListener('click', openRecentMistakes);
   $('#btn-mistakes-close').addEventListener('click', openSettings);
   $('#btn-mistakes-practice').addEventListener('click', startMistakesLesson);
-  $('#btn-mistakes-clear').addEventListener('click', () => {
+  $('#btn-mistakes-clear').addEventListener('click', async () => {
     if (!storage.getMistakes().length) return;
-    if (!confirm('Alle recente fouten wissen?')) return;
+    if (!await ask({ title: 'Alle recente fouten wissen?', ok: 'Wissen', danger: true })) return;
     storage.clearMistakes();
     renderRecentMistakes();
     toast('Recente fouten gewist.');
   });
   $('#btn-reports-close').addEventListener('click', openSettings);
 
-  $('#btn-reports-clear').addEventListener('click', () => {
+  $('#btn-reports-clear').addEventListener('click', async () => {
     if (!storage.get().reports.length) return;
-    if (!confirm('Alle gemelde fouten wissen?')) return;
+    if (!await ask({ title: 'Alle gemelde fouten wissen?', ok: 'Wissen', danger: true })) return;
     storage.clearReports();
     renderReports();
     toast('Meldingen gewist.');
@@ -1224,8 +1307,12 @@ function wire() {
     }
   });
 
-  $('#btn-reset').addEventListener('click', () => {
-    if (!confirm('Alle voortgang, oefeningen en streaks wissen?')) return;
+  $('#btn-reset').addEventListener('click', async () => {
+    if (!await ask({
+      title: 'Alle voortgang wissen?',
+      text: 'Dozen, recente fouten, oefeningen en streak gaan verloren. Je instellingen en gemelde fouten blijven.',
+      ok: 'Alles wissen', danger: true,
+    })) return;
     storage.resetAll();
     selected.clear();
     renderTree();
@@ -1237,6 +1324,8 @@ function wire() {
 
   // Toetsenbord op de desktop: Enter bevestigt, cijfers kiezen een optie.
   document.addEventListener('keydown', e => {
+    // Een open dialoogvenster regelt zijn eigen toetsen.
+    if ($('#dialog').open) return;
     if ($('#screen-flash').classList.contains('is-active')) return onFlashKey(e);
     if (!$('#screen-lesson').classList.contains('is-active')) return;
     // De invoervelden bevestigen zelf op Enter (en roepen preventDefault aan).
@@ -1307,6 +1396,8 @@ async function boot() {
   }
 
   storage.load();
+  storage.watchSaveErrors(() =>
+    toast('Je voortgang kon niet bewaard worden — is de opslag vol, of zit je in een privévenster?', 6000));
   // Voortgang uit een ander tabblad: boom en tellers bijwerken.
   storage.watch(() => { renderTree(); refreshStats(); });
   applyMotionPreference();
@@ -1318,6 +1409,14 @@ async function boot() {
   await speech.init();
 
   if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {
+    // Een nieuwe versie neemt het over zodra ze geïnstalleerd is; de pagina
+    // draait dan nog de oude code. Bij de allereerste installatie is er niets
+    // te melden.
+    const hadController = Boolean(navigator.serviceWorker.controller);
+    navigator.serviceWorker.addEventListener('controllerchange', () => {
+      if (!hadController) return;
+      toast('Er is een nieuwe versie.', 15000, { label: 'Herladen', run: () => location.reload() });
+    });
     navigator.serviceWorker.register('sw.js').catch(() => { /* offline is optioneel */ });
   }
 }

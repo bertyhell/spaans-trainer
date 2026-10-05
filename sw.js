@@ -1,10 +1,11 @@
-/* Service worker: de app moet offline werken zodra ze één keer geopend is.
+/* Service worker: de app moet offline werken zodra ze één keer geopend is,
+ * en meteen starten, ook op een trage verbinding.
  *
  * CACHE bevat een versienummer. Verhoog het na elke inhoudelijke wijziging —
  * vooral na het opnieuw genereren van data/course.js, anders blijven telefoons
  * op de oude woordenlijst hangen. tools/release.mjs doet dat automatisch. */
 
-const CACHE = 'vamos-5e01915f';
+const CACHE = 'vamos-6feeaece';
 
 const ASSETS = [
   './',
@@ -55,11 +56,19 @@ const ASSETS = [
   './js/types/agreement.js',
 ];
 
+/* Op de eigen laptop of het thuisnetwerk wordt er gewerkt aan de app: daar
+ * altijd het netwerk eerst, anders zie je je eigen wijziging pas na een
+ * release. */
+const DEV = /^(localhost|127\.0\.0\.1|\[::1\]|10\.\d+\.\d+\.\d+|192\.168\.\d+\.\d+|172\.(1[6-9]|2\d|3[01])\.\d+\.\d+)$/
+  .test(self.location.hostname);
+
 self.addEventListener('install', e => {
   e.waitUntil(
     caches.open(CACHE)
-      // Eén ontbrekend bestand mag de hele installatie niet blokkeren.
-      .then(c => Promise.allSettled(ASSETS.map(a => c.add(a))))
+      // cache: 'reload' haalt elk bestand vers van de server, niet uit de
+      // HTTP-cache van de browser: anders kan een nieuwe versie een oud
+      // bestand bevatten. Eén ontbrekend bestand blokkeert de installatie niet.
+      .then(c => Promise.allSettled(ASSETS.map(a => c.add(new Request(a, { cache: 'reload' })))))
       .then(() => self.skipWaiting()),
   );
 });
@@ -72,34 +81,36 @@ self.addEventListener('activate', e => {
   );
 });
 
+/** Een geslaagd antwoord bewaren. Een 404 in de cache zou offline een werkend bestand vervangen. */
+function remember(req, res) {
+  if (res.ok) {
+    const copy = res.clone();
+    caches.open(CACHE).then(c => c.put(req, copy)).catch(() => {});
+  }
+  return res;
+}
+
+/** De versie uit de cache, of anders index.html voor een pagina. */
+const fromCache = req => caches.match(req).then(r => r
+  ?? (req.mode === 'navigate' ? caches.match('./index.html') : Response.error()));
+
 self.addEventListener('fetch', e => {
   if (e.request.method !== 'GET') return;
 
-  // Netwerk eerst, cache als terugval: zo zie je een nieuwe versie meteen,
-  // maar blijft de app werken in de trein.
-  // 'no-cache' laat de browser altijd bij de server nagaan of het bestand
-  // gewijzigd is. Zonder dat haalt fetch() een oude style.css uit de
-  // HTTP-cache (S3 stuurt geen Cache-Control), terwijl index.html al nieuw is.
-  // Een navigatie-request mag geen extra opties krijgen.
-  const req = e.request.mode === 'navigate'
-    ? fetch(e.request)
-    : fetch(e.request, { cache: 'no-cache' });
+  if (DEV) {
+    // Netwerk eerst; 'no-cache' laat de browser altijd bij de server nagaan
+    // of het bestand gewijzigd is. Een navigatie mag geen extra opties krijgen.
+    const req = e.request.mode === 'navigate' ? fetch(e.request) : fetch(e.request, { cache: 'no-cache' });
+    e.respondWith(req.then(res => remember(e.request, res)).catch(() => fromCache(e.request)));
+    return;
+  }
+
+  // Eerst de cache: die hoort bij één versie (CACHE is een hash van alle
+  // bestanden), dus pagina, scripts en data passen altijd bij elkaar, en de
+  // app start meteen, ook met één streepje bereik in de trein. Een nieuwe
+  // versie komt binnen via een nieuwe sw.js; de pagina meldt dan "Herladen".
   e.respondWith(
-    req
-      .then(res => {
-        // Enkel geslaagde antwoorden bewaren: een 404 in de cache zou een
-        // werkend bestand offline vervangen.
-        if (res.ok) {
-          const copy = res.clone();
-          caches.open(CACHE).then(c => c.put(e.request, copy)).catch(() => {});
-        }
-        return res;
-      })
-      .catch(() => caches.match(e.request).then(r => {
-        if (r) return r;
-        // index.html is alleen een zinvolle terugval voor een pagina, niet
-        // voor een script of stylesheet (dat geeft een MIME-fout).
-        return e.request.mode === 'navigate' ? caches.match('./index.html') : Response.error();
-      })),
+    caches.match(e.request).then(hit => hit
+      ?? fetch(e.request).then(res => remember(e.request, res)).catch(() => fromCache(e.request))),
   );
 });

@@ -716,12 +716,40 @@ textarea.answer-input { padding: 10px 14px; resize: vertical; font: inherit; fon
   border: 1px solid var(--line); border-radius: 8px;
 }
 .settings-info { margin: 0 0 12px; font-size: .9rem; color: var(--ink-soft); }
+.setting select {
+  min-height: 40px; padding: 0 10px; font: inherit;
+  color: var(--ink); background: var(--surface); border: 2px solid var(--line); border-radius: var(--radius);
+}
+
+/* Vraag of bevestiging, in plaats van prompt() en confirm(): die zien er in een
+ * geïnstalleerde app uit als een systeemfout, en blokkeren alles. */
+.dialog {
+  width: min(92vw, 440px); padding: 20px;
+  color: var(--ink); background: var(--surface);
+  border: 2px solid var(--line); border-radius: var(--radius-lg);
+}
+.dialog::backdrop { background: rgb(0 0 0 / .45); }
+.dialog-title { margin: 0 0 8px; font-size: 1.1rem; }
+.dialog-text { margin: 0 0 14px; color: var(--ink-soft); }
+.dialog-text:empty { display: none; }
+.dialog-input {
+  width: 100%; box-sizing: border-box; margin: 0 0 14px; padding: 10px;
+  font: inherit; color: var(--ink); background: var(--surface-2);
+  border: 2px solid var(--line); border-radius: var(--radius); resize: vertical;
+}
+.dialog-input[hidden] { display: none; }
+.dialog .btn--primary.is-danger { background: var(--no); color: #fff; }
+.toast-action {
+  margin-left: 10px; padding: 0; border: 0; background: none;
+  color: inherit; font: inherit; font-weight: 700; text-decoration: underline; cursor: pointer;
+}
 
 /* ---------------------------------------------------------------- */
 /* Toast                                                             */
 /* ---------------------------------------------------------------- */
 
 .toast {
+  pointer-events: none;
   position: fixed; left: 50%; bottom: calc(90px + var(--safe-b));
   transform: translate(-50%, 10px);
   max-width: min(90vw, 420px);
@@ -731,7 +759,7 @@ textarea.answer-input { padding: 10px 14px; resize: vertical; font: inherit; fon
   opacity: 0; transition: opacity .25s, transform .25s;
   z-index: 50;
 }
-.toast.is-visible { opacity: 1; transform: translate(-50%, 0); }
+.toast.is-visible { opacity: 1; transform: translate(-50%, 0); pointer-events: auto; }
 
 /* ---------------------------------------------------------------- */
 /* Beweging                                                          */

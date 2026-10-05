@@ -67,6 +67,9 @@ node tools/regroup.mjs
 node tools/validate.mjs
 ```
 
+`data/course.js` staat met één atoom per regel (`tools/course-format.mjs`): bijna zo klein
+als geminimaliseerde JSON, maar een gewijzigd woord blijft in git één regel.
+
 `merge.mjs` ontdubbelt woorden die in beide corpora voorkomen, bouwt de themaboom op en
 voegt te kleine thema's samen (meerkeuze heeft minstens vier woorden per thema nodig om
 afleiders te kunnen kiezen).
@@ -169,7 +172,14 @@ iedereen met de link kan de app openen. Dat is bewust zo gekozen voor een klasgr
 boek zelf heeft.
 
 De voortgang staat in `localStorage`, per toestel. Wie de link doorgeeft, deelt geen
-voortgang.
+voortgang. Via *Instellingen → Reservekopie* bewaar je ze als bestand en zet je ze terug
+(ook op een ander toestel; per item wint de kant die het vaakst geoefend is).
+
+**Offline en updates.** De service worker serveert alles eerst uit de cache van de huidige
+versie, zodat de app meteen start, ook zonder bereik. Na `npm run release` krijgt `sw.js` een
+nieuwe cachenaam; telefoons halen de nieuwe versie op de achtergrond binnen en tonen dan
+"Er is een nieuwe versie — Herladen". Op `localhost` en het thuisnetwerk geldt netwerk eerst,
+zodat je je eigen wijzigingen meteen ziet.
 
 ## Auteursrecht
 

@@ -188,11 +188,28 @@
       <span>Minder beweging<small>Schakelt animaties uit</small></span>
       <input type="checkbox" id="set-motion">
     </label>
+    <label class="setting">
+      <span>Vragen per les</span>
+      <select id="set-size">
+        <option value="8">8</option>
+        <option value="12">12</option>
+        <option value="20">20</option>
+      </select>
+    </label>
 
     <h3 class="settings-head">Voortgang</h3>
     <p class="settings-info" id="progress-info"></p>
     <button class="btn btn--ghost" id="btn-mistakes">Recente fouten bekijken <span id="mistakes-count"></span></button>
     <button class="btn btn--ghost" id="btn-reports">Gemelde bugs bekijken <span id="reports-count"></span></button>
+
+    <h3 class="settings-head">Reservekopie</h3>
+    <p class="settings-info">Je voortgang staat enkel in deze browser. Bewaar af en toe een kopie, of neem ze mee naar een ander toestel.</p>
+    <div class="action-row">
+      <button class="btn btn--ghost" id="btn-backup">Kopie bewaren</button>
+      <button class="btn btn--ghost" id="btn-restore">Kopie terugzetten</button>
+    </div>
+    <input type="file" id="restore-file" accept="application/json,.json" hidden>
+
     <button class="btn btn--danger" id="btn-reset">Alle voortgang wissen</button>
   </main>
 </section>
@@ -240,6 +257,18 @@
 </section>
 
 <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+<dialog class="dialog" id="dialog" aria-labelledby="dialog-title">
+  <form method="dialog">
+    <h2 class="dialog-title" id="dialog-title"></h2>
+    <p class="dialog-text" id="dialog-text"></p>
+    <textarea class="dialog-input" id="dialog-input" rows="3" hidden></textarea>
+    <div class="action-row">
+      <button class="btn btn--ghost" value="cancel" id="dialog-cancel">Annuleer</button>
+      <button class="btn btn--primary" value="ok" id="dialog-ok">OK</button>
+    </div>
+  </form>
+</dialog>
 
 <script src="data/course.js"></script>
 <script src="data/sources.js"></script>
