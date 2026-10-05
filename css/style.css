@@ -19,6 +19,7 @@
   --no-bg: #fdeaea;
   --almost: #e07000;
   --almost-bg: #fdecd9;
+  --hint-bg: #fff3cf;
 
   --lvl-bronze: #b8732e;
   --lvl-silver: #9aa3ad;
@@ -52,6 +53,7 @@
     --no-bg: #331717;
     --almost: #f59a3c;
     --almost-bg: #3a240e;
+    --hint-bg: #2f2612;
     --lvl-bronze: #d08a45;
     --lvl-silver: #c3cad2;
     --lvl-gold: #f5c518;
@@ -607,6 +609,8 @@ textarea.answer-input { padding: 10px 14px; resize: vertical; font: inherit; fon
 .flashcard-emoji { font-size: 3rem; line-height: 1; }
 .flashcard-word { font-size: 1.9rem; font-weight: 800; line-height: 1.2; overflow-wrap: anywhere; }
 .flashcard-alt { font-size: .95rem; color: var(--ink-soft); }
+.flashcard-memo { margin: 4px 0 0; max-width: 32ch; font-size: .85rem; line-height: 1.35; color: var(--ink-soft); text-align: center; }
+.flashcard-memo::before { content: '💡 '; }
 .flashcard .speaker { margin-top: 4px; }
 
 /* Stempel die verschijnt terwijl je veegt */
@@ -646,6 +650,14 @@ textarea.answer-input { padding: 10px 14px; resize: vertical; font: inherit; fon
 .feedback-answer { margin: 6px 0 0; font-weight: 700; }
 .feedback-note { margin: 4px 0 0; font-size: .9rem; }
 .feedback-explain { margin: 4px 0 0; font-size: .88rem; color: var(--ink-soft); }
+.feedback-hints { margin: 6px 0 0; display: grid; gap: 4px; }
+.feedback-hint {
+  margin: 0; padding: 6px 10px; border-radius: 10px; font-size: .88rem; line-height: 1.35;
+  background: var(--hint-bg); color: var(--ink);
+}
+.feedback-hint::before { content: '💡 '; }
+.mistake-hint { margin: 4px 0 0; font-size: .85rem; color: var(--ink-soft); }
+.mistake-hint::before { content: '💡 '; }
 .feedback-src { margin: 4px 0 0; font-size: .72rem; color: var(--ink-soft); opacity: .8; }
 .feedback-grammar { margin: 6px 0 0; font-size: .88rem; }
 .feedback-grammar summary { cursor: pointer; font-weight: 600; }

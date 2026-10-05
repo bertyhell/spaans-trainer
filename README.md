@@ -23,7 +23,11 @@ kleine aanvulling met A1-basiswoorden (`tools/content/a1-basics.mjs`):
 | klemtoon | 132 | tik de beklemtoonde lettergreep |
 
 Bij een fout antwoord verschijnt een korte grammatica-uitleg (35 onderwerpen, met
-verwijzing naar de grammatica achteraan het boek).
+verwijzing naar de grammatica achteraan het boek), en een 💡-tip: een ezelsbruggetje voor dat
+woord (ruim 400, in `tools/memos.mjs`: verwante woorden, herkomst, valse vrienden) of een
+vuistregel die `js/hints.js` uit het woord afleidt — woorden op -ción en -dad zijn vrouwelijk,
+op -ma vaak mannelijk, -dor is een toestel, bij een laarswerkwoord vallen nosotros en
+vosotros buiten de laars.
 
 Verdeeld over 156 thema's in 13 groepen, op onderwerp in plaats van per unidad.
 
@@ -154,6 +158,7 @@ css/style.css         mobiel eerst, donkere modus, beperkte beweging
 js/main.js            schermbeheer en bedrading
 js/session.js         de lesmotor
 js/scheduler.js       Leitner-dozen en gewogen trekking
+js/hints.js           ezelsbruggetjes en vuistregels onder een fout antwoord
 js/check.js           antwoordcontrole, woordenlijstnotatie (frigo(rífico), sencillo/-a)
 js/matchRound.js      de koppelronde
 js/types/             de oefenvormen

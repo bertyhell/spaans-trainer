@@ -11,6 +11,7 @@ import { Session, itemsForThemes, itemsForMistakes } from './session.js';
 import { supportedFor } from './types/index.js';
 import { MatchRound } from './matchRound.js';
 import * as flashcards from './flashcards.js';
+import * as hints from './hints.js';
 
 const $ = sel => document.querySelector(sel);
 const env = { speech };
@@ -393,6 +394,12 @@ function showFeedback(result) {
   explain.textContent = explanation ?? '';
   explain.hidden = !explanation;
 
+  // Een ezelsbrug of vuistregel, net als de grammatica alleen bij een fout.
+  const tips = result.correct && !result.almost ? [] : tipsFor(atom, [result.note, explanation], result.expected);
+  const hintBox = $('#feedback-hints');
+  hintBox.replaceChildren(...tips.map(t => el('p', { class: 'feedback-hint' }, t)));
+  hintBox.hidden = !tips.length;
+
   // Grammatica-uitleg alleen bij een fout: wie het goed had, weet het al.
   // Dichtgeklapt, want de actiebalk is klein; één tik en je leest de regel.
   const grammar = !result.correct && data.grammarFor(atom);
@@ -507,6 +514,12 @@ function confetti(origin) {
 }
 
 const pick = arr => arr[Math.floor(Math.random() * arr.length)];
+
+/** Hoogstens twee tips, zonder te herhalen wat er al staat. */
+function tipsFor(atom, shown = [], expected = null) {
+  const seen = shown.filter(Boolean).join(' ');
+  return hints.hintsFor(atom, { expected }).filter(t => !seen.includes(t)).slice(0, 2);
+}
 
 /** Wat er onder de uitslag staat: een opmerking, of bij een toets- of
  *  leesvraag de vertaling of de reden waarom het antwoord klopt. */
@@ -688,6 +701,9 @@ function detailRows(m) {
     rows.push(el('p', { class: 'mistake-given' }, `Jouw antwoord: ${m.given}`));
   }
   if (m.note) rows.push(el('p', { class: 'mistake-note' }, m.note));
+  if (!m.correct || m.almost) {
+    for (const t of tipsFor(a, [m.note], m.expected)) rows.push(el('p', { class: 'mistake-hint' }, t));
+  }
   return rows;
 }
 
@@ -898,6 +914,7 @@ function flashFace(side, lang, atom) {
     el('span', { class: 'flashcard-word', lang }, words[0]),
     words.length > 1 ? el('span', { class: 'flashcard-alt', lang }, `ook: ${words.slice(1).join(', ')}`) : null,
     lang === 'es' ? speakerButton(atom.es, speech) : null,
+    side === 'back' && atom.memo ? el('p', { class: 'flashcard-memo' }, atom.memo) : null,
   );
   // De achterkant is onzichtbaar maar staat wel in de DOM: zonder inert kan
   // je er met Tab of een schermlezer het antwoord uit halen.

@@ -3,29 +3,13 @@
 
 import { el, optionList } from '../dom.js';
 import { showEmoji } from '../scheduler.js';
+import { genderRule } from '../hints.js';
 
 const FORMS = ['el', 'la', 'los', 'las'];
 
 /* Het lidwoord zoals het in de woordenlijst staat, niet afgeleid uit het
  * geslacht: "el agua" is vrouwelijk maar krijgt toch el. */
 const articleOf = atom => atom.es.match(/^(el|la|los|las)\s+/i)[1].toLowerCase();
-
-/** Een vuistregel die het lidwoord verklaart, of null als er geen eenvoudige is. */
-function ruleFor(atom, article, noun) {
-  const word = noun.split(/\s+/)[0].toLowerCase();
-  if (article === 'el' && atom.gender === 'f') {
-    return `${noun} is vrouwelijk, maar begint met een beklemtoonde a: dan zeg je el (las ${word}s in het meervoud).`;
-  }
-  const plural = atom.number === 'pl';
-  const fem = atom.gender === 'f';
-  if (fem && /(ción|sión|dad|tad|tud)s?$/.test(word)) return `Woorden op -ción, -sión, -dad en -tud zijn vrouwelijk.`;
-  const like = (...xs) => xs.filter(x => !x.endsWith(` ${word}`)).slice(0, 2).join(' en ');
-  if (!fem && /mas?$/.test(word)) return `${word} eindigt op -ma maar is mannelijk, zoals ${like('el problema', 'el idioma', 'el tema')}.`;
-  if (fem && /os?$/.test(word)) return `${word} eindigt op -o maar is vrouwelijk, zoals ${like('la mano', 'la foto', 'la radio')}.`;
-  if (!fem && /as?$/.test(word)) return `${word} eindigt op -a maar is mannelijk, zoals ${like('el día', 'el mapa', 'el sofá')}.`;
-  if (plural) return `Meervoud: los voor mannelijk, las voor vrouwelijk.`;
-  return null;
-}
 
 /** Het kale woord, zonder lidwoord. */
 const bareNoun = atom => atom.es.replace(/^(el|la|los|las)\s+/i, '');
@@ -66,7 +50,7 @@ export default {
         const ok = opts.chosen() === correct;
         return {
           correct: ok, expected: `${correct} ${noun} = ${atom.nl[0]}`,
-          note: ok ? null : ruleFor(atom, correct, noun), given: opts.chosen(),
+          note: ok ? null : genderRule(atom), given: opts.chosen(),
         };
       },
       reveal() { opts.reveal(correct); },

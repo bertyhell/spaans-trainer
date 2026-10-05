@@ -30,6 +30,7 @@ const ASSETS = [
   './js/session.js',
   './js/matchRound.js',
   './js/flashcards.js',
+  './js/hints.js',
   './js/speech.js',
   './js/audio.js',
   './js/sortBoard.js',

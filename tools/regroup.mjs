@@ -17,6 +17,7 @@
  *     klankveranderend en onregelmatig (zie conjugate.mjs);
  *   - handmatige verbeteringen uit gemelde fouten: extra vertalingen,
  *     verhuisde en geschrapte woorden (zie fixes.mjs);
+ *   - ezelsbruggetjes bij de woordenschat (zie memos.mjs);
  *   - de handmatig samengestelde inhoud uit tools/content/ (toetsen,
  *     werkboekoefeningen, dialogen, teksten, klemtoon, grammatica-uitleg).
  *
@@ -31,6 +32,7 @@ import { GROUPS, GROUP_OF } from './groups.mjs';
 import { VERB_THEMES, VERB_THEME_OF, REPLACED_THEMES, IRREGULAR, REGULAR } from './verbs.mjs';
 import { CONJUGATION_THEMES, EXTRA_SECTIONS, VERB_TYPE_THEMES, buildConjugations, buildVerbTypes } from './conjugate.mjs';
 import { EXTRA_NL, EMOJI, MOVE, DROP as FIX_DROP, EXTRA_THEMES } from './fixes.mjs';
+import { MEMO } from './memos.mjs';
 import { CONTENT_THEMES } from './content/themes.mjs';
 import { loadContent } from './content/index.mjs';
 
@@ -163,10 +165,13 @@ for (const [theme, ids] of Object.entries(content.exams)) {
   for (const id of ids) alsoOf.set(id, [...(alsoOf.get(id) ?? []), theme]);
 }
 const atomIds = new Set(atoms.map(a => a.id));
+for (const id of Object.keys(MEMO)) if (!atomIds.has(id)) problems.push(`ezelsbrug: ${id} bestaat niet`);
 for (const id of alsoOf.keys()) if (!atomIds.has(id)) problems.push(`examen: ${id} bestaat niet`);
+// Ook de samengestelde woorden krijgen hun ezelsbrug (memos.mjs).
 for (const [i, a] of atoms.entries()) {
-  const { also: _, ...rest } = a;
-  atoms[i] = alsoOf.has(a.id) ? { ...rest, also: alsoOf.get(a.id) } : rest;
+  const { also: _, memo: _m, ...rest } = a;
+  const memo = MEMO[a.id];
+  atoms[i] = { ...rest, ...(memo ? { memo } : {}), ...(alsoOf.has(a.id) ? { also: alsoOf.get(a.id) } : {}) };
 }
 
 /* --- groepen in plaats van unidades --- */

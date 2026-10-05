@@ -28,6 +28,7 @@ const { pluralPhrase } = await import('../js/types/plural.js');
 const { sourceTenses } = await import('../js/types/tenseShift.js');
 const { meaningDistractors } = await import('../js/types/sentenceMeaning.js');
 const { wrongSentences } = await import('../js/types/pickSentence.js');
+const { hintsFor, genderRule, conjugationHint } = await import('../js/hints.js');
 data.init();
 
 let failed = 0;
@@ -187,6 +188,38 @@ t('dictee: fout woord', wordDiff('tengo un perro', 'tengo dos perros').missed, [
   const vt = data.allAtoms().find(a => a.kind === 'verbType' && a.type === 'onregelmatig');
   const always = () => 0;   // rnd() < 0.5: altijd een foute bewering
   if (vt) t('klopt het: onregelmatig wordt nooit klankveranderend', statementFor({ atom: vt }, always).claim, 'regelmatig');
+}
+
+/* --- ezelsbruggetjes --- */
+{
+  const tip = es => hintsFor(byEs(es) ?? { kind: 'none' }).join(' ');
+  const conj = id => conjugationHint(data.getAtom(id) ?? {}) ?? '';
+  t('tip: -ma is mannelijk', /Grieks/.test(tip('el programa')), true);
+  t('tip: el agua', /beklemtoonde a/.test(tip('el agua con gas')), true);
+  t('tip: -ción', /-ción/.test(tip('la infección')), true);
+  t('tip: -dad', /-dad/.test(tip('la enfermedad')), true);
+  t('tip: -dor met werkwoord', /comer = eten/.test(tip('el comedor')), true);
+  t('tip: el paraguas is geen woord op -a', /eindigt op -a/.test(tip('el paraguas')), false);
+  t('tip: la batería is geen winkel', /winkel/.test(tip('la batería')), false);
+  t('tip: es- voor s + medeklinker', /schrijven/.test(tip('escribir')), true);
+  t('tip: z wordt c', /lápices/.test(tip('el lápiz')), true);
+  t('tip: eigen ezelsbrug eerst', hintsFor(byEs('desayunar'))[0], byEs('desayunar').memo);
+  t('lidwoordregel: la mano', /vrouwelijk/.test(genderRule(byEs('la mano')) ?? ''), true);
+  t('tip: laars buiten nosotros', /buiten de laars/.test(conj('c.pensar.presente.1p')), true);
+  t('tip: laars binnen yo', /e → ie/.test(conj('c.pensar.presente.1s')), true);
+  t('tip: tener toont de laars via él', /tiene/.test(conj('c.tener.presente.2s')), true);
+  t('tip: go-werkwoord', /go-werkwoord/.test(conj('c.hacer.presente.1s')), true);
+  t('tip: ser en ir in de indefinido', /ser en ir/.test(conj('c.ser.indefinido.1s')), true);
+  t('tip: sterke verleden tijd', /Sterke/.test(conj('c.tener.indefinido.1s')), true);
+  t('tip: geen accent-regel bij sois', /accent/.test(conj('c.ser.presente.2p')), false);
+  const gap = data.allAtoms().find(a => a.kind === 'sentence');
+  t('tip: invulzin met een vervoegde vorm', /tener.*laars/i.test(hintsFor(gap, { expected: 'tiene' })[0] ?? ''), true);
+  t('tip: dubbelzinnige vorm krijgt niets', hintsFor(gap, { expected: 'fue' }), []);
+  let empty = 0;
+  for (const a of vocab) if (hintsFor(a).some(h => !h || h.includes('undefined'))) empty++;
+  t('geen lege of halve tips', empty, 0);
+  const memoed = vocab.filter(a => a.memo).length;
+  t('ezelsbruggetjes in de data', memoed > 350, true);
 }
 
 /* --- offline: elk script staat in de lijst van de service worker --- */
