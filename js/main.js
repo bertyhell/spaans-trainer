@@ -511,12 +511,12 @@ const pick = arr => arr[Math.floor(Math.random() * arr.length)];
 /** Wat er onder de uitslag staat: een opmerking, of bij een toets- of
  *  leesvraag de vertaling of de reden waarom het antwoord klopt. */
 function explainFor(atom) {
-  if (atom.note) return atom.note;
   // Bij een vervoeging let je op de vorm; de betekenis glipt er dan makkelijk door.
   if (atom.kind === 'conjugation') {
     const nl = data.verbTranslation(atom.verb);
-    return nl ? `${atom.verb} = ${nl}` : null;
+    return [nl ? `${atom.verb} = ${nl}` : null, atom.note].filter(Boolean).join(' · ') || null;
   }
+  if (atom.note) return atom.note;
   if (['choice', 'reading', 'stress'].includes(atom.kind) && atom.nl) return atom.nl;
   return null;
 }

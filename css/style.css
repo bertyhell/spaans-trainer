@@ -17,8 +17,8 @@
   --ok-bg: #e6f7ec;
   --no: #d64545;
   --no-bg: #fdeaea;
-  --almost: #d9a300;
-  --almost-bg: #fdf5d8;
+  --almost: #e07000;
+  --almost-bg: #fdecd9;
 
   --lvl-bronze: #b8732e;
   --lvl-silver: #9aa3ad;
@@ -50,8 +50,8 @@
     --ok-bg: #16311f;
     --no: #f07070;
     --no-bg: #331717;
-    --almost: #f2c94c;
-    --almost-bg: #332a0e;
+    --almost: #f59a3c;
+    --almost-bg: #3a240e;
     --lvl-bronze: #d08a45;
     --lvl-silver: #c3cad2;
     --lvl-gold: #f5c518;

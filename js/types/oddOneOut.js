@@ -44,10 +44,12 @@ const isActivity = themeId => getTheme(themeId)?.activity === true;
 const LOOSE = new Set(['reizen', 'dagelijkse-routine']);
 const MEANINGLESS_GROUPS = new Set(['g-grammatica']);
 const groupOf = themeId => getTheme(themeId)?.group;
+/** Woorden die op betekenis nergens uitspringen: "llamado" (genoemd) is geen eigenschap. */
+const EXCLUDED = new Set(['v.llamado-a']);
 
 /** Mag dit woord meedoen, als gevraagd woord of als vreemde eend? */
 function eligible(a) {
-  if (a.kind !== 'vocab') return false;
+  if (a.kind !== 'vocab' || EXCLUDED.has(a.id)) return false;
   if (wordClass(a) === 'adv' || wordClass(a) === 'other') return false;
   if (LOOSE.has(a.theme) || MEANINGLESS_GROUPS.has(groupOf(a.theme))) return false;
   return wordClass(a) !== 'verb' || isActivity(a.theme);
