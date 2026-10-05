@@ -106,7 +106,7 @@ export default {
         el('span', { class: 'tf-joiner' }, s.joiner),
         el('span', { class: 'q-word tf-claim', lang: atom.kind === 'vocab' ? 'nl' : null }, s.claim),
         atom.kind === 'vocab' ? speakerButton(atom.es, ctx.speech) : null),
-      hint ? el('p', { class: 'q-hint' }, `(${hint})`) : null,
+      ...(hint ? [el('p', { class: 'q-hint' }, `(${hint})`)] : []),
     );
 
     const opts = optionList([

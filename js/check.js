@@ -20,17 +20,18 @@ const N_TILDE = /ñ/g;          // ñ na NFD-decompositie
 const SENTINEL = '\u0000';     // als escape: een echte NUL maakt het bestand "binair" voor git
 
 /** Kleinletters, spaties genormaliseerd, rechte aanhalingstekens. Leestekens
- *  die niemand op een gsm intypt (¿ ¡ , ; : …) tellen niet mee. */
+ *  die niemand op een gsm intypt (¿ ¡ , ; : …) tellen niet mee, en uitroep- en
+ *  vraagtekens nergens: "!Qué frío!" zonder ¡ op het toetsenbord is goed. */
 export function normalize(s) {
   return String(s ?? '')
     .toLowerCase()
     .replace(/[‘’ʼ]/g, "'")
     .replace(/[“”]/g, '"')
     .replace(/…|\.\.\./g, ' ')
-    .replace(/[¿¡,;:]/g, ' ')
+    .replace(/[¿¡!?,;:]/g, ' ')
     .replace(/\s+/g, ' ')
     .trim()
-    .replace(/[.!?]+$/, '')
+    .replace(/\.+$/, '')
     .trim();
 }
 

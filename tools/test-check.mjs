@@ -27,6 +27,9 @@ t('lidwoord mag erbij', answer('de das', ['das']), true);
 t('hoofdletters maken niet uit', answer('De Das', ['de das']), true);
 t('extra spaties maken niet uit', answer('  de   das ', ['de das']), true);
 t('punt op het einde mag', answer('de das.', ['de das']), true);
+t('uitroeptekens tellen niet', answer('wat is het bewolkt', ['Wat is het bewolkt!']), true);
+t('! in plaats van ¡ mag', answer('!Qué nublado está!', ['¡Qué nublado está!'], { strictAccents: true }), true);
+t('vraagteken midden in de zin telt niet', answer('¿Qué tal? bien', ['Qué tal bien']), true);
 
 /* --- accenten: aanvaard, maar met correctie --- */
 t('ontbrekend accent aanvaard', answer('cancion', ['canción']), true);

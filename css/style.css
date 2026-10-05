@@ -350,14 +350,6 @@ textarea.answer-input { padding: 10px 14px; resize: vertical; font: inherit; fon
 .option.is-wrong::after { content: " ✗"; color: var(--no); }
 .option:disabled { cursor: default; }
 
-/* Keuzeknop met vertaling rechts, maar pas bij het nakijken.
- * Tijdens de vraag zou ze het antwoord weggeven. */
-.option--odd { display: grid; grid-template-columns: 1fr 1.5em 1fr; align-items: center; gap: 10px; }
-.option-word { display: flex; align-items: center; gap: 8px; grid-column: 1; grid-row: 1; }
-.option-nl { color: var(--ink-soft); font-size: .9rem; text-align: right; grid-column: 3; grid-row: 1; }
-/* ✓/✗ in de middenkolom, zodat de vertalingen onder elkaar uitlijnen. */
-.option--odd::after { grid-column: 2; grid-row: 1; text-align: center; }
-.options:not(.is-revealed) .option-nl { visibility: hidden; }
 
 
 /* Vervoegingstabel */
@@ -475,6 +467,7 @@ textarea.answer-input { padding: 10px 14px; resize: vertical; font: inherit; fon
 .sort-head.is-hot { transform: scale(1.06); color: var(--brand-ink); background: var(--brand); }
 .sort-head--regelmatig.is-hot { color: #fff; background: var(--ok); }
 .sort-head--onregelmatig.is-hot { color: #fff; background: var(--no); }
+.sort-head--klankveranderend.is-hot { color: #fff; background: var(--almost); }
 .sort-row > * { grid-row: 1; }
 .sort-cell { min-height: 48px; border: 2px dashed var(--line); border-radius: 10px; cursor: pointer; }
 .sort-row.is-done .sort-cell { cursor: default; }

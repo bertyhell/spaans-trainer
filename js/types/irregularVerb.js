@@ -6,12 +6,19 @@
  * enige -ir-werkwoord aan, en leer je niets over welke je moet onthouden.
  *
  * Hangt aan de es→nl-kant van het woord, anders komt dezelfde vraag voor
- * elk werkwoord twee keer zo vaak langs. */
+ * elk werkwoord twee keer zo vaak langs.
+ *
+ * Een schuifbord met twee kolommen (zie sortBoard.js), net als "hoort er niet
+ * bij?": alle vier beginnen links bij regelmatig, het onregelmatige schuif je
+ * naar rechts. */
 
-import { el, shuffle, sample, optionList } from '../dom.js';
+import { el, shuffle, sample } from '../dom.js';
 import { allAtoms, conjugatedForm } from '../data.js';
+import { sortBoard } from '../sortBoard.js';
 
 const OPTIONS = 4;
+const COL_REGULAR = 0;
+const COL_IRREGULAR = 1;
 
 const ending = verb => verb.slice(-2);
 
@@ -44,33 +51,54 @@ export default {
 
     root.append(
       el('p', { class: 'q-instruction' }, 'Welk werkwoord is niet regelmatig?'),
-      el('p', { class: 'q-hint' }, 'In de tegenwoordige tijd (presente). De andere drie zijn regelmatig.'),
+      el('p', { class: 'q-hint' }, 'In de tegenwoordige tijd (presente). Schuif het werkwoord dat niet regelmatig is naar rechts.'),
     );
 
-    const opts = optionList(options.map(o => ({
-      value: o.id,
-      label: [
-        el('span', { class: 'option-word', lang: 'es' }, o.es),
-        // Pas bij het nakijken zichtbaar, net als bij "hoort er niet bij".
-        el('span', { class: 'option-nl' }, o.nl[0]),
+    // Alle vier beginnen bij "regelmatig"; het onregelmatige schuif je opzij.
+    const sort = sortBoard({
+      columns: [
+        { id: 'regelmatig', label: 'regelmatig' },
+        { id: 'onregelmatig', label: 'niet regelmatig' },
       ],
-    })), { className: 'option--odd', onChoose: () => ctx.ready(true) });
-    root.append(opts.list);
+      items: options.map(o => ({
+        name: o.es,
+        lang: 'es',
+        label: [
+          o.es,
+          // Pas bij het nakijken zichtbaar, net als bij "hoort er niet bij".
+          el('span', { class: 'sort-nl', lang: 'nl' }, o.nl[0]),
+        ],
+      })),
+      start: COL_REGULAR,
+      onChange: () => ctx.ready(options.some((_, i) => sort.placed(i) === COL_IRREGULAR)),
+    });
+    root.append(sort.board);
+
+    const column = o => (o === atom ? COL_IRREGULAR : COL_REGULAR);
 
     return {
-      focus: opts.focus,
+      focus: sort.focus,
       check() {
-        const picked = options.find(o => o.id === opts.chosen());
-        const form = picked && conjugatedForm(picked.es, 'presente', '3s');
+        const moved = options.filter((_, i) => sort.placed(i) === COL_IRREGULAR);
+        const wrong = moved.filter(o => o !== atom);
+        const regular = o => {
+          const form = conjugatedForm(o.es, 'presente', '3s');
+          return `${o.es}${form ? ` → ${form}` : ''} is regelmatig.`;
+        };
         return {
-          correct: picked === atom,
+          correct: moved.length === 1 && moved[0] === atom,
           expected: explain(atom),
-          note: picked && picked !== atom
-            ? `${picked.es}${form ? ` → ${form}` : ''} is regelmatig.` : null,
-          given: picked?.es ?? null,
+          note: wrong.length ? wrong.map(regular).join(' ') : null,
+          given: moved.map(o => o.es).join(', ') || null,
         };
       },
-      reveal() { opts.reveal(atom.id); },
+      reveal() {
+        options.forEach((o, i) => sort.reveal(i, {
+          correct: sort.placed(i) === column(o),
+          column: column(o),
+          fix: `✓ ${o.es}`,
+        }));
+      },
     };
   },
 };

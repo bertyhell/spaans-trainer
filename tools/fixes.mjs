@@ -15,6 +15,8 @@ export const EXTRA_NL = {
   'v.frecuentemente': ['frequent'],
   'v.sencillo-a': ['simpel'],
   'v.la-crema-solar': ['de zonnecrème'],
+  'v.tan-importante-como': ['even belangrijk als'],
+  'v.la-gente-del-lugar': ['de lokale bevolking'],
 };
 
 /** Emoji die een dubbelzinnige vertaling uit elkaar houdt: "arm" (pobre) is

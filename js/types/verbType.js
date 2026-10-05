@@ -4,12 +4,19 @@
  *
  * Bij "verandert van klank?" zijn de afleiders enkel regelmatige werkwoorden:
  * een onregelmatige als tener (tienes) verandert óók van klank, en dan zijn
- * er twee goede antwoorden. */
+ * er twee goede antwoorden.
+ *
+ * Een schuifbord met twee kolommen (zie sortBoard.js), net als "hoort er niet
+ * bij?": alle vier beginnen links, het gevraagde werkwoord schuif je naar
+ * rechts. */
 
-import { el, shuffle, sample, optionList } from '../dom.js';
+import { el, shuffle, sample } from '../dom.js';
 import { allAtoms, conjugatedForm } from '../data.js';
+import { sortBoard } from '../sortBoard.js';
 
 const OPTIONS = 4;
+const COL_OTHER = 0;
+const COL_ASKED = 1;
 
 const QUESTIONS = {
   regelmatig: { q: 'Welk werkwoord is regelmatig?', others: ['klankveranderend', 'onregelmatig'] },
@@ -53,25 +60,43 @@ export default {
 
     root.append(
       el('p', { class: 'q-instruction' }, q),
-      el('p', { class: 'q-hint' }, 'In de tegenwoordige tijd (presente).'),
+      el('p', { class: 'q-hint' }, 'In de tegenwoordige tijd (presente). Schuif het naar rechts.'),
     );
 
-    const opts = optionList(options.map(o => o.verb), { lang: 'es', onChoose: () => ctx.ready(true) });
-    root.append(opts.list);
+    // Links de andere soort(en), rechts de gevraagde. "niet regelmatig" als er
+    // twee andere soorten tussen zitten.
+    const sort = sortBoard({
+      columns: [
+        { id: others.length === 1 ? others[0] : 'ander', label: others.length === 1 ? others[0] : `niet ${atom.type}` },
+        { id: atom.type, label: atom.type },
+      ],
+      items: options.map(o => ({ name: o.verb, lang: 'es' })),
+      start: COL_OTHER,
+      onChange: () => ctx.ready(options.some((_, i) => sort.placed(i) === COL_ASKED)),
+    });
+    root.append(sort.board);
+
+    const column = o => (o === atom ? COL_ASKED : COL_OTHER);
 
     return {
-      focus: opts.focus,
+      focus: sort.focus,
       check() {
-        const chosen = options.find(o => o.verb === opts.chosen());
-        const correct = chosen?.verb === atom.verb;
+        const moved = options.filter((_, i) => sort.placed(i) === COL_ASKED);
+        const wrong = moved.filter(o => o !== atom);
         return {
-          correct,
+          correct: moved.length === 1 && moved[0] === atom,
           expected: `${showForms(atom.verb)}${change ? ` (${change})` : ''}`,
-          note: chosen && !correct ? `${showForms(chosen.verb)} is ${chosen.type}.` : null,
-          given: chosen?.verb,
+          note: wrong.length ? wrong.map(o => `${showForms(o.verb)} is ${o.type}.`).join(' ') : null,
+          given: moved.map(o => o.verb).join(', ') || null,
         };
       },
-      reveal() { opts.reveal(atom.verb); },
+      reveal() {
+        options.forEach((o, i) => sort.reveal(i, {
+          correct: sort.placed(i) === column(o),
+          column: column(o),
+          fix: `✓ ${o.verb}`,
+        }));
+      },
     };
   },
 };
