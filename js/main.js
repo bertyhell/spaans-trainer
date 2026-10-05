@@ -11,6 +11,7 @@ import { Session, itemsForThemes, itemsForMistakes, itemsForReview, REVIEW_MIN }
 import { supportedFor } from './types/index.js';
 import { MatchRound } from './matchRound.js';
 import * as flashcards from './flashcards.js';
+import { VERSION } from './version.js';
 import * as hints from './hints.js';
 import * as recognition from './recognition.js';
 import { renderIntro } from './intro.js';
@@ -1474,6 +1475,7 @@ function wire() {
 }
 
 async function boot() {
+  $('#app-version').textContent = `Versie ${VERSION}`;
   try {
     data.init();
   } catch (err) {

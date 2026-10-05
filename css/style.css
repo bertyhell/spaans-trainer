@@ -780,6 +780,7 @@ textarea.answer-input { padding: 10px 14px; resize: vertical; font: inherit; fon
   border: 1px solid var(--line); border-radius: 8px;
 }
 .settings-info { margin: 0 0 12px; font-size: .9rem; color: var(--ink-soft); }
+.app-version { margin: 16px 0 0; font-size: .75rem; color: var(--ink-soft); text-align: center; opacity: .7; }
 .setting select {
   min-height: 40px; padding: 0 10px; font: inherit;
   color: var(--ink); background: var(--surface); border: 2px solid var(--line); border-radius: var(--radius);
