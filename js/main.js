@@ -246,7 +246,7 @@ function renderTree() {
   refreshSelection();
 }
 
-/** "Presente (tegenwoordige tijd: ik spreek)" → titel met de vertaling eronder. */
+/** "Presente (tegenwoordige tijd: yo hablo)" → titel met de vertaling eronder. */
 function sectionText(section) {
   const [, title, sub] = section.match(/^(.*?)\s*(?:\((.*)\))?$/);
   return el('span', { class: 'row-text' },

@@ -272,14 +272,14 @@ function baseVerbsToAdd(tense, bookVerbs, changers, regular) {
 /* --- de thema's --- */
 
 export const TENSES = [
-  { tense: 'presente', section: 'Presente (tegenwoordige tijd: ik spreek)', kinds: ['ar', 'er', 'ir', 'klank', 'onr', 'wed'] },
-  { tense: 'indefinido', section: 'Pretérito indefinido (verleden tijd, afgerond: ik sprak)', kinds: ['ar', 'er', 'ir', 'onr', 'wed'] },
-  { tense: 'futuro', section: 'Futuro simple (toekomende tijd: ik zal spreken)', kinds: ['ar', 'er', 'ir', 'onr', 'wed'] },
-  { tense: 'imperfecto', section: 'Pretérito imperfecto (verleden tijd, gewoonte of beschrijving: ik sprak altijd)', kinds: ['ar', 'er', 'ir', 'onr', 'wed'] },
-  { tense: 'perfecto', section: 'Pretérito perfecto (voltooid tegenwoordige tijd: ik heb gesproken)', kinds: ['ar', 'er', 'ir', 'onr', 'wed'] },
-  { tense: 'continuo', section: 'Estar + gerundio (bezig zijn: ik ben aan het spreken)', kinds: ['ar', 'er', 'ir', 'onr'] },
-  { tense: 'condicional', section: 'Condicional (voorwaardelijke wijs: ik zou spreken)', kinds: ['ar', 'er', 'ir', 'onr'] },
-  { tense: 'subjuntivo', section: 'Presente de subjuntivo (aanvoegende wijs: … dat ik spreek)', kinds: ['ar', 'er', 'ir', 'klank', 'onr'] },
+  { tense: 'presente', section: 'Presente (tegenwoordige tijd: yo hablo)', kinds: ['ar', 'er', 'ir', 'klank', 'onr', 'wed'] },
+  { tense: 'indefinido', section: 'Pretérito indefinido (verleden tijd, afgerond: yo hablé)', kinds: ['ar', 'er', 'ir', 'onr', 'wed'] },
+  { tense: 'futuro', section: 'Futuro simple (toekomende tijd: yo hablaré)', kinds: ['ar', 'er', 'ir', 'onr', 'wed'] },
+  { tense: 'imperfecto', section: 'Pretérito imperfecto (verleden tijd, gewoonte of beschrijving: yo hablaba)', kinds: ['ar', 'er', 'ir', 'onr', 'wed'] },
+  { tense: 'perfecto', section: 'Pretérito perfecto (voltooid tegenwoordige tijd: yo he hablado)', kinds: ['ar', 'er', 'ir', 'onr', 'wed'] },
+  { tense: 'continuo', section: 'Estar + gerundio (bezig zijn: yo estoy hablando)', kinds: ['ar', 'er', 'ir', 'onr'] },
+  { tense: 'condicional', section: 'Condicional (voorwaardelijke wijs: yo hablaría)', kinds: ['ar', 'er', 'ir', 'onr'] },
+  { tense: 'subjuntivo', section: 'Presente de subjuntivo (aanvoegende wijs: … que yo hable)', kinds: ['ar', 'er', 'ir', 'klank', 'onr'] },
 ];
 
 const KIND_LABELS = {
@@ -293,7 +293,7 @@ export const CONJUGATION_THEMES = TENSES.flatMap(({ tense, section, kinds }) =>
   kinds.map(kind => ({ id: themeId(tense, kind), label: KIND_LABELS[kind], emoji: '•', section })));
 
 /* Het gerundio is geen rijtje van zes, maar hoort wel bij het vervoegen. */
-export const EXTRA_SECTIONS = { 'aan-het-doen': 'Gerundio (bezig zijn: ik ben aan het spreken)' };
+export const EXTRA_SECTIONS = { 'aan-het-doen': 'Gerundio (bezig zijn: yo estoy hablando)' };
 
 /** Thema-id's in schermvolgorde: gerundio na de presente, zoals in de les. */
 export const CONJUGATION_ORDER = TENSES.flatMap(({ tense, kinds }) => [
