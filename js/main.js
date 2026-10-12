@@ -397,7 +397,7 @@ function renderLessonProgress() {
   const entries = session.questionEntries;
   for (const { i } of entries) {
     const r = byIndex.get(i);
-    const state = r ? (r.almost ? 'almost' : r.correct ? 'ok' : 'no') : i < session.index ? 'skip' : i === session.index ? 'current' : 'todo';
+    const state = r ? (r.almost || r.close ? 'almost' : r.correct ? 'ok' : 'no') : i < session.index ? 'skip' : i === session.index ? 'current' : 'todo';
     bar.append(el('span', { class: `progress-seg progress-seg--${state}` }));
   }
   const pct = (session.results.length / Math.max(1, entries.length)) * 100;
@@ -425,11 +425,13 @@ function showFeedback(result) {
   const atom = session.current.atom;
   const fb = $('#feedback');
 
-  const state = result.almost ? 'almost' : result.correct ? 'ok' : 'no';
+  const state = result.almost || result.close ? 'almost' : result.correct ? 'ok' : 'no';
   $('#lesson-actionbar').className = `actionbar actionbar--${state}`;
-  $('#feedback-icon').textContent = result.hinted ? '💡' : result.almost ? '≈' : result.correct ? '✓' : '✗';
+  $('#feedback-icon').textContent = result.hinted ? '💡' : result.almost || result.close ? '≈' : result.correct ? '✓' : '✗';
   $('#feedback-title').textContent = result.hinted
     ? 'Juist, met hint'
+    : result.close
+    ? 'So close!'
     : result.almost
     ? '¡Casi! Bijna juist'
     : result.correct
@@ -624,9 +626,9 @@ function renderReview(results) {
         }, r.retryCorrect ? '↻ ✓' : '↻ ✗')
       : null;
     const li = reviewRow({
-      mark: r.almost ? '≈' : r.correct ? '✓' : '✗',
-      markLabel: r.almost ? 'bijna juist' : r.correct ? 'juist' : r.retryCorrect ? 'eerst fout, later juist' : 'fout',
-      q, a, className: `mistake${r.almost ? ' is-almost' : r.correct ? ' is-ok' : ''}`,
+      mark: r.almost || r.close ? '≈' : r.correct ? '✓' : '✗',
+      markLabel: r.close ? 'bijna' : r.almost ? 'bijna juist' : r.correct ? 'juist' : r.retryCorrect ? 'eerst fout, later juist' : 'fout',
+      q, a, className: `mistake${r.almost || r.close ? ' is-almost' : r.correct ? ' is-ok' : ''}`,
       detail: el('div', { class: 'mistake-detail', hidden: true }, ...detailRows(r)),
       extras: [retried, flag].filter(Boolean),
     });

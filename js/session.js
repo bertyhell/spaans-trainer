@@ -159,6 +159,7 @@ export class Session {
       typeId: type.id,
       correct: result.correct,
       almost: !!result.almost,
+      close: !!result.close,
       hinted: !!result.hinted,
       expected: result.expected,
       note: result.note ?? null,

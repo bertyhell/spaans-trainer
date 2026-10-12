@@ -114,9 +114,9 @@ export default {
             : `${subject.es} is ${what}: ${answer}.${forms.m.sg === forms.f.sg ? ` ${base} is gelijk voor mannelijk en vrouwelijk.` : ''}`,
         };
       },
-      reveal({ correct, almost }) {
+      reveal({ correct, almost, close }) {
         input.disabled = true;
-        input.classList.add(almost ? 'is-almost' : correct ? 'is-correct' : 'is-wrong');
+        input.classList.add(almost || close ? 'is-almost' : correct ? 'is-correct' : 'is-wrong');
       },
     };
   },

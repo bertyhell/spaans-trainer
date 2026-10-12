@@ -244,8 +244,8 @@ function typedInput(root, ctx, label) {
   return input;
 }
 
-function finishInput(input, hint, { correct, almost }) {
+function finishInput(input, hint, { correct, almost, close }) {
   input.disabled = true;
   hint.disable();
-  input.classList.add(almost ? 'is-almost' : correct ? 'is-correct' : 'is-wrong');
+  input.classList.add(almost || close ? 'is-almost' : correct ? 'is-correct' : 'is-wrong');
 }

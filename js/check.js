@@ -295,5 +295,12 @@ export function checkAnswer(input, accepted, { strictAccents = false, ignoreAcce
   if (wrongArticle) {
     return { correct: false, expected: canonical, note: `Let op het lidwoord: ${canonical}` };
   }
+
+  // 4 — fout, maar op een haar na: hooguit twee bewerkingen ernaast. Telt niet
+  //     als juist; alleen de feedback kleurt oranje ("So close!").
+  if (!isOtherRealForm) {
+    const near = (a, b) => b.length >= 4 && levenshtein(stripAccents(a), stripAccents(b), 2) <= 2;
+    if (find(near)) return { correct: false, close: true, expected: canonical, note: null };
+  }
   return { correct: false, expected: canonical, note: null };
 }

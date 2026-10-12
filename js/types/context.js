@@ -108,10 +108,10 @@ export const contextGap = {
         const r = checkAnswer(gapNode.value, [word, bareEs(atom)]);
         return hint.apply({ ...r, expected: atom.es, note: r.correct ? r.note : `In deze zin: ${word}`, given: gapNode.value });
       },
-      reveal({ correct, almost }) {
+      reveal({ correct, almost, close }) {
         gapNode.disabled = true;
         hint.disable();
-        gapNode.classList.add(almost ? 'is-almost' : correct ? 'is-correct' : 'is-wrong');
+        gapNode.classList.add(almost || close ? 'is-almost' : correct ? 'is-correct' : 'is-wrong');
         addSpeaker();
       },
     };

@@ -78,9 +78,9 @@ function textInput(ctx, { lang, placeholder, label, inputmode = null }) {
   return input;
 }
 
-const mark = (input, { correct, almost }) => {
+const mark = (input, { correct, almost, close }) => {
   input.disabled = true;
-  input.classList.add(almost ? 'is-almost' : correct ? 'is-correct' : 'is-wrong');
+  input.classList.add(almost || close ? 'is-almost' : correct ? 'is-correct' : 'is-wrong');
 };
 
 export const numeralWrite = {

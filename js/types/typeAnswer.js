@@ -63,10 +63,10 @@ export default {
         }
         return hint.apply({ ...r, given: input.value });
       },
-      reveal({ correct, almost }) {
+      reveal({ correct, almost, close }) {
         input.disabled = true;
         hint.disable();
-        input.classList.add(almost ? 'is-almost' : correct ? 'is-correct' : 'is-wrong');
+        input.classList.add(almost || close ? 'is-almost' : correct ? 'is-correct' : 'is-wrong');
       },
     };
   },

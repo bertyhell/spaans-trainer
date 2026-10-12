@@ -67,9 +67,9 @@ export default {
         if (r.correct && !r.almost) return { ...r, given: input.value };
         return { correct: false, expected: atom.es, note: accentNote(input.value, atom.es), given: input.value };
       },
-      reveal({ correct, almost }) {
+      reveal({ correct, almost, close }) {
         input.disabled = true;
-        input.classList.add(almost ? 'is-almost' : correct ? 'is-correct' : 'is-wrong');
+        input.classList.add(almost || close ? 'is-almost' : correct ? 'is-correct' : 'is-wrong');
         // Pas nu: de uitspraak verraadt waar de klemtoon, en dus het accent, ligt.
         const sb = speakerButton(atom.es, ctx.speech);
         if (sb) root.querySelector('.q-prompt').append(sb);
