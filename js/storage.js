@@ -191,7 +191,7 @@ export const MISTAKE_CLEAR_AFTER = 3;
 
 /* Een "bijna" (accent- of typfout) telt als juist voor de dozen, maar komt
  * wel in de foutenlijst: de schrijfwijze moet je nog oefenen. */
-export function recordAnswer(atomId, { correct, almost, expected, given, note }, direction = null) {
+export function recordAnswer(atomId, { correct, almost, expected, given, note }, direction = null, typeId = null) {
   const s = load();
   const m = s.mistakes[atomId];
   if (!correct || almost) {
@@ -199,7 +199,9 @@ export function recordAnswer(atomId, { correct, almost, expected, given, note },
     // niet het herkennen van las gafas.
     const count = (m?.count ?? 0) + 1;
     s.mistakes[atomId] = { expected, given: given ?? null, note: note ?? null, at: Date.now(), streak: 0,
-      direction: direction ?? m?.direction ?? null, count };
+      direction: direction ?? m?.direction ?? null,
+      // Ook de oefenvorm: wie fout schrijft, moet het straks weer schrijven.
+      typeId: typeId ?? m?.typeId ?? null, count };
   } else if (m) {
     m.streak += 1;
     if (m.streak >= MISTAKE_CLEAR_AFTER) delete s.mistakes[atomId];

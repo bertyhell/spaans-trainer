@@ -348,6 +348,23 @@ t('betekenis: voltooid deelwoord', /deelwoord van hablar/.test(glossFor('hablado
   t('alle scripts staan in sw.js', files.filter(f => !sw.includes(`'${f}'`)), []);
 }
 
+/* --- foutenles: eerst makkelijker, dan de vorm van de fout --- */
+{
+  const storage = await import('../js/storage.js');
+  const { Session, itemsForMistakes } = await import('../js/session.js');
+  const word = data.allAtoms().find(a => a.kind === 'vocab' && /^la \p{Ll}{4,8}$/u.test(a.es));
+  storage.recordAnswer(word.id, { correct: false, expected: word.es, given: 'x' }, 'nl2es', 'typeAnswer');
+  t('fout onthoudt de oefenvorm', storage.getMistakes().find(m => m.atomId === word.id)?.typeId, 'typeAnswer');
+  const items = itemsForMistakes().filter(i => i.atomId === word.id);
+  t('foutenles geeft het item de foutvorm mee', items.map(i => i.mistakeType), ['typeAnswer']);
+  const s = new Session({ items, size: 12, env: {}, intros: false });
+  const forms = s.queue.map(q => `${q.easy ? 'easy' : 'final'}:${q.forceTypeId}`);
+  t('foutenles: makkelijker eerst, dan dezelfde vorm', forms.at(-1), 'final:typeAnswer');
+  t('foutenles: minstens één voorstap', forms.length > 1 && forms.slice(0, -1).every(f => f.startsWith('easy:')), true);
+  t('foutenles telt enkel de échte vraag', s.questions, 1);
+  storage.clearMistakes();
+}
+
 /* --- rapport --- */
 const width = Math.max(...rows.map(r => r[1].length));
 for (const [ok, label, actual, expected] of rows) {

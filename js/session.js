@@ -7,12 +7,17 @@
 import * as scheduler from './scheduler.js';
 import * as storage from './storage.js';
 import * as data from './data.js';
-import { pickType, supportedFor } from './types/index.js';
+import { pickType, supportedFor, modeOf, byId } from './types/index.js';
+import { shuffle } from './dom.js';
 
 /** Een fout beantwoorde vraag komt zoveel vragen later nog eens terug. */
 export const RETRY_GAP = 3;
 /** Hoogstens zoveel herkansingen per les: een les van twaalf mag niet uitdijen tot twintig. */
 export const MAX_RETRIES = 4;
+/** Zoveel woorden uit de foutenlijst per les: elk krijgt nog een of twee makkelijkere vragen vooraf. */
+export const MISTAKE_WORDS = 5;
+/** Hoeveel makkelijkere vormen vóór de vorm waarin het misging. */
+export const EASIER_STEPS = 2;
 /** Een nieuw woord wordt zoveel vragen vóór zijn eerste vraag voorgesteld. */
 export const INTRO_LEAD = 2;
 
@@ -52,12 +57,35 @@ export class Session {
     // Andersom zou een les korter worden dan gevraagd omdat er achteraf
     // items uitvallen die de trekking al had opgebruikt.
     const eligible = items.filter(item => supportedFor(item, env).length > 0);
-    this.queue = scheduler.drawLesson(eligible, size);
-    this.questions = this.queue.length;   // zonder de herkansingen en kennismakingen
+    const laddered = eligible.some(i => i.mistakeType);
+    this.queue = scheduler.drawLesson(eligible, laddered ? Math.min(size, MISTAKE_WORDS) : size);
+    this.questions = this.queue.length;   // zonder de herkansingen, kennismakingen en makkelijkere voorstappen
+    if (laddered) this.queue = this.withEasierSteps(this.queue);
     if (intros && !env.forceType) this.queue = withIntros(this.queue);
     this.index = 0;
     this.results = [];
     this.recentTypes = [];
+  }
+
+  /**
+   * Foutenles: eerst makkelijkere vormen van hetzelfde woord (herkennen), pas
+   * daarna de vorm waarin het misging. De voorstappen staan eerst allemaal
+   * vooraan, de échte vragen daarna: anders typ je het antwoord dat je net
+   * zag staan gewoon over.
+   */
+  withEasierSteps(drawn) {
+    const steps = [];
+    const finals = drawn.map(item => {
+      const type = item.mistakeType && byId[item.mistakeType];
+      if (!type || !type.supports(item, this.env)) return item;
+      const final = { ...item, forceTypeId: type.id };
+      if (modeOf(type.id) === 'recognize') return final;
+      const easier = shuffle(supportedFor(item, this.env)
+        .filter(t => modeOf(t.id) === 'recognize' && t.id !== type.id)).slice(0, EASIER_STEPS);
+      easier.forEach(t => steps.push({ ...item, easy: true, forceTypeId: t.id }));
+      return final;
+    });
+    return [...shuffle(steps), ...finals];
   }
 
   get total() { return this.queue.length; }
@@ -78,6 +106,11 @@ export class Session {
   chooseType() {
     const item = this.current;
     if (!item) return null;
+    const forced = item.forceTypeId && byId[item.forceTypeId];
+    if (forced && forced.supports(item, this.env)) {
+      this.recentTypes.push(forced.id);
+      return forced;
+    }
     const recent = item.retryOf ? [...this.recentTypes, item.retryOf.typeId] : this.recentTypes;
     const type = pickType(item, this.env, recent);
     if (type) this.recentTypes.push(type.id);
@@ -97,11 +130,11 @@ export class Session {
     // antwoord. Ze is er om het juiste antwoord meteen nog eens op te halen.
     this.noteConfusion(item, result);
 
-    if (item.retryOf) {
+    if (item.retryOf || item.easy) {
       storage.addExercises(1);
       const entry = this.entry(type, result, { retry: true });
       this.results.push(entry);
-      item.retryOf.retryCorrect = result.correct;
+      if (item.retryOf) item.retryOf.retryCorrect = result.correct;
       storage.save();
       return result;
     }
@@ -112,13 +145,13 @@ export class Session {
     if (perAtom) {
       for (const p of perAtom) {
         scheduler.record(scheduler.itemKey(p.atomId, dir), p.correct);
-        storage.recordAnswer(p.atomId, p, dir);
+        storage.recordAnswer(p.atomId, p, dir, type.id);
       }
       if (!perAtom.some(p => p.atomId === item.atomId)) scheduler.record(item.key, result.correct);
     } else {
       // Met een hint juist: gezien, maar de doos blijft staan.
       scheduler.record(item.key, result.correct, { hold: Boolean(result.hinted) });
-      storage.recordAnswer(item.atomId, result, dir);
+      storage.recordAnswer(item.atomId, result, dir, type.id);
     }
 
     storage.addExercises(1);
@@ -146,7 +179,7 @@ export class Session {
 
   /** Slaat de huidige vraag over zonder iets te bewaren (bv. geen microfoon). */
   skip() {
-    if (!this.current?.intro && !this.current?.retryOf) this.questions = Math.max(0, this.questions - 1);
+    if (!this.current?.intro && !this.current?.retryOf && !this.current?.easy) this.questions = Math.max(0, this.questions - 1);
     this.index++;
   }
 
@@ -172,7 +205,9 @@ export class Session {
   scheduleRetry(item, entry) {
     if (this.queue.filter(q => q.retryOf).length >= MAX_RETRIES) return;
     const at = Math.min(this.queue.length, this.index + 1 + RETRY_GAP);
-    this.queue.splice(at, 0, { ...item, retryOf: entry });
+    // Een herkansing krijgt weer een vrije vorm, niet nog eens dezelfde.
+    const { forceTypeId, mistakeType, ...rest } = item;
+    this.queue.splice(at, 0, { ...rest, retryOf: entry });
   }
 
   next() { this.index++; }
@@ -211,7 +246,7 @@ export function itemsForMistakes() {
       if (m.direction && item.direction && item.direction !== m.direction) continue;
       if (!m.direction && item.direction === 'nl2es'
         && storage.getProgress(scheduler.itemKey(item.atomId, 'es2nl')).box <= 1) continue;
-      items.push(item);
+      items.push({ ...item, mistakeType: m.typeId ?? null });
     }
   }
   return items;

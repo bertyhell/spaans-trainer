@@ -356,7 +356,8 @@ function nextQuestion() {
   instance = activeType.render(session.current, root, ctx);
   // Vóór het antwoord bepalen: recordAnswer kan de fout straks wissen.
   const retry = Boolean(session.current.retryOf);
-  $('#prev-mistake').textContent = retry ? '↻ Herkansing' : 'Eerdere fout';
+  const easy = Boolean(session.current.easy);
+  $('#prev-mistake').textContent = retry ? '↻ Herkansing' : easy ? 'Eerst wat makkelijker' : 'Eerdere fout';
   $('#prev-mistake').hidden = !retry && !storage.get().mistakes[session.current.atomId];
 
   updateCounter();
