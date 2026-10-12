@@ -1,8 +1,8 @@
 /* Schuifbord: kaartjes onder elkaar, elk schuif je opzij naar een kolom.
  *
  * Slepen, tikken op een kolom of de pijltjestoetsen: alle drie werken. Tijdens
- * het slepen licht de kolomnaam op waar het kaartje zou landen. Een tik op het
- * kaartje zelf schuift het naar de volgende kolom.
+ * het slepen licht de kolomnaam op waar het kaartje zou landen. De eerste tik op het
+ * kaartje zet het in de dichtstbijzijnde kolom, daarna schuift elke tik door.
  *
  * Gedeeld door "sorteer de werkwoorden" en "welk woord hoort er niet bij?". */
 
@@ -78,13 +78,16 @@ export function sortBoard({ columns, items, start = null, onChange }) {
     };
     tile.addEventListener('pointerup', end);
     tile.addEventListener('pointercancel', end);
-    // Een tik zonder slepen schuift naar de volgende kolom. Na het slepen
-    // volgt ook een click; die telt niet.
+    // De eerste tik zet het kaartje in de kolom het dichtst bij de vinger,
+    // elke volgende tik schuift door naar de volgende kolom (en na de laatste
+    // terug naar de eerste). Na het slepen volgt ook een click; die telt niet.
     let justDragged = false;
-    tile.addEventListener('click', () => {
+    tile.addEventListener('click', e => {
       if (justDragged) { justDragged = false; return; }
       const cur = placed.get(idx);
-      place(cur == null ? 0 : (cur + 1) % n);
+      // detail 0: geactiveerd met het toetsenbord, dan is er geen positie.
+      if (cur == null) place(e.detail ? columnAt(e.clientX) : 0);
+      else place((cur + 1) % n);
     });
     tile.addEventListener('keydown', e => {
       const cur = placed.get(idx);
