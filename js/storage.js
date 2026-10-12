@@ -11,6 +11,7 @@ const EMPTY = () => ({
   streak: { current: 0, best: 0, lastDay: null },
   exercisesDone: 0,
   settings: { sound: true, speech: true, reducedMotion: false, speaking: false },
+  selection: [],                // themaId's die in het overzicht aangevinkt staan
   reports: [],
   reportReasons: {},            // atomId -> vrije tekst: wat is er mis
   mistakes: {},                 // atomId -> { expected, given, note, at, streak }
@@ -135,6 +136,14 @@ export function addExercises(n) {
 }
 
 export const isReported = atomId => load().reports.includes(atomId);
+
+/** Welke thema's er in het overzicht aangevinkt staan. */
+export const getSelection = () => load().selection ?? [];
+
+export function setSelection(ids) {
+  load().selection = [...ids];
+  save();
+}
 
 export function report(atomId) {
   const s = load();

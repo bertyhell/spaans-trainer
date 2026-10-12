@@ -273,6 +273,7 @@ function setTristate(box, themeIds) {
 }
 
 function refreshSelection() {
+  storage.setSelection(selected);
   const themes = [...selected];
   const atoms = themes.flatMap(id => data.atomsForTheme(id));
   const vocab = atoms.filter(a => a.kind === 'vocab').length;
@@ -1509,6 +1510,9 @@ async function boot() {
   storage.watch(() => { renderTree(); refreshStats(); });
   applyMotionPreference();
   wire();
+  // Het laatst aangevinkte onderdeel staat er weer; thema's die niet meer bestaan niet.
+  const known = new Set(data.tree().flatMap(g => g.themes.map(t => t.id)));
+  for (const id of storage.getSelection()) if (known.has(id)) selected.add(id);
   renderTree();
   refreshStats();
 
