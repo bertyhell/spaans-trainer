@@ -50,7 +50,7 @@ export default {
       focus() { input.focus(); },
       check() {
         // Accenten zijn enkel in het Spaans leerstof.
-        const r = checkAnswer(input.value, answers, { ignoreAccents: !toSpanish });
+        const r = checkAnswer(input.value, answers, { ignoreAccents: !toSpanish, lenient: !toSpanish });
         if (!r.correct && toSpanish) {
           // Een ander Spaans woord voor hetzelfde ("los lentes" voor "de bril")
           // is niet fout. Wel tonen welk woord we zochten.

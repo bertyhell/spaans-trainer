@@ -210,13 +210,16 @@ export function diacriticClash(given, expected) {
  * @param opts.ignoreAccents  accenten tellen helemaal niet mee, ook niet als
  *        "bijna". Voor Nederlandse antwoorden: daar zijn ze geen leerstof,
  *        en zonnecreme is evengoed als zonnecrème.
+ * @param opts.lenient  ruimer met typfouten: tot drie letters ernaast (naar
+ *        verhouding tot de woordlengte). Voor Nederlandse antwoorden: we leren
+ *        Spaans, dus Nederlands mag vergevingsgezind zijn.
  * @param opts.rejectNear     vormen die nooit als typfout mogen doorgaan.
  *        Cruciaal bij vervoegingen: "tuvo" ligt één letter van "tuve", maar is
  *        een andere persoon — dat aanvaarden zou de verkeerde vorm aanleren.
  * @returns {{correct: boolean, almost?: boolean, expected: string, note: string|null}}
  *   almost (en note) is gezet wanneer het antwoord aanvaard is maar niet perfect gespeld.
  */
-export function checkAnswer(input, accepted, { strictAccents = false, ignoreAccents = false, rejectNear = [] } = {}) {
+export function checkAnswer(input, accepted, { strictAccents = false, ignoreAccents = false, rejectNear = [], lenient = false } = {}) {
   const list = (Array.isArray(accepted) ? accepted : [accepted]).filter(Boolean);
   const canonical = list[0] ?? '';
   const given = normalize(input);
@@ -287,8 +290,11 @@ export function checkAnswer(input, accepted, { strictAccents = false, ignoreAcce
     // Een verschil dat enkel uit accenten bestaat is geen typefout. Stap 2
     // heeft het al beoordeeld; hier doorlaten zou strictAccents uithollen.
     // Onder de 5 letters is één afwijking te vaak een écht ander woord.
+    const allowed = b => lenient
+      ? (b.length >= 8 ? 3 : b.length >= 6 ? 2 : b.length >= 5 ? 1 : 0)
+      : (b.length >= 5 ? 1 : 0);
     const typo = (a, b) => stripAccents(a) !== stripAccents(b)
-      && b.length >= 5 && levenshtein(stripAccents(a), stripAccents(b), 1) <= 1;
+      && levenshtein(stripAccents(a), stripAccents(b), allowed(b)) <= allowed(b);
     if (find(typo)) return { correct: true, almost: true, expected: canonical, note: `¡Casi! Typfoutje, juist is: ${matched}` };
   }
 
