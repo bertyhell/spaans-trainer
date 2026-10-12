@@ -323,6 +323,7 @@ function nextQuestion() {
   if (session.current.intro) return showIntro();
 
   answered = false;
+  unlockNext();
   activeType = session.chooseType();
   if (!activeType) { session.next(); return nextQuestion(); }
 
@@ -423,6 +424,15 @@ function doCheck() {
   showFeedback(result);
 }
 
+/** Hoe lang "Volgende" na een fout vergrendeld blijft. */
+const ERROR_DELAY_SECONDS = 3;
+let nextLocked = false;
+let lockTimer = null;
+function unlockNext() {
+  clearInterval(lockTimer);
+  nextLocked = false;
+}
+
 function showFeedback(result) {
   const atom = session.current.atom;
   const fb = $('#feedback');
@@ -478,8 +488,26 @@ function showFeedback(result) {
   fb.hidden = false;
 
   const btn = $('#btn-check');
-  btn.disabled = false;
-  btn.textContent = session.isLast ? 'Afronden' : 'Volgende';
+  const nextLabel = session.isLast ? 'Afronden' : 'Volgende';
+  btn.textContent = nextLabel;
+  // Na een fout even wachten: de uitleg moet gelezen worden, niet weggeklikt.
+  if (result.correct) {
+    btn.disabled = false;
+  } else {
+    let left = ERROR_DELAY_SECONDS;
+    nextLocked = true;
+    btn.disabled = true;
+    btn.textContent = `${nextLabel} (${left})`;
+    clearInterval(lockTimer);
+    lockTimer = setInterval(() => {
+      left--;
+      if (left > 0) { btn.textContent = `${nextLabel} (${left})`; return; }
+      unlockNext();
+      btn.textContent = nextLabel;
+      btn.disabled = false;
+      btn.focus();
+    }, 1000);
+  }
   btn.focus();
 
   // Bij een lange zinsoefening staat de uitslag onder de vouw; zonder deze
@@ -1441,7 +1469,13 @@ function wire() {
     // op true: zonder deze test sloeg één Enter de uitslag meteen over.
     if (e.defaultPrevented) return;
     // Op het verbeterscherm gaan pijltje rechts en onder ook naar de volgende.
-    if (answered && ['Enter', 'ArrowRight', 'ArrowDown'].includes(e.key)) { e.preventDefault(); session.next(); nextQuestion(); return; }
+    if (answered && ['Enter', 'ArrowRight', 'ArrowDown'].includes(e.key)) {
+      if (nextLocked) { e.preventDefault(); return; }
+      e.preventDefault();
+      session.next();
+      nextQuestion();
+      return;
+    }
     // Enter op een optie kiest ze én bevestigt meteen, anders moest je na de
     // pijltjes nog naar de knop "Controleer".
     if (e.key === 'Enter' && !answered && document.activeElement?.matches('#question-root .option')) {
