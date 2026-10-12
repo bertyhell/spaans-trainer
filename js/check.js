@@ -299,7 +299,9 @@ export function checkAnswer(input, accepted, { strictAccents = false, ignoreAcce
   }
 
   if (wrongArticle) {
-    return { correct: false, expected: canonical, note: `Let op het lidwoord: ${canonical}` };
+    // Enkel el/la verkeerd: oranje, en de foutenlijst oefent het lidwoord (es→nl).
+    return { correct: false, close: true, expected: canonical, note: `Let op het lidwoord: ${canonical}`,
+      mistakeType: 'articlePicker', mistakeDirection: 'es2nl' };
   }
 
   // 4 — fout, maar op een haar na: hooguit twee bewerkingen ernaast. Telt niet

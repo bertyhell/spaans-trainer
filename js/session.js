@@ -145,13 +145,14 @@ export class Session {
     if (perAtom) {
       for (const p of perAtom) {
         scheduler.record(scheduler.itemKey(p.atomId, dir), p.correct);
-        storage.recordAnswer(p.atomId, p, dir, type.id);
+        storage.recordAnswer(p.atomId, p, p.mistakeDirection ?? dir, p.mistakeType ?? type.id);
       }
       if (!perAtom.some(p => p.atomId === item.atomId)) scheduler.record(item.key, result.correct);
     } else {
       // Met een hint juist: gezien, maar de doos blijft staan.
       scheduler.record(item.key, result.correct, { hold: Boolean(result.hinted) });
-      storage.recordAnswer(item.atomId, result, dir, type.id);
+      // Alleen het lidwoord fout: de foutenlijst oefent dan het lidwoord, niet het schrijven.
+      storage.recordAnswer(item.atomId, result, result.mistakeDirection ?? dir, result.mistakeType ?? type.id);
     }
 
     storage.addExercises(1);
