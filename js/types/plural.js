@@ -47,18 +47,24 @@ export default {
     const { atom } = item;
     const answer = pluralPhrase(atom.es);
 
+    // Zichtbaar van één naar meer, anders lijkt het op "vertaal dit woord".
+    const one = atom.emoji ?? '';
     root.append(
-      el('p', { class: 'q-instruction' }, 'Zet in het meervoud'),
-      el('div', { class: 'q-prompt' },
+      el('p', { class: 'q-instruction' }, 'Niet vertalen: zet in het ', el('strong', {}, 'meervoud')),
+      el('div', { class: 'q-prompt shift-prompt' },
+        el('span', { class: 'shift-tense' }, `enkelvoud ${one}`.trim()),
         el('span', { class: 'q-word', lang: 'es' }, atom.es),
-        speakerButton(atom.es, ctx.speech)),
+        speakerButton(atom.es, ctx.speech),
+        el('span', { class: 'shift-arrow', 'aria-hidden': 'true' }, '→'),
+        el('span', { class: 'q-tense' }, `meervoud ${one.repeat(2)}`.trim()),
+        el('span', { class: 'q-blank' }, '___')),
       el('p', { class: 'q-hint' }, `(${atom.nl[0]})`),
     );
 
     const input = el('input', {
       class: 'answer-input', type: 'text',
       autocomplete: 'off', autocorrect: 'off', autocapitalize: 'off', spellcheck: 'false',
-      lang: 'es', placeholder: 'los / las …', 'aria-label': 'Meervoud',
+      lang: 'es', placeholder: 'meervoud: los / las …', 'aria-label': 'Meervoud',
       oninput: () => ctx.ready(input.value.trim().length > 0),
       onkeydown: e => { if (e.key === 'Enter') { e.preventDefault(); ctx.submit(); } },
     });

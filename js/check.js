@@ -265,6 +265,13 @@ export function checkAnswer(input, accepted, { strictAccents = false, ignoreAcce
   // 1 — exact
   if (find((a, b) => a === b)) return { correct: true, expected: canonical, note: null };
 
+  // Nederlands aan elkaar of los ("hoe lang" voor "hoelang", "e mail" voor
+  // "e-mail") is geen fout: dat is Nederlandse spelling, geen Spaans.
+  const squash = s => s.replace(/[\s-]/g, '');
+  if (lenient && find((a, b) => squash(stripAccents(a)) === squash(stripAccents(b)))) {
+    return { correct: true, expected: canonical, note: null };
+  }
+
   // Een antwoord dat zelf een geldige andere vorm is (rejectNear) of een ander
   // woord uit de cursus, is een vergissing en geen slordigheid.
   const blocked = rejectNear.map(normalize);
@@ -293,8 +300,9 @@ export function checkAnswer(input, accepted, { strictAccents = false, ignoreAcce
     const allowed = b => lenient
       ? (b.length >= 8 ? 3 : b.length >= 6 ? 2 : b.length >= 5 ? 1 : 0)
       : (b.length >= 5 ? 1 : 0);
+    const bare = s => lenient ? squash(stripAccents(s)) : stripAccents(s);
     const typo = (a, b) => stripAccents(a) !== stripAccents(b)
-      && levenshtein(stripAccents(a), stripAccents(b), allowed(b)) <= allowed(b);
+      && levenshtein(bare(a), bare(b), allowed(b)) <= allowed(b);
     if (find(typo)) return { correct: true, almost: true, expected: canonical, note: `¡Casi! Typfoutje, juist is: ${matched}` };
   }
 
@@ -311,4 +319,75 @@ export function checkAnswer(input, accepted, { strictAccents = false, ignoreAcce
     if (find(near)) return { correct: false, close: true, expected: canonical, note: null };
   }
   return { correct: false, expected: canonical, note: null };
+}
+
+/* ------------------------------------------------------------------ */
+/* Vervoegingen: het onderwerp mag erbij                               */
+/* ------------------------------------------------------------------ */
+
+/* De vraag toont "él / ella ___": wie "él apunta" typt, heeft gelijk. */
+const SUBJECTS = {
+  '1s': ['yo'], '2s': ['tú'], '3s': ['él', 'ella', 'usted'],
+  '1p': ['nosotros', 'nosotras'], '2p': ['vosotros', 'vosotras'], '3p': ['ellos', 'ellas', 'ustedes'],
+};
+
+/**
+ * Haalt een voorafgaand onderwerp weg dat bij de persoon past: "él apunta" →
+ * "apunta". `pronoun` is het voornaamwoord zoals het hoort ("él"), `slip` is
+ * gezet als het zonder accent getypt werd ("el apunta").
+ */
+export function stripSubject(input, person) {
+  const words = normalize(input).split(' ');
+  const pronoun = words.length > 1
+    ? SUBJECTS[person]?.find(p => stripAccents(p) === stripAccents(words[0])) : null;
+  if (!pronoun) return { rest: String(input ?? ''), pronoun: null, slip: false };
+  return { rest: words.slice(1).join(' '), pronoun, slip: words[0] !== pronoun };
+}
+
+/** checkAnswer voor een vervoegde vorm, met of zonder onderwerp ervoor. */
+export function checkConjugation(input, accepted, person, opts = {}) {
+  const { rest, pronoun, slip } = stripSubject(input, person);
+  const r = checkAnswer(rest, accepted, opts);
+  if (r.correct && slip && !r.note) {
+    return { ...r, almost: true, note: `¡Casi! Let op het accent: ${pronoun}` };
+  }
+  return r;
+}
+
+/* ------------------------------------------------------------------ */
+/* Spaanse synoniemen                                                  */
+/* ------------------------------------------------------------------ */
+
+/* Woorden die je in elkaars plaats mag gebruiken, telkens in de mannelijke
+ * vorm: de vrouwelijke en meervoudige vormen volgen. "la rutina cotidiana" is
+ * even goed als "la rutina diaria". */
+const ES_SYNONYMS = [
+  ['diario', 'cotidiano'],
+];
+
+const SYNONYM_OF = new Map();
+for (const group of ES_SYNONYMS) {
+  for (const ending of ['', 's']) {
+    for (const g of ['o', 'a']) {
+      const forms = group.map(w => w.replace(/o$/, g) + ending);
+      for (const f of forms) SYNONYM_OF.set(f, forms.filter(x => x !== f));
+    }
+  }
+}
+
+/** De aanvaarde vormen, aangevuld met dezelfde zin waarin een woord door een
+ *  synoniem vervangen is. Enkel de toevoegingen, zonder de originelen. */
+export function synonymVariants(accepted) {
+  const out = new Set();
+  for (const a of accepted) {
+    for (const v of expandVariants(a)) {
+      const words = v.split(' ');
+      words.forEach((w, i) => {
+        for (const syn of SYNONYM_OF.get(w.toLowerCase()) ?? []) {
+          out.add([...words.slice(0, i), syn, ...words.slice(i + 1)].join(' '));
+        }
+      });
+    }
+  }
+  return [...out];
 }

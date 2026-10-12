@@ -16,7 +16,7 @@
 
 import { el, shuffle, sample, optionList, accentBar } from '../dom.js';
 import { conjugatedForm, verbTranslation, PERSON_LABELS, TENSE_LABELS } from '../data.js';
-import { checkAnswer, stripAccents } from '../check.js';
+import { checkConjugation, stripSubject, stripAccents } from '../check.js';
 import { getProgress } from '../storage.js';
 import { hintLadder } from '../hintLadder.js';
 import { otherForms, describeForm } from './conjugation.js';
@@ -126,8 +126,9 @@ export const answerQuestion = {
     return {
       focus() { input.focus(); },
       check() {
-        const r = checkAnswer(input.value, [atom.form], { rejectNear: otherForms(atom.verb, atom.form) });
-        return hint.apply({ ...r, given: input.value, note: r.correct ? r.note : note(input.value) ?? r.note });
+        const r = checkConjugation(input.value, [atom.form], atom.person, { rejectNear: otherForms(atom.verb, atom.form) });
+        const typed = stripSubject(input.value, atom.person).rest;
+        return hint.apply({ ...r, given: input.value, note: r.correct ? r.note : note(typed) ?? r.note });
       },
       reveal(result) { gap.textContent = atom.form; finishInput(input, hint, result); },
     };
@@ -222,8 +223,8 @@ export const tenseContext = {
     return {
       focus() { input.focus(); },
       check() {
-        const r = checkAnswer(input.value, accepted, { rejectNear: otherForms(atom.verb, atom.form) });
-        return hint.apply({ ...r, given: input.value, note: r.correct ? r.note : note(input.value) });
+        const r = checkConjugation(input.value, accepted, atom.person, { rejectNear: otherForms(atom.verb, atom.form) });
+        return hint.apply({ ...r, given: input.value, note: r.correct ? r.note : note(stripSubject(input.value, atom.person).rest) });
       },
       reveal(result) { gap.textContent = atom.form; finishInput(input, hint, result); },
     };

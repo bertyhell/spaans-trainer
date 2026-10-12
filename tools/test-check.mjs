@@ -1,7 +1,7 @@
 /* Eenheidstests voor de antwoordcontrole. Geen afhankelijkheden.
  * Uitvoeren:  node tools/test-check.mjs  */
 
-import { checkAnswer, stripAccents, levenshtein, stripArticle, normalize, expandVariants, speakable, setLexicon, diacriticClash } from '../js/check.js';
+import { checkAnswer, stripAccents, levenshtein, stripArticle, normalize, expandVariants, speakable, setLexicon, diacriticClash, checkConjugation, synonymVariants } from '../js/check.js';
 
 let failed = 0;
 const results = [];
@@ -125,6 +125,29 @@ t('pato is geen typefout voor plato', answer('el pato', ['el plato']), false);
 t('tonijn is geen typefout voor konijn', answer('tonijn', ['het konijn']), false);
 t('echte typefout blijft aanvaard (lexicon)', answer('corbatta', ['la corbata']), true);
 setLexicon([]);
+
+/* --- Nederlands: aan elkaar of los --- */
+const NL = { ignoreAccents: true, lenient: true };
+t('hoe lang voor hoelang', checkAnswer('hoe lang', ['Hoelang?'], NL), { correct: true, expected: 'Hoelang?', note: null });
+t('e mail voor e-mail', answer('de e mail', ['de e-mail'], NL), true);
+t('los en typfout samen', answer('hoe lnag', ['Hoelang?'], NL), true);
+t('Spaans: spaties blijven tellen', checkAnswer('para guas', ['el paraguas']).note === null, false);
+
+/* --- vervoeging: onderwerp mag erbij --- */
+const conj = (input, person) => checkConjugation(input, ['apunta'], person, { rejectNear: ['apunto', 'apuntas'] });
+t('él apunta', conj('él apunta', '3s').correct, true);
+t('Ella apunta', conj('Ella apunta', '3s').correct, true);
+t('usted apunta', conj('usted apunta', '3s').correct, true);
+t('zonder onderwerp', conj('apunta', '3s'), { correct: true, expected: 'apunta', note: null });
+t('el zonder accent: bijna', conj('el apunta', '3s').almost, true);
+t('verkeerd onderwerp telt niet', conj('yo apunta', '3s').correct, false);
+t('juist onderwerp, verkeerde vorm', conj('él apunto', '3s').correct, false);
+t('wederkerend met onderwerp', checkConjugation('yo me lavo', ['me lavo'], '1s').correct, true);
+
+/* --- Spaanse synoniemen --- */
+t('cotidiana voor diaria', synonymVariants(['la rutina diaria']), ['la rutina cotidiana']);
+t('diario/-a voor cotidiano/-a', synonymVariants(['cotidiano/-a']), ['diario', 'diaria']);
+t('geen synoniem, geen variant', synonymVariants(['la casa']), []);
 
 /* --- randgevallen --- */
 t('leeg antwoord', answer('', ['algo']), false);

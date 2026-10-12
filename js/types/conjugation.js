@@ -9,7 +9,7 @@
 
 import { el, shuffle, sample, optionList, accentBar } from '../dom.js';
 import { conjugationFamily, conjugatedForm, verbForms, verbTranslation, PERSON_LABELS, PERSON_ORDER, TENSE_LABELS } from '../data.js';
-import { checkAnswer } from '../check.js';
+import { checkConjugation, stripSubject } from '../check.js';
 import { mastery, itemKey } from '../scheduler.js';
 import { hintLadder } from '../hintLadder.js';
 
@@ -114,7 +114,7 @@ export const conjugationGrid = {
         const per = [];
         for (const [person, input] of inputs) {
           const atom = byPerson.get(person);
-          const r = checkAnswer(input.value, [atom.form], { rejectNear: otherForms(atom.verb, atom.form) });
+          const r = checkConjugation(input.value, [atom.form], person, { rejectNear: otherForms(atom.verb, atom.form) });
           per.push({ atomId: atom.id, person, ...r, given: input.value });
         }
         const allOk = per.every(p => p.correct);
@@ -224,10 +224,11 @@ export const conjugationType = {
     return {
       focus() { input.focus(); },
       check() {
-        const r = checkAnswer(input.value, [atom.form], { rejectNear: otherForms(atom.verb, atom.form) });
+        const r = checkConjugation(input.value, [atom.form], atom.person, { rejectNear: otherForms(atom.verb, atom.form) });
         // Een andere bestaande vorm van hetzelfde werkwoord: zeg welke.
+        const typed = stripSubject(input.value, atom.person).rest.trim().toLowerCase();
         const other = !r.correct && otherForms(atom.verb, atom.form)
-          .find(f => f.toLowerCase() === input.value.trim().toLowerCase());
+          .find(f => f.toLowerCase() === typed);
         return hint.apply({ ...r, note: other ? describeForm(atom.verb, other) : r.note, given: input.value });
       },
       reveal({ correct, almost }) {

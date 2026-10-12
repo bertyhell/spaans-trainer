@@ -7,7 +7,7 @@
 
 import { el, sample, accentBar } from '../dom.js';
 import { conjugatedForm, verbTranslation, PERSON_LABELS, TENSE_LABELS } from '../data.js';
-import { checkAnswer } from '../check.js';
+import { checkAnswer, checkConjugation, stripSubject } from '../check.js';
 import { otherForms } from './conjugation.js';
 import { hintLadder } from '../hintLadder.js';
 
@@ -66,8 +66,8 @@ export default {
     return {
       focus() { input.focus(); },
       check() {
-        const r = checkAnswer(input.value, [atom.form], { rejectNear: otherForms(atom.verb, atom.form) });
-        const stayed = !r.correct && checkAnswer(input.value, [fromForm]).correct;
+        const r = checkConjugation(input.value, [atom.form], atom.person, { rejectNear: otherForms(atom.verb, atom.form) });
+        const stayed = !r.correct && checkAnswer(stripSubject(input.value, atom.person).rest, [fromForm]).correct;
         return hint.apply({
           ...r,
           expected: `${fromForm} → ${atom.form}`,

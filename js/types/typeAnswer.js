@@ -2,7 +2,7 @@
 
 import { el, speakerButton, accentBar, FLAGS } from '../dom.js';
 import { vocabAnswer, vocabPrompt, synonymsOf } from '../data.js';
-import { checkAnswer } from '../check.js';
+import { checkAnswer, synonymVariants } from '../check.js';
 import { showEmoji } from '../scheduler.js';
 import { hintLadder } from '../hintLadder.js';
 
@@ -59,6 +59,12 @@ export default {
           if (syn) {
             return hint.apply({ correct: true, expected: atom.es, given: input.value,
               note: `Ook juist! ${syn.es} betekent ook „${atom.nl[0]}”. Hier zochten we: ${atom.es}` });
+          }
+          // Hetzelfde met een synoniem erin: "la rutina cotidiana".
+          const alt = checkAnswer(input.value, synonymVariants(answers));
+          if (alt.correct) {
+            return hint.apply({ ...alt, expected: atom.es, given: input.value,
+              note: `Ook juist! Hier zochten we: ${atom.es}` });
           }
         }
         return hint.apply({ ...r, given: input.value });
