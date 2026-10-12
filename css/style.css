@@ -406,6 +406,8 @@ textarea.answer-input { padding: 10px 14px; resize: vertical; font: inherit; fon
 
 /* Letterpuzzel */
 .letter-line { display: flex; align-items: center; justify-content: center; gap: 8px; }
+/* Hoofdletters lezen makkelijker op losse tegels (geen verwarring tussen l en I). */
+.letter-article, .letter-slot, .letter-tile { text-transform: uppercase; }
 .letter-article { font-size: 1.3rem; font-weight: 700; color: var(--ink-soft); }
 .letter-slots {
   /* Eén regel, ook bij tien letters op een smal scherm: de vakjes krimpen mee. */
