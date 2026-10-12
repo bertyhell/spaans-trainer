@@ -329,6 +329,7 @@ textarea.answer-input { padding: 10px 14px; resize: vertical; font: inherit; fon
 /* Keuzeknoppen */
 .options { display: grid; gap: 10px; }
 .options--compact { grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); }
+.options.options--persons { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 
 .option {
   min-height: var(--tap);

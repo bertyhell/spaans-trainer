@@ -81,6 +81,12 @@ export const personSpot = {
     root.append(el('p', { class: 'q-hint' }, TENSE_LABELS[atom.tense]));
     const opts = optionList(options.map(p => ({ value: p, label: PERSON_LABELS[p] })),
       { compact: true, lang: 'es', onChoose: () => ctx.ready(true) });
+    // Vaste 3×2: enkelvoud op de bovenste rij, meervoud eronder. Een persoon die
+    // wegvalt (zelfde vorm) laat een leeg vak, zodat de rest niet verspringt.
+    const byPerson = new Map(options.map((p, i) => [p, opts.list.children[i]]));
+    opts.list.classList.add('options--persons');
+    opts.list.replaceChildren(...PERSON_ORDER.map(p =>
+      byPerson.get(p) ?? el('span', { 'aria-hidden': 'true' })));
     root.append(opts.list);
 
     return {
