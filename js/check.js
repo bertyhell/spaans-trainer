@@ -5,6 +5,8 @@
  * juist, maar toont de correcte schrijfwijze. Zo leer je canción schrijven
  * zonder afgestraft te worden door een telefoontoetsenbord. */
 
+import { numberWords } from './numerals.js';
+
 const ARTICLES = ['de', 'het', 'een', 'el', 'la', 'los', 'las', 'un', 'una', 'unos', 'unas', "'t"];
 
 /* Het Spaanse lidwoord draagt geslacht en getal: dát moet je leren. "una mano"
@@ -56,6 +58,26 @@ const leadingArticle = s => {
   const first = s.split(' ')[0];
   return s.includes(' ') && ARTICLES.includes(first) ? first : null;
 };
+
+/* ------------------------------------------------------------------ */
+/* Getallen: in cijfers of voluit                                      */
+/* ------------------------------------------------------------------ */
+
+/* "hace cinco grados" voor "hace 5 grados", "vijf graden" voor "5 graden".
+ * Eén laten we weg: un/una/een zijn ook lidwoorden. */
+const NL_NUMBERS = ['nul', null, 'twee', 'drie', 'vier', 'vijf', 'zes', 'zeven', 'acht', 'negen', 'tien',
+  'elf', 'twaalf', 'dertien', 'veertien', 'vijftien', 'zestien', 'zeventien', 'achttien', 'negentien', 'twintig'];
+const NUMBER_WORDS = new Map();
+for (let n = 0; n <= 100; n++) {
+  if (n !== 1) for (const w of new Set([numberWords(n), stripAccents(numberWords(n))])) NUMBER_WORDS.set(w, String(n));
+  if (NL_NUMBERS[n]) NUMBER_WORDS.set(NL_NUMBERS[n], String(n));
+}
+// Langste eerst: "treinta y cinco" vóór "treinta".
+const NUMBER_RE = new RegExp(`(?<![\\p{L}])(${[...NUMBER_WORDS.keys()]
+  .sort((a, b) => b.length - a.length).join('|')})(?![\\p{L}])`, 'gu');
+
+/** Getallen voluit vervangen door cijfers (verwacht een genormaliseerde string). */
+export const numbersAsDigits = s => s.replace(NUMBER_RE, w => NUMBER_WORDS.get(w));
 
 /* ------------------------------------------------------------------ */
 /* Notatie in de woordenlijst                                          */
@@ -235,6 +257,9 @@ export function checkAnswer(input, accepted, { strictAccents = false, ignoreAcce
     for (const x of new Set([a, ...expandVariants(a)])) {
       const n = normalize(x);
       variants.push({ s: n, art: null, full: x });
+      // "5" in de woordenlijst, "cinco" in het antwoord (of omgekeerd).
+      const d = numbersAsDigits(n);
+      if (d !== n) variants.push({ s: d, art: null, full: x });
       const art = leadingArticle(n);
       if (art) variants.push({ s: stripArticle(n), art, full: x });
     }
@@ -243,6 +268,8 @@ export function checkAnswer(input, accepted, { strictAccents = false, ignoreAcce
   const tries = [{ s: given, art: null }];
   const givenArt = leadingArticle(given);
   if (givenArt) tries.push({ s: stripArticle(given), art: givenArt });
+  const givenDigits = numbersAsDigits(given);
+  if (givenDigits !== given) tries.push({ s: givenDigits, art: null });
 
   let wrongArticle = false;
   const clash = (t, v) => t.art && v.art && ES_GENDER[t.art] && ES_GENDER[v.art]
@@ -301,7 +328,9 @@ export function checkAnswer(input, accepted, { strictAccents = false, ignoreAcce
       ? (b.length >= 8 ? 3 : b.length >= 6 ? 2 : b.length >= 5 ? 1 : 0)
       : (b.length >= 5 ? 1 : 0);
     const bare = s => lenient ? squash(stripAccents(s)) : stripAccents(s);
-    const typo = (a, b) => stripAccents(a) !== stripAccents(b)
+    // Een ander cijfer is een ander getal, geen typfout.
+    const sameDigits = (a, b) => a.replace(/\D/g, '') === b.replace(/\D/g, '');
+    const typo = (a, b) => stripAccents(a) !== stripAccents(b) && sameDigits(a, b)
       && levenshtein(bare(a), bare(b), allowed(b)) <= allowed(b);
     if (find(typo)) return { correct: true, almost: true, expected: canonical, note: `¡Casi! Typfoutje, juist is: ${matched}` };
   }

@@ -149,6 +149,15 @@ t('cotidiana voor diaria', synonymVariants(['la rutina diaria']), ['la rutina co
 t('diario/-a voor cotidiano/-a', synonymVariants(['cotidiano/-a']), ['diario', 'diaria']);
 t('geen synoniem, geen variant', synonymVariants(['la casa']), []);
 
+/* --- getallen in cijfers of voluit --- */
+t('cinco voor 5', answer('hace cinco grados', ['hace 5 grados']), true);
+t('5 voor cinco', answer('hace 5 grados', ['hace cinco grados']), true);
+t('vijf voor 5 (nl)', answer('het is vijf graden', ['het is 5 graden'], { lenient: true }), true);
+t('5 voor vijf (nl)', answer('het is 5 graden', ['het is vijf graden'], { lenient: true }), true);
+t('veintidos zonder accent', answer('veintidos años', ['22 años']), true);
+t('ander cijfer is geen typfout', answer('hace 6 grados', ['hace 5 grados']), false);
+t('verkeerd getal blijft fout', answer('hace seis grados', ['hace 5 grados']), false);
+
 /* --- randgevallen --- */
 t('leeg antwoord', answer('', ['algo']), false);
 t('enkel spaties', answer('   ', ['algo']), false);

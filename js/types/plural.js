@@ -47,17 +47,21 @@ export default {
     const { atom } = item;
     const answer = pluralPhrase(atom.es);
 
-    // Zichtbaar van één naar meer, anders lijkt het op "vertaal dit woord".
+    // Zichtbaar van één naar meer, anders lijkt het op "vertaal dit woord":
+    // één kaartje links, een stapel kaartjes rechts, en het invulveld zelf
+    // ligt ook op een stapel.
     const one = atom.emoji ?? '';
     root.append(
       el('p', { class: 'q-instruction' }, 'Niet vertalen: zet in het ', el('strong', {}, 'meervoud')),
-      el('div', { class: 'q-prompt shift-prompt' },
-        el('span', { class: 'shift-tense' }, `enkelvoud ${one}`.trim()),
-        el('span', { class: 'q-word', lang: 'es' }, atom.es),
-        speakerButton(atom.es, ctx.speech),
-        el('span', { class: 'shift-arrow', 'aria-hidden': 'true' }, '→'),
-        el('span', { class: 'q-tense' }, `meervoud ${one.repeat(2)}`.trim()),
-        el('span', { class: 'q-blank' }, '___')),
+      el('div', { class: 'plural-prompt' },
+        el('div', { class: 'plural-card' },
+          el('span', { class: 'plural-label' }, `1 · enkelvoud ${one}`.trim()),
+          el('span', { class: 'q-word', lang: 'es' }, atom.es),
+          speakerButton(atom.es, ctx.speech)),
+        el('span', { class: 'plural-arrow', 'aria-hidden': 'true' }, '→'),
+        el('div', { class: 'plural-card plural-card--stack' },
+          el('span', { class: 'plural-label' }, `2+ · meervoud ${one.repeat(3)}`.trim()),
+          el('span', { class: 'q-word plural-unknown', 'aria-label': 'meervoud' }, '?'))),
       el('p', { class: 'q-hint' }, `(${atom.nl[0]})`),
     );
 
@@ -68,7 +72,7 @@ export default {
       oninput: () => ctx.ready(input.value.trim().length > 0),
       onkeydown: e => { if (e.key === 'Enter') { e.preventDefault(); ctx.submit(); } },
     });
-    root.append(el('div', { class: 'input-wrap' }, input),
+    root.append(el('div', { class: 'input-wrap plural-stack' }, input),
       accentBar(input, () => ctx.ready(input.value.trim().length > 0), ['á', 'é', 'í', 'ó', 'ú', 'ñ']));
     const hint = hintLadder(answer);
     root.append(hint.node);

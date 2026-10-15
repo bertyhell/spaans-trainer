@@ -312,6 +312,23 @@ h1.brand { display: flex; align-items: center; gap: 8px; }
 textarea.answer-input { padding: 10px 14px; resize: vertical; font: inherit; font-size: 1.1rem; line-height: 1.4; }
 
 .input-wrap { position: relative; }
+
+/* Meervoud: één kaartje → een stapel. Ook het invulveld ligt op een stapel,
+ * zodat het niet lijkt op "vertaal dit woord". */
+.plural-prompt { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.plural-card {
+  flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; align-items: flex-start; gap: 4px;
+  padding: 10px 12px; background: var(--surface); border: 2px solid var(--line); border-radius: var(--radius);
+}
+.plural-label { font-size: .8rem; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; color: var(--ink-soft); }
+.plural-card--stack, .plural-stack .answer-input {
+  border-color: var(--brand);
+  box-shadow: 5px 5px 0 -2px var(--surface), 5px 5px 0 0 var(--brand),
+              10px 10px 0 -2px var(--surface), 10px 10px 0 0 var(--brand);
+}
+.plural-stack { margin: 0 10px 10px 0; }
+.plural-arrow { font-size: 1.6rem; color: var(--brand); font-weight: 700; }
+.plural-unknown { color: var(--ink-soft); }
 .input-wrap .answer-input { padding-right: 52px; }
 .input-flag {
   position: absolute; right: 14px; top: 50%; transform: translateY(-50%);

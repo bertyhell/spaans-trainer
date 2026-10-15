@@ -7,3 +7,5 @@ spanish-fotos/
 
 node_modules/
 .DS_Store
+ai-files/
+.claude/launch.json

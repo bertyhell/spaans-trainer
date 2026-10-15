@@ -17,6 +17,8 @@ export const EXTRA_NL = {
   'v.la-crema-solar': ['de zonnecrème'],
   'v.tan-importante-como': ['even belangrijk als'],
   'v.la-gente-del-lugar': ['de lokale bevolking'],
+  'v.a-jugar': ['komaan, laten we spelen!', 'kom, laten we spelen!', 'spelen maar!'],
+  'v.a-su-derecha': ['aan uw rechterkant', 'aan uw rechterzijde', 'rechts van jou'],
 };
 
 /** Emoji die een dubbelzinnige vertaling uit elkaar houdt: "arm" (pobre) is
