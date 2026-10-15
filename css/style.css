@@ -248,6 +248,8 @@ h1.brand { display: flex; align-items: center; gap: 8px; }
 .kind-badge.is-regular { color: var(--ok); background: var(--ok-bg); }
 .kind-badge.is-irregular { color: var(--no); background: var(--no-bg); }
 .q-hint { margin: 0; color: var(--ink-soft); font-size: .92rem; }
+.q-warning { color: var(--almost); font-weight: 600; }
+.q-warning[hidden] { display: none; }
 
 .q-prompt {
   display: flex; align-items: center; justify-content: center; gap: 10px;

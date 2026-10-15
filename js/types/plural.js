@@ -72,10 +72,24 @@ export default {
       accentBar(input, () => ctx.ready(input.value.trim().length > 0), ['á', 'é', 'í', 'ó', 'ú', 'ñ']));
     const hint = hintLadder(answer);
     root.append(hint.node);
+    const warning = el('p', { class: 'q-hint q-warning', role: 'alert', hidden: true });
+    root.append(warning);
+    let warned = false;
 
     return {
       focus() { input.focus(); },
       check() {
+        // Vertaling ingetypt in plaats van het meervoud: één keer waarschuwen
+        // en opnieuw laten proberen, in plaats van het meteen fout te rekenen.
+        if (!warned && checkAnswer(input.value, atom.nl).correct) {
+          warned = true;
+          warning.textContent = 'Dat is de vertaling. Niet vertalen: zet het Spaanse woord in het meervoud.';
+          warning.hidden = false;
+          input.value = '';
+          ctx.ready(false);
+          input.focus();
+          return { retry: true };
+        }
         // Het lidwoord apart nakijken: "casas" zonder las is half goed, niet goed.
         // checkAnswer laat lidwoorden weg, dus dat kijken we zelf na.
         const [article, noun] = answer.split(' ');

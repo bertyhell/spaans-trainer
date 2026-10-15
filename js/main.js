@@ -416,6 +416,9 @@ function doCheck() {
   document.activeElement?.blur?.();
 
   const result = instance.check();
+  // Het type vraagt om een nieuwe poging (bv. vertaald in plaats van
+  // vervoegd): niets nakijken, gewoon opnieuw laten proberen.
+  if (result.retry) { answered = false; return; }
   session.submit(activeType, result);
   instance.reveal?.(result);
   renderLessonProgress();
