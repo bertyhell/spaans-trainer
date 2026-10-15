@@ -44,6 +44,9 @@ export const CONTENT_THEMES = [
   { id: 'getallen', label: 'Getallen', emoji: '🔢', group: 'g-dagelijks' },
   { id: 'waar-is-het', label: 'Waar is het? (voor, achter, op …)', emoji: '📍', group: 'g-huis' },
 
+  // balanced: een les trekt evenveel uit woorden, werkwoorden, grammatica en
+  // vaardigheden (js/scheduler.js, drawBalanced).
+  { id: 'examen-u1-estres', label: 'Primer test con estrés', emoji: '🎯', group: 'g-toetsen', balanced: true },
   { id: 'examen-u1', label: 'Unidad 1 sin estrés', emoji: '🎓', group: 'g-toetsen' },
   { id: 'toets-u1', label: 'Toets unidad 1', emoji: '📝', group: 'g-toetsen' },
   { id: 'instaptoets', label: 'Instaptoets 1.2', emoji: '🚪', group: 'g-toetsen' },
@@ -67,6 +70,8 @@ export const EXISTING_THEMES = [
   'kleuren', 'dagen-en-maanden', 'ww-denken',
   // Berekende getallen, uren en prijzen uit tools/content/numerals.mjs.
   'tijd-en-uur', 'winkelen',
+  // Woordenschat uit tools/content/test-con-estres.mjs.
+  'weer', 'kleding', 'ww-eten', 'meubels', 'apparaten',
 ];
 
 /** Thema-id's per groep, in schermvolgorde. */

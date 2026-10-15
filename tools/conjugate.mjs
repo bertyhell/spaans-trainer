@@ -98,7 +98,7 @@ const FUTURE_STEMS = {
 const GERUNDS = {
   ir: 'yendo', leer: 'leyendo', oír: 'oyendo', traer: 'trayendo', creer: 'creyendo',
   poseer: 'poseyendo', caer: 'cayendo', decir: 'diciendo', venir: 'viniendo',
-  poder: 'pudiendo', reír: 'riendo',
+  poder: 'pudiendo', reír: 'riendo', construir: 'construyendo',
 };
 
 /* Aanvoegende wijs die niet van de yo-vorm afgeleid kan worden. */
@@ -117,6 +117,16 @@ const PARTICIPLES = {
   abrir: 'abierto', escribir: 'escrito', hacer: 'hecho', poner: 'puesto',
   decir: 'dicho', ver: 'visto', volver: 'vuelto', morir: 'muerto', romper: 'roto',
   leer: 'leído', creer: 'creído', poseer: 'poseído', traer: 'traído', oír: 'oído', caer: 'caído',
+  resolver: 'resuelto', cubrir: 'cubierto', descubrir: 'descubierto',
+};
+
+/* Werkwoorden met enkel een eigen yo-vorm in de presente (verbs.mjs:
+ * "yo conduzco"). construir krijgt een y in alle sterke vormen. */
+const YO_CHANGERS = Object.entries(IRREGULAR)
+  .filter(([, c]) => c.startsWith('yo '))
+  .map(([v, c]) => [v, c.slice(3)]);
+const PRESENTE_IRREGULAR = {
+  construir: ['construyo', 'construyes', 'construye', 'construimos', 'construís', 'construyen'],
 };
 
 /* Wederkerende werkwoorden uit de dagelijkse routine, met hun klankwissel.
@@ -125,7 +135,8 @@ export const REFLEXIVE = {
   levantarse: null, ducharse: null, bañarse: null, afeitarse: null, peinarse: null,
   lavarse: null, llamarse: null, casarse: null, cansarse: null, relajarse: null,
   marearse: null, marcharse: null,
-  acostarse: 'o → ue', despertarse: 'e → ie', divertirse: 'e → ie',
+  pintarse: null,
+  acostarse: 'o → ue', despertarse: 'e → ie', divertirse: 'e → ie', vestirse: 'e → i',
 };
 const PRONOUNS = ['me', 'te', 'se', 'nos', 'os', 'se'];
 const REFLEXIVE_TENSES = new Set(['presente', 'indefinido', 'imperfecto', 'futuro', 'perfecto']);
@@ -179,6 +190,8 @@ function subjunctive(verb, yo) {
 /* Regelmatig in de presente, maar met een eigen stam in de indefinido. */
 const INDEFINIDO_IRREGULAR = {
   andar: ['anduve', 'anduviste', 'anduvo', 'anduvimos', 'anduvisteis', 'anduvieron'],
+  conducir: ['conduje', 'condujiste', 'condujo', 'condujimos', 'condujisteis', 'condujeron'],
+  construir: ['construí', 'construiste', 'construyó', 'construimos', 'construisteis', 'construyeron'],
 };
 
 export function indefinidoForms(verb, change = IRREGULAR[verb]) {
@@ -217,8 +230,13 @@ function forms(verb, tense, yo) {
   if (verb in REFLEXIVE) return REFLEXIVE_TENSES.has(tense) ? reflexiveForms(verb, tense) : null;
   if (tense === 'indefinido') return indefinidoForms(verb);
   if (tense === 'presente') {
+    if (PRESENTE_IRREGULAR[verb]) return [...PRESENTE_IRREGULAR[verb]];
     const change = IRREGULAR[verb];
-    return change?.includes('→') ? stemChangedForms(verb, change) : regularForms(verb, tense);
+    if (change?.includes('→')) return stemChangedForms(verb, change);
+    const f = regularForms(verb, tense);
+    const yo = YO_CHANGERS.find(([v]) => v === verb)?.[1];
+    if (f && yo) f[0] = yo;
+    return f;
   }
   if (tense === 'futuro' && FUTURE_STEMS[verb]) return FUTURE.map(e => FUTURE_STEMS[verb] + e);
   if (tense === 'condicional' && FUTURE_STEMS[verb]) return CONDITIONAL.map(e => FUTURE_STEMS[verb] + e);
@@ -244,7 +262,7 @@ const BOOK_INDEFINIDO = ['comer', 'hablar', 'tomar', 'vivir', 'abrir', 'escribir
 const IMPERFECTO_IRREGULAR = new Set(['ser', 'ir', 'ver']);
 
 function verbsToAdd(tense, bookVerbs) {
-  const changers = STEM_CHANGERS.map(([v]) => v);
+  const changers = [...STEM_CHANGERS, ...YO_CHANGERS].map(([v]) => v);
   const regular = [...REGULAR];
   const reflexive = REFLEXIVE_TENSES.has(tense) ? Object.keys(REFLEXIVE) : [];
   return [...baseVerbsToAdd(tense, bookVerbs, changers, regular), ...reflexive];

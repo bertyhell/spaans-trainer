@@ -125,6 +125,24 @@ const fresh = mix.filter(x => Number(x.key.slice(1)) >= 20).length;
 ok(`nieuwe items begrensd (${fresh} van 12 nieuw)`, fresh <= 6, `${fresh} nieuw`);
 ok('er zit ook herhaling in', mix.length - fresh > 0);
 
+/* ---------------- gebalanceerde les ---------------- */
+reset();
+const part = it => it.key[0];
+const lopsided = [
+  ...Array.from({ length: 1000 }, (_, i) => ({ atomId: `w${i}`, direction: null, key: `w${i}` })),
+  ...Array.from({ length: 300 }, (_, i) => ({ atomId: `v${i}`, direction: null, key: `v${i}` })),
+  ...Array.from({ length: 40 }, (_, i) => ({ atomId: `g${i}`, direction: null, key: `g${i}` })),
+  ...Array.from({ length: 2 }, (_, i) => ({ atomId: `s${i}`, direction: null, key: `s${i}` })),
+];
+const perPart = lesson => lesson.reduce((n, it) => ({ ...n, [part(it)]: (n[part(it)] ?? 0) + 1 }), {});
+const even = scheduler.drawBalanced(lopsided.filter(it => part(it) !== 's'), 12, part);
+t('gebalanceerd: elk onderdeel evenveel, hoe groot ook', perPart(even), { w: 4, v: 4, g: 4 });
+const topped = scheduler.drawBalanced(lopsided, 12, part);
+t('gebalanceerd: klein onderdeel geeft wat het heeft', perPart(topped).s, 2);
+t('gebalanceerd: de rest vult aan tot de les vol is', topped.length, 12);
+t('gebalanceerd: geen item twee keer', new Set(topped.map(l => l.key)).size, 12);
+t('gebalanceerd: te weinig items krimpt', scheduler.drawBalanced(lopsided.slice(0, 3), 12, part).length, 3);
+
 /* ---------------- beheersing ---------------- */
 reset();
 t('onbekend thema is 0% beheerst', scheduler.mastery(['n1', 'n2']), 0);

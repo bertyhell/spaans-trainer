@@ -104,6 +104,10 @@ const verbOf = atom => atom.verb ?? atom.es;
  */
 export function countForThemes(themeIds) {
   const atoms = themeIds.flatMap(id => byTheme.get(id) ?? []).filter(a => a.kind !== 'lyric');
+  // Een gemengde toets is geen woordenlijst: tel in oefeningen.
+  if (themeIds.some(id => themeById.get(id)?.balanced)) {
+    return { count: atoms.length, noun: atoms.length === 1 ? 'oefening' : 'oefeningen' };
+  }
   if (atoms.length && atoms.every(isVerb)) {
     return { count: new Set(atoms.map(verbOf)).size, noun: 'werkwoorden' };
   }
@@ -115,6 +119,28 @@ export function countForThemes(themeIds) {
 }
 
 export const countFor = themeId => countForThemes([themeId]);
+
+/* Thema's waarvan de oefeningen over werkwoorden gaan, ook als het zinnen of
+ * meerkeuzevragen zijn. */
+const VERB_THEME = /^(vv-|vs-|gr-zin-|aan-het-doen$|verleden-tijden$|gr-perfecto-indefinido$|gr-indefinido-imperfecto$|gr-imperativo$)/;
+
+/**
+ * Bij welk onderdeel van een toets hoort dit atoom: woorden, werkwoorden,
+ * grammatica of vaardigheden (luisteren, lezen, spreken, schrijven)? Een
+ * gebalanceerd thema trekt uit elk onderdeel evenveel vragen. Een atoom kan
+ * het zelf zeggen met `part`; anders volgt het uit zijn soort en thema.
+ */
+export function lessonPart(atom) {
+  if (atom.part) return atom.part;
+  switch (atom.kind) {
+    case 'vocab': return 'woorden';
+    case 'conjugation': case 'verbType': return 'werkwoorden';
+    case 'dialogue': case 'reading': case 'numeral': case 'stress': return 'vaardigheden';
+  }
+  if (VERB_THEME.test(atom.theme ?? '')) return 'werkwoorden';
+  if (/^(lezen|luister)-/.test(atom.theme ?? '')) return 'vaardigheden';
+  return 'grammatica';
+}
 
 /**
  * Thema's gebundeld per onderwerp — voedt de startpagina.

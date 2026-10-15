@@ -156,3 +156,30 @@ export function drawLesson(items, size = 12, now = Date.now()) {
 
   return shuffle(lesson);
 }
+
+/**
+ * Een les met evenveel vragen uit elk onderdeel, hoe groot dat onderdeel ook
+ * is: een toets met duizend vervoegingen en driehonderd woorden geeft toch
+ * evenveel woordvragen als werkwoordvragen. Binnen een onderdeel beslist de
+ * gewone trekking. Heeft een onderdeel te weinig, dan vullen de andere aan;
+ * wat niet eerlijk te verdelen valt, gaat naar een willekeurig onderdeel.
+ *
+ * @param partOf  item -> naam van het onderdeel
+ */
+export function drawBalanced(items, size, partOf, now = Date.now()) {
+  const parts = new Map();
+  for (const it of items) {
+    const p = partOf(it);
+    if (!parts.has(p)) parts.set(p, []);
+    parts.get(p).push(it);
+  }
+  const groups = shuffle([...parts.values()]);
+  const quota = groups.map(() => 0);
+  let left = Math.min(size, items.length);
+  while (left > 0) {
+    groups.forEach((g, i) => {
+      if (left > 0 && quota[i] < g.length) { quota[i]++; left--; }
+    });
+  }
+  return shuffle(groups.flatMap((g, i) => (quota[i] ? drawLesson(g, quota[i], now) : [])));
+}

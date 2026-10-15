@@ -297,7 +297,9 @@ function startLesson(themeIds, { items = itemsForThemes(themeIds), mistakes = fa
   speech.arm();
   if (env.forceType) items = items.filter(i => supportedFor(i, env).some(t => t.id === env.forceType));
 
-  session = new Session({ items, size: lessonSize(), env });
+  // Een gemengde toets: evenveel woorden als werkwoorden, grammatica en vaardigheden.
+  const balanced = !mistakes && !review && themeIds.some(id => data.getTheme(id)?.balanced);
+  session = new Session({ items, size: lessonSize(), env, balanced });
   // Wie oefent, wil dat de voortgang blijft: vraag de browser ze niet op te ruimen.
   storage.persist();
 

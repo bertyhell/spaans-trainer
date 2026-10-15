@@ -93,8 +93,8 @@ export const IRREGULAR = {
   encontrar: 'o → ue', llover: 'o → ue', morir: 'o → ue', mostrar: 'o → ue',
   poder: 'o → ue', probar: 'o → ue', volver: 'o → ue',
   pedir: 'e → i', repetir: 'e → i', servir: 'e → i', vestir: 'e → i',
-  jugar: 'u → ue',
-  salir: 'yo salgo',
+  jugar: 'u → ue', almorzar: 'o → ue', resolver: 'o → ue',
+  salir: 'yo salgo', conducir: 'yo conduzco', caer: 'yo caigo', construir: 'yo construyo',
 };
 
 /* Regelmatig in de presente. Bewust weggelaten: reunir (reúno) en esquiar
@@ -119,4 +119,7 @@ export const REGULAR = new Set([
   'abrir', 'admitir', 'añadir', 'aplaudir', 'definir', 'escribir',
   'interrumpir', 'partir', 'permitir', 'persuadir', 'recibir', 'resistir',
   'subir', 'sufrir', 'vivir',
+  // Regelmatig in de presente, met een onregelmatig voltooid deelwoord
+  // (roto, cubierto, descubierto) of een spellingswissel (llegué).
+  'llegar', 'romper', 'cubrir', 'descubrir',
 ]);

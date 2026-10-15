@@ -49,7 +49,8 @@ export function withIntros(queue, lead = INTRO_LEAD) {
 }
 
 export class Session {
-  constructor({ items, size = 12, env, intros = true }) {
+  /** @param balanced  evenveel vragen uit elk onderdeel (data.lessonPart) */
+  constructor({ items, size = 12, env, intros = true, balanced = false }) {
     // Een eigen kopie: een les kan een vorm uitschakelen (bv. geen microfoon)
     // zonder dat de volgende les dat erft.
     this.env = { ...env };
@@ -58,7 +59,9 @@ export class Session {
     // items uitvallen die de trekking al had opgebruikt.
     const eligible = items.filter(item => supportedFor(item, env).length > 0);
     const laddered = eligible.some(i => i.mistakeType);
-    this.queue = scheduler.drawLesson(eligible, laddered ? Math.min(size, MISTAKE_WORDS) : size);
+    this.queue = balanced && !laddered
+      ? scheduler.drawBalanced(eligible, size, item => data.lessonPart(item.atom))
+      : scheduler.drawLesson(eligible, laddered ? Math.min(size, MISTAKE_WORDS) : size);
     this.questions = this.queue.length;   // zonder de herkansingen, kennismakingen en makkelijkere voorstappen
     if (laddered) this.queue = this.withEasierSteps(this.queue);
     if (intros && !env.forceType) this.queue = withIntros(this.queue);
