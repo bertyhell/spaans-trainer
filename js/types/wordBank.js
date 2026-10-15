@@ -147,6 +147,32 @@ export default {
     requestAnimationFrame(reserveHeight);
     window.addEventListener('resize', reserveHeight);
 
+    // Pijltjes: links/rechts binnen een rij, boven/onder tussen jouw zin en de
+    // woordbank. Enter op een tegel legt hem (of haalt hem weg).
+    let locked = false;
+    function onKey(e) {
+      if (!answerRow.isConnected) { document.removeEventListener('keydown', onKey); return; }
+      if (locked || e.defaultPrevented || e.ctrlKey || e.metaKey || e.altKey) return;
+      const live = row => [...row.querySelectorAll('.tile:not(:disabled)')];
+      const active = document.activeElement;
+      const row = [answerRow, bankRow].find(r => r.contains(active) && active.matches('.tile'));
+      if (e.key === 'Enter' && row) { e.preventDefault(); active.click(); return; }
+      if (!['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].includes(e.key)) return;
+      e.preventDefault();
+      if (!row) { (live(bankRow)[0] ?? live(answerRow)[0])?.focus(); return; }
+      const here = live(row);
+      const at = here.indexOf(active);
+      if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+        const step = e.key === 'ArrowRight' ? 1 : -1;
+        here[(at + step + here.length) % here.length]?.focus();
+        return;
+      }
+      const other = live(e.key === 'ArrowUp' ? answerRow : bankRow);
+      if (other === here || !other.length || (e.key === 'ArrowUp') === (row === answerRow)) return;
+      other[Math.min(at, other.length - 1)].focus();
+    }
+    document.addEventListener('keydown', onKey);
+
     const built = () => chosen.map(t => t.w).join(' ');
 
     return {
@@ -160,6 +186,7 @@ export default {
         return { ...r, note, given: built() };
       },
       reveal({ correct }) {
+        locked = true;
         answerRow.classList.add(correct ? 'is-correct' : 'is-wrong');
         [...answerRow.children, ...bankRow.children].forEach(b => { b.disabled = true; });
         const sb = speakerButton(atom.es, ctx.speech);
