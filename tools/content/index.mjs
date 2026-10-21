@@ -26,6 +26,8 @@
  *   dialogue  { text, line, who?, es, nl }                      zin uit een dialoog
  *   stress    { es, syllables, stressed, nl?, note? }           klemtoon aanduiden
  *   numeral   { gen, label, min?, max?, minutes? }               berekend getal, uur, datum, prijs
+ * Een sentence mag esAlt: [...] hebben: andere woordvolgordes die bij "zin
+ * bouwen" ook goed zijn.
  * Allemaal met id, kind, theme, en src (scanbestand) of srcLabel (vrije
  * bronvermelding), optioneel grammarRef (sleutel in `grammar`) en note.
  */

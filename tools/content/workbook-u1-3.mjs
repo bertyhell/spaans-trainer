@@ -453,23 +453,8 @@ const unidad1 = [
       'Heb je het bed opgemaakt? – Ik ben het aan het opmaken.'],
   ]),
 
-  // 27 · Panamericana: Perú
-  ...choices({ prefix: 'u1.27', page: 85, theme: 'lezen-u1' }, [
-    ['1', '¿Qué ciudad peruana fue la capital del Imperio inca, con enormes muros antiguos?',
-      ['Cusco', 'Lima', 'Arequipa'], 'Cusco', 'Cusco was de hoofdstad van het Incarijk.'],
-    ['2', '¿Qué metrópolis peruana tiene muchos edificios de estilo colonial?',
-      ['Lima', 'Iquitos', 'Machu Picchu'], 'Lima', 'Lima, de hoofdstad, heeft veel koloniale gebouwen.'],
-    ['3', '¿A qué ciudad peruana solo se puede llegar en barco o en avión?',
-      ['Iquitos', 'Lima', 'Arequipa'], 'Iquitos', 'Iquitos, in het Amazonewoud, bereik je alleen per boot of vliegtuig.'],
-    ['4', '¿Cómo se llama un famoso escritor peruano?',
-      ['Vargas Llosa', 'Carlos Gardel', 'Cervantes'], 'Vargas Llosa', 'Mario Vargas Llosa is een beroemde Peruaanse schrijver.'],
-    ['5', '¿Cuál es el destino final de la ruta de 45 km a 4500 m de altura, el Camino Inca?',
-      ['Machu Picchu', 'Cusco', 'Iquitos'], 'Machu Picchu', 'Het Camino Inca eindigt in Machu Picchu.'],
-    ['6', '¿Qué ciudad peruana tiene un clima fantástico y 300 días de sol al año?',
-      ['Arequipa', 'Lima', 'Iquitos'], 'Arequipa', 'Arequipa heeft 300 zonnige dagen per jaar.'],
-    ['7', '¿Cómo se llama en Perú el mal de altura?',
-      ['el soroche', 'el mate', 'la niebla'], 'el soroche', 'Soroche is hoogteziekte, het grootste probleem op het Camino Inca.'],
-  ]),
+  // 27 · Panamericana: Perú — weggelaten: dat zijn kennisvragen over het land,
+  // geen taal, en de tekst staat er niet bij.
 ];
 
 /* ------------------------------------------------------------------ */
@@ -832,23 +817,8 @@ const unidad2 = [
       'Brengt u me nog een koffie? Otro nooit samen met un/una.'],
   ]),
 
-  // 28 · Panamericana: Chile
-  ...choices({ prefix: 'u2.28', page: 95, theme: 'lezen-u2' }, [
-    ['1', '¿Cuántos kilómetros de longitud tiene Chile?', ['4200 km', '1200 km', '8000 km'], '4200 km',
-      'Chili is ongeveer 4200 km lang.'],
-    ['2', '¿Cómo se llama el desierto más seco del mundo?', ['Atacama', 'Sonora', 'Patagonia'], 'Atacama',
-      'De Atacama is de droogste woestijn ter wereld.'],
-    ['3', '¿Dónde está el desierto de Atacama?', ['En el norte de Chile', 'En el sur de Chile', 'En la Isla de Pascua'], 'En el norte de Chile',
-      'De Atacama ligt in het noorden van Chili.'],
-    ['4', '¿Dónde hay fiordos, glaciares y pingüinos?', ['En la Patagonia', 'En el desierto de Atacama', 'En Valparaíso'], 'En la Patagonia',
-      'Fjorden, gletsjers en pinguïns vind je in Patagonië.'],
-    ['5', '¿Dónde están los moáis?', ['En la Isla de Pascua', 'En la Patagonia', 'En Santiago'], 'En la Isla de Pascua',
-      'De moai-beelden staan op Paaseiland.'],
-    ['6', '¿Por qué es famoso Valparaíso?',
-      ['Es la capital cultural, Patrimonio de la Humanidad, y tiene un puerto importante.', 'Es el desierto más seco del mundo.', 'Tiene fiordos, glaciares y pingüinos.'],
-      'Es la capital cultural, Patrimonio de la Humanidad, y tiene un puerto importante.',
-      'Valparaíso is de culturele hoofdstad, werelderfgoed, en heeft een belangrijke haven.'],
-  ]),
+  // 28 · Panamericana: Chile — weggelaten: dat zijn kennisvragen over het land,
+  // geen taal, en de tekst staat er niet bij.
 
   // 29 · Reglas de etiqueta en una comida de trabajo
   ...[
@@ -1287,26 +1257,8 @@ const unidad3 = [
       'Het bevalt me omdat het rustig en goedkoop is: het appartement.'],
   ]),
 
-  // 26 · Panamericana: Argentina
-  ...choices({ prefix: 'u3.26', page: 104, theme: 'lezen-u3' }, [
-    ['1', '¿Cuántos habitantes tiene Buenos Aires?', ['unos 14 millones', 'unos 4 millones', 'unos 40 millones'], 'unos 14 millones',
-      'Buenos Aires (met de agglomeratie) heeft zo’n 14 miljoen inwoners.'],
-    ['2', '¿Qué es el Perito Moreno?',
-      ['un glaciar en la Patagonia argentina', 'un baile típico de Buenos Aires', 'una bebida caliente'], 'un glaciar en la Patagonia argentina',
-      'De Perito Moreno is een gletsjer in Argentijns Patagonië.'],
-    ['3', '¿Dónde nació el tango?', ['En el Río de la Plata', 'En la Patagonia', 'En Finlandia'], 'En el Río de la Plata',
-      'De tango ontstond aan de Río de la Plata.'],
-    ['4', '¿Quién es un representante famoso del tango?', ['Carlos Gardel', 'Mario Vargas Llosa', 'Guillermo Xiu'], 'Carlos Gardel',
-      'Carlos Gardel (en ook Ástor Piazzolla) is een beroemde naam uit de tango.'],
-    ['5', '¿En qué país europeo hay muchos aficionados al tango?', ['En Finlandia', 'En Suecia', 'En Portugal'], 'En Finlandia',
-      'Finland heeft verrassend veel tangoliefhebbers.'],
-    ['6', '¿Qué es el mate?', ['Una bebida caliente de té de mate.', 'Un plato frío con carne.', 'Un baile argentino.'], 'Una bebida caliente de té de mate.',
-      'Mate is een warme drank van mate-thee.'],
-    ['7', '¿Qué ritual hay para tomar el mate?',
-      ['Se bebe del mismo vaso y se pasa de mano en mano.', 'Se bebe solo, nunca con amigos.', 'Se bebe frío después de cenar.'],
-      'Se bebe del mismo vaso y se pasa de mano en mano.',
-      'Iedereen drinkt uit dezelfde beker, die van hand tot hand gaat.'],
-  ]),
+  // 26 · Panamericana: Argentina — weggelaten: dat zijn kennisvragen over het land,
+  // geen taal, en de tekst staat er niet bij.
 
   // 27 · Un currículum vitae (Cecilia Romero Alonso)
   ...sentences({

@@ -35,7 +35,7 @@ import agreement from './agreement.js';
 import { listenType, listenChoose } from './listen.js';
 import choice from './choice.js';
 import reading from './reading.js';
-import { dialogueMeaning, dialogueReply } from './dialogue.js';
+import { dialogueMeaning } from './dialogue.js';
 import stressTap from './stressTap.js';
 import spotError from './spotError.js';
 import letterPuzzle from './letterPuzzle.js';
@@ -76,7 +76,6 @@ export const TYPES = [
   choice,
   reading,
   dialogueMeaning,
-  dialogueReply,
   dialogueOrder,
   stressTap,
   spotError,
@@ -148,12 +147,10 @@ const WEIGHTS = {
   numeralRead: 2,
   speakWord: 2,
   speakSentence: 2,
-  // Deze vormen zijn de enige voor hun soort atoom: het gewicht doet er dan
-  // niet toe, behalve bij een dialoogregel, waar antwoorden net iets meer oplevert.
+  // Deze vormen zijn de enige voor hun soort atoom: het gewicht doet er dan niet toe.
   choice: 1,
   reading: 1,
   dialogueMeaning: 2,
-  dialogueReply: 3,
   stressTap: 1,
 };
 
@@ -163,7 +160,7 @@ const WEIGHTS = {
  * moet opschrijven. Vormen zonder `mode` zitten ertussenin. */
 const RECOGNIZE = new Set([
   'multipleChoice', 'articlePicker', 'oddOneOut', 'irregularVerb', 'verbType', 'verbSort',
-  'listenChoose', 'conjugationSingle', 'dialogueMeaning', 'dialogueReply', 'stressTap',
+  'listenChoose', 'conjugationSingle', 'dialogueMeaning', 'stressTap',
   'tenseSpot', 'personSpot', 'dialogueOrder', 'emojiPick', 'trueFalse', 'sentenceMeaning', 'pickSentence',
   'contextMeaning', 'confusionPair', 'minimalPair', 'numeralRead', 'numeralListen',
 ]);

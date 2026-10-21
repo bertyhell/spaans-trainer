@@ -136,7 +136,9 @@ const lopsided = [
 ];
 const perPart = lesson => lesson.reduce((n, it) => ({ ...n, [part(it)]: (n[part(it)] ?? 0) + 1 }), {});
 const even = scheduler.drawBalanced(lopsided.filter(it => part(it) !== 's'), 12, part);
-t('gebalanceerd: elk onderdeel evenveel, hoe groot ook', perPart(even), { w: 4, v: 4, g: 4 });
+// De volgorde van de les is willekeurig, dus vergelijk met gesorteerde sleutels.
+const sorted = o => Object.fromEntries(Object.entries(o).sort(([a], [b]) => a.localeCompare(b)));
+t('gebalanceerd: elk onderdeel evenveel, hoe groot ook', sorted(perPart(even)), { g: 4, v: 4, w: 4 });
 const topped = scheduler.drawBalanced(lopsided, 12, part);
 t('gebalanceerd: klein onderdeel geeft wat het heeft', perPart(topped).s, 2);
 t('gebalanceerd: de rest vult aan tot de les vol is', topped.length, 12);

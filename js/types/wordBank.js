@@ -179,8 +179,9 @@ export default {
       focus() { bankRow.querySelector('.tile:not(.is-used)')?.focus(); },
       check() {
         // Dezelfde controle als bij intypen: ¿ ¡ en komma's tellen niet mee.
-        // Een typefout kan hier niet, de tegels liggen vast.
-        const r = checkAnswer(built(), [atom.es], { rejectNear: [built()] });
+        // Een typefout kan hier niet, de tegels liggen vast. esAlt: andere
+        // woordvolgordes die ook goed zijn ("Desayuno con mi familia a las siete.").
+        const r = checkAnswer(built(), [atom.es, ...(atom.esAlt ?? [])], { rejectNear: [built()] });
         const used = chosen.filter(t => extra.includes(t.w) && !words.includes(t.w)).map(t => t.w);
         const note = !r.correct && used.length ? `${used.join(', ')} hoorde${used.length > 1 ? 'n' : ''} er niet bij.` : r.note;
         return { ...r, note, given: built() };

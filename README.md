@@ -20,7 +20,7 @@ kleine aanvulling met A1-basiswoorden (`tools/content/a1-basics.mjs`) en bereken
 | grammaticaregels | 74 | invuloefening, meerkeuze |
 | toets- en werkboekvragen | 604 | meerkeuze (toets unidad 1, instaptoets, Miradores, werkboek) |
 | leesvragen bij 58 teksten | 204 | lezen |
-| dialoogregels (20 eigen dialogen) | 207 | wat zeggen ze?, wat volgt er?, zet in volgorde, dictee, zoek de fout |
+| dialoogregels (20 eigen dialogen) | 207 | wat zeggen ze?, zet in volgorde (eerste regel gegeven), dictee, zoek de fout |
 | klemtoon | 132 | tik de beklemtoonde lettergreep |
 | getallen, uur, datum, prijs | 11 soorten, elke vraag een ander voorbeeld | schrijf voluit, luister en schrijf in cijfers, lees en kies |
 

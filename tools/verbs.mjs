@@ -11,7 +11,11 @@
  * het precies wat je moet leren.
  */
 
-/* `activity: true` wil zeggen: de woorden horen echt samen, en de thema's
+/* Indelen enkel op betekenis, nooit op het hoofdstuk waar het werkwoord
+ * stond: een thema als "cerrar, encender, perder" is gewoon het rijtje
+ * klinkerveranderaars uit de cursus.
+ *
+ * `activity: true` wil zeggen: de woorden horen echt samen, en de thema's
  * overlappen elkaar niet. Alleen tussen zulke thema's vraagt "hoort er niet
  * bij?" naar een werkwoord. "Overige" is een restbak en telt niet mee. */
 export const VERB_THEMES = [
@@ -31,19 +35,19 @@ export const VERB_THEMES = [
     id: 'ww-denken', label: 'Denken, willen en voelen', emoji: '💭', activity: true,
     verbs: [
       'pensar', 'creer', 'entender', 'comprender', 'olvidar', 'sentir', 'temer',
-      'divertirse', 'querer', 'preferir', 'esperar', 'necesitar', 'poder', 'deber',
+      'divertirse', 'querer', 'preferir', 'necesitar', 'poder', 'deber',
     ],
   },
   {
     id: 'ww-gaan', label: 'Gaan en komen', emoji: '🚶', activity: true,
     verbs: [
       'andar', 'caminar', 'correr', 'entrar', 'viajar', 'partir', 'subir',
-      'volver', 'irse', 'marcharse', 'proceder (de)',
+      'volver', 'irse', 'marcharse',
     ],
   },
   {
     id: 'ww-eten', label: 'Eten en drinken', emoji: '🍽️', activity: true,
-    verbs: ['comer', 'beber', 'tomar', 'desayunar', 'cenar', 'fumar', 'servir'],
+    verbs: ['comer', 'beber', 'tomar', 'desayunar', 'cenar', 'servir'],
   },
   {
     id: 'ww-verzorgen', label: 'Slapen, opstaan en verzorgen', emoji: '🪥', activity: true,
@@ -54,20 +58,21 @@ export const VERB_THEMES = [
   },
   {
     id: 'ww-kopen', label: 'Kopen en betalen', emoji: '💶', activity: true,
-    verbs: ['comprar', 'vender', 'pagar', 'costar', 'alquilar', 'reservar', 'poseer', 'recibir'],
+    verbs: ['comprar', 'vender', 'pagar', 'costar', 'alquilar', 'reservar'],
   },
   {
-    id: 'ww-dingen', label: 'Zoeken, openen en tonen', emoji: '🔍', activity: true,
-    verbs: [
-      'buscar', 'encontrar', 'perder', 'esconder', 'mostrar',
-      'abrir', 'cerrar', 'encender', 'añadir', 'señalar',
-    ],
+    id: 'ww-dingen', label: 'Zoeken, vinden en tonen', emoji: '🔍', activity: true,
+    verbs: ['buscar', 'encontrar', 'perder', 'esconder', 'mostrar', 'señalar'],
   },
   {
     id: 'ww-overig', label: 'Overige werkwoorden', emoji: '🔤',
     verbs: [
       'aplaudir', 'cambiar', 'casarse', 'depender', 'empezar', 'llamarse', 'mirar',
       'morir', 'pasar', 'permitir', 'resistir', 'restaurar', 'reunir', 'verse', 'vivir',
+      // Geen eigen betekenisgroep van minstens vier: liever hier dan als
+      // vreemde eend in een thema waar ze niet bij passen.
+      'abrir', 'cerrar', 'encender', 'añadir', 'esperar', 'proceder (de)', 'fumar',
+      'poseer', 'recibir',
     ],
   },
 ];

@@ -156,7 +156,6 @@ const ESTRES_GRAMMAR = [
 const ESTRES_SKILLS = [
   // lezen
   ...range('r.en-camino.', 1, 6), ...range('r.camino-inca.', 1, 6), ...range('r.peru-pilar.', 1, 6),
-  ...range('q.wb-u1.27-', 1, 7),
   // luisteren
   ...range('d.dlg-u1-botas.', 1, 10), ...range('d.dlg-u1-jersey.', 1, 10),
   ...range('d.dlg-u1-tiempo.', 1, 11), ...range('d.dlg-u1-mochila.', 1, 10),
