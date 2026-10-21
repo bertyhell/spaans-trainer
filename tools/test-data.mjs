@@ -35,6 +35,8 @@ const { glossFor } = await import('../js/gloss.js');
 const { questionForm, tenseAlternatives } = await import('../js/types/conversation.js');
 const { sentenceScore } = await import('../js/types/speak.js');
 const { trickyDistractors } = await import('../js/types/multipleChoice.js');
+const { meaningOptions } = await import('../js/types/conjugationMeaning.js');
+const { dutchMeaning, TENSE_GROUP } = await import('../js/dutch.js');
 data.init();
 
 let failed = 0;
@@ -64,6 +66,34 @@ t('otherForms laat de vorm zelf weg', otherForms('hablar', 'habló').includes('h
 t('hablo voor habló geweigerd', checkAnswer('hablo', ['habló'], { rejectNear: otherForms('hablar', 'habló') }).correct, false);
 t('describeForm noemt persoon en tijd', /yo.*presente/.test(describeForm('hablar', 'hablo') ?? ''), true);
 t('conjugationsOfForm', data.conjugationsOfForm('tengo').some(a => a.verb === 'tener'), true);
+
+/* --- wat betekent de vorm? --- */
+t('nl: comí', dutchMeaning('comer', 'indefinido', '1s'), 'ik at');
+t('nl: jij gaat uit', dutchMeaning('salir', 'presente', '2s'), 'jij gaat uit');
+t('nl: hij wacht', dutchMeaning('esperar', 'presente', '3s'), 'hij/zij wacht');
+t('nl: wederkerend en scheidbaar', dutchMeaning('vestirse', 'perfecto', '1s'), 'ik heb me aangekleed');
+t('nl: geen subjuntivo', dutchMeaning('hablar', 'subjuntivo', '1s'), null);
+const meaningOf = id => meaningOptions(data.getAtom(id));
+const fui = meaningOf('c.ser.indefinido.1s');
+if (fui) t('fui: "ik ging" is geen afleider', fui.distractors.some(d => d.nl === 'ik ging'), false);
+const hablamos = meaningOf('c.hablar.presente.1p');
+if (hablamos) t('hablamos: "wij spraken" is geen afleider', hablamos.distractors.some(d => d.nl === 'wij spraken'), false);
+let meaningClashes = 0;
+for (const a of data.allAtoms()) {
+  if (a.kind !== 'conjugation') continue;
+  const m = meaningOptions(a);
+  if (!m) continue;
+  const all = [m.correct, ...m.distractors.map(d => d.nl)];
+  // Geen dubbele optie, en geen afleider uit een tijd die in het Nederlands overlapt.
+  if (new Set(all).size !== all.length) meaningClashes++;
+  const alsoRight = new Set([
+    ...Object.keys(TENSE_GROUP).filter(t => TENSE_GROUP[t] === TENSE_GROUP[a.tense])
+      .map(t => dutchMeaning(a.verb, t, a.person)),
+    ...data.conjugationsOfForm(a.form).map(o => dutchMeaning(o.verb, o.tense, o.person)),
+  ]);
+  meaningClashes += m.distractors.filter(d => alsoRight.has(d.nl)).length;
+}
+t('wat betekent de vorm: geen tweede juist antwoord', meaningClashes, 0);
 
 /* --- meervoud --- */
 t('meervoud: la casa', pluralPhrase('la casa'), 'las casas');

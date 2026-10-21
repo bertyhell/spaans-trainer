@@ -29,6 +29,7 @@ import verbType from './verbType.js';
 import verbSort from './verbSort.js';
 import { conjugationGrid, conjugationSingle, conjugationType } from './conjugation.js';
 import { tenseSpot, personSpot } from './conjugationSpot.js';
+import conjugationMeaning from './conjugationMeaning.js';
 import dictation from './dictation.js';
 import dialogueOrder from './dialogueOrder.js';
 import agreement from './agreement.js';
@@ -69,6 +70,7 @@ export const TYPES = [
   conjugationType,
   tenseSpot,
   personSpot,
+  conjugationMeaning,
   agreement,
   listenType,
   dictation,
@@ -116,6 +118,7 @@ const WEIGHTS = {
   conjugationType: 2,
   tenseSpot: 1,
   personSpot: 1,
+  conjugationMeaning: 2,
   agreement: 2,
   dictation: 1,
   dialogueOrder: 1,
@@ -161,7 +164,7 @@ const WEIGHTS = {
 const RECOGNIZE = new Set([
   'multipleChoice', 'articlePicker', 'oddOneOut', 'irregularVerb', 'verbType', 'verbSort',
   'listenChoose', 'conjugationSingle', 'dialogueMeaning', 'stressTap',
-  'tenseSpot', 'personSpot', 'dialogueOrder', 'emojiPick', 'trueFalse', 'sentenceMeaning', 'pickSentence',
+  'tenseSpot', 'personSpot', 'conjugationMeaning', 'dialogueOrder', 'emojiPick', 'trueFalse', 'sentenceMeaning', 'pickSentence',
   'contextMeaning', 'confusionPair', 'minimalPair', 'numeralRead', 'numeralListen',
 ]);
 const PRODUCE = new Set([
