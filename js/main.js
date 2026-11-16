@@ -16,6 +16,10 @@ import * as hints from './hints.js';
 import * as recognition from './recognition.js';
 import { renderIntro } from './intro.js';
 import { hideGloss } from './gloss.js';
+import * as voice from './voice/index.js';
+import { ipa } from './phonetic.js';
+import { speakable } from './check.js';
+import { sayText, stopListening } from './types/repeat.js';
 
 const $ = sel => document.querySelector(sel);
 const env = { speech };
@@ -31,7 +35,7 @@ let answered = false;
 let match = null;
 let matchPick = { left: null, right: null };
 let lastMode = 'lesson';   // bepaalt wat 'Nog een les' opnieuw start
-let lastLesson = null;     // { themes, mistakes, review } van de laatste les
+let lastLesson = null;     // { themes, mistakes, review, speak } van de laatste les
 let lastRowId = null;      // vakje van het laatst aangeraakte onderdeel op het startscherm
 
 /* ------------------------------------------------------------------ */
@@ -292,14 +296,19 @@ function refreshSelection() {
 /* Les                                                                 */
 /* ------------------------------------------------------------------ */
 
-function startLesson(themeIds, { items = itemsForThemes(themeIds), mistakes = false, review = false } = {}) {
+/* De spreekmodus: enkel nazeggen, met een eigen doos per zin of woord, en
+ * buiten de foutenlijst van de gewone lessen. */
+const SPEAK_ENV = { speakMode: true, onlyTypes: ['repeat'], noMistakes: true };
+
+function startLesson(themeIds, { items = itemsForThemes(themeIds), mistakes = false, review = false, speak = false } = {}) {
   audio.arm();
   speech.arm();
-  if (env.forceType) items = items.filter(i => supportedFor(i, env).some(t => t.id === env.forceType));
+  const lessonEnv = speak ? { ...env, ...SPEAK_ENV } : env;
+  if (env.forceType && !speak) items = items.filter(i => supportedFor(i, env).some(t => t.id === env.forceType));
 
   // Een gemengde toets: evenveel woorden als werkwoorden, grammatica en vaardigheden.
-  const balanced = !mistakes && !review && themeIds.some(id => data.getTheme(id)?.balanced);
-  session = new Session({ items, size: lessonSize(), env, balanced });
+  const balanced = !mistakes && !review && !speak && themeIds.some(id => data.getTheme(id)?.balanced);
+  session = new Session({ items, size: lessonSize(), env: lessonEnv, balanced, intros: !speak });
   // Wie oefent, wil dat de voortgang blijft: vraag de browser ze niet op te ruimen.
   storage.persist();
 
@@ -307,13 +316,14 @@ function startLesson(themeIds, { items = itemsForThemes(themeIds), mistakes = fa
     toast('Geen oefeningen gevonden voor deze selectie.');
     return;
   }
-  lastLesson = { themes: themeIds, mistakes, review };
+  lastLesson = { themes: themeIds, mistakes, review, speak };
   // Een fouten- of herhalingsles hangt niet aan thema's. Het beheersingskaartje
   // toont dan de onderdelen waar de vragen uit komen (of de aangevinkte, bij fouten).
   const fromQueue = () => [...new Set(session.queue.map(i => i.atom.theme))];
-  trackMastery(review ? fromQueue()
+  trackMastery(review || speak ? fromQueue()
     : mistakes ? (selected.size ? [...selected] : fromQueue())
     : themeIds);
+  $('#result-mastery-card').hidden = speak;
   show('screen-lesson');
   nextQuestion();
 }
@@ -462,20 +472,21 @@ function showFeedback(result) {
   note.textContent = result.note ?? '';
   note.hidden = !result.note;
 
+  const speaking = Boolean(session.env.speakMode);
   const explain = $('#feedback-explain');
-  const explanation = explainFor(atom);
+  const explanation = speaking ? null : explainFor(atom);
   explain.textContent = explanation ?? '';
   explain.hidden = !explanation;
 
   // Een ezelsbrug of vuistregel, net als de grammatica alleen bij een fout.
-  const tips = result.correct && !result.almost ? [] : tipsFor(atom, [result.note, explanation], result.expected);
+  const tips = (result.correct && !result.almost) || speaking ? [] : tipsFor(atom, [result.note, explanation], result.expected);
   const hintBox = $('#feedback-hints');
   hintBox.replaceChildren(...tips.map(t => el('p', { class: 'feedback-hint' }, t)));
   hintBox.hidden = !tips.length;
 
   // Grammatica-uitleg alleen bij een fout: wie het goed had, weet het al.
   // Dichtgeklapt, want de actiebalk is klein; één tik en je leest de regel.
-  const grammar = !result.correct && data.grammarFor(atom);
+  const grammar = !result.correct && !speaking && data.grammarFor(atom);
   const g = $('#feedback-grammar');
   g.hidden = !grammar;
   g.open = false;
@@ -1010,6 +1021,7 @@ function flashFace(side, lang, atom) {
     el('span', { class: 'flashcard-lang' }, flag, LANG_NAMES[lang]),
     lang === 'nl' && atom.emoji ? el('span', { class: 'flashcard-emoji', 'aria-hidden': 'true' }, atom.emoji) : null,
     el('span', { class: 'flashcard-word', lang }, words[0]),
+    lang === 'es' ? el('span', { class: 'ipa', title: 'uitspraak' }, ipa(speakable(atom.es))) : null,
     words.length > 1 ? el('span', { class: 'flashcard-alt', lang }, `ook: ${words.slice(1).join(', ')}`) : null,
     lang === 'es' ? speakerButton(atom.es, speech) : null,
     side === 'back' && atom.memo ? el('p', { class: 'flashcard-memo' }, atom.memo) : null,
@@ -1170,6 +1182,7 @@ function openSettings() {
   $('#speech-status').textContent = speech.available()
     ? ''
     : ' — geen Spaanse stem gevonden op dit toestel';
+  refreshVoiceSettings();
 
   const prog = storage.get().progress;
   const boxes = Object.values(prog);
@@ -1217,6 +1230,105 @@ function startMistakesLesson() {
 /** Een herhaling door elkaar, over alles wat je al eens oefende. */
 function startReviewLesson() {
   startLesson([], { items: itemsForReview(), review: true });
+}
+
+/* ------------------------------------------------------------------ */
+/* Spreekmodus                                                         */
+/* ------------------------------------------------------------------ */
+
+/**
+ * Wat er in de spreekmodus nagezegd wordt. Met een selectie: de zinnen en
+ * woorden van die onderdelen; zonder: alle zinnen en dialoogregels.
+ */
+function itemsForSpeaking(themeIds) {
+  const atoms = themeIds.length
+    ? themeIds.flatMap(id => data.atomsForTheme(id))
+    : data.allAtoms().filter(a => a.kind === 'sentence' || a.kind === 'dialogue');
+  const seen = new Set();
+  return atoms
+    .filter(a => !seen.has(a.id) && seen.add(a.id) && sayText(a) != null)
+    .map(atom => ({ atomId: atom.id, direction: 'say', key: scheduler.itemKey(atom.id, 'say'), atom }));
+}
+
+/**
+ * Haalt de stem en de spraakherkenning op (of laadt ze uit de cache), met een
+ * voortgangsvenster. Vraagt eerst toestemming als er iets gedownload moet worden.
+ * @returns {Promise<boolean>} klaar om te gebruiken
+ */
+async function downloadVoice() {
+  if (!voice.supported()) {
+    toast('Deze browser kan de spreekmodus niet aan: microfoon of WebAssembly ontbreekt.', 4000);
+    return false;
+  }
+  if (voice.ready('tts') && voice.ready('stt')) return true;
+  const have = await voice.installed();
+  const fresh = !have.tts || !have.stt;
+  if (fresh) {
+    const ok = await ask({
+      title: '🎙️ Spreekmodus',
+      text: `Een stem en spraakherkenning die op je toestel zelf draaien, worden één keer gedownload (± ${voice.megabytes(['tts', 'stt'])} MB — best via wifi). Daarna werkt het ook offline, en je stem verlaat je toestel nooit.`,
+      ok: 'Downloaden',
+    });
+    if (!ok) return false;
+    // Zonder deze vraag mag de browser de modellen opruimen als de schijf vol raakt.
+    storage.persist();
+  }
+  const dlg = $('#voice-dialog');
+  const bar = $('#voice-progress');
+  $('#voice-dialog-title').textContent = fresh ? 'Spreekmodus downloaden' : 'Spreekmodus laden';
+  $('#voice-dialog-text').textContent = fresh ? 'Even geduld…' : 'Stem en gehoor opstarten…';
+  bar.value = 0;
+  // Wie niet wil wachten, sluit het venster: het downloaden loopt door, maar de
+  // les start dan niet vanzelf op een onverwacht moment.
+  let hidden = false;
+  dlg.addEventListener('close', () => { hidden = true; }, { once: true });
+  dlg.showModal();
+  try {
+    await voice.prepare(['tts', 'stt'], p => {
+      bar.value = p;
+      if (fresh) $('#voice-dialog-text').textContent = `${Math.round(p * 100)}% van ± ${voice.megabytes(['tts', 'stt'])} MB`;
+      if (p >= 1) $('#voice-dialog-text').textContent = 'Opstarten…';
+    });
+    speech.setNeuralInstalled(true);
+    if (hidden) toast('De spreekmodus is klaar.', 3000, { label: 'Start', run: startSpeakMode });
+    return !hidden;
+  } catch (err) {
+    console.error(err);
+    toast(navigator.onLine === false
+      ? 'Geen verbinding: de spreekmodus moet één keer gedownload worden.'
+      : 'Downloaden lukte niet. Probeer het later opnieuw.', 4500);
+    return false;
+  } finally {
+    if (dlg.open) dlg.close();
+  }
+}
+
+async function startSpeakMode() {
+  audio.arm();
+  speech.arm();
+  if (!(await downloadVoice())) return;
+  const themes = [...selected];
+  const items = itemsForSpeaking(themes);
+  if (!items.length) {
+    toast('Geen zinnen of woorden om na te zeggen in deze selectie.');
+    return;
+  }
+  startLesson(themes, { items, speak: true });
+}
+
+async function refreshVoiceSettings() {
+  const ok = voice.supported();
+  const have = await voice.installed();
+  const on = have.tts && have.stt;
+  $('#voice-info').textContent = !ok
+    ? 'Deze browser kan de spreekmodus niet aan (microfoon of WebAssembly ontbreekt).'
+    : on
+    ? `Stem en spraakherkenning staan op dit toestel (± ${voice.megabytes(['tts', 'stt'])} MB). Ze werken offline; je stem verlaat je toestel niet.`
+    : `Nog niet gedownload (± ${voice.megabytes(['tts', 'stt'])} MB). Na het downloaden spreekt deze stem ook alle andere oefeningen uit.`;
+  $('#set-voice').checked = storage.get().settings.voice !== false;
+  $('#set-voice').disabled = !have.tts;
+  $('#btn-voice-get').hidden = !ok || on;
+  $('#btn-voice-remove').hidden = !have.tts && !have.stt;
 }
 
 function openRecentMistakes() {
@@ -1310,6 +1422,7 @@ function wire() {
 
   $('#btn-quit').addEventListener('click', async () => {
     speech.stop();
+    stopListening();
     const answered = session?.scored.length ?? 0;
     if (answered && !session.done) {
       const stop = await ask({
@@ -1352,11 +1465,14 @@ function wire() {
   $('#btn-home').addEventListener('click', () => show('screen-start'));
   $('#btn-start-mistakes').addEventListener('click', startMistakesLesson);
   $('#btn-start-review').addEventListener('click', startReviewLesson);
+  $('#btn-start-speak').addEventListener('click', startSpeakMode);
+  $('#btn-start-speak').hidden = !voice.supported();
   $('#btn-result-mistakes').addEventListener('click', startMistakesLesson);
   $('#btn-again').addEventListener('click', () => {
     if (lastMode === 'match') return selected.size ? startMatch() : show('screen-start');
     if (lastLesson?.mistakes) return startMistakesLesson();
     if (lastLesson?.review) return startReviewLesson();
+    if (lastLesson?.speak) return startSpeakMode();
     const themes = lastLesson?.themes ?? [...selected];
     themes.length ? startLesson(themes) : show('screen-start');
   });
@@ -1381,6 +1497,23 @@ function wire() {
   $('#set-sound').addEventListener('change', e => { storage.get().settings.sound = e.target.checked; storage.save(); });
   $('#set-speech').addEventListener('change', e => { storage.get().settings.speech = e.target.checked; storage.save(); });
   $('#set-speaking').addEventListener('change', e => { storage.get().settings.speaking = e.target.checked; storage.save(); });
+  $('#set-voice').addEventListener('change', e => { storage.get().settings.voice = e.target.checked; storage.save(); });
+  $('#btn-voice-get').addEventListener('click', async () => {
+    if (await downloadVoice()) toast('Stem en spraakherkenning staan op je toestel.');
+    refreshVoiceSettings();
+  });
+  $('#btn-voice-remove').addEventListener('click', async () => {
+    const sure = await ask({
+      title: 'Spreekmodus van dit toestel halen?',
+      text: 'De stem en de spraakherkenning worden verwijderd. Je voortgang blijft. Je kan ze later opnieuw downloaden.',
+      ok: 'Verwijderen', danger: true,
+    });
+    if (!sure) return;
+    await voice.remove();
+    speech.setNeuralInstalled(false);
+    refreshVoiceSettings();
+    toast('Verwijderd.');
+  });
   $('#set-size').addEventListener('change', e => {
     storage.get().settings.lessonSize = Number(e.target.value);
     storage.save();

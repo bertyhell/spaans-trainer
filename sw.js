@@ -41,6 +41,16 @@ const ASSETS = [
   './js/numerals.js',
   './js/recognition.js',
   './js/dutch.js',
+  './js/phonetic.js',
+  './js/speakScore.js',
+  './js/voice/index.js',
+  './js/voice/models.js',
+  './js/voice/worker.js',
+  './js/voice/piper.js',
+  './js/voice/whisper.js',
+  './js/voice/recorder.js',
+  './js/voice/capture.js',
+  './js/types/repeat.js',
   './js/types/context.js',
   './js/types/confusion.js',
   './js/types/conversation.js',
@@ -96,10 +106,16 @@ self.addEventListener('install', e => {
   );
 });
 
+/* De modellen van de spreekmodus (js/voice/models.js) beheert de app zelf, in
+ * een eigen cache die een nieuwe versie overleeft. Die laten we hier dus met rust. */
+const VOICE_CACHE_PREFIX = 'vamos-voice-';
+const isModel = url => /\.(onnx|wasm)$/.test(url.pathname) || /(^|\.)(huggingface\.co|hf\.co)$/.test(url.hostname)
+  || url.pathname.includes('/models/');
+
 self.addEventListener('activate', e => {
   e.waitUntil(
     caches.keys()
-      .then(keys => Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k))))
+      .then(keys => Promise.all(keys.filter(k => k !== CACHE && !k.startsWith(VOICE_CACHE_PREFIX)).map(k => caches.delete(k))))
       .then(() => self.clients.claim()),
   );
 });
@@ -119,6 +135,8 @@ const fromCache = req => caches.match(req).then(r => r
 
 self.addEventListener('fetch', e => {
   if (e.request.method !== 'GET') return;
+  // Tientallen megabytes: niet nog eens in de app-cache (zie VOICE_CACHE_PREFIX).
+  if (isModel(new URL(e.request.url))) return;
 
   if (DEV) {
     // Netwerk eerst; 'no-cache' laat de browser altijd bij de server nagaan

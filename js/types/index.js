@@ -52,6 +52,7 @@ import { answerQuestion, tenseContext } from './conversation.js';
 import minimalPair from './minimalPair.js';
 import { numeralWrite, numeralListen, numeralRead } from './numeral.js';
 import { speakWord, speakSentence } from './speak.js';
+import repeat from './repeat.js';
 import { getProgress } from '../storage.js';
 
 export const TYPES = [
@@ -99,6 +100,7 @@ export const TYPES = [
   numeralRead,
   speakWord,
   speakSentence,
+  repeat,
 ];
 
 export const byId = Object.fromEntries(TYPES.map(t => [t.id, t]));
@@ -150,6 +152,8 @@ const WEIGHTS = {
   numeralRead: 2,
   speakWord: 2,
   speakSentence: 2,
+  // Enkel in de spreekmodus, en daar de enige vorm.
+  repeat: 1,
   // Deze vormen zijn de enige voor hun soort atoom: het gewicht doet er dan niet toe.
   choice: 1,
   reading: 1,
@@ -184,9 +188,10 @@ export function weightFor(typeId, box) {
   return base;
 }
 
-/** Alle vormen waarin dit item getoond kan worden. */
+/** Alle vormen waarin dit item getoond kan worden. env.onlyTypes beperkt de keuze (spreekmodus). */
 export function supportedFor(item, env) {
   return TYPES.filter(t => {
+    if (env.onlyTypes && !env.onlyTypes.includes(t.id)) return false;
     try { return t.supports(item, env); }
     catch { return false; }
   });

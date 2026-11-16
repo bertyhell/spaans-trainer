@@ -9,3 +9,6 @@ node_modules/
 .DS_Store
 ai-files/
 .claude/launch.json
+
+# Modellen voor tools/check-voice.mjs
+.cache/

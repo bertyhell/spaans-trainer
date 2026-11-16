@@ -131,7 +131,8 @@ export class Session {
 
     // Een herkansing verschuift geen dozen: die reageerden al op het eerste
     // antwoord. Ze is er om het juiste antwoord meteen nog eens op te halen.
-    this.noteConfusion(item, result);
+    // In de spreekmodus is "gegeven" wat de herkenner hoorde: geen verward paar.
+    if (!this.env?.noMistakes) this.noteConfusion(item, result);
 
     if (item.retryOf || item.easy) {
       storage.addExercises(1);
@@ -155,7 +156,8 @@ export class Session {
       // Met een hint juist: gezien, maar de doos blijft staan.
       scheduler.record(item.key, result.correct, { hold: Boolean(result.hinted) });
       // Alleen het lidwoord fout: de foutenlijst oefent dan het lidwoord, niet het schrijven.
-      storage.recordAnswer(item.atomId, result, result.mistakeDirection ?? dir, result.mistakeType ?? type.id);
+      // Een uitspraak die nog niet lukt, hoort niet in de foutenlijst van de lessen.
+      if (!this.env?.noMistakes) storage.recordAnswer(item.atomId, result, result.mistakeDirection ?? dir, result.mistakeType ?? type.id);
     }
 
     storage.addExercises(1);

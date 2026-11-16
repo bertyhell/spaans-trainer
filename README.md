@@ -53,10 +53,19 @@ telefoon kan openen.
 ## Testen
 
 ```bash
-npm test                       # alle drie hieronder
-node tools/test-check.mjs      # antwoordcontrole
-node tools/test-scheduler.mjs  # Leitner-planning en koppelronde
-node tools/validate.mjs        # controleert data/course.js
+npm test                         # alles hieronder
+node tools/test-check.mjs        # antwoordcontrole
+node tools/test-scheduler.mjs    # Leitner-planning en koppelronde
+node tools/test-phonetic.mjs     # klankschrift en stem-fonemen
+node tools/test-speakscore.mjs   # oordeel in de spreekmodus
+node tools/validate.mjs          # controleert data/course.js
+```
+
+De uitspraak van de stem zelf controleer je apart (zie *Spreekmodus*):
+
+```bash
+npm i --no-save onnxruntime-node     # eenmalig, enkel voor deze controle
+node tools/check-voice.mjs --asr small
 ```
 
 ## Oefendata maken
@@ -162,6 +171,68 @@ ontbrekend accent of één typefout wordt aanvaard, maar toont wel de juiste sch
 controle streng, en bij vervoegingen telt een andere persoon (`tuvo` voor `tuve`) nooit als
 typefout — dat is een vergissing, geen slordigheid.
 
+## Spreekmodus
+
+*🎙️ Spreekmodus* op het startscherm: de app zegt een zin of woord, jij zegt het na. Met een
+selectie oefen je de zinnen en woorden van die onderdelen, zonder selectie alle zinnen en
+dialoogregels (tot veertien woorden). Nazeggen heeft een eigen doos per zin (`<id>:say`),
+los van het woord kennen, en een mislukte uitspraak komt niet in de foutenlijst van de lessen.
+
+Alles draait **op het toestel**: geen geluid gaat naar een server, en na één download werkt
+het offline. Twee kleine modellen, samen ± 86 MB (één keer, in de Cache API):
+
+| | model | grootte |
+|---|---|---|
+| stem | [Piper](https://github.com/OHF-Voice/piper1-gpl) *davefx* (es_ES, medium), gewichten als float16 | 32 MB, in `models/` |
+| gehoor | [Whisper](https://huggingface.co/onnx-community/whisper-tiny) tiny, meertalig, 8-bit | 42 MB, van Hugging Face |
+| runtime | [ONNX Runtime Web](https://onnxruntime.ai) 1.23 (WebAssembly, één draad) | 12 MB (2 MB gecomprimeerd), van jsDelivr |
+
+Zodra de stem op het toestel staat, spreekt ze ook alle andere oefeningen uit in plaats van
+de stem van de browser (uit te zetten in *Instellingen → Spreekmodus*).
+
+**Klankschrift.** Elke zin en elk woord staat er met IPA onder, woord per woord
+(`js/phonetic.js`, ook op de kennismakingskaart en de flashcards): Castiliaans, met
+lettergrepen en klemtoon, en de klanken zoals ze in hun omgeving klinken — de zachte
+[β ð ɣ] tussen klinkers, de n die [m] of [ŋ] wordt. Getallen, afkortingen, Romeinse cijfers,
+leenwoorden en buitenlandse namen worden eerst uitgeschreven zoals een Spanjaard ze zegt
+(*footing* → [ˈfu.tin], *siglo XVII*, *750 €*).
+
+**De stem krijgt dezelfde klanken.** Piper is getraind op de fonemen van espeak-ng. In
+plaats van espeak mee te leveren, maakt `phonetic.js` die fonemen zelf, uit dezelfde analyse
+als de klankschrift. Over alle 9 075 Spaanse teksten van de cursus is dat woord voor woord
+gelijk aan espeak-ng 1.52 (99,98 %); de enige verschillen zijn plaatsen waar espeak zich
+vergist (*pingüino* als pin-gu-i-no, *Wright*). Wat je leest is dus wat je hoort.
+
+**Vergevingsgezind luisteren.** Een klein model verstaat een leerder vaak half. Daarom
+oordeelt de app niet op de herkende tekst alleen (`js/speakScore.js`):
+
+- wat Whisper hoorde, wordt op klank vergeleken, niet op spelling: b/v/β, s/θ/z, ll/y,
+  r/ɾ … tellen als gelijk, en "a ver" voor "haber" is gewoon juist;
+- Whisper krijgt ook de verwachte zin voorgelegd en zegt per woord hoe waarschijnlijk
+  die is bij jouw geluid, en bij stilte. Het verschil is het *bewijs* dat het geluid dat
+  woord steunt — los van hoe gewoon het woord is.
+
+Een woord is goed (groen), bijna (oranje) of niet gehoord (rood). De zin is juist als
+minstens 80 % (gewogen naar lettergrepen) goed is en er geen inhoudswoord ontbreekt, bijna
+vanaf 60 % met hoogstens één gemist woord. Drie pogingen, de beste telt; je hoort je eigen
+poging terug met *▶ Jouw poging*.
+
+Geijkt op nagemaakte leerders (de stem met zwaar Nederlands accent — r als [ʁ], geen [θ],
+harde b/d/g, open klinkers, trager — en twee andere stemmen), 60 zinnen per toestand:
+
+| toestand | juist | bijna | fout |
+|---|---|---|---|
+| zoals het voorbeeld | 60 | 0 | 0 |
+| andere stem (2 stemmen) | 119 | 1 | 0 |
+| zwaar accent | 60 | 0 | 0 |
+| één woord vervangen | 2 | 46 | 12 |
+| maar de helft gezegd | 0 | 6 | 54 |
+| een andere zin | 0 | 0 | 60 |
+
+**Controle van de uitspraak.** `tools/check-voice.mjs` laat de stem elke tekst van de
+spreekmodus zeggen en Whisper meeluisteren: de app moet haar eigen voorbeeld goedkeuren, en
+wat een groter model (`--asr small`) niet verstaat, is na te kijken in `phonetic.js`.
+
 ## Een oefenvorm toevoegen
 
 Maak een module in `js/types/` die dit contract volgt, en zet ze in `js/types/index.js`:
@@ -204,7 +275,11 @@ js/hintLadder.js      hint bij het intypen (eerste letter, dan meer)
 js/intro.js           kennismakingskaart voor een nieuw woord
 js/gloss.js           betekenis van een aangetikt woord in een leestekst
 js/numerals.js        getallen, uren, data en prijzen voluit en in cijfers
-js/recognition.js     spraakherkenning voor de spreekoefeningen
+js/recognition.js     spraakherkenning van de browser voor de spreekoefeningen
+js/phonetic.js        klankschrift (IPA) en de fonemen voor de stem
+js/speakScore.js      het oordeel in de spreekmodus
+js/voice/             stem (Piper) en gehoor (Whisper) op het toestel: worker, opname
+models/               de stem van de spreekmodus (tools/make-voice.py)
 js/check.js           antwoordcontrole, woordenlijstnotatie (frigo(rífico), sencillo/-a)
 js/matchRound.js      de koppelronde
 js/types/             de oefenvormen

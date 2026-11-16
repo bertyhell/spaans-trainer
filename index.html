@@ -36,6 +36,7 @@
     <p class="lede">Kies wat je wil oefenen.</p>
     <button class="btn btn--ghost mistakes-chip" id="btn-start-mistakes" hidden></button>
     <button class="btn btn--ghost mistakes-chip" id="btn-start-review" hidden>🔀 Herhaal alles door elkaar</button>
+    <button class="btn btn--ghost mistakes-chip" id="btn-start-speak" hidden>🎙️ Spreekmodus: luister en zeg na</button>
     <div id="theme-tree" class="tree"></div>
   </main>
 
@@ -203,6 +204,17 @@
       </select>
     </label>
 
+    <h3 class="settings-head">Spreekmodus</h3>
+    <p class="settings-info" id="voice-info"></p>
+    <label class="setting">
+      <span>Stem van de spreekmodus overal gebruiken<small>Dezelfde Spaanse stem in alle oefeningen, ook offline</small></span>
+      <input type="checkbox" id="set-voice" checked>
+    </label>
+    <div class="action-row">
+      <button class="btn btn--ghost" id="btn-voice-get" hidden>Downloaden</button>
+      <button class="btn btn--ghost" id="btn-voice-remove" hidden>Van dit toestel halen</button>
+    </div>
+
     <h3 class="settings-head">Voortgang</h3>
     <p class="settings-info" id="progress-info"></p>
     <button class="btn btn--ghost" id="btn-mistakes">Recente fouten bekijken <span id="mistakes-count"></span></button>
@@ -264,6 +276,15 @@
 </section>
 
 <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+<dialog class="dialog" id="voice-dialog" aria-labelledby="voice-dialog-title">
+  <h2 class="dialog-title" id="voice-dialog-title">Spreekmodus</h2>
+  <progress class="voice-progress" id="voice-progress" max="1" value="0"></progress>
+  <p class="dialog-text" id="voice-dialog-text" aria-live="polite"></p>
+  <form method="dialog" class="action-row">
+    <button class="btn btn--ghost" value="cancel">Verder op de achtergrond</button>
+  </form>
+</dialog>
 
 <dialog class="dialog" id="dialog" aria-labelledby="dialog-title">
   <form method="dialog">

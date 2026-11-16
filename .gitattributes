@@ -1,0 +1,3 @@
+# Modellen: nooit als tekst behandelen (geen diff, geen regeleinde-omzetting).
+*.onnx binary
+*.wasm binary

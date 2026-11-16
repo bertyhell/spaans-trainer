@@ -9,6 +9,8 @@
 import { el, speakerButton } from './dom.js';
 import { contextsFor } from './data.js';
 import { genderRule } from './hints.js';
+import { ipa } from './phonetic.js';
+import { speakable } from './check.js';
 
 const GENDER = { m: 'mannelijk', f: 'vrouwelijk' };
 
@@ -35,6 +37,7 @@ export function renderIntro(item, root, { speech }) {
       el('div', { class: 'intro-es' },
         el('span', { class: 'q-word', lang: 'es' }, atom.es),
         speakerButton(atom.es, speech)),
+      el('span', { class: 'ipa', title: 'uitspraak' }, ipa(speakable(atom.es))),
       el('p', { class: 'intro-nl', lang: 'nl' }, atom.nl.join(', ')),
       gender ? el('p', { class: 'intro-meta' }, `${gender}${atom.number === 'pl' ? ', meervoud' : ''}`) : null,
       atom.memo ? el('p', { class: 'intro-memo' }, `💡 ${atom.memo}`) : null,
