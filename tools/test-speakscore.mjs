@@ -40,6 +40,8 @@ t('niets: gemist', wordState(0.1, -0.5), 'miss');
 // Het kleine model verstaat "Asistió a clase" als "¡Aseis, tío! ¡Acláce!", maar het geluid steunt elk woord.
 t('verhaspeld verstaan, sterk bewijs: juist', judge('Asistió a clase.', '¡Aseis, tío! ¡Acláce!', [4.2, 2.5, 5.1]).verdict, 'ok');
 t('één inhoudswoord gemist: bijna', judge('Bastante bien. Hay que practicar todos los días.', 'Bastante bien. Hay que caminar todos los días.', [5, 4, 3, 3, -2, 4, 3, 5]).verdict, 'almost');
+t('los woord dat bijna lukte: bijna', judge('pobre', 'Dónde', [1.2]).verdict, 'almost');
+t('los woord dat niet lukte: fout', judge('pobre', 'Gracias', [-0.5]).verdict, 'wrong');
 t('halve zin: fout', judge('Mañana vamos a la playa con mis amigos.', 'Mañana vamos a la', [5, 4, 3, 3, -1, -2, -1, -3]).verdict, 'wrong');
 
 /* --- tokens van Whisper aan woorden koppelen --- */

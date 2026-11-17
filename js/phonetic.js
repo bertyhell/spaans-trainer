@@ -678,5 +678,6 @@ export function phonemes(text) {
     }
   }
   if (cur.trim()) sentences.push(cur.trim());
-  return sentences.map(s => s.replace(/,\s*$/, '.'));
+  // De stem kent enkel zinnen met een leesteken op het eind: een los woord krijgt een punt.
+  return sentences.map(s => s.replace(/,\s*$/, '.').replace(/([^.?!])$/, '$1.'));
 }

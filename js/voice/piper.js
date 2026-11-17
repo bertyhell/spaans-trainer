@@ -21,10 +21,11 @@ export function phonemeIds(phonemes, config) {
 
 /**
  * Eén zin uitspreken.
- * @param rate  1 = gewoon tempo, kleiner = trager (zoals bij speechSynthesis)
+ * @param rate     1 = gewoon tempo, kleiner = trager (zoals bij speechSynthesis)
+ * @param speaker  voor een stem met meerdere sprekers (config.speaker_id_map)
  * @returns {Promise<Float32Array>} geluid op config.audio.sample_rate
  */
-export async function synthesize(ort, session, config, phonemes, { rate = 1 } = {}) {
+export async function synthesize(ort, session, config, phonemes, { rate = 1, speaker = config.default_speaker_id ?? 0 } = {}) {
   const ids = phonemeIds(phonemes, config);
   const inf = config.inference ?? {};
   const feeds = {
@@ -32,7 +33,7 @@ export async function synthesize(ort, session, config, phonemes, { rate = 1 } = 
     input_lengths: new ort.Tensor('int64', BigInt64Array.from([BigInt(ids.length)]), [1]),
     scales: new ort.Tensor('float32', Float32Array.from([inf.noise_scale ?? 0.667, (inf.length_scale ?? 1) / rate, inf.noise_w ?? 0.8]), [3]),
   };
-  if (session.inputNames.includes('sid')) feeds.sid = new ort.Tensor('int64', BigInt64Array.from([0n]), [1]);
+  if (session.inputNames.includes('sid')) feeds.sid = new ort.Tensor('int64', BigInt64Array.from([BigInt(speaker)]), [1]);
   const out = await session.run(feeds);
   return out[session.outputNames[0]].data;
 }

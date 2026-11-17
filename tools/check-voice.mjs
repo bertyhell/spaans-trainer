@@ -16,13 +16,19 @@
  *
  * Whisper komt van Hugging Face en wordt bewaard in .cache/voice-check/. */
 
-import { readFile, writeFile, mkdir } from 'node:fs/promises';
+import { readFile, writeFile, mkdir, appendFile } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import { cpus } from 'node:os';
 
 const ROOT = new URL('../', import.meta.url);
-const args = Object.fromEntries(process.argv.slice(2).join(' ').split('--').filter(Boolean)
-  .map(a => a.trim().split(/\s+/)).map(([k, v]) => [k, v ?? true]));
+/** --naam waarde, of --naam alleen (true). Een waarde mag zelf "--" bevatten (paden). */
+const args = {};
+for (let i = 2; i < process.argv.length; i++) {
+  const a = process.argv[i];
+  if (!a.startsWith('--')) continue;
+  const next = process.argv[i + 1];
+  args[a.slice(2)] = next != null && !next.startsWith('--') ? (i++, next) : true;
+}
 const ASR = args.asr ?? 'tiny';
 const LIMIT = Number(args.limit ?? Infinity);
 const KIND = args.kind ?? 'all';
@@ -63,8 +69,8 @@ const opts = { intraOpNumThreads: threads };
 const encoder = await ort.InferenceSession.create(await whisperFile('onnx/encoder_model_quantized.onnx'), opts);
 const decoder = await ort.InferenceSession.create(await whisperFile('onnx/decoder_model_merged_quantized.onnx'), opts);
 const tokenizer = new Tokenizer(JSON.parse(await readFile(await whisperFile('vocab.json'), 'utf8')), await readFile(await whisperFile('merges.txt'), 'utf8'));
-const voice = await ort.InferenceSession.create(new URL('models/es_ES-davefx-medium.fp16.onnx', ROOT).pathname, opts);
-const config = JSON.parse(await readFile(new URL('models/es_ES-davefx-medium.onnx.json', ROOT), 'utf8'));
+const voice = await ort.InferenceSession.create(new URL('models/es_ES-sharvard-medium.fp16.onnx', ROOT).pathname, opts);
+const config = JSON.parse(await readFile(new URL('models/es_ES-sharvard-medium.onnx.json', ROOT), 'utf8'));
 const silent = await encode(ort, encoder, new Float32Array(16000));
 
 /* ------------------------------------------------------------------ */
@@ -119,6 +125,9 @@ const texts = [...new Set(window.COURSE.atoms.filter(a => kinds.includes(a.kind)
 
 const problems = [];
 const t0 = Date.now();
+// Onderweg al wegschrijven: een lange controle die op het eind misloopt, is dan niet verloren.
+const partial = args.out ? `${args.out}.jsonl` : null;
+if (partial) await writeFile(partial, '');
 for (const [i, text] of texts.entries()) {
   const audio = await speak(text);
   const hidden = await encode(ort, encoder, audio);
@@ -133,8 +142,10 @@ for (const [i, text] of texts.entries()) {
   const match = phoneMatch(words, simplePhones(heardIpa));
   const unclear = words.filter((w, k) => match[k] < 0.5 && w.weight >= 2).map(w => w.text);
   if (verdict.verdict !== 'ok' || unclear.length) {
-    problems.push({ text, ipa: ipa(text), heard, verdict: verdict.verdict, score: verdict.score, unclear,
-      weak: verdict.words.filter(w => w.state !== 'ok').map(w => w.text) });
+    const p = { text, ipa: ipa(text), heard, verdict: verdict.verdict, score: verdict.score, unclear,
+      weak: verdict.words.filter(w => w.state !== 'ok').map(w => w.text) };
+    problems.push(p);
+    if (partial) await appendFile(partial, `${JSON.stringify(p)}\n`);
   }
   if ((i + 1) % 25 === 0 || i + 1 === texts.length) {
     const s = (Date.now() - t0) / 1000;
@@ -145,7 +156,7 @@ process.stderr.write('\n');
 
 const rejected = problems.filter(p => p.verdict !== 'ok');
 const lines = [
-  `# Uitspraakcontrole — stem davefx, gehoor whisper-${ASR}`,
+  `# Uitspraakcontrole — stem sharvard, gehoor whisper-${ASR}`,
   '',
   `${texts.length} teksten. Het eigen voorbeeld afgekeurd: ${rejected.length}. Woorden die Whisper vrij niet terughoorde: ${problems.filter(p => p.unclear.length).length} teksten.`,
   '',

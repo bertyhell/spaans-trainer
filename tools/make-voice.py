@@ -1,10 +1,15 @@
-"""De stem van de spreekmodus klaarmaken: models/es_ES-davefx-medium.fp16.onnx.
+"""De stem van de spreekmodus klaarmaken: models/es_ES-sharvard-medium.fp16.onnx.
 
-Piper-stem "davefx" (es_ES, medium) van rhasspy/piper-voices, met de gewichten
-als float16 opgeslagen en bij het laden weer naar float32 omgezet (Cast). Het
-bestand is zo half zo groot (32 MB i.p.v. 63 MB) en klinkt hetzelfde: het
-gemiddelde verschil in het spectrum is 0,05 dB. Int8 werd 18 MB maar
-verschilde 7 dB — hoorbaar slechter, dus niet gedaan.
+Piper-stem "sharvard" (es_ES, medium; twee sprekers, de app gebruikt de man)
+van rhasspy/piper-voices, met de gewichten als float16 opgeslagen en bij het
+laden weer naar float32 omgezet (Cast). Het bestand is zo half zo groot
+(39 MB i.p.v. 77 MB) en klinkt hetzelfde: het gemiddelde verschil in het
+spectrum is 0,05 dB. Int8 scheelde nog eens de helft maar 7 dB — hoorbaar
+slechter, dus niet gedaan.
+
+Waarom sharvard en niet "davefx" (kleiner, 32 MB): davefx maakt korte losse
+woorden onverstaanbaar ("mal", "más", "sol" — ook Whisper large-v3 verstaat ze
+niet). Op 100 woorden uit de cursus: davefx 80 juist, sharvard 99.
 
     python3 -m pip install --target .cache/py onnx numpy
     PYTHONPATH=.cache/py python3 tools/make-voice.py
@@ -13,7 +18,6 @@ Wie een andere stem kiest: ook VOICE_CACHE in js/voice/models.js verhogen,
 anders blijven toestellen de oude in hun cache houden.
 """
 
-import json
 import urllib.request
 from pathlib import Path
 
@@ -22,7 +26,8 @@ import onnx
 from onnx import TensorProto, helper, numpy_helper
 
 REVISION = "e9ab671f2a0e50a701b34361136ba3e6a3a9eb0c"
-BASE = f"https://huggingface.co/rhasspy/piper-voices/resolve/{REVISION}/es/es_ES/davefx/medium/"
+NAME = "es_ES-sharvard-medium"
+BASE = f"https://huggingface.co/rhasspy/piper-voices/resolve/{REVISION}/es/es_ES/sharvard/medium/"
 OUT = Path(__file__).resolve().parent.parent / "models"
 CACHE = Path(__file__).resolve().parent.parent / ".cache"
 
@@ -37,7 +42,7 @@ def fetch(name: str) -> Path:
 
 
 def main() -> None:
-    model = onnx.load(fetch("es_ES-davefx-medium.onnx"))
+    model = onnx.load(fetch(f"{NAME}.onnx"))
     graph = model.graph
     casts = []
     for init in list(graph.initializer):
@@ -52,10 +57,11 @@ def main() -> None:
     for node in reversed(casts):
         graph.node.insert(0, node)
     OUT.mkdir(exist_ok=True)
-    onnx.save(model, OUT / "es_ES-davefx-medium.fp16.onnx")
-    config = json.loads(fetch("es_ES-davefx-medium.onnx.json").read_text())
-    (OUT / "es_ES-davefx-medium.onnx.json").write_text(json.dumps(config, ensure_ascii=False, indent=2) + "\n")
-    print(f"  {len(casts)} gewichten naar float16 → {OUT / 'es_ES-davefx-medium.fp16.onnx'}")
+    onnx.save(model, OUT / f"{NAME}.fp16.onnx")
+    # De instellingen ongewijzigd overnemen, byte voor byte.
+    (OUT / f"{NAME}.onnx.json").write_bytes(fetch(f"{NAME}.onnx.json").read_bytes())
+    (OUT / "MODEL_CARD-sharvard.md").write_bytes(fetch("MODEL_CARD").read_bytes())
+    print(f"  {len(casts)} gewichten naar float16 → {OUT / f'{NAME}.fp16.onnx'}")
 
 
 if __name__ == "__main__":

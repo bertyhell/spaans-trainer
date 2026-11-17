@@ -113,11 +113,16 @@ const ESPEAK = [
   // Hier vergist espeak zich ("pˌiŋɡuˈino"): wij zeggen het zoals het hoort.
   ['pingüino', 'piŋɡwˈino'],
 ];
-for (const [text, want] of ESPEAK) t(`stem: ${text}`, phonemes(text).join(' '), want);
+// espeak zet geen punt achter een los woord; wij wel (zie hieronder).
+for (const [text, want] of ESPEAK) {
+  const got = phonemes(text).join(' ');
+  t(`stem: ${text}`, /[.?!]$/.test(text) ? got : got.replace(/\.$/, ''), want);
+}
+t('stem: een los woord krijgt een punt, zoals de zinnen waarop de stem getraind is', phonemes('la mesa'), ['la mˈesa.']);
 t('stem: één string per zin', phonemes('Muy bien. Yo todavía no.'), ['mˈuj βjˈen.', 'dʒˈo tˌoðaβˈia nˈo.']);
 
 /* --- fonemen → id's, zoals piper het doet --- */
-const config = JSON.parse(readFileSync(new URL('../models/es_ES-davefx-medium.onnx.json', import.meta.url), 'utf8'));
+const config = JSON.parse(readFileSync(new URL('../models/es_ES-sharvard-medium.onnx.json', import.meta.url), 'utf8'));
 const ids = phonemeIds('ˈaɪ', config);
 const map = config.phoneme_id_map;
 t('id\'s: begin, opvulling, cluster aɪ, einde', ids, [...map['^'], ...map._, ...map['ˈ'], ...map._, ...map['aɪ'], ...map._, ...map.$]);

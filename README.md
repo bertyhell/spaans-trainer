@@ -179,16 +179,22 @@ dialoogregels (tot veertien woorden). Nazeggen heeft een eigen doos per zin (`<i
 los van het woord kennen, en een mislukte uitspraak komt niet in de foutenlijst van de lessen.
 
 Alles draait **op het toestel**: geen geluid gaat naar een server, en na één download werkt
-het offline. Twee kleine modellen, samen ± 86 MB (één keer, in de Cache API):
+het offline. Twee kleine modellen, samen ± 93 MB (één keer, in de Cache API):
 
 | | model | grootte |
 |---|---|---|
-| stem | [Piper](https://github.com/OHF-Voice/piper1-gpl) *davefx* (es_ES, medium), gewichten als float16 | 32 MB, in `models/` |
+| stem | [Piper](https://github.com/OHF-Voice/piper1-gpl) *sharvard* (es_ES, medium, mannelijke spreker), gewichten als float16 | 39 MB, in `models/` |
 | gehoor | [Whisper](https://huggingface.co/onnx-community/whisper-tiny) tiny, meertalig, 8-bit | 42 MB, van Hugging Face |
 | runtime | [ONNX Runtime Web](https://onnxruntime.ai) 1.23 (WebAssembly, één draad) | 12 MB (2 MB gecomprimeerd), van jsDelivr |
 
 Zodra de stem op het toestel staat, spreekt ze ook alle andere oefeningen uit in plaats van
 de stem van de browser (uit te zetten in *Instellingen → Spreekmodus*).
+
+Waarom *sharvard*: de iets kleinere stem *davefx* (32 MB) maakt korte losse woorden
+onverstaanbaar — *mal*, *más*, *sol*, *ayer* verstaat zelfs Whisper large-v3 niet. Op 100
+woorden uit de cursus: davefx 80 juist, sharvard 99; op 50 zinnen allebei 49. De stem is
+getraind op [Sharvard](https://datashare.ed.ac.uk/handle/10283/574) (Aubanel, García Lecumberri
+& Cooke, 2014), CC BY 3.0 — zie `models/MODEL_CARD-sharvard.md`.
 
 **Klankschrift.** Elke zin en elk woord staat er met IPA onder, woord per woord
 (`js/phonetic.js`, ook op de kennismakingskaart en de flashcards): Castiliaans, met
@@ -213,21 +219,26 @@ oordeelt de app niet op de herkende tekst alleen (`js/speakScore.js`):
   woord steunt — los van hoe gewoon het woord is.
 
 Een woord is goed (groen), bijna (oranje) of niet gehoord (rood). De zin is juist als
-minstens 80 % (gewogen naar lettergrepen) goed is en er geen inhoudswoord ontbreekt, bijna
-vanaf 60 % met hoogstens één gemist woord. Drie pogingen, de beste telt; je hoort je eigen
-poging terug met *▶ Jouw poging*.
+minstens 80 % (gewogen naar lettergrepen) goed is en er geen inhoudswoord ontbreekt; bijna
+vanaf 60 % met hoogstens één gemist woord, of als elk woord minstens bijna is. Drie pogingen,
+de beste telt; je hoort je eigen poging terug met *▶ Jouw poging*.
 
-Geijkt op nagemaakte leerders (de stem met zwaar Nederlands accent — r als [ʁ], geen [θ],
-harde b/d/g, open klinkers, trager — en twee andere stemmen), 60 zinnen per toestand:
+Geijkt op nagemaakte leerders, 60 zinnen en 60 woorden per toestand: de stem zelf, de andere
+spreker, een andere stem (davefx), en de stem met een zwaar Nederlands accent (r als [ʁ], geen
+[θ], harde b/d/g, open klinkers, trager). Juist / bijna / fout:
 
-| toestand | juist | bijna | fout |
-|---|---|---|---|
-| zoals het voorbeeld | 60 | 0 | 0 |
-| andere stem (2 stemmen) | 119 | 1 | 0 |
-| zwaar accent | 60 | 0 | 0 |
-| één woord vervangen | 2 | 46 | 12 |
-| maar de helft gezegd | 0 | 6 | 54 |
-| een andere zin | 0 | 0 | 60 |
+| toestand | zinnen | woorden |
+|---|---|---|
+| zoals het voorbeeld | 60 / 0 / 0 | 60 / 0 / 0 |
+| andere spreker | 60 / 0 / 0 | 60 / 0 / 0 |
+| andere stem | 60 / 0 / 0 | 53 / 6 / 1 |
+| zwaar accent | 59 / 1 / 0 | 60 / 0 / 0 |
+| iets anders gezegd | 0 / 0 / 60 | 1 / 2 / 57 |
+
+Een zin waarin één woord vervangen is, krijgt meestal *bijna* (45 van 60), met dat woord in
+het rood; wie maar de helft zegt, meestal *fout* (53 van 60). Het zwakke punt zijn zinnen van
+twee woorden: één toevallig "gehoord" woord is daar al twee derde van de zin. Dat geeft
+hoogstens *bijna*, nooit *juist*.
 
 **Controle van de uitspraak.** `tools/check-voice.mjs` laat de stem elke tekst van de
 spreekmodus zeggen en Whisper meeluisteren: de app moet haar eigen voorbeeld goedkeuren, en

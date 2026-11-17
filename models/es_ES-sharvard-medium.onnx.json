@@ -8,7 +8,7 @@
   },
   "phoneme_type": "espeak",
   "num_symbols": 256,
-  "num_speakers": 1,
+  "num_speakers": 2,
   "inference": {
     "noise_scale": 0.5,
     "length_scale": 1.0,
@@ -514,7 +514,10 @@
       165
     ]
   },
-  "speaker_id_map": {},
+  "speaker_id_map": {
+    "M": 0,
+    "F": 1
+  },
   "hop_length": 256,
   "default_speaker_id": 0,
   "piper_version": "1.5.0",
@@ -548,5 +551,5 @@
     "name_english": "Spanish",
     "country_english": "Spain"
   },
-  "dataset": "davefx"
+  "dataset": "sharvard"
 }

@@ -14,9 +14,11 @@
  *                       zeldzame vervoeging die je goed zegt, scoort hoog; een
  *                       woord dat je niet zei, rond nul.
  *
- * Geijkt met tools/check-voice.mjs op nagemaakte leerders (zie de README): van
- * de juist gezegde inhoudswoorden telt 99 % als goed, ook met een zwaar accent;
- * van de niet gezegde wordt 90 % als fout aangeduid.
+ * Geijkt op nagemaakte leerders: de stem met een zwaar Nederlands accent, andere
+ * stemmen, andere zinnen (tabel in de README). Van de juist gezegde
+ * inhoudswoorden telt 99 % als goed, ook met accent; van de niet gezegde wordt
+ * 90 % als fout aangeduid. tools/check-voice.mjs bewaakt dat de app haar eigen
+ * voorbeeld goedkeurt.
  *
  * Het oordeel weegt woorden naar hun lengte in lettergrepen, zodat een
  * vergeten "de" minder telt dan een vergeten "estantería". */
@@ -167,10 +169,12 @@ export function judge(text, heard, evidence = null) {
   });
   const score = total ? got / total : 0;
   const missedContent = out.filter(w => w.state === 'miss' && w.weight >= 2).length;
-  // Niets gehoord is nooit juist, hoe waarschijnlijk de zin ook is.
+  const missedAny = out.some(w => w.state === 'miss');
+  // Niets gehoord is nooit juist, hoe waarschijnlijk de zin ook is. Elk woord
+  // minstens bijna (een los woord dat net niet helemaal lukte) is bijna.
   const verdict = !heard?.trim() ? 'wrong'
     : score >= PASS && !missedContent ? 'ok'
-    : score >= ALMOST && missedContent <= 1 ? 'almost'
+    : (score >= ALMOST && missedContent <= 1) || (!missedAny && score >= 0.5) ? 'almost'
     : 'wrong';
   return { verdict, score, words: out, heardIpa: heardIpa ? `[${heardIpa}]` : '' };
 }

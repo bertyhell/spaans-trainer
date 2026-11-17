@@ -4,8 +4,10 @@
  *
  *   runtime  ONNX Runtime Web (WebAssembly, één draad: statische hosting kan
  *            de headers voor meerdere draden niet zetten)
- *   tts      Piper, stem "davefx" (es_ES, medium), gewichten als float16
- *            opgeslagen: half zo groot, zelfde klank (tools/make-voice.py)
+ *   tts      Piper, stem "sharvard" (es_ES, medium, mannelijke spreker),
+ *            gewichten als float16 opgeslagen: half zo groot, zelfde klank
+ *            (tools/make-voice.py). Gekozen boven "davefx", die korte losse
+ *            woorden onverstaanbaar maakt (mal, más, sol).
  *   stt      Whisper tiny, meertalig, 8-bit
  *
  * Bewaard in de Cache API onder VOICE_CACHE, los van de cache van de app:
@@ -24,8 +26,8 @@ export const FILES = {
     { key: 'ort-wasm', url: `${ORT_BASE}ort-wasm-simd-threaded.wasm`, size: 11905541 },
   ],
   tts: [
-    { key: 'voice', url: local('es_ES-davefx-medium.fp16.onnx'), size: 32057029 },
-    { key: 'voice-config', url: local('es_ES-davefx-medium.onnx.json'), size: 5458 },
+    { key: 'voice', url: local('es_ES-sharvard-medium.fp16.onnx'), size: 38825181 },
+    { key: 'voice-config', url: local('es_ES-sharvard-medium.onnx.json'), size: 5486 },
   ],
   stt: [
     { key: 'encoder', url: `${WHISPER}onnx/encoder_model_quantized.onnx`, size: 10124990 },

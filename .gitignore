@@ -12,3 +12,6 @@ ai-files/
 
 # Modellen voor tools/check-voice.mjs
 .cache/
+
+# Build-output van build.sh
+dist/
